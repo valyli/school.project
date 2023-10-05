@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: CClientModuleTransfer - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/CClientModuleTransfer.res" /d "_DEBUG" /d "_AFXDLL" "L:\IT维护项目开发\知识表草稿\加入用TLV结构体传参数的功能，CManageData类有更新（2003-04-01）\！！第一期原型用的程序（最新的）\CClientModuleTransfer（新的，改写出了支持循环查询使用的接口（由外部调用决定是否循环））（2003-04-07b）\CClientModuleTransfer.rc"" 
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP7.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Debug/CClientModuleTransfer.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"L:\IT维护项目开发\知识表草稿\加入用TLV结构体传参数的功能，CManageData类有更新（2003-04-01）\！！第一期原型用的程序（最新的）\CClientModuleTransfer（新的，改写出了支持循环查询使用的接口（由外部调用决定是否循环））（2003-04-07b）\CClientModuleTransfer.cpp"
+"L:\IT维护项目开发\知识表草稿\加入用TLV结构体传参数的功能，CManageData类有更新（2003-04-01）\！！第一期原型用的程序（最新的）\CClientModuleTransfer（新的，改写出了支持循环查询使用的接口（由外部调用决定是否循环））（2003-04-07b）\ManageData.cpp"
+"L:\IT维护项目开发\知识表草稿\加入用TLV结构体传参数的功能，CManageData类有更新（2003-04-01）\！！第一期原型用的程序（最新的）\CClientModuleTransfer（新的，改写出了支持循环查询使用的接口（由外部调用决定是否循环））（2003-04-07b）\TransferModule.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP7.tmp" 
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP8.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Debug/CClientModuleTransfer.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"L:\IT维护项目开发\知识表草稿\加入用TLV结构体传参数的功能，CManageData类有更新（2003-04-01）\！！第一期原型用的程序（最新的）\CClientModuleTransfer（新的，改写出了支持循环查询使用的接口（由外部调用决定是否循环））（2003-04-07b）\StdAfx.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP8.tmp" 
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9.tmp" with contents
+[
+/nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/CClientModuleTransfer.pdb" /debug /machine:I386 /def:".\CClientModuleTransfer.def" /out:"Debug/CClientModuleTransfer.dll" /implib:"Debug/CClientModuleTransfer.lib" /pdbtype:sept 
+".\Debug\CClientModuleTransfer.obj"
+".\Debug\ManageData.obj"
+".\Debug\StdAfx.obj"
+".\Debug\TransferModule.obj"
+".\Debug\CClientModuleTransfer.res"
+]
+Creating command line "link.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP9.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+CClientModuleTransfer.cpp
+ManageData.cpp
+TransferModule.cpp
+Generating Code...
+warning C4786: 'L:\IT维护项目开发\知识表草稿\加入用TLV结构体传参数的功能，CManageData类有更新（2003-04-01）\！！第一期原型用的程序（最新的）\CClientModuleTransfer（新的，改写出了支持循环查询使用的接口（由外部调用决定是否循环））（2003-04-07b）\Debug\CClientModuleTransfer.obj' : identifier was truncated to '255' characters in the debug information
+Linking...
+LINK : fatal error LNK1104: cannot open file "Debug/CClientModuleTransfer.dll"
+Error executing link.exe.
+
+
+
+<h3>Results</h3>
+CClientModuleTransfer.dll - 1 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

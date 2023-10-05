@@ -1,0 +1,383 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\TestGetInfoFromDll.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\TestGetInfoFromDll.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 TestGetInfoFromDll"
+FONT 9, "宋体"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,20,20
+    LTEXT           "TestGetInfoFromDll 1.0 版",IDC_STATIC,40,10,119,8,
+                    SS_NOPREFIX
+    LTEXT           "版权所有 (C) 2003",IDC_STATIC,40,25,119,8
+    DEFPUSHBUTTON   "确定",IDOK,178,7,50,14,WS_GROUP
+END
+
+IDD_TESTGETINFOFROMDLL_DIALOG DIALOGEX 0, 0, 247, 285
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "TestGetInfoFromDll"
+FONT 9, "宋体", 0, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "Exit",IDOK,98,255,50,14
+    PUSHBUTTON      "Get/View Infomation From DLL",IDC_BUTTON_GETINFO,35,135,
+                    175,14
+    PUSHBUTTON      "Add Infomation Table In List Table",
+                    IDC_BUTTON_ADD_INFOMATIONTABLEINLISTTABLE,35,35,175,14
+    PUSHBUTTON      "View/Modify Infomation Table In List Table",
+                    IDC_BUTTON_ViewOrModifyInfomationTableInListTable,35,65,
+                    175,14
+    GROUPBOX        "Make Configure Table(XML)",IDC_STATIC,15,15,215,85
+    PUSHBUTTON      "Add Infomation From Dll To Memory",
+                    IDC_BUTTON_ADD_INFOMATION_FROM_DLL_TO_MEMORY,35,165,175,
+                    14
+    GROUPBOX        "Make Operation Table Data In Memory",IDC_STATIC,15,115,
+                    215,120
+    PUSHBUTTON      "View Operation Infomation In Memory",
+                    IDC_BUTTON_VIEW_OPERATION_INFOMATION_IN_MEMORY,35,195,
+                    175,14
+END
+
+IDD_DIALOG_ADDINFOMATIONTABLE DIALOG DISCARDABLE  0, 0, 169, 235
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Add Infomation Table"
+FONT 10, "System"
+BEGIN
+    PUSHBUTTON      "Add",IDOK,20,205,50,14
+    DEFPUSHBUTTON   "Cancel",IDCANCEL,100,205,50,14
+    LTEXT           "InfomationElementTableID",IDC_STATIC,10,10,87,8
+    EDITTEXT        IDC_EDIT_InfomationElementTableID,105,5,55,12,
+                    ES_AUTOHSCROLL | ES_READONLY | ES_NUMBER
+    LTEXT           "InfomationElementTableName_Chinese",IDC_STATIC,10,70,
+                    129,8
+    EDITTEXT        IDC_EDIT_InfomationElementTableName_Chinese,10,80,150,12,
+                    ES_AUTOHSCROLL
+    LTEXT           "InfomationElementTableName_English",IDC_STATIC,10,100,
+                    127,8
+    EDITTEXT        IDC_EDIT_InfomationElementTableName_English,10,110,150,
+                    12,ES_AUTOHSCROLL
+    LTEXT           "Description",IDC_STATIC,10,130,38,8
+    EDITTEXT        IDC_EDIT_Description,10,140,150,12,ES_AUTOHSCROLL
+    LTEXT           "EqualInfomationElementTableID",IDC_STATIC,10,165,105,8
+    COMBOBOX        IDC_COMBO_EqualInfomationElementTableID,10,175,150,63,
+                    CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "InfoServiceProviderId",IDC_STATIC,10,35,71,8
+    EDITTEXT        IDC_EDIT_InfoServiceProviderId,105,30,55,12,
+                    ES_AUTOHSCROLL | ES_NUMBER
+    LTEXT           "NameBaseId",IDC_STATIC,10,50,43,8
+    EDITTEXT        IDC_EDIT_NameBaseId,105,45,55,12,ES_AUTOHSCROLL | 
+                    ES_NUMBER
+END
+
+IDD_DIALOG_MODIFYINFOMATIONTABLE DIALOG DISCARDABLE  0, 0, 189, 265
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Modify Infomation Table List Table"
+FONT 10, "System"
+BEGIN
+    PUSHBUTTON      "Modify",IDOK,115,185,50,14
+    DEFPUSHBUTTON   "Exit",IDCANCEL,130,240,50,14
+    LTEXT           "InfomationElementTableID",IDC_STATIC,20,50,87,8
+    LTEXT           "InfomationElementTableName_Chinese",IDC_STATIC,25,75,
+                    129,8
+    EDITTEXT        IDC_EDIT_ModifyInfomationElementTableName_Chinese,25,85,
+                    140,14,ES_AUTOHSCROLL
+    LTEXT           "InfomationElementTableName_English",IDC_STATIC,25,105,
+                    127,8
+    EDITTEXT        IDC_EDIT_ModifyInfomationElementTableName_English,25,115,
+                    140,14,ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "Description",IDC_STATIC,25,135,38,8
+    EDITTEXT        IDC_EDIT_ModifyDescription,25,145,140,14,ES_AUTOHSCROLL
+    LTEXT           "EqualInfomationElementTableID",IDC_STATIC,25,170,105,8
+    COMBOBOX        IDC_COMBO_ModifyEqualInfomationElementTableID,25,180,50,
+                    56,CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    COMBOBOX        IDC_COMBO_ModifyInfomationElementTableID,115,45,55,60,
+                    CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "To Modify Infomation Table",
+                    IDC_BUTTON_TOMODIFY_INFOMATIONTABLE,10,240,115,14
+    PUSHBUTTON      "To Add Infomation Table Element",
+                    IDC_BUTTON_TO_ADD_INFOMATION_TABLE_ELEMENT,10,220,115,14
+    GROUPBOX        "Element Of Infomation Table List Table",IDC_STATIC,10,
+                    65,170,145
+    LTEXT           "InfoServiceProviderId",IDC_STATIC,20,15,71,8
+    EDITTEXT        IDC_EDIT_InfoServiceProviderId,115,10,55,12,
+                    ES_AUTOHSCROLL | ES_READONLY | ES_NUMBER
+    LTEXT           "NameBaseId",IDC_STATIC,20,30,43,8
+    EDITTEXT        IDC_EDIT_NameBaseId,115,25,55,12,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+END
+
+IDD_DIALOG_MODIFY_INFOMATION_ELEMENT_TABLE DIALOG DISCARDABLE  0, 0, 179, 270
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Modify Infomation Element Table"
+FONT 10, "System"
+BEGIN
+    LTEXT           "InfomationElementTableID",IDC_STATIC,15,50,87,8
+    EDITTEXT        IDC_EDIT_InfomationElementTableID,110,45,55,12,
+                    ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "InfomationElementID",IDC_STATIC,20,85,69,8
+    COMBOBOX        IDC_COMBO_InfomationElementID,115,80,45,55,
+                    CBS_DROPDOWNLIST | CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Infomation",IDC_STATIC,20,100,35,8
+    EDITTEXT        IDC_EDIT_Infomation,20,110,140,12,ES_AUTOHSCROLL
+    LTEXT           "EnglishName",IDC_STATIC,20,130,45,8
+    EDITTEXT        IDC_EDIT_EnglishName,20,140,140,12,ES_AUTOHSCROLL
+    LTEXT           "InfomationType",IDC_STATIC,20,160,51,8
+    COMBOBOX        IDC_COMBO_InfomationType,20,170,140,66,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Description",IDC_STATIC,20,190,38,8
+    EDITTEXT        IDC_EDIT_Description,20,200,140,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "Exit",IDCANCEL,120,240,50,14
+    GROUPBOX        "Infomation Element",IDC_STATIC,10,70,160,155
+    PUSHBUTTON      "Modify",IDOK,65,240,50,14
+    PUSHBUTTON      "Transfer Dll",IDC_BUTTON_TRANSFER_DLL,10,240,50,14
+    LTEXT           "InfoServiceProviderId",IDC_STATIC,15,15,71,8
+    EDITTEXT        IDC_EDIT_InfoServiceProviderId,110,10,55,12,
+                    ES_AUTOHSCROLL | ES_READONLY | ES_NUMBER
+    LTEXT           "NameBaseId",IDC_STATIC,15,30,43,8
+    EDITTEXT        IDC_EDIT_NameBaseId,110,25,55,12,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+END
+
+IDD_DIALOG_ADDINFOMATIONTABLE_ELEMENT DIALOG DISCARDABLE  0, 0, 189, 270
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Add Infomation Table Element"
+FONT 10, "System"
+BEGIN
+    PUSHBUTTON      "Add",IDOK,30,245,50,14
+    DEFPUSHBUTTON   "Cancel",IDCANCEL,110,245,50,14
+    LTEXT           "InfomationElementTableID",IDC_STATIC,15,55,87,8
+    EDITTEXT        IDC_EDIT_InfomationElementTableID,110,50,55,12,
+                    ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "New InfomationElementID",IDC_STATIC,25,90,85,8
+    LTEXT           "Infomation",IDC_STATIC,25,105,35,8
+    EDITTEXT        IDC_EDIT_Infomation,25,115,140,12,ES_AUTOHSCROLL
+    LTEXT           "EnglishName",IDC_STATIC,25,135,45,8
+    EDITTEXT        IDC_EDIT_EnglishName,25,145,140,12,ES_AUTOHSCROLL
+    LTEXT           "InfomationType",IDC_STATIC,25,165,51,8
+    COMBOBOX        IDC_COMBO_InfomationType,25,175,140,66,CBS_DROPDOWNLIST | 
+                    CBS_SORT | WS_VSCROLL | WS_TABSTOP
+    LTEXT           "Description",IDC_STATIC,25,195,38,8
+    EDITTEXT        IDC_EDIT_Description,25,205,140,12,ES_AUTOHSCROLL
+    GROUPBOX        "Infomation Element",IDC_STATIC,10,70,170,165
+    EDITTEXT        IDC_EDIT_NewInfomationElementID,120,85,45,12,
+                    ES_AUTOHSCROLL | ES_READONLY
+    LTEXT           "InfoServiceProviderId",IDC_STATIC,15,15,71,8
+    EDITTEXT        IDC_EDIT_InfoServiceProviderId,110,10,55,12,
+                    ES_AUTOHSCROLL | ES_READONLY | ES_NUMBER
+    LTEXT           "NameBaseId",IDC_STATIC,15,30,43,8
+    EDITTEXT        IDC_EDIT_NameBaseId,110,25,55,12,ES_AUTOHSCROLL | 
+                    ES_READONLY | ES_NUMBER
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "TestGetInfoFromDll Microsoft 基础类应用程序\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "TestGetInfoFromDll\0"
+            VALUE "LegalCopyright", "版权所有 (C) 2003\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "TestGetInfoFromDll.EXE\0"
+            VALUE "ProductName", "TestGetInfoFromDll 应用程序\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_TESTGETINFOFROMDLL_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 240
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 278
+    END
+
+    IDD_DIALOG_ADDINFOMATIONTABLE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 162
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 228
+    END
+
+    IDD_DIALOG_MODIFYINFOMATIONTABLE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 182
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 258
+    END
+
+    IDD_DIALOG_MODIFY_INFOMATION_ELEMENT_TABLE, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 172
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 263
+    END
+
+    IDD_DIALOG_ADDINFOMATIONTABLE_ELEMENT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 182
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 263
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "关于 TestGetInfoFromDll(&A)..."
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\TestGetInfoFromDll.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

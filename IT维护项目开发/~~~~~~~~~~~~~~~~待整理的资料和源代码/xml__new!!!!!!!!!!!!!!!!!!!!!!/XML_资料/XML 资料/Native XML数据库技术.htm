@@ -1,0 +1,521 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0062)http://www-900.ibm.com/developerWorks/cn/xml/x-nxd/index.shtml -->
+<HTML xmlns:fo = "http://www.w3.org/1999/XSL/Format"><HEAD><TITLE>Native XML数据库技术</TITLE>
+<META content="Native XML数据库技术" name=TITLE>
+<META content=xml name=zone><!-- xml-->
+<META content="[put paper-unique keywords here]" name=KEYWORDS>
+<META 
+content="XML技术从诞生之日就预示了它辉煌的未来，特别是随着近一、两年Web Service的蓬勃发展，XML越来越多地活跃在数据交换和存储领域。&#13;&#10;XML数据量指数级的增长，要求更有效的数据管理能力和更快、更精确的查询。在传统数据库厂商宣布支持XML的同时，一种新的数据库技术，Native XML DBMS（NXD）也已崭露头角，打破了RDBMS传统数据库一统天下的局面，为数据库技术的研究提供了一次良好的发展契机。" 
+name=ABSTRACT>
+<META 
+content="XML技术从诞生之日就预示了它辉煌的未来，特别是随着近一、两年Web Service的蓬勃发展，XML越来越多地活跃在数据交换和存储领域。&#13;&#10;XML数据量指数级的增长，要求更有效的数据管理能力和更快、更精确的查询。在传统数据库厂商宣布支持XML的同时，一种新的数据库技术，Native XML DBMS（NXD）也已崭露头角，打破了RDBMS传统数据库一统天下的局面，为数据库技术的研究提供了一次良好的发展契机。" 
+name=DESCRIPTION>
+<META scheme=iso8601 content=2003-2-26 name=DC.DATE>
+<META content=2003-2-26 name=LASTUPDATE><!--- common meta part for all zones -->
+<META 
+content="xml tutorials, xml training, xml standards, xml code, xml resources, xml programming, open source standards, xml how to" 
+name=KEYWORDS>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META content=papers_html name=dWCategory>
+<META content=/developerWorks/cn/cncontent.nsf/cn_dW_feedback name=OWNER>
+<META content=V11 name=source>
+<META content=GB2312 name=charset>
+<META scheme=rfc1766 content=zh-cn name=DC.LANGUAGE>
+<META content=cn name=IBM.COUNTRY>
+<META content=Public name=SECURITY>
+<META content=text/xhtml name=FORMAT>
+<META content="Copyright (c) 2002 by IBM Corporation" name=COPYRIGHT>
+<META content=index,follow name=ROBOTS>
+<META name=DOCUMENTCOUNTRYCODE value="cn">
+<META name=DOCUMENTLANGUAGECODE value="zh">
+<META http-equiv=PICS-Label 
+content='(PICS-1.1 "http://www.rsac.org/ratingsv01.html" l gen true comment "RSACi North America Server" by "webmaster@mail.software.ibm.com" for "http://www.ibm.com/software" on "1997.08.13T17:59-0800" r (n 0 s 0 v 0 l 0))'>
+<META http-equiv=Expires content=0>
+<SCRIPT language=JavaScript src="Native XML数据库技术.files/style.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT language=JavaScript src="Native XML数据库技术.files/spinbox.js" 
+type=text/javascript></SCRIPT>
+
+<META content="MSHTML 6.00.2800.1141" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff leftMargin=2 topMargin=2 marginwidth="2" marginheight="2"><!-- MASTHEAD-->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=tbgc width=160><A 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www.ibm.com/cn/&amp;origin=dwheader"><IMG 
+      height=47 alt=IBM src="Native XML数据库技术.files/ibm-logo.gif" width=160 
+      border=0></A></TD>
+    <TD class=tbg width=195><FONT color=#99ccff size=2><B>China</B></FONT><A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-nxd/index.shtml#main"><IMG 
+      height=1 alt="Skip to main content" src="Native XML数据库技术.files/c.gif" 
+      width=195 border=0></A></TD>
+    <TD class=tbgc vAlign=top align=right width="100%">
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <FORM id=form1 name=form1 
+        action=http://210.82.67.149/cgi-bin/dWsearch.pl method=get>
+        <TBODY>
+        <TR>
+          <TD colSpan=6><IMG height=2 alt="" src="Native XML数据库技术.files/c.gif" 
+            width=390 border=0></TD></TR>
+        <TR vAlign=center>
+          <TD class=dwsearch><SELECT class=dwsearch name=selScope> <OPTION 
+              value=dW selected>dW 中国所有内容<OPTION 
+              value=dW>.................<OPTION value=dW>dW 中国技术专区:<OPTION 
+              value=comptZ>　组件技术<OPTION value=javaZ>　Java 技术<OPTION 
+              value=linuxZ>　Linux<OPTION 
+              value=xmlZ>　XML<OPTION>.................<OPTION value=dW>dW 
+              中国特别专题:<OPTION value=securityZ>　安全<OPTION 
+              value=unicodeZ>　Unicode<OPTION 
+              value=webarchZ>　网站架构<OPTION>.................<OPTION value=all>IBM 
+              全部内容</OPTION></SELECT></TD>
+          <TD><IMG height=1 alt="" src="Native XML数据库技术.files/c.gif" width=5 
+            border=0></TD>
+          <TD><INPUT class=dwsearch maxLength=100 size=15 name=UserRestriction 
+            height="15"></TD>
+          <TD><IMG height=1 alt="" src="Native XML数据库技术.files/c.gif" width=5 
+            border=0></TD>
+          <TD><INPUT type=image height=23 alt="Search button" width=64 
+            src="Native XML数据库技术.files/search.gif" value=Search border=0 
+            name=Search></TD>
+          <TD vAlign=top><IMG height=1 alt="" 
+            src="Native XML数据库技术.files/c.gif" width=30 border=0></TD></TR>
+        <TR vAlign=top>
+          <TD class=dwsmall colSpan=6><A style="COLOR: #ffffff" 
+            href="http://210.82.67.149/help.htm" target=_blank>搜索帮助</A><IMG 
+            height=1 alt="" src="Native XML数据库技术.files/c.gif" width=1 
+          border=0></TD></TR>
+        <TR>
+          <TD colSpan=6><IMG height=4 alt="" src="Native XML数据库技术.files/c.gif" 
+            width=390 border=0></TD></TR></FORM></TBODY></TABLE></TD></TR><A id=main 
+  name=main>
+  <TR>
+    <TD class=hbg width=160 height=21>&nbsp;</TD>
+    <TD class=bbg vAlign=top colSpan=2 height=21>&nbsp;&nbsp;&nbsp; <A 
+      class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/&amp;origin=dwhead">IBM 
+      主页</A> <SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN> <A 
+      class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/products/index.shtml&amp;origin=dwhead">产品与服务</A> 
+      <SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN> <A class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/support/index.shtml&amp;origin=dwhead">支持与下载</A> 
+      <SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN> <A class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/account/index.shtml&amp;origin=dwhead">个性化服务</A></TD></TR></TBODY></TABLE><!-- Color Bar -->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR class=hil>
+    <TD width="100%" height=1><IMG height=1 alt="" 
+      src="Native XML数据库技术.files/c.gif" width=592></TD></TR>
+  <TR class=dwr1>
+    <TD width="100%" height=2><IMG height=2 alt="" 
+      src="Native XML数据库技术.files/c.gif" width=592></TD></TR>
+  <TR class=dwg3>
+    <TD width="100%" height=1><IMG height=1 alt="" 
+      src="Native XML数据库技术.files/c.gif" width=592></TD></TR>
+  <TR class=bbg>
+    <TD width="100%" height=1><IMG height=1 alt="" 
+      src="Native XML数据库技术.files/c.gif" width=592></TD></TR>
+  <TR class=hil>
+    <TD width="100%" height=1><IMG height=1 alt="" 
+      src="Native XML数据库技术.files/c.gif" width=592></TD></TR></TBODY></TABLE><!-- Breadcrumb Trail -->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR vAlign=top><!-- RIGHT GUTTER -->
+    <TD width=5><IMG height=1 alt="" src="Native XML数据库技术.files/c.gif" width=5 
+      border=0></TD>
+    <TD width="100%">
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD width="100%"><IMG height=4 alt="" 
+            src="Native XML数据库技术.files/c.gif" width=2 border=0><BR><B><A 
+            href="http://www.ibm.com/">IBM</A> : <A 
+            href="http://www-900.ibm.com/developerWorks/cn/index.shtml">developerWorks 
+            中国网站</A> : <A 
+            href="http://www-900.ibm.com/developerWorks/cn/xml/index.shtml">XML 
+            &amp; Web services</A> : <A 
+            href="http://www-900.ibm.com/developerWorks/cn/cnpapers.nsf/xml-papers-bynewest?OpenView&amp;count=500">所有的文章 
+            </A></B></TD>
+          <TD align=right width=136><A 
+            href="http://www-900.ibm.com/developerWorks/cn/index.shtml"><IMG 
+            height=24 alt="developerWorks 中国网站" 
+            src="Native XML数据库技术.files/dwlogo-small.gif" width=136 
+          border=0></A></TD>
+          <TD width=5><IMG height=1 alt="" src="Native XML数据库技术.files/c.gif" 
+            width=5 border=0></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!-- End Breadcrumb Trail -->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD colSpan=5><IMG height=15 alt="" src="Native XML数据库技术.files/c.gif" 
+      width=5 border=0></TD></TR>
+  <TR vAlign=top><!-- Title-->
+    <TD width=2><IMG height=1 alt="" src="Native XML数据库技术.files/c.gif" width=2 
+      border=0></TD>
+    <TD><!-- <span class="astitle">[Series title]:&nbsp;</span>--><SPAN 
+      class=atitle>Native XML数据库技术</SPAN></TD>
+    <TD width=8><IMG height=1 alt="" src="Native XML数据库技术.files/c.gif" width=8 
+      border=0></TD>
+    <TD width=6><IMG height=1 alt="" src="Native XML数据库技术.files/c.gif" width=6 
+      border=0></TD></TR><!-- Black line separator-->
+  <TR vAlign=top>
+    <TD bgColor=#000000 colSpan=5><IMG height=1 alt="" 
+      src="Native XML数据库技术.files/c.gif" width=100 border=0></TD></TR>
+  <TR vAlign=top>
+    <TD bgColor=#ffffff colSpan=5><IMG height=8 alt="" 
+      src="Native XML数据库技术.files/c.gif" width=100 border=0></TD></TR></TBODY></TABLE><!-- END HEADER AREA--><!-- START BODY AREA-->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR vAlign=top><!-- LEFT GUTTER-->
+    <TD width=5><IMG height=1 alt="" src="Native XML数据库技术.files/c.gif" width=5 
+      border=0></TD><!-- START CENTER COLUMN-->
+    <TD width="100%"><!-- START STANDARD SIDEBAR AREA-->
+      <TABLE cellSpacing=0 cellPadding=0 width=168 align=right border=0>
+        <TBODY>
+        <TR><!-- Sidebar Gutter-->
+          <TD width=8><IMG height=21 alt="" src="Native XML数据库技术.files/c.gif" 
+            width=5></TD>
+          <TD width=160><!-- Start TOC-->
+            <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+              <TBODY>
+              <TR>
+                <TD width=160 bgColor=#000000 height=1><IMG height=1 alt="" 
+                  src="Native XML数据库技术.files/c.gif" width=160></TD></TR>
+              <TR>
+                <TD align=middle background="Native XML数据库技术.files/bg-gold.gif" 
+                height=5><B>内容：</B></TD></TR>
+              <TR>
+                <TD width=160 bgColor=#666666 height=1><IMG height=1 alt="" 
+                  src="Native XML数据库技术.files/c.gif" width=160></TD></TR>
+              <TR>
+                <TD align=right>
+                  <TABLE cellSpacing=0 cellPadding=3 width="98%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-nxd/index.shtml#1">XML和数据库的关系</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-nxd/index.shtml#2">NXD的技术特点</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-nxd/index.shtml#3">传统数据库与NXD的比较</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-nxd/index.shtml#4">NXD的现状和前景</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-nxd/index.shtml#resources">参考资料</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-nxd/index.shtml#author1">关于作者</A></TD></TR></TBODY></TABLE><!-- End TOC Start Related Content Area--><!--<table border="0" cellpadding="0" cellspacing="0" width="160">
+<tr><td bgcolor="#000000" height="1" width="160"><img alt="" height="1" src="/developerWorks/cn/i/c.gif" width="160" /></td></tr>
+<tr><td align="center" background="/developerWorks/cn/i/bg-gold.gif" height="5"><b>相关内容：</b></td></tr>
+<tr><td bgcolor="#666666" height="1" width="160"><img alt="" height="1" src="/developerWorks/cn/i/c.gif" width="160" /></td></tr>
+<tr><td align="right">
+<table border="0" cellpadding="3" cellspacing="0" width="98%">
+<tr><td><a href="#1">TCP/IP 介绍</a></td></tr>
+<tr><td><a href="#1">TCP/IP 介绍</a></td></tr>
+</table>
+</td></tr>
+</table>--><!-- End Related Content Area Start others Related Content Area-->
+                  <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD width=160 bgColor=#000000 height=1><IMG height=1 
+                        alt="" src="Native XML数据库技术.files/c.gif" 
+width=160></TD></TR>
+                    <TR>
+                      <TD align=middle 
+                      background="Native XML数据库技术.files/bg-gold.gif" 
+                        height=5><A class=nav 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/index.shtml"><B>在 
+                        XML &amp; Web 服务专区还有：</B></A></TD></TR>
+                    <TR>
+                      <TD width=160 bgColor=#666666 height=1><IMG height=1 
+                        alt="" src="Native XML数据库技术.files/c.gif" 
+width=160></TD></TR>
+                    <TR>
+                      <TD align=right>
+                        <TABLE cellSpacing=0 cellPadding=3 width="98%" 
+                          border=0><TBODY>
+                          <TR>
+                            <TD><A 
+                              href="http://www-900.ibm.com/developerWorks/cn/cnedu.nsf/xml-onlinecourse-bytitle?OpenView&amp;Count=500">教学</A></TD></TR>
+                          <TR>
+                            <TD><A 
+                              href="http://www-900.ibm.com/developerWorks/cn/cntools.nsf/dw/xml-dtds-bysite?OpenDocument&amp;count=100">工具与产品</A></TD></TR>
+                          <TR>
+                            <TD><A 
+                              href="http://www-900.ibm.com/developerWorks/cn/cnpapers.nsf/xml-papers-bynewest?OpenView&amp;count=500">所有的文章</A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!-- End Related dW Content Area-->
+                  <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD width=150 bgColor=#000000 colSpan=2 height=2><IMG 
+                        height=2 alt="" src="Native XML数据库技术.files/c.gif" 
+                        width=160></TD></TR>
+                    <TR>
+                      <TD width=150 bgColor=#ffffff colSpan=2 height=2><IMG 
+                        height=2 alt="" src="Native XML数据库技术.files/c.gif" 
+                        width=160></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!-- END STANDARD SIDEBAR AREA--></TD></TR></TBODY></TABLE><!-- START SUBTITLE AND CONTENT-->
+      <P><A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-nxd/index.shtml#author1">朱亮</A> 
+      (<A href="mailto:leon@ipedo.com">leon@ipedo.com</A>)<BR>高级软件工程师, 
+      Ipedo中国（上海）研发中心<BR>2003 年 2 月</P>
+      <P>XML技术从诞生之日就预示了它辉煌的未来，特别是随着近一、两年Web 
+      Service的蓬勃发展，XML越来越多地活跃在数据交换和存储领域。</P>
+      <P>XML数据量指数级的增长，要求更有效的数据管理能力和更快、更精确的查询。在传统数据库厂商宣布支持XML的同时，一种新的数据库技术，Native 
+      XML DBMS（NXD）也已崭露头角，打破了RDBMS传统数据库一统天下的局面，为数据库技术的研究提供了一次良好的发展契机。</P>
+      <P>本文将向您介绍以下方面的信息：</P>
+      <UL class=n01>
+        <LI>XML和数据库的关系 
+        <LI>NXD的技术特点 
+        <LI>传统数据库和NXD的比较 
+        <LI>NXD的现状和前景 </LI></UL>
+      <P><A name=1><SPAN class=atitle2>1. XML和数据库的关系</SPAN></A></P>
+      <P><SPAN class=atitle3>1.1. XML是数据库吗？</SPAN></P>
+      <P>XML文档具有"可自描述"、"无限嵌套"、"树形结构"等特点，因此在某种意义上，一个XML文档就是一个数据库或其中的一张表。</P>
+      <P>图1所示的XML文档Student.xml，描述了一个学生的信息：学号、姓名等。我们可以很方便的将其对应于传统RDBMS中一张二维表(table)：标签student为行，标签id、name等作为列。</P>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+&lt;student&gt;
+&lt;id&gt;19803001&lt;/id&gt;
+&lt;name&gt;
+&lt;lastname&gt;Johnson&lt;/lastname&gt;
+&lt;firstname&gt;Jack&lt;/firstname&gt;
+&lt;/name&gt;
+&lt;email&gt;jack@ipedo.com&lt;/email&gt;
+...
+&lt;/student&gt;
+Fig 1  Student.xml
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>我们可以把相关的XML文档放在一个目录下，利用文件系统来管理，提供查询、更改、增删操作。为更好地支持XML，W3C还制定了一些相关技术，如：文档模式(DTD、XML 
+      Schema)，查询语言（XPath、XQuery等），编程接口（DOM、SAX等），来方便开发应用程序。</P>
+      <P>但如果从更高的技术角度出发，就会发现，对XML文档简单的文件管理是远远不够的：低效的存储组织、索引查询技术，不提供事务、安全恢复机制，无法保证数据的完整性和一致性，没有并发控制、移植工具等。</P>
+      <P><SPAN class=atitle3>1.2. 数据库在XML应用中的角色</SPAN></P>
+      <P>事实上，XML作为数据交换的标准，更着重于统一数据格式，而不是提供数据库的特性。因此在XML应用中，数据库作为数据管理的位置依然没有改变。</P>
+      <P>XML数据本身的树形结构不同于关系模型中的二维表结构，这种差别反映在数据库产品处理XML数据的技术上，形成两大阵营：XML-Enabled 
+      DBMS（XED）和Native XML DBMS（NXD)。</P>
+      <P>XED是在原有数据库基础上扩展了XML支持模块，完成XML数据和数据库之间的格式转换和传输。从存储粒度上，可以把整个XML文档作为RDBMS表中一行，或把XML文档进行解析后，存储到相应的表格中。为了支持W3C的一些XML操作标准，如XPath，XED提供一些新的原语（如Oracle9iR2增加了一些数据包来操作XML数据等），并优化了XML处理模块。</P>
+      <P>NXD则出现在XML数据处理领域内，一般采用层次数据存储模型，保持XML文档的树形结构，省掉了XML文档和传统数据库的数据转换过程。详见2。</P>
+      <P><SPAN class=atitle3>1.3. 两种文档类型</SPAN></P>
+      <P><B>1.3.1. "以数据为中心"（data-centric）</B></P>
+      <P>"以数据为中心"的XML文档着重于文档中的数据，而非文档格式，如航班信息、销售定单、科学计算结果等。这种文档的数据一般由机器产生，来源于传统数据库中的数据。主要应用在电子商务、ERP、EAI等领域，集成不同数据源的数据，交换信息。</P>
+      <P>"以数据为中心"的XML文档具有以下特点：</P>
+      <UL class=n01>
+        <LI>结构化的数据 
+        <LI>数据粒度大小适中 
+        <LI>很少或没有混和内容(Mixed Content) 
+        <LI>文档顺序(Document-order)不重要 </LI></UL>
+      <P>图1 
+      student.xml就是一个典型的"以数据为中心"的XML文档，记录了学生的信息。每个学生的信息都很规整，而且粒度合适，同级元素(element)间的顺序不重要，交换两个同级元素(element)并不会破坏文档的可读性。</P>
+      <P><B>1.3.2. "以文档为中心"（document-centric）</B></P>
+      <P>"以文档为中心"的XML文档主要是用来表示人类自然语言描述的数据，如电子邮件、书和用户手册。这种文档具有更复杂的结构，一般不是机器自动产生的。目前，Web上的大部分数据都可以表示成这种文档。</P>
+      <P>"以文档为中心"的文档具有以下特点：</P>
+      <UL class=n01>
+        <LI>半结构化或非结构化的数据 
+        <LI>较多的混和内容(Mixed Content) 
+        <LI>文档顺序(Document-order)重要 </LI></UL>
+      <P>图2就是典型的一个"以文档为中心"的XML文档。</P>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+&lt;Product&gt;
+   &lt;Intro&gt;
+   The &lt;ProductName&gt;IPEDO Native XMLDB&lt;/ProductName&gt; from
+&lt;Developer&gt; Ipedo,Inc.&lt;/Developer&gt; is &lt;Summary&gt;like a true native XML
+Database, ...&lt;/Summary&gt;
+   &lt;/Intro&gt;
+...
+&lt;/Product&gt;
+Fig 2	products.xml
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>对于"以数据为中心"的XML文档，XED可以方便地将其中的数据抽取，存储在传统数据库中，但对于 
+      "以文档为中心"的XML文档则显得力不从心了。NXD由于无需在两种模型之间转换数据，因此在处理"以文档为中心"的XML文档就很有优势。</P>
+      <P><A name=2><SPAN class=atitle2>2. NXD的技术特点</SPAN></A></P>
+      <P>NXD是专门为存储XML文档设计，也兼有一般数据库的特性，例如支持事务，并发控制，查询语言，安全机制，二次开发接口等。唯一的不同之处在于其内部存储模型是基于XML文档树形结构，而非关系模型。</P>
+      <P>Ronald Bourret在其"XML and Databases"一文中，对NXD有如下定义：</P>
+      <P><I>"NXD的逻辑模型建立在XML文档，而非文档中的数据之上，并根据它来存取数据。该模型至少包括元素(element)、属性(Attribute)、PCDATA和文档顺序，例如XPath的数据模型…… 
+      NXD的最小存储单位是XML文档，……"</I></P>
+      <P>一般认为，NXD应该具有以下几个特性：文档集合(Document 
+      Collection)，查询、更新，事务、锁和并发控制、二次开发接口等。</P>
+      <P><SPAN class=atitle3>2.1. 文档集合</SPAN></P>
+      <P>很多NXD产品都支持"文档集合"的概念，就像文件系统中的一个目录或RDBMS中的一张表，一个"文档集合"把一类文档聚集在一起，方便用户操作。集合级别上的查询、修改操作都会反映到集合内的每个文档。</P>
+      <P>一般说来，一个"文档集合"关联一种模式。将文档加入到有模式的"文档集合"时，会对要加入的文档进行模式检查。只有符合"文档集合"模式的文档才可以加入。</P>
+      <P>不同于RDBMS中表必须具有模式，NXD还提供"无模式"的文档集合，即将一个文档放入该集合中时，不必检查该文档的模式。"无模式"的文档集合大大方便了用户存储格式很难统一，半结构化的XML文档。</P>
+      <P><SPAN class=atitle3>2.2. 查询语言</SPAN></P>
+      <P>XPath和XQuery是W3C推荐的针对XML文档的查询语言。目前大部分NXD产品都支持XPath，。另外还有一些NXD提供专有的查询语言。</P>
+      <P>XPath是基于XML文档树形模型，给出从某个结点起的查询路径，搜索文档。目前，XPath作为数据库查询语言还有不少缺陷：不能分组、排序、连接等。</P>
+      <P>而XQuery更像一种编程语言，支持循环等逻辑，支持分组、排序、连接等。相对于传统数据库的标准SQL语句， 
+      XQuery在对XML数据的查询方面，是一种功能更强大、更易于编程的方法。</P>
+      <P><SPAN class=atitle3>2.3. 事务、锁和并发控制</SPAN></P>
+      <P>几乎所有的NXD都支持事务处理。但是，锁的粒度通常比较大，对整个文档的而不是对文档片断（Fragment）的，所以多用户并发性的支持相对较低。具体的并发程度取决于应用程序以及"文档"的构成。</P>
+      <P><SPAN class=atitle3>2.4. 二次开发接口</SPAN></P>
+      <P>几乎所有NXD都提供编程接口：提供数据库连接、浏览元数据、执行查询和返回结果的方法。返回结果通常是XML字符串、DOM树、返回文档的SAX解析器。如果查询返回结果是多个文档或文档片断（Fragment）的话，通常都会提供枚举这些结果的方法。对于以Client/Server模式运行的数据库产品，还可以将结果通过网络协议（如HTTP）回传给客户端。</P>
+      <P><SPAN class=atitle3>2.5. Round-tripping</SPAN></P>
+      <P>NXD一个重要特性是它为XML文档提供了Round-tripping：可以将XML文档存放在NXD中，而且再取回"同样的"文档。对于以"文档为中心"的应用程序来说非常重要，因为易被XED忽略的CDATA部分、实体应用、注释和处理指令是这些文档不可缺少的组成部分。特别是对于法律和医学领域中格式不允许随意窜改的数据文档。</P>
+      <P>所有NXD都能够在元素(element)、属性(Attribute)、CDATA和文件顺序的级别上为文档提供Round-tripping，能达到的具体程度取决于数据库产品。</P>
+      <P><SPAN class=atitle3>2.6. 更新和可持久化的DOM</SPAN></P>
+      <P>大多数NXD对XML文档的更新是通过其提供的API调用完成的，或者简单的替换整个文档来实现的。某些NXD还提供了可持久化的DOM（Persistent 
+      DOM，PDOM）：在某种持久性存储介质上实现了DOM模型，对PDOM所作的改变直接反映在数据库中。由于PDOM树是"现场"的，数据库通常和应用程序在同一个进程空间。</P>
+      <P><A name=3><SPAN class=atitle2>3. 传统数据库与NXD的比较</SPAN></A></P>
+      <P>XED依靠传统数据库技术二三十年的积累，在与NXD竞争的前期，占据了XML应用市场的很大份额：在Intellor公司2001年3月份的调查报告中，XED的市场份额将近是NXD的3倍，约12亿美元。NXD虽然出场较晚，但市场份额增长速度却非常强劲，在短短的3年中，已经由1999年的2,300万美元发展到2001年的3.9亿美元，并在今后两年内将保持200%的增长率。目前，NXD主要应用在制造业、生物医药、电信等领域。</P>
+      <P>通过对比XED和NXD技术，我们可以更清楚地看到二者的差别，特别是反映到应用领域。这一点对那些需要选择数据库开发XML应用的用户非常有意义。</P>
+      <P><SPAN class=atitle3>3.1. XED存取XML数据的技术特点</SPAN></P>
+      <P>XED中这部分工作是由XML网关模块完成，它处于用户逻辑模块和数据库逻辑模块之间，将传统数据库包装起来，给用户提供了一个透明的XML数据源。</P>
+      <P>XED存取XML文档面临以下几个技术难点：</P>
+      <UL class=n01>
+        <LI>XML文档模式和XED模式的映射为了把XML文档存到XED中，我们必须将XML文档的模式（DTD或XML 
+        Schema）映射到数据库模式。同样，将数据从XED取出来重新组合成XML文档，要完成相反的操作。这种转化发生在元素(element），属性(attribute)和文本(text)上。由于XED注重的是数据而非格式，所以在这个过程中，XML文档的大部分物理结构（CDATA、实体等）和一部分逻辑结构（处理指令、注释等）都被忽略，而数据被保存。这种转换可能会丢失信息，一个XML文档存到XED里后再取出来，可能会变成另外一种格式。相对于NXD提供的Round-tripping，XED只能在数据层面实现信息的保留。 
+
+        <LI>对XML数据的查询支持<BR>由于XML文档模式和XED模式很难保持一致，所以在存取过程中经常用XSLT完成转换。但XSLT非常耗时，这会对查询性能造成很大影响。所以较好的解决方法是XED提供一种查询语言来返回XML文档。<BR>目前已经有很多XED产品提供了这种语言，主要分三类：<BR>
+        <OL class=n01>
+          <LI>基于模板(Template-Based)的查询<BR>这是目前RDBMS 
+          XED最流行的方法，将SQL语句嵌入到已写好的XML文档模板中，在实际查询时候用结果替换。 
+          <LI>基于SQL(SQL-Based)的查询<BR>通过在SQL语句的实现中增加对XML的支持，完成对XML数据的查询。例如Oracle9iR2中，增加了XMLTYPE类型和一些新的函数包以支持XMLDB。 
+
+          <LI>XML查询<BR>包括XPath和XQuery。与上面两种不同，这种查询是建立在XML文档模型上。也就是说，如果XED要支持这种查询方式，必须提供虚拟的XML文档。基本上目前的XED只支持XPath。 
+          </LI></OL>
+        <LI>数据类型、空值，字符集等<BR>在XML文档和XED的转换过程中，还会遇到数据类型的匹配、空值和字符集处理等问题。<BR>XML文档中除了不被解析的一些实体外，所有数据的类型都以文本(text)来表示。在转换过程中，可能会遇到类型不匹配的问题，诸如受到JDBC驱动模块的限制、日期的不同国际化表示。<BR>XML文档以灵活的方式来支持空值，如省略某个元素(element)、零长度的元素(element)和属性(Attribute)等。而这些在XED中则有不同的意义。<BR>同样问题还出现在字符集、二进制数据、对XML文档标签的处理上。 
+        </LI></UL>
+      <P><SPAN class=atitle3>3.2. XED和NXD的比较</SPAN></P>
+      <P><B>－ XED的优、劣势</B></P>
+      <P>优势：</P>
+      <UL class=n01>
+        <LI>用户不需要将传统数据库中原有数据重新移植到新系统中，只是稍加改变，就可以支持XML应用。 
+        <LI>传统数据库技术，例如并发控制、事务等，已经很成熟 
+        <LI>传统数据库知识和经验依然有效，用户不需要为了应用XML而再去学习一套新的数据库技术 </LI></UL>
+      <P>劣势：</P>
+      <UL class=n01>
+        <LI>XML文档存入到数据库时需要将其"打碎"，取出时需要"组合"，不仅耗时，而且文档的格式可能会不同 
+        <LI>XML文档和数据库之间的模式转换复杂，在前期开发阶段需要投入很大 
+        <LI>对"以文档为中心"、格式复杂的XML文档处理性能较差 
+        <LI>在采纳XML技术标准方面较落后 </LI></UL>
+      <P><B>－ NXD的优、劣势</B></P>
+      <P>优势：</P>
+      <UL class=n01>
+        <LI>XML文档存取无需模式转换，存取速度快 
+        <LI>对格式复杂的XML文档支持比XED要好 
+        <LI>支持大部分的最新的XML技术标准 </LI></UL>
+      <P>劣势：</P>
+      <UL class=n01>
+        <LI>在传统数据库技术方面比较薄弱，没有经过时间的考验 
+        <LI>知识比较新，相应的支持人员和文档资源都比较少 
+        <LI>应用范围仅局限在XML应用领域中 </LI></UL>
+      <P>事实上，两者的优劣并没有统一的答案，而是和具体的应用相关。在开发格式较简单、数据内容比格式更重要的应用时，XED是不错的选择，特别是在已有的传统数据库上要提供XML的访问接口的情况下。相反，如果XML文档格式复杂，数据本身就有层次性关系，或是只有XML数据的时候，就可以考虑NXD，因为它提供更好的性能，对XML标准有更完备的支持。另外，由于NXD在事务、数据恢复等传统数据库技术方面还未得到时间的检验，因此对数据安全要求较高的一些应用，如银行、金融系统的数据库，建立在传统数据库上的XED相对来说更有优势。</P>
+      <P><A name=4><SPAN class=atitle2>4. NXD的现状和前景</SPAN></A></P>
+      <P>在3、4年前IT业界还在为应该选用NXD还是传统数据库争的不可开交时候，就已经有一些公司悄悄地投入到NXD的开发中。到今天，已有了十多种NXD产品。IBM，Microsoft和Oracle等传统数据库厂商，也正在踏入NXD的领域。</P>
+      <P>但走在NXD队伍前面的却是一些"小"公司。PC 
+      Magazine在2002年6月份，针对市场上的4种主流产品做了详细评测，包括性能、安全、易用性和对新技术的支持等。这4种产品是eXcelon的Extensible 
+      Information Server 3.1，Ipedo的Ipedo XML Database 3.0，NeoCore的NeoCore XMS 
+      2.0和Software AG的Tamino XML Server 3.1，其中Ipedo XML Database 
+      3.0以满分5分获"Editor Choice"奖。下面我们以Ipedo XML Database 
+      3.0（IXD3）为例，窥探一下NXD技术的现状。</P>
+      <P><B>IXD3支持</B></P>
+      <UL class=n01>
+        <LI>事务、并发控制，提供可靠的数据恢复机制 
+        <LI>支持XPath和XQuery两种查询和In-memory的高速索引 
+        <LI>基于图形和命令行的用户界面，并提供了各种工具，如导入/导出，备份等 
+        <LI>支持XML文档的多版本控制 
+        <LI>支持DOM、SOAP、COM、EJB和Java API多种数据库访问协议和开发接口 
+        <LI>多种平台：Windows，Linux和Solaris； </LI></UL>
+      <P>在去年7月份发布的IXD3.1版本中，还提供基于ACL的安全控制、WEB_DAV等新功能，并集成了内容管理模块，为基于Web 
+      Service等新技术的应用提供了一整套解决方案。详细介绍请参阅[2]。</P>
+      <P>可见，NXD发展到今天，技术已经日趋成熟，不仅提供传统数据库绝大部分功能，而且支持XML的最新技术标准，非常方便XML开发人员进行开发。最近在对Ipdeo 
+      XMLDB3.1、Tarmino3.0和Oracle9iR2内嵌的XMLDB的测试过程中，笔者发现NXD在开发XML应用方面不仅开发速度快，而且提供了更为丰富的API接口。</P>
+      <P>同时我们也应该看到，NXD技术发展时间相对传统数据库来说还很短，技术基础还不是很牢固。在某些XML应用方面，NXD并不具有比XED很明显的优势，特别是在对数据安全要求很高的数据库应用领域。</P>
+      <P>但NXD在处理XML数据时拥有传统数据库所不能比拟的天生优势，已促使越来越多的目光聚焦到它上面。随着时间的推移，相信NXD也会得到检验。面对未来几年巨大的市场份额，以及它每年200%的增长速度，我们没有理由不为它的前景看好。</P>
+      <P><A name=resources><SPAN class=atitle2>参考资料：</SPAN></A></P>
+      <OL class=n01>
+        <LI>关于XML数据库的资料：<A 
+        href="http://www.rpbourret.com/xml/XMLDBLinks.htm">http://www.rpbourret.com/xml/XMLDBLinks.htm</A> 
+
+        <LI>Oracle XML数据库的资料：<A 
+        href="http://www.oracle.com/ip/index.html?xmldb_intro.html">http://www.oracle.com/ip/index.html?xmldb_intro.html</A> 
+
+        <LI>Ipedo数据库的介绍：<A 
+        href="http://www.ipedo.com/">http://www.ipedo.com/</A> 或 <A 
+        href="http://www.ipedo.com.cn/">http://www.ipedo.com.cn/</A> </LI></OL><!-- AUTHOR BIOS-->
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD><A id=author1 name=author1><SPAN class=atitle2>关于作者</SPAN></A> 
+            <BR>朱亮，现任Ipedo中国（上海）研发中心高级软件工程师，从事IPEDO Native 
+            XML数据库的开发。对数据库、XML、WebService等技术有较深研究，可以通过<A 
+            href="mailto:leon@ipedo.com">leon@ipedo.com</A>与他联系。</TD></TR></TBODY></TABLE><BR 
+      clear=all><IMG height=5 alt="" src="Native XML数据库技术.files/c.gif" width=100 
+      border=0> <!-- END PAPER BODY--><BR clear=all><IMG height=10 alt="" 
+      src="Native XML数据库技术.files/c.gif" width=100 border=0><BR><!-- REPEAT ICON LINKS AT BOTTOM OF PAGE-->
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD align=right width="100%"><A 
+            href="http://www-900.ibm.com/developerWorks/cn/xml/x-nxd/index.shtml#top">到页首</A></TD>
+          <TD width=5><IMG height=1 alt="" src="Native XML数据库技术.files/c.gif" 
+            width=5 border=0></TD></TR>
+        <TR vAlign=top>
+          <TD bgColor=#000000 colSpan=2><IMG height=1 alt="" 
+            src="Native XML数据库技术.files/c.gif" width=100 border=0></TD></TR>
+        <TR vAlign=top>
+          <TD bgColor=#ffffff colSpan=2><IMG height=8 alt="" 
+            src="Native XML数据库技术.files/c.gif" width=100 
+      border=0></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD>
+            <FORM name=getURL 
+            action=/developerWorks/cn/cnratings.nsf/RateArticle?CreateDocument 
+            method=post><INPUT type=hidden value="Native XML数据库技术" 
+            name=ArticleTitle> <INPUT type=hidden name=url>
+            <SCRIPT language=javascript type=text/javascript>
+getURL();
+</SCRIPT>
+             <INPUT type=hidden value=xml name=Zone> <INPUT type=hidden 
+            value=/developerWorks/cn/thankyou/thankyou.html name=RedirectURL> <A 
+            id=rating name=rating><B>您对这篇文章的看法如何？</B></A> 
+            <TABLE cellSpacing=0 cellPadding=0 width=600 border=0>
+              <TBODY>
+              <TR>
+                <TD colSpan=5><IMG height=8 alt="" 
+                  src="Native XML数据库技术.files/c.gif" width=100 border=0></TD></TR>
+              <TR vAlign=top>
+                <TD width="16%"><INPUT type=radio value=5 
+name=Rating>真棒！(5)</TD>
+                <TD width="20%"><INPUT type=radio value=4 name=Rating>好材料 
+                (4)</TD>
+                <TD width="24%"><INPUT type=radio value=3 name=Rating>一般；尚可 
+                (3)</TD>
+                <TD width="22%"><INPUT type=radio value=2 name=Rating>需提高 
+                (2)</TD>
+                <TD width="18%"><INPUT type=radio value=1 name=Rating>太差！ 
+                (1)</TD></TR></TBODY></TABLE><BR><B>建议？</B><BR><TEXTAREA name=Comments rows=5 wrap=virtual cols=60></TEXTAREA><BR><BR><INPUT type=submit value=提交反馈意见></FORM></TD></TR>
+        <TR vAlign=top>
+          <TD bgColor=#ffffff><IMG height=8 alt="" 
+            src="Native XML数据库技术.files/c.gif" width=100 
+      border=0></TD></TR></TBODY></TABLE><!-- END CENTER COLUMN--></TD><!-- RIGHT GUTTER-->
+    <TD width=1><IMG height=1 alt="" src="Native XML数据库技术.files/c.gif" width=1 
+      border=0></TD></TR></TBODY></TABLE><!-- END BODY AREA--><!--FOOTER --><!-- Do not changes this include-->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD align=right>(c) Copyright IBM Corp. 2001, (c) Copyright IBM China 
+      2001, All Right Reserved</TD></TR>
+  <TR vAlign=top>
+    <TD class=bbg height=21>&nbsp;&nbsp;<A class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/ibm/index.shtml&amp;origin=dwhead">关于 
+      IBM</A><SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN><A 
+      class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/ibm/privacy/index.shtml&amp;origin=dwhead">隐私条约</A><SPAN 
+      class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN><A class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/ibm/legal/index.shtml&amp;origin=dwhead">法律条款</A><SPAN 
+      class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN><A class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/ibm/contact/index.shtml&amp;origin=dwhead">联系 
+      IBM</A></TD></TR></TBODY></TABLE>
+<SCRIPT language=JavaScript1.2 src="Native XML数据库技术.files/stats.js" 
+type=text/javascript></SCRIPT>
+<NOSCRIPT><IMG height=1 alt="" 
+src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Native XML数据库技术.files\c(1).gif" 
+width=1 border=0></NOSCRIPT> </A></BODY></HTML>

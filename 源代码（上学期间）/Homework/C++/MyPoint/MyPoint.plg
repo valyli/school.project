@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: MyPoint - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/MyPoint.res" /d "_DEBUG" /d "_AFXDLL" "E:\Code\MyPoint\MyPoint.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPF012.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/MyPoint.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\Code\MyPoint\MainFrm.cpp"
+"E:\Code\MyPoint\MyPoint.cpp"
+"E:\Code\MyPoint\MyPointDoc.cpp"
+"E:\Code\MyPoint\MyPointView.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPF012.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPF013.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/MyPoint.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\Code\MyPoint\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPF013.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPF014.TMP" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/MyPoint.pdb" /debug /machine:I386 /out:"Debug/MyPoint.exe" /pdbtype:sept 
+.\Debug\MainFrm.obj
+.\Debug\MyPoint.obj
+.\Debug\MyPointDoc.obj
+.\Debug\MyPointView.obj
+.\Debug\StdAfx.obj
+.\Debug\MyPoint.res
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPF014.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+MainFrm.cpp
+MyPoint.cpp
+MyPointDoc.cpp
+MyPointView.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+MyPoint.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,763 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0044)http://www.jinmingri.com/yjzs/sj/bznews2.htm -->
+<HTML><HEAD><TITLE>CMOS设置完全手册</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type><LINK 
+href="CMOS设置完全手册.files/yz.css" rel=stylesheet type=text/css>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY bgColor=#303880 onload="" text=#000000>
+<TABLE align=center border=0 cellPadding=0 cellSpacing=0 height=634 
+  width="82%"><TBODY>
+  <TR>
+    <TD>
+      <TABLE border=0 cellPadding=0 cellSpacing=0 width="101%">
+        <TBODY>
+        <TR>
+          <TD height=93 width="24%">　 　　<IMG height=84 
+            src="CMOS设置完全手册.files/mr.gif" width=88><BR>　　　<FONT color=#ffff99 
+            size=2>明日科技硬件专栏</FONT><BR></TD>
+          <TD height=93 width="76%">
+            <DIV align=left>
+            <OBJECT classid=clsid:D27CDB6E-AE6D-11cf-96B8-444553540000 
+            codeBase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0 
+            height=100 width=499><PARAM NAME="movie" VALUE="../image/twj.swf"><PARAM NAME="quality" VALUE="high">
+                                                            <embed 
+            src="../image/twj.swf" quality=high 
+            pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" 
+            type="application/x-shockwave-flash" width="499" height="100">       
+                     </embed>               </OBJECT></DIV></TD></TR></TBODY></TABLE>
+      <TABLE border=0 cellPadding=0 cellSpacing=0 class=bg1 height=678 
+      width="100%">
+        <TBODY>
+        <TR>
+          <TD bgColor=#ffcc66 height=4>　<SPAN 
+            class=yz2>您的位置：主页-&gt;硬件天地-&gt;</SPAN><SPAN 
+        class=yz1>新手上路</SPAN></TD></TR>
+        <TR>
+          <TD height=102>
+            <DIV align=center>
+            <P align=center class=yz4>CMOS设置完全手册 <SPAN 
+            class=yzw></SPAN></P></DIV></TD></TR>
+        <TR>
+          <TD bgColor=#666666 height=10>
+            <DIV align=right class=yz><A class=yz 
+            href="http://www.jinmingri.com/" 
+            onclick="javascript:window.close();return false;">关闭窗口</A></DIV></TD></TR>
+        <TR>
+          <TD height=410>
+            <TABLE border=0 cellPadding=0 cellSpacing=0 class=bg1 
+              width="100%"><TBODY>
+              <TR>
+                <TD>
+                  <P><BR></P>
+                  <P class=yzw><BR>　　目前市面上大多数主板是采用Award BIOS，在这些主板BIOS中包含了CMOS 
+                  Setup程序，它可以根据你的需要进行设置，以使电脑正常工作或执行特定的功能。新型主板一般是采用最新的Award BIOS 
+                  V6.00版本，一些老主板可能采用较低的V4.60版或V4.51版。实际上，这几个版本的Award 
+                  BIOS，其主要的设置方法基本上没有太大的差别，只不过某些设置项目会有些增减或者也仅仅是改变一个名称而已。为了让更多的电脑初学者能全面驾驱CMOS设置，本文就以技嘉GA-60XE主板所使用的Award 
+                  BIOS V6.00PG为例，教大家全面设置CMOS。 </P>
+                  <P class=yzw>一．进入CMOS Setup设置 </P>
+                  <P class=yzw>打开计算机电源后，当BIOS开始进行POST（Power On Self 
+                  Test，开机自检）时，按下“Del”键后，就可以看到如图1所示的CMOS 
+                  Setup主菜单。在主菜单中你可以选择不同的设置选项，按上下左右方向键来选择，按“Enter”键进入子菜单。 </P>
+                  <P class=yzw>1．功能键说明 </P>
+                  <P></P>
+                  <TABLE align=center border=1 cellPadding=1 cellSpacing=0 
+                  height=255 width="75%">
+                    <TBODY>
+                    <TR>
+                      <TD class=yzw height=24 width="52%">
+                        <DIV align=center class=yzw>向上键</DIV></TD>
+                      <TD class=yzw height=24 width="48%">
+                        <DIV align=center class=yzw>移到上一个选项 </DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw width="52%">
+                        <DIV align=center class=yzw>向下键</DIV></TD>
+                      <TD class=yzw width="48%">
+                        <DIV align=center class=yzw>移到下一个选项 </DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw height=24 width="52%">
+                        <DIV align=center class=yzw>向左键</DIV></TD>
+                      <TD class=yzw height=24 width="48%">
+                        <DIV align=center class=yzw>移到左边的选项 </DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw width="52%">
+                        <DIV align=center class=yzw>向右键</DIV></TD>
+                      <TD class=yzw width="48%">
+                        <DIV align=center class=yzw>移到右边的选项 </DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw height=15 width="52%">
+                        <DIV align=center class=yzw>Enter键 </DIV></TD>
+                      <TD class=yzw height=15 width="48%">
+                        <DIV align=center class=yzw>选择当前项目 </DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw height=23 width="52%">
+                        <DIV align=center class=yzw>Esc键 </DIV></TD>
+                      <TD class=yzw height=23 width="48%">
+                        <DIV align=center class=yzw>回到主画面，或从主画面中结束Setup程序 
+                      </DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw height=22 width="52%">
+                        <DIV align=center class=yzw>Page Up或+键 </DIV></TD>
+                      <TD class=yzw height=22 width="48%">
+                        <DIV align=center class=yzw>改变设置状态，或增加栏位中的数值内容 
+                    </DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw height=19 width="52%">
+                        <DIV align=center class=yzw>Page Down或-键 </DIV></TD>
+                      <TD class=yzw height=19 width="48%">
+                        <DIV align=center class=yzw>改变设置状态，或减少栏位中的数值内容 
+                    </DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw height=2 width="52%">
+                        <DIV align=center class=yzw>F1功能键 </DIV></TD>
+                      <TD class=yzw height=2 width="48%">
+                        <DIV align=center class=yzw>显示目前设置项目的相关说明 </DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw height=11 width="52%">
+                        <DIV align=center class=yzw>F5功能键 </DIV></TD>
+                      <TD class=yzw height=11 width="48%">
+                        <DIV align=center class=yzw>装载上一次设置的值 </DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw height=22 width="52%">
+                        <DIV align=center class=yzw>F6功能键 </DIV></TD>
+                      <TD class=yzw height=22 width="48%">
+                        <DIV align=center class=yzw>装载最安全的值 </DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw height=18 width="52%">
+                        <DIV align=center class=yzw>F7功能键 </DIV></TD>
+                      <TD class=yzw height=18 width="48%">
+                        <DIV align=center class=yzw>装载最优化的值 </DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw height=10>
+                        <DIV align=center class=yzw>F10功能键 </DIV></TD>
+                      <TD class=yzw height=10>
+                        <DIV align=center></DIV>
+                        <DIV align=center class=yzw>储存设置值并离开CMOS Setup程序 
+                      </DIV></TD></TR></TBODY></TABLE>
+                  <P class=yzw><BR>2．子菜单说明 </P>
+                  <P 
+                  class=yzw>请注意设置菜单中各项内容.如果菜单项左边有一个三角形的指示符号，表示若选择了该项子菜单，将会有一个子菜单弹出来. 
+                  </P>
+                  <P class=yzw>3．辅助说明 </P>
+                  <P 
+                  class=yzw>当你在Setup主画面时，随着选项的移动，下面显示相应选项的主要设置内容。当你在设置各个栏位的内容时，只要按下“F1”，便可得到该栏位的设置预设值及所有可以的设置值，如BIOS缺省值或CMOS 
+                  Setup缺省值。如果想离开辅助说明窗口，只须按“Esc”键即可。 <BR></P><SPAN 
+                  class=yzw>二．Standard CMOS Features（标准CMOS功能设置） </SPAN>
+                  <P class=yzw>在Standard CMOS 
+                  Features中，主要是为了设置IDE硬盘的种类，以顺利开机，除此之外，还要设置日期、时间、软驱规格及显示卡的种类。</P>
+                  <P class=yzw>1．Date（mm：dd：yy）（日期设置） </P>
+                  <P 
+                  class=yzw>设置电脑中的日期，格式为“星期，月／日／年”。“星期”是由目前设置的“月／日／年”根据万年历公式推算出当前的星期数，此栏目无法自行修改；“月”可设置1到12月；“日”可设置1到28／29／30／31日，视月份而定。“年”可设置1994到2079年。 
+                  </P>
+                  <P class=yzw>2．Time（hh：mm：ss）（时间设置） </P>
+                  <P class=yzw>设置电脑中的以24小时为计算日期，格式为“小时／分钟／秒”。 </P>
+                  <P class=yzw>3．IDE Primary Master（第一个IDE主控制器） </P>
+                  <P class=yzw>4．IDE Primary Slave（第一个IDE从控制器） </P>
+                  <P class=yzw>5．IDE Secondary Master（第二个IDE主控制器） </P>
+                  <P class=yzw>6．IDE Secondary Slave（第二个IDE从控制器） </P>
+                  <P class=yzw>在以上四个IDE控制器项目按下“Enter”键后会出现一个子菜单，如图3所示。然后在“IDE 
+                  HDD 
+                  Auto-Detection”项目，按下“Enter”键后，会自动检测IDE设备。如果检测到IDE硬盘设备，会在此图中列出的容量等信息，并在“Standard 
+                  CMOS Features”中显示该IDE硬盘的型号信息。如果是其他IDE设备，只在“Standard CMOS 
+                  Features”中显示该IDE设备的型号信息。 </P>
+                  <P class=yzw>建议大家将“IDE Primary Master／IDE Primary Slave／IDE 
+                  Secondary Master／IDE Secondary Slave”和“Access 
+                  Mode”设为“Auto”，这样就可以省去每次换硬盘时都要重新设置CMOS的麻烦。当然，如果你将“IDE Primary 
+                  Master／IDE Primary Slave／IDE Secondary Master／IDE Secondary 
+                  Slave”设为“None”，也可以在Windows 98、Windows 2000中解决双硬盘的盘符交错问题。 </P>
+                  <P class=yzw>7．Drive A（软驱A：种类设置） </P>
+                  <P class=yzw>可设置的项目如下表示（缺省值为“1.44M，3.5in.”）： <BR></P>
+                  <TABLE align=center border=1 cellPadding=0 cellSpacing=0 
+                  width="75%">
+                    <TBODY>
+                    <TR>
+                      <TD class=yzw height=21 width="41%">
+                        <DIV align=center class=yzw>None </DIV></TD>
+                      <TD class=yzw height=21 width="59%">
+                        <DIV align=center class=yzw>没有安装软驱</DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw width="41%">
+                        <DIV align=center class=yzw>360K，5.25in. </DIV></TD>
+                      <TD class=yzw width="59%">
+                        <DIV align=center class=yzw>5.25英寸软驱，360KB容量</DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw width="41%">
+                        <DIV align=center class=yzw>1.2M，5.25in. </DIV></TD>
+                      <TD class=yzw width="59%">
+                        <DIV align=center class=yzw>5.25英寸软驱，1.2MB容量</DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw width="41%">
+                        <DIV align=center class=yzw>720K，3.5in. </DIV></TD>
+                      <TD class=yzw width="59%">
+                        <DIV align=center class=yzw>3.5英寸软驱，720KB容量</DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw width="41%">
+                        <DIV align=center class=yzw>1.44M，3.5in.</DIV></TD>
+                      <TD class=yzw width="59%">
+                        <DIV align=center class=yzw>3.5英寸软驱，1.44MB容量</DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw width="41%">
+                        <DIV align=center class=yzw>2.88M，3.5in. </DIV></TD>
+                      <TD class=yzw width="59%">
+                        <DIV align=center 
+                    class=yzw>3.5英寸软驱，2.88MB容量</DIV></TD></TR></TBODY></TABLE>
+                  <P class=yzw>8．Drive B（软驱B：种类设置） </P>
+                  <P class=yzw>可设置的项目如下表示（缺省值为“None”）： <BR></P>
+                  <TABLE align=center border=1 cellPadding=0 cellSpacing=0 
+                  width="75%">
+                    <TBODY>
+                    <TR>
+                      <TD class=yzw height=21 width="41%">
+                        <DIV align=center class=yzw>None </DIV></TD>
+                      <TD class=yzw height=21 width="59%">
+                        <DIV align=center class=yzw>没有安装软驱</DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw width="41%">
+                        <DIV align=center class=yzw>360K，5.25in. </DIV></TD>
+                      <TD class=yzw width="59%">
+                        <DIV align=center class=yzw>5.25英寸软驱，360KB容量</DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw width="41%">
+                        <DIV align=center class=yzw>1.2M，5.25in. </DIV></TD>
+                      <TD class=yzw width="59%">
+                        <DIV align=center class=yzw>5.25英寸软驱，1.2MB容量</DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw width="41%">
+                        <DIV align=center class=yzw>720K，3.5in. </DIV></TD>
+                      <TD class=yzw width="59%">
+                        <DIV align=center class=yzw>3.5英寸软驱，720KB容量</DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw width="41%">
+                        <DIV align=center class=yzw>1.44M，3.5in.</DIV></TD>
+                      <TD class=yzw width="59%">
+                        <DIV align=center class=yzw>3.5英寸软驱，1.44MB容量</DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw width="41%">
+                        <DIV align=center class=yzw>2.88M，3.5in. </DIV></TD>
+                      <TD class=yzw width="59%">
+                        <DIV align=center 
+                    class=yzw>3.5英寸软驱，2.88MB容量</DIV></TD></TR></TBODY></TABLE>
+                  <P class=yzw>9．Floppy 3 Mode Support（支持日本常用的3 Mode规格软驱） </P>
+                  <P class=yzw>可设置的项目如下表示（缺省值为“Disabled”）： </P>
+                  <P></P>
+                  <TABLE align=center border=1 cellPadding=0 cellSpacing=0 
+                  width="75%">
+                    <TBODY>
+                    <TR>
+                      <TD class=yzw>
+                        <DIV align=center class=yzw>Disabled</DIV></TD>
+                      <TD class=yzw>
+                        <DIV align=center class=yzw>没有安装任何3 Mode软驱</DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw>
+                        <DIV align=center class=yzw>Drive A</DIV></TD>
+                      <TD class=yzw>
+                        <DIV align=center class=yzw>A：安装的是3 Mode软驱</DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw>
+                        <DIV align=center class=yzw>Drive B</DIV></TD>
+                      <TD class=yzw>
+                        <DIV align=center class=yzw>B：安装的是3 Mode软驱</DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw>
+                        <DIV align=center class=yzw>Both</DIV></TD>
+                      <TD class=yzw>
+                        <DIV align=center class=yzw>A：和B：安装的都是3 
+                    Mode软驱</DIV></TD></TR></TBODY></TABLE>
+                  <P class=yzw>10．Video（显示模式） </P>
+                  <P class=yzw>设置电脑的显示模式，可设置的项目如下表示（缺省值为“EGA／VGA”）： <BR></P>
+                  <TABLE align=center border=1 cellPadding=0 cellSpacing=0 
+                  width="75%">
+                    <TBODY>
+                    <TR>
+                      <TD class=yzw>
+                        <DIV align=center class=yzw>EGA／VGA </DIV></TD>
+                      <TD class=yzw>
+                        <DIV align=center 
+                        class=yzw>加强型显示模式，EGA、VGA、SVGA、PGA彩显均选择此项</DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw>
+                        <DIV align=center class=yzw>CGA 40 </DIV></TD>
+                      <TD class=yzw>
+                        <DIV align=center class=yzw>Color Graphics 
+                        Adapter，40行显示模式</DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw height=28>
+                        <DIV align=center class=yzw>CGA 80</DIV></TD>
+                      <TD class=yzw height=28>
+                        <DIV align=center class=yzw>Color Graphics 
+                        Adapter，80行显示模式</DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw>
+                        <DIV align=center class=yzw>MO</DIV></TD>
+                      <TD class=yzw>
+                        <DIV align=center 
+                  class=yzw>黑白单色模式</DIV></TD></TR></TBODY></TABLE>
+                  <P class=yzw>11．Halt On（暂停选项设置） </P>
+                  <P class=yzw>当开机后进行POST时检测到异常情况，是否要提示并等候处理。可设置的项目如下表示（缺省值为“All 
+                  Errors”）： </P>
+                  <P></P>
+                  <TABLE align=center border=1 cellPadding=0 cellSpacing=0 
+                  width="77%">
+                    <TBODY>
+                    <TR>
+                      <TD class=yzw>
+                        <DIV align=center class=yzw>No Errors</DIV></TD>
+                      <TD class=yzw>
+                        <DIV align=center class=yzw>不管任何错误，均开机</DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw>
+                        <DIV align=center class=yzw>All Errors</DIV></TD>
+                      <TD class=yzw>
+                        <DIV align=center class=yzw>有任何错误均暂停，等候处理</DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw>
+                        <DIV align=center class=yzw>All，But Keyboard</DIV></TD>
+                      <TD class=yzw>
+                        <DIV align=center 
+                    class=yzw>有任何错误均暂停，等候处理，除了键盘以外</DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw>
+                        <DIV align=center class=yzw>All，But Diskette</DIV></TD>
+                      <TD class=yzw>
+                        <DIV align=center 
+                    class=yzw>有任何错误均暂停，等候处理，除了软驱以外</DIV></TD></TR>
+                    <TR>
+                      <TD class=yzw>
+                        <DIV align=center class=yzw>All，But Disk／Key</DIV></TD>
+                      <TD class=yzw>
+                        <DIV align=center class=yzw>有任何错误均暂停，等候处理，除了软驱和键盘以外 
+                        </DIV></TD></TR></TBODY></TABLE>
+                  <P class=yzw>12．内存容量显示 </P>
+                  <P class=yzw>目前主板中所安装的内存都是由BIOS在POST过程中自动检测，并显示于STANDARD CMOS 
+                  Setup菜单的下方。这些项目无法自行修改，主要显示的项目有Base Memory（基本内存容量）、Expanded 
+                  Memory（扩充内存容量）、Total Memory（系统总共内存容量）。 <BR></P><SPAN 
+                  class=yzw>三．Advanced BIOS Features（高级BIOS功能设置） </SPAN>
+                  <P class=yzw>在Advanced BIOS Features中，主要是为了设置BIOS提供的高级功能。</P>
+                  <P class=yzw>1．Anti-Virus Protection（病毒保护） </P>
+                  <P 
+                  class=yzw>在系统启动时或启动后，任何企图修改系统引导扇区或硬盘分区表的动作都会使系统暂停并出现错误信息，这样你可用杀病毒软件检测或消除病毒，缺省值为“Disabled”。由于在安装操作系统时会改变系统引导扇区，如果你要安装操作系统，请把此项设置为“Disabled”，否则会出现错误信息。 
+                  </P>
+                  <P class=yzw>2．CPU Internal Cache（CPU内置高速缓存） </P>
+                  <P class=yzw>这一项是设置是否打开CPU内置高速缓存的，缺省值为“Enabled”。 </P>
+                  <P class=yzw>3．External Cache（外部高速缓存） </P>
+                  <P class=yzw>这一项是设置是否打开外部高速缓存的，缺省值为“Enabled”。 </P>
+                  <P class=yzw>4．CPU L2 Cache ECC Checking（CPU二级高速缓存奇偶校验） </P>
+                  <P class=yzw>设置CPU外部Cache是否打开奇偶检验，缺省值为“Enabled”。 </P>
+                  <P class=yzw>5．Processor Number Feature（处理器序列号） </P>
+                  <P class=yzw>当你是使用Pentium Ⅲ处理器时，可设置是否读取Pentium Ⅲ 
+                  CPU序列号，缺省值为“Enabled”。 </P>
+                  <P class=yzw>6．Quick Post（快速开机自检） </P>
+                  <P class=yzw>设置POST时，是否进行内存测试，缺省值为“Disabled”。 </P>
+                  <P class=yzw>7．Quick Power On Self Test（快速开机自检） </P>
+                  <P 
+                  class=yzw>设置BIOS采用快速POST方式，也就是减少内存测试的次数，让POST过程所需时间缩短。无论设成“Enabled”或“Disabled”，当POST进行时，仍可按“Esc”跳过内存测试，直接进入引导程序。缺省值为“Enabled”。 
+                  </P>
+                  <P class=yzw>8．First Boot Device（第一个优先启动的开机设备） </P>
+                  <P class=yzw>设置第一个优先启动的开机设备，缺省值为“Floppy”。可供选择的有: 
+                  Disabled、Floppy、LS120、HDD-0、SCSI、CDROM、HDD-1、HDD-2、HDD-3、ZIP100、LAN。 
+                  </P>
+                  <P class=yzw>9．Second Boot Device（第二个启动的开机设备） </P>
+                  <P class=yzw>设置第二个启动的开机设备，缺省值为“HDD-0”。可供选择的有: 
+                  Disabled、Floppy、LS120、HDD-0、SCSI、CDROM、HDD-1、HDD-2、HDD-3、ZIP100、LAN。 
+                  </P>
+                  <P class=yzw>10．Third Boot Device（第三个启动的开机设备） </P>
+                  <P class=yzw>设置第二个启动的开机设备，缺省值为“LS120”。可供选择的有: 
+                  Disabled、Floppy、LS120、HDD-0、SCSI、CDROM、HDD-1、HDD-2、HDD-3、ZIP100、LAN。 
+                  </P>
+                  <P class=yzw>11．Boot Other Device（其他启动设备） </P>
+                  <P class=yzw>如果前面三项启动设备中，如果没有开机设备时，是否设置其他开机设备，缺省值为“Enabled”。 
+                  </P>
+                  <P class=yzw>12．Swap Floppy Drive（交换软驱代号） </P>
+                  <P 
+                  class=yzw>设置为“Enabled”时，在DOS模式下A：与B：的软驱代号对换；设置为“Disabled”时，A：与B：的代号维持正常。缺省值为“Disabled”。 
+                  </P>
+                  <P class=yzw>13．Boot Up Floppy Seek（开机时测试软驱） </P>
+                  <P 
+                  class=yzw>设置为“Enabled”时，在开机自检时将检测所安装的软驱，并测定是40磁道还是80磁道，360K的是40磁道，其余为80磁道；设置为“Disabled”时，将不搜索软驱类型。缺省值为“Disabled”。 
+                  </P>
+                  <P class=yzw>14．Boot Up NumLock Status（初始数字小键盘的锁定状态） </P>
+                  <P 
+                  class=yzw>设置为“On”时，系统启动后，键盘右边小键盘是数字键状态；设置为“Off”时，是方向键状态。缺省值为“On”。 
+                  </P>
+                  <P class=yzw>15．Gate A20 Option（A20门选择） </P>
+                  <P 
+                  class=yzw>该选项是选择有关系统存取1MB以上内存（扩充内存）的方式。设置为“Normal”时，A20信号由键盘控制器或芯片组来控制；设置为“Fast”时，A20信号由92口或芯片组指定方式控制。缺省值为“Fast”。 
+                  </P>
+                  <P class=yzw>16．Typematic Rate Setting（击键速率设置） </P>
+                  <P 
+                  class=yzw>设置为“Enabled”时，启用击键率和击键延迟程序，并进行设置；设置为“Disabled”时，关闭击键率和击键延迟程序。缺省值为“Disabled”。 
+                  </P>
+                  <P class=yzw>17．Security Option（检查密码方式） </P>
+                  <P class=yzw>设置为“System”时，无论是开机还是进入CMOS 
+                  Setup都要输入密码；设置为“Setup”时，只有在进入CMOS Setup时才要求输入密码。缺省值为“Setup”。 
+                  </P>
+                  <P 
+                  class=yzw>提示：如果取消已设置的密码，只须在重新设置密码时，不输入任何密码，直接按“Enter”键使密码成为空白，即可清除密码的设置。 
+                  </P>
+                  <P class=yzw>18．OS Select For DRAM &gt; 64MB（设置OS2使用内存的容量） 
+</P>
+                  <P class=yzw>设置为“Non-OS2”时，不使用IBM OS／2操作系统；设置为“OS2”时，使用IBM 
+                  OS／2操作系统，且DRAM容量大于64MB。缺省值为“Non-OS2”。 </P>
+                  <P class=yzw>19．HDD Instant Recovery（设置硬盘立即恢复） </P>
+                  <P class=yzw>是否将硬盘设置成立即恢复，缺省值为“Disabled”。 <BR></P><SPAN 
+                  class=yzw>四．Advanced Chipset Features（高级芯片组设置） </SPAN>
+                  <P class=yzw>在Advanced Chipset 
+                  Features中，主要是为了设置主板所采用的芯片组相关的运行参数。</P>
+                  <P class=yzw>1．SDRAM CAS Latency Time（SDRAM的列延时时间） </P>
+                  <P 
+                  class=yzw>设置为“Auto”时，自动检测SDRAM的列延时时间；设置为“2”时，SDRAM的列延时时间为2；设置为“3”时，SDRAM的列延时时间为3。缺省值为“Auto”。 
+                  </P>
+                  <P class=yzw>2．SDRAM Cycle Time Tras／Trc（每个存取时间周期用SDRAM时钟） 
+</P>
+                  <P class=yzw>设置为“7／9”时，设置每个存取时间周期用SDRAM时钟为7／9 
+                  SCLKS；设置为“5／7”时，设置每个存取时间周期用SDRAM时钟为5／7 SCLKS。缺省值为“7／9”。 </P>
+                  <P class=yzw>3．SDRAM RAS-to-CAS Delay（SDRAM行到列的延迟时间） </P>
+                  <P 
+                  class=yzw>设置为“2”时，SDRAM的行到列的延迟时间为2；设置为“3”时，SDRAM的行到列的延迟时间为3。缺省值为“3”。 
+                  </P>
+                  <P class=yzw>4．SDRAM RAS Precharge Time（SDRAM的行预取时间） </P>
+                  <P 
+                  class=yzw>设置为“2”时，SDRAM的行预取时间为2；设置为“3”时，SDRAM的行预取时间为3。缺省值为“3”。 
+                  </P>
+                  <P class=yzw>5．System BIOS Cacheable（系统BIOS缓冲内存） </P>
+                  <P class=yzw>设置是否打开系统BIOS缓冲内存，缺省值为“Disabled”。 </P>
+                  <P class=yzw>6．Video BIOS Cacheable（显示系统BIOS缓冲内存） </P>
+                  <P class=yzw>设置是否显示系统BIOS缓冲内存，缺省值为“Disabled”。 </P>
+                  <P class=yzw>7．Memory Hole At 15M-16M（系统内存的15M-16M内存地址空间） </P>
+                  <P 
+                  class=yzw>是否将系统内存的15M-16M内存地址，作为ISA扩展卡内存进行数据交换的缓冲区，而系统不再使用这段内存空间。缺省值为“Disabled”。 
+                  </P>
+                  <P class=yzw>8．CPU Latency Timer（CPU延迟时间） </P>
+                  <P 
+                  class=yzw>设置为“Enabled”时，不设置CPU延迟时间；设置为“Disabled”时，设置CPU延迟时间。缺省值为“Enabled”。 
+                  </P>
+                  <P class=yzw>9．Delayed Transaction（延时处理） </P>
+                  <P 
+                  class=yzw>设置为“Enabled”时，用于系统中较慢的ISA设备；设置为“Disabled”时，正常运作。缺省值为“Enabled”。 
+                  </P>
+                  <P class=yzw>10．AGP Graphics Aperture Size（AGP显卡内存大小） </P>
+                  <P class=yzw>设置AGP显卡的显示内存大小，缺省值为“64MB”。 </P>
+                  <P class=yzw>11．Falsh BIOS Protection（Falsh BIOS保护） </P>
+                  <P class=yzw>是否将Falsh BIOS设置成保护状态，缺省值为“Disabled”。 </P>
+                  <P></P><SPAN class=yzw>五．Integrated Peripherals（综合外部设备设置） 
+                  </SPAN>
+                  <P class=yzw>在Integrated 
+                  Peripherals中，主要是为了设置所有外部设备运行的相关参数。（如图6所示）</P>
+                  <P class=yzw>（图6）点击察看大图 </P>
+                  <P class=yzw>1．On-Chip Primary PCI IDE（芯片组内建第一个通道的PCI IDE界面） 
+                  </P>
+                  <P class=yzw>是否使用芯片组内置第一个通道的PCI IDE界面，缺省值为“Enabled（使用）”。 </P>
+                  <P class=yzw>2．On-Chip Secondary PCI IDE（芯片组内建第二个通道的PCI IDE界面） 
+                  </P>
+                  <P class=yzw>是否使用芯片组内置第二个通道的PCI IDE界面，缺省值为“Enabled（使用）”。 </P>
+                  <P class=yzw>3．IDE Primary Master PIO（第一个IDE主控制器下的PIO模式） </P>
+                  <P class=yzw>4．IDE Primary Slave PIO（第一个IDE从控制器下的PIO模式） </P>
+                  <P class=yzw>5．IDE Secondary Master PIO（第二个IDE主控制器下的PIO模式） 
+</P>
+                  <P class=yzw>6．IDE Secondary Slave PIO（第二个IDE从控制器下的PIO模式） </P>
+                  <P 
+                  class=yzw>以上四项，可以设置该通道的主或从IDE设备的PIO传输模式，设置的依据是按IDE的规格而定。可选择的项目是：Auto、Mode 
+                  0、Mode 1、Mode 2、Mode 3、Mode 4，缺省值为“Auto”。 </P>
+                  <P class=yzw>7．IDE Primary Master UDMA（第一个IDE主控制器下的UDMA模式） 
+</P>
+                  <P class=yzw>8．IDE Primary Slave UDMA（第一个IDE从控制器下的UDMA模式） </P>
+                  <P class=yzw>9．IDE Secondary Master UDMA（第二个IDE主控制器下的UDMA模式） 
+                  </P>
+                  <P class=yzw>10．IDE Secondary Slave UDMA（第二个IDE主控制器下的UDMA模式） 
+                  </P>
+                  <P class=yzw>以上四项，可以设置该通道的主或从IDE设备是否支持Ultra 
+                  DMA传输模式，可选择的项目是：Auto和Disabled，缺省值为“Auto”。 </P>
+                  <P class=yzw>11．USB Controller（USB控制器） </P>
+                  <P class=yzw>设置是否打开USB控制器，缺省值为“Enabled”。 </P>
+                  <P class=yzw>12．USB Keyboard Support（USB键盘支持） </P>
+                  <P class=yzw>设置是否打开支持USB接口的键盘，缺省值为“Disabled”。 </P>
+                  <P class=yzw>13．Init Display First（开机时的第一显示设备） </P>
+                  <P class=yzw>设置为“PCI Slot”时，首选PCI显示；设置为“AGP”时，首选AGP显示。缺省值为“PCI 
+                  Slot”。 </P>
+                  <P class=yzw>14．AC97 Audio（AC’97音效设置） </P>
+                  <P 
+                  class=yzw>设置是否使用芯片组内置AC’97音效，缺省值为“Auto”。提示：如果你不想使用主板自带的AC’97声卡，建议你设置为“Auto”。 
+                  </P>
+                  <P class=yzw>15．AC97 Modem（AC’97 Modem设置） </P>
+                  <P class=yzw>设置是否使用AC’97 Modem，缺省值为“Auto”。如果你需要使用其他PCI 
+                  MODEM或外置MODEM，你需要将此项值设为“Auto”。 </P>
+                  <P class=yzw>16．IDE HDD Block Mode（设置IDE硬盘区块传输模式） </P>
+                  <P class=yzw>设置是否使用IDE硬盘的区块传输模式，一般硬盘都支持此功能，缺省值为“Enabled（使用）”。 
+                  </P>
+                  <P class=yzw>17．Power On Function（开机功能设置） </P>
+                  <P class=yzw>设置为“Password”时，利用键盘的密码开机；设置为“Hot 
+                  Key”时，利用键盘的组合热键开机；设置为“Mouse Move”时，移动PS／2鼠标进行开机；设置为“Mouse 
+                  Click”时，双击PS／2鼠标左键进行开机；设置为“Any Key”时，利用键盘的任意按键开机；设置为“BUTTON 
+                  ONLY”时，打开电源直接开机；设置为“Kdyboard 98”时，利用Windows 
+                  98键盘的“Power”热键开机。缺省值为“Password”。 </P>
+                  <P class=yzw>18．KB Power ON Password（键盘开机密码） </P>
+                  <P class=yzw>如果在“Power On 
+                  Function”中设置为“Password”，将激活该项。按“Enter”键后，输入1-5个字符作为键盘开机密码，并按“Enter”键完成设置。 
+                  </P>
+                  <P class=yzw>19．Hot Key Power ON（热键开机） </P>
+                  <P class=yzw>如果在“Power On Function”中设置为“Hot 
+                  Key”，将激活该项。可选择的项目是：Ctrl-F1～Ctrl-F12，作为开机组合热键。 </P>
+                  <P class=yzw>20．Onboard FDC Controller（内置软驱控制器） </P>
+                  <P class=yzw>当使用ISA 
+                  FDC控制卡连接时，是否设置成启用内置软盘控制器。缺省值为“Enabled（使用）”。 </P>
+                  <P class=yzw>21．Onboard Serial Port 1（设置内置串行口1） </P>
+                  <P 
+                  class=yzw>设置内置串行口1（COM1口）地址，可选择的项目是：Disalbied、3F8／IRQ4、2F8／IRQ3、3E8／IRQ4、2E8／IRQ3、Auto，缺省值为“3F8／IRQ4”。 
+                  </P>
+                  <P class=yzw>21．Onboard Serial Port 2（设置内置串行口2） </P>
+                  <P 
+                  class=yzw>设置内置串行口1（COM2口）地址，可选择的项目是：Disalbied、3F8／IRQ4、2F8／IRQ3、3E8／IRQ4、2E8／IRQ3、Auto，缺省值为“2F8／IRQ3”。 
+                  </P>
+                  <P class=yzw>22．COM2 Mode Select（设置COM2的工作模式） </P>
+                  <P 
+                  class=yzw>设置COM2的工作模式，可选择的项目是：Normal、IrDA、ASKIR、SCR，缺省值为“Normal”。 
+                  </P>
+                  <P class=yzw>23．UR2 Duplex Mode（设置COM2的IR双模式） </P>
+                  <P class=yzw>设置COM2的IR双模式，如果在“COM2 Mode 
+                  Select”中设置为“IrDA”或“ASKIR”，将激活该项。可选择的项目是：Half、Full。设置为“Half”时，COM2设置的IR为半双式模式；设置为“Full”时，COM2设置的IR为全双式模式。 
+                  </P>
+                  <P class=yzw>24．Onboard Parallel Port（设置内置并行口） </P>
+                  <P 
+                  class=yzw>设置内置并行口地址，可选择的项目是：Disalbied、378／IRQ7、278／IRQ5、3BC／IRQ7，缺省值为“378／IRQ7”。 
+                  </P>
+                  <P class=yzw>25．Parallel Port Mode（并行口传输模式） </P>
+                  <P class=yzw>如果在“Onboard Parallel 
+                  Port”中设置为“378／IRQ7”、“278／IRQ5”或“3BC／IRQ7”，将激活该项。可选择的项目是：SPP、EPP、ECP，缺省值为“SPP”。 
+                  </P>
+                  <P class=yzw>26．ECP Mode Use DMA（ECP模式使用DMA） </P>
+                  <P class=yzw>设置在ECP模式下使用的DMA，如果在“Parallel Port 
+                  Mode”中设置为“ECP”，将激活该项。可选择的项目是：3、1。 </P>
+                  <P class=yzw>27．PWRON After PWR-Fail（电源回复后的电源失败选择） </P>
+                  <P 
+                  class=yzw>设置断电后，当电源回复时，系统状态选择。设置为“OFF”时，需按机箱面板上的电源开关才能开机；设置为“ON”时，电源回复时直接开机；设置为“Former-Sts”时，电源回复时恢复系统断电前的状态。缺省值为“OFF”。 
+                  </P>
+                  <P class=yzw>28．Chassis Intrusion Warnung（底盘入侵警告） </P>
+                  <P class=yzw>设置是否底盘入侵时发出警告，缺省值为“Disabled”。 </P>
+                  <P></P><SPAN class=yzw>六．Power Management Setup（电源管理设置） 
+</SPAN>
+                  <P class=yzw>在Power Management 
+                  Setup中，主要是为了设置CPU、硬盘、显示设置省电功能的相关参数。（如图7所示）</P>
+                  <P class=yzw>（图7）点击察看大图 </P>
+                  <P class=yzw>1．ACPI Function（设置ACPI功能） </P>
+                  <P class=yzw>设置是否使用ACPI功能，缺省值为“Enabled（使用）”。 </P>
+                  <P class=yzw>2．ACPI Suspend Type（ACPI挂起模式） </P>
+                  <P 
+                  class=yzw>设置是否使用ACPI挂起模式，设置为“S1（POS）”时，CPU时钟停止工作，而其他设备仍然供电，功耗&lt;30W；设置为“S3（STR）”时，除了内存供电外，其它设备都停止工作，功耗&lt;10W。缺省值为“S1（POS）”。 
+                  </P>
+                  <P class=yzw>3．Power Mangment（电源管理方式） </P>
+                  <P class=yzw>设置为“Min Saving”时，停用1小时进入省电功能模式，选择此项将不能改变HDD Power 
+                  Down的值；设置为“Max Saving”时，停用10秒进入省电功能模式，选择此项将不能改变HDD Power 
+                  Down的值；设置为“User Define”时，用户自定义设置。缺省值为“User Define”。 </P>
+                  <P class=yzw>4．Video off Method（视频关闭方式） </P>
+                  <P 
+                  class=yzw>当然屏幕进入省电模式时，要采用哪一种方式进行。设置为“V／HSYNC+Blank”时，将屏幕变为空白并停止垂直和水平扫描；设置为“Blank 
+                  Screen”时，将屏幕变为空白；设置为“DPMS”时，用BIOS控制支持DPMS节电功能的显示卡。缺省值为“DPMS”。 
+                  </P>
+                  <P class=yzw>5．Video off In Suspend（在挂起中是否关闭视频） </P>
+                  <P 
+                  class=yzw>设置为“Yes”时，将在挂起中关闭视频；设置为“No”时，将在挂起中不关闭视频。缺省值为“Yes”。 
+                  </P>
+                  <P class=yzw>6．Suspend Type（挂起类型） </P>
+                  <P class=yzw>设置挂起类型，可选择的项目有：Stop Grant、PwrOn Suspend，缺省值为“Stop 
+                  Grant”。 </P>
+                  <P class=yzw>7．MODEM Use IRQ（调制解调器的中断） </P>
+                  <P class=yzw>设备调制解调器的中断值，可选择的项目有：NA、3、4、5、7、9、10、11，缺省值为“3”。 
+                  </P>
+                  <P class=yzw>8．Suspend Mode（挂起模式） </P>
+                  <P 
+                  class=yzw>设置PC多久没有使用时，便进入Suspend省电模式，将CPU工作频率降到0MHz，并分别通知相关省电设置（如CPU 
+                  FAN、Video off），以便一并进入省电状态。可选择的项目有：Disabled、1 Min、2 Min、4 Min、8 
+                  Min、12 Min、20 Min、30 Min、40 Min、1 Hour。缺省值为“Disabled”。 </P>
+                  <P class=yzw>9．HDD Power Down（硬盘电源关闭模式） </P>
+                  <P 
+                  class=yzw>设置硬盘电源关闭模式计时器，当系统停止读或写硬盘时，计时器开始计算，过时后系统将切断硬盘电源。一旦又有读或写硬盘命令执行时，系统将重新开始运行。如果在“Power 
+                  Mangment”中设置为“User Define”，将激活该项。可选择的项目有：Disabled、1 Min～15 
+                  Min。缺省值为“Disabled”。 </P>
+                  <P class=yzw>10.Soft-Off by PWR-BTTN（软关机方法） </P>
+                  <P class=yzw>设置为“Instant-Off”时，立即关机；设置为“Delay 4 
+                  Sec”时，延迟4秒后关机延迟4秒后关机。缺省值为“Instant-Off”。 </P>
+                  <P class=yzw>11．Wake-Up By PCI card（设置是否采用PCI唤醒） </P>
+                  <P class=yzw>设置是否采用PCI插卡唤醒，首先要确认主板的启动电路符合PCI 2.2规格，而且要求采用PCI 
+                  2.2插卡金手指上的A14脚上有3.3V的备用电流。缺省值为“Disabled”。 </P>
+                  <P class=yzw>12．Power On by Ring（设置是否采用MODEM唤醒） </P>
+                  <P class=yzw>设置是否采用MODEM唤醒，缺省值为“Disabled”。 </P>
+                  <P class=yzw>13．Wake Up On LAN（设置是否采用网络唤醒） </P>
+                  <P class=yzw>设置是否采用网络唤醒，缺省值为“Disabled”。 </P>
+                  <P class=yzw>14．USB KB Wake-Up Drom S3（设置是否采用USB键盘唤醒） </P>
+                  <P class=yzw>设置是否采用USB键盘唤醒，缺省值为“Disabled”。 </P>
+                  <P class=yzw>15．Resume by Alarm（设置是否采用定时开机） </P>
+                  <P class=yzw>设置是否采用定时开机，缺省值为“Disabled”。 </P>
+                  <P class=yzw>16．Date（of Month） Alarm（定时日期） </P>
+                  <P class=yzw>我们可以设定系统在什么日期启动，如果在“Resume by 
+                  Alarm”中设置为“Enabled”时，该项将激活。可选择的项目有：0、1～30、31。如果设为“0”，将对每天都适用。 
+                  </P>
+                  <P class=yzw>17．Time（hh：mm：ss） Alarm（定时时间） </P>
+                  <P class=yzw>我们可以设定系统在什么时间启动，如果在“Resume by 
+                  Alarm”中设置为“Enabled”时，该项将激活，格式为（时：分：秒）。 </P>
+                  <P class=yzw>18．Primary IDE 0（第一个IDE主控制器的存取） </P>
+                  <P class=yzw>19．Primary IDE 1（第一个IDE从控制器的存取） </P>
+                  <P class=yzw>20．Secondary IDE 0（第二个IDE主控制器的存取） </P>
+                  <P class=yzw>21．Secondary IDE 1（第二个IDE从控制器的存取） </P>
+                  <P 
+                  class=yzw>以上四项，如果当前的IDE设备有存取动作时，是否设置取消目前PC及该IDE的省电状态。设置为“Enabled”时，使PC恢复正常以处理相关要求；设置为“Disabled”时，不予理会。缺省值为“Disabled”。 
+                  </P>
+                  <P class=yzw>22．FDD，COM，LPT Port（软驱、COM口、并行口的存取） </P>
+                  <P 
+                  class=yzw>是否设置当软驱、COM口、并行口任何一项有存取动作时，是否设置取消目前PC及该软驱、COM口或并行口的省电状态。缺省值为“Disabled”。 
+                  </P>
+                  <P class=yzw>23．PCI PIRQ[A-D]#（PCI的存取） </P>
+                  <P 
+                  class=yzw>是否设置当任何一个PCI插卡有存取动作时，是否设置取消目前PC及该PCI插槽的省电状态。缺省值为“Disabled”。 
+                  </P>
+                  <P></P><SPAN class=yzw>七．PnP／PCI Configurations（即插即用与PCI参数设置） 
+                  </SPAN>
+                  <P class=yzw>在PnP／PCI 
+                  Configurations中，主要是为了设置即插即用与PCI配置的相关参数。（如图8所示）</P>
+                  <P class=yzw>（图8）点击察看大图 </P>
+                  <P class=yzw>1．Reset Configuration Data（重新配置数据） </P>
+                  <P 
+                  class=yzw>因为BIOS支持即插即用，所以必须记录所有资源分配情况以防冲突，每个外部设备都有ESCD（Extended 
+                  System Configuration 
+                  Data）以记录所用资源。系统将这些数据记录在BIOS保留的存储空间中。设置为“Enabled”时，如果插入非PNP卡，系统将记录到ESCD，一旦此卡拔出，系统将清掉ESCD；设置为“Disabled”时，是正常设置。缺省值为“Disabled”。 
+                  </P>
+                  <P class=yzw>2．Resources Controlled By（系统资源控制方式） </P>
+                  <P 
+                  class=yzw>设置为“Manual”时，手动控制PNP卡资源，可将IRQ或DMA值分配给PCI／ISA（PNP及非PNP卡）；设置为“Auto（ESCD）”时，如果ISA卡及PCI卡全是PNP卡，可选择此项为Auto，由BIOS自动分配中断资源。缺省值为“Auto（ESCD）”。 
+                  </P>
+                  <P class=yzw>3．IRQ Resources（IRQ资源） </P>
+                  <P class=yzw>如果在“Resources Controlled 
+                  By”中设置为“Manual”时，将激活该项。按下“Enter”键，在另一窗口中重新分配IRQ-3、IRQ-4、IRQ-5、IRQ-7、IRQ-9、IRQ-10、IRQ-11、IRQ-12、IRQ-14、IRQ-15资源，可以设定为保留资源或指定给PCI 
+                  PNP功能的界面卡使用。（如图9所示）</P>
+                  <P class=yzw>（图9）点击察看大图 </P>
+                  <P class=yzw>4．PCI／VGA Palette Snoop（颜色校正） </P>
+                  <P 
+                  class=yzw>设置为“Enabled”时，要作颜色校正工作；设置为“Disabled”时，不需要作颜色校正工作。缺省值为“Disabled”。当你安装MPEG后，如果发现显示颜色异常，可试着将此值设置为“Enabled”，以校正颜色输出。 
+                  </P>
+                  <P class=yzw>5．Slot 1，5 Use IRQ No.（Slot 1、5使用IRQ号） </P>
+                  <P class=yzw>6．Slot 2，6 Use IRQ No.（Slot 2、6使用IRQ号） </P>
+                  <P class=yzw>7．Slot 3 Use IRQ No.（Slot 3使用IRQ号） </P>
+                  <P class=yzw>8．Slot 4 Use IRQ No.（Slot 4使用IRQ号） </P>
+                  <P 
+                  class=yzw>以上四项，可分别设置当前Slot插槽的IRQ号，可选择的项目有：3、4、5、7、9、10、11、12、14、15、Auto。缺省值为“Auto”。 
+                  </P>
+                  <P class=yzw>9．FDD IRQ Can Be Free（软驱是否可用IRQ） </P>
+                  <P class=yzw>设置软驱是否可用IRQ，缺省值为“No”。 </P>
+                  <P></P><SPAN class=yzw>七．PnP／PCI Configurations（即插即用与PCI参数设置） 
+                  </SPAN>
+                  <P class=yzw>在PnP／PCI 
+                  Configurations中，主要是为了设置即插即用与PCI配置的相关参数。</P>
+                  <P class=yzw>1．Reset Configuration Data（重新配置数据） </P>
+                  <P 
+                  class=yzw>因为BIOS支持即插即用，所以必须记录所有资源分配情况以防冲突，每个外部设备都有ESCD（Extended 
+                  System Configuration 
+                  Data）以记录所用资源。系统将这些数据记录在BIOS保留的存储空间中。设置为“Enabled”时，如果插入非PNP卡，系统将记录到ESCD，一旦此卡拔出，系统将清掉ESCD；设置为“Disabled”时，是正常设置。缺省值为“Disabled”。 
+                  </P>
+                  <P class=yzw>2．Resources Controlled By（系统资源控制方式） </P>
+                  <P 
+                  class=yzw>设置为“Manual”时，手动控制PNP卡资源，可将IRQ或DMA值分配给PCI／ISA（PNP及非PNP卡）；设置为“Auto（ESCD）”时，如果ISA卡及PCI卡全是PNP卡，可选择此项为Auto，由BIOS自动分配中断资源。缺省值为“Auto（ESCD）”。 
+                  </P>
+                  <P class=yzw>3．IRQ Resources（IRQ资源） </P>
+                  <P class=yzw>如果在“Resources Controlled 
+                  By”中设置为“Manual”时，将激活该项。按下“Enter”键，在另一窗口中重新分配IRQ-3、IRQ-4、IRQ-5、IRQ-7、IRQ-9、IRQ-10、IRQ-11、IRQ-12、IRQ-14、IRQ-15资源，可以设定为保留资源或指定给PCI 
+                  PNP功能的界面卡使用。</P>
+                  <P class=yzw>4．PCI／VGA Palette Snoop（颜色校正） </P>
+                  <P 
+                  class=yzw>设置为“Enabled”时，要作颜色校正工作；设置为“Disabled”时，不需要作颜色校正工作。缺省值为“Disabled”。当你安装MPEG后，如果发现显示颜色异常，可试着将此值设置为“Enabled”，以校正颜色输出。 
+                  </P>
+                  <P class=yzw>5．Slot 1，5 Use IRQ No.（Slot 1、5使用IRQ号） </P>
+                  <P class=yzw>6．Slot 2，6 Use IRQ No.（Slot 2、6使用IRQ号） </P>
+                  <P class=yzw>7．Slot 3 Use IRQ No.（Slot 3使用IRQ号） </P>
+                  <P class=yzw>8．Slot 4 Use IRQ No.（Slot 4使用IRQ号） </P>
+                  <P 
+                  class=yzw>以上四项，可分别设置当前Slot插槽的IRQ号，可选择的项目有：3、4、5、7、9、10、11、12、14、15、Auto。缺省值为“Auto”。 
+                  </P>
+                  <P class=yzw>9．FDD IRQ Can Be Free（软驱是否可用IRQ） </P>
+                  <P class=yzw>设置软驱是否可用IRQ，缺省值为“No”。 </P>
+                  <P></P><SPAN class=yzw>八．PC Health Status（电脑健康状态） </SPAN>
+                  <P class=yzw>在PC Health 
+                  Status中，主要是显示系统自动检测的电压、温度及风扇转速等相关参数。</P>
+                  <P class=yzw>1．Shutdown Temperature（监控CPU温度） </P>
+                  <P 
+                  class=yzw>设置监控CPU超过一定温度时将会自动关机，可选择的项目有：60oC／140oF、65oC／149oF、70oC／158oF、Disabled。缺省值为“Disabled”。 
+                  </P>
+                  <P class=yzw>2．自动监测项目 </P>
+                  <P 
+                  class=yzw>以下均为BIOS自动监测项目，这些项目无法自行修改，主要有CPU核心电压、+1.5V电压、+3.3V电压、电源+5V电压、+12V电压、-12V电压、-5V电压、5VSB电压、Voltage电压、CPU温度、系统风扇转速、CPU风扇转速。 
+                  </P>
+                  <P class=yzw>九．SeePU Setup（频率与电压控制） </P>
+                  <P class=yzw>在SeePU Setup中，主要是设置CPU的工作系统与使用电压的相关参数。</P>
+                  <P class=yzw>1．System Memory Frequency（系统内存频率设置） </P>
+                  <P class=yzw>设置系统内存的工作频率，可选择的项目有：100 MHz、133 
+                  MHz、Auto，缺省值为“Auto”。 </P>
+                  <P class=yzw>2．CPU Vcore Select（CPU电压设置） </P>
+                  <P 
+                  class=yzw>设置CPU的核心电压，可选择的项目有：Default、+0.05V、+0.1V、+0.15V、+0.2V、+0.25V、+0.3V，缺省值为“Default”。 
+                  </P>
+                  <P class=yzw>3．Auto Detect DIMM／PCI Clk（自动侦测DIMM／PCI时钟频率） </P>
+                  <P 
+                  class=yzw>设置为“Enabled”时，系统会自动检测已安装的DIMM内存条或PCI卡，然后提供时钟给它，而屏蔽掉空闲的DIMM槽和PCI槽上的时钟信号；设置为“Disabled”时，关闭此功能。缺省值为“Enabled”。 
+                  </P>
+                  <P class=yzw>4．Spread Spectrum（设置主频频率调整范围） </P>
+                  <P 
+                  class=yzw>设置主频频率调整范围，可选择的项目有：+／-0.25%、+／-0.38%、+／-0.5%，缺省值为“+／-0.5%”。 
+                  </P>
+                  <P class=yzw>5．CPU By Slight Adjust（CPU外频微调设置） </P>
+                  <P class=yzw>设置CPU外频的微调，可选择的项目有：133、134～169、170，缺省值为“133”。 
+</P>
+                  <P class=yzw>6．CPU Clock Ratio（CPU倍频设置） </P>
+                  <P class=yzw>设置CPU倍频，可选择的项目有：X 3、X 3.5、X 4、X 4.5、X 5、X 5.5、X 
+                  6、X 6.5、X 7、X 7.5、X 8，缺省值为“X 
+                  3”。对于未锁倍频的CPU，你可能要在本项设置你的CPU倍频才会正常显示。但是如果你手头上的CPU是锁倍频CPU，那么你不需作CPU频率设置，该项即可正常显示。 
+                  </P>
+                  <P class=yzw>十．Load Fail-Safe Defaults（载入最安全的缺省值） </P>
+                  <P class=yzw>在Load Fail-Safe 
+                  Defaults中，主要是载入BIOS的CMOS设置最安全的缺省值，此设置是比较保守的设置，不是最优化设置，所以将关闭系统的高速设置。运行该选项不会改变Standard 
+                  CMOS Features的值。选择此选项，会出现：“Load Fail-Safe Defaults 
+                  （Y／N）？”的菜单，询问是否载入缺省值，请按“Y”或“Enter”键，即可载入BIOS最安全的缺省值。</P>
+                  <P class=yzw>十一．Load Optimized Defaults（装入最优化的缺省值） </P>
+                  <P class=yzw>在Load Optimized 
+                  Defaults中，主要是载入BIOS的CMOS设置出厂时的缺省值。选择此选项，会出现：“Load Optimized 
+                  Defaults 
+                  （Y／N）？”的菜单，询问是否载入出厂时的缺省值，请按“Y”或“Enter”键，即可载入出厂时的缺省值。</P>
+                  <P class=yzw>十二．Set Supervisor Password（设置超级用户密码） </P>
+                  <P class=yzw>在Set Supervisor 
+                  Password中，主要是设置超级用户密码。超级用户密码设置是针对系统启动及进入CMOS 
+                  Setup时做的密码保护，密码最多包含八个数字或符号，且有大小写之分。设置该项必须先在“Advanced BIOS 
+                  Features”选项的“Security Option”设置中选“Setup”。设置密码请在主菜单中选择“Set 
+                  Supervisor 
+                  Password”，并按下“Enter”键，菜单中间即出现一个方框让你输入密码（如图14所示）。密码输入完毕后请按下“Enter”键，BIOS会要求再输入一次，以确定刚才输入的密码，若两次密码吻合，便将它记录下来。如果你想取消密码，只需在输入新密码时，直接按“Enter”键，这时BIOS会显示“PASSWORD 
+                  DISABLED”，也就是关闭密码功能，那么下次开机时，就不会再被要求输入密码了。 </P>
+                  <P class=yzw>十三．Set User Password（设置用户密码） </P>
+                  <P class=yzw>在Set User 
+                  Password中，主要是设置用户密码。用户密码设置是针对系统启动时做的密码保护，密码最多包含八个数字或符号，且有大小写之分。设置该项必须先在“Advanced 
+                  BIOS Features”选项的“Security 
+                  Option”设置中选“System”。设置密码请在主菜单中选择“Set User 
+                  Password”，并按下“Enter”键，菜单中间即出现一个方框让你输入密码（如图15所示）。密码输入完毕后请按下“Enter”键，BIOS会要求再输入一次，以确定刚才输入的密码，若两次密码吻合，便将它记录下来。如果你想取消密码，只需在输入新密码时，直接按“Enter”键，这时BIOS会显示“PASSWORD 
+                  DISABLED”，也就是关闭密码功能，那么下次开机时，就不会再被要求输入密码了。 </P>
+                  <P class=yzw>十四．Save &amp; Exit Setup（存储并退出设置程序） </P>
+                  <P class=yzw>在Save &amp; Exit 
+                  Setup中，存储所有设置结果并离开设置程序，此时BIOS会征订开机，以便使用新的设置值，按“F10”键也可运行本选项。请在主菜单中选择“Save 
+                  &amp; Exit Setup”，并按下“Enter”键，会出现：“Save to CMOS and EXIT 
+                  （Y／N）？”的菜单，询问是否存储并退出设置程序，请按“Y”或“Enter”键，即可储存所有设置结果到RTC中的CMOS 
+                  SRAM并离开CMOS Setup Utility。如果不想退出，则按“N”或“Esc”均可返回到主菜单中。</P>
+                  <P class=yzw>十五．Exit Without Saving（不存储并退出设置程序） </P>
+                  <P class=yzw>在Exit Without 
+                  Saving中，不存储修改结果，保持原本设置并重新开机，按“Esc”键也可运行本选项。请在主菜单中选择“Exit 
+                  Without Saving”，并按下“Enter”键，会出现：“Quit Without Saving 
+                  （Y／N）？”的菜单，询问是否不存储并退出设置程序，请按“Y”或“Enter”键，即可不储存所有修改设置结果并离开CMOS 
+                  Setup Utility。如果按“N”或“Esc”均可回到主菜单中。</P>
+                  <P><BR></P></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD bgColor=#666666 height=21>
+            <DIV align=right class=yz><A class=yz 
+            href="http://www.jinmingri.com/" 
+            onclick="javascript:window.close();return false;">关闭窗口</A></DIV></TD></TR>
+        <TR>
+          <TD bgColor=#ffcc66 height=17>
+            <DIV align=center><FONT 
+            size=2>copyright:2001-2003　明日电脑销售公司版权所有　TEL：0427－3681495</FONT></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<P class=yzw>&nbsp;</P>
+<SCRIPT language=vbscript>
+
+</SCRIPT>
+</BODY></HTML>

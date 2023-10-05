@@ -1,0 +1,30 @@
+PRE {
+	PADDING-RIGHT: 5pt; PADDING-LEFT: 5pt; PADDING-BOTTOM: 5pt; FONT: 10pt "Courier New", Courier, mono; WIDTH: 100%; COLOR: #003399; PADDING-TOP: 5pt; WHITE-SPACE: pre; BACKGROUND-COLOR: #f0f0f0
+}
+TABLE {
+	FONT-SIZE: 14px; FONT-FAMILY: "宋体"
+}
+.big {
+	FONT-SIZE: 14px; FONT-FAMILY: "宋体"
+}
+.small {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 13pt; FONT-FAMILY: "宋体"
+}
+.rect {
+	BORDER-RIGHT: #666666 1px solid; BORDER-TOP: #666666 1px solid; FONT: 9pt "宋体"; BORDER-LEFT: #666666 1px solid; COLOR: #000000; BORDER-BOTTOM: #666666 1px solid
+}
+.eng {
+	FONT-SIZE: 10px; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+A {
+	FONT-SIZE: 9pt; COLOR: #000088; TEXT-DECORATION: none
+}
+A:link {
+	FONT-SIZE: 9pt; COLOR: #000088; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #0000ff; TEXT-DECORATION: underline
+}
+A:visited {
+	FONT-SIZE: 9pt; COLOR: #000088; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}

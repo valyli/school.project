@@ -1,0 +1,27 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: dtpicker - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\WINDOWS\TEMP\RSP52E0.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/dtpicker.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"G:\tsengyong\C++ ³ÌÐò\dtpicker\dtpickerDlg.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP52E0.TMP" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/dtpicker.pdb" /debug /machine:I386 /out:"Debug/dtpicker.exe" /pdbtype:sept  ".\Debug\dtpicker.obj" ".\Debug\dtpickerDlg.obj" ".\Debug\StdAfx.obj" ".\Debug\dtpicker.res" "
+<h3>Output Window</h3>
+Compiling...
+dtpickerDlg.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+dtpicker.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

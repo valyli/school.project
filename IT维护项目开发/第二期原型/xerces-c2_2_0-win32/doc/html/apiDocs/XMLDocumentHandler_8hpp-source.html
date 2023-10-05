@@ -1,0 +1,256 @@
+<HTML><HEAD><SCRIPT language="JavaScript" src="../resources/script.js" type="text/javascript"></SCRIPT><TITLE>XMLDocumentHandler.hpp Source File</TITLE><link href="XercesApi.css" rel="stylesheet" type="text/css"></HEAD><BODY alink="#ff0000" bgcolor="#ffffff" leftmargin="4" link="#0000ff" marginheight="4" marginwidth="4" text="#000000" topmargin="4" vlink="#0000aa"><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD align="left" height="60" rowspan="3" valign="top" width="135"><IMG border="0" height="60" hspace="0" src="../resources/logo.gif" vspace="0" width="135"></TD><TD align="left" colspan="4" height="5" valign="top" width="456"><IMG border="0" height="5" hspace="0" src="../resources/line.gif" vspace="0" width="456"></TD><TD align="left" height="60" rowspan="3" valign="top" width="29"><IMG border="0" height="60" hspace="0" src="../resources/right.gif" vspace="0" width="29"></TD></TR><TR><TD align="left" bgcolor="#0086b2" colspan="4" height="35" valign="top" width="456"><IMG alt="" border="0" height="35" hspace="0" src="../graphics/api-header.jpg" vspace="0" width="456"></TD></TR><TR><TD align="left" height="20" valign="top" width="168"><IMG border="0" height="20" hspace="0" src="../resources/bottom.gif" vspace="0" width="168"></TD><TD align="left" height="20" valign="top" width="96"><A href="http://xml.apache.org/" onMouseOut="rolloverOff('xml');" onMouseOver="rolloverOn('xml');" target="new"><IMG alt="http://xml.apache.org/" border="0" height="20" hspace="0" name="xml" onLoad="rolloverLoad('xml','../resources/button-xml-hi.gif','../resources/button-xml-lo.gif');" src="../resources/button-xml-lo.gif" vspace="0" width="96"></A></TD><TD align="left" height="20" valign="top" width="96"><A href="http://www.apache.org/" onMouseOut="rolloverOff('asf');" onMouseOver="rolloverOn('asf');" target="new"><IMG alt="http://www.apache.org/" border="0" height="20" hspace="0" name="asf" onLoad="rolloverLoad('asf','../resources/button-asf-hi.gif','../resources/button-asf-lo.gif');" src="../resources/button-asf-lo.gif" vspace="0" width="96"></A></TD><TD align="left" height="20" valign="top" width="96"><A href="http://www.w3.org/" onMouseOut="rolloverOff('w3c');" onMouseOver="rolloverOn('w3c');" target="new"><IMG alt="http://www.w3.org/" border="0" height="20" hspace="0" name="w3c" onLoad="rolloverLoad('w3c','../resources/button-w3c-hi.gif','../resources/button-w3c-lo.gif');" src="../resources/button-w3c-lo.gif" vspace="0" width="96"></A></TD></TR></TABLE><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD align="left" valign="top" width="120"><IMG border="0" height="14" hspace="0" src="../resources/join.gif" vspace="0" width="120"><BR>
+  <A href="../../index.html" onMouseOut="rolloverOff('side-ext-2');" onMouseOver="rolloverOn('side-ext-2');"><IMG alt="Home" border="0" height="12" hspace="0" name="side-ext-2" onLoad="rolloverLoad('side-ext-2','../graphics/ext-2-label-2.jpg','../graphics/ext-2-label-3.jpg');" src="../graphics/ext-2-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="../index.html" onMouseOut="rolloverOff('side-index');" onMouseOver="rolloverOn('side-index');"><IMG alt="Readme" border="0" height="12" hspace="0" name="side-index" onLoad="rolloverLoad('side-index','../graphics/index-label-2.jpg','../graphics/index-label-3.jpg');" src="../graphics/index-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../releases.html" onMouseOut="rolloverOff('side-releases');" onMouseOver="rolloverOn('side-releases');"><IMG alt="Release Info" border="0" height="12" hspace="0" name="side-releases" onLoad="rolloverLoad('side-releases','../graphics/releases-label-2.jpg','../graphics/releases-label-3.jpg');" src="../graphics/releases-label-3.jpg" vspace="0" width="120"></A><BR>
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+  <A href="../install.html" onMouseOut="rolloverOff('side-install');" onMouseOver="rolloverOn('side-install');"><IMG alt="Installation" border="0" height="12" hspace="0" name="side-install" onLoad="rolloverLoad('side-install','../graphics/install-label-2.jpg','../graphics/install-label-3.jpg');" src="../graphics/install-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="http://xml.apache.org/dist/xerces-c/" onMouseOut="rolloverOff('side-ext-18');" onMouseOver="rolloverOn('side-ext-18');"><IMG alt="Download" border="0" height="12" hspace="0" name="side-ext-18" onLoad="rolloverLoad('side-ext-18','../graphics/ext-18-label-2.jpg','../graphics/ext-18-label-3.jpg');" src="../graphics/ext-18-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../build.html" onMouseOut="rolloverOff('side-build');" onMouseOver="rolloverOn('side-build');"><IMG alt="Build" border="0" height="12" hspace="0" name="side-build" onLoad="rolloverLoad('side-build','../graphics/build-label-2.jpg','../graphics/build-label-3.jpg');" src="../graphics/build-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+  <A href="../faqs.html" onMouseOut="rolloverOff('side-faqs');" onMouseOver="rolloverOn('side-faqs');"><IMG alt="FAQs" border="0" height="12" hspace="0" name="side-faqs" onLoad="rolloverLoad('side-faqs','../graphics/faqs-label-2.jpg','../graphics/faqs-label-3.jpg');" src="../graphics/faqs-label-3.jpg" vspace="0" width="120"></A><BR>  
+  <A href="../samples.html" onMouseOut="rolloverOff('side-samples');" onMouseOver="rolloverOn('side-samples');"><IMG alt="Samples" border="0" height="12" hspace="0" name="side-samples" onLoad="rolloverLoad('side-samples','../graphics/samples-label-2.jpg','../graphics/samples-label-3.jpg');" src="../graphics/samples-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../api.html" onMouseOut="rolloverOff('side-api');" onMouseOver="rolloverOn('side-api');"><IMG alt="API Docs" border="0" height="12" hspace="0" name="side-api" onLoad="rolloverLoad('side-api','../graphics/api-label-2.jpg','../graphics/api-label-3.jpg');" src="../graphics/api-label-3.jpg" vspace="0" width="120"></A><BR>  
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+  <A href="../ApacheDOMC++Binding.html" onMouseOut="rolloverOff('side-ext-64');" onMouseOver="rolloverOn('side-ext-64');"><IMG alt="DOM C++ Binding" border="0" height="12" hspace="0" name="side-ext-64" onLoad="rolloverLoad('side-ext-64','../graphics/ext-64-label-2.jpg','../graphics/ext-64-label-3.jpg');" src="../graphics/ext-64-label-3.jpg" vspace="0" width="120"></A><BR> 
+  <A href="../program.html" onMouseOut="rolloverOff('side-program');" onMouseOver="rolloverOn('side-program');"><IMG alt="Programming" border="0" height="12" hspace="0" name="side-program" onLoad="rolloverLoad('side-program','../graphics/program-label-2.jpg','../graphics/program-label-3.jpg');" src="../graphics/program-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../migrate.html" onMouseOut="rolloverOff('side-migrate');" onMouseOver="rolloverOn('side-migrate');"><IMG alt="Migration Guide" border="0" height="12" hspace="0" name="side-migrate" onLoad="rolloverLoad('side-migrate','../graphics/migrate-label-2.jpg','../graphics/migrate-label-3.jpg');" src="../graphics/migrate-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="../feedback.html" onMouseOut="rolloverOff('side-feedback');" onMouseOver="rolloverOn('side-feedback');"><IMG alt="Feedback" border="0" height="12" hspace="0" name="side-feedback" onLoad="rolloverLoad('side-feedback','../graphics/feedback-label-2.jpg','../graphics/feedback-label-3.jpg');" src="../graphics/feedback-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../bug-report.html" onMouseOut="rolloverOff('side-bug-report');" onMouseOver="rolloverOn('side-bug-report');"><IMG alt="Bug-Reporting" border="0" height="12" hspace="0" name="side-bug-report" onLoad="rolloverLoad('side-bug-report','../graphics/bug-report-label-2.jpg','../graphics/bug-report-label-3.jpg');" src="../graphics/bug-report-label-3.jpg" vspace="0" width="120"></A><BR>  
+  <A href="../pdf.html" onMouseOut="rolloverOff('side-pdf');" onMouseOver="rolloverOn('side-pdf');"><IMG alt="PDF Document" border="0" height="12" hspace="0" name="side-pdf" onLoad="rolloverLoad('side-pdf','../graphics/pdf-label-2.jpg','../graphics/pdf-label-3.jpg');" src="../graphics/pdf-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="http://xml.apache.org/websrc/cvsweb.cgi/xml-xerces/c/" onMouseOut="rolloverOff('side-ext-96');" onMouseOver="rolloverOn('side-ext-96');"><IMG alt="CVS Repository" border="0" height="12" hspace="0" name="side-ext-96" onLoad="rolloverLoad('side-ext-96','../graphics/ext-96-label-2.jpg','../graphics/ext-96-label-3.jpg');" src="../graphics/ext-96-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="http://marc.theaimsgroup.com/?l=xerces-c-dev" onMouseOut="rolloverOff('side-ext-98');" onMouseOver="rolloverOn('side-ext-98');"><IMG alt="Mail Archive" border="0" height="12" hspace="0" name="side-ext-98" onLoad="rolloverLoad('side-ext-98','../graphics/ext-98-label-2.jpg','../graphics/ext-98-label-3.jpg');" src="../graphics/ext-98-label-3.jpg" vspace="0" width="120"></A><BR>
+
+<IMG border="0" height="14" hspace="0" src="../resources/close.gif" vspace="0" width="120"><BR></TD><TD align="left" valign="top" width="500"><TABLE border="0" cellpadding="3" cellspacing="0"><TR><TD>
+    <TABLE border="0" cellpadding="0" cellspacing="0" width="494"><TR><TD bgcolor="#FFFFFF" colspan="2" width="494"><TABLE border="0" cellpadding="0" cellspacing="0" width="494"><TR><TD bgcolor="#039acc" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#039acc" height="1" width="492"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="492"></TD><TD bgcolor="#0086b2" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR><TR><TD bgcolor="#039acc" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#0086b2" width="492"><FONT color="#ffffff" face="arial,helvetica,sanserif" size="+1"><IMG border="0" height="2" hspace="0" src="../resources/void.gif" vspace="0" width="2"><B>API Docs for SAX and DOM</B></FONT></TD><TD bgcolor="#017299" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR><TR><TD bgcolor="#0086b2" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#017299" height="1" width="492"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="492"></TD><TD bgcolor="#017299" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR></TABLE></TD></TR><TR><TD width="10">&nbsp;</TD><TD width="484"><FONT color="#000000" face="arial,helvetica,sanserif">
+
+	    <P>
+<!-- Generated by Doxygen 1.2.18 -->
+<center>
+<a class="qindex" href="index.html">Main Page</a> &nbsp; <a class="qindex" href="hierarchy.html">Class Hierarchy</a> &nbsp; <a class="qindex" href="classes.html">Alphabetical List</a> &nbsp; <a class="qindex" href="annotated.html">Compound List</a> &nbsp; <a class="qindex" href="files.html">File List</a> &nbsp; <a class="qindex" href="functions.html">Compound Members</a> &nbsp; <a class="qindex" href="globals.html">File Members</a> &nbsp; </center>
+<hr><h1>XMLDocumentHandler.hpp</h1><a href="XMLDocumentHandler_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><pre>00001 <span class="comment">/*</span>
+00002 <span class="comment"> * The Apache Software License, Version 1.1</span>
+00003 <span class="comment"> *</span>
+00004 <span class="comment"> * Copyright (c) 1999-2000 The Apache Software Foundation.  All rights</span>
+00005 <span class="comment"> * reserved.</span>
+00006 <span class="comment"> *</span>
+00007 <span class="comment"> * Redistribution and use in source and binary forms, with or without</span>
+00008 <span class="comment"> * modification, are permitted provided that the following conditions</span>
+00009 <span class="comment"> * are met:</span>
+00010 <span class="comment"> *</span>
+00011 <span class="comment"> * 1. Redistributions of source code must retain the above copyright</span>
+00012 <span class="comment"> *    notice, this list of conditions and the following disclaimer.</span>
+00013 <span class="comment"> *</span>
+00014 <span class="comment"> * 2. Redistributions in binary form must reproduce the above copyright</span>
+00015 <span class="comment"> *    notice, this list of conditions and the following disclaimer in</span>
+00016 <span class="comment"> *    the documentation and/or other materials provided with the</span>
+00017 <span class="comment"> *    distribution.</span>
+00018 <span class="comment"> *</span>
+00019 <span class="comment"> * 3. The end-user documentation included with the redistribution,</span>
+00020 <span class="comment"> *    if any, must include the following acknowledgment:</span>
+00021 <span class="comment"> *       "This product includes software developed by the</span>
+00022 <span class="comment"> *        Apache Software Foundation (http://www.apache.org/)."</span>
+00023 <span class="comment"> *    Alternately, this acknowledgment may appear in the software itself,</span>
+00024 <span class="comment"> *    if and wherever such third-party acknowledgments normally appear.</span>
+00025 <span class="comment"> *</span>
+00026 <span class="comment"> * 4. The names "Xerces" and "Apache Software Foundation" must</span>
+00027 <span class="comment"> *    not be used to endorse or promote products derived from this</span>
+00028 <span class="comment"> *    software without prior written permission. For written</span>
+00029 <span class="comment"> *    permission, please contact apache\@apache.org.</span>
+00030 <span class="comment"> *</span>
+00031 <span class="comment"> * 5. Products derived from this software may not be called "Apache",</span>
+00032 <span class="comment"> *    nor may "Apache" appear in their name, without prior written</span>
+00033 <span class="comment"> *    permission of the Apache Software Foundation.</span>
+00034 <span class="comment"> *</span>
+00035 <span class="comment"> * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED</span>
+00036 <span class="comment"> * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES</span>
+00037 <span class="comment"> * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+00038 <span class="comment"> * DISCLAIMED.  IN NO EVENT SHALL THE APACHE SOFTWARE FOUNDATION OR</span>
+00039 <span class="comment"> * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+00040 <span class="comment"> * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+00041 <span class="comment"> * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF</span>
+00042 <span class="comment"> * USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND</span>
+00043 <span class="comment"> * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,</span>
+00044 <span class="comment"> * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT</span>
+00045 <span class="comment"> * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF</span>
+00046 <span class="comment"> * SUCH DAMAGE.</span>
+00047 <span class="comment"> * ====================================================================</span>
+00048 <span class="comment"> *</span>
+00049 <span class="comment"> * This software consists of voluntary contributions made by many</span>
+00050 <span class="comment"> * individuals on behalf of the Apache Software Foundation, and was</span>
+00051 <span class="comment"> * originally based on software copyright (c) 1999, International</span>
+00052 <span class="comment"> * Business Machines, Inc., http://www.ibm.com .  For more information</span>
+00053 <span class="comment"> * on the Apache Software Foundation, please see</span>
+00054 <span class="comment"> * &lt;http://www.apache.org/&gt;.</span>
+00055 <span class="comment"> */</span>
+00056 
+00057  <span class="comment">/*</span>
+00058 <span class="comment">  * $Log: XMLDocumentHandler.hpp,v $</span>
+00059 <span class="comment">  * Revision 1.4  2002/11/04 15:00:21  tng</span>
+00060 <span class="comment">  * C++ Namespace Support.</span>
+00061 <span class="comment">  *</span>
+00062 <span class="comment">  * Revision 1.3  2002/05/28 20:41:11  tng</span>
+00063 <span class="comment">  * [Bug 9104] prefixes dissapearing when schema validation turned on.</span>
+00064 <span class="comment">  *</span>
+00065 <span class="comment">  * Revision 1.2  2002/02/20 18:17:01  tng</span>
+00066 <span class="comment">  * [Bug 5977] Warnings on generating apiDocs.</span>
+00067 <span class="comment">  *</span>
+00068 <span class="comment">  * Revision 1.1.1.1  2002/02/01 22:21:51  peiyongz</span>
+00069 <span class="comment">  * sane_include</span>
+00070 <span class="comment">  *</span>
+00071 <span class="comment">  * Revision 1.8  2000/03/02 19:54:24  roddey</span>
+00072 <span class="comment">  * This checkin includes many changes done while waiting for the</span>
+00073 <span class="comment">  * 1.1.0 code to be finished. I can't list them all here, but a list is</span>
+00074 <span class="comment">  * available elsewhere.</span>
+00075 <span class="comment">  *</span>
+00076 <span class="comment">  * Revision 1.7  2000/02/24 20:00:23  abagchi</span>
+00077 <span class="comment">  * Swat for removing Log from API docs</span>
+00078 <span class="comment">  *</span>
+00079 <span class="comment">  * Revision 1.6  2000/02/16 20:29:20  aruna1</span>
+00080 <span class="comment">  * API Doc++ summary changes in</span>
+00081 <span class="comment">  *</span>
+00082 <span class="comment">  * Revision 1.5  2000/02/16 19:48:56  roddey</span>
+00083 <span class="comment">  * More documentation updates</span>
+00084 <span class="comment">  *</span>
+00085 <span class="comment">  * Revision 1.4  2000/02/15 01:21:30  roddey</span>
+00086 <span class="comment">  * Some initial documentation improvements. More to come...</span>
+00087 <span class="comment">  *</span>
+00088 <span class="comment">  * Revision 1.3  2000/02/09 19:47:27  abagchi</span>
+00089 <span class="comment">  * Added docs for startElement</span>
+00090 <span class="comment">  *</span>
+00091 <span class="comment">  * Revision 1.2  2000/02/06 07:47:48  rahulj</span>
+00092 <span class="comment">  * Year 2K copyright swat.</span>
+00093 <span class="comment">  *</span>
+00094 <span class="comment">  * Revision 1.1.1.1  1999/11/09 01:08:31  twl</span>
+00095 <span class="comment">  * Initial checkin</span>
+00096 <span class="comment">  *</span>
+00097 <span class="comment">  * Revision 1.3  1999/11/08 20:44:37  rahul</span>
+00098 <span class="comment">  * Swat for adding in Product name and CVS comment log variable.</span>
+00099 <span class="comment">  *</span>
+00100 <span class="comment">  */</span>
+00101 
+00102 
+00103 <span class="preprocessor">#if !defined(XMLDOCUMENTHANDLER_HPP)</span>
+<a name="l00104"></a><a class="code" href="XMLDocumentHandler_8hpp.html#a0">00104</a> <span class="preprocessor"></span><span class="preprocessor">#define XMLDOCUMENTHANDLER_HPP</span>
+00105 <span class="preprocessor"></span>
+00106 <span class="preprocessor">#include &lt;<a class="code" href="XercesDefs_8hpp.html">xercesc/util/XercesDefs.hpp</a>&gt;</span>
+00107 <span class="preprocessor">#include &lt;xercesc/util/RefVectorOf.hpp&gt;</span>
+00108 <span class="preprocessor">#include &lt;<a class="code" href="XMLAttr_8hpp.html">xercesc/framework/XMLAttr.hpp</a>&gt;</span>
+00109 
+00110 <a class="code" href="XercesDefs_8hpp.html#a2">XERCES_CPP_NAMESPACE_BEGIN</a>
+00111 
+<a name="l00112"></a><a class="code" href="XMLDocumentHandler_8hpp.html#a1">00112</a> <span class="keyword">class </span><a class="code" href="classXMLElementDecl.html">XMLElementDecl</a>;
+00113 <span class="keyword">class </span><a class="code" href="classXMLEntityDecl.html">XMLEntityDecl</a>;
+00114 
+<a name="l00123"></a><a class="code" href="classXMLDocumentHandler.html">00123</a> <span class="keyword">class </span><a class="code" href="XercesDefs_8hpp.html#a7"></a> <a class="code" href="classXMLDocumentHandler.html">XMLDocumentHandler</a>
+00124 {
+00125 <span class="keyword">public</span>:
+00126     <span class="comment">// -----------------------------------------------------------------------</span>
+00127     <span class="comment">//  Constructors are hidden, just the virtual destructor is exposed</span>
+00128     <span class="comment">// -----------------------------------------------------------------------</span>
+<a name="l00131"></a><a class="code" href="classXMLDocumentHandler.html#z360_0">00131</a> <span class="comment"></span>    <span class="keyword">virtual</span> ~<a class="code" href="classXMLDocumentHandler.html">XMLDocumentHandler</a>()
+00132     {
+00133     }
+00135 
+00158     <span class="keyword">virtual</span> <span class="keywordtype">void</span> docCharacters
+00159     (
+00160         <span class="keyword">const</span>   XMLCh* <span class="keyword">const</span>    chars
+00161         , <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    length
+00162         , <span class="keyword">const</span> <span class="keywordtype">bool</span>            cdataSection
+00163     ) = 0;
+00164 
+00172     <span class="keyword">virtual</span> <span class="keywordtype">void</span> docComment
+00173     (
+00174         <span class="keyword">const</span>   XMLCh* <span class="keyword">const</span>    comment
+00175     ) = 0;
+00176 
+00186     <span class="keyword">virtual</span> <span class="keywordtype">void</span> docPI
+00187     (
+00188         <span class="keyword">const</span>   XMLCh* <span class="keyword">const</span>    target
+00189         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>    data
+00190     ) = 0;
+00191 
+00199     <span class="keyword">virtual</span> <span class="keywordtype">void</span> endDocument() = 0;
+00200 
+00215     <span class="keyword">virtual</span> <span class="keywordtype">void</span> endElement
+00216     (
+00217         <span class="keyword">const</span>   <a class="code" href="classXMLElementDecl.html">XMLElementDecl</a>&amp; elemDecl
+00218         , <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    uriId
+00219         , <span class="keyword">const</span> <span class="keywordtype">bool</span>            isRoot
+00220         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>    prefixName = 0
+00221     ) = 0;
+00222 
+00230     <span class="keyword">virtual</span> <span class="keywordtype">void</span> endEntityReference
+00231     (
+00232         <span class="keyword">const</span>   <a class="code" href="classXMLEntityDecl.html">XMLEntityDecl</a>&amp;  entDecl
+00233     ) = 0;
+00234 
+00257     <span class="keyword">virtual</span> <span class="keywordtype">void</span> ignorableWhitespace
+00258     (
+00259         <span class="keyword">const</span>   XMLCh* <span class="keyword">const</span>    chars
+00260         , <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    length
+00261         , <span class="keyword">const</span> <span class="keywordtype">bool</span>            cdataSection
+00262     ) = 0;
+00263 
+00270     <span class="keyword">virtual</span> <span class="keywordtype">void</span> resetDocument() = 0;
+00271 
+00277     <span class="keyword">virtual</span> <span class="keywordtype">void</span> startDocument() = 0;
+00278 
+00296     <span class="keyword">virtual</span> <span class="keywordtype">void</span> startElement
+00297     (
+00298         <span class="keyword">const</span>   <a class="code" href="classXMLElementDecl.html">XMLElementDecl</a>&amp;         elemDecl
+00299         , <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>            uriId
+00300         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>            prefixName
+00301         , <span class="keyword">const</span> RefVectorOf&lt;XMLAttr&gt;&amp;   attrList
+00302         , <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>            attrCount
+00303         , <span class="keyword">const</span> <span class="keywordtype">bool</span>                    isEmpty
+00304         , <span class="keyword">const</span> <span class="keywordtype">bool</span>                    isRoot
+00305     ) = 0;
+00306 
+00314     <span class="keyword">virtual</span> <span class="keywordtype">void</span> startEntityReference(<span class="keyword">const</span> <a class="code" href="classXMLEntityDecl.html">XMLEntityDecl</a>&amp; entDecl) = 0;
+00315 
+00333     <span class="keyword">virtual</span> <span class="keywordtype">void</span> XMLDecl
+00334     (
+00335         <span class="keyword">const</span>   XMLCh* <span class="keyword">const</span>    versionStr
+00336         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>    encodingStr
+00337         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>    standaloneStr
+00338         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>    autoEncodingStr
+00339     ) = 0;
+00341 
+00342 
+00343 
+00344 <span class="keyword">protected</span> :
+00345     <span class="comment">// -----------------------------------------------------------------------</span>
+00346     <span class="comment">//  Hidden Constructors</span>
+00347     <span class="comment">// -----------------------------------------------------------------------</span>
+<a name="l00348"></a><a class="code" href="classXMLDocumentHandler.html#b0">00348</a>     <a class="code" href="classXMLDocumentHandler.html">XMLDocumentHandler</a>()
+00349     {
+00350     }
+00351 
+00352 
+00353 <span class="keyword">private</span>:
+00354     <span class="comment">// -----------------------------------------------------------------------</span>
+00355     <span class="comment">//  Unimplemented constructors and operators</span>
+00356     <span class="comment">// -----------------------------------------------------------------------</span>
+00357     <a class="code" href="classXMLDocumentHandler.html">XMLDocumentHandler</a>(<span class="keyword">const</span> <a class="code" href="classXMLDocumentHandler.html">XMLDocumentHandler</a>&amp;);
+00358     <span class="keywordtype">void</span> operator=(<span class="keyword">const</span> <a class="code" href="classXMLDocumentHandler.html">XMLDocumentHandler</a>&amp;);
+00359 };
+00360 
+00361 <a class="code" href="XercesDefs_8hpp.html#a3">XERCES_CPP_NAMESPACE_END</a>
+00362 
+00363 <span class="preprocessor">#endif</span>
+</pre></div>    </FONT></TD></TR></TABLE><BR>
+</TD></TR></TABLE></TD></TR></TABLE><BR><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD bgcolor="#0086b2"><IMG height="1" src="images/dot.gif" width="1" alt=""></TD></TR><TR><TD align="center"><FONT color="#0086b2" size="-1"><I>
+              Copyright &copy; 2000 The Apache Software Foundation.
+              All Rights Reserved.
+            </I></FONT></TD></TR></TABLE></BODY></HTML>

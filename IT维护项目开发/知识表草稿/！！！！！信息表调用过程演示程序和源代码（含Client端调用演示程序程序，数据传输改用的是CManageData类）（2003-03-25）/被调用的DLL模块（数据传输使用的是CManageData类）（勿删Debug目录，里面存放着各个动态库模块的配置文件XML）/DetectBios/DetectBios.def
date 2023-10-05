@@ -1,0 +1,11 @@
+; DetectBios.def : Declares the module parameters for the DLL.
+
+LIBRARY      "DetectBios"
+DESCRIPTION  'DetectBios Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here
+	InfoList								@1
+	DetectBIOSDate_DetectHardwareModule		@2
+	DetectBIOSType_DetectHardwareModule		@3
+	DetectBIOSID_DetectHardwareModule		@4

@@ -1,0 +1,7 @@
+; ISAM.def : declares the module parameters for the DLL.
+
+LIBRARY	     "ISAM"
+
+EXPORTS
+	HttpExtensionProc
+	GetExtensionVersion

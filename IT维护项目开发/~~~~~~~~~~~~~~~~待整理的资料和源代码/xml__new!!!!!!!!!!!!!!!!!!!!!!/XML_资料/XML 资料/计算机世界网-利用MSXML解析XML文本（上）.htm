@@ -1,0 +1,681 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0048)http://www.ccw.com.cn/htm/app/aprog/01_1_1_2.asp -->
+<HTML><HEAD><TITLE>计算机世界网-利用MSXML解析XML文本</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<STYLE>.a14 {
+	FONT-SIZE: 14px; TEXT-INDENT: 25px; LINE-HEIGHT: 20px
+}
+.f {
+	FONT-SIZE: 18px; COLOR: #0f3ccd
+}
+IMG {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px
+}
+TD {
+	FONT-SIZE: 12px; font-fammily: verdana,宋体
+}
+P {
+	FONT-SIZE: 12px; font-fammily: verdana,宋体
+}
+INPUT {
+	FONT-SIZE: 12px; font-fammily: verdana,宋体
+}
+A:link {
+	COLOR: black; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #80006f; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: black; TEXT-DECORATION: underline
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1126" name=GENERATOR></HEAD>
+<BODY leftMargin=0 topMargin=2>
+<CENTER>
+<TABLE cellSpacing=0 cellPadding=0 width=760 align=center>
+  <TBODY>
+  <TR>
+    <TD rowSpan=3><IMG src="计算机世界网-利用MSXML解析XML文本（上）.files/left_ccwlogo.gif" 
+      border=0></TD>
+    <TD colSpan=3><IMG hspace=5 src="计算机世界网-利用MSXML解析XML文本（上）.files/top.gif" 
+      useMap=#t border=0> </TD></TR>
+  <TR>
+    <TD><IMG hspace=5 src="计算机世界网-利用MSXML解析XML文本（上）.files/app.gif" vspace=5 
+      border=0></TD>
+    <TD align=left>
+      <TABLE height=60 width=118 bgColor=#c2c2c2>
+        <TBODY>
+        <TR>
+          <TD vAlign=center align=middle><A 
+            href="mailto:app@ccw.com.cn">我要投稿</A><BR><A 
+            href="mailto:app@ccw.com.cn">读编往来</A><BR><A 
+            href="javascript:AddBookMark('计算机世界网应用与方案首页')">加入收藏夹</A> 
+        <BR></TD></TR></TBODY></TABLE></TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD vAlign=bottom width=627 colSpan=3><IMG 
+      src="计算机世界网-利用MSXML解析XML文本（上）.files/top1.gif" useMap=#F border=0></TD></TR>
+  <TR>
+    <TD colSpan=4><IMG height=3 src="计算机世界网-利用MSXML解析XML文本（上）.files/line1.gif" 
+      width=758 vspace=2></TD></TR></TBODY></TABLE><MAP name=t><AREA shape=RECT 
+  coords=20,1,50,19 href="http://www.ccw.com.cn/"><AREA shape=RECT 
+  coords=76,1,155,19 href="http://www.ccw.com.cn/news1/"><AREA shape=RECT 
+  coords=182,1,260,19 href="http://www.ccw.com.cn/produ/"><AREA shape=RECT 
+  coords=286,1,366,19 href="http://www.ccw.com.cn/app/"><AREA shape=RECT 
+  coords=392,1,471,19 href="http://www.ccw.com.cn/net/"><AREA shape=RECT 
+  coords=497,1,575,19 href="http://www.ccw.com.cn/market/"><AREA shape=RECT 
+  coords=73,22,126,40 href="http://www.ccw.com.cn/work/"><AREA shape=RECT 
+  coords=156,22,216,40 href="http://www.ccw.com.cn/search/"><AREA shape=RECT 
+  coords=248,22,313,40 href="http://www.ccw.com.cn/game/"><AREA shape=RECT 
+  coords=348,22,428,40 href="http://www.ccw.com.cn/serv/"><AREA shape=RECT 
+  coords=463,22,532,40 href="http://www2.ccw.com.cn/"></MAP><MAP name=F><AREA 
+  shape=RECT coords=9,7,83,19 href="http://www.ccw.com.cn/app/forum/"><AREA 
+  shape=RECT coords=121,8,186,19 href="http://www.ccw.com.cn/app/china/"><AREA 
+  shape=RECT coords=225,5,281,20 href="http://www.ccw.com.cn/app/road/"><AREA 
+  shape=RECT coords=323,6,392,19 href="http://www.ccw.com.cn/app/service/"><AREA 
+  shape=RECT coords=433,9,495,17 href="http://www.ccw.com.cn/app/aprog/"><AREA 
+  shape=RECT coords=536,5,589,18 href="http://www.ccw.com.cn/app/salon/"></MAP>
+<TABLE width=680 align=center>
+  <TBODY>
+  <TR>
+    <TD align=middle><BR>
+      <H2><FONT color=#0f3ccd>利用MSXML解析XML文本</FONT></H2><BR><B>浙江大学人工智能研究所 
+      胡朝晖</B> <BR>
+      <HR width=660 color=#f46240 SIZE=1>
+    </TD></TR></TBODY></TABLE><BR>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>XML DOM 
+      (文档对象模型)对象提供了一个标准的方法来操作存储在XML文档中的信息，这就是DOM应用编程接口（API）函数。它是应用程序和XML文档之间的桥梁。DOM包含两个关键的抽象概念：一个是树状的层次结构，另一个是用来表示文档内容和结构的节点集合。树状层次包括了所有节点，节点本身也可以包含其他的节点。这样的好处是可以通过这个层次结构来找到并修改某一特定节点的信息。 
+    </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD 
+      class=a14>微软的MSXML解析器读取一个XML文档，然后把它的内容解析到一个抽象的信息容器中，该信息容器被称为节点（NODES）。这些节点代表文档的结构和内容，并允许应用程序来操作文档中的信息而不需要知道XML的语义。一个文档被解析后，它的节点能够在任何时候被浏览而不需要保持一定的顺序。 
+    </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>对开发人员来说，最重要的编程对象是DOMDocument。 
+      DOMDocument对象通过暴露的属性和方法来允许浏览、查询和修改XML文档的内容和结构。 </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>本文主要介绍DOM的结构和应用，同时用VC编程语言给出了通过MSXML进行XML解析的实例。 
+</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14><B>DOMDocument对象的结构和应用</B> </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>文档对象的创建 </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>HRESULT hr;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>IXMLDomDocument＊ pXMLDoc;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>IXMLDOMNode＊ pXDN;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>//COM的初始化</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>Hr=CoInitialize(NULL); </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>/＊得到关于IXMLDOMDocument</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>接口的指针pXMLDOC＊/</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD 
+class=a14>hr=CoCreateInstance(CLSID_DOMDocument,NULL,</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD 
+class=a14>CLSCTX_INPPROC_SERVER,IID_IXMLDOMDocument,</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>(void＊＊)＆pXMLDoc); </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>//得到关于IXMLDOMNode接口的指针pXDN</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD 
+class=a14>hr=pXMLDoc－&gt;QueryInterface(IID_IXMLDOM</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>Node,(void＊＊)＆pXDN);</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD 
+      class=a14>在MSXML解析器的使用过程中，我们可以使用文档中的CreateElement方法创建一个节点来装载和保存XML文件，也可以通过Load或者是 
+      LoadXML方法从一个指定的URL来装载一个XML文档。Load(LoadXML)方法带有两个参数：第一个参数xmlSource表示需要被解析的文档，第二个参数isSuccessful表示文档装载是否成功。 
+    </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>文档对象的保存 </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD 
+      class=a14>Save方法是用来把文档保存到一个指定的位置。Save方法中参数destination用来表示需要被保存的对象的类型，对象可以是一个文件、一个ASP 
+      Response方法、一个XML文档对象，或者是一个能够支持持久保存（persistence）的客户对象。下面是使用Save方法的一个例子程序的部分代码： 
+    </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>BOOL DOMDocSaveLocation()</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>{</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>BOOL bResult = FALSE;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>IXMLDOMDocument ＊pIXMLDOMDocument = 
+NULL;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>HRESULT hr;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>try</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>{</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>_variant_t varString = 
+_T(“D:\\sample.xml");</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>/＊ 这里省略了创建一个DOMDocument</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>对象和装载XML文档的代码＊/</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>//将文档保存到D:\\sample.xml中去</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>hr=pIXMLDOMDocument－&gt;save(varString); 
+</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if(SUCCEEDED(hr))</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>bResult = TRUE;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>}</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>catch(...)</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>{</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>DisplayErrorToUser();</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>/＊这里省略了释放对IXMLDOMDocument</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>接口的引用的代码＊/</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>}</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>return bResult;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>}</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>设置解析标志 </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD 
+      class=a14>在解析过程中，我们需要得到和设置解析标志。利用不同的解析标志，我们可以用不同的方法来解析一个XML文档。XML标准允许解析器验证或者不验证文档，允许不验证文档的解析过程跳过对外部资源的提取，还可以设置标志来表明是否要从文档中移去多余的空格。DOMDocument对象暴露了如下几个属性，允许用户在运行的时候利用它们改变解析器的行为。 
+    </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>1.Async属性方法：get_Async和put_Async。 </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>2.ValidateOnParse属性方法：get_ValidateOnParse和 
+      put_ValidateOnParse。 </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>3.ResolveExternals属性方法：get_ ResolveExternals和put_ 
+      ResolveExternals。 </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>4.PreserveWhiteSpace属性方法：get_ PreserveWhiteSpace和put_ 
+      PreserveWhiteSpace。 </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD 
+      class=a14>每一个属性可以接受或者返回一个Boolean值。缺省情况下，Async、ValidateOnParse、ResolveExternals的值为TRUE，PreserveWhiteSpace的值跟 
+      XML文档的设置有关，如果XML文档中设置了xml:space属性的话，该值为FALSE。 </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>在文档解析过程中可以收集到以下的信息： </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>1.doctype(文档类型)：是用来定义文档格式的DTD文件。如果XML文档没有相关的 
+      DTD文档的话，它就返回NULL。 </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>2.implementation(实现)：表示该文档的实现，用来指出当前文档所支持的XML的版本。 
+  </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>3.parseError(解析错误)：指出在解析过程中最后所发生的错误。 </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>4.readyState(状态信息)：表示XML文档的状态信息。readyState对于异步使用微软的XML 
+      解析器来说重要的作用是提高了性能。当异步装载XML文档的时候，程序可能需要检查解析的状态，MSXML提供了4个状态，分别为正在状态、已经状态、正在解析和解析完成。 
+    </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD 
+      class=a14>5.url(统一资源定位)：表示正在被装载和解析的XML文档的URL的情况。如果该文档是在内存中建立的话，这个属性返回NULL值。</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>节点的操作 </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD 
+      class=a14>在得到文档树结构以后，我们可以操作树中的每一个节点，一般通过两个方法得到树中的节点，分别为nodeFromID和getElementsByTagName。 
+    </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD 
+      class=a14>nodeFromID包括两个参数，第一个参数idString用来表示ID值，第二个参数node返回指向和该ID相匹配的节点的接口指针。根据XML的技术规定，每一个XML文档中的ID值必须是唯一的，而且一个元素（element）只能和一个ID 
+      相关联。 </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>getElementsByTagName方法有两个参数，第一个参数 
+      tagName表示需要查找的元素(Element)名称，如果tagName为“＊”则返回文档中所有的元素。第二个参数为resultList,它实际是指向接口IXMLDOMNodeList的指针，用来返回和 
+      tagName(标签名字)相关的所有节点的集合。 </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>下面是相关例子程序的部分代码： </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>IXMLDOMDocument ＊pIXMLDOMDocument = NULL; 
+</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>wstring strFindText (_T(“author"));</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>IXMLDOMNodeList ＊pIDOMNodeList = NULL;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>IXMLDOMNode ＊pIDOMNode = NULL;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>long value;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>BSTR bstrItemText;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>HRESULT hr;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>try</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>{</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>/＊此处省略创建一个DOMDocument</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>文档对象并装载具体文档的代码＊/</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>/＊下面的代码用来得到一个和标签名称</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>author相关的所有节点的集合＊/</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>//是否正确地得到了指向IDOMNodeList的指针</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD 
+class=a14>hr=pIXMLDOMDocument－&gt;getElementsByTagName</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>((TCHAR＊)strFindText.data(), 
+＆pIDOMNodeList);</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>SUCCEEDED(hr) ? 0 : throw hr; </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>//得到所包含的节点的个数 </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>hr = pIDOMNodeList－&gt;get_length(＆value); 
+</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if(SUCCEEDED(hr))</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>{</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>pIDOMNodeList－&gt;reset();</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>for(int ii = 0; ii &lt; value; ii＋＋)</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>{</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>//得到具体的一个节点</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>pIDOMNodeList－&gt;get_item(ii，＆pIDOM</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>Node); </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if(pIDOMNode )</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>{</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>//得到该节点相关的文本信息</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>pIDOMNode－&gt;get_text(＆bstrItemText);</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>::MessageBox(NULL, bstrItemText,</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>strFindText.data(), MB_OK);</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>pIDOMNode－&gt;Release();</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>pIDOMNode = NULL;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>}</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>}</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>}</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>pIDOMNodeList－&gt;Release();</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>pIDOMNodeList = NULL;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>}</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>catch(...)</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>{</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if(pIDOMNodeList)</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>pIDOMNodeList－&gt;Release();</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if(pIDOMNode)</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>pIDOMNode－&gt;Release();</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>DisplayErrorToUser();</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>}</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>可以通过方法CreateNode来创建一个新的节点。 
+      CreateNode包括4个参数，第一个参数type表示要创建的节点的类型，第二个参数name表示新节点的nodeName的值，第三个参数namespaceURI表示和该节点相关的名字空间，第四个参数node表示新创建的节点。可以通过使用已经提供的类型(type)、名称(name)和名字空间(nodeName)来创建一个新节点。 
+    </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD 
+      class=a14>当一个节点被创建的时候，它实际上是在一个名字空间范围（如果已经提供了名字空间的话）内被创建的。如果没有提供名字空间的话，它实际上是在文档的名字空间范围内被创建的。</TD></TR></TBODY></TABLE><BR>
+<CENTER>
+<P>共2页&nbsp;&nbsp;<A 
+href="http://www.ccw.com.cn/htm/app/aprog/01_1_1_2_2.asp">下一页</A> </P></CENTER>
+<TABLE width=680 align=center>
+  <TBODY>
+  <TR>
+    <TD>
+      <HR width=660 color=#f46240 SIZE=1>
+    </TD></TR></TBODY></TABLE><BR>
+<P align=center>Copyright(C) ccw.com.cn,All rights reserved</P>
+<P align=center><B>中国计算机世界出版服务公司版权所有</B></P></CENTER></BODY></HTML>

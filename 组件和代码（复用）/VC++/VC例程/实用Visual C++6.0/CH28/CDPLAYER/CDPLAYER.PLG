@@ -1,0 +1,40 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: CDPlayer - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/CDPlayer.res" /d "_DEBUG" /d "_AFXDLL" "H:\工作中的书\kh\translate\Visual C++\program\ch28\CDPlayer\CDPlayer.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPF213.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/CDPlayer.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"H:\工作中的书\kh\translate\Visual C++\program\ch28\CDPlayer\CDPlayer.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch28\CDPlayer\CDPlayerDlg.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPF213.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPF214.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/CDPlayer.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"H:\工作中的书\kh\translate\Visual C++\program\ch28\CDPlayer\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPF214.TMP" 
+Creating command line "link.exe winmm.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/CDPlayer.pdb" /debug /machine:I386 /out:"Debug/CDPlayer.exe" /pdbtype:sept  ".\Debug\CDPlayer.obj" ".\Debug\CDPlayerDlg.obj" ".\Debug\StdAfx.obj" ".\Debug\CDPlayer.res" "
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+CDPlayer.cpp
+CDPlayerDlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+CDPlayer.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

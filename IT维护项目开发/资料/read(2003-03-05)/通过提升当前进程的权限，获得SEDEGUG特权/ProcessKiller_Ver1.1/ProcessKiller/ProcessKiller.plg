@@ -1,0 +1,60 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ProcessKiller - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/ProcessKiller.res" /d "_DEBUG" /d "_AFXDLL" "F:\new stuff(2003-03-05)\download\通过提升当前进程的权限，获得SEDEGUG特权\ProcessKiller_Ver1.1\ProcessKiller\ProcessKiller.rc"" 
+Creating temporary file "E:\TEMP\RSPE1.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/ProcessKiller.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\new stuff(2003-03-05)\download\通过提升当前进程的权限，获得SEDEGUG特权\ProcessKiller_Ver1.1\ProcessKiller\ListCtrlEx.cpp"
+"F:\new stuff(2003-03-05)\download\通过提升当前进程的权限，获得SEDEGUG特权\ProcessKiller_Ver1.1\ProcessKiller\ProcessFunction.cpp"
+"F:\new stuff(2003-03-05)\download\通过提升当前进程的权限，获得SEDEGUG特权\ProcessKiller_Ver1.1\ProcessKiller\ProcessKiller.cpp"
+"F:\new stuff(2003-03-05)\download\通过提升当前进程的权限，获得SEDEGUG特权\ProcessKiller_Ver1.1\ProcessKiller\ProcessKillerDlg.cpp"
+"F:\new stuff(2003-03-05)\download\通过提升当前进程的权限，获得SEDEGUG特权\ProcessKiller_Ver1.1\ProcessKiller\PSAPI.cpp"
+"F:\new stuff(2003-03-05)\download\通过提升当前进程的权限，获得SEDEGUG特权\ProcessKiller_Ver1.1\ProcessKiller\ShowListDlg.cpp"
+]
+Creating command line "cl.exe @E:\TEMP\RSPE1.tmp" 
+Creating temporary file "E:\TEMP\RSPE2.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/ProcessKiller.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\new stuff(2003-03-05)\download\通过提升当前进程的权限，获得SEDEGUG特权\ProcessKiller_Ver1.1\ProcessKiller\StdAfx.cpp"
+]
+Creating command line "cl.exe @E:\TEMP\RSPE2.tmp" 
+Creating temporary file "E:\TEMP\RSPE3.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/ProcessKiller.pdb" /debug /machine:I386 /out:"Debug/ProcessKiller.exe" /pdbtype:sept 
+".\Debug\ListCtrlEx.obj"
+".\Debug\ProcessFunction.obj"
+".\Debug\ProcessKiller.obj"
+".\Debug\ProcessKillerDlg.obj"
+".\Debug\PSAPI.obj"
+".\Debug\ShowListDlg.obj"
+".\Debug\StdAfx.obj"
+".\Debug\ProcessKiller.res"
+]
+Creating command line "link.exe @E:\TEMP\RSPE3.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+ListCtrlEx.cpp
+ProcessFunction.cpp
+ProcessKiller.cpp
+ProcessKillerDlg.cpp
+PSAPI.cpp
+ShowListDlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+ProcessKiller.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

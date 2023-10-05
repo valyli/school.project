@@ -1,0 +1,731 @@
+// DHCGBoardDemoView.cpp : implementation of the CDHCGBoardDemoView class
+//
+
+#include "stdafx.h"
+#include "DHCGBoardDemo.h"
+#include "cgparasetup.h"
+#include "DHCGBoardDemoDoc.h"
+#include "DHCGBoardDemoView.h"
+#include "averageNumdlg.h"
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+// CDHCGBoardDemoView
+
+IMPLEMENT_DYNCREATE(CDHCGBoardDemoView, CScrollView)
+
+BEGIN_MESSAGE_MAP(CDHCGBoardDemoView, CScrollView)
+	//{{AFX_MSG_MAP(CDHCGBoardDemoView)
+	ON_WM_ERASEBKGND()
+	ON_WM_MOVE()
+	ON_WM_SIZE()
+	ON_COMMAND(ID_CGCARD_ATUOFORMAT, OnCgcardAtuoformat)
+	ON_COMMAND(ID_CGCARD_CG210PARA, OnCgcardCg210para)
+	ON_COMMAND(ID_CGCARD_MEM, OnCgcardMem)
+	ON_COMMAND(ID_CGCARD_MODE_DIRECTX, OnCgcardModeDirectx)
+	ON_COMMAND(ID_CGCARD_MODE_SCREEN, OnCgcardModeScreen)
+	ON_COMMAND(ID_CGCARD_PARAM, OnCgcardParam)
+	ON_COMMAND(ID_CGCARD_SNAP, OnCgcardSnap)
+	ON_COMMAND(ID_CGBOARDPLAY, OnCgboardplay)
+	ON_UPDATE_COMMAND_UI(ID_CGCARD_CG210PARA, OnUpdateCgcardCg210para)
+	ON_UPDATE_COMMAND_UI(ID_CGCARD_MODE_DIRECTX, OnUpdateCgcardModeDirectx)
+	ON_UPDATE_COMMAND_UI(ID_CGCARD_MODE_SCREEN, OnUpdateCgcardModeScreen)
+	ON_UPDATE_COMMAND_UI(ID_CGBOARDPLAY, OnUpdateCgboardplay)
+	//}}AFX_MSG_MAP
+	// Standard printing commands
+	ON_COMMAND(ID_FILE_PRINT, CScrollView::OnFilePrint)
+	ON_COMMAND(ID_FILE_PRINT_DIRECT, CScrollView::OnFilePrint)
+	ON_COMMAND(ID_FILE_PRINT_PREVIEW, CScrollView::OnFilePrintPreview)
+END_MESSAGE_MAP()
+
+/////////////////////////////////////////////////////////////////////////////
+// CDHCGBoardDemoView construction/destruction
+
+CDHCGBoardDemoView::CDHCGBoardDemoView()
+{
+	// TODO: add construction code here
+	m_bFreeze=true;
+	m_bDDraw=false;
+}
+
+CDHCGBoardDemoView::~CDHCGBoardDemoView()
+{
+	//	delete pScrnBMP;
+	//	delete pScrnImageMemDC;
+	if(!m_bFreeze)
+	{
+		if(!m_bDDraw)
+			cgBoard.SetCgBoardLiveOrFreeze(false);
+		else
+			cgBoard.DDrawSample(false);
+	}
+	cgBoard.SetInputVideoRect(InputVideoRect);
+	cgBoard.CloseCgBoard();
+}
+
+BOOL CDHCGBoardDemoView::PreCreateWindow(CREATESTRUCT& cs)
+{
+	if(!cgBoard.InitialCgBoard(ID_DHCG200,false,NULL))
+	{
+		if(AfxMessageBox("Í¼Ïó¿¨³õÊ¼Ê§°Ü£¬ÊÇ·ñÍË³ö£¿",MB_OKCANCEL|MB_ICONWARNING,NULL)==IDOK)
+			SendMessage(WM_CLOSE);
+	}
+	InitInputVideoRect();
+	return CScrollView::PreCreateWindow(cs);
+
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// CDHCGBoardDemoView drawing
+
+void CDHCGBoardDemoView::OnDraw(CDC* pDC)
+{
+	CDHCGBoardDemoDoc* pDoc = GetDocument();
+	ASSERT_VALID(pDoc);
+	// TODO: add draw code for native data here
+	if(m_bFreeze)
+	{
+		if(pDoc->hdib!=NULL)
+		{
+			CRect lprect;
+			//	GetClientRect(lprect);
+			CSize size;
+			DIBSize(pDoc->hdib,&size);
+			SetScrollSizes(MM_TEXT, size);
+			lprect.SetRectEmpty();
+			lprect.right=size.cx;
+			lprect.bottom=size.cy;
+			PaintDIB(pDC->GetSafeHdc(),lprect,pDoc->hdib,lprect,NULL);
+		}
+	}
+}
+
+void CDHCGBoardDemoView::OnInitialUpdate()
+{
+	CScrollView::OnInitialUpdate();
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// CDHCGBoardDemoView printing
+
+BOOL CDHCGBoardDemoView::OnPreparePrinting(CPrintInfo* pInfo)
+{
+	// default preparation
+
+	return DoPreparePrinting(pInfo);
+}
+
+void CDHCGBoardDemoView::OnBeginPrinting(CDC* /*pDC*/, CPrintInfo* /*pInfo*/)
+{
+	
+}
+
+void CDHCGBoardDemoView::OnEndPrinting(CDC* /*pDC*/, CPrintInfo* /*pInfo*/)
+{
+	// TODO: add cleanup after printing
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// CDHCGBoardDemoView diagnostics
+
+#ifdef _DEBUG
+void CDHCGBoardDemoView::AssertValid() const
+{
+	CScrollView::AssertValid();
+}
+
+void CDHCGBoardDemoView::Dump(CDumpContext& dc) const
+{
+	CScrollView::Dump(dc);
+}
+
+CDHCGBoardDemoDoc* CDHCGBoardDemoView::GetDocument() // non-debug version is inline
+{
+	ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(CDHCGBoardDemoDoc)));
+	return (CDHCGBoardDemoDoc*)m_pDocument;
+}
+#endif //_DEBUG
+
+/////////////////////////////////////////////////////////////////////////////
+// CDHCGBoardDemoView message handlers
+
+BOOL CDHCGBoardDemoView::OnEraseBkgnd(CDC* pDC) 
+{
+	// TODO: Add your message handler code here and/or call default
+	CBrush br;
+	br.CreateHatchBrush(HS_DIAGCROSS, RGB(0, 0, 0));
+	CRect rec;
+	GetClientRect(&rec);
+	pDC->FillRect(&rec, &br);
+	return true;
+}
+
+void CDHCGBoardDemoView::OnMove(int x, int y) 
+{
+	CScrollView::OnMove(x, y);
+	OnChangeViewSize();
+}
+
+void CDHCGBoardDemoView::OnSize(UINT nType, int cx, int cy) 
+{
+	CScrollView::OnSize(nType, cx, cy);
+	OnChangeViewSize();
+}
+
+ void CDHCGBoardDemoView::OnCgboardplay() 
+ {
+ 	CDHCGBoardDemoDoc* pDoc = GetDocument();
+ 		ASSERT_VALID(pDoc);
+ 	if(!m_bFreeze)
+ 	{
+ 		if(!m_bDDraw)
+ 			cgBoard.SetCgBoardLiveOrFreeze(FALSE);
+ 		else
+ 			cgBoard.DDrawSample(false);
+ 		m_bFreeze=true;
+ 		
+ 		if(pDoc->hdib!=NULL)
+ 			pDoc->FreeDIBHandle();
+ 		int avr=cgBoard.GetAverageNum();
+ 		cgBoard.SetAverageNum(1);
+ 		CRect rect;
+ 		cgBoard.GetInputVideoRect(rect);
+ 		cgBoard.SetInputVideoRect(InputVideoRect);
+ 		cgBoard.SetCgBoardLiveOrFreeze(FALSE);
+ 		cgBoard.DhBoardCaptureImage(pDoc->hdib);
+ 		cgBoard.SetInputVideoRect(rect);
+ 		cgBoard.SetAverageNum(avr);
+ 		pDoc->UpdateAllViews(NULL);
+ 		
+ 	}
+ 	else
+ 	{
+ 		if(pDoc->hdib!=NULL)
+ 			pDoc->FreeDIBHandle();
+ 		pDoc->UpdateAllViews(NULL);
+ 		if(!m_bDDraw)
+ 		{
+ 			OnChangeViewSize();
+ 			cgBoard.SetCgBoardLiveOrFreeze(true);
+ 		}
+ 		else
+ 		{
+ 			OnChangeViewSize();
+ 			cgBoard.DDrawSample(true);
+ 		}
+ 			m_bFreeze=false;
+ 	}	
+ }
+
+void CDHCGBoardDemoView::OnChangeViewSize()
+{
+	if(!m_bDDraw)
+	{
+		CRect VideoRect;
+		GetClientRect(&VideoRect);
+		MapWindowPoints(NULL,&VideoRect);		
+		int leftmove=GetScrollPos(SB_HORZ);
+		int topmove=GetScrollPos(SB_VERT);
+		CRect rectInput;
+		while(leftmove%2)
+			++leftmove;
+		if(topmove%2)
+			++topmove;
+		SetScrollPos(SB_HORZ,leftmove,true);
+		SetScrollPos(SB_VERT,topmove,true);
+		rectInput=InputVideoRect;
+		rectInput.left=leftmove+InputVideoRect.left;
+		
+		rectInput.top=topmove+InputVideoRect.top;
+		int moveleft=0;
+		int movetop=0;
+		if(VideoRect.left<0)
+		{
+			rectInput.left-=VideoRect.left;
+			moveleft-=VideoRect.left;
+			VideoRect.left=0;
+		}
+		if(VideoRect.top<0)
+		{
+			rectInput.top-=VideoRect.top;
+			movetop-=VideoRect.top;
+			VideoRect.left=0;
+		}
+		if( VideoRect.Width() && VideoRect.Height() )
+		{
+			if( cgBoard.m_CVideoCGPara.bClip )
+			{
+				if(rectInput.Width()>VideoRect.Width())
+					rectInput.right=VideoRect.Width()+rectInput.left;
+				if(rectInput.Height()>VideoRect.Height())
+					rectInput.bottom=VideoRect.Height()+rectInput.top;
+				VideoRect.right=VideoRect.left+rectInput.Width();
+				VideoRect.bottom=VideoRect.top+rectInput.Height();
+
+			}
+			HDC pdc=::GetDC(NULL);
+			DWORD width=GetDeviceCaps(pdc,HORZRES);
+			if((DWORD)VideoRect.right>width)
+				VideoRect.right=width;
+			DWORD hight=GetDeviceCaps(pdc,VERTRES);
+			if((DWORD)VideoRect.bottom>hight)
+				VideoRect.bottom=hight;
+			::ReleaseDC(NULL,pdc);
+			hight-=1;
+			if(hight<(DWORD)VideoRect.top)
+			{
+				cgBoard.SetCgBoardLiveOrFreeze(false);
+				return;
+			}
+			while(rectInput.Width()%4)
+				++rectInput.right;	
+			if(VideoRect.Width()==1||VideoRect.Height()==1)
+			{
+				cgBoard.SetCgBoardLiveOrFreeze(false);
+				return;
+			}
+			cgBoard.SetInputVideoRect(rectInput);
+			cgBoard.SetVisualVideoRect(VideoRect);//
+			cgBoard.SetCgBoardLiveOrFreeze(!m_bFreeze);
+			return;
+		}
+		else
+		{
+			cgBoard.SetCgBoardLiveOrFreeze(false);
+			m_bFreeze=true;
+		}
+	}
+	else
+	{
+		CRect VideoRect;
+		GetClientRect(&VideoRect);	
+		int leftmove=GetScrollPos(SB_HORZ);
+		int topmove=GetScrollPos(SB_VERT);
+		CRect rectInput;
+		while(leftmove%4)
+			++leftmove;
+		if(topmove%2)
+			++topmove;
+		SetScrollPos(SB_HORZ,leftmove,true);
+		SetScrollPos(SB_VERT,topmove,true);
+		rectInput=InputVideoRect;
+		rectInput.left=leftmove+InputVideoRect.left;
+		rectInput.top=topmove+InputVideoRect.top;
+
+		if( VideoRect.Width() && VideoRect.Height() )
+		{
+			if(rectInput.Width()>VideoRect.Width())
+				rectInput.right=VideoRect.Width()+rectInput.left;
+			if(rectInput.Height()>VideoRect.Height())
+				rectInput.bottom=VideoRect.Height()+rectInput.top;
+			VideoRect.right=rectInput.Width();
+			VideoRect.bottom=rectInput.Height();
+			while(rectInput.Width()%4)
+				--rectInput.right;	
+			while(VideoRect.Width()%4)
+				--VideoRect.right;
+			while(rectInput.Height()%2)
+				--rectInput.bottom;
+			while(VideoRect.Height()%2)
+				--VideoRect.bottom;
+			if(VideoRect.Width()==1||VideoRect.Height()==1)
+			{
+				cgBoard.SetCgBoardLiveOrFreeze(false);
+				return;
+			}
+			cgBoard.SetInputVideoRect(rectInput);
+			cgBoard.SetVisualVideoRect(VideoRect);//
+		
+			cgBoard.DDrawSample(!m_bFreeze);
+			return;
+			//	CG200SetDispWindow(hcg200, (int)VideoRect.left, (int)VideoRect.top, VideoRect.Width(), VideoRect.Height());
+		}
+		else
+		{
+			cgBoard.SetCgBoardLiveOrFreeze(false);
+			m_bFreeze=true;
+		}
+	}
+}
+
+HANDLE CDHCGBoardDemoView::ReadDispWindowToHandle()
+{
+	HANDLE ret=NULL;
+
+	CDC* pDC=GetDC();
+	CRect rect;
+	cgBoard.GetVisualVideoRect(rect);//
+	InitDIBBuffers(ret,rect.Width(),rect.Height(),24);
+	DWORD size=rect.Width()*rect.Height()*3L;
+	HANDLE temp=GlobalAlloc(GHND, size);
+	BYTE* lpdata=(BYTE *)GlobalLock(temp);
+	if(ReadDispWindow(pDC->GetSafeHdc(),0,0 ,rect.Width(),rect.Height(),lpdata))
+	{
+		if(lpdata!=NULL)
+			ScreenBufferToDIB(lpdata,&ret);
+	}
+	::GlobalUnlock(temp);
+	::GlobalFree(temp);
+	return ret;
+}
+
+BOOL CDHCGBoardDemoView::OnScroll(UINT nScrollCode, UINT nPos, BOOL bDoScroll) 
+{
+	if(!m_bFreeze)
+	{
+	OnChangeViewSize();
+	}
+	return CScrollView::OnScroll(nScrollCode, nPos, bDoScroll);
+}
+
+void CDHCGBoardDemoView::InitInputVideoRect()
+{
+	cgBoard.GetInputVideoRect(InputVideoRect);
+	CSize size;
+	size.cx=InputVideoRect.Width();//
+	size.cy=InputVideoRect.Height();
+	SetScrollSizes(MM_TEXT,size);
+}
+
+void CDHCGBoardDemoView::InitVisualVideoRect(bool bToScreen)
+{
+	
+	CRect VideoRect;
+	cgBoard.GetVisualVideoRect(VideoRect);
+	if(bToScreen)
+		MapWindowPoints(NULL,VideoRect);
+	else
+	{
+		CRect rect;
+		rect.SetRectEmpty();
+		rect.bottom=VideoRect.Height();
+		rect.right=VideoRect.Width();
+		VideoRect=rect;
+	}
+	cgBoard.SetVisualVideoRect(VideoRect);
+}
+
+void CDHCGBoardDemoView::OnCgcardAtuoformat() 
+{
+	cgBoard.DhBoardSetColorSpaceToScreen();
+	cgBoard.SetCgBoardLiveOrFreeze(false);
+}
+
+void CDHCGBoardDemoView::OnCgcardCg210para() 
+{
+	if(cgBoard.GetCGBoardType())
+	{
+		CG210AdvaceParaSetup(cgBoard.GetCGBoardHandle(),cgBoard.GetCGBoardType(),
+		 cgBoard.m_CVideoCGPara	);
+	}
+}
+
+void CDHCGBoardDemoView::OnCgcardMem() 
+{
+	if(m_bFreeze)
+	{
+		CAverageNumDlg* NumDlg;
+		NumDlg=new CAverageNumDlg;
+		NumDlg->m_avernum=cgBoard.GetAverageNum();
+		NumDlg->m_nMaxNum=cgBoard.GetMaxAverageNum();
+		if(NumDlg->DoModal()==IDOK)
+		{
+			cgBoard.SetAverageNum(NumDlg->m_avernum);
+			CDHCGBoardDemoDoc* pDoc = GetDocument();
+			ASSERT_VALID(pDoc);
+			if(pDoc->hdib!=NULL)
+				pDoc->FreeDIBHandle();
+			cgBoard.DhBoardCaptureImage(pDoc->hdib);
+			pDoc->UpdateAllViews(NULL);
+		}
+		delete NumDlg;
+	}
+	
+}
+
+void CDHCGBoardDemoView::OnCgcardModeDirectx() 
+{
+	if(!m_bDDraw)
+	{
+		if(!m_bFreeze)
+			cgBoard.SetCgBoardLiveOrFreeze(false);
+		m_bFreeze=true;
+		HWND hwnd;//=::GetActiveWindow();
+		CDC* pDC=GetDC();
+		CWnd* wnd=pDC->GetWindow();
+		hwnd=wnd->GetSafeHwnd();
+		if(!cgBoard.InitialCgBoard(ID_DHCG200,true,hwnd))
+		{
+			if(AfxMessageBox("Í¼Ïó¿¨³õÊ¼Ê§°Ü£¬ÊÇ·ñÍË³ö£¿",MB_OKCANCEL|MB_ICONWARNING,NULL)==IDOK)
+				SendMessage(WM_CLOSE);
+		}
+		InitVisualVideoRect(false);
+
+		m_bDDraw=true;
+	}
+}
+
+void CDHCGBoardDemoView::OnCgcardModeScreen() 
+{
+	if(m_bDDraw)
+	{
+		if(!m_bFreeze)
+			cgBoard.DDrawSample(false);
+		m_bFreeze=true;
+		//	cgBoard.CloseCgBoard();
+		if(!cgBoard.InitialCgBoard(ID_DHCG200,false,NULL))
+		{
+			if(AfxMessageBox("Í¼Ïó¿¨³õÊ¼Ê§°Ü£¬ÊÇ·ñÍË³ö£¿",MB_OKCANCEL|MB_ICONWARNING,NULL)==IDOK)
+				SendMessage(WM_CLOSE);
+			//	AfxMessageBox(
+		}
+		//	InitInputVideoRect();
+		InitVisualVideoRect(true);
+		m_bDDraw=false;
+	}	
+}
+
+void CDHCGBoardDemoView::OnCgcardParam() 
+{
+	CRect rect;
+	cgBoard.GetVisualVideoRect(rect);
+	if(m_bDDraw)
+		InitVisualVideoRect(true);
+	cgBoard.SetInputVideoRect(InputVideoRect);
+	CGBoardParaSetup(cgBoard.GetCGBoardHandle(),cgBoard.GetCGBoardType(),
+		 rect,cgBoard.m_CVideoCGPara);
+	InitInputVideoRect();
+	if(m_bDDraw)
+		InitVisualVideoRect(false);
+	OnChangeViewSize();
+	return;
+	
+}
+
+void CDHCGBoardDemoView::OnCgcardSnap() 
+{
+	if(m_bFreeze)
+	{
+		BeginWaitCursor();
+		CDHCGBoardDemoDoc* pDoc = GetDocument();
+		ASSERT_VALID(pDoc);
+		if(pDoc->hdib!=NULL)
+			pDoc->FreeDIBHandle();
+		if(m_bDDraw)
+			InitVisualVideoRect(true);
+		cgBoard.DhBoardSnap();
+		if(m_bDDraw)
+			InitVisualVideoRect(false);
+		pDoc->hdib=ReadDispWindowToHandle();
+		pDoc->UpdateAllViews(NULL);
+		EndWaitCursor();
+	}
+	
+}
+
+
+void CDHCGBoardDemoView::OnUpdateCgcardCg210para(CCmdUI* pCmdUI) 
+{
+	pCmdUI->Enable(cgBoard.GetCGBoardType());	
+}
+
+void CDHCGBoardDemoView::OnUpdateCgcardModeDirectx(CCmdUI* pCmdUI) 
+{
+	pCmdUI->SetCheck(m_bDDraw);
+	
+}
+
+void CDHCGBoardDemoView::OnUpdateCgcardModeScreen(CCmdUI* pCmdUI) 
+{
+	pCmdUI->SetCheck(!m_bDDraw);	
+}
+
+void CDHCGBoardDemoView::OnUpdateCgboardplay(CCmdUI* pCmdUI) 
+{
+	if(pCmdUI==NULL)
+		return;
+	if(m_bFreeze)
+		pCmdUI->m_pMenu->ModifyMenu(ID_CGBOARDPLAY,MF_BYCOMMAND,ID_CGBOARDPLAY,"¼¤»î");
+	else
+		pCmdUI->m_pMenu->ModifyMenu(ID_CGBOARDPLAY,MF_BYCOMMAND,ID_CGBOARDPLAY,"¶³½á");
+}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           )
+{
+	if(!cgBoard.InitialCgBoard(ID_DHCG200,false,NULL))
+	{
+		if(AfxMessageBox("Í¼Ïó¿¨³õÊ¼Ê§°Ü£¬ÊÇ·ñÍË³ö£¿",MB_OKCANCEL|MB_ICONWARNING,NULL)==IDOK)
+			SendMessage(WM_CLOSE);
+	}
+	InitInputVideoRect();
+	return CScrollView::PreCreateWindow(cs);
+
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// CDHCGBoardDemoView drawing
+
+void CDHCGBoardDemoView::OnDraw(CDC* pDC)
+{
+	CDHCGBoardDemoDoc* pDoc = GetDocument();
+	ASSERT_VALID(pDoc);
+	// TODO: add draw code for native data here
+	if(m_bFreeze)
+	{
+		if(pDoc->hdib!=NULL)
+		{
+			CRect lprect;
+			//	GetClientRect(lprect);
+			CSize size;
+			DIBSize(pDoc->hdib,&size);
+			SetScrollSizes(MM_TEXT, size);
+			lprect.SetRectEmpty();
+			lprect.right=size.cx;
+			lprect.bottom=size.cy;
+			PaintDIB(pDC->GetSafeHdc(),lprect,pDoc->hdib,lprect,NULL);
+		}
+	}
+}
+
+void CDHCGBoardDemoView::OnInitialUpdate()
+{
+	CScrollView::OnInitialUpdate();
+
+	//	CSize sizeTotal;
+	// TODO: calculate the total size of this view
+	//	sizeTotal.cx = sizeTotal.cy = 100;
+	//	SetScrollSizes(MM_TEXT, sizeTotal);
+
+	//	cgBoard.GetVisualVideoRect(DispVideoRect);
+
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// CDHCGBoardDemoView printing
+
+BOOL CDHCGBoardDemoView::OnPreparePrinting(CPrintInfo* pInfo)
+{
+	// default preparation
+
+	return DoPreparePrinting(pInfo);
+}
+
+void CDHCGBoardDemoView::OnBeginPrinting(CDC* /*pDC*/, CPrintInfo* /*pInfo*/)
+{
+	
+}
+
+void CDHCGBoardDemoView::OnEndPrinting(CDC* /*pDC*/, CPrintInfo* /*pInfo*/)
+{
+	// TODO: add cleanup after printing
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// CDHCGBoardDemoView diagnostics
+
+#ifdef _DEBUG
+void CDHCGBoardDemoView::AssertValid() const
+{
+	CScrollView::AssertValid();
+}
+
+void CDHCGBoardDemoView::Dump(CDumpContext& dc) const
+{
+	CScrollView::Dump(dc);
+}
+
+CDHCGBoardDemoDoc* CDHCGBoardDemoView::GetDocument() // non-debug version is inline
+{
+	ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(Lh Ëå5:ìm  í      .drectve        o  T               
+ .debug$S        Á  Ã  „         H B.rdata          è  $           @ @@.rdata             ò              @0@.data           4                 @ 0À.text              9  Æ       P`.text$x              7          P`.xdata$x        (   _  ‡         @@@.debug$S          ›  Ÿ         HB.text           $   ï         P`.debug$S        k   #           HB.text           )   ¢  Ë  Õ     P`.debug$S        ~   Û  Y         HB.text           $   m  ‘  ›     P`.debug$S        p   ¡            HB.text           )   %   N   X      P`.debug$S        |   ^   Ú          HB.text           £   î   ‘!  ë!  	   P`.text$x            "  ""          P`.rdata            J"  Z#      D   @0@.xdata$x        0   &  2&         @@@.debug$S        ,  P&  |'      
+   HB.text           N   à'  .(          P`.debug$S        Ÿ   L(  ë(         HB.text           Ë   ÿ(  Ê)  B*   	  P`.text$x            x*  —*          P`.xdata$x        0   ¿*  ï*         @@@.debug$S        -  +  :,      
+   HB.text           z   ,  -  ^-     P`.rdata             ˆ-              @0@.debug$S           £-  0.         HB.text           ÷   D.  ;/  Û/     P`.data              /0              @0À.debug$S        Õ   10  1         HB.text           6   .1  d1  x1     P`.debug$S        ~   Š1  2         HB.text           <   2  X2  l2     P`.debug$S        ’   ~2  3         HB.text           &   $3      J3      P`.debug$S        ¨   V3  ş3         HB.text           &   4      84      P`.debug$S        ¦   D4  ê4         HB.text           6   ş4  45  H5     P`.debug$S        z   Z5  Ô5         HB.text           <   è5  $6  86     P`.debug$S        ‚   J6  Ì6         HB.text           h   à6  H7  „7     P`.data              œ7              @0À.debug$S        z   7  8         HB.text           §   ,8  Ó8  A9     P`.text$x            q9  „9          P`.xdata$x        (   ¢9  Ê9         @@@.debug$S        @  Ş9  ;         HB.text           H   n;  ¶;  Ô;     P`.debug$S        ‘   ì;  }<         HB.text           L   ‘<  İ<  û<     P`.debug$S        ¥   =  ¸=         HB.text           —  Ì=  c?  S@   !  P`.data              A              @0À.debug$S        É   A  äA         HB.text           ’  B  G  J  @ b  P`.debug$S        ×  jL  AN         HB.text           +  ‘N  ¼O  ˜P     P`.debug$S        ë   øP  ãQ         HB.text           U   ÷Q  LR  jR     P`.debug$S        ¶   ˆR  >S         HB.text           ˜   RS  êS  :T     P`.debug$S        ’   dT  öT         HB.text           ¶   
+U  ÀU  $V  
+   P`.debug$S        Ú   rV  LW         HB.text           F   tW  ºW  ØW     P`.debug$S           ğW  qX         HB.text           c   …X  èX  Y     P`.debug$S        €   2Y  ²Y         HB.text           Œ  ÆY  R[  $\     P`.text$x         $   ~\  ¢\          P`.data              Ô\              @0À.xdata$x        (   Ö\  ş\         @@@.debug$S        X  ]  j^         HB.text           Î   â^  °_  `  
+   P`.debug$S        Î   h`  6a         HB.text           §   ^a  b  Kb     P`.debug$S           b  c         HB.text           À   "c  âc  Pd     P`.debug$S           ˜d  %e         HB.text           Ó   9e  f  f     P`.data              îf              @0À.debug$S        §   ğf  —g         HB.text           O   ¿g  h  ,h     P`.debug$S        ™   >h  ×h         HB.text           N   ëh  9i  Mi     P`.debug$S        ›   _i  úi         HB.text           T   j  bj  vj     P`.debug$S        š   ˆj  "k         HB.text           {   6k  ±k  ãk     P`.rdata             l              @0@.rdata             l              @0@.debug$S        •   l  ²l         HB.debug$S           Æl  àl         HB.debug$S           ôl  m         HB.debug$S           "m  <m         HB.debug$S           Pm  jm         HB.debug$S           ~m  ˜m         HB.debug$T        @   ¬m              H B-defaultlib:mfc42d.lib -defaultlib:mfcs42d.lib -defaultlib:msvcrtd.lib -defaultlib:kernel32.lib -defaultlib:user32.lib -defaultlib:gdi32.lib -defaultlib:comdlg32.lib -defaultlib:winspool.lib -defaultlib:advapi32.lib -defaultlib:shell32.lib -defaultlib:comctl32.lib /include:__afxForceEXCLUDE /include:__afxForceSTDAFX -defaultlib:uuid.lib -defaultlib:uuid.lib -defaultlib:uuid.lib -defaultlib:uuid.lib -defaultlib:mfco42d.lib -defaultlib:oledlg.lib -defaultlib:ole32.lib -defaultlib:olepro32.lib -defaultlib:oleaut32.lib -defaultlib:uuid.lib -defaultlib:urlmon.lib -defaultlib:MSVCRTD -defaultlib:OLDNAMES -editandcontinue    @ 	     9E:\DHCGCardDemo\Scollviewdemo\Debug\DHCGBoardDemoView.obj¾      è   è.Microsoft (R) 32-bit C/C++ Optimizing Compilercwd E:\DHCGCardDemo\Scollviewdemo cl D:\PROGRAM FILES\MICROSOFT VISUAL STUDIO\VC98\BIN\CL.EXE cmd -nologo -MDd -W3 -Gm -GX -ZI -Od -DWIN32 -D_DEBUG -D_WINDOWS -D_AFXDLL -D_MBCS -FpE:\DHCGCardDemo\Scollviewdemo\Debug\DHCGBoardDemo.pch -Yustdafx.h -FoE:\DHCGCardDemo\Scollviewdemo\Debug\ -FdE:\DHCGCardDemo\Scollviewdemo\Debug\ -FD -GZ -c -I"D:\Program Files\Microsoft Visual Studio\VC98\INCLUDE" -I"D:\Program Files\Microsoft Visual Studio\VC98\MFC\INCLUDE" -I"D:\Program Files\Microsoft Visual Studio\VC98\ATL\INCLUDE" -TP -X src E:\DHCGCardDemo\Scollviewdemo\DHCGBoardDemoView.cpp pdb E:\DHCGCardDemo\Scollviewdemo\Debug\vc60.pdb   w: D        -_imp_?messageMap@CScrollView@@1UAFX_MSGMAP@@B Ü3        	THIS_FILE6 ¼        )CDHCGBoardDemoDoc::classCDHCGBoardDemoDoc8 ¼        +CDHCGBoardDemoView::classCDHCGBoardDemoView0 ÷3        #CDHCGBoardDemoView::_messageEntriesC ¼        6_imp_?classCScrollView@CScrollView@@2UCRuntimeClass@@B+ D        CDHCGBoardDemoView::messageMap8 .1        +_imp_?sizeDefault@CScrollView@@2UtagSIZE@@B §3  CAverageNumDlg  W      W   
+ J      N     
+ b  y   f  y  
+ š           
+ Ô      Ø     
+   <    
+  <   
+ K      O     
+ x     |    
+     l  ÿÿ                                                                                              L€  L€               K€  K€               €  €               	€  	€               
+€  
+€               €  €               €  €               €  €           ÿÿÿÿK€  K€  ,         ÿÿÿÿ	€  	€  ,         ÿÿÿÿ
+€  
+€  ,         ÿÿÿÿ€  €  ,             á  á               á  á               	á  	á                                                   :       U           4   …   L   ¡   d   ¯   |   (   ”   6   ¬   F   Ä   c   Ü   r   ô           $  ½   <  ¡   T  ®   l  »   „  È   œ      ´      Ì      CDHCGBoardDemoView E:\DHCGCardDemo\Scollviewdemo\DHCGBoardDemoView.cpp U‹ìjÿh    d¡    Pd‰%    ƒìLSVW}¨¹   ¸ÌÌÌÌó«jh    hl  è    ‰EìÇEü    ƒ}ì t‹Mìè    ‰EèëÇEè    ‹Eè‰EğÇEüÿÿÿÿ‹Eğ‹Môd‰    _^[ƒÄX;ìè    ‹å]Ã   &       .       .    0       :   %    R   p    x   .    …   -         jh    ‹EìPè    Ã¸    é                      +       '     “                           ÿÿÿÿ       ,    $   $    H 	       >__ehhandler$?CreateObject@CDHCGBoardDemoView@@SGPAVCObject@@XZN 	       D__unwindfunclet$?CreateObject@CDHCGBoardDemoView@@SGPAVCObject@@XZ$0F                -   r   ­2         CDHCGBoardDemoView::CreateObject X   @                       &       &   
+ N   $    R   $   
+ º       ¾      
+ ö   &    ú   &   
+ U‹ìƒì@SVW}À¹   ¸ÌÌÌÌó«¡    _^[‹å]Ã   <    :     G             $         ©2        !CDHCGBoardDemoView::_GetBaseClass @   @                          :    $   :   
+ U‹ìƒìDSVWQ}¼¹   ¸ÌÌÌÌó«Y‰Mü¸    _^[‹å]Ã       H     I             )      "   ¬2        #CDHCGBoardDemoView::GetRuntimeClass D   @                    üÿÿÿ«2  this      H    $   H   
+ U‹ìƒì@SVW}À¹   ¸ÌÌÌÌó«¡    _^[‹å]Ã   W    U     L             $         Ã2        &CDHCGBoardDemoView::_GetBaseMessageMap @   @                          U    $   U   
+ U‹ìƒìDSVWQ}¼¹   ¸ÌÌÌÌó«Y‰Mü¸    _^[‹å]Ã       c     G             )      "   Ä2        !CDHCGBoardDemoView::GetMessageMap D   @                    üÿÿÿ«2  this      c    $   c   
+ U‹ìjÿh    d¡    Pd‰%    ƒìDSVWQ}°¹   ¸ÌÌÌÌó«Y‰Mğ‹Mğè    ÇEü    ‹MğƒÁtè    ÆEü‹MğÁ\  è    ‹EğÇ     ‹MğÇAp   ‹UğÇ‚X      ÇEüÿÿÿÿ‹Eğ‹Môd‰    _^[ƒÄP;ìè    ‹å]Ã   »       .       .    6   º    H   ¹    Z   ¸    c   ·       .    ›   -    p     g    q    ~    ‹Mğè    Ã‹MğƒÁtè    Ã¸    é       ²       ­       ¿       '                                                                                                                                                                                                                                                                                        H       «       ©       U      c      ¨       §       ¦        ¥    $   ¤    (   £    ,   ¢    0   c    4   ¡    8        <   Ÿ    @       D       H   œ    L   ›    P   š    T   ™    X   ˜    \   —    `   –    d   ğ    h   •    l   ”    p   “    t   ’    x   ‘    |       €       „       ˆ       Œ   Œ       ‹    ”   Š    ˜   ‰    œ   ˆ        ‡    ¤   †    ¨   …    ¬   „    °   ƒ    ´   ‚    ¸       ¼   €    À       Ä       È   ~    Ì   }    Ğ   |    Ô   {    Ø   z    Ü   y    à   x    ä   w    è      ì   v    ğ   u    ô   t    ø      ü   -      ;     s      H     r     “                           ÿÿÿÿ               À    $   ³    ,   ±    3 	       )__ehhandler$??0CDHCGBoardDemoView@@IAE@XZ9 	       /__unwindfunclet$??0CDHCGBoardDemoView@@IAE@XZ$19 	       /__unwindfunclet$??0CDHCGBoardDemoView@@IAE@XZ$0L             £   2   ˆ   ¨2        &CDHCGBoardDemoView::CDHCGBoardDemoView P   @                   ğÿÿÿ§2  this     »       »   
+ 9   ±    =   ±   
+ t   ³    x   ³   
+ Ë   p    Ï   p   
+   »      »   
+ U‹ìƒìDSVWQ}¼¹   ¸ÌÌÌÌó«Y‰Mü‹Müè    ‹Eƒà…Àt	‹MüQè    ‹Eü_^[ƒÄD;ìè    ‹å]Â !   Ô    4   Í    D   -    V             N      ;   Å2        0CDHCGBoardDemoView::`scalar deleting destructor' D   @                    üÿÿÿ§2  this    u   __flags      ª    $   ª   
+ U‹ìjÿh    d¡    Pd‰%    ƒìDSVWQ}°¹   ¸ÌÌÌÌó«Y‰Mğ‹EğÇ     ÇEü   ‹Mğƒyp u(‹UğƒºX   uj ‹MğƒÁtè    ëj ‹MğƒÁtè    ‹Eğ\  P‹MğƒÁtè    ‹MğƒÁtè    ÆEü ‹MğƒÁtè    ÇEüÿÿÿÿ‹Mğè    ‹Môd‰    _^[ƒÄP;ìè    ‹å]Ã   ß       .       .    7   ·    `   Ş    o   İ    ƒ   Ü       Û       ­    ¬   ²    ¶   .    Ã   -    Ô     B    K    W    d    f    s   
+ ‡    ’    ‹Mğè    Ã‹MğƒÁtè    Ã¸    é       ²       ­       ã       '     “                           ÿÿÿÿ               ä    $   Ú    ,   Ù    3 	       )__ehhandler$??1CDHCGBoardDemoView@@UAE@XZ9 	       /__unwindfunclet$??1CDHCGBoardDemoView@@UAE@XZ$19 	       /__unwindfunclet$??1CDHCGBoardDemoView@@UAE@XZ$0M             Ë   2   °   ¨2        'CDHCGBoardDemoView::~CDHCGBoardDemoView P   @                   ğÿÿÿ§2  this     ß       ß   
+ 9   Ù    =   Ù   
+ t   Ú    x   Ú   
+ Ë   Ô    Ï   Ô   
+   ß      ß   
+ U‹ìƒìDSVWQ}¼¹   ¸ÌÌÌÌó«Y‰Müj j j ‹MüƒÁtè    …Àu!j j1h    è    ƒøuj j j‹Müè    ‹Müè    ‹EP‹Müè    _^[ƒÄD;ìè    ‹å]Â *   ù    7   ø    <   ô    O   ó    W      c   ò    p   -    ğ         2    E    S    [    g   	 Í¼Ïó¿¨³õÊ¼Ê§°Ü£¬ÊÇ·ñÍË³ö£¿ I             z      g   ²2        #CDHCGBoardDemoView::PreCreateWindow D   @                    üÿÿÿ§2  this    É$  cs      ğ    $   ğ   
+ U‹ìƒìhSVWQ}˜¹   ¸ÌÌÌÌó«Y‰Mü‹Müè    ‰Eø¿    ƒÀPh    ‹MøQè    ‹Uüƒzp „–   ‹EøƒxT „‰   Mèè    Màè    MàQ‹Uø‹BTPè    ‹    Q‹    R‹Eà‰EØ‹Mä‰MÜ‹UÜR‹EØPj‹Müè    Mèè    ‹Mà‰Mğ‹Uä‰Uôj Mèè    P‹Eø‹HTQMèè    P‹Mè    Pè    _^[ƒÄh;ìè    ‹å]Â !   q   +      4       =      _   ¸    g      w      }      „      £      «   
+   Á   	   Ñ   	   Ú      à      í   -            (    A    N    [    c   
+ k    {    §    ¯    µ    »    ä    V @             ÷      ä   ±2        CDHCGBoardDemoView::OnDraw h   @   (                 üÿÿÿ§2  this    Œ  pDC øÿÿÿ®2  pDoc         ‰   [       èÿÿÿ|  lprect àÿÿÿØ3  size           $     
+ ¢      ¦     
+ U‹ìƒìDSVWQ}¼¹   ¸ÌÌÌÌó«Y‰Mü‹Müè    _^[ƒÄD;ìè    ‹å]Ã!   !   .   -            %    I             6      %   ¨2        #CDHCGBoardDemoView::OnInitialUpdate D   @                    üÿÿÿ§2  this         $     
+ U‹ìƒìDSVWQ}¼¹   ¸ÌÌÌÌó«Y‰Mü‹EP‹Müè    _^[ƒÄD;ìè    ‹å]Â %   /   2   -    -        )    K             <      )   ¸2        %CDHCGBoardDemoView::OnPreparePrinting D   @                    üÿÿÿ§2  this    ¶2  pInfo      -   $   -  
+ U‹ìƒìDSVWQ}¼¹   ¸ÌÌÌÌó«Y‰Mü_^[‹å]Â ;        I             &         º2        #CDHCGBoardDemoView::OnBeginPrinting D   @                    üÿÿÿ§2  this    Œ  __formal    ¶2  __formal      ;   $   ;  
+ U‹ìƒìDSVWQ}¼¹   ¸ÌÌÌÌó«Y‰Mü_^[‹å]Â H        G             &         º2        !CDHCGBoardDemoView::OnEndPrinting D   @                    üÿÿÿ§2  this    Œ  __formal    ¶2  __formal      H   $   H  
+ U‹ìƒìDSVWQ}¼¹   ¸ÌÌÌÌó«Y‰Mü‹Müè    _^[ƒÄD;ìè    ‹å]Ã!   W   .   -    U        %    E             6      %   ½2        CDHCGBoardDemoView::AssertValid D   @                    üÿÿÿ«2  this      U   $   U  
+ U‹ìƒìDSVWQ}¼¹   ¸ÌÌÌÌó«Y‰Mü‹EP‹Müè    _^[ƒÄD;ìè    ‹å]Â %   e   2   -    c        )    >             <      )   ¾2        CDHCGBoardDemoView::Dump D   @                    üÿÿÿ«2  this      dc      c   $   c  
+ U‹ìƒìDSVWQ}¼¹   ¸ÌÌÌÌó«Y‰Müh    ‹Eü‹H@è    …Àu¿    ƒÁQh    è    …ÀtÌ3Ò…ÒuÌ‹Eü‹@@_^[ƒÄD;ìè    ‹å]Ã   y   )   x   4   w   =       B   s   `   -    q        Q    W    “ E             h      W   ¯2        CDHCGBoardDemoView::GetDocument D   @                   üÿÿÿ§2  this      q   $   q  
+ U‹ìjÿh    d¡    Pd‰%    ƒì`SVWQ}”¹   ¸ÌÌÌÌó«Y‰MğMèè    ÇEü    j jMèè    MØè    EØP‹Mğè    MèQUØR‹Mè    ÇEÔ   ÇEüÿÿÿÿMèè    ‹EÔ‹Môd‰    _^[ƒÄl;ìè    ‹å]Â          .       .    6      I      Q   ¸    ]      m   Œ   ƒ   ‹      .       -    …    2    A    M    U    a    q    Š    Mèè    Ã¸    é       ‹   
+   ”      '     “                           ÿÿÿÿ       •   $   Š   F 	       <__ehhandler$?OnEraseBkgnd@CDHCGBoardDemoView@@IAEHPAVCDC@@@ZL 	       B__unwindfunclet$?OnEraseBkgnd@CDHCGBoardDemoView@@IAEHPAVCDC@@@Z$0F             §   2   Š   ¿2         CDHCGBoardDemoView::OnEraseBkgnd l   @   ,                ğÿÿÿ§2  this    Œ  pDC Øÿÿÿ|  rec èÿÿÿÙ3  br             
+ L   Š   P   Š  
+ ¶   …   º   …  
+ ò      ö     
+ U‹ìƒìDSVWQ}¼¹   ¸ÌÌÌÌó«Y‰Mü‹EP‹MQ‹Müè    ‹Müè    _^[ƒÄD;ìè    ‹å]Â )   £   1   Ô   >   -    ¡        -    5    @             H      5   À2        CDHCGBoardDemoView::OnMove D   @                    üÿÿÿ§2  this    t   x    t   y      ¡   $   ¡  
+ U‹ìƒìDSVWQ}¼¹   ¸ÌÌÌÌó«Y‰Mü‹EP‹MQ‹UR‹Müè    ‹Müè    _^[ƒÄD;ìè    ‹å]Â -   ±   5   Ô   B   -    ¯        1    9    @             L      9   Â2        CDHCGBoardDemoView::OnSize D   @                    üÿÿÿ§2  this    u   nType    t   cx    t   cy      ¯   $   ¯  
+ U‹ìƒì\SVWQ}¤¹   ¸ÌÌÌÌó«Y‰Mü‹Müè    ‰Eø¿    ƒÀPh    ‹MøQè    ‹Uüƒzp …×   ‹Eüƒ¸X   uj ‹MüƒÁtè    ëj ‹MüƒÁtè    ‹MüÇAp   ‹UøƒzT t‹Møè    ‹MüƒÁtè    ‰Eôj‹MüƒÁtè    Mäè    EäP‹MüƒÁtè    ‹MüÁ\  Q‹MüƒÁtè    j ‹MüƒÁtè    ‹UøƒÂTR‹MüƒÁtè    EäP‹MüƒÁtè    ‹MôQ‹MüƒÁtè    j j j ‹Møè    ëa‹UøƒzT t‹Møè    j j j ‹Møè    ‹Eüƒ¸X   u‹Müè    j‹MüƒÁtè    ë‹Müè    j‹MüƒÁtè    ‹MüÇAp    _^[ƒÄ\;ìè    ‹å]Ã!   q   +   È   4       =      c   Ş    r   İ       Ä   ˜   Ã   ¨   Â   °   ¸    ¿   Á   Ô   Ü    á   Ş    ó   À     Ü      Â     ¿   2  Ä   @  ¿   T  Ô   a  Ş    k  Ô   x  İ      -    ½        (    A    N    Z    g    i    v   	 €    ‰    ‘    Ÿ    ¬    ´    Ã    Ø    å    ÷          #   %   .   6   D   P    X  ! e  # g  % o  & |  ( †  * ´ G             —     †  ¨2        !CDHCGBoardDemoView::OnCgboardplay \   @                    üÿÿÿ§2  this øÿÿÿ®2  pDoc         Õ   N       ôÿÿÿt   avr äÿÿÿ|  rect        ½   $   ½  
+ ™   ½      ½  
+ U‹ìì¨   SVWQ½Xÿÿÿ¹*   ¸ÌÌÌÌó«Y‰Mü‹Eüƒ¸X   …ú  Mìè    MìQ‹Müè    UìRj ‹Müè    j ‹Müè    ‰Eèj‹Müè    ‰EäMÔè    ‹Eè%  €yHƒÈş@…Àt‹MèƒÁ‰Mèëâ‹Uäâ  €yJƒÊşB…Òt	‹EäƒÀ‰Eäj‹MèQj ‹Müè    j‹UäRj‹Müè    ‹Eü\  ‹‰MÔ‹P‰UØ‹H‰MÜ‹P‰Uà‹Eü‹Mèˆ\  ‰MÔ‹Uü‹Eä‚`  ‰EØÇEĞ    ÇEÌ    ƒ}ì }‹MÔ+Mì‰MÔ‹UĞ+Uì‰UĞÇEì    ƒ}ğ }‹EØ+Eğ‰EØ‹MÌ+Mğ‰MÌÇEì    Mìè    …À„¦  Mìè    …À„–  ‹Uüƒºø    thMÔè    ‹ğMìè    ;ğ~Mìè    EÔ‰EÜMÔè    ‹ğMìè    ;ğ~Mìè    EØ‰EàMÔè    ‹MìÈ‰MôMÔè    ‹UğĞ‰Uø‹ôj ÿ    ;ôè    ‰EÈ‹ôj‹EÈPÿ    ;ôè    ‰EÄ‹Mô;MÄv‹UÄ‰Uô‹ôj
+‹EÈPÿ    ;ôè    ‰EÀ‹Mø;MÀv‹UÀ‰Uø‹ô‹EÈPj ÿ    ;ôè    ‹MÀƒé‰MÀ‹UÀ;Uğsj ‹MüƒÁtè    é÷  MÔè    %  €yHƒÈü@…Àt‹EÜƒÀ‰EÜëİMìè    ƒøtMìè    ƒøuj ‹MüƒÁtè    é¨  MÔQ‹MüƒÁtè    UìR‹MüƒÁtè    ‹Eü3Éƒxp ”ÁQ‹MüƒÁtè    ém  j ‹MüƒÁtè    ‹UüÇBp   éQ  M°è    E°P‹Müè    j ‹Müè    ‰E¬j‹Müè    ‰E¨M˜è    ‹M¬á  €yIƒÉüA…Ét‹U¬ƒÂ‰U¬ëá‹E¨%  €yHƒÈş@…Àt	‹M¨ƒÁ‰M¨j‹U¬Rj ‹Müè    j‹E¨Pj‹Müè    ‹MüÁ\  ‹‰U˜‹A‰Eœ‹Q‰U ‹A‰E¤‹Mü‹U¬‘\  ‰U˜‹Eü‹M¨ˆ`  ‰MœM°è    …À„[  M°è    …À„K  M˜è    ‹ğM°è    ;ğ~M°è    E˜‰E M˜è    ‹ğM°è    ;ğ~M°è    Eœ‰E¤M˜è    ‰E¸M˜è    ‰E¼M˜è    %  €yHƒÈü@…Àt‹U ƒê‰U ëİM°è    %  €yHƒÈü@…Àt‹E¸ƒè‰E¸ëİM˜è    %  €yHƒÈş@…Àt‹M¤ƒé‰M¤ëİM°è    %  €yHƒÈş@…Àt‹U¼ƒê‰U¼ëİM°è    ƒøtM°è    ƒøuj ‹MüƒÁtè    ëOE˜P‹MüƒÁtè    M°Q‹MüƒÁtè    ‹Uü3Àƒzp ”ÀP‹MüƒÁtè    ëj ‹MüƒÁtè    ‹MüÇAp   _^[Ä¨   ;ìè    ‹å]Ã7   ¸    C      Q   Ş   [   İ   h   İ   s   ¸    ¾   Ü   Î   Ü   _  Û   o  Ú   ‹  Û   •  Û   ¡  Û   ¯  Ú   ¹  Ú   Å  Ú   Ó  Û   ã  Ú   õ  Ù   ü  -      Ø     -    3  Ø   :  -    Y  ×   `  -    ~  Ş    ‹  Û   ®  Û   »  Ú   Í  Ş    á  Ü    ğ  Ö     Ş      Ş    1  ¸    =     G  İ   T  İ   _  ¸    ª  Ü   º  Ü      Û     Ú      Û   *  Û   6  Û   D  Ú   N  Ú   Z  Ú   h  Û   s  Ú   ~  Û   ¡  Û   Ä  Ú   ç  Ú   
+  Û     Ú   )  Ş    :  Ü    I  Ö   a  İ    p  Ş    Š  -    Ô    #    3    ;    G    U    b    o    w   	 Š   
+ •    ©    ²    Â    Ò    ñ                 #   ,   5   <   B   K   T   [  ! {  # ‡  %   & «  ' Á  ( Ï  ) ß  * ï  -   .   / #  0 )  1 A  2 I  3 O  4 d  5 m  6 u  8 ‚  9 ‡  ; Ÿ  < ª  = Ä  ? Ñ  @ Ö  B å  C ô  D   E   I   J (  M -  O 5  P A  Q N  R [  S c  T w  U ‚  V •  W   X ®  Y ¾  Z Ş  [ í  \ ü  ^   ` 2  a @  b V  c d  d o  e z  f ’  g   h µ  i À  j Ø  k ã  l û  m   n    p -  q /  s >  t M  v e  w g  | t  } ~  € J             ’  #   ~  ¨2        $CDHCGBoardDemoView::OnChangeViewSize ¨   @   h                 üÿÿÿ§2  this         õ  3       ìÿÿÿ|  	VideoRect äÿÿÿt   topmove Ìÿÿÿt   movetop Ôÿÿÿ|  	rectInput Ğÿÿÿt   moveleft èÿÿÿt   leftmove         –  {      Àÿÿÿ"   hight Äÿÿÿ"   width Èÿÿÿ  pdc             Q  -      °ÿÿÿ|  	VideoRect ¨ÿÿÿt   topmove ˜ÿÿÿ|  	rectInput ¬ÿÿÿt   leftmove        Ô   $   Ô  
+ ‹   Ô      Ô  
+    Ô   $  Ô  
+ s  Ô   w  Ô  
+ U‹ìƒìhSVWQ}˜¹   ¸ÌÌÌÌó«Y‰MüÇEø    ‹Müè    ‰EôMäè    EäP‹MüƒÁtè    jMäè    PMäè    PMøQè    ƒÄMäè    ‹ğMäè    ¯ğkö‰uà‹ô‹UàRjBÿ    ;ôè    ‰EÜ‹ô‹EÜPÿ    ;ôè    ‰EØ‹MØQMäè    PMäè    Pj j ‹Môè    Pè    …Àtƒ}Ø tUøR‹EØPè    ƒÄ‹ô‹MÜQÿ    ;ôè    ‹ô‹UÜRÿ    ;ôè    ‹Eø_^[ƒÄh;ìè    ‹å]Ã(   ô   3   ¸    B   ó   L   Ú   U   Û   _   ò   j   Û   t   Ú   ‹   ñ   ’   -    ¡   ğ   ¨   -    ·   Ú   À   Û   Í      Ó   ï   ê   î   ù   í      -      ì     -    #  -    ê        $    /    7    F    f        ™   	 ¯   
+ Û    á    ñ             P             +       ¼2        *CDHCGBoardDemoView::ReadDispWindowToHandle h   @   (                 üÿÿÿ§2  this ôÿÿÿŒ  pDC Üÿÿÿ  temp øÿÿÿ  ret Øÿÿÿ   lpdata äÿÿÿ|  rect àÿÿÿ"   size      ê   $   ê  
+ U‹ìƒìDSVWQ}¼¹   ¸ÌÌÌÌó«Y‰Mü‹Eüƒxp u‹Müè    ‹MQ‹UR‹EP‹Müè    _^[ƒÄD;ìè    ‹å]Â *   Ô   >      K   -             &    .    B    B             U      B   ´2        CDHCGBoardDemoView::OnScroll D   @                    üÿÿÿ§2  this    u   nScrollCode    u   nPos    t   	bDoScroll          $      
+ U‹ìƒìTSVWQ}¬¹   ¸ÌÌÌÌó«Y‰Mü‹Eü\  P‹MüƒÁtè    Môè    ‹MüÁ\  è    ‰Eô‹MüÁ\  è    ‰Eø‹    Q‹    R‹Eô‰Eì‹Mø‰Mğ‹UğR‹EìPj‹Müè    _^[ƒÄT;ìè    ‹å]Ã-   Á   5      C   Û   T   Ú   ]      d      ƒ         -            1    9    J    [    ‡    L             ˜      ‡   ¨2        &CDHCGBoardDemoView::InitInputVideoRect T   @                    üÿÿÿ§2  this ôÿÿÿØ3  size         $     
+ U‹ìƒìdSVWQ}œ¹   ¸ÌÌÌÌó«Y‰MüMìè    EìP‹MüƒÁtè    ‹Máÿ   …ÉtMìè    Pj ‹Müè    ë>MÜè    MÜè    Mìè    ‰EèMìè    ‰Eä‹UÜ‰Uì‹Eà‰Eğ‹Mä‰Mô‹Uè‰UøEìP‹MüƒÁtè    _^[ƒÄd;ìè    ‹å]Â !   ¸    0   ó   E   	   P   Ş   Z   ¸    b   
+   j   Ú   u   Û   Ÿ   Ö   ¬   -            %    4    A    T    V    ^   	 f   
+ q    |    ”    £    M             ¶      £   »2        'CDHCGBoardDemoView::InitVisualVideoRect d   @   $                 üÿÿÿ§2  this        	bToScreen ìÿÿÿ|  	VideoRect         >   V       Üÿÿÿ|  rect           $     
+ º      ¾     
+ U‹ìƒìDSVWQ}¼¹   ¸ÌÌÌÌó«Y‰Mü‹MüƒÁtè    j ‹MüƒÁtè    _^[ƒÄD;ìè    ‹å]Ã$   *   1   Ş    >   -    (        (    5    L             F      5   ¨2        &CDHCGBoardDemoView::OnCgcardAtuoformat D   @                    üÿÿÿ§2  this      (   $   (  
+ U‹ìƒìDSVWQ}¼¹   ¸ÌÌÌÌó«Y‰Mü‹MüƒÁtè    …Àt&‹EüÀ   P‹MüƒÁtè    P‹MüƒÁtè    Pè    _^[ƒÄD;ìè    ‹å]Ã$   :   <   :   H   9   N   8   [   -    6        ,    R    K             c      R   ¨2        %CDHCGBoardDemoView::OnCgcardCg210para D   @                    üÿÿÿ§2  this      6   $   6  
+ U‹ìjÿh    d¡    Pd‰%    ƒìdSVWQ}¹   ¸ÌÌÌÌó«Y‰Mğ‹Eğƒxp „2  ¿    ƒÁQh    h¨   è    ‰EàÇEü    ƒ}à tj ‹Màè    ‰EÔëÇEÔ    ‹UÔ‰UäÇEüÿÿÿÿ‹Eä‰Eì‹MğƒÁtè    ‹Mì‰¤   ‹MğƒÁtè    ‹Uì‰B`‹Eì‹‹ô‹Mìÿ’À   ;ôè    ƒøuj‹Eì‹ˆ¤   Q‹MğƒÁtè    ‹Mğè    ‰Eè¿    ƒÂRh    ‹EèPè    ‹MèƒyT t‹Mèè    ‹UèƒÂTR‹MğƒÁtè    j j j ‹Mèè    ‹Eì‰EØ‹MØ‰MÜƒ}Ü t‹ôj‹UÜ‹‹MÜÿP;ôè    ‰EĞëÇEĞ    ‹Môd‰    _^[ƒÄp;ìè    ‹å]Ã   R      .       .    B   Q   K       U   %    o   M   ™   Ã   ­   L   Ê   -    ä   Â   ì   q   ö   Q   ÿ              Ä   +  À   9  ¿   a  -    w  .    „  -    F    2    ?    ’    ¦    ·    Ó   	 è   
+ ó             /   =   q   ¿    ƒÀPh    ‹MàQè    Ã¸    é       Q                     V       '    ¬ “                           ÿÿÿÿ       W   $   K   = 	       3__ehhandler$?OnCgcardMem@CDHCGBoardDemoView@@IAEXXZC 	       9__unwindfunclet$?OnCgcardMem@CDHCGBoardDemoView@@IAEXXZ$0E             Œ  2   q  ¨2        CDHCGBoardDemoView::OnCgcardMem p   @   0                ğÿÿÿ§2  this         2  ?       ìÿÿÿÚ3  NumDlg         j   Ó       èÿÿÿ®2  pDoc         R      R  
+ C   K   G   K  
+ ¤   F   ¨   F  
+ ß   R   ã   R  
+ 
+  F     F  
+ 4  F   8  F  
+ U‹ìƒìPSVWQ}°¹   ¸ÌÌÌÌó«Y‰Mü‹Eüƒ¸X   …   ‹Müƒyp uj ‹MüƒÁtè    ‹UüÇBp   ‹Müè    ‰Eô‹Môè    ‰Eğ‹Mğè    ‰Eø‹EøPjj ‹MüƒÁtè    …Àu!j j1h    è    ƒøuj j j‹Müè    j ‹Müè    ‹MüÇX     _^[ƒÄP;ìè    ‹å]Ã?   Ş    Q   ô   \   f   g   e   }   ù    Š   ø       ô    ¢   ó    Q a   N    
+                           TXLN                                                                                                         ! ! ! ! ! !                                                                                          	                                                
+                                                     
+                                                     
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            3 Ú'm        › ƒ$m   ÷ Ù%m   X€şƒ9$m   X€r*m   X€."m        !Ö€m   İ!:)m   §!¬*m                  Ì€$m‡"9$ó%m   Ö€€$m   ğ(m   “"Ï+m   ‡"í,m     b"s*q&%ã%m                ±"e#m        #t+Š(m      #Î+m        î#H m   î#z‚m   ¬¼‚m                  ‚× m   ®$×&–$m           \&e!m   ‹$w$m   ²& #·&m                µ%µ%m        á*Ô+(‚m      G+   ?&ã%m   –&¼)Ê m–&¼)ã%m            ±'İ!G+å$m   º'æ€m   º'¬m   º'ƒm   º'Ò)m   º'‘-m             û'ê-ø€ˆƒm    ï)ğ#m   *€$mğƒ€%ê%m   •)Ù%m   Ò)'m   |)/(m   ğƒº.mì)….m  

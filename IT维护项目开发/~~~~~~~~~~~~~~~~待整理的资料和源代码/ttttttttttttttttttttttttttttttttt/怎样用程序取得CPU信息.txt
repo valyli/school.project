@@ -1,0 +1,139 @@
+怎样用程序取得CPU信息
+
+ 
+ 很 多 软 件 可 以 判 断所 运 行 的 电 脑 类 型 而 自 动 做 不 同 的
+ 处 理。 如PhotoShop 5 可 以 探 测CPU 是 否 有MMX 支 持 而 调 用 不
+ 同 的 处 理 函数，《 金 山 词 霸》 发 现 有MMX 支 持 会 产 生 半 透
+ 明 的翻 译 提 示， 很 多 软 件 可 以 区 分Intel,Cyrix,AMD 的CPU...
+
+ 现 在， 且 让 我 细 细道 来 如 何 让 你 在 自 己 的 程 序 中 取 
+得CPU 信 息。
+
+ 主 要 可 利 用 利 用CPUID 汇 编 指 令( 机 器 码:0FH A2H, 如 果 你 
+的 编 译 器 不 支 持CPUID 指 令， 只 有emit 机 器 码 了) 该 指 令 
+可 以 被 如 下CPU 识别
+
+Intel 486 以 上 的CPU,
+Cyrix M1 以 上 的CPU,
+AMD Am486 以 上 的CPU
+
+ (1) 取CPU OEM 字 符 串, 判 断CPU 厂商
+
+ 先 让EAX=0， 再 调 用CPUID
+
+ Inel 的CPU 将 返 回:
+
+EBX:756E6547H 'Genu'
+EDX:49656E69H 'ineI'
+ECX:6C65746EH 'ntel'
+EBX,EDX,ECX 将 连 成"GenuineIntel", 真 正 的Intel。
+Cyrix 的CPU 将 返 回:
+EBX:43797269H
+EDX:78496E73H
+ECX:74656164H
+"CyrixInstead"，"Cyrix 来 代 替"。
+AMD 的CPU 将 返 回:
+EBX:41757468H
+EDX:656E7469H
+ECX:63414D44H
+"AuthenticAMD"， 可 信 的AMD。
+
+ 在Windows98 中， 用 右 键 单 击" 我 的 电 脑"， 选 择" 属 性- 常 规" 
+在 计 算 机描 述 处 就 可 看 见CPU OEM 字 符 串。
+
+ (2)CPU 到 底 是 几86, 是 否 支 持MMX
+
+ 先 让EAX=1， 再 调 用CPUID
+
+ EAX 的 8 到11 位 就 表 明 是 几86
+
+3 - 386
+4 - i486
+5 - Pentium
+6 - Pentium Pro Pentium II
+2 - Dual Processors
+EDX 的 第0 位： 有 无FPU
+
+ EDX 的 第23 位:CPU 是 否 支 持IA MMX, 很 重 要 啊 ！ 如 果 你 想 用 
+那57 条 新 增 的 指 令, 先 检查 这 一 位 吧， 否 则 就 等 着 看Windows 
+的" 该 程 序 执行 了 非 法 指 令， 将 被 关 闭" 吧。
+
+ (3) 专 门 检 测 是 否P6 架 构
+
+ 先 让EAX=1， 再 调 用CPUID
+
+ 如 果AL=1, 就 是Pentium Pro 或Pentium II
+
+ (4) 专 门 检 测AMD 的CPU 信 息
+
+ 先 让EAX=80000001H， 再 调 用CPUID
+
+ 如 果EAX=51H, 是AMD K5
+
+ 如 果EAX=66H, 是K6
+
+ K7 是 什 么 标 志， 只 有 等 大 家拿 到K7 的 芯 再 说 了。
+
+ EDX 第0 位: 是 否 有FPU( 多 余 的 ！谁 用 过 没FPU 的K5,K6?)
+
+ EDX 第23 位，CPU 是 否 支 持MMX,
+
+ 程 序 如 下: 是C++Builder 的 控 制台 程 序, 可 以 给 出 你 的" 心"
+ 的 信 息。 如 果 把这 个 技 术 用 于DLL 中， 便 可 以 使VB 程 序 
+也 知 道" 心" 的 信 息。
+
+//--CPUID Instruction Demo Program
+#include 
+
+#include 
+
+#pragma hdrstop
+//----
+#pragma inline
+#pragma argsused
+int main(int argc, char **argv)
+{
+char OEMString[13];
+
+int iEAXValue,iEBXValue,iECXValue,iEDXValue;
+_asm {
+    mov eax,0
+    cpuid
+    mov DWORD PTR OEMString,ebx
+    mov DWORD PTR OEMString+4,edx
+    mov DWORD PTR OEMString+8,ecx
+    mov BYTE PTR OEMString+12,0
+    }
+
+cout< < "This CPU 's OEM String is:"< < OEMString< < endl;
+
+_asm {
+    mov eax,1
+    cpuid
+    mov iEAXValue,eax
+    mov iEBXValue,ebx
+    mov iECXValue,ecx
+    mov iEDXValue,edx
+    }
+
+if(iEDXValue&0x800000)
+cout < < "This is MMX CPU"< < endl;
+else
+cout < < "None MMX Support."< < endl;
+
+int iCPUFamily=(0xf00 & iEAXValue) > >8;
+cout < < "CPU Family is:"< < iCPUFamily< < endl;
+
+_asm{
+    mov eax,2
+    	CPUID
+	}
+if(_AL==1)
+cout < < "Pentium Pro or Pentium II Found";
+
+getch();
+        return 0;
+}
+ 
+
+

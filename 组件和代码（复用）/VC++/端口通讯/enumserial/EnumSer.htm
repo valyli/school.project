@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<title>EnumSerialPorts v1.02</title>
+</head>
+
+<body bgcolor="#FFFFFF">
+
+<p align="left"><img src="enumser.gif" width="32" height="32"><font color="#000000"
+size="6" face="Verdana"><strong>EnumSerialPorts v1.02</strong></font></p>
+
+<p><font color="#000000" face="Arial" size="3">Welcome to EnumSerialPorts v1.01, A simple
+MFC function to enumerate the serial ports installed on your machine.</font></p>
+
+<p>&nbsp;</p>
+
+<table>
+  <tr>
+    <td><font face="Arial"><a href="#Features">Features</a></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial"><a href="#Usage">Usage</a></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial"><a href="#History">History</a></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial"><a href="#APIReference">API Reference</a></font></td>
+  </tr>
+  <tr>
+    <td><font face="Arial"><a href="#Contact">Contacting the Author</a></font></td>
+  </tr>
+</table>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial"><a name="Features"></a><big><strong><big>Features</big></strong></big>
+</font>
+
+<ul>
+  <li><font color="#000000" face="Arial" size="3">Simple C style function interface.</font></li>
+  <li><font color="#000000" face="Arial" size="3">The code works on both Windows 95/98 and NT.
+    The whole problem is that there is no standard Win32 API call which allows serial port
+    enumeration. The approach that this code uses is if on NT it uses the
+    QueryDosDevice otherwise it calls CreateFile directly. If the port
+    cannot be opened, the code examines the error code to see if it was accessed denied error
+    in which case it knows that the port exists even though it could not open the port.</font></li>
+  <li><font color="#000000" face="Arial" size="3">The code is fully Unicode compliant and
+    include Unicode built options in the workspace file.</font></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><a name="Usage"></a><font face="Arial"><big><big><strong>Usage</strong></big></big></font>
+
+<ul>
+  <li><font color="#000000" face="Arial" size="3">To use the function in your code simply
+    include enumser.cpp in your project and #include enumser.h in which ever of your modules
+    needs to make calls to the function.</font></li>
+  <li><font face="Arial">Your code will need to include MFC either statically or dynamically.</font></li>
+  <li><font face="Arial">To see the class in action, have a look at the main function in the
+    module &quot;main.cpp&quot;.</font></li>
+</ul>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial"><big><a name="History"></a></big><font color="#000000" size="5"><strong>History</strong></font></font></p>
+
+<p><font color="#000000" face="Arial" size="3"><strong>V1.0 (3 November 1998)</strong></font>
+
+<ul>
+  <li><font color="#000000" face="Arial" size="3">Initial public release.</font></li>
+</ul>
+
+<p><font color="#000000" face="Arial" size="3"><strong>V1.01 (23 February 1999)</strong></font>
+
+<ul>
+  <li><font color="#000000" face="Arial" size="3">Code now uses QueryDosDevice
+    if running on NT to determine which serial ports are available. This avoids having to open the
+    ports at all. It should operate a lot faster in addition.</font></li>
+</ul>
+
+<p><font color="#000000" face="Arial" size="3"><strong>V1.02 (12 December 1999)</strong></font>
+
+<ul>
+  <li><font face="Arial">Fixed a problem in the Win9x code path when trying to
+    detect deactivated IRDA-ports.  When trying to open those, you will get the error-code
+    ERROR_GEN_FAILURE.&nbsp;</font></li>
+</ul>
+
+<p class="crt">&nbsp;</p>
+
+<p class="crt">&nbsp;</p>
+
+<p class="crt">&nbsp;</p>
+
+<p class="crt"><font face="Arial"><a name="APIReference"></a><big><big><strong>API
+Reference</strong></big></big></font></p>
+
+<p><a name="Start"></a><big><strong><font face="Arial">EnumerateSerialPorts</font></strong></big></p>
+
+<p><strong><font face="Arial">void ::EnumerateSerialPorts(CUIntArray&amp;&nbsp; ports);</font></strong></p>
+
+<p><font face="Arial"><strong>Parameters</strong></font></p>
+
+<p><font face="Arial"><em>ports</em> Upon return this array will contain the port numbers
+of all the serial ports installed on the computer</font></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><font face="Arial"><a name="Contact"></a><font color="#000000" size="4"><strong>CONTACTING
+THE AUTHOR</strong></font></font></p>
+
+<p><font color="#000000" face="Arial" size="3">PJ Naughter<br>
+Email: <a href="mailto:pjn@indigo..ie">pjn@indigo.ie</a><br>
+Web: <a href="http://indigo.ie/~pjn">http://indigo.ie/~pjn</a><br>
+12 December 1999</font></p>
+</body>
+</html>

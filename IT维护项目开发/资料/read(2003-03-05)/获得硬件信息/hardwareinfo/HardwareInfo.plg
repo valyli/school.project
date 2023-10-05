@@ -1,0 +1,51 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: HardwareInfo - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/HardwareInfo.res" /d "_DEBUG" /d "_AFXDLL" "F:\new stuff(2003-03-05)\download\获得硬件信息\hardwareinfo\HardwareInfo.rc"" 
+Creating temporary file "E:\TEMP\RSPA8.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/HardwareInfo.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\new stuff(2003-03-05)\download\获得硬件信息\hardwareinfo\HardwareInfo.cpp"
+"F:\new stuff(2003-03-05)\download\获得硬件信息\hardwareinfo\HardwareInfoDlg.cpp"
+"F:\new stuff(2003-03-05)\download\获得硬件信息\hardwareinfo\SystemInfo.cpp"
+]
+Creating command line "cl.exe @E:\TEMP\RSPA8.tmp" 
+Creating temporary file "E:\TEMP\RSPA9.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/HardwareInfo.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\new stuff(2003-03-05)\download\获得硬件信息\hardwareinfo\StdAfx.cpp"
+]
+Creating command line "cl.exe @E:\TEMP\RSPA9.tmp" 
+Creating temporary file "E:\TEMP\RSPAA.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/HardwareInfo.pdb" /debug /machine:I386 /out:"Debug/HardwareInfo.exe" /pdbtype:sept 
+".\Debug\HardwareInfo.obj"
+".\Debug\HardwareInfoDlg.obj"
+".\Debug\StdAfx.obj"
+".\Debug\SystemInfo.obj"
+".\Debug\HardwareInfo.res"
+]
+Creating command line "link.exe @E:\TEMP\RSPAA.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+HardwareInfo.cpp
+HardwareInfoDlg.cpp
+SystemInfo.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+HardwareInfo.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

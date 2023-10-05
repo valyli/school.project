@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0040)http://tzsvc.xiloo.com/doc/files/iis.htm -->
+<HTML><HEAD><TITLE>宗胜的编程乐园--文档 <http://tzsvc.xiloo.com></TITLE><!-- #BeginTemplate "/Templates/index3_table.dwt" --><!-- #BeginEditable "doctitle" --><!-- #EndEditable -->
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<STYLE type=text/css>A {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+</STYLE>
+
+<SCRIPT language=JAVASCRIPT>
+<!-- 
+var timerID = null;
+var timerRunning = false;
+function stopclock (){
+if(timerRunning)
+clearTimeout(timerID);
+timerRunning = false;
+}
+function showtime () {
+var now = new Date();
+var hours = now.getHours();
+var minutes = now.getMinutes();
+var seconds = now.getSeconds()
+var timeValue = "现在时间是: " + ((hours >12) ? hours -12 :hours)
+timeValue += ((minutes < 10) ? ":0" : ":") + minutes
+timeValue += ((seconds < 10) ? ":0" : ":") + seconds
+timeValue += (hours >= 12) ? " P.M." : " A.M."
+window.status = timeValue;
+timerID = setTimeout("showtime()",1000);
+timerRunning = true;
+}
+function startclock () {
+stopclock();
+showtime();
+}
+-->
+</SCRIPT>
+
+<SCRIPT language=JavaScript>
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+</SCRIPT>
+
+<META content="MSHTML 5.50.4134.100" name=GENERATOR></HEAD>
+<BODY text=#000000 bgColor=#ffffff leftMargin=0 onload=startclock()>
+<TABLE cellSpacing=0 cellPadding=0 width=772 border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top align=left bgColor=#ffffff>
+      <TABLE height=8 cellSpacing=0 cellPadding=0 width=776 align=center 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD width=311 bgColor=#ffffff height=11><FONT color=#ffffff>　
+            <SCRIPT language=JavaScript> <!---
+today=new Date();
+var hours = today.getHours();
+var minutes = today.getMinutes();
+var seconds = today.getSeconds();
+var timeValue = "<FONT COLOR=black>" + ((hours >12) ? hours -12 :hours); timeValue += ((minutes < 10) ? "<BLINK><FONT COLOR=black>:</FONT></BLINK>0" : "<BLINK><FONT COLOR=black>:</FONT></BLINK>") + minutes+"</FONT></FONT>";
+timeValue += (hours >= 12) ? "<FONT COLOR=blue><I><B>pm</B></I></FONT>" : "<FONT COLOR=blue><B><I>am</I></B></FONT>";
+function initArray(){
+this.length=initArray.arguments.length
+for(var i=0;i<this.length;i++)
+this[i+1]=initArray.arguments[i] }
+var d=new initArray("<font color=RED>星期日","<font color=black>星期一","<font color=black>星期二","<font color=black>星期三","<font color=black>星期四","<font color=black>星期五","<font color=GREEN>星期六"); document.write("<font color=black>",today.getYear(),"<font color=red>年","<font color=black>",today.getMonth()+1,"<font color=red>月","<font color=black>",today.getDate(),"<font color=red>日 </FONT>",d[today.getDay()+1]," ",timeValue); //--></SCRIPT>
+             <FONT color=#000000 size=2>登录</FONT></FONT></TD>
+          <TD vAlign=bottom align=right width=51 bgColor=#ffffff height=11><A 
+            href="http://tzsvc.xiloo.com/index.htm"><IMG height=17 
+            src="如何通过程序修改IIS的参数.files/head.jpg" width=51 border=0></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/mywriting/mywriting.htm"><FONT 
+            color=#000000 size=2>作品</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 
+            height=11><FONT color=#000000 size=2><A 
+            href="http://tzsvc.xiloo.com/firststu/firststu.htm">新手</A></FONT></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/doc/doc.htm"><FONT color=#000000 
+            size=2>文章</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/skill/dll.htm"><FONT color=#000000 
+            size=2>技巧</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/book/vc.htm"><FONT color=#000000 
+            size=2>教程</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/code/code.htm"><FONT color=#000000 
+            size=2>源码</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/ks/ks.htm"><FONT color=#000000 
+            size=2>考试</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/job/job.htm"><FONT color=#000000 
+            size=2>求职</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/download/download.htm"><FONT 
+            color=#000000 size=2>下载</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/virus/virus.htm"><FONT color=#000000 
+            size=2>病毒</FONT></A></TD>
+          <TD vAlign=bottom align=left width=56 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/programmer/programmer.htm"><FONT 
+            color=#000000 size=2>人生</FONT></A></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD vAlign=top align=left bgColor=#0070b0></TD></TR>
+  <TR vAlign=bottom align=left>
+    <TD height=61>
+      <TABLE cellSpacing=0 cellPadding=0 width=761 align=center border=0>
+        <TBODY>
+        <TR>
+          <TD width=188 height=49><IMG height=67 
+            src="如何通过程序修改IIS的参数.files/zititle.jpg" width=187></TD>
+          <TD width=452 height=49><A 
+            href="http://asiafriendfinder.com/go/f122344"><IMG height=67 src="" 
+            width=450 align=absBottom border=0></A></TD>
+          <TD width=121 height=49><FONT size=2><IFRAME border=0 
+            src="res://C:\WINDOWS\SYSTEM\SHDOCLC.DLL/dnserror.htm" frameBorder=0 
+            width=120 scrolling=no 
+    height=60></IFRAME></FONT></TD></TR></TBODY></TABLE></TD></TR>
+  <TR bgColor=#0070b0>
+    <TD><FONT color=#ffffff size=2><FONT size=2>　|<A target=_blank 
+      href="http://vcbbs888.xilubbs.com/"><FONT color=#ffffff 
+      size=2>编程论坛</FONT></A>|<A target=_blank 
+      href="http://www.sn163.net/cgi-bin/gb2000/gb.cgi?id=tangzs"><FONT 
+      color=#ffffff size=2>请您留言</FONT></A>|</FONT><A target=_blank 
+      href="mailto:tzs168@yahoo.com.cn"><FONT color=#ffffff 
+      size=2>联系我们</FONT></A>|</FONT></TD></TR>
+  <TR>
+    <TD vAlign=top align=left>
+      <TABLE cellSpacing=0 cellPadding=0 width=777 border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top align=middle width=165 bgColor=#e8ecf8 
+            height=104><IMG height=60 src="如何通过程序修改IIS的参数.files/word.jpg" 
+            width=140><BR><BR><FONT size=2><A 
+            href="http://tzsvc.xiloo.com/other/new.htm">本站更新列表&gt;&gt;</A></FONT><BR><BR><FONT 
+            size=2><A 
+            href="http://tzsvc.xiloo.com/other/goodpage.htm">好站链接&gt;&gt;</A></FONT><BR></TD>
+          <TD vAlign=top align=left width=12 height=104><IMG height=15 
+            src="如何通过程序修改IIS的参数.files/mid_conner.gif" width=10></TD>
+          <TD vAlign=top align=left width=600 height=104>
+            <TABLE cellSpacing=0 cellPadding=0 width=599 border=0>
+              <TBODY>
+              <TR>
+                <TD><FONT size=2>日期:2002/<!-- #BeginEditable "date" -->10/19<!-- #EndEditable -->　　　　　　　　　　　　　　　　　　　　　　　　文章出处:<!-- #BeginEditable "from" -->UnKnow<!-- #EndEditable --></FONT></TD></TR>
+              <TR>
+                <TD><FONT 
+                  size=2>标题:<!-- #BeginEditable "title" --><B>如何通过程序修改IIS的参数</B><!-- #EndEditable --></FONT></TD></TR>
+              <TR>
+                <TD><!-- #BeginEditable "other" --><!-- #EndEditable --></TD></TR>
+              <TR>
+                <TD vAlign=top align=left><!-- #BeginEditable "data" --><FONT 
+                  size=2><BR>在Visual C++中使用ADSI，需要#include 
+                  activeds.h，连接activeds.lib和adsiid.lib库文件，<BR>并要使用Unicode字符串。<BR>这个例子是使用VC在默认Web站点建立的虚拟目录。 
+                  </FONT>
+                  <P><FONT 
+                  size=2>///////////////////////////////////////////////<BR>// 
+                  CreateVirtualDirection参数说明<BR>// 
+                  lpszVirtualDirName需要建立的虚拟目录的目录名字<BR>// lpszDiskPath 
+                  需要建立虚拟目录的本地磁盘目录<BR>//////////////////////////////////////////////</FONT></P>
+                  <P><FONT size=2>BOOL CreateVirtualDirection(LPCTSTR 
+                  lpszVirtualDirName,LPCTSTR 
+                  lpszDiskPath)<BR>{<BR>IADsContainer* iContainer;<BR>IADs* 
+                  iAds;<BR>/* 获得WebSever */ 
+                  <BR>if(ADsGetObject(L"IIS://localhost/w3svc",IID_IADsContainer,(void**)&amp;iContainer)==S_OK) 
+                  <BR>{<BR>//等到默认站点 
+                  <BR>iContainer-&gt;GetObject(_bstr_t("IIsWebServer"), 
+                  _bstr_t("1"),(IDispatch**)&amp;iAds);<BR>if(iAds-&gt;QueryInterface(IID_IADsContainer,(void**)&amp;iContainer)==S_OK)<BR>{<BR>//得到默认站点的根目录<BR>iContainer-&gt;GetObject(_bstr_t("IIsWebVirtualDir"),_bstr_t("Root"),(IDispatch**)&amp;iAds);<BR>//获得访问虚拟目录<BR>if(iAds-&gt;QueryInterface(IID_IADsContainer,(void**)&amp;iContainer)==S_OK)<BR>{<BR>//先删除了虚拟目录 
+                  <BR>iContainer-&gt;Delete(_bstr_t("IIsWebVirtualDir"), 
+                  _bstr_t(lpszVirtualDirName));<BR>//建立虚拟目录 
+                  <BR>if(iContainer-&gt;Create(_bstr_t("IIsWebVirtualDir"), 
+                  _bstr_t(lpszVirtualDirName),(IDispatch**)&amp;iAds)==S_OK)<BR>{<BR>//设置虚拟目录的属性 
+                  <BR>iAds-&gt;Put(_bstr_t("AccessRead"),_variant_t("True"));//注意跟VB中的设置属性比较<BR>iAds-&gt;Put(_bstr_t("AccessWrite"),_variant_t("True"));<BR>iAds-&gt;Put(_bstr_t("Path"),_variant_t(lpszDiskPath));<BR>iAds-&gt;SetInfo();<BR>iAds-&gt;Release();<BR>iAds-&gt;Release();<BR>iContainer-&gt;Release();<BR>iContainer-&gt;Release();<BR>return 
+                  TRUE;<BR>}<BR>else<BR>{<BR>iAds-&gt;Release();<BR>iAds-&gt;Release();<BR>iContainer-&gt;Release();<BR>iContainer-&gt;Release();<BR>return 
+                  FALSE;<BR>} 
+                  <BR>}<BR>else<BR>{<BR>iAds-&gt;Release();<BR>iContainer-&gt;Release();<BR>}<BR>}<BR>else<BR>{<BR>iAds-&gt;Release();<BR>}<BR>iContainer-&gt;Release();<BR>} 
+                  <BR>return 
+                  FALSE;<BR>}<BR>//使用VC需要初始化COM环境，别忘了APP类的InitInstance中AfxOleInit()函数的调用哦。<BR>refer 
+                  to http://seesi.top263.net/article/adsiiis.htm<BR></FONT></P><!-- #EndEditable --></TD></TR>
+              <TR>
+                <TD align=middle><FONT size=2>上一页 第0页 下一页</FONT></TD></TR>
+              <TR>
+                <TD align=middle><FONT size=2><INPUT onclick=history.go(-1) type=button value=后退 name=button> 
+<INPUT onclick=history.go(1) type=button value=前进 name=button2> 
+<INPUT onclick=window.close() type=button value=关闭 name=button3> 
+                  </FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=764 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <HR SIZE=1>
+    </TD></TR>
+  <TR>
+    <TD align=middle><FONT size=2>Copyright(c)2002 
+      宗胜的编程乐园　http://tzsvc.xiloo.com <BR>文章版权归原作者所有，如仍有问题，请与我联系 </FONT></TD></TR>
+  <TR>
+    <TD>
+      <HR SIZE=1>
+    </TD></TR></TBODY></TABLE><!-- #EndTemplate --></BODY></HTML>

@@ -1,0 +1,28 @@
+; ServerJNITLVModule.def : Declares the module parameters for the DLL.
+
+LIBRARY      "ServerJNITLVModule"
+DESCRIPTION  'ServerJNITLVModule Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here
+	CreateFileMappingC2S			@1
+	CreateFileMappingS2C			@2
+	Set_C2S							@3
+	Set_S2C							@4
+	Get_C2S							@5
+	Get_S2C							@6
+	Java_TestServelt_TestDll_getDataType	@7
+	Java_TestServelt_TestDll_getjstring		@8
+	Java_TestServelt_TestDll_getjint		@9
+	Java_TestServelt_TestDll_getNewData		@10
+	Java_TestServelt_TestDll_setNewData		@11
+	Java_TestServelt_TestDll_getInfomationElementTableID	@12
+	Java_TestServelt_TestDll_setInfomationElementTableID	@13
+	Java_TestServelt_TestDll_getInfomationElementID			@14
+	Java_TestServelt_TestDll_setInfomationElementID			@15
+	Java_TestServelt_TestDll_getLocalTime					@16
+	Java_TestServelt_TestDll_getjlong						@17
+	Java_TestServelt_TestDll_getPort						@18
+	Java_TestServelt_TestDll_getIP							@19
+	Java_TestServelt_TestDll_setIP							@20
+	Java_TestServelt_TestDll_setPort						@21

@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: SizeForm - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/SizeForm.res" /d "_DEBUG" /d "_AFXDLL" "H:\工作中的书\kh\translate\Visual C++\program\ch18\SizeForm\SizeForm.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP2304.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/SizeForm.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"H:\工作中的书\kh\translate\Visual C++\program\ch18\SizeForm\MainFrm.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch18\SizeForm\SizeForm.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch18\SizeForm\SizeFormDoc.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch18\SizeForm\SizeFormView.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP2304.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP2305.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/SizeForm.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"H:\工作中的书\kh\translate\Visual C++\program\ch18\SizeForm\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP2305.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP2306.TMP" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/SizeForm.pdb" /debug /machine:I386 /out:"Debug/SizeForm.exe" /pdbtype:sept 
+".\Debug\MainFrm.obj"
+".\Debug\SizeForm.obj"
+".\Debug\SizeFormDoc.obj"
+".\Debug\SizeFormView.obj"
+".\Debug\StdAfx.obj"
+".\Debug\SizeForm.res"
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP2306.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+MainFrm.cpp
+SizeForm.cpp
+SizeFormDoc.cpp
+SizeFormView.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+SizeForm.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

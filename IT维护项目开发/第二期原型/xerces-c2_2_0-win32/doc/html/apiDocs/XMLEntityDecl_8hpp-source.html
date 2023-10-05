@@ -1,0 +1,408 @@
+<HTML><HEAD><SCRIPT language="JavaScript" src="../resources/script.js" type="text/javascript"></SCRIPT><TITLE>XMLEntityDecl.hpp Source File</TITLE><link href="XercesApi.css" rel="stylesheet" type="text/css"></HEAD><BODY alink="#ff0000" bgcolor="#ffffff" leftmargin="4" link="#0000ff" marginheight="4" marginwidth="4" text="#000000" topmargin="4" vlink="#0000aa"><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD align="left" height="60" rowspan="3" valign="top" width="135"><IMG border="0" height="60" hspace="0" src="../resources/logo.gif" vspace="0" width="135"></TD><TD align="left" colspan="4" height="5" valign="top" width="456"><IMG border="0" height="5" hspace="0" src="../resources/line.gif" vspace="0" width="456"></TD><TD align="left" height="60" rowspan="3" valign="top" width="29"><IMG border="0" height="60" hspace="0" src="../resources/right.gif" vspace="0" width="29"></TD></TR><TR><TD align="left" bgcolor="#0086b2" colspan="4" height="35" valign="top" width="456"><IMG alt="" border="0" height="35" hspace="0" src="../graphics/api-header.jpg" vspace="0" width="456"></TD></TR><TR><TD align="left" height="20" valign="top" width="168"><IMG border="0" height="20" hspace="0" src="../resources/bottom.gif" vspace="0" width="168"></TD><TD align="left" height="20" valign="top" width="96"><A href="http://xml.apache.org/" onMouseOut="rolloverOff('xml');" onMouseOver="rolloverOn('xml');" target="new"><IMG alt="http://xml.apache.org/" border="0" height="20" hspace="0" name="xml" onLoad="rolloverLoad('xml','../resources/button-xml-hi.gif','../resources/button-xml-lo.gif');" src="../resources/button-xml-lo.gif" vspace="0" width="96"></A></TD><TD align="left" height="20" valign="top" width="96"><A href="http://www.apache.org/" onMouseOut="rolloverOff('asf');" onMouseOver="rolloverOn('asf');" target="new"><IMG alt="http://www.apache.org/" border="0" height="20" hspace="0" name="asf" onLoad="rolloverLoad('asf','../resources/button-asf-hi.gif','../resources/button-asf-lo.gif');" src="../resources/button-asf-lo.gif" vspace="0" width="96"></A></TD><TD align="left" height="20" valign="top" width="96"><A href="http://www.w3.org/" onMouseOut="rolloverOff('w3c');" onMouseOver="rolloverOn('w3c');" target="new"><IMG alt="http://www.w3.org/" border="0" height="20" hspace="0" name="w3c" onLoad="rolloverLoad('w3c','../resources/button-w3c-hi.gif','../resources/button-w3c-lo.gif');" src="../resources/button-w3c-lo.gif" vspace="0" width="96"></A></TD></TR></TABLE><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD align="left" valign="top" width="120"><IMG border="0" height="14" hspace="0" src="../resources/join.gif" vspace="0" width="120"><BR>
+  <A href="../../index.html" onMouseOut="rolloverOff('side-ext-2');" onMouseOver="rolloverOn('side-ext-2');"><IMG alt="Home" border="0" height="12" hspace="0" name="side-ext-2" onLoad="rolloverLoad('side-ext-2','../graphics/ext-2-label-2.jpg','../graphics/ext-2-label-3.jpg');" src="../graphics/ext-2-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="../index.html" onMouseOut="rolloverOff('side-index');" onMouseOver="rolloverOn('side-index');"><IMG alt="Readme" border="0" height="12" hspace="0" name="side-index" onLoad="rolloverLoad('side-index','../graphics/index-label-2.jpg','../graphics/index-label-3.jpg');" src="../graphics/index-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../releases.html" onMouseOut="rolloverOff('side-releases');" onMouseOver="rolloverOn('side-releases');"><IMG alt="Release Info" border="0" height="12" hspace="0" name="side-releases" onLoad="rolloverLoad('side-releases','../graphics/releases-label-2.jpg','../graphics/releases-label-3.jpg');" src="../graphics/releases-label-3.jpg" vspace="0" width="120"></A><BR>
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+  <A href="../install.html" onMouseOut="rolloverOff('side-install');" onMouseOver="rolloverOn('side-install');"><IMG alt="Installation" border="0" height="12" hspace="0" name="side-install" onLoad="rolloverLoad('side-install','../graphics/install-label-2.jpg','../graphics/install-label-3.jpg');" src="../graphics/install-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="http://xml.apache.org/dist/xerces-c/" onMouseOut="rolloverOff('side-ext-18');" onMouseOver="rolloverOn('side-ext-18');"><IMG alt="Download" border="0" height="12" hspace="0" name="side-ext-18" onLoad="rolloverLoad('side-ext-18','../graphics/ext-18-label-2.jpg','../graphics/ext-18-label-3.jpg');" src="../graphics/ext-18-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../build.html" onMouseOut="rolloverOff('side-build');" onMouseOver="rolloverOn('side-build');"><IMG alt="Build" border="0" height="12" hspace="0" name="side-build" onLoad="rolloverLoad('side-build','../graphics/build-label-2.jpg','../graphics/build-label-3.jpg');" src="../graphics/build-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+  <A href="../faqs.html" onMouseOut="rolloverOff('side-faqs');" onMouseOver="rolloverOn('side-faqs');"><IMG alt="FAQs" border="0" height="12" hspace="0" name="side-faqs" onLoad="rolloverLoad('side-faqs','../graphics/faqs-label-2.jpg','../graphics/faqs-label-3.jpg');" src="../graphics/faqs-label-3.jpg" vspace="0" width="120"></A><BR>  
+  <A href="../samples.html" onMouseOut="rolloverOff('side-samples');" onMouseOver="rolloverOn('side-samples');"><IMG alt="Samples" border="0" height="12" hspace="0" name="side-samples" onLoad="rolloverLoad('side-samples','../graphics/samples-label-2.jpg','../graphics/samples-label-3.jpg');" src="../graphics/samples-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../api.html" onMouseOut="rolloverOff('side-api');" onMouseOver="rolloverOn('side-api');"><IMG alt="API Docs" border="0" height="12" hspace="0" name="side-api" onLoad="rolloverLoad('side-api','../graphics/api-label-2.jpg','../graphics/api-label-3.jpg');" src="../graphics/api-label-3.jpg" vspace="0" width="120"></A><BR>  
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+  <A href="../ApacheDOMC++Binding.html" onMouseOut="rolloverOff('side-ext-64');" onMouseOver="rolloverOn('side-ext-64');"><IMG alt="DOM C++ Binding" border="0" height="12" hspace="0" name="side-ext-64" onLoad="rolloverLoad('side-ext-64','../graphics/ext-64-label-2.jpg','../graphics/ext-64-label-3.jpg');" src="../graphics/ext-64-label-3.jpg" vspace="0" width="120"></A><BR> 
+  <A href="../program.html" onMouseOut="rolloverOff('side-program');" onMouseOver="rolloverOn('side-program');"><IMG alt="Programming" border="0" height="12" hspace="0" name="side-program" onLoad="rolloverLoad('side-program','../graphics/program-label-2.jpg','../graphics/program-label-3.jpg');" src="../graphics/program-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../migrate.html" onMouseOut="rolloverOff('side-migrate');" onMouseOver="rolloverOn('side-migrate');"><IMG alt="Migration Guide" border="0" height="12" hspace="0" name="side-migrate" onLoad="rolloverLoad('side-migrate','../graphics/migrate-label-2.jpg','../graphics/migrate-label-3.jpg');" src="../graphics/migrate-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="../feedback.html" onMouseOut="rolloverOff('side-feedback');" onMouseOver="rolloverOn('side-feedback');"><IMG alt="Feedback" border="0" height="12" hspace="0" name="side-feedback" onLoad="rolloverLoad('side-feedback','../graphics/feedback-label-2.jpg','../graphics/feedback-label-3.jpg');" src="../graphics/feedback-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../bug-report.html" onMouseOut="rolloverOff('side-bug-report');" onMouseOver="rolloverOn('side-bug-report');"><IMG alt="Bug-Reporting" border="0" height="12" hspace="0" name="side-bug-report" onLoad="rolloverLoad('side-bug-report','../graphics/bug-report-label-2.jpg','../graphics/bug-report-label-3.jpg');" src="../graphics/bug-report-label-3.jpg" vspace="0" width="120"></A><BR>  
+  <A href="../pdf.html" onMouseOut="rolloverOff('side-pdf');" onMouseOver="rolloverOn('side-pdf');"><IMG alt="PDF Document" border="0" height="12" hspace="0" name="side-pdf" onLoad="rolloverLoad('side-pdf','../graphics/pdf-label-2.jpg','../graphics/pdf-label-3.jpg');" src="../graphics/pdf-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="http://xml.apache.org/websrc/cvsweb.cgi/xml-xerces/c/" onMouseOut="rolloverOff('side-ext-96');" onMouseOver="rolloverOn('side-ext-96');"><IMG alt="CVS Repository" border="0" height="12" hspace="0" name="side-ext-96" onLoad="rolloverLoad('side-ext-96','../graphics/ext-96-label-2.jpg','../graphics/ext-96-label-3.jpg');" src="../graphics/ext-96-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="http://marc.theaimsgroup.com/?l=xerces-c-dev" onMouseOut="rolloverOff('side-ext-98');" onMouseOver="rolloverOn('side-ext-98');"><IMG alt="Mail Archive" border="0" height="12" hspace="0" name="side-ext-98" onLoad="rolloverLoad('side-ext-98','../graphics/ext-98-label-2.jpg','../graphics/ext-98-label-3.jpg');" src="../graphics/ext-98-label-3.jpg" vspace="0" width="120"></A><BR>
+
+<IMG border="0" height="14" hspace="0" src="../resources/close.gif" vspace="0" width="120"><BR></TD><TD align="left" valign="top" width="500"><TABLE border="0" cellpadding="3" cellspacing="0"><TR><TD>
+    <TABLE border="0" cellpadding="0" cellspacing="0" width="494"><TR><TD bgcolor="#FFFFFF" colspan="2" width="494"><TABLE border="0" cellpadding="0" cellspacing="0" width="494"><TR><TD bgcolor="#039acc" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#039acc" height="1" width="492"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="492"></TD><TD bgcolor="#0086b2" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR><TR><TD bgcolor="#039acc" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#0086b2" width="492"><FONT color="#ffffff" face="arial,helvetica,sanserif" size="+1"><IMG border="0" height="2" hspace="0" src="../resources/void.gif" vspace="0" width="2"><B>API Docs for SAX and DOM</B></FONT></TD><TD bgcolor="#017299" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR><TR><TD bgcolor="#0086b2" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#017299" height="1" width="492"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="492"></TD><TD bgcolor="#017299" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR></TABLE></TD></TR><TR><TD width="10">&nbsp;</TD><TD width="484"><FONT color="#000000" face="arial,helvetica,sanserif">
+
+	    <P>
+<!-- Generated by Doxygen 1.2.18 -->
+<center>
+<a class="qindex" href="index.html">Main Page</a> &nbsp; <a class="qindex" href="hierarchy.html">Class Hierarchy</a> &nbsp; <a class="qindex" href="classes.html">Alphabetical List</a> &nbsp; <a class="qindex" href="annotated.html">Compound List</a> &nbsp; <a class="qindex" href="files.html">File List</a> &nbsp; <a class="qindex" href="functions.html">Compound Members</a> &nbsp; <a class="qindex" href="globals.html">File Members</a> &nbsp; </center>
+<hr><h1>XMLEntityDecl.hpp</h1><a href="XMLEntityDecl_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><pre>00001 <span class="comment">/*</span>
+00002 <span class="comment"> * The Apache Software License, Version 1.1</span>
+00003 <span class="comment"> *</span>
+00004 <span class="comment"> * Copyright (c) 1999-2000 The Apache Software Foundation.  All rights</span>
+00005 <span class="comment"> * reserved.</span>
+00006 <span class="comment"> *</span>
+00007 <span class="comment"> * Redistribution and use in source and binary forms, with or without</span>
+00008 <span class="comment"> * modification, are permitted provided that the following conditions</span>
+00009 <span class="comment"> * are met:</span>
+00010 <span class="comment"> *</span>
+00011 <span class="comment"> * 1. Redistributions of source code must retain the above copyright</span>
+00012 <span class="comment"> *    notice, this list of conditions and the following disclaimer.</span>
+00013 <span class="comment"> *</span>
+00014 <span class="comment"> * 2. Redistributions in binary form must reproduce the above copyright</span>
+00015 <span class="comment"> *    notice, this list of conditions and the following disclaimer in</span>
+00016 <span class="comment"> *    the documentation and/or other materials provided with the</span>
+00017 <span class="comment"> *    distribution.</span>
+00018 <span class="comment"> *</span>
+00019 <span class="comment"> * 3. The end-user documentation included with the redistribution,</span>
+00020 <span class="comment"> *    if any, must include the following acknowledgment:</span>
+00021 <span class="comment"> *       "This product includes software developed by the</span>
+00022 <span class="comment"> *        Apache Software Foundation (http://www.apache.org/)."</span>
+00023 <span class="comment"> *    Alternately, this acknowledgment may appear in the software itself,</span>
+00024 <span class="comment"> *    if and wherever such third-party acknowledgments normally appear.</span>
+00025 <span class="comment"> *</span>
+00026 <span class="comment"> * 4. The names "Xerces" and "Apache Software Foundation" must</span>
+00027 <span class="comment"> *    not be used to endorse or promote products derived from this</span>
+00028 <span class="comment"> *    software without prior written permission. For written</span>
+00029 <span class="comment"> *    permission, please contact apache\@apache.org.</span>
+00030 <span class="comment"> *</span>
+00031 <span class="comment"> * 5. Products derived from this software may not be called "Apache",</span>
+00032 <span class="comment"> *    nor may "Apache" appear in their name, without prior written</span>
+00033 <span class="comment"> *    permission of the Apache Software Foundation.</span>
+00034 <span class="comment"> *</span>
+00035 <span class="comment"> * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED</span>
+00036 <span class="comment"> * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES</span>
+00037 <span class="comment"> * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+00038 <span class="comment"> * DISCLAIMED.  IN NO EVENT SHALL THE APACHE SOFTWARE FOUNDATION OR</span>
+00039 <span class="comment"> * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+00040 <span class="comment"> * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+00041 <span class="comment"> * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF</span>
+00042 <span class="comment"> * USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND</span>
+00043 <span class="comment"> * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,</span>
+00044 <span class="comment"> * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT</span>
+00045 <span class="comment"> * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF</span>
+00046 <span class="comment"> * SUCH DAMAGE.</span>
+00047 <span class="comment"> * ====================================================================</span>
+00048 <span class="comment"> *</span>
+00049 <span class="comment"> * This software consists of voluntary contributions made by many</span>
+00050 <span class="comment"> * individuals on behalf of the Apache Software Foundation, and was</span>
+00051 <span class="comment"> * originally based on software copyright (c) 1999, International</span>
+00052 <span class="comment"> * Business Machines, Inc., http://www.ibm.com .  For more information</span>
+00053 <span class="comment"> * on the Apache Software Foundation, please see</span>
+00054 <span class="comment"> * &lt;http://www.apache.org/&gt;.</span>
+00055 <span class="comment"> */</span>
+00056 
+00057 <span class="comment">/*</span>
+00058 <span class="comment"> * $Log: XMLEntityDecl.hpp,v $</span>
+00059 <span class="comment"> * Revision 1.3  2002/11/04 15:00:21  tng</span>
+00060 <span class="comment"> * C++ Namespace Support.</span>
+00061 <span class="comment"> *</span>
+00062 <span class="comment"> * Revision 1.2  2002/08/22 19:27:41  tng</span>
+00063 <span class="comment"> * [Bug 11448] DomCount has problems with XHTML1.1 DTD.</span>
+00064 <span class="comment"> *</span>
+00065 <span class="comment"> * Revision 1.1.1.1  2002/02/01 22:21:51  peiyongz</span>
+00066 <span class="comment"> * sane_include</span>
+00067 <span class="comment"> *</span>
+00068 <span class="comment"> * Revision 1.6  2000/02/24 20:00:23  abagchi</span>
+00069 <span class="comment"> * Swat for removing Log from API docs</span>
+00070 <span class="comment"> *</span>
+00071 <span class="comment"> * Revision 1.5  2000/02/16 23:03:48  roddey</span>
+00072 <span class="comment"> * More documentation updates</span>
+00073 <span class="comment"> *</span>
+00074 <span class="comment"> * Revision 1.4  2000/02/16 21:42:58  aruna1</span>
+00075 <span class="comment"> * API Doc++ summary changes in</span>
+00076 <span class="comment"> *</span>
+00077 <span class="comment"> * Revision 1.3  2000/02/15 01:21:30  roddey</span>
+00078 <span class="comment"> * Some initial documentation improvements. More to come...</span>
+00079 <span class="comment"> *</span>
+00080 <span class="comment"> * Revision 1.2  2000/02/06 07:47:48  rahulj</span>
+00081 <span class="comment"> * Year 2K copyright swat.</span>
+00082 <span class="comment"> *</span>
+00083 <span class="comment"> * Revision 1.1.1.1  1999/11/09 01:08:32  twl</span>
+00084 <span class="comment"> * Initial checkin</span>
+00085 <span class="comment"> *</span>
+00086 <span class="comment"> * Revision 1.2  1999/11/08 20:44:38  rahul</span>
+00087 <span class="comment"> * Swat for adding in Product name and CVS comment log variable.</span>
+00088 <span class="comment"> *</span>
+00089 <span class="comment"> */</span>
+00090 
+00091 <span class="preprocessor">#if !defined(XMLENTITYDECL_HPP)</span>
+<a name="l00092"></a><a class="code" href="XMLEntityDecl_8hpp.html#a0">00092</a> <span class="preprocessor"></span><span class="preprocessor">#define XMLENTITYDECL_HPP</span>
+00093 <span class="preprocessor"></span>
+00094 <span class="preprocessor">#include &lt;<a class="code" href="XMLString_8hpp.html">xercesc/util/XMLString.hpp</a>&gt;</span>
+00095 
+00096 <a class="code" href="XercesDefs_8hpp.html#a2">XERCES_CPP_NAMESPACE_BEGIN</a>
+00097 
+<a name="l00116"></a><a class="code" href="classXMLEntityDecl.html">00116</a> <span class="keyword">class </span><a class="code" href="XercesDefs_8hpp.html#a7"></a> <a class="code" href="classXMLEntityDecl.html">XMLEntityDecl</a>
+00117 {
+00118 <span class="keyword">public</span>:
+00119     <span class="comment">// -----------------------------------------------------------------------</span>
+00120     <span class="comment">//  Constructors and Destructor</span>
+00121     <span class="comment">// -----------------------------------------------------------------------</span>
+00122 
+00125 
+00129     <a class="code" href="classXMLEntityDecl.html">XMLEntityDecl</a>();
+00130 
+00135     <a class="code" href="classXMLEntityDecl.html">XMLEntityDecl</a>
+00136     (
+00137         <span class="keyword">const</span>   XMLCh* <span class="keyword">const</span>    entName
+00138     );
+00139 
+00146     <a class="code" href="classXMLEntityDecl.html">XMLEntityDecl</a>
+00147     (
+00148         <span class="keyword">const</span>   XMLCh* <span class="keyword">const</span>    entName
+00149         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>    value
+00150     );
+00151 
+00158     <a class="code" href="classXMLEntityDecl.html">XMLEntityDecl</a>
+00159     (
+00160         <span class="keyword">const</span>   XMLCh* <span class="keyword">const</span>    entName
+00161         , <span class="keyword">const</span> XMLCh           value
+00162     );
+00164 
+00167 
+00171     <span class="keyword">virtual</span> ~<a class="code" href="classXMLEntityDecl.html">XMLEntityDecl</a>();
+00172 
+00174 
+00175 
+00176     <span class="comment">// -----------------------------------------------------------------------</span>
+00177     <span class="comment">//  Virtual entity decl interface</span>
+00178     <span class="comment">// -----------------------------------------------------------------------</span>
+00179 
+00182 
+00190     <span class="keyword">virtual</span> <span class="keywordtype">bool</span> getDeclaredInIntSubset() <span class="keyword">const</span> = 0;
+00191 
+00197     <span class="keyword">virtual</span> <span class="keywordtype">bool</span> getIsParameter() <span class="keyword">const</span> = 0;
+00198 
+00204     <span class="keyword">virtual</span> <span class="keywordtype">bool</span> getIsSpecialChar() <span class="keyword">const</span> = 0;
+00205 
+00207 
+00208 
+00209     <span class="comment">// -----------------------------------------------------------------------</span>
+00210     <span class="comment">//  Getter methods</span>
+00211     <span class="comment">// -----------------------------------------------------------------------</span>
+00212 
+00215 
+00220     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getId() <span class="keyword">const</span>;
+00221 
+00227     <span class="keyword">const</span> XMLCh* getName() <span class="keyword">const</span>;
+00228 
+00233     <span class="keyword">const</span> XMLCh* getNotationName() <span class="keyword">const</span>;
+00234 
+00239     <span class="keyword">const</span> XMLCh* getPublicId() <span class="keyword">const</span>;
+00240 
+00245     <span class="keyword">const</span> XMLCh* getSystemId() <span class="keyword">const</span>;
+00246 
+00250     <span class="keyword">const</span> XMLCh* getBaseURI() <span class="keyword">const</span>;
+00251 
+00257     <span class="keyword">const</span> XMLCh* getValue() <span class="keyword">const</span>;
+00258 
+00264     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getValueLen() <span class="keyword">const</span>;
+00265 
+00270     <span class="keywordtype">bool</span> isExternal() <span class="keyword">const</span>;
+00271 
+00277     <span class="keywordtype">bool</span> isUnparsed() <span class="keyword">const</span>;
+00278 
+00280 
+00281 
+00282     <span class="comment">// -----------------------------------------------------------------------</span>
+00283     <span class="comment">//  Setter methods</span>
+00284     <span class="comment">// -----------------------------------------------------------------------</span>
+00285 
+00288 
+00297     <span class="keywordtype">void</span> setName
+00298     (
+00299         <span class="keyword">const</span>   XMLCh* <span class="keyword">const</span>    entName
+00300     );
+00301 
+00308     <span class="keywordtype">void</span> setNotationName(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> newName);
+00309 
+00316     <span class="keywordtype">void</span> setPublicId(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> newId);
+00317 
+00327     <span class="keywordtype">void</span> setSystemId(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> newId);
+00328 
+00335     <span class="keywordtype">void</span> setBaseURI(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> newId);
+00336 
+00344     <span class="keywordtype">void</span> setValue(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> newValue);
+00345 
+00347 
+00348     <span class="comment">/* For internal use only */</span>
+00349     <span class="keywordtype">void</span> setId(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> newId);
+00350 
+00351 
+00352     <span class="comment">// -----------------------------------------------------------------------</span>
+00353     <span class="comment">//  Support named pool syntax</span>
+00354     <span class="comment">// -----------------------------------------------------------------------</span>
+00355 
+00358 
+00365     <span class="keyword">const</span> XMLCh* getKey() <span class="keyword">const</span>;
+00366 
+00368 
+00369 
+00370 <span class="keyword">private</span> :
+00371     <span class="comment">// -----------------------------------------------------------------------</span>
+00372     <span class="comment">//  Unimplemented constructors and operators</span>
+00373     <span class="comment">// -----------------------------------------------------------------------</span>
+00374     <a class="code" href="classXMLEntityDecl.html">XMLEntityDecl</a>(<span class="keyword">const</span> <a class="code" href="classXMLEntityDecl.html">XMLEntityDecl</a>&amp;);
+00375     <span class="keywordtype">void</span> operator=(<a class="code" href="classXMLEntityDecl.html">XMLEntityDecl</a>&amp;);
+00376 
+00377 
+00378     <span class="comment">// -----------------------------------------------------------------------</span>
+00379     <span class="comment">//  XMLEntityDecl: Private helper methods</span>
+00380     <span class="comment">// -----------------------------------------------------------------------</span>
+00381     <span class="keywordtype">void</span> cleanUp();
+00382 
+00383 
+00384     <span class="comment">// -----------------------------------------------------------------------</span>
+00385     <span class="comment">//  Private data members</span>
+00386     <span class="comment">//</span>
+00387     <span class="comment">//  fId</span>
+00388     <span class="comment">//      This is the unique id given to this entity decl.</span>
+00389     <span class="comment">//</span>
+00390     <span class="comment">//  fName</span>
+00391     <span class="comment">//      The name of the enitity. Entity names are never namespace based.</span>
+00392     <span class="comment">//</span>
+00393     <span class="comment">//  fNotationName</span>
+00394     <span class="comment">//      The optional notation of the entity. If there was none, then its</span>
+00395     <span class="comment">//      empty.</span>
+00396     <span class="comment">//</span>
+00397     <span class="comment">//  fPublicId</span>
+00398     <span class="comment">//      The public id of the entity, which can be empty.</span>
+00399     <span class="comment">//</span>
+00400     <span class="comment">//  fSystemId</span>
+00401     <span class="comment">//      The system id of the entity.</span>
+00402     <span class="comment">//</span>
+00403     <span class="comment">//  fValue</span>
+00404     <span class="comment">//  fValueLen</span>
+00405     <span class="comment">//      The entity's value and length, which is only valid if its an</span>
+00406     <span class="comment">//      internal style entity.</span>
+00407     <span class="comment">//</span>
+00408     <span class="comment">//  fBaseURI</span>
+00409     <span class="comment">//      The base URI of the entity.   According to XML InfoSet, such value</span>
+00410     <span class="comment">//      is the URI where it is declared (NOT referenced).</span>
+00411     <span class="comment">// -----------------------------------------------------------------------</span>
+00412     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    fId;
+00413     XMLCh*          fName;
+00414     XMLCh*          fNotationName;
+00415     XMLCh*          fPublicId;
+00416     XMLCh*          fSystemId;
+00417     XMLCh*          fValue;
+00418     <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    fValueLen;
+00419     XMLCh*          fBaseURI;
+00420 };
+00421 
+00422 
+00423 <span class="comment">// ---------------------------------------------------------------------------</span>
+00424 <span class="comment">//  XMLEntityDecl: Getter methods</span>
+00425 <span class="comment">// ---------------------------------------------------------------------------</span>
+<a name="l00426"></a><a class="code" href="classXMLEntityDecl.html#z380_0">00426</a> <span class="keyword">inline</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classXMLEntityDecl.html#z380_0">XMLEntityDecl::getId</a>()<span class="keyword"> const</span>
+00427 <span class="keyword"></span>{
+00428     <span class="keywordflow">return</span> fId;
+00429 }
+00430 
+<a name="l00431"></a><a class="code" href="classXMLEntityDecl.html#z380_1">00431</a> <span class="keyword">inline</span> <span class="keyword">const</span> XMLCh* <a class="code" href="classXMLEntityDecl.html#z380_1">XMLEntityDecl::getName</a>()<span class="keyword"> const</span>
+00432 <span class="keyword"></span>{
+00433     <span class="keywordflow">return</span> fName;
+00434 }
+00435 
+<a name="l00436"></a><a class="code" href="classXMLEntityDecl.html#z380_2">00436</a> <span class="keyword">inline</span> <span class="keyword">const</span> XMLCh* <a class="code" href="classXMLEntityDecl.html#z380_2">XMLEntityDecl::getNotationName</a>()<span class="keyword"> const</span>
+00437 <span class="keyword"></span>{
+00438     <span class="keywordflow">return</span> fNotationName;
+00439 }
+00440 
+<a name="l00441"></a><a class="code" href="classXMLEntityDecl.html#z380_3">00441</a> <span class="keyword">inline</span> <span class="keyword">const</span> XMLCh* <a class="code" href="classXMLEntityDecl.html#z380_3">XMLEntityDecl::getPublicId</a>()<span class="keyword"> const</span>
+00442 <span class="keyword"></span>{
+00443     <span class="keywordflow">return</span> fPublicId;
+00444 }
+00445 
+<a name="l00446"></a><a class="code" href="classXMLEntityDecl.html#z380_4">00446</a> <span class="keyword">inline</span> <span class="keyword">const</span> XMLCh* <a class="code" href="classXMLEntityDecl.html#z380_4">XMLEntityDecl::getSystemId</a>()<span class="keyword"> const</span>
+00447 <span class="keyword"></span>{
+00448     <span class="keywordflow">return</span> fSystemId;
+00449 }
+00450 
+<a name="l00451"></a><a class="code" href="classXMLEntityDecl.html#z380_5">00451</a> <span class="keyword">inline</span> <span class="keyword">const</span> XMLCh* <a class="code" href="classXMLEntityDecl.html#z380_5">XMLEntityDecl::getBaseURI</a>()<span class="keyword"> const</span>
+00452 <span class="keyword"></span>{
+00453     <span class="keywordflow">return</span> fBaseURI;
+00454 }
+00455 
+<a name="l00456"></a><a class="code" href="classXMLEntityDecl.html#z380_6">00456</a> <span class="keyword">inline</span> <span class="keyword">const</span> XMLCh* <a class="code" href="classXMLEntityDecl.html#z380_6">XMLEntityDecl::getValue</a>()<span class="keyword"> const</span>
+00457 <span class="keyword"></span>{
+00458     <span class="keywordflow">return</span> fValue;
+00459 }
+00460 
+<a name="l00461"></a><a class="code" href="classXMLEntityDecl.html#z380_7">00461</a> <span class="keyword">inline</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classXMLEntityDecl.html#z380_7">XMLEntityDecl::getValueLen</a>()<span class="keyword"> const</span>
+00462 <span class="keyword"></span>{
+00463     <span class="keywordflow">return</span> fValueLen;
+00464 }
+00465 
+<a name="l00466"></a><a class="code" href="classXMLEntityDecl.html#z380_8">00466</a> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classXMLEntityDecl.html#z380_8">XMLEntityDecl::isExternal</a>()<span class="keyword"> const</span>
+00467 <span class="keyword"></span>{
+00468     <span class="comment">// If it has a system or public id, its external</span>
+00469     <span class="keywordflow">return</span> ((fPublicId != 0) || (fSystemId != 0));
+00470 }
+00471 
+<a name="l00472"></a><a class="code" href="classXMLEntityDecl.html#z380_9">00472</a> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classXMLEntityDecl.html#z380_9">XMLEntityDecl::isUnparsed</a>()<span class="keyword"> const</span>
+00473 <span class="keyword"></span>{
+00474     <span class="comment">// If it has a notation, its unparsed</span>
+00475     <span class="keywordflow">return</span> (fNotationName != 0);
+00476 }
+00477 
+00478 
+00479 <span class="comment">// ---------------------------------------------------------------------------</span>
+00480 <span class="comment">//  XMLEntityDecl: Setter methods</span>
+00481 <span class="comment">// ---------------------------------------------------------------------------</span>
+<a name="l00482"></a><a class="code" href="classXMLEntityDecl.html#a0">00482</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classXMLEntityDecl.html#a0">XMLEntityDecl::setId</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> newId)
+00483 {
+00484     fId = newId;
+00485 }
+00486 
+<a name="l00487"></a><a class="code" href="classXMLEntityDecl.html#z382_1">00487</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classXMLEntityDecl.html#z382_1">XMLEntityDecl::setNotationName</a>(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> newName)
+00488 {
+00489     <span class="keyword">delete</span> [] fNotationName;
+00490     fNotationName = <a class="code" href="classXMLString.html#z595_0">XMLString::replicate</a>(newName);
+00491 }
+00492 
+<a name="l00493"></a><a class="code" href="classXMLEntityDecl.html#z382_2">00493</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classXMLEntityDecl.html#z382_2">XMLEntityDecl::setPublicId</a>(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> newId)
+00494 {
+00495     <span class="keyword">delete</span> [] fPublicId;
+00496     fPublicId = <a class="code" href="classXMLString.html#z595_0">XMLString::replicate</a>(newId);
+00497 }
+00498 
+<a name="l00499"></a><a class="code" href="classXMLEntityDecl.html#z382_3">00499</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classXMLEntityDecl.html#z382_3">XMLEntityDecl::setSystemId</a>(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> newId)
+00500 {
+00501     <span class="keyword">delete</span> [] fSystemId;
+00502     fSystemId = <a class="code" href="classXMLString.html#z595_0">XMLString::replicate</a>(newId);
+00503 }
+00504 
+<a name="l00505"></a><a class="code" href="classXMLEntityDecl.html#z382_4">00505</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classXMLEntityDecl.html#z382_4">XMLEntityDecl::setBaseURI</a>(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> newId)
+00506 {
+00507     <span class="keyword">delete</span> [] fBaseURI;
+00508     fBaseURI = <a class="code" href="classXMLString.html#z595_0">XMLString::replicate</a>(newId);
+00509 }
+00510 
+<a name="l00511"></a><a class="code" href="classXMLEntityDecl.html#z382_5">00511</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classXMLEntityDecl.html#z382_5">XMLEntityDecl::setValue</a>(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> newValue)
+00512 {
+00513     <span class="keyword">delete</span> [] fValue;
+00514     fValue = <a class="code" href="classXMLString.html#z595_0">XMLString::replicate</a>(newValue);
+00515     fValueLen = <a class="code" href="classXMLString.html#z597_8">XMLString::stringLen</a>(newValue);
+00516 }
+00517 
+00518 
+00519 <span class="comment">// ---------------------------------------------------------------------------</span>
+00520 <span class="comment">//  XMLEntityDecl: Support named pool syntax</span>
+00521 <span class="comment">// ---------------------------------------------------------------------------</span>
+<a name="l00522"></a><a class="code" href="classXMLEntityDecl.html#z384_0">00522</a> <span class="keyword">inline</span> <span class="keyword">const</span> XMLCh* <a class="code" href="classXMLEntityDecl.html#z384_0">XMLEntityDecl::getKey</a>()<span class="keyword"> const</span>
+00523 <span class="keyword"></span>{
+00524     <span class="keywordflow">return</span> fName;
+00525 }
+00526 
+00527 <a class="code" href="XercesDefs_8hpp.html#a3">XERCES_CPP_NAMESPACE_END</a>
+00528 
+00529 <span class="preprocessor">#endif</span>
+</pre></div>    </FONT></TD></TR></TABLE><BR>
+</TD></TR></TABLE></TD></TR></TABLE><BR><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD bgcolor="#0086b2"><IMG height="1" src="images/dot.gif" width="1" alt=""></TD></TR><TR><TD align="center"><FONT color="#0086b2" size="-1"><I>
+              Copyright &copy; 2000 The Apache Software Foundation.
+              All Rights Reserved.
+            </I></FONT></TD></TR></TABLE></BODY></HTML>

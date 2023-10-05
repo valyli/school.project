@@ -1,0 +1,31 @@
+#include<stdio.h>
+main()
+{
+ int k[8][8];
+ int x,y,i,j=0,a,b,n;
+ for(i=0;i<=7;i++)for(j=0;j<=7;j++)k[i][j]=0;
+ n=8;n=n-1;
+ for(a=0;a<=n;a++)
+ {
+  y=j;b=j;x=a;
+  for(i=-1;i<=1;i++)
+  {
+   for(j=-1;j<=1;j++)
+   {
+    for(;1;)
+    {
+     x=x+i;y=y+i;
+     if(x<0||x>n||y<0||y>0)break;
+     k[x][y]=1;
+    }
+   }
+  }
+  for(j=0;j<=n;j++)if(k[a+1][j]==0)break;
+ }
+ for(i=0;i<=n;i++)
+ {
+  for(j=0;j<=n;j++)printf("%d",k[i][j]);
+  printf("\n");
+ }
+printf("\n");
+}

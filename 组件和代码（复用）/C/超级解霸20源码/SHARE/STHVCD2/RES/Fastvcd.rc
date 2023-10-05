@@ -1,0 +1,571 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(936)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+100                     BITMAP  FIXED IMPURE DISCARDABLE "bmp100.bmp"
+
+101                     BITMAP  FIXED IMPURE DISCARDABLE "bmp101.bmp"
+
+110                     BITMAP  FIXED IMPURE DISCARDABLE "bmp110.bmp"
+
+111                     BITMAP  FIXED IMPURE DISCARDABLE "bmp111.bmp"
+
+120                     BITMAP  FIXED IMPURE DISCARDABLE "bmp120.bmp"
+
+121                     BITMAP  FIXED IMPURE DISCARDABLE "bmp121.bmp"
+
+130                     BITMAP  FIXED IMPURE DISCARDABLE "bmp130.bmp"
+
+131                     BITMAP  FIXED IMPURE DISCARDABLE "bmp131.bmp"
+
+140                     BITMAP  FIXED IMPURE DISCARDABLE "bmp140.bmp"
+
+141                     BITMAP  FIXED IMPURE DISCARDABLE "bmp141.bmp"
+
+150                     BITMAP  FIXED IMPURE DISCARDABLE "bmp150.bmp"
+
+151                     BITMAP  FIXED IMPURE DISCARDABLE "bmp151.bmp"
+
+160                     BITMAP  FIXED IMPURE DISCARDABLE "bmp160.bmp"
+
+161                     BITMAP  FIXED IMPURE DISCARDABLE "bmp161.bmp"
+
+170                     BITMAP  FIXED IMPURE DISCARDABLE "bmp170.bmp"
+
+171                     BITMAP  FIXED IMPURE DISCARDABLE "bmp171.bmp"
+
+180                     BITMAP  FIXED IMPURE DISCARDABLE "bmp180.bmp"
+
+181                     BITMAP  FIXED IMPURE DISCARDABLE "bmp181.bmp"
+
+190                     BITMAP  FIXED IMPURE DISCARDABLE "bmp190.bmp"
+
+191                     BITMAP  FIXED IMPURE DISCARDABLE "bmp191.bmp"
+
+200                     BITMAP  MOVEABLE PURE   "bmp200.bmp"
+
+201                     BITMAP  MOVEABLE PURE   "bmp201.bmp"
+
+210                     BITMAP  MOVEABLE PURE   "bmp210.bmp"
+
+211                     BITMAP  MOVEABLE PURE   "bmp211.bmp"
+
+220                     BITMAP  MOVEABLE PURE   "bmp220.bmp"
+
+221                     BITMAP  MOVEABLE PURE   "bmp221.bmp"
+
+230                     BITMAP  MOVEABLE PURE   "bmp230.bmp"
+
+231                     BITMAP  MOVEABLE PURE   "bmp231.bmp"
+
+800                     BITMAP  FIXED IMPURE DISCARDABLE "bmp800.bmp"
+
+801                     BITMAP  FIXED IMPURE DISCARDABLE "bmp801.bmp"
+
+802                     BITMAP  FIXED IMPURE DISCARDABLE "bmp802.bmp"
+
+803                     BITMAP  FIXED IMPURE DISCARDABLE "bmp803.bmp"
+
+804                     BITMAP  FIXED IMPURE DISCARDABLE "bmp804.bmp"
+
+805                     BITMAP  FIXED IMPURE DISCARDABLE "bmp805.bmp"
+
+806                     BITMAP  FIXED IMPURE DISCARDABLE "bmp806.bmp"
+
+807                     BITMAP  FIXED IMPURE DISCARDABLE "bmp807.bmp"
+
+808                     BITMAP  FIXED IMPURE DISCARDABLE "bmp808.bmp"
+
+809                     BITMAP  FIXED IMPURE DISCARDABLE "bmp809.bmp"
+
+1100                    BITMAP  FIXED IMPURE DISCARDABLE "bmp1100.bmp"
+
+1101                    BITMAP  FIXED IMPURE DISCARDABLE "bmp1101.bmp"
+
+1110                    BITMAP  FIXED IMPURE DISCARDABLE "bmp1110.bmp"
+
+1111                    BITMAP  FIXED IMPURE DISCARDABLE "bmp1111.bmp"
+
+1120                    BITMAP  FIXED IMPURE DISCARDABLE "bmp1120.bmp"
+
+1121                    BITMAP  FIXED IMPURE DISCARDABLE "bmp1121.bmp"
+
+1130                    BITMAP  FIXED IMPURE DISCARDABLE "bmp1130.bmp"
+
+1131                    BITMAP  FIXED IMPURE DISCARDABLE "bmp1131.bmp"
+
+1140                    BITMAP  FIXED IMPURE DISCARDABLE "bmp1140.bmp"
+
+1141                    BITMAP  FIXED IMPURE DISCARDABLE "bmp1141.bmp"
+
+1150                    BITMAP  FIXED IMPURE DISCARDABLE "bmp1150.bmp"
+
+1151                    BITMAP  FIXED IMPURE DISCARDABLE "bmp1151.bmp"
+
+1160                    BITMAP  FIXED IMPURE DISCARDABLE "bmp1160.bmp"
+
+1161                    BITMAP  FIXED IMPURE DISCARDABLE "bmp1161.bmp"
+
+1170                    BITMAP  FIXED IMPURE DISCARDABLE "bmp1170.bmp"
+
+1171                    BITMAP  FIXED IMPURE DISCARDABLE "bmp1171.bmp"
+
+1180                    BITMAP  MOVEABLE PURE   "bmp1180.bmp"
+
+1181                    BITMAP  MOVEABLE PURE   "bmp1181.bmp"
+
+1190                    BITMAP  MOVEABLE PURE   "bmp1190.bmp"
+
+1191                    BITMAP  MOVEABLE PURE   "bmp1191.bmp"
+
+1200                    BITMAP  MOVEABLE PURE   "bmp1200.bmp"
+
+1201                    BITMAP  MOVEABLE PURE   "bmp1201.bmp"
+
+1210                    BITMAP  MOVEABLE PURE   "bmp1210.bmp"
+
+1211                    BITMAP  MOVEABLE PURE   "bmp1211.bmp"
+
+1220                    BITMAP  MOVEABLE PURE   "bmp1220.bmp"
+
+1221                    BITMAP  MOVEABLE PURE   "bmp1221.bmp"
+
+1230                    BITMAP  MOVEABLE PURE   "bmp1230.bmp"
+
+1231                    BITMAP  MOVEABLE PURE   "bmp1231.bmp"
+
+AUDIOFACE               BITMAP  FIXED IMPURE DISCARDABLE "audiofac.bmp"
+
+BAR1                    BITMAP  FIXED IMPURE DISCARDABLE "bar1.bmp"
+
+BAR2                    BITMAP  FIXED IMPURE DISCARDABLE "bar2.bmp"
+
+DOT                     BITMAP  FIXED IMPURE DISCARDABLE "dot.bmp"
+
+FLOWER1                 BITMAP  MOVEABLE PURE   "flower1.bmp"
+
+FLOWER2                 BITMAP  MOVEABLE PURE   "flower2.bmp"
+
+LED1                    BITMAP  FIXED IMPURE DISCARDABLE "led1.bmp"
+
+LED2                    BITMAP  FIXED IMPURE DISCARDABLE "led2.bmp"
+
+LOGO                    BITMAP  MOVEABLE PURE   "logo.bmp"
+
+MAINBLOCK               BITMAP  FIXED IMPURE DISCARDABLE "mainbloc.bmp"
+
+MCIFILE                 BITMAP  FIXED IMPURE DISCARDABLE "mcifile.bmp"
+
+NO1                     BITMAP  FIXED IMPURE DISCARDABLE "no1.bmp"
+
+NO2                     BITMAP  FIXED IMPURE DISCARDABLE "no2.bmp"
+
+POS1                    BITMAP  MOVEABLE PURE   "pos1.bmp"
+
+POS2                    BITMAP  MOVEABLE PURE   "pos2.bmp"
+
+POWER1                  BITMAP  FIXED IMPURE DISCARDABLE "power1.bmp"
+
+POWER2                  BITMAP  FIXED IMPURE DISCARDABLE "power2.bmp"
+
+TIME                    BITMAP  FIXED IMPURE DISCARDABLE "time.bmp"
+
+TYPEBLOCK               BITMAP  FIXED IMPURE DISCARDABLE "typebloc.bmp"
+
+VCD                     BITMAP  FIXED IMPURE DISCARDABLE "vcd.bmp"
+
+VCDISK                  BITMAP  FIXED IMPURE DISCARDABLE "vcdisk.bmp"
+
+VIDEO                   BITMAP  FIXED IMPURE DISCARDABLE "video.bmp"
+
+WAIT                    BITMAP  MOVEABLE PURE   "wait.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+ABOUT DIALOG DISCARDABLE  24, 65454, 153, 158
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "ABOUT"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "OK",1,50,143,50,14
+END
+
+ABOUTC DIALOG DISCARDABLE  19, 65467, 179, 172
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "关于"
+FONT 9, "宋体"
+BEGIN
+    DEFPUSHBUTTON   "确定",1,73,156,37,14
+END
+
+ABTC DIALOG DISCARDABLE  19, 65467, 119, 158
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "关于"
+FONT 10, "Courier"
+BEGIN
+    DEFPUSHBUTTON   "确定",1,41,143,37,14
+END
+
+FNTNC DIALOG DISCARDABLE  26, 65485, 165, 139
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "其他功能"
+FONT 10, "Courier"
+BEGIN
+    DEFPUSHBUTTON   "确定",1,129,5,32,14
+    PUSHBUTTON      "放弃",2,129,22,32,14
+    PUSHBUTTON      "系统信息",100,129,40,32,14
+    PUSHBUTTON      "关于",101,129,57,32,14
+    EDITTEXT        200,49,13,27,12
+    CONTROL         "自动声音停顿检查",201,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,28,99,12
+    CONTROL         "在VCD文件选择对话框中列出所有文件",202,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,47,114,12
+    CONTROL         "自动保存超级VESA状态",203,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,62,114,12
+    LTEXT           "声音检查时间",-1,8,15,39,8
+    LTEXT           "毫秒",-1,79,15,22,8
+    GROUPBOX        "声音停止检查",-1,4,1,108,42
+    CONTROL         "强制使用视频内存切换方式",204,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,76,114,12
+    GROUPBOX        "解码驱动程序",-1,3,90,157,42
+    CONTROL         "使用内部MPEG解码驱动程序",205,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,7,102,82,12
+    RADIOBUTTON     "使用其他MPEG解码驱动程序",206,7,115,80,12,WS_TABSTOP
+    COMBOBOX        207,90,115,67,61,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "帮助",102,129,75,32,14
+END
+
+FUNCTION DIALOG DISCARDABLE  35, 65490, 207, 134
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Functions"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "&OK",1,148,2,50,14
+    PUSHBUTTON      "&Cancel",2,148,19,50,14
+    PUSHBUTTON      "&SysInfo",100,148,36,50,14
+    PUSHBUTTON      "&About",101,148,53,50,14
+    EDITTEXT        200,76,17,27,12
+    CONTROL         "Auto Audio Check enabled",201,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,7,30,112,12
+    CONTROL         "List All Files in VCD Files Select Box",202,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,47,133,12
+    CONTROL         "Supper VESA State Auto Saved",203,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,60,124,12
+    LTEXT           "Audio Check Time",-1,8,19,63,8
+    LTEXT           "MS",-1,106,19,22,8
+    GROUPBOX        "Audio Break Check",-1,4,7,131,38
+    CONTROL         "Force Banking Video Memory Mode",204,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,7,73,136,12
+    CONTROL         "Use Internal MPEG Decode driver",205,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,8,97,128,12
+    CONTROL         "Use Other MPEG Decode driver",206,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,8,110,114,12
+    GROUPBOX        "Decode Driver",-1,5,85,199,43
+    COMBOBOX        207,125,111,76,56,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "&Help",102,148,70,50,14
+END
+
+FUNCTIONC DIALOG DISCARDABLE  20, 65487, 226, 136
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "其他功能"
+FONT 9, "宋体"
+BEGIN
+    DEFPUSHBUTTON   "[&O]确定",1,167,2,48,14,BS_LEFTTEXT
+    PUSHBUTTON      "[&C]放弃",2,167,19,48,14
+    PUSHBUTTON      "[&I]信息",100,167,37,48,14
+    PUSHBUTTON      "[&A]关于",101,167,55,48,14
+    EDITTEXT        200,89,12,27,12
+    CONTROL         "自动声音停顿检查",201,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,13,28,99,12
+    CONTROL         "在VCD文件选择对话框中列出所有文件",202,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,13,45,142,12
+    CONTROL         "自动保存超级VESA状态",203,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,13,58,114,12
+    LTEXT           "声音检查时间间隔",-1,14,14,73,8
+    LTEXT           "毫秒",-1,123,14,22,8
+    GROUPBOX        "声音控制",-1,5,2,153,39
+    CONTROL         "强制使用视频内存切换方式",204,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,13,72,114,12
+    GROUPBOX        "解码驱动程序",-1,5,88,212,40
+    CONTROL         "使用内部MPEG解码驱动程序",205,"Button",
+                    BS_AUTORADIOBUTTON,13,98,110,12
+    CONTROL         "使用其他MPEG解码驱动程序",206,"Button",
+                    BS_AUTORADIOBUTTON,13,112,110,12
+    COMBOBOX        207,124,110,90,69,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    PUSHBUTTON      "[&H]帮助",102,167,73,48,14
+END
+
+MODIFY256C DIALOG DISCARDABLE  45, 35, 218, 144
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Modify  256  Colors"
+FONT 10, "System"
+BEGIN
+    PUSHBUTTON      "&OK",1,187,5,24,14
+    PUSHBUTTON      "-",100,184,42,9,14
+    PUSHBUTTON      "+",101,206,42,9,14
+    PUSHBUTTON      "-",102,184,68,9,14
+    PUSHBUTTON      "+",103,206,67,9,14
+    PUSHBUTTON      "-",104,184,91,9,14
+    PUSHBUTTON      "+",105,206,91,9,14
+    PUSHBUTTON      "-",106,184,125,9,14
+    PUSHBUTTON      "+",107,206,125,9,14
+    LTEXT           "R",-1,197,45,6,8
+    LTEXT           "G",-1,197,70,6,8
+    LTEXT           "B",-1,197,94,6,8
+    CTEXT           "6",200,195,128,9,8
+    CONTROL         "",-1,"Static",SS_BLACKFRAME,178,-1,1,146
+    CONTROL         "",-1,"Static",SS_BLACKFRAME,181,24,36,87
+    CONTROL         "",-1,"Static",SS_BLACKFRAME,181,113,36,28
+    LTEXT           "Level",-1,189,115,20,8
+    CTEXT           "Palette",-1,186,28,27,8
+END
+
+MODIFY256CC DIALOG DISCARDABLE  45, 35, 218, 144
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "修正256色处理"
+FONT 10, "System"
+BEGIN
+    PUSHBUTTON      "确定",1,187,5,24,14
+    PUSHBUTTON      "-",100,184,42,9,14
+    PUSHBUTTON      "+",101,206,42,9,14
+    PUSHBUTTON      "-",102,184,68,9,14
+    PUSHBUTTON      "+",103,206,67,9,14
+    PUSHBUTTON      "-",104,184,91,9,14
+    PUSHBUTTON      "+",105,206,91,9,14
+    PUSHBUTTON      "-",106,184,125,9,14
+    PUSHBUTTON      "+",107,206,125,9,14
+    LTEXT           "R",-1,197,45,6,8
+    LTEXT           "G",-1,197,70,6,8
+    LTEXT           "B",-1,197,94,6,8
+    CTEXT           "6",200,195,128,9,8
+    CONTROL         "",-1,"Static",SS_BLACKFRAME,178,-1,1,146
+    CONTROL         "",-1,"Static",SS_BLACKFRAME,181,24,36,87
+    CONTROL         "",-1,"Static",SS_BLACKFRAME,181,113,36,28
+    LTEXT           "级度",-1,189,115,20,8
+    CTEXT           "调色板",-1,186,28,27,8
+END
+
+NEW DIALOG DISCARDABLE  18, 18, 142, 92
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "New Functions"
+BEGIN
+END
+
+OPENDISC DIALOG FIXED IMPURE DISCARDABLE  21, 2, 158, 161
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Play Selector"
+BEGIN
+    LISTBOX         101,3,67,72,74,WS_VSCROLL | WS_TABSTOP
+    LISTBOX         102,88,67,67,73,WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&OK",300,11,146,24,14
+    DEFPUSHBUTTON   "&Add",200,47,146,24,14
+    PUSHBUTTON      "AddAL&L",201,83,146,28,14
+    PUSHBUTTON      "&Del",202,123,146,24,14
+    ICON            "xuan",-1,50,4,16,16
+    ICON            "ze",-1,65,4,16,16
+    ICON            "bo",-1,80,4,16,16
+    ICON            "fang",-1,95,4,16,16
+    CONTROL         "",-1,"Static",SS_BLACKFRAME,0,24,158,1
+    CONTROL         "",-1,"Static",SS_BLACKFRAME,2,50,74,90
+    LTEXT           "Select Path",103,2,50,74,12,WS_BORDER | NOT WS_GROUP
+    CONTROL         "",-1,"Static",SS_BLACKFRAME,81,24,1,120
+    ICON            "bo",-1,4,28,16,16
+    ICON            "fang",-1,20,28,16,16
+    ICON            "xuan",-1,36,28,16,16
+    ICON            "ze",-1,52,28,16,16
+    CONTROL         "",-1,"Static",SS_BLACKFRAME,87,50,69,90
+    LTEXT           "Play File Path",104,87,50,69,12,WS_BORDER | NOT 
+                    WS_GROUP
+    ICON            "bo",-1,89,28,16,16
+    ICON            "fang",-1,105,28,16,16
+    ICON            "xu",-1,121,28,16,16
+    ICON            "lie",-1,137,28,16,16
+    CONTROL         "",-1,"Static",SS_BLACKFRAME,1,143,157,1
+END
+
+OPENDISK DIALOG DISCARDABLE  45, 18, 160, 160
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "播放选择"
+BEGIN
+    LISTBOX         101,4,65,72,74,WS_VSCROLL | WS_TABSTOP
+    LISTBOX         102,89,65,67,73,WS_VSCROLL | WS_TABSTOP
+    PUSHBUTTON      "&O确定",300,8,144,28,14
+    DEFPUSHBUTTON   "&A加上",200,46,144,29,14
+    PUSHBUTTON      "&L全部",201,84,144,28,14
+    PUSHBUTTON      "&D去掉",202,122,144,28,14
+    ICON            "xuan",-1,51,2,16,16
+    ICON            "ze",-1,66,2,16,16
+    ICON            "bo",-1,81,2,16,16
+    ICON            "fang",-1,96,2,16,16
+    CONTROL         "",-1,"Static",SS_BLACKFRAME,1,22,158,1
+    CONTROL         "",-1,"Static",SS_BLACKFRAME,3,48,74,90
+    LTEXT           "Select Path",103,3,48,74,12,WS_BORDER | NOT WS_GROUP
+    CONTROL         "",-1,"Static",SS_BLACKFRAME,82,22,1,120
+    ICON            "bo",-1,5,26,16,16
+    ICON            "fang",-1,21,26,16,16
+    ICON            "xuan",-1,37,26,16,16
+    ICON            "ze",-1,53,26,16,16
+    CONTROL         "",-1,"Static",SS_BLACKFRAME,88,48,69,90
+    LTEXT           "Play File Path",104,88,48,69,12,WS_BORDER | NOT 
+                    WS_GROUP
+    ICON            "bo",-1,90,26,16,16
+    ICON            "fang",-1,106,26,16,16
+    ICON            "xu",-1,122,26,16,16
+    ICON            "lie",-1,138,26,16,16
+    CONTROL         "",-1,"Static",SS_BLACKFRAME,2,141,157,1
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+POSCUR                  CURSOR  DISCARDABLE     "poscur.cur"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+ACD                     ICON    FIXED IMPURE DISCARDABLE "acd.ico"
+
+ACD2                    ICON    DISCARDABLE     "acd2.ico"
+
+BO                      ICON    FIXED IMPURE DISCARDABLE "bo.ico"
+
+FANG                    ICON    FIXED IMPURE DISCARDABLE "fang.ico"
+
+LIE                     ICON    FIXED IMPURE DISCARDABLE "lie.ico"
+
+XU                      ICON    FIXED IMPURE DISCARDABLE "xu.ico"
+
+XUAN                    ICON    FIXED IMPURE DISCARDABLE "xuan.ico"
+
+ZE                      ICON    FIXED IMPURE DISCARDABLE "ze.ico"
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+1 VERSIONINFO
+ FILEVERSION 3,0,0,0
+ PRODUCTVERSION 3,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x1L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x7L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904E4"
+        BEGIN
+            VALUE "CompanyName", "Southern Technology Co.\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0"
+            VALUE "FileDescription", "Southern VCD Player\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0"
+            VALUE "FileVersion", "Version II\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0"
+            VALUE "InternalName", "SoftVCD\0","\0","\0","\0","\0","\0","\0","\0","\0"
+            VALUE "LegalCopyright", "Southern Technology Co. 1996\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0"
+            VALUE "ProductName", "SoftVCD.\0","\0","\0","\0","\0","\0","\0","\0","\0","\0"
+            VALUE "ProductVersion", "Version 96\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0"
+            VALUE "OriginalFilename", "SOFTVCD.EXE\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0","\0"
+        END
+    END
+END
+
+#endif    // !_MAC
+
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P. R. C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Chinese (P. R. C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

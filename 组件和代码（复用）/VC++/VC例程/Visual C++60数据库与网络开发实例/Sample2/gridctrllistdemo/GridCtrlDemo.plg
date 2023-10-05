@@ -1,0 +1,97 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: GridCtrlDemo - Win32 Debug Unicode--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0xc09 /fo"Debug Unicode/GridCtrlDemo.res" /d "_DEBUG" /d "_AFXDLL" /d "_UNICODE" "E:\Sample2\gridctrllistdemo\GridCtrlDemo.rc"" 
+Creating temporary file "C:\TEMP\RSP56.tmp" with contents
+[
+/nologo /MDd /W4 /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_UNICODE" /Fp"Debug Unicode/GridCtrlDemo.pch" /Yu"stdafx.h" /Fo"Debug Unicode/" /Fd"Debug Unicode/" /FD /c 
+"E:\Sample2\gridctrllistdemo\GridCtrl.cpp"
+"E:\Sample2\gridctrllistdemo\GridCtrlDemo.cpp"
+"E:\Sample2\gridctrllistdemo\GridCtrlDemoDlg.cpp"
+"E:\Sample2\gridctrllistdemo\GridDropTarget.cpp"
+"E:\Sample2\gridctrllistdemo\InPlaceEdit.cpp"
+"E:\Sample2\gridctrllistdemo\InPlaceList.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSP56.tmp" 
+Creating temporary file "C:\TEMP\RSP57.tmp" with contents
+[
+/nologo /MDd /W4 /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_UNICODE" /Fp"Debug Unicode/GridCtrlDemo.pch" /Yc"stdafx.h" /Fo"Debug Unicode/" /Fd"Debug Unicode/" /FD /c 
+"E:\Sample2\gridctrllistdemo\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSP57.tmp" 
+Creating temporary file "C:\TEMP\RSP58.tmp" with contents
+[
+/nologo /entry:"wWinMainCRTStartup" /subsystem:windows /incremental:no /pdb:"Debug Unicode/GridCtrlDemo.pdb" /debug /machine:I386 /out:"Debug Unicode/GridCtrlDemo.exe" /pdbtype:sept 
+".\Debug Unicode\GridCtrl.obj"
+".\Debug Unicode\GridCtrlDemo.obj"
+".\Debug Unicode\GridCtrlDemoDlg.obj"
+".\Debug Unicode\GridDropTarget.obj"
+".\Debug Unicode\InPlaceEdit.obj"
+".\Debug Unicode\InPlaceList.obj"
+".\Debug Unicode\StdAfx.obj"
+".\Debug Unicode\GridCtrlDemo.res"
+]
+Creating command line "link.exe @C:\TEMP\RSP58.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+GridCtrl.cpp
+E:\Sample2\gridctrllistdemo\GridCtrl.cpp(2820) : warning C4189: 'nNumColumns' : local variable is initialized but not referenced
+E:\Sample2\gridctrllistdemo\GridCtrl.cpp(4067) : warning C4100: 'cltList' : unreferenced formal parameter
+E:\Sample2\gridctrllistdemo\GridCtrl.cpp(4067) : warning C4100: 'nCol' : unreferenced formal parameter
+GridCtrlDemo.cpp
+GridCtrlDemoDlg.cpp
+E:\Sample2\gridctrllistdemo\GridCtrlDemoDlg.cpp(244) : error C2664: 'AddString' : cannot convert parameter 1 from 'char [4]' to 'const unsigned short *'
+        Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+E:\Sample2\gridctrllistdemo\GridCtrlDemoDlg.cpp(245) : error C2664: 'AddString' : cannot convert parameter 1 from 'char [3]' to 'const unsigned short *'
+        Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+E:\Sample2\gridctrllistdemo\GridCtrlDemoDlg.cpp(246) : error C2664: 'AddString' : cannot convert parameter 1 from 'char [7]' to 'const unsigned short *'
+        Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+E:\Sample2\gridctrllistdemo\GridCtrlDemoDlg.cpp(247) : error C2664: 'AddString' : cannot convert parameter 1 from 'char [6]' to 'const unsigned short *'
+        Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+E:\Sample2\gridctrllistdemo\GridCtrlDemoDlg.cpp(248) : error C2664: 'AddString' : cannot convert parameter 1 from 'char [6]' to 'const unsigned short *'
+        Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+E:\Sample2\gridctrllistdemo\GridCtrlDemoDlg.cpp(249) : error C2664: 'AddString' : cannot convert parameter 1 from 'char [7]' to 'const unsigned short *'
+        Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+E:\Sample2\gridctrllistdemo\GridCtrlDemoDlg.cpp(253) : error C2664: 'AddString' : cannot convert parameter 1 from 'char [4]' to 'const unsigned short *'
+        Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+E:\Sample2\gridctrllistdemo\GridCtrlDemoDlg.cpp(254) : error C2664: 'AddString' : cannot convert parameter 1 from 'char [4]' to 'const unsigned short *'
+        Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+E:\Sample2\gridctrllistdemo\GridCtrlDemoDlg.cpp(255) : error C2664: 'AddString' : cannot convert parameter 1 from 'char [4]' to 'const unsigned short *'
+        Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+E:\Sample2\gridctrllistdemo\GridCtrlDemoDlg.cpp(256) : error C2664: 'AddString' : cannot convert parameter 1 from 'char [4]' to 'const unsigned short *'
+        Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+E:\Sample2\gridctrllistdemo\GridCtrlDemoDlg.cpp(257) : error C2664: 'AddString' : cannot convert parameter 1 from 'char [4]' to 'const unsigned short *'
+        Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+E:\Sample2\gridctrllistdemo\GridCtrlDemoDlg.cpp(258) : error C2664: 'AddString' : cannot convert parameter 1 from 'char [4]' to 'const unsigned short *'
+        Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+E:\Sample2\gridctrllistdemo\GridCtrlDemoDlg.cpp(259) : error C2664: 'AddString' : cannot convert parameter 1 from 'char [4]' to 'const unsigned short *'
+        Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+E:\Sample2\gridctrllistdemo\GridCtrlDemoDlg.cpp(260) : error C2664: 'AddString' : cannot convert parameter 1 from 'char [4]' to 'const unsigned short *'
+        Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+E:\Sample2\gridctrllistdemo\GridCtrlDemoDlg.cpp(261) : error C2664: 'AddString' : cannot convert parameter 1 from 'char [4]' to 'const unsigned short *'
+        Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+GridDropTarget.cpp
+InPlaceEdit.cpp
+InPlaceList.cpp
+E:\Sample2\gridctrllistdemo\InPlaceList.cpp(75) : warning C4100: 'nFirstChar' : unreferenced formal parameter
+E:\Sample2\gridctrllistdemo\InPlaceList.cpp(74) : warning C4100: 'dwStyle' : unreferenced formal parameter
+E:\Sample2\gridctrllistdemo\InPlaceList.cpp(161) : warning C4244: '=' : conversion from 'unsigned int' to 'char', possible loss of data
+E:\Sample2\gridctrllistdemo\InPlaceList.cpp(168) : warning C4244: '=' : conversion from 'unsigned int' to 'char', possible loss of data
+Generating Code...
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+GridCtrlDemo.exe - 15 error(s), 7 warning(s)
+</pre>
+</body>
+</html>

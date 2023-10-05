@@ -1,0 +1,102 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: MSDIDao - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x100c /fo".\Release/MSDIDao.res" /d "NDEBUG" /d "_AFXDLL" "E:\Sample17\msdidao\MSDIDao.rc"" 
+Creating temporary file "C:\TEMP\RSP48.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp".\Release/Msdidao.pch" /Yu"stdafx.h" /Fo".\Release/" /Fd".\Release/" /FD /c 
+"E:\Sample17\msdidao\CategSet.cpp"
+"E:\Sample17\msdidao\CategTbl.cpp"
+"E:\Sample17\msdidao\CategVw.cpp"
+"E:\Sample17\msdidao\Crack.cpp"
+"E:\Sample17\msdidao\CustSet.cpp"
+"E:\Sample17\msdidao\CustTbl.cpp"
+"E:\Sample17\msdidao\DaoBmp.cpp"
+"E:\Sample17\msdidao\DaoDoc.cpp"
+"E:\Sample17\msdidao\DaoSet.cpp"
+"E:\Sample17\msdidao\DaoView.cpp"
+"E:\Sample17\msdidao\dibapi.cpp"
+"E:\Sample17\msdidao\DIBView.cpp"
+"E:\Sample17\msdidao\MainFrm.cpp"
+"E:\Sample17\msdidao\Msdiapp.cpp"
+"E:\Sample17\msdidao\MSDIDao.cpp"
+"E:\Sample17\msdidao\Msdifrm.cpp"
+"E:\Sample17\msdidao\Msdivfrm.cpp"
+"E:\Sample17\msdidao\TblFrame.cpp"
+"E:\Sample17\msdidao\TblView.cpp"
+"E:\Sample17\msdidao\Util.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSP48.tmp" 
+Creating temporary file "C:\TEMP\RSP49.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp".\Release/Msdidao.pch" /Yc"stdafx.h" /Fo".\Release/" /Fd".\Release/" /FD /c 
+"E:\Sample17\msdidao\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSP49.tmp" 
+Creating temporary file "C:\TEMP\RSP4A.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:no /pdb:".\Release/Msdidao.pdb" /machine:I386 /out:".\Release/Msdidao.exe" 
+.\Release\CategSet.obj
+.\Release\CategTbl.obj
+.\Release\CategVw.obj
+.\Release\Crack.obj
+.\Release\CustSet.obj
+.\Release\CustTbl.obj
+.\Release\DaoBmp.obj
+.\Release\DaoDoc.obj
+.\Release\DaoSet.obj
+.\Release\DaoView.obj
+.\Release\dibapi.obj
+.\Release\DIBView.obj
+.\Release\MainFrm.obj
+.\Release\Msdiapp.obj
+.\Release\MSDIDao.obj
+.\Release\Msdifrm.obj
+.\Release\Msdivfrm.obj
+.\Release\StdAfx.obj
+.\Release\TblFrame.obj
+.\Release\TblView.obj
+.\Release\Util.obj
+.\Release\MSDIDao.res
+]
+Creating command line "link.exe @C:\TEMP\RSP4A.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+CategSet.cpp
+CategTbl.cpp
+CategVw.cpp
+Crack.cpp
+CustSet.cpp
+CustTbl.cpp
+DaoBmp.cpp
+DaoDoc.cpp
+DaoSet.cpp
+DaoView.cpp
+dibapi.cpp
+DIBView.cpp
+MainFrm.cpp
+Msdiapp.cpp
+MSDIDao.cpp
+Msdifrm.cpp
+Msdivfrm.cpp
+TblFrame.cpp
+TblView.cpp
+Util.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+Msdidao.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,16 @@
+TXT文件末尾一定加回车
+
+readme.exe		主程序
+
+1.txt			上机注意事项
+2.txt			登陆网络方法
+3.txt			用户名对照表
+
+HZK16			简体16点阵
+HZK16f			繁体16点阵
+
+vgaega.bgi		显卡驱动
+
+readme.ini		配置文件
+
+加 * 的为可改动的文件

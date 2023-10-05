@@ -1,0 +1,29 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Lijia1 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\WINDOWS\TEMP\RSP1282.TMP" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/Lijia1.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\tc\savec\rubbish\Lijia1.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP1282.TMP" 
+<h3>Output Window</h3>
+Compiling...
+Lijia1.cpp
+c:\tc\savec\rubbish\lijia1.cpp(19) : warning C4091: 'typedef ' : ignored on left of 'struct LNode' when no variable is declared
+c:\tc\savec\rubbish\lijia1.cpp(82) : error C2065: 'clrscr' : undeclared identifier
+c:\tc\savec\rubbish\lijia1.cpp(84) : error C2065: 'gotoxy' : undeclared identifier
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+Lijia1.obj - 2 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

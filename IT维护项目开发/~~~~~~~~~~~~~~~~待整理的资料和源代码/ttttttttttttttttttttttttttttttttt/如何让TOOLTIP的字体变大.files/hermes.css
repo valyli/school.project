@@ -1,0 +1,48 @@
+BODY {
+	FONT-SIZE: 9pt; COLOR: #000000; FONT-FAMILY: 宋体
+}
+.pt9 {
+	FONT-SIZE: 9pt; FONT-FAMILY: "宋体"
+}
+.pt11 {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #336699; FONT-FAMILY: "宋体"
+}
+TT {
+	FONT-WEIGHT: bold; FONT-SIZE: 10.5pt; COLOR: #000000; FONT-FAMILY: "宋体"
+}
+H1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 100pt; COLOR: #000000; FONT-FAMILY: "宋体"
+}
+H2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 100pt; COLOR: #ffffff; FONT-FAMILY: "宋体"
+}
+H3 {
+	FONT-WEIGHT: bold; FONT-SIZE: 100pt; COLOR: #000080; FONT-FAMILY: "宋体"
+}
+H4 {
+	FONT-WEIGHT: bold; FONT-SIZE: 100pt; COLOR: #ffcf80; FONT-FAMILY: "宋体"
+}
+H5 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12pt; COLOR: #000000; FONT-FAMILY: "宋体"
+}
+P {
+	FONT-SIZE: 9pt; COLOR: #000000; FONT-FAMILY: "宋体"
+}
+H9 {
+	FONT-SIZE: 9pt; FONT-FAMILY: "宋体"
+}
+TD {
+	FONT-SIZE: 9pt; FONT-FAMILY: "宋体"
+}
+SELECT {
+	FONT-SIZE: 9pt; FONT-FAMILY: "宋体"
+}
+A:link {
+	FONT-SIZE: 9pt; COLOR: #0022aa; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+A:visited {
+	FONT-SIZE: 9pt; COLOR: #0022aa; FONT-FAMILY: "宋体"; TEXT-DECORATION: none; font-color: blue
+}
+A:hover {
+	FONT-SIZE: 9pt; COLOR: red; FONT-FAMILY: "宋体"; TEXT-DECORATION: underline
+}

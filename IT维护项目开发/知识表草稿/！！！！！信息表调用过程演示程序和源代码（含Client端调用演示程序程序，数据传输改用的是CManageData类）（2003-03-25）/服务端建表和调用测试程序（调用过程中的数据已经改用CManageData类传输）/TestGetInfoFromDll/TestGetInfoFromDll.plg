@@ -1,0 +1,45 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: TestGetInfoFromDll - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP184.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/TestGetInfoFromDll.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\TestGetInfoFromDll2_new\ModifyInfomationElementTableDlg.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP184.tmp" 
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP185.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/TestGetInfoFromDll.pdb" /debug /machine:I386 /out:"Debug/TestGetInfoFromDll.exe" /pdbtype:sept 
+.\Debug\AddInfomationTableDlg.obj
+.\Debug\AddInfomationTableElementDlg.obj
+.\Debug\InfomationElementListTable.obj
+.\Debug\InfomationTable.obj
+.\Debug\ModifyInfomationElementTableDlg.obj
+.\Debug\ModifyInfomationTableDlg.obj
+.\Debug\ModuleInfoList.obj
+.\Debug\StdAfx.obj
+.\Debug\TestGetInfoFromDll.obj
+.\Debug\TestGetInfoFromDllDlg.obj
+.\Debug\TransferModule.obj
+.\Debug\TestGetInfoFromDll.res
+.\Debug\ManageData.obj
+]
+Creating command line "link.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP185.tmp"
+<h3>Output Window</h3>
+Compiling...
+ModifyInfomationElementTableDlg.cpp
+D:\TestGetInfoFromDll2_new\ModifyInfomationElementTableDlg.cpp(226) : warning C4018: '==' : signed/unsigned mismatch
+Linking...
+
+
+
+<h3>Results</h3>
+TestGetInfoFromDll.exe - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

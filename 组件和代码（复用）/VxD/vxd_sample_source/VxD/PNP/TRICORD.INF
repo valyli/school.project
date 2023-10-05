@@ -1,0 +1,42 @@
+
+[Version]
+Signature=$CHICAGO$
+Class=Unknown
+Provider=%String0%
+
+[DestinationDirs]
+DefaultDestDir=11
+
+[Manufacturer]
+%String1%=SECTION_0
+
+[SECTION_0]
+%String2%=1234_Install,*XYZ1234
+
+[1234_Install]
+CopyFiles=1234_NewFiles
+AddReg=1234_AddReg
+LogConfig=1234_LogConfig
+
+[1234_NewFiles]
+TRICORD.VXD
+
+[1234_AddReg]
+HKR,,DevLoader,0,tricord.vxd
+
+[1234_LogConfig]
+ConfigPriority=NORMAL
+IOConfig=20@200-3ff%ffc0(3ff::)
+IRQConfig=5,7,10,15
+
+[ControlFlags]
+
+[SourceDisksNames]
+1=XYZ1234 Driver Disk,,0000-0000
+
+[SourceDisksFiles]
+
+[Strings]
+String0="XYZ Corp."
+String1="XYZ Corp."
+String2="Tricorder Model 1234"

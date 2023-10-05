@@ -1,0 +1,62 @@
+/* this file contains the actual definitions of */
+/* the IIDs and CLSIDs */
+
+/* link this file in with the server and any clients */
+
+
+/* File created by MIDL compiler version 5.01.0164 */
+/* at Wed Dec 22 14:31:30 1999
+ */
+/* Compiler settings for E:\Sample3\AutoATL\AutoATL.idl:
+    Oicf (OptLev=i2), W1, Zp8, env=Win32, ms_ext, c_ext
+    error checks: allocation ref bounds_check enum stub_data 
+*/
+//@@MIDL_FILE_HEADING(  )
+#ifdef __cplusplus
+extern "C"{
+#endif 
+
+
+#ifndef __IID_DEFINED__
+#define __IID_DEFINED__
+
+typedef struct _IID
+{
+    unsigned long x;
+    unsigned short s1;
+    unsigned short s2;
+    unsigned char  c[8];
+} IID;
+
+#endif // __IID_DEFINED__
+
+#ifndef CLSID_DEFINED
+#define CLSID_DEFINED
+typedef IID CLSID;
+#endif // CLSID_DEFINED
+
+const IID IID_IApplication = {0x8BE6903B,0x68EF,0x11D2,{0x9A,0xE7,0x00,0xA0,0xC9,0xE5,0x2D,0xCB}};
+
+
+const IID LIBID_AutoATLLib = {0x8BE69039,0x68EF,0x11D2,{0x9A,0xE7,0x00,0xA0,0xC9,0xE5,0x2D,0xCB}};
+
+
+const IID DIID__IApplicationEvents = {0x8BE6903D,0x68EF,0x11D2,{0x9A,0xE7,0x00,0xA0,0xC9,0xE5,0x2D,0xCB}};
+
+
+const IID IID_IDocument = {0x05C18770,0x6A95,0x11D2,{0x9A,0xE8,0x00,0xA0,0xC9,0xE5,0x2D,0xCB}};
+
+
+const CLSID CLSID_Application = {0x8BE6903C,0x68EF,0x11D2,{0x9A,0xE7,0x00,0xA0,0xC9,0xE5,0x2D,0xCB}};
+
+
+const IID DIID__IDocumentEvents = {0x05C18772,0x6A95,0x11D2,{0x9A,0xE8,0x00,0xA0,0xC9,0xE5,0x2D,0xCB}};
+
+
+const CLSID CLSID_Document = {0x05C18771,0x6A95,0x11D2,{0x9A,0xE8,0x00,0xA0,0xC9,0xE5,0x2D,0xCB}};
+
+
+#ifdef __cplusplus
+}
+#endif
+

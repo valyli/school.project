@@ -1,0 +1,246 @@
+.TOP1 {
+	COLOR: #000000; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+A.TOP1:link {
+	COLOR: #ffffff
+}
+A.TOP1:visited {
+	COLOR: #ffffff
+}
+A.TOP1:active {
+	COLOR: #ff0000
+}
+A.TOP1:hover {
+	COLOR: #ff0000
+}
+.TOP3 {
+	COLOR: #ffffff; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+A.TOP3:link {
+	COLOR: #ffffff
+}
+A.TOP3:visited {
+	COLOR: #ffffff
+}
+A.TOP3:active {
+	COLOR: #ff0000
+}
+A.TOP3:hover {
+	COLOR: #ff0000
+}
+.TOP4 {
+	COLOR: #333333; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+A.TOP4:link {
+	COLOR: #333333
+}
+A.TOP4:visited {
+	COLOR: #333333
+}
+A.TOP4:active {
+	COLOR: #ff0000
+}
+A.TOP4:hover {
+	COLOR: #ff0000
+}
+.LeftTitle {
+	COLOR: #000000; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+A.LeftTitle:link {
+	COLOR: #000000
+}
+A.LeftTitle:visited {
+	COLOR: #000000
+}
+A.LeftTitle:active {
+	COLOR: #ffff00
+}
+A.LeftTitle:hover {
+	COLOR: #ffff00
+}
+.LeftContent {
+	COLOR: #0000ff; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+A.LeftContent:link {
+	COLOR: #0000ff
+}
+A.LeftContent:visited {
+	COLOR: #800080
+}
+A.LeftContent:active {
+	COLOR: #ff0000
+}
+A.LeftContent:hover {
+	COLOR: #ff0000
+}
+.LeftMenu {
+	COLOR: #0000ff; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+A.LeftMenu:link {
+	COLOR: #0000ff
+}
+A.LeftMenu:visited {
+	COLOR: #0000ff
+}
+A.LeftMenu:active {
+	COLOR: #ff0000
+}
+A.LeftMenu:hover {
+	COLOR: #ff0000
+}
+.LeftMore {
+	COLOR: #ff0000; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+A.LeftMore:link {
+	COLOR: #ff0000
+}
+A.LeftMore:visited {
+	COLOR: #ff0000
+}
+A.LeftMore:active {
+	COLOR: #ffff00
+}
+A.LeftMore:hover {
+	COLOR: #ffff00
+}
+.MainTitle {
+	COLOR: #000000; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+A.MainTitle:link {
+	COLOR: #000000
+}
+A.MainTitle:visited {
+	COLOR: #000000
+}
+A.MainTitle:active {
+	COLOR: #000000
+}
+A.MainTitle:hover {
+	COLOR: #000000
+}
+.MainContentS {
+	COLOR: #0000ff; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+A.MainContentS:link {
+	COLOR: #0000ff
+}
+A.MainContentS:visited {
+	COLOR: #800080
+}
+A.MainContentS:active {
+	COLOR: #ff0000
+}
+A.MainContentS:hover {
+	COLOR: #ff0000
+}
+.MainContentB {
+	COLOR: #000000; FONT-SIZE: 14px; LINE-HEIGHT: 140%; TEXT-DECORATION: none
+}
+A.MainContentB:link {
+	COLOR: #0000ff
+}
+A.MainContentB:visited {
+	COLOR: #800080
+}
+A.MainContentB:active {
+	COLOR: #ff0000
+}
+A.MainContentB:hover {
+	COLOR: #ff0000
+}
+.MainMore {
+	COLOR: #ff0000; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+A.MainMore:link {
+	COLOR: #ff0000
+}
+A.MainMore:visited {
+	COLOR: #ff0000
+}
+A.MainMore:active {
+	COLOR: #ffcc00
+}
+A.MainMore:hover {
+	COLOR: #ffcc00
+}
+.RightTitle {
+	COLOR: #000000; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+A.RightTitle:link {
+	COLOR: #ffffff
+}
+A.RightTitle:visited {
+	COLOR: #ffffff
+}
+A.RightTitle:active {
+	COLOR: #ff0000
+}
+A.RightTitle:hover {
+	COLOR: #ff0000
+}
+.RightContent {
+	COLOR: #0000ff; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+A.RightContent:link {
+	COLOR: #0000ff
+}
+A.RightContent:visited {
+	COLOR: #800080
+}
+A.RightContent:active {
+	COLOR: #ff0000
+}
+A.RightContent:hover {
+	COLOR: #ff0000
+}
+.RightMore {
+	COLOR: #ff0000; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+A.RightMore:link {
+	COLOR: #ff0000
+}
+A.RightMore:visited {
+	COLOR: #ff0000
+}
+A.RightMore:active {
+	COLOR: #ffcc00
+}
+A.RightMore:hover {
+	COLOR: #ffcc00
+}
+.bottom {
+	COLOR: #ffffff; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+A.bottom:link {
+	COLOR: #ffffff
+}
+A.bottom:visited {
+	COLOR: #ffffff
+}
+A.bottom:active {
+	COLOR: #ff0000
+}
+A.bottom:hover {
+	COLOR: #ff0000
+}
+.NEWS {
+	COLOR: #000000; FONT-SIZE: 14px; LINE-HEIGHT: 16pt; TEXT-DECORATION: none
+}
+.NEWSREADME {
+	COLOR: #000000; FONT-SIZE: 12px; LINE-HEIGHT: 14pt; TEXT-DECORATION: none
+}
+.READNEWSTITLE {
+	COLOR: #000000; FONT-SIZE: 24px; LINE-HEIGHT: 20pt; TEXT-DECORATION: none
+}
+.TitleMore {
+	COLOR: #6666cc; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+.MainContentZY {
+	COLOR: green; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+.noline {
+	FONT-SIZE: 9pt; TEXT-DECORATION: none
+}
+.link {
+	TEXT-DECORATION: none
+}

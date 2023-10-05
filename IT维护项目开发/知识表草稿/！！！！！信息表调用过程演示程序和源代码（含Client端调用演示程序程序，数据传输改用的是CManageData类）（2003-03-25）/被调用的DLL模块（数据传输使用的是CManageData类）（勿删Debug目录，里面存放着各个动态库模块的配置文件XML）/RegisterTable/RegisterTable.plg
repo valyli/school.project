@@ -1,0 +1,36 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: RegisterTable - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP14E.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Debug/RegisterTable.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\RegisterTable\RegisterTable.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP14E.tmp" 
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP14F.tmp" with contents
+[
+/nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/RegisterTable.pdb" /debug /machine:I386 /def:".\RegisterTable.def" /out:"Debug/RegisterTable.dll" /implib:"Debug/RegisterTable.lib" /pdbtype:sept 
+.\Debug\ModuleInfoList.obj
+.\Debug\RegisterTable.obj
+.\Debug\StdAfx.obj
+.\Debug\RegisterTable.res
+.\Debug\ManageData.obj
+]
+Creating command line "link.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP14F.tmp"
+<h3>Output Window</h3>
+Compiling...
+RegisterTable.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+RegisterTable.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

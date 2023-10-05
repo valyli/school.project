@@ -1,0 +1,10 @@
+OPEN "CMOS.DAT" FOR OUTPUT AS #1
+FOR i% = 0 TO 127
+ OUT &H70, i%
+ a% = INP(&H71)
+ PRINT #1, a%
+NEXT i%
+CLOSE #1
+END
+
+

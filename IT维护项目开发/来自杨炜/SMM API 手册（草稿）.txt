@@ -1,0 +1,573 @@
+
+                          SMM API ÊÖ²á£¨²Ý¸å£©
+                          -------------------
+
+Ïß³Ì
+----
+
+<´´½¨>
+SMM_INT SMM_ThreadCreate( const SMM_CHAR *pcName,
+                          SMM_UINT8 ui8Priority,
+                          SMM_USHORT usMode,
+                          SMM_ULONG ulStackSize,
+                          SMM_UINT uiArg,
+                          SMM_THREAD_ENTRY pfEntry,
+                          SMM_KID *pkID )
+
+ Input      : pcName - name string, which length no less than max kernel name
+                       length definition, or will be truncated.  null for auto.
+              ui8Priority - 0...255 from low to high.
+              usMode - compound of preempt and time slice, 0 for default.
+              ulStackSize - initial stack size, 0 for default.
+              uiArg - Argument pass to thread entry.
+              pfEntry - thread start entry address.
+ Output     : pkID - ID of the thread created.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<É¾³ý>
+SMM_INT SMM_ThreadDelete( SMM_KID kID )
+
+ Input      : kID - ID to identify a thread. can't be NULL.
+ Output     : None
+ Return     : SMM_OK on success or error number when fail.
+
+
+<ÖØÆô¶¯>
+SMM_INT SMM_ThreadRestart( SMM_KID kID, SMM_UINT uiArg )
+
+ Input      : kID - ID to identify a thread. can't be NULL.
+              uiArg - New argument pass to thread entry.
+ Output     : None
+ Return     : SMM_OK on success or error number when fail.
+
+
+<¹ÒÆð>
+SMM_INT SMM_ThreadSuspend( SMM_KID kID )
+
+ Input      : kID - ID to identify a thread. can't be NULL.
+ Output     : None
+ Return     : SMM_OK on success or error number when fail.
+
+
+<»Ö¸´>
+SMM_INT SMM_ThreadResume( SMM_KID kID )
+
+ Input      : kID - ID to identify a thread. can't be NULL.
+ Output     : None
+ Return     : SMM_OK on success or error number when fail.
+
+
+<ÐÝÃß>
+SMM_INT SMM_ThreadSleep( SMM_ULONG ulMilliSec )
+
+ Input      : ulMilliSec - time in millsec. o menas free control of cpu and
+                           cause a schedule of thread.
+ Output     : None
+ Return     : None
+
+
+<»ñµÃÓÅÏÈ¼¶>
+SMM_INT SMM_ThreadGetPriority( SMM_KID kID, SMM_UINT8 *pui8Priority )
+
+ Input      : kID - ID to identify a thread. can't be NULL.
+ Output     : pui8Priority - 0...255 from low to high.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<ÉèÖÃÓÅÏÈ¼¶>
+SMM_INT SMM_ThreadSetPriority( SMM_KID kID, SMM_UINT8 ui8Priority )
+
+ Input      : kID - ID to identify a thread. can't be NULL.
+              ui8Priority - 0...255 from low to high.
+ Output     : None
+ Return     : SMM_OK on success or error number when fail.
+
+
+<»ñµÃ×ÔÉíµÄID>
+SMM_INT SMM_ThreadGetMyID( SMM_KID *pkID )
+
+ Input      : None
+ Output     : pkID - ID of the thread retrieve.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<¸ù¾ÝÃû³Æ»ñµÃID>
+SMM_INT SMM_ThreadGetID( const SMM_CHAR *pcName, SMM_KID *pkID )
+
+ Input      : pcName - name string, which length no less than max kernel name
+                       length definition, or will be truncated.
+ Output     : pkID - ID of the thread retrieve.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<¸ù¾ÝID»ñµÃÃû³Æ>
+SMM_INT SMM_ThreadGetName( SMM_KID kID, SMM_CHAR *pcName )
+
+ Input      : kID - ID to identify a thread. can't be NULL.
+ Output     : pcName - name string buffer, which length should be at least
+                       max kernel name length definition plus 1 for end '\0'.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<»ñµÃÔËÐÐ×´Ì¬>
+SMM_INT SMM_ThreadGetState( SMM_KID kID, SMM_ULONG *pulState )
+
+ Input      : kID - ID to identify a thread. can't be NULL.
+ Output     : pulState - pointer to state to get.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<¼ì²âÊÇ·ñ´æ»î>
+SMM_INT SMM_ThreadIsAlive( SMM_KID kID, SMM_BOOL *pbAlive )
+
+ Input      : kID - ID to identify a thread. can't be NULL.
+ Output     : pbAlive - pointer to a boolean for getting the result.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<¼ì²âÊÇ·ñÓÐÐ§>
+SMM_BOOL SMM_ThreadIsValid( SMM_KID kID )
+
+ Input      : kID - ID to identify a thread.
+ Output     : None
+ Return     : A boolean indicate that if valid.
+
+
+
+ÐÅºÅÁ¿
+------
+
+<´´½¨>
+SMM_INT SMM_SemaphoreCreate( const SMM_CHAR *pcName,
+                             SMM_ULONG ulInitialCount,
+                             SMM_USHORT usMode,
+                             SMM_KID *pkID )
+
+ Input      : pcName - name string, which length no less than max kernel name
+                       length definition, or will be truncated. null for auto.
+              ulInitialCount - initial count of semaphore created
+              usMode - FIFO or priority mode when a thread blocks for this
+                       semaphore.
+ Output     : pkID - ID of the semaphore created.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<É¾³ý>
+SMM_INT SMM_SemaphoreDelete( SMM_KID kID )
+
+ Input      : kID - ID to identify a semaphore. can't be NULL.
+ Output     : None
+ Return     : SMM_OK on success or error number when fail.
+
+
+<ÉêÇë£¨P£©>
+SMM_INT SMM_SemaphoreTake( SMM_KID kID, SMM_ULONG ulMilliSec )
+
+ Input      : kID - ID to identify a semaphore. can't be NULL.
+              ulMilliSec - time to wait in milliscond.
+                           SMM_WAIT_NONE means no wait.
+                           SMM_WAIT_INFINITE means wait forever.
+ Output     : None
+ Return     : SMM_OK on success or error number when fail.
+
+
+<ÊÍ·Å£¨V£©>
+SMM_INT SMM_SemaphoreGive( SMM_KID kID )
+
+ Input      : kID - ID to identify a semaphore. can't be NULL.
+ Output     : None
+ Return     : SMM_OK on success or error number when fail.
+
+
+<¸ù¾ÝÃû³Æ»ñµÃID>
+SMM_INT SMM_SemaphoreGetID( const SMM_CHAR *pcName, SMM_KID *pkID )
+
+ Input      : pcName - name string, which length no less than max kernel name
+                       length definition, or will be truncated.
+ Output     : pkID - ID of the semaphore retrieve.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<¸ù¾ÝID»ñµÃÃû³Æ>
+SMM_INT SMM_SemaphoreGetName( SMM_KID kID, SMM_CHAR *pcName )
+
+ Input      : kID - ID to identify a semaphore. can't be NULL.
+ Output     : pcName - name string buffer, which length should be at least
+                       max kernel name length definition plus 1 for end '\0'.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<¼ì²âÊÇ·ñÓÐÐ§>
+SMM_BOOL SMM_SemaphoreIsValid( SMM_KID kID )
+
+ Input      : kID - ID to identify a semaphore.
+ Output     : None
+ Return     : A boolean indicate that if valid.
+
+
+
+ÊÂ¼þ
+----
+
+<¶ÁÊÂ¼þ>
+SMM_INT SMM_EventRead( SMM_UINT32 ui32ReadEvents,
+                       SMM_UINT32 *pui32ReturnEvents,
+                       SMM_USHORT usMode,
+                       SMM_ULONG ulMilliSec )
+
+ Input      : ui32ReadEvents - event(s) wanted to read, can be compound of
+                               multiple events.
+              pui32ReturnEvents - event(s) returned after read.
+              usMode - read all or any event(s) wanted.
+                       SMM_EVNT_MODE_ALL means all events got is ok.
+                       SMM_EVNT_MODE_ANY means any event got is ok.
+              ulMilliSec - time to wait in milliscond.
+                           SMM_WAIT_NONE means no wait.
+                           SMM_WAIT_INFINITE means wait forever.
+ Output     : None
+ Return     : SMM_OK on success or error number when fail.
+
+
+<Ð´ÊÂ¼þ>
+SMM_INT SMM_EventWrite( SMM_KID kThreadID, SMM_UINT32 ui32WriteEvents )
+
+ Input      : kThreadID - ID of a thread we wanna write event to.
+              ui32WriteEvents - event(s) we want to write, can be compound of
+                                multiple events.
+ Output     : None
+ Return     : SMM_OK on success or error number when fail.
+
+
+
+¶ÓÁÐ
+----
+
+<´´½¨>
+SMM_INT SMM_QueueCreate( const SMM_CHAR *pcName,
+                         SMM_ULONG ulLength,
+                         SMM_USHORT usMode,
+                         SMM_KID *pkID )
+
+ Input      : pcName - name string, which length no less than max kernel name
+                       length definition, or will be truncated. null for auto.
+              ulLength - length, e,g, maximum message number of queue created.
+              usMode - syn or asyn mode for this queue. under syn mode, can be
+                       compound of FIFO or priority mode when a thread blocks
+                       for this queue.
+ Output     : pkID - ID of the queue created.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<É¾³ý>
+SMM_INT SMM_QueueDelete( SMM_KID kID )
+
+ Input      : kID - ID to identify a queue. can't be NULL.
+ Output     : None
+ Return     : SMM_OK on success or error number when fail.
+
+
+<¶Á¶ÓÁÐ>
+SMM_INT SMM_QueueRead( SMM_KID kID,
+                       SMM_QUEUE_MSG_S *pstMsg,
+                       SMM_ULONG ulMilliSec )
+
+ Input      : kID - ID to identify a queue. can't be NULL.
+              ulMilliSec - time to wait in milliscond. this param is ingored
+                           when read from a asyn queue.
+                           SMM_WAIT_NONE means no wait.
+                           SMM_WAIT_INFINITE means wait forever.
+ Output     : pstMsg - pointer to message buffer used to store result.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<Ð´¶ÓÁÐ>
+SMM_INT SMM_QueueWrite( SMM_KID kID,
+                        const SMM_QUEUE_MSG_S *pstMsg,
+                        SMM_ULONG ulMilliSec,
+                        SMM_BOOL bUrgent )
+
+ Input      : kID - ID to identify a queue. can't be NULL.
+              pstMsg - pointer to message which store message data.
+              ulMilliSec - time to wait in milliscond. this param is ingored
+                           when read from a asyn queue.
+                           SMM_WAIT_NONE means no wait.
+                           SMM_WAIT_INFINITE means wait forever.
+              bUrgent - indicate if it is a urgent message.
+ Output     : None
+ Return     : SMM_OK on success or error number when fail.
+
+
+<¸ù¾ÝÃû³Æ»ñµÃID>
+SMM_INT SMM_QueueGetID( const SMM_CHAR *pcName, SMM_KID *pkID )
+
+ Input      : pcName - name string, which length no less than max kernel name
+                       length definition, or will be truncated.
+ Output     : pkID - ID of the queue retrieve.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<¸ù¾ÝID»ñµÃÃû³Æ>
+SMM_INT SMM_QueueGetName( SMM_KID kID, SMM_CHAR *pcName )
+
+ Input      : kID - ID to identify a queue. can't be NULL.
+ Output     : pcName - name string buffer, which length should be at least
+                       max kernel name length definition plus 1 for end '\0'.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<»ñµÃµ±Ç°¶ÓÁÐÖÐÏûÏ¢ÊýÄ¿>
+SMM_INT SMM_QueueGetMsgNum( SMM_KID kID, SMM_ULONG *pulNum )
+
+ Input      : kID - ID to identify a queue. can't be NULL.
+ Output     : pulNum - pointer to number counter variable.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<¼ì²âÊÇ·ñÓÐÐ§>
+SMM_BOOL SMM_QueueIsValid( SMM_KID kID )
+
+ Input      : kID - ID to identify a queue.
+ Output     : None
+ Return     : A boolean indicate that if valid.
+
+
+
+Ê±¼ä
+----
+
+<»ñµÃ¸ñÁÖÍþÖÎÊ±¼ä>
+SMM_INT SMM_TimeGetGMT( SMM_TIME_S *pstTime )
+
+ Input      : None
+ Output     : pstTime - pointer to structure used to store result.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<ÉèÖÃ¸ñÁÖÍþÖÎÊ±¼ä>
+SMM_INT SMM_TimeSetGMT( const SMM_TIME_S *pstTime )
+
+ Input      : pstTime - pointer to structure used to set the time value.
+ Output     : None
+ Return     : SMM_OK on success or error number when fail.
+
+
+<»ñµÃ±¾µØÊ±¼ä>
+SMM_INT SMM_TimeGetLocal( SMM_TIME_S *pstTime )
+
+ Input      : None
+ Output     : pstTime - pointer to structure used to store result.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<ÉèÖÃ±¾µØÊ±¼ä>
+SMM_INT SMM_TimeSetLocal( const SMM_TIME_S *pstTime )
+
+ Input      : pstTime - pointer to structure used to set the time value.
+ Output     : None
+ Return     : SMM_OK on success or error number when fail.
+
+
+<»ñµÃÏµÍ³Æô¶¯ÒÔÀ´Á÷ÊÅµÄÊ±¼ä>
+SMM_INT SMM_TimeGetElapse( SMM_UINT64 *pui64Time )
+
+ Input      : None
+ Output     : pui64Time - pointer to structure used to store result.
+ Return     : SMM_OK on success or error number when fail.
+
+
+
+<ÏµÍ³¸ñÊ½µÄÊ±¼ä×ª»»Îª×Ô1970/1/1ÁãÊ±µÄºÁÃëÊý>
+SMM_VOID SMM_TimeSysToMsec( const SMM_TIME_S *pstTime, SMM_UINT64 *pui64Time )
+
+ Input      : pstTime - pointer to structure used to be converted.
+ Output     : pui64Time - pointer to structure used to store result.
+ Return     : None
+
+
+<×Ô1970/1/1ÁãÊ±µÄºÁÃëÊý×ª»»ÎªÏµÍ³¸ñÊ½µÄÊ±¼ä>
+SMM_VOID SMM_TimeMsecToSys( const SMM_UINT64 *pui64Time, SMM_TIME_S *pstTime )
+
+ Input      : pui64Time - pointer to structure used to be converted.
+ Output     : pstTime - pointer to structure used to store result.
+ Return     : None
+
+
+<¸ù¾ÝÖ¸¶¨ÈÕÆÚ»ñµÃÊÇÐÇÆÚ¼¸>
+SMM_UINT8 SMM_TimeGetDayOfWeek( SMM_UINT16 ui16Year, SMM_UINT8 ui8Month, SMM_UINT8 ui8Day )
+
+ Input      : ui16Year - year of date
+              ui16Month - month of date (1-12)
+              ui16Day - day of date (1-31)
+ Output     : None
+ Return     : Day of week( 0-Sunday, 1-Monday, ... 6-Saturday )
+
+
+<Ìí¼ÓÊ±¼äÖÐ¶Ï´¦Àí¹³×Ó>
+SMM_INT SMM_TimeIsrHookAdd( SMM_UINT uiArg, SMM_TMISRHK_ENTRY pfEntry, SMM_KID *pkID )
+
+ Input      : uiArg - Argument pass to fuction entry.
+              pfEntry - time isr hook start entry address.
+ Output     : pkID - ID of the hook of time isr added.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<É¾³ýÊ±¼äÖÐ¶Ï´¦Àí¹³×Ó>
+SMM_INT SMM_TimeIsrHookDel( SMM_KID kID )
+
+ Input      : kID - ID to identify a time isr hook. can't be NULL.
+ Output     : None
+ Return     : SMM_OK on success or error number when fail.
+
+
+<¼ì²âÊ±¼äÖÐ¶Ï¹³×ÓÊÇ·ñÓÐÐ§>
+SMM_BOOL SMM_TimeIsrHookIsValid( SMM_KID kID )
+
+ Input      : kID - ID to identify a ti-hook.
+ Output     : None
+ Return     : A boolean indicate that if valid.
+
+
+
+¶¨Ê±Æ÷
+------
+
+<´´½¨ÏûÏ¢Í¨Öª·½Ê½>
+SMM_INT SMM_TimerCreateM( SMM_ULONG ulTime,
+                          SMM_USHORT usMode,
+                          SMM_UINT uiArg,
+                          SMM_KID kTID,
+                          SMM_KID kQID,
+                          SMM_KID *pkID )
+
+ Input      : ulTime - value of timeout, in milliseconds.
+              usMode - one-off or cyclic mode for this timer. under one-off
+                       mode, after timeout, the timer will be deleted. under
+                       cyclic mode, the timer will be used circularly.
+              uiArg - Argument pass to the timer.
+              kTID - thread id, when timeout, will write a timer event to it.
+ÿ            kQID - queue id, when timeout, will write a message to it.
+ Output     : pkID - ID of the timer created.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<´´½¨»Øµ÷º¯Êý·½Ê½>
+SMM_INT SMM_TimerCreateC( SMM_ULONG ulTime,
+                          SMM_USHORT usMode,
+                          SMM_UINT uiArg,
+                          SMM_TIMER_ENTRY pfEntry,
+                          SMM_KID *pkID )
+
+ Input      : ulTime - value of timeout, in milliseconds.
+              usMode - one-off or cyclic mode for this timer. under one-off
+                       mode, after timeout, the timer will be deleted. under
+                       cyclic mode, the timer will be used cyclic.
+              uiArg - Argument pass to the timer.
+              pfEntry - call back function start address.
+ Output     : pkID - ID of the timer created.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<É¾³ý>
+SMM_INT SMM_TimerDelete( SMM_KID kID )
+
+ Input      : kID - ID to identify a timer. can't be NULL.
+ Output     : None
+ Return     : SMM_OK on success or error number when fail.
+
+
+<ÔÝÍ£>
+SMM_INT SMM_TimerPause( SMM_KID kID )
+
+ Input      : kID - ID to identify a timer. can't be NULL.
+ Output     : None
+ Return     : SMM_OK on success or error number when fail.
+
+
+<»Ö¸´>
+SMM_INT SMM_TimerResume( SMM_KID kID )
+
+ Input      : kID - ID to identify a timer. can't be NULL.
+ Output     : None
+ Return     : SMM_OK on success or error number when fail.
+
+
+<»ñµÃÐÅÏ¢>
+SMM_INT SMM_TimerGetInfo( SMM_KID kID, SMM_TIMER_INF_S *pstInfo )
+
+ Input      : kID - ID to identify a timer. can't be NULL.
+ Output     : pstInfo - point to the info buffer.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<»ñµÃÊ£ÓàÊ±¼ä>
+SMM_INT SMM_TimerGetTimeLeft( SMM_KID kID, SMM_ULONG *pulTimeLeft )
+
+ Input      : kID - ID to identify a timer. can't be NULL.
+ Output     : pulTimeLeft - point to the time remain var.
+ Return     : SMM_OK on success or error number when fail.
+
+
+<¼ì²âÊÇ·ñÓÐÐ§>
+SMM_BOOL SMM_TimerIsValid( SMM_KID kID )
+
+ Input      : kID - ID to identify a timer.
+ Output     : None
+ Return     : A boolean indicate that if valid.
+
+
+
+ÖÐ¶Ï
+----
+
+<¹ØÖÐ¶Ï>
+SMM_INT SMM_IntLock( SMM_INT *piRet )
+
+ Input      : None
+ Output     : piRet: Value to saved the inner counter of locked times
+ Return     : SMM_OK on success or error number when fail
+
+
+<¿ªÖÐ¶Ï>
+SMM_INT SMM_IntUnLock( SMM_INT iCnt )
+
+ Input      : iCnt: Value returned by SMM_IntLock
+ Output     : None
+ Return     : SMM_OK on success or error number when fail
+
+
+
+64 Î»ÕûÊýµÄ¸³ÖµºÍÔËËã
+---------------------
+
+64Î»ÓÐ·ûºÅÈ¡¸ß32Î»      SMM_I64_HI( i )
+64Î»ÎÞ·ûºÅÈ¡¸ß32Î»      SMM_U64_HI( i )
+64Î»ÓÐ·ûºÅÈ¡µÍ32Î»      SMM_I64_LO( i )
+64Î»ÎÞ·ûºÅÈ¡µÍ32Î»      SMM_U64_LO( i )
+64Î»ÓÐ·ûºÅ¸ß32Î»¸³Öµ    SMM_I64_HSET( i, h )
+64Î»ÎÞ·ûºÅ¸ß32Î»¸³Öµ    SMM_U64_HSET( i, h )
+64Î»ÓÐ·ûºÅµÍ32Î»¸³Öµ    SMM_I64_LSET( i, l )
+64Î»ÎÞ·ûºÅµÍ32Î»¸³Öµ    SMM_U64_LSET( i, l )
+64Î»ÓÐ·ûºÅ¸³Öµ          SMM_I64_SET( i, h, l )
+64Î»ÎÞ·ûºÅ¸³Öµ          SMM_U64_SET( i, h, l )
+
+64Î»ÓÐ·ûºÅ¼Ó¡°+¡±         SMM_I64_ADD( a, b )
+64Î»ÎÞ·ûºÅ¼Ó¡°+¡±         SMM_U64_ADD( a, b )
+64Î»ÓÐ·ûºÅ¼õ¡°-¡±         SMM_I64_SUB( a, b )
+64Î»ÎÞ·ûºÅ¼õ¡°-¡±         SMM_U64_SUB( a, b )
+64Î»ÓÐ·ûºÅ³Ë¡°*¡±         SMM_I64_MUL( a, b )
+64Î»ÎÞ·ûºÅ³Ë¡°*¡±         SMM_U64_MUL( a, b )
+64Î»ÓÐ·ûºÅ³ý¡°/¡±         SMM_I64_DIV( a, b )
+64Î»ÎÞ·ûºÅ³ý¡°/¡±         SMM_U64_DIV( a, b )
+64Î»ÓÐ·ûºÅÇóÓà¡°%¡±       SMM_I64_MOD( a, b )
+64Î»ÎÞ·ûºÅÇóÓà¡°%¡±       SMM_U64_MOD( a, b )
+64Î»ÓÐ·ûºÅ×óÒÆ¡°<<¡±      SMM_I64_SHL( a, s )
+64Î»ÎÞ·ûºÅ×óÒÆ¡°<<¡±      SMM_U64_SHL( a, s )
+64Î»ÓÐ·ûºÅÓÒÒÆ¡°>>¡±      SMM_I64_SHR( a, s )
+64Î»ÎÞ·ûºÅÓÒÒÆ¡°>>¡±      SMM_U64_SHR( a, s )
+64Î»ÓÐ·ûºÅ×Ô¼Ó1¡°++¡±     SMM_I64_INC( a )
+64Î»ÎÞ·ûºÅ×Ô¼Ó1¡°++¡±     SMM_U64_INC( a )
+64Î»ÓÐ·ûºÅ×Ô¼õ1¡°--¡±     SMM_I64_DEC( a )
+64Î»ÎÞ·ûºÅ×Ô¼õ1¡°--¡±     SMM_U64_DEC( a )
+64Î»ÓÐ·ûºÅ±È½Ï          SMM_I64_CMP( a, b )
+64Î»ÎÞ·ûºÅ±È½Ï          SMM_U64_CMP( a, b )

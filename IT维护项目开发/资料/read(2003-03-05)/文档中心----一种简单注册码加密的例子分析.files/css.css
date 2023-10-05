@@ -1,0 +1,33 @@
+BODY {
+	BORDER-RIGHT: #ffffff 0px; BORDER-TOP: #ffffff 0px; SCROLLBAR-FACE-COLOR: #ff0000; BORDER-LEFT: #ffffff 0px; SCROLLBAR-SHADOW-COLOR: #ffffff; SCROLLBAR-3DLIGHT-COLOR: #6371d6; SCROLLBAR-ARROW-COLOR: #ffffff; SCROLLBAR-TRACK-COLOR: #6371d6; BORDER-BOTTOM: #ffffff 0px; SCROLLBAR-DARKSHADOW-COLOR: #6371d6
+}
+A:link {
+	COLOR: #0000ff; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #0099ff; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+.A1:link {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.A1:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.A1:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+TD {
+	FONT-WEIGHT: 100; FONT-SIZE: 12px; TEXT-DECORATION: none
+}
+.button1 {
+	BORDER-RIGHT: #ff0000 1px solid; BORDER-TOP: #ff0000 1px solid; BORDER-LEFT: #ff0000 1px solid; COLOR: #0000ff; BORDER-BOTTOM: #ff0000 1px solid
+}
+.button2 {
+	COLOR: #ff0000; BACKGROUND-COLOR: #e9eed7
+}
+.button3 {
+	BORDER-RIGHT: #0066ff 1px solid; BORDER-TOP: #0066ff 1px solid; BORDER-LEFT: #0066ff 1px solid; COLOR: #ff0000; BORDER-BOTTOM: #0066ff 1px solid; BACKGROUND-COLOR: #ffffcc
+}

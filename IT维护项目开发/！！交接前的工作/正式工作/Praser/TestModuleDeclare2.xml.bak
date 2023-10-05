@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="gb2312"?>
+<ModuleDeclare Name="Only Test" FileName="Test.dll">
+	<ProviderID>1</ProviderID>
+	<InfoBaseID>1</InfoBaseID>
+	<InfoItemList>
+		<InfoItem ID="1.1" AcitonID="2" FunctionName="SetToDisplay">
+			<Parameter ID="1" DataTypeID="1"/>
+			<Parameter ID="2" DataTypeID="1"/>
+		</InfoItem>
+	</InfoItemList>
+</ModuleDeclare>

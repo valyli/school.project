@@ -1,0 +1,16 @@
+document.write("<table width='760' border='0' cellspacing='0' cellpadding='0' background='http://www.pconline.com.cn/logo/logogb1.gif' align='center' height='97'>");
+document.write("<tr>");
+document.write("<td>");
+document.write("<table width='760' border='0' cellspacing='0' cellpadding='0' height='97'>");
+document.write("<tr>");
+document.write("<td height='75' width='210' class='dingwei' valign='top'>");
+document.write("<div id='logo' style='position:absolute; width:186px; height:51px; z-index:11; top: 37px'>");
+document.write("<div align='center'><img src='http://www.pconline.com.cn/logo/aa2logo.gif' width='163' height='38'></div>");
+document.write("</div>");
+document.write("<br>");
+document.write("<br>");
+document.write("<br>");
+document.write("<br>");
+document.write("<br>");
+document.write("</td>");
+document.write("<td height='75' align='center'>");

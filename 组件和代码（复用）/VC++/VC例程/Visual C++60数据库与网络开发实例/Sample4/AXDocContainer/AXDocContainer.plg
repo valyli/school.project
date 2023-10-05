@@ -1,0 +1,82 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: AXDocContainer - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "midl.exe /nologo /D "NDEBUG" /tlb "Release/AXDocContainer.tlb" /mktyplib203 /o "NUL" /win32 "E:\Sample4\AXDocContainer\AXDocContainer.odl""
+Creating command line "rc.exe /l 0x422 /fo"Release/AXDocContainer.res" /i "Release" /d "NDEBUG" /d "_AFXDLL" "E:\Sample4\AXDocContainer\AXDocContainer.rc"" 
+Creating temporary file "C:\TEMP\RSP94.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /Fp"Release/AXDocContainer.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\Sample4\AXDocContainer\AXDocContainer.cpp"
+"E:\Sample4\AXDocContainer\AXDocContainerDoc.cpp"
+"E:\Sample4\AXDocContainer\AXDocContainerItem.cpp"
+"E:\Sample4\AXDocContainer\AXDocContainerView.cpp"
+"E:\Sample4\AXDocContainer\AXDocInfo.cpp"
+"E:\Sample4\AXDocContainer\ChildFrm.cpp"
+"E:\Sample4\AXDocContainer\MainFrm.cpp"
+"E:\Sample4\AXDocContainer\ScriptDocEngine.cpp"
+"E:\Sample4\AXDocContainer\ScriptDocument.cpp"
+"E:\Sample4\AXDocContainer\Scriptengine.cpp"
+"E:\Sample4\AXDocContainer\ScriptView.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSP94.tmp" 
+Creating temporary file "C:\TEMP\RSP95.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /Fp"Release/AXDocContainer.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\Sample4\AXDocContainer\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSP95.tmp" 
+Creating temporary file "C:\TEMP\RSP96.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:no /pdb:"Release/AXDocContainer.pdb" /machine:I386 /out:"Release/AXDocContainer.exe" 
+.\Release\AXDocContainer.obj
+.\Release\AXDocContainerDoc.obj
+.\Release\AXDocContainerItem.obj
+.\Release\AXDocContainerView.obj
+.\Release\AXDocInfo.obj
+.\Release\ChildFrm.obj
+.\Release\MainFrm.obj
+.\Release\ScriptDocEngine.obj
+.\Release\ScriptDocument.obj
+.\Release\Scriptengine.obj
+.\Release\ScriptView.obj
+.\Release\StdAfx.obj
+.\Release\AXDocContainer.res
+]
+Creating command line "link.exe @C:\TEMP\RSP96.tmp"
+<h3>Output Window</h3>
+Creating Type Library...
+AXDocContainer.odl
+oaidl.idl
+objidl.idl
+unknwn.idl
+wtypes.idl
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+AXDocContainer.cpp
+AXDocContainerDoc.cpp
+AXDocContainerItem.cpp
+AXDocContainerView.cpp
+AXDocInfo.cpp
+ChildFrm.cpp
+MainFrm.cpp
+ScriptDocEngine.cpp
+ScriptDocument.cpp
+Scriptengine.cpp
+ScriptView.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+AXDocContainer.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

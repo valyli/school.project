@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0057)http://www.powerba.com/develop/vc/article/20010723002.htm -->
+<HTML><HEAD><TITLE>Windows 95的内存共享</TITLE><!-- #BeginTemplate "/Templates/caption_vc.dwt" --><!-- #BeginEditable "doctitle" --><!-- #EndEditable -->
+<STYLE type=text/css>FONT {
+	FONT-FAMILY: "宋体"
+}
+TABLE {
+	FONT-SIZE: 14px; FONT-FAMILY: "宋体"
+}
+BODY {
+	FONT-FAMILY: "宋体"
+}
+INPUT {
+	FONT-SIZE: 14px; FONT-FAMILY: "宋体"
+}
+SELECT {
+	FONT-SIZE: 14px; FONT-FAMILY: "宋体"
+}
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff3333; TEXT-DECORATION: underline
+}
+.cssTopLink {
+	COLOR: #ffffff
+}
+.cssSmallFont {
+	FONT-SIZE: 12px; LINE-HEIGHT: 130%; FONT-FAMILY: "宋体"
+}
+.cssNameFont {
+	FONT-WEIGHT: bold; FONT-SIZE: 24px; FONT-FAMILY: 楷体_GB2312
+}
+TEXTAREA {
+	FONT-SIZE: 14px; FONT-FAMILY: "宋体"
+}
+.cssNoBorder {
+	BORDER-RIGHT: 0px solid; BORDER-TOP: 0px solid; FONT-SIZE: 12px; BORDER-LEFT: 0px solid; BORDER-BOTTOM: 0px solid; FONT-FAMILY: "宋体"
+}
+.cssBlackBorder {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid
+}
+</STYLE>
+
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<STYLE type=text/css>TD {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 13pt
+}
+INPUT {
+	FONT-SIZE: 9pt
+}
+SELECT {
+	FONT-SIZE: 9pt
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1126" name=GENERATOR></HEAD>
+<BODY vLink=#990099 aLink=#ff0000 link=#187800 bgColor=#ffffff leftMargin=0 
+topMargin=0>
+<TABLE height=22 cellSpacing=0 cellPadding=0 width=743 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD width=131 height=71><IMG height=60 
+      src="Windows 95的内存共享.files/logo.gif" width=100> </TD>
+    <TD width=480 height=71>
+      <DIV align=left><FONT class=cssSmallFont 
+      style="LINE-HEIGHT: 150%"><BR></FONT></DIV>
+      <DIV align=center><FONT class=cssSmallFont style="LINE-HEIGHT: 150%"><A 
+      href="http://www.click2paid.com/cgi-bin/click.cgi?powerba" 
+      target=_top><IMG height=60 alt="Click here to visit our sponsor" 
+      src="Windows 95的内存共享.files/560_2299.gif" width=468 border=0></A> <A 
+      href="http://www.click2paid.com/" target=_top><B><FONT face=Arial 
+      color=#0000ff><BR>Free Advertising from Click2Paid.com</FONT> 
+      </B></A></FONT></DIV></TD>
+    <TD width=132 height=71>
+      <DIV align=right>&nbsp; <A href="http://www.powerba.com/index.htm">首页</A> 
+      | <A href="http://www.17do.com/sgb/guest.cgi?user=zxf52" 
+      target=_blank>请您留言</A></DIV></TD></TR></TBODY></TABLE>
+<TABLE height=25 cellSpacing=0 cellPadding=0 width=744 align=center 
+bgColor=white border=0 vspace="0" hspace="0">
+  <TBODY>
+  <TR>
+    <TD bgColor=#c8e0c8 colSpan=2 height=22>
+      <DIV align=left>[技术园地]--&gt;[<A 
+      href="http://www.powerba.com/develop/vc/index.htm">Vc</A>]</DIV></TD>
+    <TD width=616 bgColor=#c8e0c8 colSpan=2 height=25>
+      <DIV align=right><A 
+      href="http://www.powerba.com/develop/vc/index.htm"><B>技术文摘</B></A><B> | <A 
+      href="http://www.powerba.com/develop/vc/component/index.htm">控件下载</A> | <A 
+      href="http://www.powerba.com/develop/vc/freecode/index.htm">程序下载</A> | <A 
+      href="http://www.powerba.com/develop/vc/book/index.htm">书籍与资料</A> | <A 
+      href="http://www.powerba.com/develop/vc/netlink/index.htm">网络资源</A> | 
+      讨论区</B></DIV></TD></TR>
+  <TBODY>
+  <TR bgColor=#99cc99>
+    <TD colSpan=4 height=1>
+      <DIV align=right></DIV></TD></TR></TBODY></TABLE>
+<DIV align=center><!-- #BeginEditable "info" -->
+<TABLE height=76 cellSpacing=0 cellPadding=0 width=744 border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <P align=center><FONT size=3><B><BR><BR>Windows 95的内存共享</B></FONT></P>
+      <P>北京测量通信研究院 陈晓斌 李彤华<BR>本文讨论Windows 95环境下，两个或多个进程之间通过Win32 
+      API实现内存共享的方<BR>法。共享内存的方法可以归纳为四种：内存映像文件、共享内存页、动态申请和静<BR>态申请、定制资源。内存映像文件是其它内存共享方法的基础，也是本文介绍的重<BR>点。同时简单介绍了进程之间对共享数据进行访问的同步。本文的程序采用Visual<BR>C++的MFC实现。<BR>关键字：内存共享 
+      内存映像文件 进程同步<BR><BR>一、 共享内存<BR>Windows 
+      95采用页式内存管理，把进程私有页面和共享页面放在不同地址空间。私<BR>用页放在4MB到2GB之间，当进行从一个Win32进程到另一个进程的上下文转换时，一<BR>组私有页被映射出去，另外一组页面被影射到这个地址范围，这是通过更新CPU的页<BR>表来实现的。另一方面，把Windows 
+      95共享页面放在2GB到3GB之间。当一个上下文<BR>转换发生时，Windows95内存管理者不用操心这段区域的页与页表。由于把共享页放<BR>在一边，Windows95的内存管理使得进程之间的内存共享简单快速。<BR>在Win32上的所有共享内存依赖于Win32的内存映像I/O支持。一个内存映像文件使用<BR>共享内存来提供公共的基于文件的数据映像到共享数据的进程。内存映像文件I/O的<BR>一个不太引人注意的特点是它支持内存共享。在Win32进程间共享内存，使用了一个<BR>象内存映像文件一样的操作系统虚内存页文件。共享页属于系统的页文件，而不属<BR>于一个永久的命名的文件。<BR>本文从内存映像文件开始介绍内存共享，因为它是其它类型共享的基础。然后讨论<BR>共享内存页，这里介绍两种共享页类型：动态申请和静态申请。我们将讨论的第四<BR>种内存共享是定制资源，这种类型基于只读取，它提供了一种存储和查询大量数<BR>据，根据需要从执行文件编页到内存的有效方法。<BR>本文最后给出一个可以实际运行的例子供程序员参考。例子涉及到内存共享的另一<BR>个问题：同步。多个进程可以拥有同一信号灯、事件或互斥等对象的句柄，所以这<BR>些对象可用于实现进程之间的同步。例子中采用了互斥方法。<BR><BR>二、 
+      内存映像文件I/O<BR>内存映像文件I/O是Win32 
+      API处理磁盘文件的一种方式。如果虚拟内存管理不控制<BR>数据缓冲和内存缓冲，则当一个文件被映像到内存区，从映像内存读写数据和从文<BR>件读写数据产生同样的效果。内存映像文件I/O效率很高，且使用非常方便。内存映<BR>像文件I/O允许两个或多个进程共享基于文件的数据。每个和共享有关的进程直接存<BR>取一组公共页。由于共享占用的资源最小，当大量的数据必须被共享时，通过内存<BR>映像文件I/O共享就显得非常有用。<BR>内存映像文件支持需要三个Windows内核对象：文件、文件映像和视图。为了映像一<BR>个文件到内存，首先从磁盘打开一个文件，从而建立文件对象，然后将文件对象连<BR>接到内存映像文件对象，为了在不同进程间同步数据，它提供了一个基于磁盘文件<BR>的逻辑连接。为了访问文件的数据块，还需要一个数据指针，视图对象正是用于此<BR>目的。一个内存映像文件对象可以创建多个视图，分别存取文件的不同部分。下图<BR>示意了三个对象之间的关系。<BR><IMG 
+      height=216 src="Windows 95的内存共享.files/3-tu1.jpg" width=520><BR><BR>三、 
+      内存映像文件的使用和共享<BR>内存映像文件I/O的使用由以下步骤组成：<BR>·打开磁盘文件。这一步可采用如CreateFile()或OpenFile()等函数。CreateFile()<BR>功能较强，但OpenFile()参数较少，易于使用。为了打开一个基于磁盘的文件，宜<BR>采用OpenFile()：<BR>HFILE 
+      WINAPI OpenFile ( <BR>LPCSTR lpFileName, <BR>LPOFSTRUCT lpOF, <BR>UINT 
+      uStyle )<BR>注意OpenFile的返回值为-1时表示打开文件失败。参数uStyle定义了打开文件标志<BR>(OF_READ, 
+      OF_WRITE, 
+      OF_READWRITE等)，不同标志标明了怎样存取内存；文件被其<BR>它进程共享的方式(OF_SHARE_EXCLUTIVE, 
+      OF_SHARE_DENY_WRITE，等)，及文件打开<BR>时采取的动作(OF_CREATE, OF_DELETE, 
+      OF_EXIST等)。为了关闭文件，可以调用函<BR>数CloseHandle()。<BR>·创建文件映像对象。为了使用内存映像文件，第二个步骤是通过函数<BR>CreateFileMapping() 
+      创建文件映像对象。这个函数接受上一步得到的文件句柄作<BR>为参数。<BR>HANDLE WINAPI CreateFileMapping 
+      (<BR>HANDLE hFile, <BR>LPSECURITY _ATTRIBUTES lpsa,<BR>DWORD 
+      dwPROTECT,<BR>DWORD dwMaxSizeHigh,<BR>DWORD dwMaxSizeLow,<BR>LPCSTR 
+      lpszMapName)<BR>hFile是从OpenFile()调用返回的文件句柄；dwPROTECT是页保护标识<BR>(PAGE_READONLY等），它必须和文件打开时定义的文件存取标志一致；两个<BR>dwMaxSize共同定义了最大文件尺寸；lpszMapName定义了文件映像对象的名字。<BR>如果你向hFile传送的参数为-1(无效的文件句柄)，并不意味着函数调用失败，相反<BR>地，这种情况创建共享内存而非文件共享存取，本文后面将讨论这一点。<BR>lpszMapName是你给文件映像对象起的名字，必须确保其唯一性，因为和一个未知进<BR>程的名字冲突会产生非希望的共享。要共享此文件的进程通过相同的文件映像名实<BR>现共享，具体做法可以有三种情况：CreateFileMapping(), 
+      OpenFileMapping(), 
+      <BR>DuplicateHandle()。第二个（或以后的）进程调用CreateFileMapping()实际上并<BR>没有创建新的对象，而只是与已有对象连接。若采用OpenFileMapping()，需假定文<BR>件映像对象已由前面运行的进程用CreateFileMapping()创建。通过 
+      <BR>DuplicateHandle()共享的做法需要经过别的途径获得对象句柄。<BR>·创建视图对象。经过前面两个步骤后，存取内存映像文件或共享文件的第三个步骤<BR>是调用MapViewOfFile()创建视图对象。可以在一个文件中创建多个视图，以便分别<BR>访问文件的不同部分。调用MapViewOfFile()时需传递视图在文件的起始位置偏移和<BR>要映射的字节数。<BR><BR>四、 
+      共享内存页<BR>分动态和静态两种情况介绍共享内存页。<BR>·动态分配共享页。内存共享的第二种情况是动态申请共享页。这里要用到与共享内<BR>存映像文件相同的函数。我们首先用文件句柄参数为-1来调用CreateFileMapping()<BR>创建一个文件映像对象，并通过文件尺寸参数设定共享内存区域的大小。文件映像<BR>对象将自己连接到系统页文件。然后调用MapViewOfFile()创建内存视图，以确定要<BR>访问的特定内存区域，包括起始点和大小。<BR>·静态分配共享页。Microsoft 
+      Visual 
+      C++编译器提供在不同进程间共享全局变量的<BR>能力。编译和连接程序在执行文件中分配共享页，在运行时刻，加载程序允许这些<BR>页面同时映射到几个进程的地址空间。为了共享全局变量，须要满足以下三个条<BR>件：初始化全局变量、声明要共享的全局变量、给执行程序中包含共享全局变量的<BR>部分赋予共享属性。例如前两个条件可以如下实现：<BR>#program 
+      data_seg (".shared") // 定义名为".shared "的数据段<BR>char achPublic[1000]=""; // 
+      声明并初始化共享的全局变量<BR>#program data_seg() 
+      <BR>第三个条件的实现是在模块定义文件中产生一个入口。需要在SECTIONS下将共享的<BR>数据段定义为具有SHARED属性的，例如：<BR>SECTIONS<BR>.shared 
+      READ WRITE 
+      SHARED<BR><BR>五、定制资源<BR>这里采用定制资源的叫法以区别于Windows的预先定义资源（如图标、菜单、字符串<BR>表等）。定制资源象其它资源一样被编在资源文件中，并被链接程序捆绑到WIN32执<BR>行文件中（如.EXE或.DLL）。任何大段的只读数据都可用做定制资源。<BR>用定制资源方法保存只读数据有以下优越性：由于数据被捆绑在执行文件中，查询<BR>数据很安全；提高内存使用效率；简化编程任务。<BR>定制资源时，第一步工作是使用你喜爱的编辑器准备你的数据文件(假设文件名<BR>为"MyRes.data"，定义资源数据格式时，最好与你计划使用数据的格式一致，这样<BR>能简化编程量。<BR>第二步是在工程的资源文件中加入你定义的资源。逐步执行下列动作：从<BR>Developer 
+      Studio中选择Insert | Resource菜单；从对话框按钮中选择Custom；在<BR>Resource 
+      Type输入框中定义资源的类型（假设"MyResType"）；右击资源标识，选<BR>择"Properties"；修改ID标识（假设为"ID_MYRES"），并在File 
+      Name后面输入<BR>MyRes.data，确保选择了External 
+      File检查框。<BR>第三步是在程序中使用你的数据。假设你用名为MyResStruct的数据结构访问你的数<BR>据:<BR>HINSTANCE 
+      hinst = AfxGetResourceHandle ();<BR>HRSRC hresl = FindResource ( hinst, 
+      <BR>MAKEINTRESOURCE( ID_MYRES, "MyResType" );<BR>HGLOBAL hglb = 
+      LoadResource ( hinst, hresl );<BR>MyResStruct * pMyData = (MyResStruct *) 
+      LockResource ( hglb 
+      );<BR>其中hinst是包含资源的模块句柄，如果资源包含在动态库里，可以用LoadLibrary<BR>()和GetModuleHandle()得到模块句柄。其它函数的使用以及参数的用法请参阅VC++<BR>的联机Help文档。<BR><BR>六、内存共享示例<BR>下面给出一个共享内存的例子。在我们开发的中心监控显示软件中，工作站上的监<BR>视软件由几个独立进程组成，各自监视相应的子系统；由各监视进程共享的网络通<BR>讯模块负责网上监视信息的接收，并经由子线程写入对应监视进程的数据区。信息<BR>接收模块和监视进程共享内存数据区，由互斥控制对象保证内存读写访问的同步。<BR>信息接收模块的程序如下：<BR>CMutex 
+      mMutex1（TRUE, "Info1_Mutex" ）; // 互斥对象<BR>CSingleLock mSLock1 ( &amp; 
+      mMutex1 );<BR>DWORD dSize1; // 信息区大小<BR>HANDLE hMem1; // 
+      文件映像对象<BR>InfoStruct1 pInfo1; // 信息数据结构<BR>hMem1 = 
+      CreateFileMapping(<BR>(HANDLE(-1), 0, PAGE_READWRITE, 0,ShSize, 
+      "System1_Info");<BR>if ( hMem1 == 0 ) // 创建文件映像对象失败<BR>{ MessageBox(hwnd, 
+      "Cannot Create FileMap for SubSystem1 ","Error", MB_OK);<BR>return 
+      false;<BR>}<BR>if (GetLastError() == ERROR_ALREADY_EXIST) // 对象已经存在<BR>{ 
+      MessageBox(hwnd, "FileMap Already Exists", "Error", MB_OK);<BR>return 
+      false;<BR>}<BR>pInfo1 = (InfoStruct1 *) MapViewOfFile( hMem1, 
+      FILE_MAP_WRITE, 0,0,0);<BR>if ( pInfo1 == 0)<BR>{ MessageBox(hwnd, "Cannot 
+      Create View of File Mapping", "Error", MB_OK);<BR>CloseHandle( 
+      hMem1);<BR>return false;<BR>}<BR>子线程的工作:<BR>mSLock1.Lock();<BR>write 
+      information to pInfo1 
+      …<BR>mSLock1.Unlock();<BR>监视进程的程序结构同接收模块类似，如下所示：<BR>………<BR>if 
+      (GetLastError() ！= ERROR_ALREADY_EXIST) // 对象不存在<BR>{ MessageBox(hwnd, 
+      "FileMap doesnot Exists", "Error", MB_OK);<BR>return 
+      false;<BR>}<BR>………<BR>mSLock1.Lock();<BR>read information from pInfo1 
+      …<BR>mSLock1.Unlock();<BR><BR>七、结论<BR>随着硬件速度的发展和软件规模的扩大，多任务操作系统下进程之间的通讯量也在<BR>增加，进程之间通讯的手段多种多样，其中内存共享方法的效率高，使用方便，愿<BR>本文的介绍对你有所裨益，希望能为你的学习和工作节省一点宝贵的时间。<BR>由于篇幅限制，示例程序只给出了关键代码，有需要者请与作者联系。通讯地址<BR>是：<BR>100094 
+      北京5131信箱5号</P></TD></TR></TBODY></TABLE><!-- #EndEditable -->
+<TABLE cellSpacing=0 cellPadding=0 width=744 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD height=15>
+      <DIV align=center><BR><A href="http://www.powerba.com/index.htm">首页</A> - 
+      <A href="http://www.powerba.com/about.htm" target=_blank>关于泡吧</A> - <A 
+      href="http://www.powerba.com/join.htm" target=_blank>加盟机会</A> - <A 
+      href="http://www.powerba.com/ad.htm" target=_blank>广告服务</A> - <A 
+      href="http://www.powerba.com/copyright.htm" target=_blank>版权声明</A> - <A 
+      href="http://www.17do.com/sgb/guest.cgi?user=zxf52" target=_blank>您请留言</A> 
+      </DIV>
+      <DIV align=center></DIV></TD></TR>
+  <TR>
+    <TD height=15>
+      <DIV align=center>
+      <SCRIPT language=JavaScript1.1 
+      src="Windows 95的内存共享.files/textclick"></SCRIPT>
+      </DIV></TD></TR>
+  <TBODY></TBODY></TABLE></DIV><!-- #EndTemplate --></BODY></HTML>

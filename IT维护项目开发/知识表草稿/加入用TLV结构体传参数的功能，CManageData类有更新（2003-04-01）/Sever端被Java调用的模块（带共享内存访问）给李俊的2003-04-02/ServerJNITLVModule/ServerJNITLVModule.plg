@@ -1,0 +1,35 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ServerJNITLVModule - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "E:\TEMP\RSP13.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Debug/ServerJNITLVModule.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Administrator\桌面\Sever端被Java调用的模块（带共享内存访问）\ServerJNITLVModule\ServerJNITLVModule.cpp"
+]
+Creating command line "cl.exe @E:\TEMP\RSP13.tmp" 
+Creating temporary file "E:\TEMP\RSP14.tmp" with contents
+[
+/nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/ServerJNITLVModule.pdb" /debug /machine:I386 /def:".\ServerJNITLVModule.def" /out:"Debug/ServerJNITLVModule.dll" /implib:"Debug/ServerJNITLVModule.lib" /pdbtype:sept 
+".\Debug\ServerJNITLVModule.obj"
+".\Debug\StdAfx.obj"
+".\Debug\ServerJNITLVModule.res"
+]
+Creating command line "link.exe @E:\TEMP\RSP14.tmp"
+<h3>Output Window</h3>
+Compiling...
+ServerJNITLVModule.cpp
+Linking...
+   Creating library Debug/ServerJNITLVModule.lib and object Debug/ServerJNITLVModule.exp
+
+
+
+<h3>Results</h3>
+ServerJNITLVModule.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

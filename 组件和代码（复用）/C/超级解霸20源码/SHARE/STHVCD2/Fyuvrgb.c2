@@ -1,0 +1,6810 @@
+#pragma	inline
+//////////////////////////////////////////////////////////
+//	_EBX=0;		//No Delete pixel		//
+//	FastYUV2RGB16Bits();	//Draw 3 pixel as movsd	//
+//	_EBX=0x80000;	//May Delete first pixel	//
+//	FastYUV2RGB16Bits();	//Draw 3 pixel as movsd	//
+//	_EBX=0x10000;	//May Delete 4th pixel		//
+//	FastYUV2RGB16Bits();	//Draw 3 pixel as movsd	//
+//	_EBX=0x80000000	//Delete line (only one line)	//
+//	FastYUV2RGB16Bits();	//Draw 3 pixel as movsd	//
+//	_EBX=0x80020000	//Delete line (only one line)	//
+//	FastYUV2RGB16Bits();	//Draw 3 pixel as movsd	//
+//////////////////////////////////////////////////////////
+static	void	Align0(void){}
+////////////////////////// RGB16Bits 64K Colors ///////////////////
+int	CrCb,Cg;
+void	FastYUV2RGB16Bits(void)
+{	//EAX,EBX,ECX,EDX,EDI,ESI,EBP changed
+	//GS->Video data selector
+	//ES->Video Buffer
+	//Must compile with Fastest code optimization,the EBP will not save
+	asm	mov	bx,gs:[ebp]		;//U1U2
+	asm	mov	cx,gs:[ebp+0x240]	;//V1V2
+	asm	xchg	cl,bh
+	//CH=U2 CL=V2  BH=U1 BL=V1(Store in BX)
+	////////////Use DX to compute U2V2////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	asm	mov	Cg,dx  	//Store in high 16 bits
+	asm	mov	CrCb,cx
+	//////////////////////////////////////////////////////
+	asm	mov 	cx,bx
+	////////////Use DX to compute U1V1////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi]	//Line 1 Y1 Y2
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bl,bl
+	asm	js	Granthen128BL1
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL1
+	Next1BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL1
+	Next2BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL1
+	asm	jmp	Next6BL1
+	FixedR1BL1:
+	asm	or	ch,ch
+	asm	jnl	Next1BL1
+	asm	xor	ah,ah
+	asm	jmp	Next1BL1
+	FixedG1BL1:
+	asm	or	dl,dl
+	asm	jl	Next2BL1
+	asm	xor	al,al
+	asm	jmp	Next2BL1
+	FixedB1BL1:
+	asm	or	cl,cl
+	asm	jnl	Next3BL1
+	asm	xor	dh,dh
+	Next3BL1:
+	asm 	jmp	Next6BL1
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL1:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL1
+	Next4BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL1
+	Next5BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL1
+	asm	jmp	Next6BL1
+	FixedR2BL1:
+	asm	or	ch,ch
+	asm	jl	Next4BL1
+	asm	mov	ah,255
+	asm	jmp	Next4BL1
+	FixedG2BL1:
+	asm	or	dl,dl
+	asm	jnl	Next5BL1
+	asm	mov	al,255
+	asm	jmp	Next5BL1
+	FixedB2BL1:
+	asm	or	cl,cl
+	asm	jl	Next6BL1
+	asm	mov	dh,255
+	Next6BL1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH1
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH1
+	Next1BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH1
+	Next2BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH1
+	asm	jmp	Next6BH1
+	FixedR1BH1:
+	asm	or	ch,ch
+	asm	jnl	Next1BH1
+	asm	xor	ah,ah
+	asm	jmp	Next1BH1
+	FixedG1BH1:
+	asm	or	dl,dl
+	asm	jl	Next2BH1
+	asm	xor	al,al
+	asm	jmp	Next2BH1
+	FixedB1BH1:
+	asm	or	cl,cl
+	asm	jnl	Next3BH1
+	asm	xor	bh,bh
+	Next3BH1:
+	asm	jmp	Next6BH1
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH1:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH1
+	Next4BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH1
+	Next5BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH1
+	asm	jmp	Next6BH1
+	FixedR2BH1:
+	asm	or	ch,ch
+	asm	jl	Next4BH1
+	asm	mov	ah,255
+	asm	jmp	Next4BH1
+	FixedG2BH1:
+	asm	or	dl,dl
+	asm	jnl	Next5BH1
+	asm	mov	al,255
+	asm	jmp	Next5BH1
+	FixedB2BH1:
+	asm	or	cl,cl
+	asm	jl	Next6BH1
+	asm	mov	bh,255
+	Next6BH1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2		;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+2],ax	;//Write AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi+0x480]//Line 2 Y1 Y2
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bl,bl
+	asm	js	Granthen128BL2
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL2
+	Next1BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL2
+	Next2BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL2
+	asm	jmp	Next6BL2
+	FixedR1BL2:
+	asm	or	ch,ch
+	asm	jnl	Next1BL2
+	asm	xor	ah,ah
+	asm	jmp	Next1BL2
+	FixedG1BL2:
+	asm	or	dl,dl
+	asm	jl	Next2BL2
+	asm	xor	al,al
+	asm	jmp	Next2BL2
+	FixedB1BL2:
+	asm	or	cl,cl
+	asm	jnl	Next3BL2
+	asm	xor	dh,dh
+	Next3BL2:
+	asm 	jmp	Next6BL2
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL2:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL2
+	Next4BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL2
+	Next5BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL2
+	asm	jmp	Next6BL2
+	FixedR2BL2:
+	asm	or	ch,ch
+	asm	jl	Next4BL2
+	asm	mov	ah,255
+	asm	jmp	Next4BL2
+	FixedG2BL2:
+	asm	or	dl,dl
+	asm	jnl	Next5BL2
+	asm	mov	al,255
+	asm	jmp	Next5BL2
+	FixedB2BL2:
+	asm	or	cl,cl
+	asm	jl	Next6BL2
+	asm	mov	dh,255
+	Next6BL2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi+640],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH2
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH2
+	Next1BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH2
+	Next2BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH2
+	asm	jmp	Next6BH2
+	FixedR1BH2:
+	asm	or	ch,ch
+	asm	jnl	Next1BH2
+	asm	xor	ah,ah
+	asm	jmp	Next1BH2
+	FixedG1BH2:
+	asm	or	dl,dl
+	asm	jl	Next2BH2
+	asm	xor	al,al
+	asm	jmp	Next2BH2
+	FixedB1BH2:
+	asm	or	cl,cl
+	asm	jnl	Next3BH2
+	asm	xor	bh,bh
+	Next3BH2:
+	asm	jmp	Next6BH2
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH2:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH2
+	Next4BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH2
+	Next5BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH2
+	asm	jmp	Next6BH2
+	FixedR2BH2:
+	asm	or	ch,ch
+	asm	jl	Next4BH2
+	asm	mov	ah,255
+	asm	jmp	Next4BH2
+	FixedG2BH2:
+	asm	or	dl,dl
+	asm	jnl	Next5BH2
+	asm	mov	al,255
+	asm	jmp	Next5BH2
+	FixedB2BH2:
+	asm	or	cl,cl
+	asm	jl	Next6BH2
+	asm	mov	bh,255
+	Next6BH2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2		;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+640+2],ax	;//Write AX=RGB16[5:6:5]
+	/////////////////////////////////////////////////////
+			///U2 V2\\\
+	//////////////////////////////////////////////////////
+	asm	mov	cx,CrCb
+	asm	mov	dx,Cg
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi+2]	//Line 1 Y3 Y4
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bl,bl
+	asm	js	Granthen128BL3
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL3
+	Next1BL3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL3
+	Next2BL3:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL3
+	asm	jmp	Next6BL3
+	FixedR1BL3:
+	asm	or	ch,ch
+	asm	jnl	Next1BL3
+	asm	xor	ah,ah
+	asm	jmp	Next1BL3
+	FixedG1BL3:
+	asm	or	dl,dl
+	asm	jl	Next2BL3
+	asm	xor	al,al
+	asm	jmp	Next2BL3
+	FixedB1BL3:
+	asm	or	cl,cl
+	asm	jnl	Next3BL3
+	asm	xor	dh,dh
+	Next3BL3:
+	asm 	jmp	Next6BL3
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL3:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL3
+	Next4BL3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL3
+	Next5BL3:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL3
+	asm	jmp	Next6BL3
+	FixedR2BL3:
+	asm	or	ch,ch
+	asm	jl	Next4BL3
+	asm	mov	ah,255
+	asm	jmp	Next4BL3
+	FixedG2BL3:
+	asm	or	dl,dl
+	asm	jnl	Next5BL3
+	asm	mov	al,255
+	asm	jmp	Next5BL3
+	FixedB2BL3:
+	asm	or	cl,cl
+	asm	jl	Next6BL3
+	asm	mov	dh,255
+	Next6BL3:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi+4],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH3
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH3
+	Next1BH3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH3
+	Next2BH3:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH3
+	asm	jmp	Next6BH3
+	FixedR1BH3:
+	asm	or	ch,ch
+	asm	jnl	Next1BH3
+	asm	xor	ah,ah
+	asm	jmp	Next1BH3
+	FixedG1BH3:
+	asm	or	dl,dl
+	asm	jl	Next2BH3
+	asm	xor	al,al
+	asm	jmp	Next2BH3
+	FixedB1BH3:
+	asm	or	cl,cl
+	asm	jnl	Next3BH3
+	asm	xor	bh,bh
+	Next3BH3:
+	asm	jmp	Next6BH3
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH3:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH3
+	Next4BH3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH3
+	Next5BH3:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH3
+	asm	jmp	Next6BH3
+	FixedR2BH3:
+	asm	or	ch,ch
+	asm	jl	Next4BH3
+	asm	mov	ah,255
+	asm	jmp	Next4BH3
+	FixedG2BH3:
+	asm	or	dl,dl
+	asm	jnl	Next5BH3
+	asm	mov	al,255
+	asm	jmp	Next5BH3
+	FixedB2BH3:
+	asm	or	cl,cl
+	asm	jl	Next6BH3
+	asm	mov	bh,255
+	Next6BH3:
+	asm	shr	ax,2		;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+4+2],ax	;//Write AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi+0x480+2]//Line 2 Y1 Y2
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bl,bl
+	asm	js	Granthen128BL4
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL4
+	Next1BL4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL4
+	Next2BL4:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL4
+	asm	jmp	Next6BL4
+	FixedR1BL4:
+	asm	or	ch,ch
+	asm	jnl	Next1BL4
+	asm	xor	ah,ah
+	asm	jmp	Next1BL4
+	FixedG1BL4:
+	asm	or	dl,dl
+	asm	jl	Next2BL4
+	asm	xor	al,al
+	asm	jmp	Next2BL4
+	FixedB1BL4:
+	asm	or	cl,cl
+	asm	jnl	Next3BL4
+	asm	xor	dh,dh
+	Next3BL4:
+	asm 	jmp	Next6BL4
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL4:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL4
+	Next4BL4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL4
+	Next5BL4:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL4
+	asm	jmp	Next6BL4
+	FixedR2BL4:
+	asm	or	ch,ch
+	asm	jl	Next4BL4
+	asm	mov	ah,255
+	asm	jmp	Next4BL4
+	FixedG2BL4:
+	asm	or	dl,dl
+	asm	jnl	Next5BL4
+	asm	mov	al,255
+	asm	jmp	Next5BL4
+	FixedB2BL4:
+	asm	or	cl,cl
+	asm	jl	Next6BL4
+	asm	mov	dh,255
+	Next6BL4:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi+640+4],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH4
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH4
+	Next1BH4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH4
+	Next2BH4:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH4
+	asm	jmp	Next6BH4
+	FixedR1BH4:
+	asm	or	ch,ch
+	asm	jnl	Next1BH4
+	asm	xor	ah,ah
+	asm	jmp	Next1BH4
+	FixedG1BH4:
+	asm	or	dl,dl
+	asm	jl	Next2BH4
+	asm	xor	al,al
+	asm	jmp	Next2BH4
+	FixedB1BH4:
+	asm	or	cl,cl
+	asm	jnl	Next3BH4
+	asm	xor	bh,bh
+	Next3BH4:
+	asm	jmp	Next6BH4
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH4:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH4
+	Next4BH4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH4
+	Next5BH4:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH4
+	asm	jmp	Next6BH4
+	FixedR2BH4:
+	asm	or	ch,ch
+	asm	jl	Next4BH4
+	asm	mov	ah,255
+	asm	jmp	Next4BH4
+	FixedG2BH4:
+	asm	or	dl,dl
+	asm	jnl	Next5BH4
+	asm	mov	al,255
+	asm	jmp	Next5BH4
+	FixedB2BH4:
+	asm	or	cl,cl
+	asm	jl	Next6BH4
+	asm	mov	bh,255
+	Next6BH4:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2		;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+640+4+2],ax	;//Write AX=RGB16[5:6:5]
+	asm	add	edi,8		;//Y source 4 byte
+	asm	add	esi,4		;//Y source 4 byte
+	asm	add	ebp,2		;//UV source 2 byts
+	//	EDI had add when write pixel
+}
+static	void	Align1(void)
+{
+	asm	nop
+}
+void	FastYUV2RGB16BitsDeletePixel(void)
+{	//EAX,EBX,ECX,EDX,EDI,ESI,EBP changed
+	//GS->Video data selector
+	//ES->Video Buffer
+	//Must compile with Fastest code optimization,the EBP will not save
+	asm	mov	bx,gs:[ebp]		;//U1U2
+	asm	mov	cx,gs:[ebp+0x240]	;//V1V2
+	asm	xchg	cl,bh
+	//CH=U2 CL=V2  BH=U1 BL=V1(Store in BX)
+	////////////Use DX to compute U2V2////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	asm	mov	Cg,dx  	//Store in high 16 bits
+	asm	mov	CrCb,cx
+	//////////////////////////////////////////////////////
+	asm	mov 	cx,bx
+	////////////Use DX to compute U1V1////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi]	//Line 1 Y1 Y2
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bl,bl
+	asm	js	Granthen128BL1
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL1
+	Next1BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL1
+	Next2BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL1
+	asm	jmp	Next6BL1
+	FixedR1BL1:
+	asm	or	ch,ch
+	asm	jnl	Next1BL1
+	asm	xor	ah,ah
+	asm	jmp	Next1BL1
+	FixedG1BL1:
+	asm	or	dl,dl
+	asm	jl	Next2BL1
+	asm	xor	al,al
+	asm	jmp	Next2BL1
+	FixedB1BL1:
+	asm	or	cl,cl
+	asm	jnl	Next3BL1
+	asm	xor	dh,dh
+	Next3BL1:
+	asm 	jmp	Next6BL1
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL1:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL1
+	Next4BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL1
+	Next5BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL1
+	asm	jmp	Next6BL1
+	FixedR2BL1:
+	asm	or	ch,ch
+	asm	jl	Next4BL1
+	asm	mov	ah,255
+	asm	jmp	Next4BL1
+	FixedG2BL1:
+	asm	or	dl,dl
+	asm	jnl	Next5BL1
+	asm	mov	al,255
+	asm	jmp	Next5BL1
+	FixedB2BL1:
+	asm	or	cl,cl
+	asm	jl	Next6BL1
+	asm	mov	dh,255
+	Next6BL1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH1
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH1
+	Next1BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH1
+	Next2BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH1
+	asm	jmp	Next6BH1
+	FixedR1BH1:
+	asm	or	ch,ch
+	asm	jnl	Next1BH1
+	asm	xor	ah,ah
+	asm	jmp	Next1BH1
+	FixedG1BH1:
+	asm	or	dl,dl
+	asm	jl	Next2BH1
+	asm	xor	al,al
+	asm	jmp	Next2BH1
+	FixedB1BH1:
+	asm	or	cl,cl
+	asm	jnl	Next3BH1
+	asm	xor	bh,bh
+	Next3BH1:
+	asm	jmp	Next6BH1
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH1:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH1
+	Next4BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH1
+	Next5BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH1
+	asm	jmp	Next6BH1
+	FixedR2BH1:
+	asm	or	ch,ch
+	asm	jl	Next4BH1
+	asm	mov	ah,255
+	asm	jmp	Next4BH1
+	FixedG2BH1:
+	asm	or	dl,dl
+	asm	jnl	Next5BH1
+	asm	mov	al,255
+	asm	jmp	Next5BH1
+	FixedB2BH1:
+	asm	or	cl,cl
+	asm	jl	Next6BH1
+	asm	mov	bh,255
+	Next6BH1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2		;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+2],ax	;//Write AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi+0x480]//Line 2 Y1 Y2
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bl,bl
+	asm	js	Granthen128BL2
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL2
+	Next1BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL2
+	Next2BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL2
+	asm	jmp	Next6BL2
+	FixedR1BL2:
+	asm	or	ch,ch
+	asm	jnl	Next1BL2
+	asm	xor	ah,ah
+	asm	jmp	Next1BL2
+	FixedG1BL2:
+	asm	or	dl,dl
+	asm	jl	Next2BL2
+	asm	xor	al,al
+	asm	jmp	Next2BL2
+	FixedB1BL2:
+	asm	or	cl,cl
+	asm	jnl	Next3BL2
+	asm	xor	dh,dh
+	Next3BL2:
+	asm 	jmp	Next6BL2
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL2:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL2
+	Next4BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL2
+	Next5BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL2
+	asm	jmp	Next6BL2
+	FixedR2BL2:
+	asm	or	ch,ch
+	asm	jl	Next4BL2
+	asm	mov	ah,255
+	asm	jmp	Next4BL2
+	FixedG2BL2:
+	asm	or	dl,dl
+	asm	jnl	Next5BL2
+	asm	mov	al,255
+	asm	jmp	Next5BL2
+	FixedB2BL2:
+	asm	or	cl,cl
+	asm	jl	Next6BL2
+	asm	mov	dh,255
+	Next6BL2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi+640],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH2
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH2
+	Next1BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH2
+	Next2BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH2
+	asm	jmp	Next6BH2
+	FixedR1BH2:
+	asm	or	ch,ch
+	asm	jnl	Next1BH2
+	asm	xor	ah,ah
+	asm	jmp	Next1BH2
+	FixedG1BH2:
+	asm	or	dl,dl
+	asm	jl	Next2BH2
+	asm	xor	al,al
+	asm	jmp	Next2BH2
+	FixedB1BH2:
+	asm	or	cl,cl
+	asm	jnl	Next3BH2
+	asm	xor	bh,bh
+	Next3BH2:
+	asm	jmp	Next6BH2
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH2:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH2
+	Next4BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH2
+	Next5BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH2
+	asm	jmp	Next6BH2
+	FixedR2BH2:
+	asm	or	ch,ch
+	asm	jl	Next4BH2
+	asm	mov	ah,255
+	asm	jmp	Next4BH2
+	FixedG2BH2:
+	asm	or	dl,dl
+	asm	jnl	Next5BH2
+	asm	mov	al,255
+	asm	jmp	Next5BH2
+	FixedB2BH2:
+	asm	or	cl,cl
+	asm	jl	Next6BH2
+	asm	mov	bh,255
+	Next6BH2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2		;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+640+2],ax	;//Write AX=RGB16[5:6:5]
+	/////////////////////////////////////////////////////
+			///U2 V2\\\
+	//////////////////////////////////////////////////////
+	asm	mov	cx,CrCb
+	asm	mov	dx,Cg
+	//////////////////////////////////////////////////////
+	asm	mov	bh,gs:[esi+2]	//Line 1 Y3 Y4
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH3
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH3
+	Next1BH3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH3
+	Next2BH3:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH3
+	asm	jmp	Next6BH3
+	FixedR1BH3:
+	asm	or	ch,ch
+	asm	jnl	Next1BH3
+	asm	xor	ah,ah
+	asm	jmp	Next1BH3
+	FixedG1BH3:
+	asm	or	dl,dl
+	asm	jl	Next2BH3
+	asm	xor	al,al
+	asm	jmp	Next2BH3
+	FixedB1BH3:
+	asm	or	cl,cl
+	asm	jnl	Next3BH3
+	asm	xor	bh,bh
+	Next3BH3:
+	asm	jmp	Next6BH3
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH3:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH3
+	Next4BH3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH3
+	Next5BH3:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH3
+	asm	jmp	Next6BH3
+	FixedR2BH3:
+	asm	or	ch,ch
+	asm	jl	Next4BH3
+	asm	mov	ah,255
+	asm	jmp	Next4BH3
+	FixedG2BH3:
+	asm	or	dl,dl
+	asm	jnl	Next5BH3
+	asm	mov	al,255
+	asm	jmp	Next5BH3
+	FixedB2BH3:
+	asm	or	cl,cl
+	asm	jl	Next6BH3
+	asm	mov	bh,255
+	Next6BH3:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+4],ax	;//Write 1 AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	mov	bh,gs:[esi+0x480+2]//Line 2 Y1 Y2
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH4
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH4
+	Next1BH4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH4
+	Next2BH4:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH4
+	asm	jmp	Next6BH4
+	FixedR1BH4:
+	asm	or	ch,ch
+	asm	jnl	Next1BH4
+	asm	xor	ah,ah
+	asm	jmp	Next1BH4
+	FixedG1BH4:
+	asm	or	dl,dl
+	asm	jl	Next2BH4
+	asm	xor	al,al
+	asm	jmp	Next2BH4
+	FixedB1BH4:
+	asm	or	cl,cl
+	asm	jnl	Next3BH4
+	asm	xor	bh,bh
+	Next3BH4:
+	asm	jmp	Next6BH4
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH4:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH4
+	Next4BH4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH4
+	Next5BH4:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH4
+	asm	jmp	Next6BH4
+	FixedR2BH4:
+	asm	or	ch,ch
+	asm	jl	Next4BH4
+	asm	mov	ah,255
+	asm	jmp	Next4BH4
+	FixedG2BH4:
+	asm	or	dl,dl
+	asm	jnl	Next5BH4
+	asm	mov	al,255
+	asm	jmp	Next5BH4
+	FixedB2BH4:
+	asm	or	cl,cl
+	asm	jl	Next6BH4
+	asm	mov	bh,255
+	Next6BH4:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+640+4],ax	;//Write AX=RGB16[5:6:5]
+	asm	add	edi,6		;//Y source 4 byte
+	asm	add	esi,4		;//Y source 4 byte
+	asm	add	ebp,2		;//UV source 2 byts
+	//	EDI had add when write pixel
+}
+static	void	Align2(void)
+{
+	asm	nop
+	asm	nop
+}
+//////////// One line only ///////////
+void	FastYUV2RGB16Bits1Line(void)
+{	//EAX,EBX,ECX,EDX,EDI,ESI,EBP changed
+	//GS->Video data selector
+	//ES->Video Buffer
+	//Must compile with Fastest code optimization,the EBP will not save
+	asm	mov	bx,gs:[ebp]		;//U1U2
+	asm	mov	cx,gs:[ebp+0x240]	;//V1V2
+	asm	xchg	cl,bh
+	//CH=U2 CL=V2  BH=U1 BL=V1(Store in BX)
+	////////////Use DX to compute U2V2////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	asm	mov	Cg,dx  	//Store in high 16 bits
+	asm	mov	CrCb,cx
+	//////////////////////////////////////////////////////
+	asm	mov 	cx,bx
+	////////////Use DX to compute U1V1////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi]	//Line 1 Y1 Y2
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bl,bl
+	asm	js	Granthen128BL1
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL1
+	Next1BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL1
+	Next2BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL1
+	asm	jmp	Next6BL1
+	FixedR1BL1:
+	asm	or	ch,ch
+	asm	jnl	Next1BL1
+	asm	xor	ah,ah
+	asm	jmp	Next1BL1
+	FixedG1BL1:
+	asm	or	dl,dl
+	asm	jl	Next2BL1
+	asm	xor	al,al
+	asm	jmp	Next2BL1
+	FixedB1BL1:
+	asm	or	cl,cl
+	asm	jnl	Next3BL1
+	asm	xor	dh,dh
+	Next3BL1:
+	asm 	jmp	Next6BL1
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL1:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL1
+	Next4BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL1
+	Next5BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL1
+	asm	jmp	Next6BL1
+	FixedR2BL1:
+	asm	or	ch,ch
+	asm	jl	Next4BL1
+	asm	mov	ah,255
+	asm	jmp	Next4BL1
+	FixedG2BL1:
+	asm	or	dl,dl
+	asm	jnl	Next5BL1
+	asm	mov	al,255
+	asm	jmp	Next5BL1
+	FixedB2BL1:
+	asm	or	cl,cl
+	asm	jl	Next6BL1
+	asm	mov	dh,255
+	Next6BL1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH1
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH1
+	Next1BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH1
+	Next2BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH1
+	asm	jmp	Next6BH1
+	FixedR1BH1:
+	asm	or	ch,ch
+	asm	jnl	Next1BH1
+	asm	xor	ah,ah
+	asm	jmp	Next1BH1
+	FixedG1BH1:
+	asm	or	dl,dl
+	asm	jl	Next2BH1
+	asm	xor	al,al
+	asm	jmp	Next2BH1
+	FixedB1BH1:
+	asm	or	cl,cl
+	asm	jnl	Next3BH1
+	asm	xor	bh,bh
+	Next3BH1:
+	asm	jmp	Next6BH1
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH1:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH1
+	Next4BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH1
+	Next5BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH1
+	asm	jmp	Next6BH1
+	FixedR2BH1:
+	asm	or	ch,ch
+	asm	jl	Next4BH1
+	asm	mov	ah,255
+	asm	jmp	Next4BH1
+	FixedG2BH1:
+	asm	or	dl,dl
+	asm	jnl	Next5BH1
+	asm	mov	al,255
+	asm	jmp	Next5BH1
+	FixedB2BH1:
+	asm	or	cl,cl
+	asm	jl	Next6BH1
+	asm	mov	bh,255
+	Next6BH1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2		;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+2],ax	;//Write AX=RGB16[5:6:5]
+	/////////////////////////////////////////////////////
+			///U2 V2\\\
+	//////////////////////////////////////////////////////
+	asm	mov	cx,CrCb
+	asm	mov	dx,Cg
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi+2]	//Line 1 Y3 Y4
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bl,bl
+	asm	js	Granthen128BL2
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL2
+	Next1BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL2
+	Next2BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL2
+	asm	jmp	Next6BL2
+	FixedR1BL2:
+	asm	or	ch,ch
+	asm	jnl	Next1BL2
+	asm	xor	ah,ah
+	asm	jmp	Next1BL2
+	FixedG1BL2:
+	asm	or	dl,dl
+	asm	jl	Next2BL2
+	asm	xor	al,al
+	asm	jmp	Next2BL2
+	FixedB1BL2:
+	asm	or	cl,cl
+	asm	jnl	Next3BL2
+	asm	xor	dh,dh
+	Next3BL2:
+	asm 	jmp	Next6BL2
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL2:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL2
+	Next4BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL2
+	Next5BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL2
+	asm	jmp	Next6BL2
+	FixedR2BL2:
+	asm	or	ch,ch
+	asm	jl	Next4BL2
+	asm	mov	ah,255
+	asm	jmp	Next4BL2
+	FixedG2BL2:
+	asm	or	dl,dl
+	asm	jnl	Next5BL2
+	asm	mov	al,255
+	asm	jmp	Next5BL2
+	FixedB2BL2:
+	asm	or	cl,cl
+	asm	jl	Next6BL2
+	asm	mov	dh,255
+	Next6BL2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi+4],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH2
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH2
+	Next1BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH2
+	Next2BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH2
+	asm	jmp	Next6BH2
+	FixedR1BH2:
+	asm	or	ch,ch
+	asm	jnl	Next1BH2
+	asm	xor	ah,ah
+	asm	jmp	Next1BH2
+	FixedG1BH2:
+	asm	or	dl,dl
+	asm	jl	Next2BH2
+	asm	xor	al,al
+	asm	jmp	Next2BH2
+	FixedB1BH2:
+	asm	or	cl,cl
+	asm	jnl	Next3BH2
+	asm	xor	bh,bh
+	Next3BH2:
+	asm	jmp	Next6BH2
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH2:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH2
+	Next4BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH2
+	Next5BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH2
+	asm	jmp	Next6BH2
+	FixedR2BH2:
+	asm	or	ch,ch
+	asm	jl	Next4BH2
+	asm	mov	ah,255
+	asm	jmp	Next4BH2
+	FixedG2BH2:
+	asm	or	dl,dl
+	asm	jnl	Next5BH2
+	asm	mov	al,255
+	asm	jmp	Next5BH2
+	FixedB2BH2:
+	asm	or	cl,cl
+	asm	jl	Next6BH2
+	asm	mov	bh,255
+	Next6BH2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2		;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+4+2],ax	;//Write AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	add	edi,8		;//Y source 4 byte
+	asm	add	esi,4		;//Y source 4 byte
+	asm	add	ebp,2		;//UV source 2 byts
+	//	EDI had add when write pixel
+}
+static	void	Align3(void)
+{
+	asm	nop
+}
+void	FastYUV2RGB16Bits1LineDeletePixel(void)
+{	//EAX,EBX,ECX,EDX,EDI,ESI,EBP changed
+	//GS->Video data selector
+	//ES->Video Buffer
+	//Must compile with Fastest code optimization,the EBP will not save
+	asm	mov	bx,gs:[ebp]		;//U1U2
+	asm	mov	cx,gs:[ebp+0x240]	;//V1V2
+	asm	xchg	cl,bh
+	//CH=U2 CL=V2  BH=U1 BL=V1(Store in BX)
+	////////////Use DX to compute U2V2////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	asm	mov	Cg,dx  	//Store in high 16 bits
+	asm	mov	CrCb,cx
+	//////////////////////////////////////////////////////
+	asm	mov 	cx,bx
+	////////////Use DX to compute U1V1////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi]	//Line 1 Y1 Y2
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bl,bl
+	asm	js	Granthen128BL1
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL1
+	Next1BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL1
+	Next2BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL1
+	asm	jmp	Next6BL1
+	FixedR1BL1:
+	asm	or	ch,ch
+	asm	jnl	Next1BL1
+	asm	xor	ah,ah
+	asm	jmp	Next1BL1
+	FixedG1BL1:
+	asm	or	dl,dl
+	asm	jl	Next2BL1
+	asm	xor	al,al
+	asm	jmp	Next2BL1
+	FixedB1BL1:
+	asm	or	cl,cl
+	asm	jnl	Next3BL1
+	asm	xor	dh,dh
+	Next3BL1:
+	asm 	jmp	Next6BL1
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL1:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL1
+	Next4BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL1
+	Next5BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL1
+	asm	jmp	Next6BL1
+	FixedR2BL1:
+	asm	or	ch,ch
+	asm	jl	Next4BL1
+	asm	mov	ah,255
+	asm	jmp	Next4BL1
+	FixedG2BL1:
+	asm	or	dl,dl
+	asm	jnl	Next5BL1
+	asm	mov	al,255
+	asm	jmp	Next5BL1
+	FixedB2BL1:
+	asm	or	cl,cl
+	asm	jl	Next6BL1
+	asm	mov	dh,255
+	Next6BL1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH1
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH1
+	Next1BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH1
+	Next2BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH1
+	asm	jmp	Next6BH1
+	FixedR1BH1:
+	asm	or	ch,ch
+	asm	jnl	Next1BH1
+	asm	xor	ah,ah
+	asm	jmp	Next1BH1
+	FixedG1BH1:
+	asm	or	dl,dl
+	asm	jl	Next2BH1
+	asm	xor	al,al
+	asm	jmp	Next2BH1
+	FixedB1BH1:
+	asm	or	cl,cl
+	asm	jnl	Next3BH1
+	asm	xor	bh,bh
+	Next3BH1:
+	asm	jmp	Next6BH1
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH1:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH1
+	Next4BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH1
+	Next5BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH1
+	asm	jmp	Next6BH1
+	FixedR2BH1:
+	asm	or	ch,ch
+	asm	jl	Next4BH1
+	asm	mov	ah,255
+	asm	jmp	Next4BH1
+	FixedG2BH1:
+	asm	or	dl,dl
+	asm	jnl	Next5BH1
+	asm	mov	al,255
+	asm	jmp	Next5BH1
+	FixedB2BH1:
+	asm	or	cl,cl
+	asm	jl	Next6BH1
+	asm	mov	bh,255
+	Next6BH1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2		;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+2],ax	;//Write AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+			///U2 V2\\\
+	//////////////////////////////////////////////////////
+	asm	mov	cx,CrCb
+	asm	mov	dx,Cg
+	//////////////////////////////////////////////////////
+	asm	mov	bh,gs:[esi+2]	//Line 1 Y3 Y4
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH2
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH2
+	Next1BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH2
+	Next2BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH2
+	asm	jmp	Next6BH2
+	FixedR1BH2:
+	asm	or	ch,ch
+	asm	jnl	Next1BH2
+	asm	xor	ah,ah
+	asm	jmp	Next1BH2
+	FixedG1BH2:
+	asm	or	dl,dl
+	asm	jl	Next2BH2
+	asm	xor	al,al
+	asm	jmp	Next2BH2
+	FixedB1BH2:
+	asm	or	cl,cl
+	asm	jnl	Next3BH2
+	asm	xor	bh,bh
+	Next3BH2:
+	asm	jmp	Next6BH2
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH2:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH2
+	Next4BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH2
+	Next5BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH2
+	asm	jmp	Next6BH2
+	FixedR2BH2:
+	asm	or	ch,ch
+	asm	jl	Next4BH2
+	asm	mov	ah,255
+	asm	jmp	Next4BH2
+	FixedG2BH2:
+	asm	or	dl,dl
+	asm	jnl	Next5BH2
+	asm	mov	al,255
+	asm	jmp	Next5BH2
+	FixedB2BH2:
+	asm	or	cl,cl
+	asm	jl	Next6BH2
+	asm	mov	bh,255
+	Next6BH2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+4],ax	;//Write 1 AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	add	edi,6		;//Y source 4 byte
+	asm	add	esi,4		;//Y source 4 byte
+	asm	add	ebp,2		;//UV source 2 byts
+	//	EDI had add when write pixel
+}
+///////////////////////////////////////////////////////////////////
+static	void	Align4(void)
+{
+	asm	nop
+	asm	nop
+}
+///////////////////////// 640x240 Double pixel ////////////////
+extern	unsigned long	lStride;	//Video Memory Line width.
+void	FastYUV2RGB16BitsDouble(void)
+{	//EAX,EBX,ECX,EDX,EDI,ESI,EBP changed
+	//GS->Video data selector
+	//ES->Video Buffer
+	//Must compile with Fastest code optimization,the EBP will not save
+	asm	mov	bx,gs:[ebp]		;//U1U2
+	asm	mov	cx,gs:[ebp+0x240]	;//V1V2
+	asm	xchg	cl,bh
+	//CH=U2 CL=V2  BH=U1 BL=V1(Store in BX)
+	////////////Use DX to compute U2V2////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	asm	mov	Cg,dx  	//Store in high 16 bits
+	asm	mov	CrCb,cx
+	//////////////////////////////////////////////////////
+	asm	mov 	cx,bx
+	////////////Use DX to compute U1V1////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi]	//Line 1 Y1 Y2
+	//////////////////////////////////////////////////////
+	asm	or	bl,bl
+	asm	js	Granthen128BL1
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL1
+	Next1BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL1
+	Next2BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL1
+	asm	jmp	Next6BL1
+	FixedR1BL1:
+	asm	or	ch,ch
+	asm	jnl	Next1BL1
+	asm	xor	ah,ah
+	asm	jmp	Next1BL1
+	FixedG1BL1:
+	asm	or	dl,dl
+	asm	jl	Next2BL1
+	asm	xor	al,al
+	asm	jmp	Next2BL1
+	FixedB1BL1:
+	asm	or	cl,cl
+	asm	jnl	Next3BL1
+	asm	xor	dh,dh
+	Next3BL1:
+	asm 	jmp	Next6BL1
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL1:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL1
+	Next4BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL1
+	Next5BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL1
+	asm	jmp	Next6BL1
+	FixedR2BL1:
+	asm	or	ch,ch
+	asm	jl	Next4BL1
+	asm	mov	ah,255
+	asm	jmp	Next4BL1
+	FixedG2BL1:
+	asm	or	dl,dl
+	asm	jnl	Next5BL1
+	asm	mov	al,255
+	asm	jmp	Next5BL1
+	FixedB2BL1:
+	asm	or	cl,cl
+	asm	jl	Next6BL1
+	asm	mov	dh,255
+	Next6BL1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+2],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH1
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH1
+	Next1BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH1
+	Next2BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH1
+	asm	jmp	Next6BH1
+	FixedR1BH1:
+	asm	or	ch,ch
+	asm	jnl	Next1BH1
+	asm	xor	ah,ah
+	asm	jmp	Next1BH1
+	FixedG1BH1:
+	asm	or	dl,dl
+	asm	jl	Next2BH1
+	asm	xor	al,al
+	asm	jmp	Next2BH1
+	FixedB1BH1:
+	asm	or	cl,cl
+	asm	jnl	Next3BH1
+	asm	xor	bh,bh
+	Next3BH1:
+	asm	jmp	Next6BH1
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH1:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH1
+	Next4BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH1
+	Next5BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH1
+	asm	jmp	Next6BH1
+	FixedR2BH1:
+	asm	or	ch,ch
+	asm	jl	Next4BH1
+	asm	mov	ah,255
+	asm	jmp	Next4BH1
+	FixedG2BH1:
+	asm	or	dl,dl
+	asm	jnl	Next5BH1
+	asm	mov	al,255
+	asm	jmp	Next5BH1
+	FixedB2BH1:
+	asm	or	cl,cl
+	asm	jl	Next6BH1
+	asm	mov	bh,255
+	Next6BH1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2		;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+4],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+6],ax	;//Write AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi+0x480]//Line 2 Y1 Y2
+	//////////////////////////////////////////////////////
+	asm	or	bl,bl
+	asm	js	Granthen128BL2
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL2
+	Next1BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL2
+	Next2BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL2
+	asm	jmp	Next6BL2
+	FixedR1BL2:
+	asm	or	ch,ch
+	asm	jnl	Next1BL2
+	asm	xor	ah,ah
+	asm	jmp	Next1BL2
+	FixedG1BL2:
+	asm	or	dl,dl
+	asm	jl	Next2BL2
+	asm	xor	al,al
+	asm	jmp	Next2BL2
+	FixedB1BL2:
+	asm	or	cl,cl
+	asm	jnl	Next3BL2
+	asm	xor	dh,dh
+	Next3BL2:
+	asm 	jmp	Next6BL2
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL2:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL2
+	Next4BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL2
+	Next5BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL2
+	asm	jmp	Next6BL2
+	FixedR2BL2:
+	asm	or	ch,ch
+	asm	jl	Next4BL2
+	asm	mov	ah,255
+	asm	jmp	Next4BL2
+	FixedG2BL2:
+	asm	or	dl,dl
+	asm	jnl	Next5BL2
+	asm	mov	al,255
+	asm	jmp	Next5BL2
+	FixedB2BL2:
+	asm	or	cl,cl
+	asm	jl	Next6BL2
+	asm	mov	dh,255
+	Next6BL2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	add	edi,dword ptr lStride
+	asm	mov	es:[edi+1280],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+1280+2],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH2
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH2
+	Next1BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH2
+	Next2BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH2
+	asm	jmp	Next6BH2
+	FixedR1BH2:
+	asm	or	ch,ch
+	asm	jnl	Next1BH2
+	asm	xor	ah,ah
+	asm	jmp	Next1BH2
+	FixedG1BH2:
+	asm	or	dl,dl
+	asm	jl	Next2BH2
+	asm	xor	al,al
+	asm	jmp	Next2BH2
+	FixedB1BH2:
+	asm	or	cl,cl
+	asm	jnl	Next3BH2
+	asm	xor	bh,bh
+	Next3BH2:
+	asm	jmp	Next6BH2
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH2:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH2
+	Next4BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH2
+	Next5BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH2
+	asm	jmp	Next6BH2
+	FixedR2BH2:
+	asm	or	ch,ch
+	asm	jl	Next4BH2
+	asm	mov	ah,255
+	asm	jmp	Next4BH2
+	FixedG2BH2:
+	asm	or	dl,dl
+	asm	jnl	Next5BH2
+	asm	mov	al,255
+	asm	jmp	Next5BH2
+	FixedB2BH2:
+	asm	or	cl,cl
+	asm	jl	Next6BH2
+	asm	mov	bh,255
+	Next6BH2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2		;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+1280+4],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+1280+6],ax	;//Write AX=RGB16[5:6:5]
+	asm	sub	edi,dword ptr lStride
+	/////////////////////////////////////////////////////
+			///U2 V2\\\
+	//////////////////////////////////////////////////////
+	asm	mov	cx,CrCb
+	asm	mov	dx,Cg
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi+2]	//Line 1 Y3 Y4
+	//////////////////////////////////////////////////////
+	asm	or	bl,bl
+	asm	js	Granthen128BL3
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL3
+	Next1BL3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL3
+	Next2BL3:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL3
+	asm	jmp	Next6BL3
+	FixedR1BL3:
+	asm	or	ch,ch
+	asm	jnl	Next1BL3
+	asm	xor	ah,ah
+	asm	jmp	Next1BL3
+	FixedG1BL3:
+	asm	or	dl,dl
+	asm	jl	Next2BL3
+	asm	xor	al,al
+	asm	jmp	Next2BL3
+	FixedB1BL3:
+	asm	or	cl,cl
+	asm	jnl	Next3BL3
+	asm	xor	dh,dh
+	Next3BL3:
+	asm 	jmp	Next6BL3
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL3:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL3
+	Next4BL3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL3
+	Next5BL3:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL3
+	asm	jmp	Next6BL3
+	FixedR2BL3:
+	asm	or	ch,ch
+	asm	jl	Next4BL3
+	asm	mov	ah,255
+	asm	jmp	Next4BL3
+	FixedG2BL3:
+	asm	or	dl,dl
+	asm	jnl	Next5BL3
+	asm	mov	al,255
+	asm	jmp	Next5BL3
+	FixedB2BL3:
+	asm	or	cl,cl
+	asm	jl	Next6BL3
+	asm	mov	dh,255
+	Next6BL3:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi+0x08],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+0x0A],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH3
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH3
+	Next1BH3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH3
+	Next2BH3:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH3
+	asm	jmp	Next6BH3
+	FixedR1BH3:
+	asm	or	ch,ch
+	asm	jnl	Next1BH3
+	asm	xor	ah,ah
+	asm	jmp	Next1BH3
+	FixedG1BH3:
+	asm	or	dl,dl
+	asm	jl	Next2BH3
+	asm	xor	al,al
+	asm	jmp	Next2BH3
+	FixedB1BH3:
+	asm	or	cl,cl
+	asm	jnl	Next3BH3
+	asm	xor	bh,bh
+	Next3BH3:
+	asm	jmp	Next6BH3
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH3:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH3
+	Next4BH3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH3
+	Next5BH3:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH3
+	asm	jmp	Next6BH3
+	FixedR2BH3:
+	asm	or	ch,ch
+	asm	jl	Next4BH3
+	asm	mov	ah,255
+	asm	jmp	Next4BH3
+	FixedG2BH3:
+	asm	or	dl,dl
+	asm	jnl	Next5BH3
+	asm	mov	al,255
+	asm	jmp	Next5BH3
+	FixedB2BH3:
+	asm	or	cl,cl
+	asm	jl	Next6BH3
+	asm	mov	bh,255
+	Next6BH3:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2		;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+0x0C],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+0x0E],ax	;//Write AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi+0x480+2]//Line 2 Y1 Y2
+	//////////////////////////////////////////////////////
+	asm	or	bl,bl
+	asm	js	Granthen128BL4
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL4
+	Next1BL4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL4
+	Next2BL4:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL4
+	asm	jmp	Next6BL4
+	FixedR1BL4:
+	asm	or	ch,ch
+	asm	jnl	Next1BL4
+	asm	xor	ah,ah
+	asm	jmp	Next1BL4
+	FixedG1BL4:
+	asm	or	dl,dl
+	asm	jl	Next2BL4
+	asm	xor	al,al
+	asm	jmp	Next2BL4
+	FixedB1BL4:
+	asm	or	cl,cl
+	asm	jnl	Next3BL4
+	asm	xor	dh,dh
+	Next3BL4:
+	asm 	jmp	Next6BL4
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL4:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL4
+	Next4BL4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL4
+	Next5BL4:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL4
+	asm	jmp	Next6BL4
+	FixedR2BL4:
+	asm	or	ch,ch
+	asm	jl	Next4BL4
+	asm	mov	ah,255
+	asm	jmp	Next4BL4
+	FixedG2BL4:
+	asm	or	dl,dl
+	asm	jnl	Next5BL4
+	asm	mov	al,255
+	asm	jmp	Next5BL4
+	FixedB2BL4:
+	asm	or	cl,cl
+	asm	jl	Next6BL4
+	asm	mov	dh,255
+	Next6BL4:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	add	edi,dword ptr lStride
+	asm	mov	es:[edi+1280+0x08],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+1280+0x0A],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH4
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH4
+	Next1BH4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH4
+	Next2BH4:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH4
+	asm	jmp	Next6BH4
+	FixedR1BH4:
+	asm	or	ch,ch
+	asm	jnl	Next1BH4
+	asm	xor	ah,ah
+	asm	jmp	Next1BH4
+	FixedG1BH4:
+	asm	or	dl,dl
+	asm	jl	Next2BH4
+	asm	xor	al,al
+	asm	jmp	Next2BH4
+	FixedB1BH4:
+	asm	or	cl,cl
+	asm	jnl	Next3BH4
+	asm	xor	bh,bh
+	Next3BH4:
+	asm	jmp	Next6BH4
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH4:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH4
+	Next4BH4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH4
+	Next5BH4:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH4
+	asm	jmp	Next6BH4
+	FixedR2BH4:
+	asm	or	ch,ch
+	asm	jl	Next4BH4
+	asm	mov	ah,255
+	asm	jmp	Next4BH4
+	FixedG2BH4:
+	asm	or	dl,dl
+	asm	jnl	Next5BH4
+	asm	mov	al,255
+	asm	jmp	Next5BH4
+	FixedB2BH4:
+	asm	or	cl,cl
+	asm	jl	Next6BH4
+	asm	mov	bh,255
+	Next6BH4:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2		;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+1280+0x0C],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+1280+0x0E],ax	;//Write AX=RGB16[5:6:5]
+	asm	sub	edi,dword ptr lStride
+	asm	add	edi,16		;//Y source 4 byte
+	asm	add	esi,4		;//Y source 4 byte
+	asm	add	ebp,2		;//UV source 2 byts
+	//	EDI had add when write pixel
+}
+static	void	Align5(void)
+{
+	asm	nop
+}
+void	FastYUV2RGB16BitsDoubleDeletePixel(void)
+{	//EAX,EBX,ECX,EDX,EDI,ESI,EBP changed
+	//GS->Video data selector
+	//ES->Video Buffer
+	//Must compile with Fastest code optimization,the EBP will not save
+	asm	mov	bx,gs:[ebp]		;//U1U2
+	asm	mov	cx,gs:[ebp+0x240]	;//V1V2
+	asm	xchg	cl,bh
+	//CH=U2 CL=V2  BH=U1 BL=V1(Store in BX)
+	////////////Use DX to compute U2V2////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	asm	mov	Cg,dx  	//Store in high 16 bits
+	asm	mov	CrCb,cx
+	//////////////////////////////////////////////////////
+	asm	mov 	cx,bx
+	////////////Use DX to compute U1V1////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi]	//Line 1 Y1 Y2
+	//////////////////////////////////////////////////////
+	asm	or	bl,bl
+	asm	js	Granthen128BL1
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL1
+	Next1BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL1
+	Next2BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL1
+	asm	jmp	Next6BL1
+	FixedR1BL1:
+	asm	or	ch,ch
+	asm	jnl	Next1BL1
+	asm	xor	ah,ah
+	asm	jmp	Next1BL1
+	FixedG1BL1:
+	asm	or	dl,dl
+	asm	jl	Next2BL1
+	asm	xor	al,al
+	asm	jmp	Next2BL1
+	FixedB1BL1:
+	asm	or	cl,cl
+	asm	jnl	Next3BL1
+	asm	xor	dh,dh
+	Next3BL1:
+	asm 	jmp	Next6BL1
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL1:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL1
+	Next4BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL1
+	Next5BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL1
+	asm	jmp	Next6BL1
+	FixedR2BL1:
+	asm	or	ch,ch
+	asm	jl	Next4BL1
+	asm	mov	ah,255
+	asm	jmp	Next4BL1
+	FixedG2BL1:
+	asm	or	dl,dl
+	asm	jnl	Next5BL1
+	asm	mov	al,255
+	asm	jmp	Next5BL1
+	FixedB2BL1:
+	asm	or	cl,cl
+	asm	jl	Next6BL1
+	asm	mov	dh,255
+	Next6BL1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+2],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH1
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH1
+	Next1BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH1
+	Next2BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH1
+	asm	jmp	Next6BH1
+	FixedR1BH1:
+	asm	or	ch,ch
+	asm	jnl	Next1BH1
+	asm	xor	ah,ah
+	asm	jmp	Next1BH1
+	FixedG1BH1:
+	asm	or	dl,dl
+	asm	jl	Next2BH1
+	asm	xor	al,al
+	asm	jmp	Next2BH1
+	FixedB1BH1:
+	asm	or	cl,cl
+	asm	jnl	Next3BH1
+	asm	xor	bh,bh
+	Next3BH1:
+	asm	jmp	Next6BH1
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH1:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH1
+	Next4BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH1
+	Next5BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH1
+	asm	jmp	Next6BH1
+	FixedR2BH1:
+	asm	or	ch,ch
+	asm	jl	Next4BH1
+	asm	mov	ah,255
+	asm	jmp	Next4BH1
+	FixedG2BH1:
+	asm	or	dl,dl
+	asm	jnl	Next5BH1
+	asm	mov	al,255
+	asm	jmp	Next5BH1
+	FixedB2BH1:
+	asm	or	cl,cl
+	asm	jl	Next6BH1
+	asm	mov	bh,255
+	Next6BH1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2		;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+4],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+6],ax	;//Write AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi+0x480]//Line 2 Y1 Y2
+	//////////////////////////////////////////////////////
+	asm	or	bl,bl
+	asm	js	Granthen128BL2
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL2
+	Next1BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL2
+	Next2BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL2
+	asm	jmp	Next6BL2
+	FixedR1BL2:
+	asm	or	ch,ch
+	asm	jnl	Next1BL2
+	asm	xor	ah,ah
+	asm	jmp	Next1BL2
+	FixedG1BL2:
+	asm	or	dl,dl
+	asm	jl	Next2BL2
+	asm	xor	al,al
+	asm	jmp	Next2BL2
+	FixedB1BL2:
+	asm	or	cl,cl
+	asm	jnl	Next3BL2
+	asm	xor	dh,dh
+	Next3BL2:
+	asm 	jmp	Next6BL2
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL2:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL2
+	Next4BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL2
+	Next5BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL2
+	asm	jmp	Next6BL2
+	FixedR2BL2:
+	asm	or	ch,ch
+	asm	jl	Next4BL2
+	asm	mov	ah,255
+	asm	jmp	Next4BL2
+	FixedG2BL2:
+	asm	or	dl,dl
+	asm	jnl	Next5BL2
+	asm	mov	al,255
+	asm	jmp	Next5BL2
+	FixedB2BL2:
+	asm	or	cl,cl
+	asm	jl	Next6BL2
+	asm	mov	dh,255
+	Next6BL2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	add	edi,dword ptr lStride
+	asm	mov	es:[edi+1280],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+1280+2],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH2
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH2
+	Next1BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH2
+	Next2BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH2
+	asm	jmp	Next6BH2
+	FixedR1BH2:
+	asm	or	ch,ch
+	asm	jnl	Next1BH2
+	asm	xor	ah,ah
+	asm	jmp	Next1BH2
+	FixedG1BH2:
+	asm	or	dl,dl
+	asm	jl	Next2BH2
+	asm	xor	al,al
+	asm	jmp	Next2BH2
+	FixedB1BH2:
+	asm	or	cl,cl
+	asm	jnl	Next3BH2
+	asm	xor	bh,bh
+	Next3BH2:
+	asm	jmp	Next6BH2
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH2:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH2
+	Next4BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH2
+	Next5BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH2
+	asm	jmp	Next6BH2
+	FixedR2BH2:
+	asm	or	ch,ch
+	asm	jl	Next4BH2
+	asm	mov	ah,255
+	asm	jmp	Next4BH2
+	FixedG2BH2:
+	asm	or	dl,dl
+	asm	jnl	Next5BH2
+	asm	mov	al,255
+	asm	jmp	Next5BH2
+	FixedB2BH2:
+	asm	or	cl,cl
+	asm	jl	Next6BH2
+	asm	mov	bh,255
+	Next6BH2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2		;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+1280+4],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+1280+6],ax	;//Write AX=RGB16[5:6:5]
+	asm	sub	edi,dword ptr lStride
+	/////////////////////////////////////////////////////
+			///U2 V2\\\
+	//////////////////////////////////////////////////////
+	asm	mov	cx,CrCb
+	asm	mov	dx,Cg
+	//////////////////////////////////////////////////////
+	asm	mov	bh,gs:[esi+2]	//Line 1 Y3 Y4
+	//////////////////////////////////////////////////////
+	asm	or	bh,bh
+	asm	js	Granthen128BH3
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH3
+	Next1BH3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH3
+	Next2BH3:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH3
+	asm	jmp	Next6BH3
+	FixedR1BH3:
+	asm	or	ch,ch
+	asm	jnl	Next1BH3
+	asm	xor	ah,ah
+	asm	jmp	Next1BH3
+	FixedG1BH3:
+	asm	or	dl,dl
+	asm	jl	Next2BH3
+	asm	xor	al,al
+	asm	jmp	Next2BH3
+	FixedB1BH3:
+	asm	or	cl,cl
+	asm	jnl	Next3BH3
+	asm	xor	bh,bh
+	Next3BH3:
+	asm	jmp	Next6BH3
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH3:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH3
+	Next4BH3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH3
+	Next5BH3:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH3
+	asm	jmp	Next6BH3
+	FixedR2BH3:
+	asm	or	ch,ch
+	asm	jl	Next4BH3
+	asm	mov	ah,255
+	asm	jmp	Next4BH3
+	FixedG2BH3:
+	asm	or	dl,dl
+	asm	jnl	Next5BH3
+	asm	mov	al,255
+	asm	jmp	Next5BH3
+	FixedB2BH3:
+	asm	or	cl,cl
+	asm	jl	Next6BH3
+	asm	mov	bh,255
+	Next6BH3:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+8],ax	;//Write 1 AX=RGB16[5:6:5]
+	asm	mov	es:[edi+10],ax	;//Write 1 AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	mov	bh,gs:[esi+0x480+2]//Line 2 Y1 Y2
+	//////////////////////////////////////////////////////
+	asm	or	bh,bh
+	asm	js	Granthen128BH4
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH4
+	Next1BH4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH4
+	Next2BH4:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH4
+	asm	jmp	Next6BH4
+	FixedR1BH4:
+	asm	or	ch,ch
+	asm	jnl	Next1BH4
+	asm	xor	ah,ah
+	asm	jmp	Next1BH4
+	FixedG1BH4:
+	asm	or	dl,dl
+	asm	jl	Next2BH4
+	asm	xor	al,al
+	asm	jmp	Next2BH4
+	FixedB1BH4:
+	asm	or	cl,cl
+	asm	jnl	Next3BH4
+	asm	xor	bh,bh
+	Next3BH4:
+	asm	jmp	Next6BH4
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH4:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH4
+	Next4BH4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH4
+	Next5BH4:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH4
+	asm	jmp	Next6BH4
+	FixedR2BH4:
+	asm	or	ch,ch
+	asm	jl	Next4BH4
+	asm	mov	ah,255
+	asm	jmp	Next4BH4
+	FixedG2BH4:
+	asm	or	dl,dl
+	asm	jnl	Next5BH4
+	asm	mov	al,255
+	asm	jmp	Next5BH4
+	FixedB2BH4:
+	asm	or	cl,cl
+	asm	jl	Next6BH4
+	asm	mov	bh,255
+	Next6BH4:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	ebx,dword ptr lStride
+	asm	mov	es:[edi+ebx+1280+8],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+ebx+1280+10],ax	;//Write AX=RGB16[5:6:5]
+	asm	add	edi,12		;//Y source 4 byte
+	asm	add	esi,4		;//Y source 4 byte
+	asm	add	ebp,2		;//UV source 2 byts
+	//	EDI had add when write pixel
+}
+static	void	Align6(void)
+{
+	asm	nop
+	asm	nop
+}
+//////////// One line only ///////////
+void	FastYUV2RGB16BitsDouble1Line(void)
+{	//EAX,EBX,ECX,EDX,EDI,ESI,EBP changed
+	//GS->Video data selector
+	//ES->Video Buffer
+	//Must compile with Fastest code optimization,the EBP will not save
+	asm	mov	bx,gs:[ebp]		;//U1U2
+	asm	mov	cx,gs:[ebp+0x240]	;//V1V2
+	asm	xchg	cl,bh
+	//CH=U2 CL=V2  BH=U1 BL=V1(Store in BX)
+	////////////Use DX to compute U2V2////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	asm	mov	Cg,dx  	//Store in high 16 bits
+	asm	mov	CrCb,cx
+	//////////////////////////////////////////////////////
+	asm	mov 	cx,bx
+	////////////Use DX to compute U1V1////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi]	//Line 1 Y1 Y2
+	//////////////////////////////////////////////////////
+	asm	or	bl,bl
+	asm	js	Granthen128BL1
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL1
+	Next1BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL1
+	Next2BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL1
+	asm	jmp	Next6BL1
+	FixedR1BL1:
+	asm	or	ch,ch
+	asm	jnl	Next1BL1
+	asm	xor	ah,ah
+	asm	jmp	Next1BL1
+	FixedG1BL1:
+	asm	or	dl,dl
+	asm	jl	Next2BL1
+	asm	xor	al,al
+	asm	jmp	Next2BL1
+	FixedB1BL1:
+	asm	or	cl,cl
+	asm	jnl	Next3BL1
+	asm	xor	dh,dh
+	Next3BL1:
+	asm 	jmp	Next6BL1
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL1:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL1
+	Next4BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL1
+	Next5BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL1
+	asm	jmp	Next6BL1
+	FixedR2BL1:
+	asm	or	ch,ch
+	asm	jl	Next4BL1
+	asm	mov	ah,255
+	asm	jmp	Next4BL1
+	FixedG2BL1:
+	asm	or	dl,dl
+	asm	jnl	Next5BL1
+	asm	mov	al,255
+	asm	jmp	Next5BL1
+	FixedB2BL1:
+	asm	or	cl,cl
+	asm	jl	Next6BL1
+	asm	mov	dh,255
+	Next6BL1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+2],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH1
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH1
+	Next1BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH1
+	Next2BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH1
+	asm	jmp	Next6BH1
+	FixedR1BH1:
+	asm	or	ch,ch
+	asm	jnl	Next1BH1
+	asm	xor	ah,ah
+	asm	jmp	Next1BH1
+	FixedG1BH1:
+	asm	or	dl,dl
+	asm	jl	Next2BH1
+	asm	xor	al,al
+	asm	jmp	Next2BH1
+	FixedB1BH1:
+	asm	or	cl,cl
+	asm	jnl	Next3BH1
+	asm	xor	bh,bh
+	Next3BH1:
+	asm	jmp	Next6BH1
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH1:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH1
+	Next4BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH1
+	Next5BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH1
+	asm	jmp	Next6BH1
+	FixedR2BH1:
+	asm	or	ch,ch
+	asm	jl	Next4BH1
+	asm	mov	ah,255
+	asm	jmp	Next4BH1
+	FixedG2BH1:
+	asm	or	dl,dl
+	asm	jnl	Next5BH1
+	asm	mov	al,255
+	asm	jmp	Next5BH1
+	FixedB2BH1:
+	asm	or	cl,cl
+	asm	jl	Next6BH1
+	asm	mov	bh,255
+	Next6BH1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2		;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+4],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+6],ax	;//Write AX=RGB16[5:6:5]
+	/////////////////////////////////////////////////////
+			///U2 V2\\\
+	//////////////////////////////////////////////////////
+	asm	mov	cx,CrCb
+	asm	mov	dx,Cg
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi+2]	//Line 1 Y3 Y4
+	//////////////////////////////////////////////////////
+	asm	or	bl,bl
+	asm	js	Granthen128BL2
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL2
+	Next1BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL2
+	Next2BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL2
+	asm	jmp	Next6BL2
+	FixedR1BL2:
+	asm	or	ch,ch
+	asm	jnl	Next1BL2
+	asm	xor	ah,ah
+	asm	jmp	Next1BL2
+	FixedG1BL2:
+	asm	or	dl,dl
+	asm	jl	Next2BL2
+	asm	xor	al,al
+	asm	jmp	Next2BL2
+	FixedB1BL2:
+	asm	or	cl,cl
+	asm	jnl	Next3BL2
+	asm	xor	dh,dh
+	Next3BL2:
+	asm 	jmp	Next6BL2
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL2:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL2
+	Next4BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL2
+	Next5BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL2
+	asm	jmp	Next6BL2
+	FixedR2BL2:
+	asm	or	ch,ch
+	asm	jl	Next4BL2
+	asm	mov	ah,255
+	asm	jmp	Next4BL2
+	FixedG2BL2:
+	asm	or	dl,dl
+	asm	jnl	Next5BL2
+	asm	mov	al,255
+	asm	jmp	Next5BL2
+	FixedB2BL2:
+	asm	or	cl,cl
+	asm	jl	Next6BL2
+	asm	mov	dh,255
+	Next6BL2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi+8],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+10],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH2
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH2
+	Next1BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH2
+	Next2BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH2
+	asm	jmp	Next6BH2
+	FixedR1BH2:
+	asm	or	ch,ch
+	asm	jnl	Next1BH2
+	asm	xor	ah,ah
+	asm	jmp	Next1BH2
+	FixedG1BH2:
+	asm	or	dl,dl
+	asm	jl	Next2BH2
+	asm	xor	al,al
+	asm	jmp	Next2BH2
+	FixedB1BH2:
+	asm	or	cl,cl
+	asm	jnl	Next3BH2
+	asm	xor	bh,bh
+	Next3BH2:
+	asm	jmp	Next6BH2
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH2:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH2
+	Next4BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH2
+	Next5BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH2
+	asm	jmp	Next6BH2
+	FixedR2BH2:
+	asm	or	ch,ch
+	asm	jl	Next4BH2
+	asm	mov	ah,255
+	asm	jmp	Next4BH2
+	FixedG2BH2:
+	asm	or	dl,dl
+	asm	jnl	Next5BH2
+	asm	mov	al,255
+	asm	jmp	Next5BH2
+	FixedB2BH2:
+	asm	or	cl,cl
+	asm	jl	Next6BH2
+	asm	mov	bh,255
+	Next6BH2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2		;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+12],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+14],ax	;//Write AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	add	edi,16		;//Y source 4 byte
+	asm	add	esi,4		;//Y source 4 byte
+	asm	add	ebp,2		;//UV source 2 byts
+	//	EDI had add when write pixel
+}
+static	void	Align7(void)
+{
+	asm	nop
+}
+void	FastYUV2RGB16BitsDouble1LineDeletePixel(void)
+{	//EAX,EBX,ECX,EDX,EDI,ESI,EBP changed
+	//GS->Video data selector
+	//ES->Video Buffer
+	//Must compile with Fastest code optimization,the EBP will not save
+	asm	mov	bx,gs:[ebp]		;//U1U2
+	asm	mov	cx,gs:[ebp+0x240]	;//V1V2
+	asm	xchg	cl,bh
+	//CH=U2 CL=V2  BH=U1 BL=V1(Store in BX)
+	////////////Use DX to compute U2V2////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	asm	mov	Cg,dx  	//Store in high 16 bits
+	asm	mov	CrCb,cx
+	//////////////////////////////////////////////////////
+	asm	mov 	cx,bx
+	////////////Use DX to compute U1V1////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi]	//Line 1 Y1 Y2
+	//////////////////////////////////////////////////////
+	asm	or	bl,bl
+	asm	js	Granthen128BL1
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL1
+	Next1BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL1
+	Next2BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL1
+	asm	jmp	Next6BL1
+	FixedR1BL1:
+	asm	or	ch,ch
+	asm	jnl	Next1BL1
+	asm	xor	ah,ah
+	asm	jmp	Next1BL1
+	FixedG1BL1:
+	asm	or	dl,dl
+	asm	jl	Next2BL1
+	asm	xor	al,al
+	asm	jmp	Next2BL1
+	FixedB1BL1:
+	asm	or	cl,cl
+	asm	jnl	Next3BL1
+	asm	xor	dh,dh
+	Next3BL1:
+	asm 	jmp	Next6BL1
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL1:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL1
+	Next4BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL1
+	Next5BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL1
+	asm	jmp	Next6BL1
+	FixedR2BL1:
+	asm	or	ch,ch
+	asm	jl	Next4BL1
+	asm	mov	ah,255
+	asm	jmp	Next4BL1
+	FixedG2BL1:
+	asm	or	dl,dl
+	asm	jnl	Next5BL1
+	asm	mov	al,255
+	asm	jmp	Next5BL1
+	FixedB2BL1:
+	asm	or	cl,cl
+	asm	jl	Next6BL1
+	asm	mov	dh,255
+	Next6BL1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+2],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH1
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH1
+	Next1BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH1
+	Next2BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH1
+	asm	jmp	Next6BH1
+	FixedR1BH1:
+	asm	or	ch,ch
+	asm	jnl	Next1BH1
+	asm	xor	ah,ah
+	asm	jmp	Next1BH1
+	FixedG1BH1:
+	asm	or	dl,dl
+	asm	jl	Next2BH1
+	asm	xor	al,al
+	asm	jmp	Next2BH1
+	FixedB1BH1:
+	asm	or	cl,cl
+	asm	jnl	Next3BH1
+	asm	xor	bh,bh
+	Next3BH1:
+	asm	jmp	Next6BH1
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH1:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH1
+	Next4BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH1
+	Next5BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH1
+	asm	jmp	Next6BH1
+	FixedR2BH1:
+	asm	or	ch,ch
+	asm	jl	Next4BH1
+	asm	mov	ah,255
+	asm	jmp	Next4BH1
+	FixedG2BH1:
+	asm	or	dl,dl
+	asm	jnl	Next5BH1
+	asm	mov	al,255
+	asm	jmp	Next5BH1
+	FixedB2BH1:
+	asm	or	cl,cl
+	asm	jl	Next6BH1
+	asm	mov	bh,255
+	Next6BH1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2		;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+4],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+6],ax	;//Write AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+			///U2 V2\\\
+	//////////////////////////////////////////////////////
+	asm	mov	cx,CrCb
+	asm	mov	dx,Cg
+	//////////////////////////////////////////////////////
+	asm	mov	bh,gs:[esi+2]	//Line 1 Y3 Y4
+	//////////////////////////////////////////////////////
+	asm	or	bh,bh
+	asm	js	Granthen128BH2
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH2
+	Next1BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH2
+	Next2BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH2
+	asm	jmp	Next6BH2
+	FixedR1BH2:
+	asm	or	ch,ch
+	asm	jnl	Next1BH2
+	asm	xor	ah,ah
+	asm	jmp	Next1BH2
+	FixedG1BH2:
+	asm	or	dl,dl
+	asm	jl	Next2BH2
+	asm	xor	al,al
+	asm	jmp	Next2BH2
+	FixedB1BH2:
+	asm	or	cl,cl
+	asm	jnl	Next3BH2
+	asm	xor	bh,bh
+	Next3BH2:
+	asm	jmp	Next6BH2
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH2:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH2
+	Next4BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH2
+	Next5BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH2
+	asm	jmp	Next6BH2
+	FixedR2BH2:
+	asm	or	ch,ch
+	asm	jl	Next4BH2
+	asm	mov	ah,255
+	asm	jmp	Next4BH2
+	FixedG2BH2:
+	asm	or	dl,dl
+	asm	jnl	Next5BH2
+	asm	mov	al,255
+	asm	jmp	Next5BH2
+	FixedB2BH2:
+	asm	or	cl,cl
+	asm	jl	Next6BH2
+	asm	mov	bh,255
+	Next6BH2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,2            ;//G[6]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+8],ax	;//Write 1 AX=RGB16[5:6:5]
+	asm	mov	es:[edi+10],ax	;//Write 1 AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	add	edi,12		;//Y source 4 byte
+	asm	add	esi,4		;//Y source 4 byte
+	asm	add	ebp,2		;//UV source 2 byts
+	//	EDI had add when write pixel
+}
+///////////////////////////////////////////////////////////////////
+//////////////////////// RGB15Bits 32K Colors /////////////////////
+///////////////////////////////////////////////////////////////////
+void	FastYUV2RGB15Bits(void)
+{	//EAX,EBX,ECX,EDX,EDI,ESI,EBP changed
+	//GS->Video data selector
+	//ES->Video Buffer
+	//Must compile with Fastest code optimization,the EBP will not save
+	asm	mov	bx,gs:[ebp]		;//U1U2
+	asm	mov	cx,gs:[ebp+0x240]	;//V1V2
+	asm	xchg	cl,bh
+	//CH=U2 CL=V2  BH=U1 BL=V1(Store in BX)
+	////////////Use DX to compute U2V2////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	asm	mov	Cg,dx  	//Store in high 16 bits
+	asm	mov	CrCb,cx
+	//////////////////////////////////////////////////////
+	asm	mov 	cx,bx
+	////////////Use DX to compute U1V1////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi]	//Line 1 Y1 Y2
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bl,bl
+	asm	js	Granthen128BL1
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL1
+	Next1BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL1
+	Next2BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL1
+	asm	jmp	Next6BL1
+	FixedR1BL1:
+	asm	or	ch,ch
+	asm	jnl	Next1BL1
+	asm	xor	ah,ah
+	asm	jmp	Next1BL1
+	FixedG1BL1:
+	asm	or	dl,dl
+	asm	jl	Next2BL1
+	asm	xor	al,al
+	asm	jmp	Next2BL1
+	FixedB1BL1:
+	asm	or	cl,cl
+	asm	jnl	Next3BL1
+	asm	xor	dh,dh
+	Next3BL1:
+	asm 	jmp	Next6BL1
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL1:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL1
+	Next4BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL1
+	Next5BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL1
+	asm	jmp	Next6BL1
+	FixedR2BL1:
+	asm	or	ch,ch
+	asm	jl	Next4BL1
+	asm	mov	ah,255
+	asm	jmp	Next4BL1
+	FixedG2BL1:
+	asm	or	dl,dl
+	asm	jnl	Next5BL1
+	asm	mov	al,255
+	asm	jmp	Next5BL1
+	FixedB2BL1:
+	asm	or	cl,cl
+	asm	jl	Next6BL1
+	asm	mov	dh,255
+	Next6BL1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH1
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH1
+	Next1BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH1
+	Next2BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH1
+	asm	jmp	Next6BH1
+	FixedR1BH1:
+	asm	or	ch,ch
+	asm	jnl	Next1BH1
+	asm	xor	ah,ah
+	asm	jmp	Next1BH1
+	FixedG1BH1:
+	asm	or	dl,dl
+	asm	jl	Next2BH1
+	asm	xor	al,al
+	asm	jmp	Next2BH1
+	FixedB1BH1:
+	asm	or	cl,cl
+	asm	jnl	Next3BH1
+	asm	xor	bh,bh
+	Next3BH1:
+	asm	jmp	Next6BH1
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH1:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH1
+	Next4BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH1
+	Next5BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH1
+	asm	jmp	Next6BH1
+	FixedR2BH1:
+	asm	or	ch,ch
+	asm	jl	Next4BH1
+	asm	mov	ah,255
+	asm	jmp	Next4BH1
+	FixedG2BH1:
+	asm	or	dl,dl
+	asm	jnl	Next5BH1
+	asm	mov	al,255
+	asm	jmp	Next5BH1
+	FixedB2BH1:
+	asm	or	cl,cl
+	asm	jl	Next6BH1
+	asm	mov	bh,255
+	Next6BH1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3		;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+2],ax	;//Write AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi+0x480]//Line 2 Y1 Y2
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bl,bl
+	asm	js	Granthen128BL2
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL2
+	Next1BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL2
+	Next2BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL2
+	asm	jmp	Next6BL2
+	FixedR1BL2:
+	asm	or	ch,ch
+	asm	jnl	Next1BL2
+	asm	xor	ah,ah
+	asm	jmp	Next1BL2
+	FixedG1BL2:
+	asm	or	dl,dl
+	asm	jl	Next2BL2
+	asm	xor	al,al
+	asm	jmp	Next2BL2
+	FixedB1BL2:
+	asm	or	cl,cl
+	asm	jnl	Next3BL2
+	asm	xor	dh,dh
+	Next3BL2:
+	asm 	jmp	Next6BL2
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL2:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL2
+	Next4BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL2
+	Next5BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL2
+	asm	jmp	Next6BL2
+	FixedR2BL2:
+	asm	or	ch,ch
+	asm	jl	Next4BL2
+	asm	mov	ah,255
+	asm	jmp	Next4BL2
+	FixedG2BL2:
+	asm	or	dl,dl
+	asm	jnl	Next5BL2
+	asm	mov	al,255
+	asm	jmp	Next5BL2
+	FixedB2BL2:
+	asm	or	cl,cl
+	asm	jl	Next6BL2
+	asm	mov	dh,255
+	Next6BL2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi+640],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH2
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH2
+	Next1BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH2
+	Next2BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH2
+	asm	jmp	Next6BH2
+	FixedR1BH2:
+	asm	or	ch,ch
+	asm	jnl	Next1BH2
+	asm	xor	ah,ah
+	asm	jmp	Next1BH2
+	FixedG1BH2:
+	asm	or	dl,dl
+	asm	jl	Next2BH2
+	asm	xor	al,al
+	asm	jmp	Next2BH2
+	FixedB1BH2:
+	asm	or	cl,cl
+	asm	jnl	Next3BH2
+	asm	xor	bh,bh
+	Next3BH2:
+	asm	jmp	Next6BH2
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH2:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH2
+	Next4BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH2
+	Next5BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH2
+	asm	jmp	Next6BH2
+	FixedR2BH2:
+	asm	or	ch,ch
+	asm	jl	Next4BH2
+	asm	mov	ah,255
+	asm	jmp	Next4BH2
+	FixedG2BH2:
+	asm	or	dl,dl
+	asm	jnl	Next5BH2
+	asm	mov	al,255
+	asm	jmp	Next5BH2
+	FixedB2BH2:
+	asm	or	cl,cl
+	asm	jl	Next6BH2
+	asm	mov	bh,255
+	Next6BH2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3		;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+640+2],ax	;//Write AX=RGB16[5:6:5]
+	/////////////////////////////////////////////////////
+			///U2 V2\\\
+	//////////////////////////////////////////////////////
+	asm	mov	cx,CrCb
+	asm	mov	dx,Cg
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi+2]	//Line 1 Y3 Y4
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bl,bl
+	asm	js	Granthen128BL3
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL3
+	Next1BL3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL3
+	Next2BL3:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL3
+	asm	jmp	Next6BL3
+	FixedR1BL3:
+	asm	or	ch,ch
+	asm	jnl	Next1BL3
+	asm	xor	ah,ah
+	asm	jmp	Next1BL3
+	FixedG1BL3:
+	asm	or	dl,dl
+	asm	jl	Next2BL3
+	asm	xor	al,al
+	asm	jmp	Next2BL3
+	FixedB1BL3:
+	asm	or	cl,cl
+	asm	jnl	Next3BL3
+	asm	xor	dh,dh
+	Next3BL3:
+	asm 	jmp	Next6BL3
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL3:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL3
+	Next4BL3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL3
+	Next5BL3:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL3
+	asm	jmp	Next6BL3
+	FixedR2BL3:
+	asm	or	ch,ch
+	asm	jl	Next4BL3
+	asm	mov	ah,255
+	asm	jmp	Next4BL3
+	FixedG2BL3:
+	asm	or	dl,dl
+	asm	jnl	Next5BL3
+	asm	mov	al,255
+	asm	jmp	Next5BL3
+	FixedB2BL3:
+	asm	or	cl,cl
+	asm	jl	Next6BL3
+	asm	mov	dh,255
+	Next6BL3:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi+4],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH3
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH3
+	Next1BH3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH3
+	Next2BH3:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH3
+	asm	jmp	Next6BH3
+	FixedR1BH3:
+	asm	or	ch,ch
+	asm	jnl	Next1BH3
+	asm	xor	ah,ah
+	asm	jmp	Next1BH3
+	FixedG1BH3:
+	asm	or	dl,dl
+	asm	jl	Next2BH3
+	asm	xor	al,al
+	asm	jmp	Next2BH3
+	FixedB1BH3:
+	asm	or	cl,cl
+	asm	jnl	Next3BH3
+	asm	xor	bh,bh
+	Next3BH3:
+	asm	jmp	Next6BH3
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH3:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH3
+	Next4BH3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH3
+	Next5BH3:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH3
+	asm	jmp	Next6BH3
+	FixedR2BH3:
+	asm	or	ch,ch
+	asm	jl	Next4BH3
+	asm	mov	ah,255
+	asm	jmp	Next4BH3
+	FixedG2BH3:
+	asm	or	dl,dl
+	asm	jnl	Next5BH3
+	asm	mov	al,255
+	asm	jmp	Next5BH3
+	FixedB2BH3:
+	asm	or	cl,cl
+	asm	jl	Next6BH3
+	asm	mov	bh,255
+	Next6BH3:
+	asm	shr	ax,3		;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+4+2],ax	;//Write AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi+0x480+2]//Line 2 Y1 Y2
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bl,bl
+	asm	js	Granthen128BL4
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL4
+	Next1BL4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL4
+	Next2BL4:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL4
+	asm	jmp	Next6BL4
+	FixedR1BL4:
+	asm	or	ch,ch
+	asm	jnl	Next1BL4
+	asm	xor	ah,ah
+	asm	jmp	Next1BL4
+	FixedG1BL4:
+	asm	or	dl,dl
+	asm	jl	Next2BL4
+	asm	xor	al,al
+	asm	jmp	Next2BL4
+	FixedB1BL4:
+	asm	or	cl,cl
+	asm	jnl	Next3BL4
+	asm	xor	dh,dh
+	Next3BL4:
+	asm 	jmp	Next6BL4
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL4:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL4
+	Next4BL4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL4
+	Next5BL4:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL4
+	asm	jmp	Next6BL4
+	FixedR2BL4:
+	asm	or	ch,ch
+	asm	jl	Next4BL4
+	asm	mov	ah,255
+	asm	jmp	Next4BL4
+	FixedG2BL4:
+	asm	or	dl,dl
+	asm	jnl	Next5BL4
+	asm	mov	al,255
+	asm	jmp	Next5BL4
+	FixedB2BL4:
+	asm	or	cl,cl
+	asm	jl	Next6BL4
+	asm	mov	dh,255
+	Next6BL4:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi+640+4],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH4
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH4
+	Next1BH4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH4
+	Next2BH4:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH4
+	asm	jmp	Next6BH4
+	FixedR1BH4:
+	asm	or	ch,ch
+	asm	jnl	Next1BH4
+	asm	xor	ah,ah
+	asm	jmp	Next1BH4
+	FixedG1BH4:
+	asm	or	dl,dl
+	asm	jl	Next2BH4
+	asm	xor	al,al
+	asm	jmp	Next2BH4
+	FixedB1BH4:
+	asm	or	cl,cl
+	asm	jnl	Next3BH4
+	asm	xor	bh,bh
+	Next3BH4:
+	asm	jmp	Next6BH4
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH4:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH4
+	Next4BH4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH4
+	Next5BH4:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH4
+	asm	jmp	Next6BH4
+	FixedR2BH4:
+	asm	or	ch,ch
+	asm	jl	Next4BH4
+	asm	mov	ah,255
+	asm	jmp	Next4BH4
+	FixedG2BH4:
+	asm	or	dl,dl
+	asm	jnl	Next5BH4
+	asm	mov	al,255
+	asm	jmp	Next5BH4
+	FixedB2BH4:
+	asm	or	cl,cl
+	asm	jl	Next6BH4
+	asm	mov	bh,255
+	Next6BH4:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3		;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+640+4+2],ax	;//Write AX=RGB16[5:6:5]
+	asm	add	edi,8		;//Y source 4 byte
+	asm	add	esi,4		;//Y source 4 byte
+	asm	add	ebp,2		;//UV source 2 byts
+	//	EDI had add when write pixel
+}
+static	void	Align8(void)
+{
+	asm	nop
+}
+void	FastYUV2RGB15BitsDeletePixel(void)
+{	//EAX,EBX,ECX,EDX,EDI,ESI,EBP changed
+	//GS->Video data selector
+	//ES->Video Buffer
+	//Must compile with Fastest code optimization,the EBP will not save
+	asm	mov	bx,gs:[ebp]		;//U1U2
+	asm	mov	cx,gs:[ebp+0x240]	;//V1V2
+	asm	xchg	cl,bh
+	//CH=U2 CL=V2  BH=U1 BL=V1(Store in BX)
+	////////////Use DX to compute U2V2////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	asm	mov	Cg,dx  	//Store in high 16 bits
+	asm	mov	CrCb,cx
+	//////////////////////////////////////////////////////
+	asm	mov 	cx,bx
+	////////////Use DX to compute U1V1////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi]	//Line 1 Y1 Y2
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bl,bl
+	asm	js	Granthen128BL1
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL1
+	Next1BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL1
+	Next2BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL1
+	asm	jmp	Next6BL1
+	FixedR1BL1:
+	asm	or	ch,ch
+	asm	jnl	Next1BL1
+	asm	xor	ah,ah
+	asm	jmp	Next1BL1
+	FixedG1BL1:
+	asm	or	dl,dl
+	asm	jl	Next2BL1
+	asm	xor	al,al
+	asm	jmp	Next2BL1
+	FixedB1BL1:
+	asm	or	cl,cl
+	asm	jnl	Next3BL1
+	asm	xor	dh,dh
+	Next3BL1:
+	asm 	jmp	Next6BL1
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL1:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL1
+	Next4BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL1
+	Next5BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL1
+	asm	jmp	Next6BL1
+	FixedR2BL1:
+	asm	or	ch,ch
+	asm	jl	Next4BL1
+	asm	mov	ah,255
+	asm	jmp	Next4BL1
+	FixedG2BL1:
+	asm	or	dl,dl
+	asm	jnl	Next5BL1
+	asm	mov	al,255
+	asm	jmp	Next5BL1
+	FixedB2BL1:
+	asm	or	cl,cl
+	asm	jl	Next6BL1
+	asm	mov	dh,255
+	Next6BL1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH1
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH1
+	Next1BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH1
+	Next2BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH1
+	asm	jmp	Next6BH1
+	FixedR1BH1:
+	asm	or	ch,ch
+	asm	jnl	Next1BH1
+	asm	xor	ah,ah
+	asm	jmp	Next1BH1
+	FixedG1BH1:
+	asm	or	dl,dl
+	asm	jl	Next2BH1
+	asm	xor	al,al
+	asm	jmp	Next2BH1
+	FixedB1BH1:
+	asm	or	cl,cl
+	asm	jnl	Next3BH1
+	asm	xor	bh,bh
+	Next3BH1:
+	asm	jmp	Next6BH1
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH1:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH1
+	Next4BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH1
+	Next5BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH1
+	asm	jmp	Next6BH1
+	FixedR2BH1:
+	asm	or	ch,ch
+	asm	jl	Next4BH1
+	asm	mov	ah,255
+	asm	jmp	Next4BH1
+	FixedG2BH1:
+	asm	or	dl,dl
+	asm	jnl	Next5BH1
+	asm	mov	al,255
+	asm	jmp	Next5BH1
+	FixedB2BH1:
+	asm	or	cl,cl
+	asm	jl	Next6BH1
+	asm	mov	bh,255
+	Next6BH1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3		;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+2],ax	;//Write AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi+0x480]//Line 2 Y1 Y2
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bl,bl
+	asm	js	Granthen128BL2
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL2
+	Next1BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL2
+	Next2BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL2
+	asm	jmp	Next6BL2
+	FixedR1BL2:
+	asm	or	ch,ch
+	asm	jnl	Next1BL2
+	asm	xor	ah,ah
+	asm	jmp	Next1BL2
+	FixedG1BL2:
+	asm	or	dl,dl
+	asm	jl	Next2BL2
+	asm	xor	al,al
+	asm	jmp	Next2BL2
+	FixedB1BL2:
+	asm	or	cl,cl
+	asm	jnl	Next3BL2
+	asm	xor	dh,dh
+	Next3BL2:
+	asm 	jmp	Next6BL2
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL2:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL2
+	Next4BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL2
+	Next5BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL2
+	asm	jmp	Next6BL2
+	FixedR2BL2:
+	asm	or	ch,ch
+	asm	jl	Next4BL2
+	asm	mov	ah,255
+	asm	jmp	Next4BL2
+	FixedG2BL2:
+	asm	or	dl,dl
+	asm	jnl	Next5BL2
+	asm	mov	al,255
+	asm	jmp	Next5BL2
+	FixedB2BL2:
+	asm	or	cl,cl
+	asm	jl	Next6BL2
+	asm	mov	dh,255
+	Next6BL2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi+640],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH2
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH2
+	Next1BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH2
+	Next2BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH2
+	asm	jmp	Next6BH2
+	FixedR1BH2:
+	asm	or	ch,ch
+	asm	jnl	Next1BH2
+	asm	xor	ah,ah
+	asm	jmp	Next1BH2
+	FixedG1BH2:
+	asm	or	dl,dl
+	asm	jl	Next2BH2
+	asm	xor	al,al
+	asm	jmp	Next2BH2
+	FixedB1BH2:
+	asm	or	cl,cl
+	asm	jnl	Next3BH2
+	asm	xor	bh,bh
+	Next3BH2:
+	asm	jmp	Next6BH2
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH2:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH2
+	Next4BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH2
+	Next5BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH2
+	asm	jmp	Next6BH2
+	FixedR2BH2:
+	asm	or	ch,ch
+	asm	jl	Next4BH2
+	asm	mov	ah,255
+	asm	jmp	Next4BH2
+	FixedG2BH2:
+	asm	or	dl,dl
+	asm	jnl	Next5BH2
+	asm	mov	al,255
+	asm	jmp	Next5BH2
+	FixedB2BH2:
+	asm	or	cl,cl
+	asm	jl	Next6BH2
+	asm	mov	bh,255
+	Next6BH2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3		;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+640+2],ax	;//Write AX=RGB16[5:6:5]
+	/////////////////////////////////////////////////////
+			///U2 V2\\\
+	//////////////////////////////////////////////////////
+	asm	mov	cx,CrCb
+	asm	mov	dx,Cg
+	//////////////////////////////////////////////////////
+	asm	mov	bh,gs:[esi+2]	//Line 1 Y3 Y4
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH3
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH3
+	Next1BH3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH3
+	Next2BH3:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH3
+	asm	jmp	Next6BH3
+	FixedR1BH3:
+	asm	or	ch,ch
+	asm	jnl	Next1BH3
+	asm	xor	ah,ah
+	asm	jmp	Next1BH3
+	FixedG1BH3:
+	asm	or	dl,dl
+	asm	jl	Next2BH3
+	asm	xor	al,al
+	asm	jmp	Next2BH3
+	FixedB1BH3:
+	asm	or	cl,cl
+	asm	jnl	Next3BH3
+	asm	xor	bh,bh
+	Next3BH3:
+	asm	jmp	Next6BH3
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH3:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH3
+	Next4BH3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH3
+	Next5BH3:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH3
+	asm	jmp	Next6BH3
+	FixedR2BH3:
+	asm	or	ch,ch
+	asm	jl	Next4BH3
+	asm	mov	ah,255
+	asm	jmp	Next4BH3
+	FixedG2BH3:
+	asm	or	dl,dl
+	asm	jnl	Next5BH3
+	asm	mov	al,255
+	asm	jmp	Next5BH3
+	FixedB2BH3:
+	asm	or	cl,cl
+	asm	jl	Next6BH3
+	asm	mov	bh,255
+	Next6BH3:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+4],ax	;//Write 1 AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	mov	bh,gs:[esi+0x480+2]//Line 2 Y1 Y2
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH4
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH4
+	Next1BH4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH4
+	Next2BH4:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH4
+	asm	jmp	Next6BH4
+	FixedR1BH4:
+	asm	or	ch,ch
+	asm	jnl	Next1BH4
+	asm	xor	ah,ah
+	asm	jmp	Next1BH4
+	FixedG1BH4:
+	asm	or	dl,dl
+	asm	jl	Next2BH4
+	asm	xor	al,al
+	asm	jmp	Next2BH4
+	FixedB1BH4:
+	asm	or	cl,cl
+	asm	jnl	Next3BH4
+	asm	xor	bh,bh
+	Next3BH4:
+	asm	jmp	Next6BH4
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH4:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH4
+	Next4BH4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH4
+	Next5BH4:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH4
+	asm	jmp	Next6BH4
+	FixedR2BH4:
+	asm	or	ch,ch
+	asm	jl	Next4BH4
+	asm	mov	ah,255
+	asm	jmp	Next4BH4
+	FixedG2BH4:
+	asm	or	dl,dl
+	asm	jnl	Next5BH4
+	asm	mov	al,255
+	asm	jmp	Next5BH4
+	FixedB2BH4:
+	asm	or	cl,cl
+	asm	jl	Next6BH4
+	asm	mov	bh,255
+	Next6BH4:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+640+4],ax	;//Write AX=RGB16[5:6:5]
+	asm	add	edi,6		;//Y source 4 byte
+	asm	add	esi,4		;//Y source 4 byte
+	asm	add	ebp,2		;//UV source 2 byts
+	//	EDI had add when write pixel
+}
+static	void	Align9(void)
+{
+	asm	nop
+	asm	nop
+}
+//////////// One line only ///////////
+void	FastYUV2RGB15Bits1Line(void)
+{	//EAX,EBX,ECX,EDX,EDI,ESI,EBP changed
+	//GS->Video data selector
+	//ES->Video Buffer
+	//Must compile with Fastest code optimization,the EBP will not save
+	asm	mov	bx,gs:[ebp]		;//U1U2
+	asm	mov	cx,gs:[ebp+0x240]	;//V1V2
+	asm	xchg	cl,bh
+	//CH=U2 CL=V2  BH=U1 BL=V1(Store in BX)
+	////////////Use DX to compute U2V2////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	asm	mov	Cg,dx  	//Store in high 16 bits
+	asm	mov	CrCb,cx
+	//////////////////////////////////////////////////////
+	asm	mov 	cx,bx
+	////////////Use DX to compute U1V1////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi]	//Line 1 Y1 Y2
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bl,bl
+	asm	js	Granthen128BL1
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL1
+	Next1BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL1
+	Next2BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL1
+	asm	jmp	Next6BL1
+	FixedR1BL1:
+	asm	or	ch,ch
+	asm	jnl	Next1BL1
+	asm	xor	ah,ah
+	asm	jmp	Next1BL1
+	FixedG1BL1:
+	asm	or	dl,dl
+	asm	jl	Next2BL1
+	asm	xor	al,al
+	asm	jmp	Next2BL1
+	FixedB1BL1:
+	asm	or	cl,cl
+	asm	jnl	Next3BL1
+	asm	xor	dh,dh
+	Next3BL1:
+	asm 	jmp	Next6BL1
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL1:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL1
+	Next4BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL1
+	Next5BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL1
+	asm	jmp	Next6BL1
+	FixedR2BL1:
+	asm	or	ch,ch
+	asm	jl	Next4BL1
+	asm	mov	ah,255
+	asm	jmp	Next4BL1
+	FixedG2BL1:
+	asm	or	dl,dl
+	asm	jnl	Next5BL1
+	asm	mov	al,255
+	asm	jmp	Next5BL1
+	FixedB2BL1:
+	asm	or	cl,cl
+	asm	jl	Next6BL1
+	asm	mov	dh,255
+	Next6BL1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH1
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH1
+	Next1BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH1
+	Next2BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH1
+	asm	jmp	Next6BH1
+	FixedR1BH1:
+	asm	or	ch,ch
+	asm	jnl	Next1BH1
+	asm	xor	ah,ah
+	asm	jmp	Next1BH1
+	FixedG1BH1:
+	asm	or	dl,dl
+	asm	jl	Next2BH1
+	asm	xor	al,al
+	asm	jmp	Next2BH1
+	FixedB1BH1:
+	asm	or	cl,cl
+	asm	jnl	Next3BH1
+	asm	xor	bh,bh
+	Next3BH1:
+	asm	jmp	Next6BH1
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH1:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH1
+	Next4BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH1
+	Next5BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH1
+	asm	jmp	Next6BH1
+	FixedR2BH1:
+	asm	or	ch,ch
+	asm	jl	Next4BH1
+	asm	mov	ah,255
+	asm	jmp	Next4BH1
+	FixedG2BH1:
+	asm	or	dl,dl
+	asm	jnl	Next5BH1
+	asm	mov	al,255
+	asm	jmp	Next5BH1
+	FixedB2BH1:
+	asm	or	cl,cl
+	asm	jl	Next6BH1
+	asm	mov	bh,255
+	Next6BH1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3		;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+2],ax	;//Write AX=RGB16[5:6:5]
+	/////////////////////////////////////////////////////
+			///U2 V2\\\
+	//////////////////////////////////////////////////////
+	asm	mov	cx,CrCb
+	asm	mov	dx,Cg
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi+2]	//Line 1 Y3 Y4
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bl,bl
+	asm	js	Granthen128BL2
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL2
+	Next1BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL2
+	Next2BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL2
+	asm	jmp	Next6BL2
+	FixedR1BL2:
+	asm	or	ch,ch
+	asm	jnl	Next1BL2
+	asm	xor	ah,ah
+	asm	jmp	Next1BL2
+	FixedG1BL2:
+	asm	or	dl,dl
+	asm	jl	Next2BL2
+	asm	xor	al,al
+	asm	jmp	Next2BL2
+	FixedB1BL2:
+	asm	or	cl,cl
+	asm	jnl	Next3BL2
+	asm	xor	dh,dh
+	Next3BL2:
+	asm 	jmp	Next6BL2
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL2:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL2
+	Next4BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL2
+	Next5BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL2
+	asm	jmp	Next6BL2
+	FixedR2BL2:
+	asm	or	ch,ch
+	asm	jl	Next4BL2
+	asm	mov	ah,255
+	asm	jmp	Next4BL2
+	FixedG2BL2:
+	asm	or	dl,dl
+	asm	jnl	Next5BL2
+	asm	mov	al,255
+	asm	jmp	Next5BL2
+	FixedB2BL2:
+	asm	or	cl,cl
+	asm	jl	Next6BL2
+	asm	mov	dh,255
+	Next6BL2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi+4],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH2
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH2
+	Next1BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH2
+	Next2BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH2
+	asm	jmp	Next6BH2
+	FixedR1BH2:
+	asm	or	ch,ch
+	asm	jnl	Next1BH2
+	asm	xor	ah,ah
+	asm	jmp	Next1BH2
+	FixedG1BH2:
+	asm	or	dl,dl
+	asm	jl	Next2BH2
+	asm	xor	al,al
+	asm	jmp	Next2BH2
+	FixedB1BH2:
+	asm	or	cl,cl
+	asm	jnl	Next3BH2
+	asm	xor	bh,bh
+	Next3BH2:
+	asm	jmp	Next6BH2
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH2:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH2
+	Next4BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH2
+	Next5BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH2
+	asm	jmp	Next6BH2
+	FixedR2BH2:
+	asm	or	ch,ch
+	asm	jl	Next4BH2
+	asm	mov	ah,255
+	asm	jmp	Next4BH2
+	FixedG2BH2:
+	asm	or	dl,dl
+	asm	jnl	Next5BH2
+	asm	mov	al,255
+	asm	jmp	Next5BH2
+	FixedB2BH2:
+	asm	or	cl,cl
+	asm	jl	Next6BH2
+	asm	mov	bh,255
+	Next6BH2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3		;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+4+2],ax	;//Write AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	add	edi,8		;//Y source 4 byte
+	asm	add	esi,4		;//Y source 4 byte
+	asm	add	ebp,2		;//UV source 2 byts
+	//	EDI had add when write pixel
+}
+static	void	Align10(void)
+{
+	asm	nop
+}
+void	FastYUV2RGB15Bits1LineDeletePixel(void)
+{	//EAX,EBX,ECX,EDX,EDI,ESI,EBP changed
+	//GS->Video data selector
+	//ES->Video Buffer
+	//Must compile with Fastest code optimization,the EBP will not save
+	asm	mov	bx,gs:[ebp]		;//U1U2
+	asm	mov	cx,gs:[ebp+0x240]	;//V1V2
+	asm	xchg	cl,bh
+	//CH=U2 CL=V2  BH=U1 BL=V1(Store in BX)
+	////////////Use DX to compute U2V2////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	asm	mov	Cg,dx  	//Store in high 16 bits
+	asm	mov	CrCb,cx
+	//////////////////////////////////////////////////////
+	asm	mov 	cx,bx
+	////////////Use DX to compute U1V1////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi]	//Line 1 Y1 Y2
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bl,bl
+	asm	js	Granthen128BL1
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL1
+	Next1BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL1
+	Next2BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL1
+	asm	jmp	Next6BL1
+	FixedR1BL1:
+	asm	or	ch,ch
+	asm	jnl	Next1BL1
+	asm	xor	ah,ah
+	asm	jmp	Next1BL1
+	FixedG1BL1:
+	asm	or	dl,dl
+	asm	jl	Next2BL1
+	asm	xor	al,al
+	asm	jmp	Next2BL1
+	FixedB1BL1:
+	asm	or	cl,cl
+	asm	jnl	Next3BL1
+	asm	xor	dh,dh
+	Next3BL1:
+	asm 	jmp	Next6BL1
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL1:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL1
+	Next4BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL1
+	Next5BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL1
+	asm	jmp	Next6BL1
+	FixedR2BL1:
+	asm	or	ch,ch
+	asm	jl	Next4BL1
+	asm	mov	ah,255
+	asm	jmp	Next4BL1
+	FixedG2BL1:
+	asm	or	dl,dl
+	asm	jnl	Next5BL1
+	asm	mov	al,255
+	asm	jmp	Next5BL1
+	FixedB2BL1:
+	asm	or	cl,cl
+	asm	jl	Next6BL1
+	asm	mov	dh,255
+	Next6BL1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH1
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH1
+	Next1BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH1
+	Next2BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH1
+	asm	jmp	Next6BH1
+	FixedR1BH1:
+	asm	or	ch,ch
+	asm	jnl	Next1BH1
+	asm	xor	ah,ah
+	asm	jmp	Next1BH1
+	FixedG1BH1:
+	asm	or	dl,dl
+	asm	jl	Next2BH1
+	asm	xor	al,al
+	asm	jmp	Next2BH1
+	FixedB1BH1:
+	asm	or	cl,cl
+	asm	jnl	Next3BH1
+	asm	xor	bh,bh
+	Next3BH1:
+	asm	jmp	Next6BH1
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH1:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH1
+	Next4BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH1
+	Next5BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH1
+	asm	jmp	Next6BH1
+	FixedR2BH1:
+	asm	or	ch,ch
+	asm	jl	Next4BH1
+	asm	mov	ah,255
+	asm	jmp	Next4BH1
+	FixedG2BH1:
+	asm	or	dl,dl
+	asm	jnl	Next5BH1
+	asm	mov	al,255
+	asm	jmp	Next5BH1
+	FixedB2BH1:
+	asm	or	cl,cl
+	asm	jl	Next6BH1
+	asm	mov	bh,255
+	Next6BH1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3		;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+2],ax	;//Write AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+			///U2 V2\\\
+	//////////////////////////////////////////////////////
+	asm	mov	cx,CrCb
+	asm	mov	dx,Cg
+	//////////////////////////////////////////////////////
+	asm	mov	bh,gs:[esi+2]	//Line 1 Y3 Y4
+	//////////////////////////////////////////////////////
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH2
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH2
+	Next1BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH2
+	Next2BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH2
+	asm	jmp	Next6BH2
+	FixedR1BH2:
+	asm	or	ch,ch
+	asm	jnl	Next1BH2
+	asm	xor	ah,ah
+	asm	jmp	Next1BH2
+	FixedG1BH2:
+	asm	or	dl,dl
+	asm	jl	Next2BH2
+	asm	xor	al,al
+	asm	jmp	Next2BH2
+	FixedB1BH2:
+	asm	or	cl,cl
+	asm	jnl	Next3BH2
+	asm	xor	bh,bh
+	Next3BH2:
+	asm	jmp	Next6BH2
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH2:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH2
+	Next4BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH2
+	Next5BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH2
+	asm	jmp	Next6BH2
+	FixedR2BH2:
+	asm	or	ch,ch
+	asm	jl	Next4BH2
+	asm	mov	ah,255
+	asm	jmp	Next4BH2
+	FixedG2BH2:
+	asm	or	dl,dl
+	asm	jnl	Next5BH2
+	asm	mov	al,255
+	asm	jmp	Next5BH2
+	FixedB2BH2:
+	asm	or	cl,cl
+	asm	jl	Next6BH2
+	asm	mov	bh,255
+	Next6BH2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+4],ax	;//Write 1 AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	add	edi,6		;//Y source 4 byte
+	asm	add	esi,4		;//Y source 4 byte
+	asm	add	ebp,2		;//UV source 2 byts
+	//	EDI had add when write pixel
+}
+static	void	Align11(void)
+{
+	asm	nop
+	asm	nop
+}
+///////////////////////////////////////////////////////////////////
+///////////////////////// 640x240 Double pixel ////////////////
+extern	unsigned long	lStride;	//Video Memory Line width.
+void	FastYUV2RGB15BitsDouble(void)
+{	//EAX,EBX,ECX,EDX,EDI,ESI,EBP changed
+	//GS->Video data selector
+	//ES->Video Buffer
+	//Must compile with Fastest code optimization,the EBP will not save
+	asm	mov	bx,gs:[ebp]		;//U1U2
+	asm	mov	cx,gs:[ebp+0x240]	;//V1V2
+	asm	xchg	cl,bh
+	//CH=U2 CL=V2  BH=U1 BL=V1(Store in BX)
+	////////////Use DX to compute U2V2////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	asm	mov	Cg,dx  	//Store in high 16 bits
+	asm	mov	CrCb,cx
+	//////////////////////////////////////////////////////
+	asm	mov 	cx,bx
+	////////////Use DX to compute U1V1////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi]	//Line 1 Y1 Y2
+	//////////////////////////////////////////////////////
+	asm	or	bl,bl
+	asm	js	Granthen128BL1
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL1
+	Next1BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL1
+	Next2BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL1
+	asm	jmp	Next6BL1
+	FixedR1BL1:
+	asm	or	ch,ch
+	asm	jnl	Next1BL1
+	asm	xor	ah,ah
+	asm	jmp	Next1BL1
+	FixedG1BL1:
+	asm	or	dl,dl
+	asm	jl	Next2BL1
+	asm	xor	al,al
+	asm	jmp	Next2BL1
+	FixedB1BL1:
+	asm	or	cl,cl
+	asm	jnl	Next3BL1
+	asm	xor	dh,dh
+	Next3BL1:
+	asm 	jmp	Next6BL1
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL1:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL1
+	Next4BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL1
+	Next5BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL1
+	asm	jmp	Next6BL1
+	FixedR2BL1:
+	asm	or	ch,ch
+	asm	jl	Next4BL1
+	asm	mov	ah,255
+	asm	jmp	Next4BL1
+	FixedG2BL1:
+	asm	or	dl,dl
+	asm	jnl	Next5BL1
+	asm	mov	al,255
+	asm	jmp	Next5BL1
+	FixedB2BL1:
+	asm	or	cl,cl
+	asm	jl	Next6BL1
+	asm	mov	dh,255
+	Next6BL1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+2],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH1
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH1
+	Next1BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH1
+	Next2BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH1
+	asm	jmp	Next6BH1
+	FixedR1BH1:
+	asm	or	ch,ch
+	asm	jnl	Next1BH1
+	asm	xor	ah,ah
+	asm	jmp	Next1BH1
+	FixedG1BH1:
+	asm	or	dl,dl
+	asm	jl	Next2BH1
+	asm	xor	al,al
+	asm	jmp	Next2BH1
+	FixedB1BH1:
+	asm	or	cl,cl
+	asm	jnl	Next3BH1
+	asm	xor	bh,bh
+	Next3BH1:
+	asm	jmp	Next6BH1
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH1:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH1
+	Next4BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH1
+	Next5BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH1
+	asm	jmp	Next6BH1
+	FixedR2BH1:
+	asm	or	ch,ch
+	asm	jl	Next4BH1
+	asm	mov	ah,255
+	asm	jmp	Next4BH1
+	FixedG2BH1:
+	asm	or	dl,dl
+	asm	jnl	Next5BH1
+	asm	mov	al,255
+	asm	jmp	Next5BH1
+	FixedB2BH1:
+	asm	or	cl,cl
+	asm	jl	Next6BH1
+	asm	mov	bh,255
+	Next6BH1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3		;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+4],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+6],ax	;//Write AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi+0x480]//Line 2 Y1 Y2
+	//////////////////////////////////////////////////////
+	asm	or	bl,bl
+	asm	js	Granthen128BL2
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL2
+	Next1BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL2
+	Next2BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL2
+	asm	jmp	Next6BL2
+	FixedR1BL2:
+	asm	or	ch,ch
+	asm	jnl	Next1BL2
+	asm	xor	ah,ah
+	asm	jmp	Next1BL2
+	FixedG1BL2:
+	asm	or	dl,dl
+	asm	jl	Next2BL2
+	asm	xor	al,al
+	asm	jmp	Next2BL2
+	FixedB1BL2:
+	asm	or	cl,cl
+	asm	jnl	Next3BL2
+	asm	xor	dh,dh
+	Next3BL2:
+	asm 	jmp	Next6BL2
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL2:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL2
+	Next4BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL2
+	Next5BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL2
+	asm	jmp	Next6BL2
+	FixedR2BL2:
+	asm	or	ch,ch
+	asm	jl	Next4BL2
+	asm	mov	ah,255
+	asm	jmp	Next4BL2
+	FixedG2BL2:
+	asm	or	dl,dl
+	asm	jnl	Next5BL2
+	asm	mov	al,255
+	asm	jmp	Next5BL2
+	FixedB2BL2:
+	asm	or	cl,cl
+	asm	jl	Next6BL2
+	asm	mov	dh,255
+	Next6BL2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	add	edi,dword ptr lStride
+	asm	mov	es:[edi+1280],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+1280+2],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH2
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH2
+	Next1BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH2
+	Next2BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH2
+	asm	jmp	Next6BH2
+	FixedR1BH2:
+	asm	or	ch,ch
+	asm	jnl	Next1BH2
+	asm	xor	ah,ah
+	asm	jmp	Next1BH2
+	FixedG1BH2:
+	asm	or	dl,dl
+	asm	jl	Next2BH2
+	asm	xor	al,al
+	asm	jmp	Next2BH2
+	FixedB1BH2:
+	asm	or	cl,cl
+	asm	jnl	Next3BH2
+	asm	xor	bh,bh
+	Next3BH2:
+	asm	jmp	Next6BH2
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH2:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH2
+	Next4BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH2
+	Next5BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH2
+	asm	jmp	Next6BH2
+	FixedR2BH2:
+	asm	or	ch,ch
+	asm	jl	Next4BH2
+	asm	mov	ah,255
+	asm	jmp	Next4BH2
+	FixedG2BH2:
+	asm	or	dl,dl
+	asm	jnl	Next5BH2
+	asm	mov	al,255
+	asm	jmp	Next5BH2
+	FixedB2BH2:
+	asm	or	cl,cl
+	asm	jl	Next6BH2
+	asm	mov	bh,255
+	Next6BH2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3		;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+1280+4],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+1280+6],ax	;//Write AX=RGB16[5:6:5]
+	asm	sub	edi,dword ptr lStride
+	/////////////////////////////////////////////////////
+			///U2 V2\\\
+	//////////////////////////////////////////////////////
+	asm	mov	cx,CrCb
+	asm	mov	dx,Cg
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi+2]	//Line 1 Y3 Y4
+	//////////////////////////////////////////////////////
+	asm	or	bl,bl
+	asm	js	Granthen128BL3
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL3
+	Next1BL3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL3
+	Next2BL3:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL3
+	asm	jmp	Next6BL3
+	FixedR1BL3:
+	asm	or	ch,ch
+	asm	jnl	Next1BL3
+	asm	xor	ah,ah
+	asm	jmp	Next1BL3
+	FixedG1BL3:
+	asm	or	dl,dl
+	asm	jl	Next2BL3
+	asm	xor	al,al
+	asm	jmp	Next2BL3
+	FixedB1BL3:
+	asm	or	cl,cl
+	asm	jnl	Next3BL3
+	asm	xor	dh,dh
+	Next3BL3:
+	asm 	jmp	Next6BL3
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL3:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL3
+	Next4BL3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL3
+	Next5BL3:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL3
+	asm	jmp	Next6BL3
+	FixedR2BL3:
+	asm	or	ch,ch
+	asm	jl	Next4BL3
+	asm	mov	ah,255
+	asm	jmp	Next4BL3
+	FixedG2BL3:
+	asm	or	dl,dl
+	asm	jnl	Next5BL3
+	asm	mov	al,255
+	asm	jmp	Next5BL3
+	FixedB2BL3:
+	asm	or	cl,cl
+	asm	jl	Next6BL3
+	asm	mov	dh,255
+	Next6BL3:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi+0x08],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+0x0A],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH3
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH3
+	Next1BH3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH3
+	Next2BH3:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH3
+	asm	jmp	Next6BH3
+	FixedR1BH3:
+	asm	or	ch,ch
+	asm	jnl	Next1BH3
+	asm	xor	ah,ah
+	asm	jmp	Next1BH3
+	FixedG1BH3:
+	asm	or	dl,dl
+	asm	jl	Next2BH3
+	asm	xor	al,al
+	asm	jmp	Next2BH3
+	FixedB1BH3:
+	asm	or	cl,cl
+	asm	jnl	Next3BH3
+	asm	xor	bh,bh
+	Next3BH3:
+	asm	jmp	Next6BH3
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH3:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH3
+	Next4BH3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH3
+	Next5BH3:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH3
+	asm	jmp	Next6BH3
+	FixedR2BH3:
+	asm	or	ch,ch
+	asm	jl	Next4BH3
+	asm	mov	ah,255
+	asm	jmp	Next4BH3
+	FixedG2BH3:
+	asm	or	dl,dl
+	asm	jnl	Next5BH3
+	asm	mov	al,255
+	asm	jmp	Next5BH3
+	FixedB2BH3:
+	asm	or	cl,cl
+	asm	jl	Next6BH3
+	asm	mov	bh,255
+	Next6BH3:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3		;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+0x0C],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+0x0E],ax	;//Write AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi+0x480+2]//Line 2 Y1 Y2
+	//////////////////////////////////////////////////////
+	asm	or	bl,bl
+	asm	js	Granthen128BL4
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL4
+	Next1BL4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL4
+	Next2BL4:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL4
+	asm	jmp	Next6BL4
+	FixedR1BL4:
+	asm	or	ch,ch
+	asm	jnl	Next1BL4
+	asm	xor	ah,ah
+	asm	jmp	Next1BL4
+	FixedG1BL4:
+	asm	or	dl,dl
+	asm	jl	Next2BL4
+	asm	xor	al,al
+	asm	jmp	Next2BL4
+	FixedB1BL4:
+	asm	or	cl,cl
+	asm	jnl	Next3BL4
+	asm	xor	dh,dh
+	Next3BL4:
+	asm 	jmp	Next6BL4
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL4:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL4
+	Next4BL4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL4
+	Next5BL4:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL4
+	asm	jmp	Next6BL4
+	FixedR2BL4:
+	asm	or	ch,ch
+	asm	jl	Next4BL4
+	asm	mov	ah,255
+	asm	jmp	Next4BL4
+	FixedG2BL4:
+	asm	or	dl,dl
+	asm	jnl	Next5BL4
+	asm	mov	al,255
+	asm	jmp	Next5BL4
+	FixedB2BL4:
+	asm	or	cl,cl
+	asm	jl	Next6BL4
+	asm	mov	dh,255
+	Next6BL4:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	add	edi,dword ptr lStride
+	asm	mov	es:[edi+1280+0x08],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+1280+0x0A],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH4
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH4
+	Next1BH4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH4
+	Next2BH4:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH4
+	asm	jmp	Next6BH4
+	FixedR1BH4:
+	asm	or	ch,ch
+	asm	jnl	Next1BH4
+	asm	xor	ah,ah
+	asm	jmp	Next1BH4
+	FixedG1BH4:
+	asm	or	dl,dl
+	asm	jl	Next2BH4
+	asm	xor	al,al
+	asm	jmp	Next2BH4
+	FixedB1BH4:
+	asm	or	cl,cl
+	asm	jnl	Next3BH4
+	asm	xor	bh,bh
+	Next3BH4:
+	asm	jmp	Next6BH4
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH4:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH4
+	Next4BH4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH4
+	Next5BH4:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH4
+	asm	jmp	Next6BH4
+	FixedR2BH4:
+	asm	or	ch,ch
+	asm	jl	Next4BH4
+	asm	mov	ah,255
+	asm	jmp	Next4BH4
+	FixedG2BH4:
+	asm	or	dl,dl
+	asm	jnl	Next5BH4
+	asm	mov	al,255
+	asm	jmp	Next5BH4
+	FixedB2BH4:
+	asm	or	cl,cl
+	asm	jl	Next6BH4
+	asm	mov	bh,255
+	Next6BH4:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3		;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+1280+0x0C],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+1280+0x0E],ax	;//Write AX=RGB16[5:6:5]
+	asm	sub	edi,dword ptr lStride
+	asm	add	edi,16		;//Y source 4 byte
+	asm	add	esi,4		;//Y source 4 byte
+	asm	add	ebp,2		;//UV source 2 byts
+	//	EDI had add when write pixel
+}
+static	void	Align12(void)
+{
+	asm	nop
+}
+void	FastYUV2RGB15BitsDoubleDeletePixel(void)
+{	//EAX,EBX,ECX,EDX,EDI,ESI,EBP changed
+	//GS->Video data selector
+	//ES->Video Buffer
+	//Must compile with Fastest code optimization,the EBP will not save
+	asm	mov	bx,gs:[ebp]		;//U1U2
+	asm	mov	cx,gs:[ebp+0x240]	;//V1V2
+	asm	xchg	cl,bh
+	//CH=U2 CL=V2  BH=U1 BL=V1(Store in BX)
+	////////////Use DX to compute U2V2////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	asm	mov	Cg,dx  	//Store in high 16 bits
+	asm	mov	CrCb,cx
+	//////////////////////////////////////////////////////
+	asm	mov 	cx,bx
+	////////////Use DX to compute U1V1////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi]	//Line 1 Y1 Y2
+	//////////////////////////////////////////////////////
+	asm	or	bl,bl
+	asm	js	Granthen128BL1
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL1
+	Next1BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL1
+	Next2BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL1
+	asm	jmp	Next6BL1
+	FixedR1BL1:
+	asm	or	ch,ch
+	asm	jnl	Next1BL1
+	asm	xor	ah,ah
+	asm	jmp	Next1BL1
+	FixedG1BL1:
+	asm	or	dl,dl
+	asm	jl	Next2BL1
+	asm	xor	al,al
+	asm	jmp	Next2BL1
+	FixedB1BL1:
+	asm	or	cl,cl
+	asm	jnl	Next3BL1
+	asm	xor	dh,dh
+	Next3BL1:
+	asm 	jmp	Next6BL1
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL1:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL1
+	Next4BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL1
+	Next5BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL1
+	asm	jmp	Next6BL1
+	FixedR2BL1:
+	asm	or	ch,ch
+	asm	jl	Next4BL1
+	asm	mov	ah,255
+	asm	jmp	Next4BL1
+	FixedG2BL1:
+	asm	or	dl,dl
+	asm	jnl	Next5BL1
+	asm	mov	al,255
+	asm	jmp	Next5BL1
+	FixedB2BL1:
+	asm	or	cl,cl
+	asm	jl	Next6BL1
+	asm	mov	dh,255
+	Next6BL1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+2],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH1
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH1
+	Next1BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH1
+	Next2BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH1
+	asm	jmp	Next6BH1
+	FixedR1BH1:
+	asm	or	ch,ch
+	asm	jnl	Next1BH1
+	asm	xor	ah,ah
+	asm	jmp	Next1BH1
+	FixedG1BH1:
+	asm	or	dl,dl
+	asm	jl	Next2BH1
+	asm	xor	al,al
+	asm	jmp	Next2BH1
+	FixedB1BH1:
+	asm	or	cl,cl
+	asm	jnl	Next3BH1
+	asm	xor	bh,bh
+	Next3BH1:
+	asm	jmp	Next6BH1
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH1:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH1
+	Next4BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH1
+	Next5BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH1
+	asm	jmp	Next6BH1
+	FixedR2BH1:
+	asm	or	ch,ch
+	asm	jl	Next4BH1
+	asm	mov	ah,255
+	asm	jmp	Next4BH1
+	FixedG2BH1:
+	asm	or	dl,dl
+	asm	jnl	Next5BH1
+	asm	mov	al,255
+	asm	jmp	Next5BH1
+	FixedB2BH1:
+	asm	or	cl,cl
+	asm	jl	Next6BH1
+	asm	mov	bh,255
+	Next6BH1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3		;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+4],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+6],ax	;//Write AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi+0x480]//Line 2 Y1 Y2
+	//////////////////////////////////////////////////////
+	asm	or	bl,bl
+	asm	js	Granthen128BL2
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL2
+	Next1BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL2
+	Next2BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL2
+	asm	jmp	Next6BL2
+	FixedR1BL2:
+	asm	or	ch,ch
+	asm	jnl	Next1BL2
+	asm	xor	ah,ah
+	asm	jmp	Next1BL2
+	FixedG1BL2:
+	asm	or	dl,dl
+	asm	jl	Next2BL2
+	asm	xor	al,al
+	asm	jmp	Next2BL2
+	FixedB1BL2:
+	asm	or	cl,cl
+	asm	jnl	Next3BL2
+	asm	xor	dh,dh
+	Next3BL2:
+	asm 	jmp	Next6BL2
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL2:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL2
+	Next4BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL2
+	Next5BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL2
+	asm	jmp	Next6BL2
+	FixedR2BL2:
+	asm	or	ch,ch
+	asm	jl	Next4BL2
+	asm	mov	ah,255
+	asm	jmp	Next4BL2
+	FixedG2BL2:
+	asm	or	dl,dl
+	asm	jnl	Next5BL2
+	asm	mov	al,255
+	asm	jmp	Next5BL2
+	FixedB2BL2:
+	asm	or	cl,cl
+	asm	jl	Next6BL2
+	asm	mov	dh,255
+	Next6BL2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	add	edi,dword ptr lStride
+	asm	mov	es:[edi+1280],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+1280+2],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH2
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH2
+	Next1BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH2
+	Next2BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH2
+	asm	jmp	Next6BH2
+	FixedR1BH2:
+	asm	or	ch,ch
+	asm	jnl	Next1BH2
+	asm	xor	ah,ah
+	asm	jmp	Next1BH2
+	FixedG1BH2:
+	asm	or	dl,dl
+	asm	jl	Next2BH2
+	asm	xor	al,al
+	asm	jmp	Next2BH2
+	FixedB1BH2:
+	asm	or	cl,cl
+	asm	jnl	Next3BH2
+	asm	xor	bh,bh
+	Next3BH2:
+	asm	jmp	Next6BH2
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH2:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH2
+	Next4BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH2
+	Next5BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH2
+	asm	jmp	Next6BH2
+	FixedR2BH2:
+	asm	or	ch,ch
+	asm	jl	Next4BH2
+	asm	mov	ah,255
+	asm	jmp	Next4BH2
+	FixedG2BH2:
+	asm	or	dl,dl
+	asm	jnl	Next5BH2
+	asm	mov	al,255
+	asm	jmp	Next5BH2
+	FixedB2BH2:
+	asm	or	cl,cl
+	asm	jl	Next6BH2
+	asm	mov	bh,255
+	Next6BH2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3		;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+1280+4],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+1280+6],ax	;//Write AX=RGB16[5:6:5]
+	asm	sub	edi,dword ptr lStride
+	/////////////////////////////////////////////////////
+			///U2 V2\\\
+	//////////////////////////////////////////////////////
+	asm	mov	cx,CrCb
+	asm	mov	dx,Cg
+	//////////////////////////////////////////////////////
+	asm	mov	bh,gs:[esi+2]	//Line 1 Y3 Y4
+	//////////////////////////////////////////////////////
+	asm	or	bh,bh
+	asm	js	Granthen128BH3
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH3
+	Next1BH3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH3
+	Next2BH3:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH3
+	asm	jmp	Next6BH3
+	FixedR1BH3:
+	asm	or	ch,ch
+	asm	jnl	Next1BH3
+	asm	xor	ah,ah
+	asm	jmp	Next1BH3
+	FixedG1BH3:
+	asm	or	dl,dl
+	asm	jl	Next2BH3
+	asm	xor	al,al
+	asm	jmp	Next2BH3
+	FixedB1BH3:
+	asm	or	cl,cl
+	asm	jnl	Next3BH3
+	asm	xor	bh,bh
+	Next3BH3:
+	asm	jmp	Next6BH3
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH3:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH3
+	Next4BH3:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH3
+	Next5BH3:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH3
+	asm	jmp	Next6BH3
+	FixedR2BH3:
+	asm	or	ch,ch
+	asm	jl	Next4BH3
+	asm	mov	ah,255
+	asm	jmp	Next4BH3
+	FixedG2BH3:
+	asm	or	dl,dl
+	asm	jnl	Next5BH3
+	asm	mov	al,255
+	asm	jmp	Next5BH3
+	FixedB2BH3:
+	asm	or	cl,cl
+	asm	jl	Next6BH3
+	asm	mov	bh,255
+	Next6BH3:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+8],ax	;//Write 1 AX=RGB16[5:6:5]
+	asm	mov	es:[edi+10],ax	;//Write 1 AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	mov	bh,gs:[esi+0x480+2]//Line 2 Y1 Y2
+	//////////////////////////////////////////////////////
+	asm	or	bh,bh
+	asm	js	Granthen128BH4
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH4
+	Next1BH4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH4
+	Next2BH4:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH4
+	asm	jmp	Next6BH4
+	FixedR1BH4:
+	asm	or	ch,ch
+	asm	jnl	Next1BH4
+	asm	xor	ah,ah
+	asm	jmp	Next1BH4
+	FixedG1BH4:
+	asm	or	dl,dl
+	asm	jl	Next2BH4
+	asm	xor	al,al
+	asm	jmp	Next2BH4
+	FixedB1BH4:
+	asm	or	cl,cl
+	asm	jnl	Next3BH4
+	asm	xor	bh,bh
+	Next3BH4:
+	asm	jmp	Next6BH4
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH4:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH4
+	Next4BH4:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH4
+	Next5BH4:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH4
+	asm	jmp	Next6BH4
+	FixedR2BH4:
+	asm	or	ch,ch
+	asm	jl	Next4BH4
+	asm	mov	ah,255
+	asm	jmp	Next4BH4
+	FixedG2BH4:
+	asm	or	dl,dl
+	asm	jnl	Next5BH4
+	asm	mov	al,255
+	asm	jmp	Next5BH4
+	FixedB2BH4:
+	asm	or	cl,cl
+	asm	jl	Next6BH4
+	asm	mov	bh,255
+	Next6BH4:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	ebx,dword ptr lStride
+	asm	mov	es:[edi+ebx+1280+8],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+ebx+1280+10],ax	;//Write AX=RGB16[5:6:5]
+	asm	add	edi,12		;//Y source 4 byte
+	asm	add	esi,4		;//Y source 4 byte
+	asm	add	ebp,2		;//UV source 2 byts
+	//	EDI had add when write pixel
+}
+static	void	Align13(void)
+{
+	asm	nop
+	asm	nop
+}
+//////////// One line only ///////////
+void	FastYUV2RGB15BitsDouble1Line(void)
+{	//EAX,EBX,ECX,EDX,EDI,ESI,EBP changed
+	//GS->Video data selector
+	//ES->Video Buffer
+	//Must compile with Fastest code optimization,the EBP will not save
+	asm	mov	bx,gs:[ebp]		;//U1U2
+	asm	mov	cx,gs:[ebp+0x240]	;//V1V2
+	asm	xchg	cl,bh
+	//CH=U2 CL=V2  BH=U1 BL=V1(Store in BX)
+	////////////Use DX to compute U2V2////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	asm	mov	Cg,dx  	//Store in high 16 bits
+	asm	mov	CrCb,cx
+	//////////////////////////////////////////////////////
+	asm	mov 	cx,bx
+	////////////Use DX to compute U1V1////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi]	//Line 1 Y1 Y2
+	//////////////////////////////////////////////////////
+	asm	or	bl,bl
+	asm	js	Granthen128BL1
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL1
+	Next1BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL1
+	Next2BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL1
+	asm	jmp	Next6BL1
+	FixedR1BL1:
+	asm	or	ch,ch
+	asm	jnl	Next1BL1
+	asm	xor	ah,ah
+	asm	jmp	Next1BL1
+	FixedG1BL1:
+	asm	or	dl,dl
+	asm	jl	Next2BL1
+	asm	xor	al,al
+	asm	jmp	Next2BL1
+	FixedB1BL1:
+	asm	or	cl,cl
+	asm	jnl	Next3BL1
+	asm	xor	dh,dh
+	Next3BL1:
+	asm 	jmp	Next6BL1
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL1:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL1
+	Next4BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL1
+	Next5BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL1
+	asm	jmp	Next6BL1
+	FixedR2BL1:
+	asm	or	ch,ch
+	asm	jl	Next4BL1
+	asm	mov	ah,255
+	asm	jmp	Next4BL1
+	FixedG2BL1:
+	asm	or	dl,dl
+	asm	jnl	Next5BL1
+	asm	mov	al,255
+	asm	jmp	Next5BL1
+	FixedB2BL1:
+	asm	or	cl,cl
+	asm	jl	Next6BL1
+	asm	mov	dh,255
+	Next6BL1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+2],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH1
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH1
+	Next1BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH1
+	Next2BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH1
+	asm	jmp	Next6BH1
+	FixedR1BH1:
+	asm	or	ch,ch
+	asm	jnl	Next1BH1
+	asm	xor	ah,ah
+	asm	jmp	Next1BH1
+	FixedG1BH1:
+	asm	or	dl,dl
+	asm	jl	Next2BH1
+	asm	xor	al,al
+	asm	jmp	Next2BH1
+	FixedB1BH1:
+	asm	or	cl,cl
+	asm	jnl	Next3BH1
+	asm	xor	bh,bh
+	Next3BH1:
+	asm	jmp	Next6BH1
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH1:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH1
+	Next4BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH1
+	Next5BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH1
+	asm	jmp	Next6BH1
+	FixedR2BH1:
+	asm	or	ch,ch
+	asm	jl	Next4BH1
+	asm	mov	ah,255
+	asm	jmp	Next4BH1
+	FixedG2BH1:
+	asm	or	dl,dl
+	asm	jnl	Next5BH1
+	asm	mov	al,255
+	asm	jmp	Next5BH1
+	FixedB2BH1:
+	asm	or	cl,cl
+	asm	jl	Next6BH1
+	asm	mov	bh,255
+	Next6BH1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3		;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+4],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+6],ax	;//Write AX=RGB16[5:6:5]
+	/////////////////////////////////////////////////////
+			///U2 V2\\\
+	//////////////////////////////////////////////////////
+	asm	mov	cx,CrCb
+	asm	mov	dx,Cg
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi+2]	//Line 1 Y3 Y4
+	//////////////////////////////////////////////////////
+	asm	or	bl,bl
+	asm	js	Granthen128BL2
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL2
+	Next1BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL2
+	Next2BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL2
+	asm	jmp	Next6BL2
+	FixedR1BL2:
+	asm	or	ch,ch
+	asm	jnl	Next1BL2
+	asm	xor	ah,ah
+	asm	jmp	Next1BL2
+	FixedG1BL2:
+	asm	or	dl,dl
+	asm	jl	Next2BL2
+	asm	xor	al,al
+	asm	jmp	Next2BL2
+	FixedB1BL2:
+	asm	or	cl,cl
+	asm	jnl	Next3BL2
+	asm	xor	dh,dh
+	Next3BL2:
+	asm 	jmp	Next6BL2
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL2:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL2
+	Next4BL2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL2
+	Next5BL2:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL2
+	asm	jmp	Next6BL2
+	FixedR2BL2:
+	asm	or	ch,ch
+	asm	jl	Next4BL2
+	asm	mov	ah,255
+	asm	jmp	Next4BL2
+	FixedG2BL2:
+	asm	or	dl,dl
+	asm	jnl	Next5BL2
+	asm	mov	al,255
+	asm	jmp	Next5BL2
+	FixedB2BL2:
+	asm	or	cl,cl
+	asm	jl	Next6BL2
+	asm	mov	dh,255
+	Next6BL2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi+8],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+10],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH2
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH2
+	Next1BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH2
+	Next2BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH2
+	asm	jmp	Next6BH2
+	FixedR1BH2:
+	asm	or	ch,ch
+	asm	jnl	Next1BH2
+	asm	xor	ah,ah
+	asm	jmp	Next1BH2
+	FixedG1BH2:
+	asm	or	dl,dl
+	asm	jl	Next2BH2
+	asm	xor	al,al
+	asm	jmp	Next2BH2
+	FixedB1BH2:
+	asm	or	cl,cl
+	asm	jnl	Next3BH2
+	asm	xor	bh,bh
+	Next3BH2:
+	asm	jmp	Next6BH2
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH2:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH2
+	Next4BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH2
+	Next5BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH2
+	asm	jmp	Next6BH2
+	FixedR2BH2:
+	asm	or	ch,ch
+	asm	jl	Next4BH2
+	asm	mov	ah,255
+	asm	jmp	Next4BH2
+	FixedG2BH2:
+	asm	or	dl,dl
+	asm	jnl	Next5BH2
+	asm	mov	al,255
+	asm	jmp	Next5BH2
+	FixedB2BH2:
+	asm	or	cl,cl
+	asm	jl	Next6BH2
+	asm	mov	bh,255
+	Next6BH2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3		;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+12],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+14],ax	;//Write AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	add	edi,16		;//Y source 4 byte
+	asm	add	esi,4		;//Y source 4 byte
+	asm	add	ebp,2		;//UV source 2 byts
+	//	EDI had add when write pixel
+}
+static	void	Align14(void)
+{
+	asm	nop
+}
+void	FastYUV2RGB15BitsDouble1LineDeletePixel(void)
+{	//EAX,EBX,ECX,EDX,EDI,ESI,EBP changed
+	//GS->Video data selector
+	//ES->Video Buffer
+	//Must compile with Fastest code optimization,the EBP will not save
+	asm	mov	bx,gs:[ebp]		;//U1U2
+	asm	mov	cx,gs:[ebp+0x240]	;//V1V2
+	asm	xchg	cl,bh
+	//CH=U2 CL=V2  BH=U1 BL=V1(Store in BX)
+	////////////Use DX to compute U2V2////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	asm	mov	Cg,dx  	//Store in high 16 bits
+	asm	mov	CrCb,cx
+	//////////////////////////////////////////////////////
+	asm	mov 	cx,bx
+	////////////Use DX to compute U1V1////////////////////
+	////Compute U & V /////////			//////
+	asm	sub	cl,128		;//Cb=V-=128		//////
+	asm	sub	ch,128		;//Cr=U-=128		//////
+	////////Compute U/2+V/5 //////////		//////
+	asm	mov	dl,ch					//////
+	asm	sar	dl,1		;//Cr/2			//////
+	////////////// CH=Cr DL=Cg CL=Cb /////////////////////
+	//////////////////////////////////////////////////////
+	asm	mov	bx,gs:[esi]	//Line 1 Y1 Y2
+	//////////////////////////////////////////////////////
+	asm	or	bl,bl
+	asm	js	Granthen128BL1
+	/////////////////////// Y < 128 /////////////////////
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BL1
+	Next1BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BL1
+	Next2BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BL1
+	asm	jmp	Next6BL1
+	FixedR1BL1:
+	asm	or	ch,ch
+	asm	jnl	Next1BL1
+	asm	xor	ah,ah
+	asm	jmp	Next1BL1
+	FixedG1BL1:
+	asm	or	dl,dl
+	asm	jl	Next2BL1
+	asm	xor	al,al
+	asm	jmp	Next2BL1
+	FixedB1BL1:
+	asm	or	cl,cl
+	asm	jnl	Next3BL1
+	asm	xor	dh,dh
+	Next3BL1:
+	asm 	jmp	Next6BL1
+	///////////////////////// Y > 128 //////////////////////
+	Granthen128BL1:
+	asm	mov	ah,bl					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BL1
+	Next4BL1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bl
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BL1
+	Next5BL1:
+	asm	mov	dh,bl					//////
+	asm	add	dh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BL1
+	asm	jmp	Next6BL1
+	FixedR2BL1:
+	asm	or	ch,ch
+	asm	jl	Next4BL1
+	asm	mov	ah,255
+	asm	jmp	Next4BL1
+	FixedG2BL1:
+	asm	or	dl,dl
+	asm	jnl	Next5BL1
+	asm	mov	al,255
+	asm	jmp	Next5BL1
+	FixedB2BL1:
+	asm	or	cl,cl
+	asm	jl	Next6BL1
+	asm	mov	dh,255
+	Next6BL1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,dx,5		;//B[5]
+	asm	mov	es:[edi],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+2],ax	;//Write AX=RGB16[5:6:5]
+	///////// R G B //////				//////
+	asm	or	bh,bh
+	asm	js	Granthen128BH1
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH1
+	Next1BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH1
+	Next2BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH1
+	asm	jmp	Next6BH1
+	FixedR1BH1:
+	asm	or	ch,ch
+	asm	jnl	Next1BH1
+	asm	xor	ah,ah
+	asm	jmp	Next1BH1
+	FixedG1BH1:
+	asm	or	dl,dl
+	asm	jl	Next2BH1
+	asm	xor	al,al
+	asm	jmp	Next2BH1
+	FixedB1BH1:
+	asm	or	cl,cl
+	asm	jnl	Next3BH1
+	asm	xor	bh,bh
+	Next3BH1:
+	asm	jmp	Next6BH1
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH1:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH1
+	Next4BH1:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH1
+	Next5BH1:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH1
+	asm	jmp	Next6BH1
+	FixedR2BH1:
+	asm	or	ch,ch
+	asm	jl	Next4BH1
+	asm	mov	ah,255
+	asm	jmp	Next4BH1
+	FixedG2BH1:
+	asm	or	dl,dl
+	asm	jnl	Next5BH1
+	asm	mov	al,255
+	asm	jmp	Next5BH1
+	FixedB2BH1:
+	asm	or	cl,cl
+	asm	jl	Next6BH1
+	asm	mov	bh,255
+	Next6BH1:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3		;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+4],ax	;//Write AX=RGB16[5:6:5]
+	asm	mov	es:[edi+6],ax	;//Write AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+			///U2 V2\\\
+	//////////////////////////////////////////////////////
+	asm	mov	cx,CrCb
+	asm	mov	dx,Cg
+	//////////////////////////////////////////////////////
+	asm	mov	bh,gs:[esi+2]	//Line 1 Y3 Y4
+	//////////////////////////////////////////////////////
+	asm	or	bh,bh
+	asm	js	Granthen128BH2
+	///////////////////// Y < 128 ////////////////////
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	js	FixedR1BH2
+	Next1BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	js	FixedG1BH2
+	Next2BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	js	FixedB1BH2
+	asm	jmp	Next6BH2
+	FixedR1BH2:
+	asm	or	ch,ch
+	asm	jnl	Next1BH2
+	asm	xor	ah,ah
+	asm	jmp	Next1BH2
+	FixedG1BH2:
+	asm	or	dl,dl
+	asm	jl	Next2BH2
+	asm	xor	al,al
+	asm	jmp	Next2BH2
+	FixedB1BH2:
+	asm	or	cl,cl
+	asm	jnl	Next3BH2
+	asm	xor	bh,bh
+	Next3BH2:
+	asm	jmp	Next6BH2
+	///////////////// Y > 128 ////////////////////
+	Granthen128BH2:
+	asm	mov	ah,bh					//////
+	asm	add	ah,ch		;//AH=R=Y+Cr		//////
+	asm	jns	FixedR2BH2
+	Next4BH2:
+	asm	shr	ah,3		;//R[5]
+	asm	mov	al,bh					//////
+	asm	sub	al,DL           ;//AL=G=Y-Cg		//////
+	asm	jns	FixedG2BH2
+	Next5BH2:
+	asm	add	bh,cl		;//DH=B=Y+Cb		//////
+	asm	jns	FixedB2BH2
+	asm	jmp	Next6BH2
+	FixedR2BH2:
+	asm	or	ch,ch
+	asm	jl	Next4BH2
+	asm	mov	ah,255
+	asm	jmp	Next4BH2
+	FixedG2BH2:
+	asm	or	dl,dl
+	asm	jnl	Next5BH2
+	asm	mov	al,255
+	asm	jmp	Next5BH2
+	FixedB2BH2:
+	asm	or	cl,cl
+	asm	jl	Next6BH2
+	asm	mov	bh,255
+	Next6BH2:
+	//////////////////////////////////////////////////////
+	asm	shr	ax,3            ;//G[5]
+	asm	shld	ax,bx,5		;//B[5]
+	asm	mov	es:[edi+8],ax	;//Write 1 AX=RGB16[5:6:5]
+	asm	mov	es:[edi+10],ax	;//Write 1 AX=RGB16[5:6:5]
+	//////////////////////////////////////////////////////
+	asm	add	edi,12		;//Y source 4 byte
+	asm	add	esi,4		;//Y source 4 byte
+	asm	add	ebp,2		;//UV source 2 byts
+	//	EDI had add when write pixel
+}
+/////////////////////////// YUV->RGB //////////////////////////
+extern	short	VCDHigh;
+extern	short	OffScrSel;
+extern	unsigned long	LinearOffSurface;
+extern	unsigned long	LinearSelSurface;
+void	DrawYVU12(void)	//YVU12 Planar
+{
+	asm	push	ds
+	_CX=VCDHigh;
+	asm	push	cx
+	asm	mov	es,OffScrSel;
+	_EDI=LinearOffSurface;		//ES:EDI->Offscreen
+	_DX=LinearSelSurface;
+	__emit__(0x26,0x66,0x8B,0x75,0x04);//asm mov esi,es:[di+4]
+	__emit__(0x26,0x66,0x8B,0x5D,0x08);//asm mov ebx,es:[di+8]
+	__emit__(0x26,0x8E,0x5D,0x10);	//asm	mov ds,es:[di+0x10]	//GS-> Video data
+	asm	mov	es,dx
+	///////// Move Y Data //////////
+	_DX=_CX;
+	MoveYData:
+		_ECX=88;
+		__emit__(0xF3,0x66,0x67,0xA5);//asm	rep	movsd//32 bits address
+		_ESI+=800;
+	asm	dec	dx
+	asm	jnz	MoveYData
+	////////// Move V Data //////////
+	_ESI=_EBX;
+	_ESI+=0x240;	//VPlane
+	asm	pop	cx
+	_DX=_CX/2;
+	asm	push	dx
+	MoveVData:
+		_ECX=44;
+		__emit__(0xF3,0x66,0x67,0xA5);//asm	rep	movsd//32 bits address
+		_ESI+=976;
+	asm	dec	dx
+	asm	jnz	MoveVData
+	////////// Move U Data //////////
+	_ESI=_EBX;	//UPlane
+	asm	pop	dx
+	MoveUData:
+		_ECX=44;
+		__emit__(0xF3,0x66,0x67,0xA5);//asm	rep	movsd//32 bits address
+		_ESI+=976;
+	asm	dec	dx
+	asm	jnz	MoveUData
+	asm	pop	ds
+}
+static	void	Align15(void)
+{
+}
+void	DrawYVU9(void)	//YVU9 Planar
+{
+	_CX=VCDHigh;
+	asm	push	ds
+	asm	push	cx
+	asm	mov	es,OffScrSel;
+	_EDI=LinearOffSurface;		//ES:EDI->Offscreen
+	_DX=LinearSelSurface;
+	asm 	mov 	esi,es:[di+4]
+	asm 	mov 	ebx,es:[di+8]
+	asm	mov 	ds,es:[di+0x10]	//GS-> Video data
+	asm	mov 	gs,es:[di+0x10]	//GS-> Video data
+	asm	mov	es,dx
+	///////// Move Y Data //////////
+	_DX=_CX;
+	MoveYData:
+		_ECX=88;
+		__emit__(0xF3,0x66,0x67,0xA5);//asm	rep	movsd//32 bits address
+		_ESI+=800;
+	asm	dec	dx
+	asm	jnz	MoveYData
+	/////////////////////////////////
+	asm	pop	cx
+	asm	pop	ds
+	////////// Move V Data //////////
+	_ESI=_EBX;
+	_ESI+=0x240;	//VPlane
+	_DX=_CX/4;
+	asm	push	dx
+	MoveVData:
+		_CX=176/16;
+		MoveVdata:
+		asm	mov	al,gs:[esi]
+		asm	mov	ah,gs:[esi+2]
+		asm	mov	es:[edi],ax
+		asm	mov	al,gs:[esi+4]
+		asm	mov	ah,gs:[esi+6]
+		asm	mov	es:[edi+2],ax
+		asm	mov	al,gs:[esi+8]
+		asm	mov	ah,gs:[esi+10]
+		asm	mov	es:[edi+4],ax
+		asm	mov	al,gs:[esi+12]
+		asm	mov	ah,gs:[esi+14]
+		asm	mov	es:[edi+6],ax
+		asm	add	edi,8
+		asm	add	esi,16
+		asm	dec	cx
+		asm	jnz	MoveVdata
+		_ESI+=(976+0x480);
+	asm	dec	dx
+	asm	jnz	MoveVData
+	////////// Move U Data //////////
+	_ESI=_EBX;	//UPlane
+	asm	pop	dx
+	MoveUData:
+		_ECX=176/16;
+		MoveUdata:
+		asm	mov	al,gs:[esi]
+		asm	mov	ah,gs:[esi+2]
+		asm	mov	es:[edi],ax
+		asm	mov	al,gs:[esi+4]
+		asm	mov	ah,gs:[esi+6]
+		asm	mov	es:[edi+2],ax
+		asm	mov	al,gs:[esi+8]
+		asm	mov	ah,gs:[esi+10]
+		asm	mov	es:[edi+4],ax
+		asm	mov	al,gs:[esi+12]
+		asm	mov	ah,gs:[esi+14]
+		asm	mov	es:[edi+6],ax
+		asm	add	edi,8
+		asm	add	esi,16
+		asm	dec	cx
+		asm	jnz	MoveUdata
+		_ESI+=(976+0x480);
+	asm	dec	dx
+	asm	jnz	MoveUData
+}
+static	void	Align16(void)
+{
+}
+void	DrawIF09(void)	//YVU9 Planar and pitch
+{
+	_CX=VCDHigh;
+	asm	mov	es,OffScrSel;
+	_EDI=LinearOffSurface;		//ES:EDI->Offscreen
+	_EDI+=(101376L+6336);	//U position
+	asm	push	edi
+	_EDI=LinearOffSurface;		//ES:EDI->Offscreen
+	_EDI+=101376L;	//V position
+	asm	push	edi
+	_EDI=LinearOffSurface;		//ES:EDI->Offscreen
+	_DX=LinearSelSurface;
+	asm	push	ds
+	asm	push	cx
+	asm 	mov 	esi,es:[di+4]
+	asm 	mov 	ebx,es:[di+8]
+	asm	mov 	ds,es:[di+0x10]	//GS-> Video data
+	asm	mov 	gs,es:[di+0x10]	//GS-> Video data
+	asm	mov	es,dx
+	///////// Move Y Data //////////
+	_DX=_CX;
+	MoveYData:
+		_ECX=88;
+		__emit__(0xF3,0x66,0x67,0xA5);//asm	rep	movsd//32 bits address
+		_ESI+=800;
+	asm	dec	dx
+	asm	jnz	MoveYData
+	/////////////////////////////////
+	asm	pop	cx
+	asm	pop	ds
+	////////// Move V Data //////////
+	asm	pop	edi	//V Plane position
+	_ESI=_EBX;
+	_ESI+=0x240;	//VPlane
+	_DX=_CX/4;
+	asm	push	dx
+	MoveVData:
+		_CX=176/16;
+		MoveVdata:
+		asm	mov	al,gs:[esi]
+		asm	mov	ah,gs:[esi+2]
+		asm	mov	es:[edi],ax
+		asm	mov	al,gs:[esi+4]
+		asm	mov	ah,gs:[esi+6]
+		asm	mov	es:[edi+2],ax
+		asm	mov	al,gs:[esi+8]
+		asm	mov	ah,gs:[esi+10]
+		asm	mov	es:[edi+4],ax
+		asm	mov	al,gs:[esi+12]
+		asm	mov	ah,gs:[esi+14]
+		asm	mov	es:[edi+6],ax
+		asm	add	edi,8
+		asm	add	esi,16
+		asm	dec	cx
+		asm	jnz	MoveVdata
+		_ESI+=(976+0x480);
+	asm	dec	dx
+	asm	jnz	MoveVData
+	////////// Move U Data //////////
+	asm	pop	dx
+	asm	pop	edi	//U Plane position
+	_ESI=_EBX;	//UPlane
+	MoveUData:
+		_CX=176/16;
+		MoveUdata:
+		asm	mov	al,gs:[esi]
+		asm	mov	ah,gs:[esi+2]
+		asm	mov	es:[edi],ax
+		asm	mov	al,gs:[esi+4]
+		asm	mov	ah,gs:[esi+6]
+		asm	mov	es:[edi+2],ax
+		asm	mov	al,gs:[esi+8]
+		asm	mov	ah,gs:[esi+10]
+		asm	mov	es:[edi+4],ax
+		asm	mov	al,gs:[esi+12]
+		asm	mov	ah,gs:[esi+14]
+		asm	mov	es:[edi+6],ax
+		asm	add	edi,8
+		asm	add	esi,16
+		asm	dec	cx
+		asm	jnz	MoveUdata
+		_ESI+=(976+0x480);
+	asm	dec	dx
+	asm	jnz	MoveUData
+}
+void	DrawYUY2(void)	//YUYV 4:2:2 byte ordering
+{
+//	asm	push	ebp
+	asm	mov	es,OffScrSel;
+	asm 	mov 	esi,es:[di+4]
+	asm	mov 	ebp,es:[di+8]
+	asm	mov 	gs,es:[di+0x10]	//GS-> Video data
+	_EDI=LinearOffSurface;		//ES:EDI->Offscreen
+	_ES=LinearSelSurface;
+	///////// Move YUYV Data //////////
+	_BX=VCDHigh;
+	_DX=_BX/2;
+	MoveYUY2Data:
+		_CX=176/2;
+		Move2LineData:
+		asm	mov	ah,gs:[ebp+0x240]
+		asm	mov	bh,gs:[ebp+0x241]
+		asm	mov	al,gs:[esi+1]
+		asm	mov	bl,gs:[esi+3]
+		asm	shl	eax,16		//V0Y1
+		asm	shl	ebx,16		//V1Y3
+		asm	mov	al,gs:[esi]
+		asm	mov	ah,gs:[ebp]	//U0Y0
+		asm	mov	bl,gs:[esi+2]
+		asm	mov	bh,gs:[ebp+1]	//U1Y2
+		asm	mov	es:[edi],eax		//Y1V0Y0U0
+		asm	mov	es:[edi+4],ebx		//Y3V1Y2U1
+		//////////// Line 2 ////////////
+		asm	mov	ah,gs:[ebp+0x240]
+		asm	mov	bh,gs:[ebp+0x241]
+		asm	mov	al,gs:[esi+0x480+1]
+		asm	mov	bl,gs:[esi+0x480+3]
+		asm	shl	eax,16		//V0Y1
+		asm	shl	ebx,16		//V1Y3
+		asm	mov	al,gs:[esi+0x480]
+		asm	mov	ah,gs:[ebp]	//U0Y0
+		asm	mov	bl,gs:[esi+0x480+2]
+		asm	mov	bh,gs:[ebp+1]	//U1Y2
+		asm	mov	es:[edi+704],eax
+		asm	mov	es:[edi+704+4],ebx
+		asm	add	edi,8
+		asm	add	esi,4
+		asm	add	ebp,2
+		asm	dec	cx
+		__emit__(0x0F,0x85,0x5B,0xFF);//asm	jnz	Move2LineData
+	_EBP+=976;
+	_ESI+=(800+0x480);
+	_EDI+=704;
+	asm	dec	dx
+	__emit__(0x0F,0x85,0x3E,0xFF);//asm	jnz	MoveYUY2Data
+//	asm	pop	ebp
+}
+static	void	Align17(void)
+{
+	asm	nop
+}
+void	DrawYVYU(void)	//YVYU 4:2:2 byte ordering
+{
+//	asm	push	ebp
+	asm	mov	es,OffScrSel;
+	asm 	mov 	esi,es:[di+4]
+	asm	mov 	ebp,es:[di+8]
+	asm	mov 	gs,es:[di+0x10]	//GS-> Video data
+	_EDI=LinearOffSurface;		//ES:EDI->Offscreen
+	_ES=LinearSelSurface;
+	///////// Move YUYV Data //////////
+	_BX=VCDHigh;
+	_DX=_BX/2;
+	MoveYUY2Data:
+		_CX=176/2;
+		Move2LineData:
+		asm	mov	ah,gs:[ebp]	//U0
+		asm	mov	bh,gs:[ebp+1]	//U1
+		asm	mov	al,gs:[esi+1]	//Y1
+		asm	mov	bl,gs:[esi+3]	//Y3
+		asm	shl	eax,16		//U0Y1
+		asm	shl	ebx,16		//U1Y3
+		asm	mov	al,gs:[esi]
+		asm	mov	ah,gs:[ebp+0x240]	//V0Y0
+		asm	mov	bl,gs:[esi+2]
+		asm	mov	bh,gs:[ebp+0x241]	//V1Y2
+		asm	mov	es:[edi],eax		//Y0V0Y1U0
+		asm	mov	es:[edi+4],ebx		//Y2V1Y3U1
+		//////////// Line 2 ////////////
+		asm	mov	ah,gs:[ebp]	//U0
+		asm	mov	bh,gs:[ebp+1]	//U1
+		asm	mov	al,gs:[esi+0x480+1]
+		asm	mov	bl,gs:[esi+0x480+3]
+		asm	shl	eax,16		//U0Y1
+		asm	shl	ebx,16		//U1Y3
+		asm	mov	al,gs:[esi+0x480]
+		asm	mov	ah,gs:[ebp+0x240]	//V0Y0
+		asm	mov	bl,gs:[esi+0x480+2]
+		asm	mov	bh,gs:[ebp+0x241]	//V1Y2
+		asm	mov	es:[edi+704],eax	//Y0V0Y1U0
+		asm	mov	es:[edi+704+4],ebx	//Y2V1Y3U1
+		asm	add	edi,8
+		asm	add	esi,4
+		asm	add	ebp,2
+		asm	dec	cx
+		__emit__(0x0F,0x85,0x5B,0xFF);//asm	jnz	Move2LineData
+	_EBP+=976;
+	_ESI+=(800+0x480);
+	_EDI+=704;
+	asm	dec	dx
+	__emit__(0x0F,0x85,0x3E,0xFF);//asm	jnz	MoveYUY2Data
+//	asm	pop	ebp
+}
+static	void	Align18(void)
+{
+	asm	nop
+}
+void	DrawUYVY(void)	//UYVY 4:2:2 byte ordering
+{
+//	asm	push	ebp
+	asm	mov	es,OffScrSel;
+	asm 	mov 	esi,es:[di+4]
+	asm	mov 	ebp,es:[di+8]
+	asm	mov 	gs,es:[di+0x10]	//GS-> Video data
+	_EDI=LinearOffSurface;		//ES:EDI->Offscreen
+	_ES=LinearSelSurface;
+	///////// Move YUYV Data //////////
+	_BX=VCDHigh;
+	_DX=_BX/2;
+	MoveYUY2Data:
+		_CX=176/2;
+		Move2LineData:
+		asm	mov	al,gs:[ebp+0x240]	//V0
+		asm	mov	bl,gs:[ebp+0x241]	//V1
+		asm	mov	ah,gs:[esi+1]
+		asm	mov	bh,gs:[esi+3]
+		asm	shl	eax,16		//[Y1V0][0]
+		asm	shl	ebx,16		//[Y3V1][0]
+		asm	mov	ah,gs:[esi]
+		asm	mov	al,gs:[ebp]	//[Y0U0]
+		asm	mov	bh,gs:[esi+2]
+		asm	mov	bl,gs:[ebp+1]	//[Y2U1]
+		asm	mov	es:[edi],eax		//U0Y0V0Y1
+		asm	mov	es:[edi+4],ebx		//U1Y2V1Y3
+		//////////// Line 2 ////////////
+		asm	mov	al,gs:[ebp+0x240]	//V0
+		asm	mov	bl,gs:[ebp+0x241]	//V1
+		asm	mov	ah,gs:[esi+0x480+1]	//Y1
+		asm	mov	bh,gs:[esi+0x480+3]	//Y3
+		asm	shl	eax,16		//[Y1V0][0]
+		asm	shl	ebx,16		//[Y3V1][0]
+		asm	mov	ah,gs:[esi+0x480]
+		asm	mov	al,gs:[ebp]		//[Y0U0]
+		asm	mov	bh,gs:[esi+0x480+2]
+		asm	mov	bl,gs:[ebp+1]		//[Y2U1]
+		asm	mov	es:[edi+704],eax	//U0Y0V0Y1
+		asm	mov	es:[edi+704+4],ebx	//U1Y2V1Y3
+		asm	add	edi,8
+		asm	add	esi,4
+		asm	add	ebp,2
+		asm	dec	cx
+		__emit__(0x0F,0x85,0x5B,0xFF);//asm	jnz	Move2LineData
+	_EBP+=976;
+	_ESI+=(800+0x480);
+	_EDI+=704;
+	asm	dec	dx
+	__emit__(0x0F,0x85,0x3E,0xFF);//asm	jnz	MoveYUY2Data
+//	asm	pop	ebp
+}
+///////////////////////////////////////////////////////////////

@@ -1,0 +1,267 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0095)http://www.vchelp.net/vchelp/zart/disable_key.asp?type_id=25&class_id=1&cata_id=2&article_id=64 -->
+<HTML><HEAD><TITLE>VCHelp.net</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content=no-cache http-equiv=Pragma>
+<STYLE>.trfocus {
+	BACKGROUND-COLOR: #ffffff
+}
+.trfocus2 {
+	BACKGROUND-COLOR: #ffff00
+}
+.trmod0 {
+	BACKGROUND-COLOR: #f0f0f0
+}
+.trmod1 {
+	BACKGROUND-COLOR: #e6e6e6
+}
+A {
+	COLOR: blue; TEXT-DECORATION: underline
+}
+A:hover {
+	COLOR: red; TEXT-DECORATION: underline
+}
+IMG {
+	BORDER-BOTTOM-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px; BORDER-TOP-WIDTH: 0px
+}
+BODY {
+	BACKGROUND-COLOR: #ffffff; COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 9pt; LINE-HEIGHT: 13pt; MARGIN-TOP: 10px
+}
+SMALL {
+	FONT-SIZE: 9pt
+}
+TD {
+	FONT-FAMILY: "宋体"; FONT-SIZE: 9pt; LINE-HEIGHT: 13pt
+}
+.BIGFONT {
+	FONT-FAMILY: "宋体"; FONT-SIZE: 12pt; LINE-HEIGHT: 15pt
+}
+</STYLE>
+
+<SCRIPT language=JavaScript>
+<!--
+function openNewWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+function openUserWindow(theURL)
+{
+	openNewWindow(theURL,'用户资料','scrollbars=yes,resizable=NO,width=660,height=400')
+}
+function openMessageWindow(theURL)
+{
+	openNewWindow(theURL,'留言','scrollbars=yes,resizable=NO,width=660,height=350')
+}
+function openDeleteWindow(theURL)
+{
+	openNewWindow(theURL,'删除主题','scrollbars=yes,resizable=NO,width=660,height=400')
+}
+function openBulletinWindow(theURL)
+{
+	openNewWindow(theURL,'论坛公告','scrollbars=yes,resizable=NO,width=660,height=300')
+}
+function openImageWindow(theURL)
+{
+	openNewWindow(theURL,'头像列表','scrollbars=yes,resizable=NO,width=660,height=350')
+}
+
+var cur_obj;
+function dealAlphaMenu(o)
+{
+	var sobj,fobj,cur_alf,cmd;
+	eval("sobj="+o+".style;");
+	eval("fobj="+o+".filters;");
+	if(o == cur_obj)
+	{
+		cur_alf = fobj.alpha.opacity;
+		cur_alf +=45;
+		fobj.alpha.opacity = cur_alf;
+		cmd = "dealAlphaMenu('"+o+"')";
+		if(cur_alf<90)
+			window.setTimeout(cmd,200);
+		else
+			sobj.zIndex=2;
+	}
+}
+
+function openSubMenu(o)
+{
+	var sobj,fobj,cmd;
+	eval("sobj="+o+".style;");
+	eval("fobj="+o+".filters;");
+	if(sobj.visibility != "visible")
+	{
+		sobj.zIndex=3;
+		sobj.visibility="visible";
+		fobj.alpha.opacity =50;
+		cmd = "dealAlphaMenu('"+o+"')";
+		window.setTimeout(cmd,200);
+	}
+	cur_obj = o;
+}
+function closeSubMenu(o)
+{
+	var cmd
+	cmd = "mycheck('"+o+"')";
+	cur_obj=null;
+	window.setTimeout(cmd,500);
+}
+function mycheck(o)
+{
+	var sobj;
+	if(o != cur_obj)
+	{
+		eval("sobj="+o+".style;");
+		sobj.visibility="hidden";
+//		cur_obj =null;
+	}
+}
+
+//-->
+</SCRIPT>
+
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY><!--包含头 -->
+<TABLE align=center bgColor=#000000 border=0 cellPadding=3 cellSpacing=1 
+width="96%"><!--标记放置区域-->
+  <TBODY>
+  <TR align=middle bgColor=#939393><!--图形LOGO标记放置区域-->
+    <TD align=middle vAlign=center width="30%">
+      <OBJECT classid=clsid:D27CDB6E-AE6D-11cf-96B8-444553540000 
+      codeBase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=4,0,2,0 
+      height=60 width=200><PARAM NAME="movie" VALUE="/vchelp/images/vc2.swf"><PARAM NAME="quality" VALUE="high">
+                                                <embed 
+      src="/vchelp/images/vc2.swf" quality=high 
+      pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" 
+      type="application/x-shockwave-flash" width="200" height="60">              
+      </embed>             </OBJECT><!-- <img src=img/brand_200_60.gif width=200 height=60 alt="LOGO1">--></TD>
+    <TD align=middle vAlign=center width="70%">
+      <SCRIPT language=JavaScript src="在程序中禁止Alt-Tab.files/myads.htm"></SCRIPT>
+    </TD></TR></TBODY></TABLE>
+<P>
+<TABLE align=center border=0 cellPadding=0 cellSpacing=0 width="96%">
+  <TBODY>
+  <TR>
+    <TD align=middle vAlign=top width="20%"><!-- 左边导航 -->
+      <TABLE bgColor=#000000 border=0 cellPadding=1 cellSpacing=1 
+        width="100%"><TBODY>
+        <TR bgColor=#939393>
+          <TD><B><A href="http://www.vchelp.net/vchelp/vchelp.asp"><FONT 
+            color=white>返回首页</FONT></A></B></TD></TR>
+        <TR bgColor=#939393>
+          <TD><B><FONT color=white>网站栏目导航</FONT></B></TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD><A 
+            href="http://www.vchelp.net/vchelp/last.asp?class_id=1">VC++/MFC 
+            Help</A><BR>提供各种VC++开发资源</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD><A 
+            href="http://www.vchelp.net/vchelp/last.asp?class_id=2">VC#/dotNet 
+            Help</A><BR>提供各种VC#开发资源</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD><A href="http://www.vchelp.net/vchelp/last.asp?class_id=3">CE 
+            eMbedded Help</A><BR>提供WinCE嵌入开发资源</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD><A 
+            href="http://www.vchelp.net/vchelp/last.asp?class_id=4">开发有感</A><BR>供大家发表在开发中的感想，经验</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD><A href="http://www.vchelp.net/cndevforum/cndevforum.asp" 
+            target=_blank>开发论坛</A><BR>开发中遇到问题请在论坛中提出</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD><A href="http://www.vchelp.net/copathway/copathway.asp" 
+            target=_blank>合作开发</A><BR>让你通过网络与其他人进行合作</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD><A href="http://www.vchelp.net/itbookreview/index.asp" 
+            target=_blank>个人专栏</A><BR>供广大的朋友建立属于自己的专栏，发表自己的作品</TD></TR><!--<tr bgcolor=#F0F0F0><td><a href=/town/town.asp target=_blank>VCHelpTown</a><br>给你一个自己的家</td></tr>-->
+        <TR bgColor=#f0f0f0>
+          <TD><A href="http://www.vchelp.net/chat/index.asp" 
+            target=_blank>聊天室</A><BR>大家有空的时候来聊聊，交流一下</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD><A href="http://www.vchelp.net/vchelp/about/submit.asp" 
+            target=_blank>投稿指南</A><BR>为了VCHelp能够办得更好，我们需要你的支持</TD></TR>
+        <TR bgColor=#939393>
+          <TD><B><FONT color=white>网站搜索</FONT></B></TD></TR>
+        <FORM action=/vchelp/search.asp method=get>
+        <TR bgColor=#f0f0f0>
+          <TD align=middle>搜索 <INPUT maxLength=20 name=terms size=10><BR>方式 
+            <SELECT name=class_id size=1> <OPTION selected 
+              value=1>搜索标题</OPTION> <OPTION value=2>搜索说明</OPTION></SELECT><BR>匹配 
+            <SELECT name=and_search size=1> <OPTION selected 
+              value=yes>所有条件</OPTION> <OPTION value=no>任一条件</OPTION></SELECT><BR><INPUT type=submit value=提交><INPUT name=reset type=reset value=重置> 
+          </TD></TR></FORM>
+        <TR bgColor=#939393>
+          <TD><B><FONT color=white>订阅更新通知</FONT></B></TD></TR>
+        <FORM action=../email_list/join.asp method=get target=_blank>
+        <TR bgColor=#f0f0f0>
+          <TD 
+            align=middle>在订阅邮件后如果无<BR>法收到确认邮件则请<BR>换一个邮箱进行订阅<BR>输入邮件地址<BR><INPUT 
+            maxLength=50 name=email_addr size=12><INPUT name=list_id type=hidden 
+            value=1> <BR><INPUT CHECKED name=act type=radio value=join>加入 <INPUT 
+            name=act type=radio value=exit>退出<BR><INPUT type=submit value=提交请求> 
+          </TD></TR></FORM></TBODY></TABLE></TD>
+    <TD width="1%"></TD>
+    <TD align=left vAlign=top width="79%"><!--文章包含头 -->
+      <P><A href="http://www.vchelp.net/vchelp/last.asp?class_id=1">Visual 
+      C++开发</A>&gt;&gt;<A 
+      href="http://www.vchelp.net/vchelp/last.asp?class_id=1&amp;c_id=2">平台/系统</A>&gt;&gt;<A 
+      href="http://www.vchelp.net/vchelp/type.asp?class_id=1&amp;type_id=25">Win32/SDK/DDK</A>&gt;&gt;本文被浏览次数 
+      1000 <!--文章--><!--article begin--><BR><BR>
+      <TABLE align=center border=0 cellPadding=2 cellSpacing=0 width="100%">
+        <TBODY>
+        <TR bgColor=#939393>
+          <TD align=middle width="100%"><FONT color=white>在程序中禁止<FONT 
+            class=eng>Alt-Tab</FONT></FONT></TD></TR>
+        <TR bgColor=#e6e6e6>
+          <TD align=middle>闻怡洋 <A href="mailto:wyy_cq@21cn.com"><FONT 
+            class=engul>wyy_cq@21cn.com</FONT></A> <A 
+            href="http://www.vchelp.net/"><FONT 
+            class=engul>http://www.vchelp.net/</FONT></A> </TD></TR>
+        <TR bgColor=#f4f4f4>
+          <TD><!--article begin-->
+            <P>完成这一功能的最简单方法是使用RegisterHotKey函数。在调用该函数后你的进程回在ALT-TAB按下时比系统先得到通知。 
+            你需要处理的消息是WM_HOTKEY，下面是相关代码讲解。 <PRE>RegisterHotKey函数原型及说明：
+BOOL RegisterHotKey(
+  HWND hWnd,         // window to receive hot-key notification
+  int id,            // identifier of hot key
+  UINT fsModifiers,  // key-modifier flags
+  UINT vk            // virtual-key code);
+</PRE>
+            <P>参数 id为你自己定义的一个ID值，对一个线程来讲其值必需在0x0000 - 
+            0xBFFF范围之内，对DLL来讲其值必需在0xC000 - 0xFFFF 范围之内，在同一进程内该值必须唯一<BR>参数 
+            fsModifiers指明与热键联合使用按键，可取值为：MOD_ALT MOD_CONTROL MOD_WIN 
+            MOD_SHIFT<BR>参数 vk指明热键的虚拟键码 </P><PRE>// 初始化
+CMainFrame::CMainFrame()
+{
+ m_nHotKeyID = 100;
+
+ BOOL m_isKeyRegistered = RegisterHotKey(GetSafeHwnd(), m_nHotKeyID,
+  MOD_ALT, VK_TAB);
+
+ ASSERT(m_isKeyRegistered != FALSE);
+}
+
+//取消
+CMainFrame::~CMainFrame()
+{
+ BOOL m_iskeyUnregistered = UnregisterHotKey(GetSafeHwnd(), m_nHotKeyID);
+ ASSERT(m_isKeyUnregistered != FALSE);
+}
+
+WM_HOTKEY消息含义：
+idHotKey = (int) wParam;              // identifier of hot key 
+fuModifiers = (UINT) LOWORD(lParam);  // key-modifier flags 
+uVirtKey = (UINT) HIWORD(lParam);     // virtual-key code 
+这三个值分别和调用RegisterHotKey时的id,fsModifiers,vk对应。
+最后你需要在文件中定义ON_MESSAGE消息映射。
+在头文件中：
+class CMainFrame : public XXXX
+{
+	afx_msg LONG OnHotKey(WPARAM wP,LPARAM lP);
+}
+在CPP文件中MESSAGE_MAP处添加：
+ON_MESSAGE(WM_HOTKEY,OnHotKey)
+</PRE>
+            <P>该热键在你的进程运行时一直有效，在进程结束后其状态会被系统恢复。</P><!--article end--></TD></TR></TBODY></TABLE><!--article end--><!--文章 end--><!--文章尾含头 --></P></TD></TR></TBODY></TABLE>
+<P 
+align=center>特别说明，未经本站允许不得复制本站栏目和内容<BR>本站所提供所有资源都不作为商业用途，如果你违反本规定将自行承担所有责任<BR><A 
+href="http://www.copathway.com/" title=页面执行时间：109.375ms>VCHelp</A>网站版权所有 
+闻怡洋制作<BR>(c)1998-2003 All Rights Reserved </P><!-- 尾包含 --></BODY></HTML>

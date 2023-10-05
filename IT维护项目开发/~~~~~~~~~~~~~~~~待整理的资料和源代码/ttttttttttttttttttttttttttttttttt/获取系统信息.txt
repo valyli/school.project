@@ -1,0 +1,162 @@
+获取系统信息
+ 
+下面的实例实现了用vc5,得到一些系统信息(如有多少个驱动器，计算机名称)。
+SYSTEM_INFO SystemInfo = { 0 };
+::GetSystemInfo(&SystemInfo);
+
+//-------x-------
+
+MEMORYSTATUS MemoryStatus = { 0 };
+MemoryStatus.dwLength = sizeof(MEMORYSTATUS);
+::GlobalMemoryStatus(&MemoryStatus);
+
+//-------x-------
+
+CString strComputerName;
+::GetComputerName(strComputerName.GetBuffer(MAX_COMPUTERNAME_LENGTH+1), MAX_COMPUTERNAME_LENGTH+1);
+strComputerName.ReleaseBuffer();
+
+//-------x--------
+
+struct PHYDRIVEINFO
+{
+   CString m_sDrive;
+   DISK_GEOMETRY m_DiskGeometry;
+   CByteArray m_arrDriveLayout;
+
+   PHYDRIVEINFO() { ::ZeroMemory(&m_DiskGeometry, sizeof(DISK_GEOMETRY)); }
+   PHYDRIVEINFO(PHYDRIVEINFO& obj) { ::ZeroMemory(&m_DiskGeometry, sizeof(DISK_GEOMETRY)); }
+   PHYDRIVEINFO& operator=(PHYDRIVEINFO& obj) { return *this; }
+   PHYDRIVEINFO& operator=(LPCTSTR lpszDrive) { m_sDrive = lpszDrive; return *this; }
+};
+
+CArray<PHYDRIVEINFO, LPCTSTR> arrPhysicalDrives;
+
+const int MAXPHYDRIVE = 16;
+
+const CString sFileNamePrefix = _T("\\\\.\\");
+CString sFileName;
+CString sFilePath;
+HANDLE hFile = INVALID_HANDLE_VALUE;
+for (int i = 0; i < MAXPHYDRIVE; i++)
+{
+   sFileName.Format(_T("PHYSICALDRIVE%d"), i);
+   sFilePath = sFileNamePrefix + sFileName;
+   hFile = ::CreateFile(sFilePath, GENERIC_READ, FILE_SHARE_READ, NULL, OPEN_EXISTING,
+          FILE_ATTRIBUTE_NORMAL, NULL);
+   if (hFile != INVALID_HANDLE_VALUE)
+   {
+      int nIndex = arrPhysicalDrives.Add(sFileName);
+      PHYDRIVEINFO& rPhyDriveInfo = arrPhysicalDrives.ElementAt(nIndex);
+      DWORD dwBytesReturned = 0;
+      ::DeviceIoControl(hFile, IOCTL_DISK_GET_DRIVE_GEOMETRY, NULL, 0,
+            &rPhyDriveInfo.m_DiskGeometry,
+            sizeof(DISK_GEOMETRY), &dwBytesReturned, NULL);
+
+      int cPartns = 4;
+      while (TRUE)
+      {
+         rPhyDriveInfo.arrDriveLayout.SetSize(sizeof(DRIVE_LAYOUT_INFORMATION) +
+                 cPartns*sizeof(PARTITION_INFORMATION));
+         ::ZeroMemory(rPhyDriveInfo.arrDriveLayout.GetData(),
+                  rPhyDriveInfo.arrDriveLayout.GetSize());
+         if (::DeviceIoControl(hFile, IOCTL_DISK_GET_DRIVE_LAYOUT, NULL, 0,
+              rPhyDriveInfo.arrDriveLayout.GetData(), rPhyDriveInfo.arrDriveLayout.GetSize(),
+               &dwBytesReturned, NULL))
+            break;
+         else if (::GetLastError() != ERROR_INSUFFICIENT_BUFFER)
+         {
+            rPhyDriveInfo.arrDriveLayout.RemoveAll();
+            break;
+         }
+         cPartns += 4;
+      }
+
+      ::CloseHandle(hFile);
+   }
+}
+
+//-------x--------
+
+struct LOGDRIVEINFO
+{
+   BOOL m_bInfoValid;
+   CString m_sDrive;
+   CString m_sVolumeName;
+   DWORD m_dwVolumeSerialNumber;
+   DWORD m_dwMaxNameLength;
+   DWORD m_dwFileSystemFlags;
+   CString m_sFileSystemName;
+   UINT m_nDriveType;
+   unsigned long m_nSectorsPerCluster;
+   unsigned long m_nBytesPerSector;
+   unsigned long m_nFreeClusters;
+   unsigned long m_nClusters;
+
+   LOGDRIVEINFO()
+   {
+      m_bInfoValid = FALSE;
+      m_dwVolumeSerialNumber = 0;
+      m_dwMaxNameLength = 0;
+      m_dwFileSystemFlags = 0;
+      m_nDriveType = 0;
+      m_nSectorsPerCluster = 0;
+      m_nBytesPerSector = 0;
+      m_nFreeClusters = 0;
+      m_nClusters = 0;
+   }
+   LOGDRIVEINFO(LOGDRIVEINFO& obj)
+   {
+      m_bInfoValid = FALSE;
+      m_dwVolumeSerialNumber = 0;
+      m_dwMaxNameLength = 0;
+      m_dwFileSystemFlags = 0;
+      m_nDriveType = 0;
+      m_nSectorsPerCluster = 0;
+      m_nBytesPerSector = 0;
+      m_nFreeClusters = 0;
+      m_nClusters = 0;
+      operator=(obj);
+   }
+   LOGDRIVEINFO& operator=(LOGDRIVEINFO& obj) { m_sDrive = obj.m_sDrive; return *this; }
+   LOGDRIVEINFO& operator=(LPCTSTR lpszDrive) { m_sDrive = lpszDrive; return *this; }
+};
+
+CArray<LOGDRIVEINFO, LPCTSTR> arrLogicalDrives;
+
+const int LOGDRIVEBUFSIZE = 1024;
+LPTSTR lpszzLogicalDrives = new TCHAR[LOGDRIVEBUFSIZE];
+::ZeroMemory(lpszzLogicalDrives, LOGDRIVEBUFSIZE * sizeof(TCHAR));
+::GetLogicalDriveStrings(LOGDRIVEBUFSIZE, lpszzLogicalDrives);
+
+for (LPTSTR lpsz = lpszzLogicalDrives; *lpsz != 0; lpsz += ::_tcslen(lpsz)+1)
+{
+   TCHAR szLogicalDrive[4] = { 0 };
+   ::_tcsnccpy(szLogicalDrive, lpsz, ::_tcslen(lpsz)-1);
+   int nIndex = arrLogicalDrives.Add(szLogicalDrive);
+   arrLogicalDrives[nIndex].m_bInfoValid = ::GetVolumeInformation(lpsz,
+                             arrLogicalDrives[nIndex].m_sVolumeName.GetBuffer
+                                (_MAX_PATH), _MAX_PATH,
+                             &arrLogicalDrives[nIndex].m_dwVolumeSerialNumber,
+                             &arrLogicalDrives[nIndex].m_dwMaxNameLength,
+                             &arrLogicalDrives[nIndex].m_dwFileSystemFlags,
+                             arrLogicalDrives[nIndex].m_sFileSystemName.GetBuffer(
+                                 _MAX_PATH), _MAX_PATH);
+      arrLogicalDrives[nIndex].m_sVolumeName.ReleaseBuffer();
+      arrLogicalDrives[nIndex].m_sFileSystemName.ReleaseBuffer();
+   arrLogicalDrives[nIndex].m_nDriveType = ::GetDriveType(lpsz);
+   if (arrLogicalDrives[nIndex].m_nDriveType == DRIVE_FIXED||arrLogicalDrives[nIndex].m_nDriveType
+               == DRIVE_CDROM || arrLogicalDrives[nIndex].m_nDriveType == DRIVE_RAMDISK)
+   {
+      ::GetDiskFreeSpace(lpsz, &arrLogicalDrives[nIndex].m_nSectorsPerCluster,
+          &arrLogicalDrives[nIndex].m_nBytesPerSector,
+         &arrLogicalDrives[nIndex].m_nFreeClusters, &arrLogicalDrives[nIndex].m_nClusters);
+   }
+}
+delete[] lpszzLogicalDrives;
+lpszzLogicalDrives = NULL;
+
+
+ 
+
+

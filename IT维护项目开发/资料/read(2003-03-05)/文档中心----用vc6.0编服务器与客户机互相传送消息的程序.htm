@@ -1,0 +1,1118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0049)http://www.xbit2008.com/document/index.asp?id=470 -->
+<HTML><HEAD><TITLE>文档中心</TITLE><LINK 
+href="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/css.css" type=text/css 
+rel=stylesheet>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META content="MSHTML 6.00.2600.0" name=GENERATOR></HEAD>
+<BODY text=#000000 bgColor=#ffffff leftMargin=4 topMargin=2>
+<TABLE cellSpacing=0 cellPadding=0 width=772 border=0>
+  <TBODY>
+  <TR>
+    <TD colSpan=2>
+      <OBJECT height=50 width=450 
+      classid=clsid:D27CDB6E-AE6D-11cf-96B8-444553540000><PARAM NAME="movie" VALUE="logo.swf"></OBJECT></TD></TR>
+  <TR>
+    <TD colSpan=2 height=12>&nbsp;</TD></TR>
+  <TR>
+    <TD vAlign=top width=150 bgColor=#dfffff>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <SCRIPT language=JavaScript type=text/javascript><!--
+function FrontPage_Form1_Validator(theForm)
+{
+
+ 
+  if (theForm.uid.value.length < 3)
+  {
+    alert("在 昵称 域中，请至少输入 3 个字符。");
+    theForm.uid.focus();
+    return (false);
+  }
+
+  if (theForm.uid.value.length > 20)
+  {
+    alert("在 昵称 域中，请最多输入 20 个字符。");
+    theForm.uid.focus();
+    return (false);
+  }
+
+ 
+
+  if (theForm.psd.value.length < 3)
+  {
+    alert("在 密码 域中，请至少输入 3 个字符。");
+    theForm.psd.focus();
+    return (false);
+  }
+
+  if (theForm.psd.value.length > 20)
+  {
+    alert("在 密码 域中，请最多输入 20 个字符。");
+    theForm.psd.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></SCRIPT>
+
+            <TABLE id=AutoNumber8 style="BORDER-COLLAPSE: collapse" 
+            borderColor=#0066ff cellSpacing=0 cellPadding=2 width="100%" 
+            border=1>
+              <TBODY>
+              <TR bgColor=#d4d0c8>
+                <TD borderColor=#0066ff bgColor=#0066ff height=15><B><FONT 
+                  color=#ffffff>会员登陆</FONT></B></TD></TR>
+              <TR>
+                <TD align=middle bgColor=#ffffcc>
+                  <FORM language=JavaScript name=FrontPage_Form1 
+                  onsubmit="return FrontPage_Form1_Validator(this)" 
+                  action=r_main.asp method=post 
+                  webbot-action="--WEBBOT-SELF--">昵称： <INPUT class=button3 
+                  onfocus=this.select() maxLength=20 size=10 value=glacier 
+                  name=uid><BR>密码： <INPUT class=button3 onfocus=this.select() 
+                  type=password maxLength=20 size=10 value=glacier name=psd> <INPUT class=button1 type=submit value=登陆> <A 
+                  href="http://www.xbit2008.com/document/reg.asp">注册</A> <A 
+                  href="http://www.xbit2008.com/document/getpsd.asp">忘记密码</A></FORM></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD height=12></TD></TR>
+        <TR>
+          <TD>
+            <TABLE id=AutoNumber8 style="BORDER-COLLAPSE: collapse" 
+            borderColor=#0066ff height=0 cellSpacing=0 cellPadding=2 
+            width="100%" bgColor=#ffffcc border=1>
+              <TBODY>
+              <TR bgColor=#d4d0c8>
+                <TD borderColor=#0066ff bgColor=#0066ff height=21><B><FONT 
+                  color=#ffffff>本文及作者信息</FONT></B></TD></TR>
+              <TR>
+                <TD align=middle height=70>
+                  <TABLE id=AutoNumber8 style="BORDER-COLLAPSE: collapse" 
+                  height=0 width="98%" align=center>
+                    <TBODY>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/boy.gif" 
+                        width=16 border=0></TD>
+                      <TD width="81%"><A 
+                        onclick="javascript:window.open('user.asp?user=glacier','hongen_dict','resizable=0,status=no,toolbar=no,menubar=no,location=no,width=500,height=350');" 
+                        href="http://www.xbit2008.com/document/index.asp?id=470#">glacier</A></A> 
+                        <A 
+                        onclick="javascript:window.open('write_guest.asp?uid=glacier','hongen_dict','resizable=0,status=no,toolbar=no,menubar=no,location=no,width=500,height=350');" 
+                        href="http://www.xbit2008.com/document/index.asp?id=470#">留言</A> 
+                      </TD></TR>
+                    <TR>
+                      <TD colSpan=2>
+                        <DIV align=center><FONT color=#ff0000 
+                        size=3>★★★★★★★★★</FONT><FONT 
+                        color=#ff00ff>★★</FONT></DIV></TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=12 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/feedback.gif" 
+                        width=13 border=0></TD>
+                      <TD width="81%"><A 
+                        href="mailto:lyy_20@sina.com">lyy_20@sina.com</A></TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/oicq.gif" 
+                        width=16 border=0></TD>
+                      <TD width="81%">12173849</TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/home.gif" 
+                        width=16 border=0></TD>
+                      <TD width="81%"><A href="http://www.xbit2008.com/" 
+                        target=_bank>作者主页</A></TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/clock.gif" 
+                        width=12 border=0></TD>
+                      <TD width="81%">加入：2002-7-26</TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/icq.gif" 
+                        width=15 border=0></TD>
+                      <TD width="81%">登陆次数：319</TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=15 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/rewrite.gif" 
+                        width=16 border=0></TD>
+                      <TD width="81%"><A title=搜索glacier所有发表发表文章 
+                        href="http://www.xbit2008.com/document/uid_document.asp?uid=glacier" 
+                        target=_bank>发表文章</A>：<FONT 
+color=#ff0000>8</FONT>页</TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/palette_draw.gif" 
+                        width=9 border=0></TD>
+                      <TD width="81%"><A title=搜索glacier所有发表回复文章 
+                        href="http://www.xbit2008.com/document/uid_re.asp?uid=glacier" 
+                        target=_bank>回复文章</A><FONT 
+color=#ff0000>：2</FONT>页</TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/clock.gif" 
+                        width=12 border=0></TD>
+                      <TD width="81%">发表：<FONT 
+                      color=#ff0000>2002-5-14</FONT></TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/icq.gif" 
+                        width=15 border=0></TD>
+                      <TD width="81%">人气：<FONT color=#ff0000>59</FONT>人</TD></TR>
+                    <TR>
+                      <TD colSpan=8 height=0>　</TD></TR>
+                    <TR>
+                      <TD colSpan=2 height=0><IMG height=10 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/ico.gif" 
+                        width=10 border=0> 本文投票信息（<FONT 
+                      color=#ff0000>0</FONT>票）</TD></TR>
+                    <TR>
+                      <TD colSpan=2 height=0>
+                        <TABLE cellSpacing=0 cellPadding=0 width="100%" 
+border=0>
+                          <TBODY>
+                          <TR>
+                            <TD width="30%">挺好：</TD>
+                            <TD width="70%">
+                              <TABLE borderColor=#ffffcc height=4 cellSpacing=0 
+                              cellPadding=0 width=0% bgColor=#ff0000 border=1>
+                                <TBODY>
+                                <TR>
+                                <TD>0　</TD></TR></TBODY></TABLE></TD></TR>
+                          <TR>
+                            <TD width="30%">一般：</TD>
+                            <TD width="70%">
+                              <TABLE borderColor=#ffffcc height=4 cellSpacing=0 
+                              cellPadding=0 width=0% bgColor=#ffff00 border=1>
+                                <TBODY>
+                                <TR>
+                                <TD height=15>0</TD></TR></TBODY></TABLE></TD></TR>
+                          <TR>
+                            <TD width="30%">很差：</TD>
+                            <TD width="70%">
+                              <TABLE borderColor=#ffffcc height=4 cellSpacing=0 
+                              cellPadding=0 width=0% bgColor=#00ff00 border=1>
+                                <TBODY>
+                                <TR>
+                                <TD>0　</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+                    <TR>
+                      <TD colSpan=8 height=0>　</TD></TR>
+                    <TR>
+                      <TD colSpan=2 height=0><IMG height=10 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/ico.gif" 
+                        width=10 border=0> 为本文投一票</TD></TR>
+                    <TR>
+                      <TD colSpan=2 height=14>
+                        <FORM name=form1 action=index.asp?id=470 method=post>
+                        <TABLE cellSpacing=0 cellPadding=0 width="100%" 
+border=0>
+                          <TBODY>
+                          <TR>
+                            <TD><INPUT type=radio value=a name=tp> 本文非常好</TD></TR>
+                          <TR>
+                            <TD><INPUT type=radio value=b name=tp> 本文一般好 
+</TD></TR>
+                          <TR>
+                            <TD><INPUT type=radio value=c name=tp> 本文很差劲 
+</TD></TR>
+                          <TR>
+                            <TD><INPUT type=submit value="投  票" name=ok> 
+                          </TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD height=12>&nbsp;</TD></TR>
+        <TR>
+          <TD>
+            <SCRIPT language=JavaScript1.2 
+            src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/menu.js"></SCRIPT>
+
+            <TABLE id=AutoNumber4 style="BORDER-COLLAPSE: collapse" 
+            borderColor=#0066ff height=152 cellSpacing=0 cellPadding=2 
+            width="100%" bgColor=#ffffcc border=1>
+              <TBODY>
+              <TR>
+                <TD borderColor=#0066ff width="100%" bgColor=#0066ff 
+                  height=18><B><FONT color=#ffffff>文档导航</FONT></B></TD></TR>
+              <TR>
+                <TD vAlign=top width="100%">
+                  <TABLE width="98%" align=left>
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <DIV class=parent id=KB1Parent><A title=编程 
+                        onclick="expandIt('KB1');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=470#"><IMG 
+                        height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=编程">编程</A> 
+                        </DIV>
+                        <DIV class=child id=KB1Child><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=ASP 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=ASP" 
+                        target=right>ASP</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=ASP.NET 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=ASP.NET" 
+                        target=right>ASP.NET</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=C＃ 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=C＃" 
+                        target=right>C＃</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=C＋＋ 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=C＋＋" 
+                        target=right>C＋＋</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Borland 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=C++Builder" 
+                        target=right C++Builder>C++Builder</A> <BR><IMG 
+                        height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=CORBA 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=CORBA" 
+                        target=right>CORBA</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=CSS 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=CSS" 
+                        target=right>CSS</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=C语言 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=C语言" 
+                        target=right>C语言</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Delphi 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=Delphi" 
+                        target=right>Delphi </A><BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=EJB 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=EJB" 
+                        target=right>EJB</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=HTML/DHTML 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=HTML/DHTML" 
+                        target=right>HTML/DHTML</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=J2EE 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=J2EE" 
+                        target=right>J2EE</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=JAVA 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=JAVA" 
+                        target=right>JAVA</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=JavaScript 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=JavaScript" 
+                        target=right>JavaScript</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=JSP 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=JSP" 
+                        target=right>JSP</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=LISP(AutoCAD的开发语言) 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=LISP" 
+                        target=right>LISP</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Palm 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=Palm" 
+                        target=right>Palm</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Perl 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=Perl" 
+                        target=right>Perl</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=PHP 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=PHP" 
+                        target=right>PHP</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=PowerBuilder 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=PowerBuild" 
+                        target=right>PowerBuild</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Socket 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=Socket" 
+                        target=right>Socket</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Struts 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=Struts" 
+                        target=right>Struts</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Microsoft 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=VB/VB.NET" 
+                        target=right VB.NET Basic Visual>VB/VB.NET</A> <BR><IMG 
+                        height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=VBS 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=VBS" 
+                        target=right>VBS</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=VC 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=VC" 
+                        target=right>VC</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Microsoft 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=VFoxPro" 
+                        target=right Visual FoxPro>VFoxPro</A> <BR><IMG 
+                        height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=WAP 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=WAP" 
+                        target=right>WAP</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Windows编程 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=Windows编程" 
+                        target=right>Windows编程</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=XML 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=XML" 
+                        target=right>XML</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=汇编语言 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=汇编语言" 
+                        target=right>汇编语言</A> <BR></DIV>
+                        <DIV class=parent id=KB2Parent><A title=网络 
+                        onclick="expandIt('KB2');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=470#"><IMG 
+                        height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=网络">网络</A> 
+                        </DIV>
+                        <DIV class=child id=KB2Child><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Windows2k 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=网络&amp;c=Windows2k" 
+                        target=right>Windows2k</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=我是网络高手 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=网络&amp;c=网络设备" 
+                        target=right 你是谁!>网络设备</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=网络协议 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=网络&amp;c=网络协议" 
+                        target=right>网络协议</A> <BR></DIV>
+                        <DIV class=parent id=KB3Parent><A title=数据库 
+                        onclick="expandIt('KB3');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=470#"><IMG 
+                        height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=数据库">数据库</A> 
+                        </DIV>
+                        <DIV class=child id=KB3Child><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=ACCESS 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=ACCESS" 
+                        target=right>ACCESS</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=DB2 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=DB2" 
+                        target=right>DB2</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=FoxPro 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=FoxPro" 
+                        target=right>FoxPro</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=INGRES 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=INGRES" 
+                        target=right>INGRES</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=MSSQL 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=MSSQL" 
+                        target=right>MSSQL</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=MYSQL 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=MYSQL" 
+                        target=right>MYSQL</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Oracle 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=Oracle" 
+                        target=right>Oracle</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=QBASE 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=QBASE" 
+                        target=right>QBASE</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=SQL 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=SQL" 
+                        target=right>SQL</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=SYBASE 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=SYBASE" 
+                        target=right>SYBASE</A> <BR></DIV>
+                        <DIV class=parent id=KB4Parent><A title=2D/3D设计空间,动画制作 
+                        onclick="expandIt('KB4');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=470#"><IMG 
+                        height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=制作设计">制作设计</A> 
+                        </DIV>
+                        <DIV class=child id=KB4Child><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=3D 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=3DSMax" 
+                        target=right MAX Studio>3DSMax</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Authorware 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=Authorware" 
+                        target=right>Authorware</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=AutoCAD 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=AutoCAD" 
+                        target=right>AutoCAD</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Dreamweaver 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=Dreamweaver" 
+                        target=right>Dreamweaver</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Fireworks 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=Fireworks" 
+                        target=right>Fireworks</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Flash 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=Flash" 
+                        target=right>Flash</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=FreeHand 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=FreeHand" 
+                        target=right>FreeHand</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Microsoft 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=FrontPage" 
+                        target=right FrontPage>FrontPage</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Adobe 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=Illustrator" 
+                        target=right Illustrator>Illustrator</A> <BR><IMG 
+                        height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Maya 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=Maya" 
+                        target=right>Maya</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=PhotoShop 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=PhotoShop" 
+                        target=right>PhotoShop</A> <BR></DIV>
+                        <DIV class=parent id=KB5Parent><A title=操作系统 
+                        onclick="expandIt('KB5');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=470#"><IMG 
+                        height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=操作系统">操作系统</A> 
+                        </DIV>
+                        <DIV class=child id=KB5Child><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Linux 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=操作系统&amp;c=Linux" 
+                        target=right>Linux</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=NetWare 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=操作系统&amp;c=NetWare" 
+                        target=right>NetWare</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=UNIX 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=操作系统&amp;c=UNIX" 
+                        target=right>UNIX</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Windows 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=操作系统&amp;c=Windows" 
+                        target=right>Windows</A> <BR></DIV>
+                        <DIV class=parent id=KB6Parent><A title=电脑的软硬相关故障和维护 
+                        onclick="expandIt('KB6');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=470#"><IMG 
+                        height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=故障维护">故障维护</A> 
+                        </DIV>
+                        <DIV class=child id=KB6Child><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=软件故障 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=故障维护&amp;c=软件故障" 
+                        target=right>软件故障</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=网络故障 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=故障维护&amp;c=网络故障" 
+                        target=right>网络故障</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=硬件故障 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=故障维护&amp;c=硬件故障" 
+                        target=right>硬件故障</A> <BR></DIV>
+                        <DIV class=parent id=KB7Parent><A title=计算机安全和黑客技术及计算机病毒 
+                        onclick="expandIt('KB7');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=470#"><IMG 
+                        height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=安全技术">安全技术</A> 
+                        </DIV>
+                        <DIV class=child id=KB7Child><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=DNS服务器 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=DNS服务器" 
+                        target=right>DNS服务器</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Email服务器 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=Email服务器" 
+                        target=right>Email服务器</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=FTP服务器 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=FTP服务器" 
+                        target=right>FTP服务器</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=HPUX 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=HPUX" 
+                        target=right>HPUX</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=IBM 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=IBM AIX" 
+                        target=right AIX>IBM AIX</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Linux 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=Linux" 
+                        target=right>Linux</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=UNIX 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=UNIX" 
+                        target=right>UNIX</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Web浏览器 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=Web浏览器" 
+                        target=right>Web浏览器</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=Windows 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=Windows" 
+                        target=right>Windows</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=WWW服务器 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=WWW服务器" 
+                        target=right>WWW服务器</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=攻击代码 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=攻击代码" 
+                        target=right>攻击代码</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=后门程序 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=后门程序" 
+                        target=right>后门程序</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=加密解密 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=加密解密" 
+                        target=right>加密解密</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=路由器/防火墙 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=路由及防火墙" 
+                        target=right>路由及防火墙 </A><BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=数据库 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=数据库" 
+                        target=right>数据库</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=通用漏洞 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=通用漏洞" 
+                        target=right>通用漏洞</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=溢出技术 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=溢出技术" 
+                        target=right>溢出技术</A> <BR></DIV>
+                        <DIV class=parent id=KB8Parent><A title=其他文章 
+                        onclick="expandIt('KB8');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=470#"><IMG 
+                        height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=其他文章">其他文章</A> 
+                        </DIV>
+                        <DIV class=child id=KB8Child><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=结构格式 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=其他文章&amp;c=结构格式" 
+                        target=right>结构格式</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=其他文章 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=其他文章&amp;c=其他文章" 
+                        target=right>其他文章</A> <BR><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=输入输出 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=其他文章&amp;c=输入输出" 
+                        target=right>输入输出</A> <BR></DIV>
+                        <DIV class=parent id=KB9Parent><A title=加密解密 
+                        onclick="expandIt('KB9');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=470#"><IMG 
+                        height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=加密解密">加密解密</A> 
+                        </DIV>
+                        <DIV class=child id=KB9Child><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/blank.gif" 
+                        width=32 border=0><A title=密码算法 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=加密解密&amp;c=密码算法" 
+                        target=right>密码算法</A> 
+              <BR></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD height=12>&nbsp;</TD></TR>
+        <TR>
+          <TD>
+            <TABLE id=AutoNumber8 style="BORDER-COLLAPSE: collapse" 
+            borderColor=#0066ff cellSpacing=0 cellPadding=2 width="100%" 
+            bgColor=#ffffcc border=1>
+              <TBODY>
+              <TR bgColor=#d4d0c8>
+                <TD borderColor=#0066ff bgColor=#0066ff height=15><B><FONT 
+                  color=#ffffff>相关文章</FONT></B></TD></TR>
+              <TR>
+                <TD vAlign=top align=middle>
+                  <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD>没有该文章！ 
+        </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+    <TD vAlign=top width=622>
+      <TABLE cellSpacing=0 cellPadding=0 width="96%" align=right border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <DIV align=right>
+            <MARQUEE scrollAmount=3 behavior=alternate width=590><FONT 
+            color=#ff0000>你还没有登陆,不能享有本站的所有服务,请<A 
+            href="http://www.xbit2008.com/document/main.asp">登临</\A></FONT></A></MARQUEE></DIV></TD></TR>
+        <TR>
+          <TD>
+            <DIV align=center>
+            <TABLE id=AutoNumber6 style="BORDER-COLLAPSE: collapse" 
+            borderColor=#111111 height=67 cellSpacing=0 cellPadding=0 
+            width="100%">
+              <TBODY>
+              <TR>
+                <TD colSpan=3><IMG 
+                  src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/b010.gif" border=0> 
+                  <A 
+                  href="http://www.xbit2008.com/document/v_type_p.asp?p=编程">编程</A> 
+                </TD></TR>
+              <TR>
+                <TD><IMG src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/01.gif" 
+                  border=0></TD>
+                <TD colSpan=2><IMG 
+                  src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/001.gif" border=0> 
+                  <A 
+                  href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=VC">VC</A> 
+                </TD></TR>
+              <TR>
+                <TD width=29>　</TD>
+                <TD width=20 height=20><IMG 
+                  src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/01.gif" border=0> 
+                </TD>
+                <TD><IMG src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/lm.gif" 
+                  border=0> <FONT 
+                  color=#ff00ff><B>用vc6.0编服务器与客户机互相传送消息的程序</B></FONT> <A 
+                  href="http://www.xbit2008.com/document/rewrite.asp?id=470"><IMG 
+                  height=15 alt=发表意见 
+                  src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/rewrite.gif" 
+                  width=16 border=0></A> <A 
+                  href="http://www.xbit2008.com/document/add_fock.asp?id=470&amp;title=用vc6.0编服务器与客户机互相传送消息的程序" 
+                  target=_bank><IMG height=16 alt=添加到我的收藏夹 
+                  src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/fav_1.gif" width=16 
+                  border=0></A></TD></TR></TBODY></TABLE></DIV></TD></TR>
+        <TR>
+          <TD 
+            vAlign=top>网络编程已经成为一种时髦，以TCP/IP协议的网络更为流行.自己编一个服务器与客户机互相传送消息的程序,以便增加自己网络编程的经验.下面我就介绍一下我编的程序. 
+            <BR><BR>首先介绍服务器程序： <BR><BR>1.创建一个名为"server"的项目,单文档界面. 
+            <BR><BR>2.在serverview.h中加入代码： <BR><BR>#include "winsock.h" <BR>添加变量： 
+            <BR>CSize sizeTotal;//控制滚动条 <BR>intcount;//信息条数 <BR>CString 
+            m_data[1000];//信息存放 <BR>char Hostname[260]; <BR>char 
+            Hostaddress[20];//主机IP地址 <BR>SOCKET m_sock; <BR>HANDLE 
+            m_hListenThread;//线程 <BR>BOOL m_bInitialized;//是否初始化 
+            <BR>WSADATAWSAData; <BR>BOOL flag; <BR>SOCKADDR_IN saClnt; <BR>int 
+            saClntLen; <BR>BOOL Isconnect;//是否连接 
+            <BR><BR>3.在serverview.cpp中重载CServerView()构造器,创建并绑定嵌套字： 
+            <BR><BR>CServerView::CServerView() <BR>{ <BR>// TODO: add 
+            construction code here <BR>Isconnect=FALSE; <BR>flag=FALSE; 
+            <BR>sizeTotal.cy=350; <BR>sizeTotal.cx=300; <BR>m_hListenThread; 
+            <BR>count=5; <BR>int status; <BR>WSADATA wsaData; 
+            <BR>m_data[0]="initializing Windows Sockets DLL...."; 
+            <BR>if((status=WSAStartup(0x0101,&amp;wsaData))==0) <BR>{ 
+            <BR>m_data[0]+="Succeeded"; <BR>m_bInitialized=TRUE; <BR>} <BR>else 
+            <BR>{ <BR>m_bInitialized=FALSE; <BR>} 
+            <BR>m_sock=socket(AF_INET,SOCK_DGRAM,0); <BR>m_data[1]="Creating 
+            socket...."; <BR>if(m_sock==INVALID_SOCKET) <BR>{ 
+            <BR>m_data[1]+="Failed"; <BR>} <BR>m_data[1]+="Succeeded"; 
+            <BR>m_data[2]="Binding socket...."; <BR>sockaddr_in sa; 
+            <BR>sa.sin_family=AF_INET; 
+            <BR>sa.sin_addr.S_un.S_addr=htonl(INADDR_ANY); 
+            <BR>sa.sin_port=htons(5050); 
+            <BR>if(bind(m_sock,(PSOCKADDR)&amp;sa,sizeof 
+            <BR>(sa))==SOCKET_ERROR) <BR>{ <BR>m_data[2]+="Failed"; 
+            <BR>closesocket(m_sock); <BR>} <BR>m_data[2]+="Succeeded"; 
+            <BR>m_data[3]="Creating listener thread...."; <BR>unsigned long 
+            idThread; <BR>m_hListenThread=CreateThread(NULL,0, 
+            <BR>(LPTHREAD_START_ROUTINE)Listen,(void *) 
+            <BR>this,0,&amp;idThread); <BR>if(m_hListenThread) 
+            <BR>{m_data[3]+="Succeeded"; <BR>m_data[4]+="Listening...."; <BR>} 
+            <BR>else <BR>m_data[4]+="Failed"; <BR><BR>} 
+            <BR><BR>4.在析构函数中完成必需的清除操作: <BR><BR>CServerView::~CServerView() <BR>{ 
+            <BR>if(m_bInitialized) <BR>WSACleanup(); <BR>closesocket(m_sock); 
+            <BR>if(m_hListenThread) <BR>::TerminateThread(m_hListenThread,0); 
+            <BR>} <BR><BR>5.定义接收和处理消息的线程: <BR><BR>long WINAPI Listen(CServerView 
+            *pView) <BR>{ <BR><BR>char msg[2000]=""; <BR>intnchar; 
+            <BR>SOCKADDR_IN saClnt; <BR>int saClntLen; <BR>while(1) <BR>{ 
+            <BR>saClntLen=sizeof(saClnt); 
+            <BR>nchar=recvfrom(pView-&gt;m_sock,msg,1024,0, 
+            <BR>(PSOCKADDR)&amp;saClnt,&amp;saClntLen); <BR>if(nchar&lt;0) { 
+            pView-&gt;m_data[pView-&gt;count++]+ <BR>="Error in recvfrom\n"; 
+            <BR>pView-&gt;InvalidateRect(NULL); <BR>} <BR>else <BR>{ 
+            <BR><BR>switch(msg[0]) <BR>{ <BR>case'A': <BR>wsprintf(msg,"A: 
+            Client from %s <BR>attached\n",inet_ntoa(saClnt.sin_addr)); 
+            <BR>pView-&gt;m_data[pView-&gt;count++]=msg; 
+            <BR>pView-&gt;flag=TRUE; <BR>pView-&gt;InvalidateRect(NULL); 
+            <BR>pView-&gt;Isconnect=TRUE; <BR>pView-&gt;saClnt=saClnt; 
+            <BR>pView-&gt;saClntLen=saClntLen; 
+            <BR>sendto(pView-&gt;m_sock,msg,1024,0, 
+            <BR>(PSOCKADDR)&amp;saClnt,saClntLen); <BR>break; <BR><BR>case 'D': 
+            <BR>wsprintf(msg,"D: Client form %s 
+            <BR>detached\n",inet_ntoa(saClnt.sin_addr)); 
+            <BR>pView-&gt;m_data[pView-&gt;count++]=msg; 
+            <BR>pView-&gt;flag=TRUE; <BR>pView-&gt;InvalidateRect(NULL); 
+            <BR>pView-&gt;Isconnect=FALSE; 
+            <BR>sendto(pView-&gt;m_sock,msg,1024,0, 
+            <BR>(PSOCKADDR)&amp;saClnt,saClntLen); <BR>break; <BR><BR><BR>case 
+            'R': <BR>saClntLen=sizeof(saClnt); 
+            <BR>pView-&gt;m_data[pView-&gt;count++]=msg; 
+            <BR>pView-&gt;flag=TRUE; <BR>pView-&gt;InvalidateRect(NULL); 
+            <BR>break; <BR><BR>default: <BR>break; <BR>} <BR><BR><BR>} <BR><BR>} 
+            <BR>return(0); <BR>} <BR><BR>6.在程序菜单项中添加"本机IP地址": <BR><BR>void 
+            CServerView::OnIp() <BR>{ <BR><BR>int WSAReturn; 
+            <BR>WSAReturn=WSAStartup( 0x0101, &amp;WSAData ); <BR>if( WSAReturn 
+            == 0 ){ <BR>gethostname( Hostname, 260 ); <BR>struct hostent 
+            *pHostEnt; <BR>pHostEnt = gethostbyname( Hostname); <BR>if( pHostEnt 
+            != NULL ){ <BR>wsprintf( Hostaddress, "%d.%d.%d.%d", <BR>( 
+            pHostEnt-&gt;h_addr_list[0][0] &amp; 0x00ff ), <BR>( 
+            pHostEnt-&gt;h_addr_list[0][1] &amp; 0x00ff ), <BR>( 
+            pHostEnt-&gt;h_addr_list[0][2] &amp; 0x00ff ), <BR>( 
+            pHostEnt-&gt;h_addr_list[0][3] &amp; 0x00ff ) ); <BR>CString out; 
+            <BR>out.Format(Hostaddress); <BR>AfxMessageBox(out); <BR>} <BR>} 
+            <BR>} <BR><BR><BR>7.在程序菜单中添加"发送消息"： <BR><BR>void 
+            CServerView::OnSendmessage() <BR>{ <BR>// TODO: Add your command 
+            handler code here <BR>char msg[2000]; <BR>Csend Sendmessage; 
+            <BR>if(Sendmessage.DoModal() 
+            <BR>==IDOK&amp;&amp;!Sendmessage.m_Message.IsEmpty()) <BR>{ 
+            <BR>wsprintf(msg,"R: "+Sendmessage.m_Message); 
+            <BR>sendto(m_sock,msg,1024,0, <BR>(PSOCKADDR)&amp;saClnt,saClntLen); 
+            <BR>m_data[count++]=Sendmessage.m_Message; <BR>flag=TRUE; 
+            <BR>InvalidateRect(NULL); <BR>} <BR><BR>} 
+            <BR><BR>8.为发送消息项添加一个对话框的类,名为send,有一个文本框,用来发送消息.并为文本框添加CString 
+            m_Message 变量,并在ServerView.cpp中添加#include "send.h" 
+            <BR><BR>9.为发送消息项添加一个判断函数: <BR><BR>void 
+            CServerView::OnUpdateSendmessage <BR>(CCmdUI* pCmdUI) <BR>{ <BR>// 
+            TODO: Add your command update <BR>UI handler code here 
+            <BR>pCmdUI-&gt;Enable(FALSE); <BR>if(Isconnect) 
+            <BR>pCmdUI-&gt;Enable(TRUE); <BR>} <BR><BR>10.再窗口显示消息: <BR><BR>void 
+            CServerView::OnDraw(CDC* pDC) <BR>{if(flag) <BR>{sizeTotal.cy+=20; 
+            <BR>for(int j=65;jTextOut(10,y,m_data[i]); <BR>y+=20; <BR>} 
+            <BR><BR>// TODO: add draw code for native data here <BR>} 
+            <BR><BR>11.在Project中点击Settings中选择Link项添加wsock32.lib. 
+            最后编译程序,就可以得到Server.exe程序. <BR><BR>现在介绍客户机程序: 
+            <BR><BR>1.创建一个名为"client"的项目,单文档界面. <BR><BR>2.在clientview.h中加入代码： 
+            <BR><BR>#include "winsock.h" <BR>添加变量: <BR>CString m_data[1000]; 
+            <BR>HANDLE m_hListenThread; <BR>SOCKET m_sock; <BR>SOCKADDR_IN 
+            m_saSrvr; <BR>BOOLIsconnect; <BR>int count; <BR>CSize sizeTotal; 
+            <BR>BOOLflag; <BR><BR>3.在构造函数中初始化变量: 
+            <BR><BR>CClientView::CClientView() <BR>{ <BR>// TODO: add 
+            construction code here <BR>Isconnect=FALSE; <BR>sizeTotal.cy=350; 
+            <BR>sizeTotal.cx=300; <BR>flag=FALSE; <BR>} <BR><BR>4.在析构函数中完成清除操作: 
+            <BR><BR>CClientView::~CClientView() <BR>{if(m_bInitialized) 
+            <BR>WSACleanup(); <BR>closesocket(m_sock); <BR>if(m_hListenThread) 
+            <BR>::TerminateThread(m_hListenThread,0); <BR>} 
+            <BR><BR>5.在菜单中添加"拨号"项: <BR><BR>void CClientView::OnDial() <BR>{ 
+            <BR>// TODO: Add your command handler code here <BR><BR><BR>count=5; 
+            <BR>if(m_bInitialized) <BR>{ <BR>AfxMessageBox("Already dialing"); 
+            <BR>return; <BR>} <BR>Cdial dial; <BR>if(dial.DoModal()== 
+            <BR>IDOK&amp;&amp;!dial.m_HostAddress.IsEmpty()) <BR>{ 
+            <BR>m_saSrvr.sin_family=AF_INET; 
+            <BR>m_saSrvr.sin_addr.S_un.S_addr=htonl <BR>(INADDR_ANY); 
+            <BR>m_saSrvr.sin_addr.S_un.S_addr=inet_addr 
+            <BR>(dial.m_HostAddress); <BR>m_saSrvr.sin_port=htons(5050); <BR>int 
+            status; <BR>WSADATA wsaData; <BR>m_data[0]="initializing Windows 
+            Sockets DLL...."; 
+            <BR>if((status=WSAStartup(0x0101,&amp;wsaData))==0) <BR>{ 
+            <BR>m_data[0]+="Succeeded"; <BR>m_bInitialized=TRUE; <BR>} <BR>else 
+            <BR>{ <BR>m_bInitialized=FALSE; <BR>} 
+            <BR>m_sock=socket(AF_INET,SOCK_DGRAM,0); <BR>m_data[1]="Creating 
+            socket...."; <BR>if(m_sock==INVALID_SOCKET) <BR>{ 
+            <BR>m_data[1]+="Failed"; <BR>} <BR>m_data[1]+="Succeeded"; 
+            <BR>m_data[2]="Binding socket...."; <BR>sockaddr_in sa; 
+            <BR>sa.sin_family=AF_INET; <BR>sa.sin_addr.S_un.S_addr=htonl 
+            <BR>(INADDR_ANY); <BR>sa.sin_port=htons(0); 
+            <BR>if(bind(m_sock,(PSOCKADDR)&amp;sa, 
+            <BR>sizeof(sa))==SOCKET_ERROR) <BR>{ <BR>m_data[2]+="Failed"; 
+            <BR>closesocket(m_sock); <BR>} <BR>m_data[2]+="Succeeded"; 
+            <BR>m_data[3]="Creating listener thread...."; <BR>unsigned long 
+            idThread; <BR>m_hListenThread=CreateThread(NULL,0, 
+            <BR>(LPTHREAD_START_ROUTINE)Listen, <BR>(void 
+            *)this,0,&amp;idThread); <BR>if(m_hListenThread) 
+            <BR>{m_data[3]+="Succeeded"; <BR>m_data[4]+="Waiting...."; <BR>} 
+            <BR>else <BR>m_data[4]+="Failed"; <BR>InvalidateRect(NULL); <BR>} 
+            <BR><BR>} 
+            <BR><BR>6.添加一个拨号对话框,名为dial,有一个文本框用来写IP地址.并在clientview.cpp中添加代码: 
+            <BR><BR>#include dial.h <BR><BR>7.在拨号项添加一个判断函数: <BR><BR>void 
+            CClientView::OnUpdateDial <BR>(CCmdUI* pCmdUI) <BR>{ <BR>// TODO: 
+            Add your command update <BR>UI handler code here 
+            <BR>pCmdUI-&gt;Enable(TRUE); <BR>if(Isconnect) 
+            <BR>pCmdUI-&gt;Enable(FALSE); <BR>} <BR><BR>8.添加接收与发送消息的线程: 
+            <BR><BR>long WINAPI Listen(CClientView *pView) <BR>{ <BR>char 
+            msg[2000]; <BR>pView- &gt;m_data[5]="Sending ATTACH command"; 
+            <BR>pView- &gt;InvalidateRect(NULL); <BR>wsprintf(msg,"A: "); 
+            <BR>sendto(pView- &gt;m_sock,msg,1024,0, <BR>(PSOCKADDR)&amp;pView- 
+            &gt;m_saSrvr,sizeof <BR>(pView- &gt;m_saSrvr)); <BR><BR>int 
+            saSrvrLen ,nchar; <BR>while(1) <BR>{ 
+            <BR>saSrvrLen=sizeof(pView-&gt;m_saSrvr); <BR>nchar=recvfrom(pView- 
+            &gt;m_sock,msg,1024,0, <BR>(PSOCKADDR)&amp;pView- 
+            &gt;m_saSrvr,&amp;saSrvrLen); <BR>if(nchar&lt;0) { 
+            pView-&gt;m_data[pView- &gt;count++]="Error in recvform"; <BR>pView- 
+            &gt;InvalidateRect(NULL); <BR>} <BR>else <BR>{ 
+            <BR>pView-&gt;m_data[pView- &gt;count++]=msg; 
+            <BR>pView-&gt;Isconnect=TRUE; <BR>pView-&gt;flag=TRUE; 
+            <BR>pView-&gt;InvalidateRect(NULL); <BR>} <BR><BR>} 
+            <BR><BR>return(0); <BR>} <BR><BR>9.同主程序一样做一个发送消息项,代码如上. 
+            <BR><BR>10.显示程序也与主程序一样,代码如上. 
+            <BR><BR>11.在Project中点击Settings中选择Link项添加wsock32.lib. 
+            <BR><BR>12.编译程序便可得到client.exe程序. <BR><BR>server.exe 和 client.exe 
+            做完后,就可以在具有TCP/IP协议下的网络中执行. 
+            通过上面的例子,你可以很快了解vc++网络编程的优点,你还可以添加其它功能项,在这我就不多加叙述了.希望我的程序能起到抛砖引玉的目的,让我们都能编出好的网络程序. 
+            <BR></TD></TR>
+        <TR>
+          <TD><B><FONT color=#ff0000>本文有以下</FONT>[0]<FONT 
+            color=#ff0000>条回复记录</FONT> <A 
+            href="http://www.xbit2008.com/document/rewrite.asp?id=470">发表评论</A></B> 
+            | <A 
+            href="http://www.xbit2008.com/document/write.asp?p=编程&amp;c=VC">在此栏目发表新文章</A> 
+            | <A href="http://www.xbit2008.com/document/main.asp">登陆</A></TD></TR>
+        <TR>
+          <TD></TD></TR>
+        <TR>
+          <TD align=middle>
+            <TABLE cellSpacing=0 cellPadding=1 width="80%" border=0>
+              <TBODY></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD colSpan=2>　</TD></TR>
+  <TR>
+    <TD colSpan=2>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0 
+      dwcopytype="CopyTableCell">
+        <TBODY>
+        <TR>
+          <TD width=780 colSpan=5 height=18>
+            <TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#ff3300 
+            border=0>
+              <TBODY>
+              <TR>
+                <TD bgColor=#008000 height=18>
+                  <P align=center><A class=A1 
+                  href="http://www.xbit2008.com/document/write.asp">发表新文章</A> | 
+                  <A class=A1 href="http://www.xbit2008.com/document/main.asp" 
+                  target=_blank>文档首页</A> | <A class=A1 
+                  href="http://www.xbit2008.com/document/search.asp">搜索引擎</A> | 
+                  <A class=A1 href="http://www.xbit2008.com/document/uid.asp" 
+                  target=_bank>用户中心</A> | <A class=A1 
+                  href="http://www.xbit2008.com/document/user_online.asp" 
+                  target=_bank>在线会员</A> | <A class=A1 
+                  href="http://www.xbit2008.com/document/user_list.asp" 
+                  target=_bank>会员表</A> | <A class=A1 
+                  href="http://www.xbit2008.com/guestbook/guestbook.asp?uid=xbit" 
+                  target=_bank>问题帮助</A> | <A class=A1 
+                  href="http://www.xbit2008.com/OldFolk/login.asp" 
+                  target=_bank>同学_交友录</A> | <A class=A1 
+                  href="http://www.xbit2008.com/test/login.asp?uid=xbit" 
+                  target=_bank>考试中心</A> | <A class=A1 
+                  href="http://www.xbit2008.com/document/index.asp?id=470#" 
+                  target=_bank>聊天室</A> | <A class=A1 
+                  href="http://www.xbit2008.com/document/login.asp" 
+                  target=_bank>管理员登陆</A> </P></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD width=780 colSpan=5 height=8></TD></TR>
+        <TR>
+          <TD colSpan=5 height=18>
+            <DIV align=center>
+            <TABLE cellSpacing=0 cellPadding=0 width=460 border=0>
+              <TBODY>
+              <TR>
+                <TD width=49><IMG height=48 
+                  src="文档中心----用vc6.0编服务器与客户机互相传送消息的程序.files/by005.gif" width=47 
+                  align=left border=0></TD>
+                <TD width=420>
+                  <P align=center>本站<FONT color=#ff0000><A 
+                  href="http://www.xbit2008.com/" 
+                  target=_blank>X-Bit工作室</A></FONT>-Copyright@2001～20?? 
+                  <BR>总公司地址：广东省广州室X-Bit大厦 <BR><FONT color=#ff0000><B>申明:</B> 
+                  本站部分内容是从网上收集,若有侵范你版权的请指出,本站马上删除</FONT> 
+                  <BR>建议使用IE4.0以上版本浏览器和800*600分辨率显示器浏览 
+            </P></TD></TR></TBODY></TABLE></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></BODY></HTML>

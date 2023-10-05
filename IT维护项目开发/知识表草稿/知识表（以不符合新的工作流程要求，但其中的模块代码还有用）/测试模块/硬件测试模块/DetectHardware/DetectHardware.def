@@ -1,0 +1,9 @@
+; DetectHardware.def : Declares the module parameters for the DLL.
+
+LIBRARY      "DetectHardware"
+DESCRIPTION  'DetectHardware Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here
+	DetectBIOS_DetectHardwareModule				@1
+	DetectHardDiskDevice_DetectHardwareModule	@2

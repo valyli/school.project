@@ -1,0 +1,29 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Example4F - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\WINDOWS\TEMP\RSP2321.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/Example4F.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\Examples\Example4F\MyWnd.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP2321.TMP" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/Example4F.pdb" /debug /machine:I386 /out:"Debug/Example4F.exe" /pdbtype:sept  .\Debug\Example4F.obj .\Debug\Example4FDlg.obj .\Debug\StdAfx.obj .\Debug\Example4F.res .\Debug\MyWnd.obj "
+<h3>Output Window</h3>
+Compiling...
+MyWnd.cpp
+D:\Examples\Example4F\MyWnd.cpp(86) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+D:\Examples\Example4F\MyWnd.cpp(86) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+Linking...
+
+
+
+<h3>Results</h3>
+Example4F.exe - 0 error(s), 2 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,544 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0049)http://tech.tom.com/Archive/2001/11/15-18157.html -->
+<HTML><HEAD><TITLE>用VC＃获得计算机名称和IP地址</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META content=用VC＃获得计算机名称和IP地址 name=description>
+<META content="VC 计算机 IP地址" name=keywords>
+<SCRIPT language=JavaScript>
+ <!--
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</SCRIPT>
+
+<SCRIPT language=javascript>
+<!--
+function pop(_mil){
+newwin=window.open(_mil,"","width=600,height=400,scrollbars=yes");
+newwin.focus();
+}
+//-->
+</SCRIPT>
+
+<STYLE type=text/css>.input {
+	BORDER-RIGHT: rgb(80,102,70) 1px solid; BORDER-TOP: rgb(80,102,70) 1px solid; FONT-WEIGHT: normal; FONT-SIZE: 12px; BACKGROUND: #ffffff; BORDER-LEFT: rgb(80,102,70) 1px solid; BORDER-BOTTOM: rgb(80,102,70) 1px solid
+}
+</STYLE>
+
+<SCRIPT language=javascript> 
+ function Check(form) {
+  var keyword = new String(form.word.value);
+  if(keyword.valueOf() == "") {
+   window.alert("请输入你的查询条件！");
+   return false;
+  }else{
+   if( form.sw.value == "2" ) {
+    form.action = "http://dsearch.cn.tom.com/baidu";
+    form.tn.value = "tomds";
+    form.cl.value = "2";
+    form.method = "get";
+   }
+   else if( form.sw.value == "8" )
+   {
+    form.action = "http://bjap1.cn.tom.com/app/cntom/search/search.php";
+    form.channel.value="";
+   }
+   else if( form.sw.value == "9" )
+   {
+    form.action = "http://bjap1.cn.tom.com/app/cntom/search/search.php";
+    form.channel.value="tech";  
+    }
+  else if( form.sw.value == "10" )
+   {
+    form.action = "http://download.cn.tom.com/search.asp";
+    document.tomsearch.search.value=document.tomsearch.word.value;
+    } 
+   else{
+    form.action = "http://search.cn.tom.com/php/Search_PageAndDir.php";
+    form.method = "post";
+   }
+   return true;
+  }
+ }
+ </SCRIPT>
+
+<STYLE type=text/css>TD {
+	FONT-SIZE: 12px
+}
+A:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+.tombar {
+	FONT-SIZE: 12px; COLOR: #ccff99; TEXT-DECORATION: none
+}
+A.tombar:hover {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.tombar:link {
+	COLOR: #ccff99; TEXT-DECORATION: none
+}
+A.tombar:visited {
+	COLOR: #ccff99; TEXT-DECORATION: none
+}
+.input {
+	BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; FONT-WEIGHT: normal; FONT-SIZE: 12px; BACKGROUND: #ffffff; BORDER-LEFT: black 1px solid; BORDER-BOTTOM: black 1px solid
+}
+.list {
+	FONT-SIZE: 14px; COLOR: #000000; TEXT-DECORATION: none
+}
+.list :link {
+	FONT-SIZE: 14px; COLOR: #000000; TEXT-DECORATION: none
+}
+.list :visited {
+	FONT-SIZE: 14px; COLOR: #999999; TEXT-DECORATION: none
+}
+.list :hover {
+	FONT-SIZE: 14px; COLOR: #000000; TEXT-DECORATION: underline
+}
+.list :active {
+	FONT-SIZE: 14px; COLOR: #000000; TEXT-DECORATION: underline
+}
+.text {
+	FONT-SIZE: 16px; LINE-HEIGHT: 22px
+}
+.title {
+	FONT-WEIGHT: bold; FONT-SIZE: 16px; COLOR: #000000; LINE-HEIGHT: 22px
+}
+.whitefont {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 12px; PADDING-BOTTOM: 2px; COLOR: white; PADDING-TOP: 3px; BACKGROUND-COLOR: #537a9b; TEXT-DECORATION: none
+}
+.subject {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: red
+}
+A.subject:link {
+	COLOR: #ff0000
+}
+A.subject:visited {
+	COLOR: #ff0000
+}
+A.subject:hover {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+</STYLE>
+
+<META content="MSHTML 5.50.4134.100" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 marginheight="0" marginwidth="0">
+<TABLE cellSpacing=0 cellPadding=0 width=773 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=bottom width=310><A href="http://www.tom.com/"><IMG height=15 
+      src="用VC＃获得计算机名称和IP地址.files/wwwtomcom.gif" width=116 border=0></A></TD>
+    <TD bgColor=#003333>
+      <TABLE height=21 cellSpacing=0 cellPadding=0 width=463 bgColor=#003333 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=bottom width=7><IMG height=7 
+            src="用VC＃获得计算机名称和IP地址.files/tomnavbarcnr.gif" width=7></TD>
+          <TD class=tombar><IMG height=15 
+            src="用VC＃获得计算机名称和IP地址.files/shim.gif" width=1> <A class=tombar 
+            href="http://www.tom.com/">首页</A> | <A class=tombar 
+            href="http://sms.tom.com/"><FONT color=#ffffff>短信</FONT></A> | <A 
+            class=tombar href="http://vip.163.net/mobile/mobile.htm">随身邮</A> | 
+            <A class=tombar href="http://tomnet.tom.com/">网游神</A> | <A 
+            class=tombar href="http://chat.tom.com/">聊天</A> | <A class=tombar 
+            href="http://bbs.tom.com/">论坛</A> | <A class=tombar 
+            href="http://news.tom.com/">新闻</A> | <A class=tombar 
+            href="http://sports.tom.com/">体育</A> | <A class=tombar 
+            href="http://ent.tom.com/">娱乐</A> | <A class=tombar 
+            href="http://search.tom.com/">搜索</A> 
+  </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD height=8><IMG 
+      src="F:\ttttttttttttttttttttttttttttttttt\用VC＃获得计算机名称和IP地址.files\shim(1).gif" 
+      width=1></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=773 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD width=470><IFRAME border=0 marginWidth=0 marginHeight=0 
+      src="用VC＃获得计算机名称和IP地址.files/site=cntom&amp;channel=tech&amp;layer=4&amp;subtree=4&amp;location=C01&amp;target=_blank.htm" 
+      frameBorder=no width=468 scrolling=no height=60></IFRAME></TD>
+    <TD width=18></TD>
+    <TD width=285><IFRAME border=0 marginWidth=0 marginHeight=0 
+      src="用VC＃获得计算机名称和IP地址.files/techzt.htm" frameBorder=no width=285 
+      scrolling=no height=60></IFRAME></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD height=8><IMG 
+      src="F:\ttttttttttttttttttttttttttttttttt\用VC＃获得计算机名称和IP地址.files\shim(1).gif" 
+      width=1></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=1 cellPadding=0 width=773 align=center bgColor=#000000 
+border=0>
+  <TBODY>
+  <TR>
+    <TD class=whitefont><A class=something 
+      href="http://tech.tom.com/index.html"><FONT 
+      color=#ffffff>潮流科技</FONT></A>&gt; <A class=something 
+      href="http://tech.tom.com/software/index.html"><FONT 
+      color=#ffffff>学园</FONT></A>&gt; <A class=something 
+      href="http://tech.tom.com/software/programlist.html"><FONT 
+      color=#ffffff>程序开发</FONT></A>&gt; <A class=something 
+      href="http://tech.tom.com/software/programvclist.html"><FONT 
+      color=#ffffff>VC</FONT></A>&gt; <SPAN class=something><FONT 
+      color=#ffffff>正文</FONT></SPAN></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=773 border=0>
+  <TBODY>
+  <TR>
+    <TD height=8><IMG 
+      src="F:\ttttttttttttttttttttttttttttttttt\用VC＃获得计算机名称和IP地址.files\shim(1).gif" 
+      width=1></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=773 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=156 bgColor=#99b4c7>
+      <TABLE cellSpacing=0 cellPadding=1 width="100%" border=0>
+        <TBODY>
+        <TR align=middle>
+          <TD class=whitefont>频道搜索</TD></TR>
+        <SCRIPT language=javascript>
+<!--
+ function Check(form) {
+  var keyword = new String(form.word.value);
+  if(keyword.valueOf() == "") {
+   window.alert("请输入你的查询条件！");
+   return false;
+  }else{
+   if( form.sw.value == "2" ) {
+    form.action = "http://dsearch.cn.tom.com/baidu";
+    form.tn.value = "tomds";
+    form.cl.value = "2";
+    form.method = "get";
+   }
+   else if( form.sw.value == "8" )
+   {
+    form.action = "http://bjap1.cn.tom.com/app/cntom/search/search.php";
+    form.channel.value="";
+   }
+   else if( form.sw.value == "9" )
+   {
+    form.action = "http://bjap1.cn.tom.com/app/cntom/search/search.php";
+    form.channel.value="tech";  
+    }
+  else if( form.sw.value == "10" )
+   {
+    form.action = "http://download.cn.tom.com/search.asp";
+    document.tomsearch.search.value=document.tomsearch.word.value;
+    } 
+   else{
+    form.action = "http://search.cn.tom.com/php/Search_PageAndDir.php";
+    form.method = "post";
+   }
+   return true;
+  }
+ }
+ //-->
+ </SCRIPT>
+
+        <TR>
+          <TD>
+            <TABLE cellSpacing=3 cellPadding=0 width=150 align=center 
+              border=0><FORM name=tomsearch 
+              action=http://search.tom.com/TOMSearch.php target=_blank><INPUT 
+              type=hidden value=tech name=channel2> 
+              <TBODY>
+              <TR>
+                <TD colSpan=2><INPUT class=input name=word></TD></TR>
+              <TR vAlign=center>
+                <TD width="65%" height=15 rowSpan=2><SELECT 
+                  style="FONT-SIZE: 12px" name=sw> <OPTION value=9 
+                    selected>科技频道</OPTION> <OPTION value=2>综合搜索</OPTION> <OPTION 
+                    value=10>软件下载</OPTION> <OPTION value=8>站内搜索</OPTION> <OPTION 
+                    value=6>英汉字典</OPTION> <OPTION value=3>沪深股票</OPTION> <OPTION 
+                    value=7>沪深B 股</OPTION> <OPTION value=5>美国股票</OPTION> <OPTION 
+                    value=4>香港股票</OPTION></SELECT> </TD>
+                <TD width="35%" height=15><INPUT style="FONT-SIZE: 12px" type=submit value=搜索 name=submit></TD></TR></FORM></TBODY></TABLE></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=1 width="100%" border=0>
+        <TBODY>
+        <TR align=middle>
+          <TD class=whitefont>手机短信</TD></TR>
+        <TR>
+          <TD>
+            <SCRIPT language=javascript 
+            src="用VC＃获得计算机名称和IP地址.files/tomsms.js"></SCRIPT>
+          </TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=1 width="100%" border=0>
+        <TBODY>
+        <TR align=middle>
+          <TD class=whitefont>频道推荐</TD></TR>
+        <TR>
+          <TD>
+            <TABLE cellSpacing=0 cellPadding=0 width="98%" align=center 
+border=0>
+              <TBODY>
+              <TR>
+                <TD vAlign=top>·</TD>
+                <TD vAlign=top><A target=_blank 
+                  href="http://tech.tom.com/Archive/1370/1393/2002/7/4-6867.html">巨酷！支持蓝牙的罗技无线指点光笔(图)</A></TD>
+              <TR>
+              <TR>
+                <TD vAlign=top>·</TD>
+                <TD vAlign=top><A target=_blank 
+                  href="http://tech.tom.com/Archive/1521/1524/2002/7/1-3139.html">索尼DSC-U10：数码相机还能怎么小？(图)</A></TD>
+              <TR>
+              <TR>
+                <TD vAlign=top>·</TD>
+                <TD vAlign=top><A target=_blank 
+                  href="http://tech.tom.com/Archive/10000/2002/7/1-78082.html">NEC推出超高2048x1536分辨率笔记本(图)</A></TD>
+              <TR>
+              <TR>
+                <TD vAlign=top>·</TD>
+                <TD vAlign=top><A target=_blank 
+                  href="http://tech.tom.com/Archive/1521/1524/2002/7/1-9721.html">炫银酷蓝：尼康最新入门机CP2000(图)</A></TD>
+              <TR>
+              <TR>
+                <TD vAlign=top>·</TD>
+                <TD vAlign=top><A target=_blank 
+                  href="http://tech.tom.com/Archive/1370/1410/2002/7/1-34575.html">诱人苹果：超低价最新款iBOOK笔记本(图)</A></TD>
+              <TR>
+              <TR>
+                <TD vAlign=top>·</TD>
+                <TD vAlign=top><A target=_blank 
+                  href="http://tech.tom.com/Archive/1521/1522/2002/6/27-6544.html">SONY发表超强PEG-T665c掌上电脑(图)</A></TD>
+              <TR>
+              <TR>
+                <TD vAlign=top>·</TD>
+                <TD vAlign=top><A target=_blank 
+                  href="http://tech.tom.com/Archive/1521/1659/2002/6/27-33747.html">Sonicblue超高采样率的硬盘MP3播放器(图)</A></TD>
+              <TR>
+              <TR>
+                <TD vAlign=top>·</TD>
+                <TD vAlign=top><A target=_blank 
+                  href="http://tech.tom.com/Archive/1370/1410/2002/6/27-45407.html">27日行情：天气让市场冷淡 
+                  价格稳中有降</A></TD>
+              <TR></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=1 width="100%" border=0>
+        <TBODY>
+        <TR align=middle>
+          <TD class=whitefont>编辑信箱</TD></TR>
+        <TR align=middle>
+          <TD height=22><A href="mailto:it@bj.tom.com">it@bj.tom.com</A> 
+        </TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 align=center border=0>
+        <TBODY>
+        <TR>
+          <TD><IFRAME border=0 marginWidth=0 marginHeight=0 
+            src="用VC＃获得计算机名称和IP地址.files/site=cntom&amp;channel=tech&amp;layer=2&amp;subtree=2&amp;location=R01.htm" 
+            frameBorder=no width=120 scrolling=no 
+        height=60></IFRAME></TD></TR></TBODY></TABLE><BR></TD>
+    <TD width=10 background=用VC＃获得计算机名称和IP地址.files/tom_bg.gif><IMG 
+      src="F:\ttttttttttttttttttttttttttttttttt\用VC＃获得计算机名称和IP地址.files\shim(1).gif" 
+      width=1></TD>
+    <TD vAlign=top align=middle width=607 bgColor=#ffffff>
+      <TABLE cellSpacing=0 cellPadding=3 width="96%" align=center border=0>
+        <TBODY>
+        <TR>
+          <TD align=middle><FONT class=title>用VC＃获得计算机名称和IP地址</FONT> 
+            <HR width="90%" SIZE=1 height="1">
+            2001年11月15日来源:<A style="COLOR: blue" target=_blank 
+            href="http://www.ccidnet.com/">赛迪网</A>王天<BR><BR></TD></TR>
+        <TR>
+          <TD class=text><!--<table border=0 cellspacing=0 cellpadding=0 align=right><tr><td><iframe src="http://tomad.cn.tom.com/html.ng/site=cntom&channel=tech&layer=4&subtree=4&location=C02&target=_blank" width="300" height="250" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"> </iframe><iframe src="http://tomad.cn.tom.com/html.ng/site=cntom&channel=tech&layer=2&subtree=2&location=C05"width="300" height="253" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no"></iframe></td></tr></table>-->
+            <P align=center></P>
+            <P style="TEXT-INDENT: 2em">
+            <P style="TEXT-INDENT: 2em">
+            <P style="TEXT-INDENT: 2em">Visual C#是微软公司推出的下一代程序开发语言，是微软.Net 
+            框架中的的一个重要组成部分，在推出Visual C#的过程中，微软公司还推出了与之相对应的一个软件开发包--.Net FrameWork 
+            SDK。此软件开发包里面封装了许多类、对象。Visual C#就是通过调用这些类、对象来实现许多比较强大的功能。</P>
+            <SCRIPT src="用VC＃获得计算机名称和IP地址.files/ad.js"></SCRIPT>
+
+            <P style="TEXT-INDENT: 2em">在.Net FrameWork 
+            SDK中提供了二个可用于网络编程的名称空间，一个是System.Net，另一个是System..Net.Socket。本文就是利用第一个名称空间中封装的类和对象来读取本地计算机名称和机器中所有的IP地址。</P>
+            <P style="TEXT-INDENT: 2em"><B>一.概述：</B></P>
+            <P 
+            style="TEXT-INDENT: 2em">我们知道对于一台计算机来说，他只有一个计算机名称，但是他可以有多个IP地址。例如当计算机通过拨号上网的时候，在验证完用户名和口令以后，就会动态分配一个IP地址，此时计算机就拥有了二个IP地址，一个时自己设定的局域网用的IP地址，另外一个就是拨号上网动态分配的IP地址了。本文就是来探索一下如何读取此二个IP地址和计算机名称。</P>
+            <P style="TEXT-INDENT: 2em"><B>二.程序设计和运行的环境：</B></P>
+            <P style="TEXT-INDENT: 2em">（1）微软公司视窗2000服务器版<BR>（2）.Net FrameWrok 
+            SDK Beta 2版</P>
+            <P style="TEXT-INDENT: 2em"><B>三.程序设计的主要思路及实现方法：</B></P>
+            <P style="TEXT-INDENT: 2em">（1）.读取计算机的名称：</P>
+            <P 
+            style="TEXT-INDENT: 2em">在名称空间System.Net中定义了一个类Dns，在此类中定义了一个比较重要的方法 
+            GetHostName ( 
+            )，此方法的返回值就是本地计算机名称。在程序设计中首先要导入System.Net名称空间，然后通过调用Dns类中的GetHostName 
+            ( )方法读取本地计算机名称，具体实现的主要语句如下：<BR>label1.Text = "主机名称：" + 
+            System.Net.Dns.GetHostName ( ) ;</P>
+            <P style="TEXT-INDENT: 2em">（2）.读取计算机的拨号上网临时的IP地址和局域网分配的固定IP地址：</P>
+            <P style="TEXT-INDENT: 2em">在程序设计中，我们是通过一个自定义的函数--getIPAddress ( 
+            )来读取IP地址的。首先看一下如何读取本地固定的IP地址的。在Dns类中还定义了一个方法GetHostByName ( 
+            )。此方法的返回值时IPHostEntry 
+            对象，此对象有一个属性是AddressList，此属性是一个IPAddress类型的数组，包含了计算机此时的所有的IP地址信息。这当中也就包含了拨号上网得到的临时分配的IP地址和局域网固定的IP地址。具体实现语句如下:</P>
+            <P style="TEXT-INDENT: 2em">private static string getIPAddress ( 
+            )<BR>　　{<BR>　　System.Net.IPAddress addr;<BR>　　// 
+            获得本机局域网IP地址<BR>　　addr = new System.Net.IPAddress ( Dns.GetHostByName 
+            ( Dns.GetHostName ( ) ) .AddressList 　　[0].Address ) ;<BR>　　return 
+            addr.ToString ( ) ;<BR>　　} </P>
+            <P style="TEXT-INDENT: 2em"><B>四.读取计算机名称本机固定IP地址源程序</B></P>
+            <P 
+            style="TEXT-INDENT: 2em">IP01.cs源程序：<BR>　　//导入程序用到的名称空间<BR>　　using 
+            System ;<BR>　　using System.Net;<BR>　　using System.Windows.Forms 
+            ;<BR>　　using System.Drawing ;<BR>　　public class Form3 : 
+            Form<BR>　　{<BR>　　//定义二个标签<BR>　　private Label label1 ;<BR>　　private 
+            Label label2 ;<BR>　　public static void Main ( 
+            )<BR>　　{<BR>　　Application.Run ( new Form3 ( ) ) ;<BR>　　}<BR>　　// 
+            构造窗体<BR>　　public Form3 ( )<BR>　　{<BR>　　// 建立标签并且初始化<BR>　　this.label1 
+            = new System.Windows.Forms.Label ( ) ;<BR>　　this.label2 = new 
+            System.Windows.Forms.Label ( ) ;<BR>　　//先继承一个Label 
+            类<BR>　　label1.Location = new System.Drawing.Point ( 24 , 16 ) 
+            ;<BR>　　label2.Location = new System.Drawing.Point ( 44 , 36 ) 
+            ;<BR>　　//设定 Label的显示位置<BR>　　label1.Text = "主机名称：" + 
+            System.Net.Dns.GetHostName ( ) ;<BR>　　// 显示本机的计算机名称<BR>　　label2.Text 
+            = "IP 地址：" + getIPAddress ( ) ;<BR>　　// 
+            显示本机的局域网IP地址<BR>　　label1.Size = new System.Drawing.Size ( 200 , 50 ) 
+            ;<BR>　　label2.Size = new System.Drawing.Size ( 200 , 80 ) 
+            ;<BR>　　//设定标签的大小<BR>　　label1.TabIndex = 0 ;<BR>　　label2.TabIndex = 1 
+            ;<BR>　　label1.TextAlign = 
+            System.Drawing.ContentAlignment.MiddleCenter ;<BR>　　label2.TextAlign 
+            = System.Drawing.ContentAlignment.MiddleCenter ;<BR>　　// 
+            设定标签的对齐方式<BR>　　this.Text = "获得主机名称和IP地址！" ;<BR>　　this.StartPosition 
+            = System.Windows.Forms.FormStartPosition.CenterParent 
+            ;<BR>　　this.AutoScaleBaseSize = new System.Drawing.Size ( 8 , 16 ) 
+            ;<BR>　　this.FormBorderStyle = 
+            System.Windows.Forms.FormBorderStyle.Fixed3D ;<BR>　　// 
+            设定窗体的边界类型<BR>　　this.ForeColor = System.Drawing.SystemColors.Desktop 
+            ;<BR>　　this.Font = new System.Drawing.Font ( "宋体" , 10 , 
+            System.Drawing.FontStyle.Bold ) ;<BR>　　// 
+            设定字体、大小就字体的式样<BR>　　this.SizeGripStyle = 
+            System.Windows.Forms.SizeGripStyle.Hide ;<BR>　　this.ClientSize = new 
+            System.Drawing.Size ( 250 , 250 ) 
+            ;<BR>　　//把标签加到窗体中<BR>　　this.Controls.Add ( this.label1 ) 
+            ;<BR>　　this.Controls.Add ( this.label2 ) ;<BR>　　}<BR>　　private 
+            static string getIPAddress ( )<BR>　　{<BR>　　System.Net.IPAddress 
+            addr;<BR>　　// 获得本机局域网IP地址<BR>　　addr = new System.Net.IPAddress ( 
+            Dns.GetHostByName ( Dns.GetHostName ( ) ) .AddressList 　　[0].Address 
+            ) ;<BR>　　return addr.ToString ( ) ;<BR>　　}<BR>　　}
+            <P class=list align=center><A 
+            href="http://tech.tom.com/Archive/2001/11/15-14252.html">下一页</A></P>
+            <P></P></TD></TR>
+        <TR>
+          <TD style="LINE-HEIGHT: 30px">
+            <TABLE height=25 cellSpacing=0 cellPadding=1 width="100%" 
+            align=center border=0>
+              <TBODY>
+              <TR>
+                <TD><A style="FONT-SIZE: 14px; COLOR: #0000ff" target=_blank 
+                  href="http://2002.tom.com/guess/">看世界杯，闯美人关，获意外惊喜</A></TD>
+                <TD align=right><A style="FONT-SIZE: 14px; COLOR: #0000ff" 
+                  target=_blank href="http://sms.tom.com/worldcup/go/">玩世界杯点球游戏 
+                  换取千元现金大奖</A></TD></TR></TBODY></TABLE><IMG height=20 
+            src="用VC＃获得计算机名称和IP地址.files/copyrightpic03.gif" width=575 
+          border=0></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width="96%" align=center border=0>
+        <FORM name=comment action=http://tech.tom.com/script/vote/comment.php 
+        method=post target=_blank><INPUT type=hidden value=tech name=channel> 
+        <INPUT type=hidden value=1 name=h1> <INPUT type=hidden value=99123992 
+        name=article_id> <INPUT type=hidden name=special_id> <INPUT type=hidden 
+        value=http://tech.tom.com/Archive/2001/11/15-18157.html name=url> <INPUT 
+        type=hidden value=用VC＃获得计算机名称和IP地址 name=title> 
+        <TBODY>
+        <TR>
+          <TD align=right width="20%"></TD>
+          <TD align=left width="80%"><FONT color=red>爱国 守法 自律 真实 
+        文明</FONT></TD></TR>
+        <TR vAlign=top>
+          <TD align=right width="20%">发表评论：</TD>
+          <TD align=left width="80%"><TEXTAREA name=content rows=4 cols=40></TEXTAREA></TD></TR>
+        <TR>
+          <TD align=right width="20%">网友昵称：</TD>
+          <TD align=left width="80%"><INPUT size=28 name=commenter> <INPUT type=submit value=提交> <INPUT onclick="window.open('http://tech.tom.com/script/vote/comment.php?channel=tech&amp;h1=1&amp;article_id=99123992&amp;special_id=&amp;url=http://tech.tom.com/Archive/2001/11/15-18157.html&amp;title=用VC＃获得计算机名称和IP地址');" type=button value=查看> 
+          </TD></TR></FORM></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width="96%" align=center border=0>
+        <TBODY>
+        <TR>
+          <TD colSpan=2>
+            <HR SIZE=1>
+          </TD></TR>
+        <TR>
+          <TD>关键字：<A target=_blank 
+            href="http://bjap1.cn.tom.com/app/cntom/search/search.php?tn=&amp;cl=&amp;channel=&amp;sw=9&amp;word=VC"><FONT 
+            color=red>VC</FONT></A>&nbsp;&nbsp;<A target=_blank 
+            href="http://bjap1.cn.tom.com/app/cntom/search/search.php?tn=&amp;cl=&amp;channel=&amp;sw=9&amp;word=计算机"><FONT 
+            color=red>计算机</FONT></A>&nbsp;&nbsp;<A target=_blank 
+            href="http://bjap1.cn.tom.com/app/cntom/search/search.php?tn=&amp;cl=&amp;channel=&amp;sw=9&amp;word=IP地址"><FONT 
+            color=red>IP地址</FONT></A>&nbsp;&nbsp;</TD>
+          <TD width=170>
+            <TABLE height=18 cellSpacing=0 cellPadding=0 width="100%" 
+              border=0><TBODY>
+              <TR>
+                <TD width=25><IMG src="用VC＃获得计算机名称和IP地址.files/bbs.gif" 
+                  border=0></TD>
+                <TD><A target=_blank 
+                  href="http://bbs.tom.com/bbs/index.php?main_url=http://bbs.tom.com/bbs/forumdisplay.php?forumid=42"><FONT 
+                  color=red>进入论坛</FONT></A></TD>
+                <TD width=33><IMG src="用VC＃获得计算机名称和IP地址.files/tuijian.gif" 
+                  border=0></TD>
+                <TD>
+                  <SCRIPT>
+function sentmyf(){
+OpenWindow = window.open("http://bjap1.cn.tom.com/app/cntom/script/rate/sendtofriend.php?addr=http://tech.tom.com/Archive/2001/11/15-18157.html","sentWin", "toolbar=no,scrollbars=no,menubar=no,width=420,height=220");
+}
+</SCRIPT>
+                  <A href="javascript:sentmyf()"><FONT 
+                color=red>推荐好友</FONT></A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=2 cellPadding=2 width="96%" bgColor=#d4d2d3 border=0>
+        <TBODY>
+        <TR>
+          <TD bgColor=#f7f7f7>相关文章</TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width="96%" border=0>
+        <TBODY>
+        <TR>
+          <TD 
+          style="PADDING-RIGHT: 5px; PADDING-LEFT: 40px; PADDING-BOTTOM: 5px; LINE-HEIGHT: 20px; PADDING-TOP: 5px" 
+          vAlign=top height=155>·<A class=list target=_blank 
+            href="http://tech.tom.com/Archive/1121/1015/2002/7/9-60072.html">显示器狂刮降价风 
+            17英寸纯平跌进千元</A>(7月9日10:41)<BR>·<A class=list target=_blank 
+            href="http://tech.tom.com/Archive/1370/1393/2002/7/9-94088.html">CPU也来瘦身减肥：VIA最新C3(图)</A>(7月9日10:21)<BR>·<A 
+            class=list target=_blank 
+            href="http://tech.tom.com/Archive/1121/1015/2002/7/9-34481.html">爱立信为TCL提供手机核心技术平台</A>(7月9日10:17)<BR>·<A 
+            class=list target=_blank 
+            href="http://tech.tom.com/Archive/1121/1015/2002/7/9-93323.html">中国数图11亿元商机 
+            跨国IT巨头纷纷争抢</A>(7月9日09:55)<BR>·<A class=list target=_blank 
+            href="http://tech.tom.com/Archive/1121/1367/2002/7/8-71589.html">试图打破CDMA市场坚冰 
+            联通国美双双降价</A>(7月8日16:18)<BR>·<A class=list target=_blank 
+            href="http://tech.tom.com/Archive/1121/1015/2002/7/8-93836.html">8日行情：内存涨势不减速龙再跌 
+            硬盘坚挺</A>(7月8日16:06)<BR>·<A class=list target=_blank 
+            href="http://tech.tom.com/Archive/1121/1365/2002/7/8-23756.html">It168.com首届在线DIY大赛今日拉开序幕</A>(7月8日15:45)<BR>·<A 
+            class=list target=_blank 
+            href="http://tech.tom.com/Archive/10000/2002/7/8-27768.html">EXPRESS 
+            DV视频采集实战-下(图)</A>(7月8日15:19)<BR></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=4 width=773 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD style="FONT-SIZE: 12px" align=middle><A 
+      href="http://www.tom.com/about/about_tom_1.htm"><FONT face=Arial><FONT 
+      color=#003333>TOM</FONT></FONT><FONT color=#003333>是谁</FONT></A>　　 <A 
+      href="http://www.tom.com/about/about_news.htm"><FONT 
+      color=#003333>新闻室</FONT></A>　　 <A 
+      href="http://www.tom.com/about/about_inv_1.htm"><FONT 
+      color=#003333>投资讯息</FONT></A>　　 <A 
+      href="http://www.tom.com/about/about_adv_1.htm"><FONT 
+      color=#003333>刊登广告</FONT></A>　　 <A 
+      href="http://www.tom.com/about/about_pri_1.htm"><FONT 
+      color=#003333>私隐政策</FONT></A>　　 <A 
+      href="http://www.tom.com/about/about_hr.htm"><FONT color=#003333><FONT 
+      face=Arial>TOM</FONT>招聘</FONT></A></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD style="FONT-SIZE: 12px"><FONT face=Arial color=#003333>Copyright &copy; 
+      2002 TOM.COM LIMITED. </FONT></TD>
+    <TD><A href="http://www.tom.com/"><IMG 
+      src="用VC＃获得计算机名称和IP地址.files/tom_cp_logo.gif" border=0></A></TD>
+    <TD style="FONT-SIZE: 12px"><FONT face=Arial color=#003333>All rights 
+      reserved.</FONT> </TD></TR></TBODY></TABLE>
+<TABLE><BR>
+  <TBODY></TBODY></TABLE></BODY></HTML>

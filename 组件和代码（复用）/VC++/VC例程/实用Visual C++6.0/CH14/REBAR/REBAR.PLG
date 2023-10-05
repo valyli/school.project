@@ -1,0 +1,46 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: rebar - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/rebar.res" /d "_DEBUG" /d "_AFXDLL" "D:\vc\rebar\rebar.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPC074.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/rebar.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\vc\rebar\MainFrm.cpp"
+"D:\vc\rebar\rebar.cpp"
+"D:\vc\rebar\rebarDoc.cpp"
+"D:\vc\rebar\rebarView.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPC074.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPC075.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/rebar.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\vc\rebar\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPC075.TMP" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/rebar.pdb" /debug /machine:I386 /out:"Debug/rebar.exe" /pdbtype:sept  .\Debug\MainFrm.obj .\Debug\rebar.obj .\Debug\rebarDoc.obj .\Debug\rebarView.obj .\Debug\StdAfx.obj .\Debug\rebar.res "
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+Skipping... (no relevant changes detected)
+StdAfx.cpp
+Compiling...
+MainFrm.cpp
+Generating Code...
+Skipping... (no relevant changes detected)
+rebar.cpp
+rebarDoc.cpp
+rebarView.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+rebar.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

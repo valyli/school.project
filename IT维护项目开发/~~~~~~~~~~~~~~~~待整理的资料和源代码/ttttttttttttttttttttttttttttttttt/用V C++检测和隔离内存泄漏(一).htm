@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0051)http://asp.7i24.com/sg/tech/software/2001.01.02.htm -->
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META http-equiv=Page-Enter content=revealTrans(Duration=4.0,Transition=23)>
+<META 
+content="经济; IT产业; 金融; 投资; 经营; 技术; 网络; 软件开发; 安全技术; 站点制作; 免费; free; internet; wwwboard; headlines; downloads; news; Web site; what's new; solutions; services; software; contests; corporate news;" 
+name=KEYWORDS>
+<META content=网妹中国资讯网 name=description>
+<STYLE type=text/css>BODY {
+	FONT-SIZE: 9pt; COLOR: #000000; FONT-FAMILY: 宋体
+}
+.pt9 {
+	FONT-SIZE: 9pt; FONT-FAMILY: "宋体"
+}
+.pt11 {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #336699; FONT-FAMILY: "宋体"
+}
+TT {
+	FONT-WEIGHT: bold; FONT-SIZE: 10.5pt; COLOR: #000000; FONT-FAMILY: "宋体"
+}
+H5 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12pt; COLOR: #000000; FONT-FAMILY: "宋体"
+}
+P {
+	FONT-SIZE: 9pt; COLOR: #000000; FONT-FAMILY: "宋体"
+}
+H9 {
+	FONT-SIZE: 9pt; FONT-FAMILY: "宋体"
+}
+TD {
+	FONT-SIZE: 9pt; FONT-FAMILY: "宋体"
+}
+SELECT {
+	FONT-SIZE: 9pt; FONT-FAMILY: "宋体"
+}
+A:link {
+	FONT-SIZE: 9pt; COLOR: #0022aa; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+A:visited {
+	FONT-SIZE: 9pt; COLOR: #0022aa; FONT-FAMILY: "宋体"; TEXT-DECORATION: none; font-color: blue
+}
+A:hover {
+	FONT-SIZE: 9pt; COLOR: red; FONT-FAMILY: "宋体"; TEXT-DECORATION: underline
+}
+</STYLE>
+
+<STYLE type=text/css>.d {
+	LINE-HEIGHT: 12pt; MARGIN-RIGHT: 15px; TEXT-ALIGN: justify
+}
+</STYLE>
+
+<SCRIPT language=JavaScript src="用V C++检测和隔离内存泄漏(一).files/hermes.js" 
+1.1></SCRIPT>
+
+<META content="MSHTML 5.50.4134.100" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0 MARGINWIDTH="0" 
+MARGINHEIGHT="0"><A name=index></A>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top align=left width="17%" height=650>
+      <TABLE height="100%" cellSpacing=0 cellPadding=0 width="100%" align=left 
+      border=0 valign="top">
+        <TBODY>
+        <TR>
+          <TD vAlign=top align=middle bgColor=#ffe4b5>
+            <TABLE height=80 cellSpacing=0 cellPadding=0 width="90%" 
+            align=center border=0 valign="top">
+              <TBODY>
+              <TR>
+                <TD align=middle><IMG 
+                src="用V C++检测和隔离内存泄漏(一).files/logo.gif"></TD></TR>
+              <TR>
+                <TD align=middle><FONT size=2><A 
+                  href="http://www.hermes.com.cn/">http://www.hermes.com.cn/</A></FONT></TD></TR>
+              <TR>
+                <TD vAlign=top align=middle width="100%" bgColor=#ffe4b5><IMG 
+                  height=18 alt=海脉技术纵横 src="用V C++检测和隔离内存泄漏(一).files/jishu.gif" 
+                  width=120 border=0></TD></TR>
+              <TR>
+                <TD vAlign=top align=left width="100%" bgColor=#ffe4b5 
+                  height=2><IMG height=2 
+                  src="用V C++检测和隔离内存泄漏(一).files/blank.gif"></TD></TR>
+              <TR>
+                <TD vAlign=top width="100%" bgColor=#ffcf80 height=10><FONT 
+                  color=#e0611e>◆</FONT><A target=rightdown 
+                  href="http://asp.7i24.com/sg/tech/techinfo/index.htm">&nbsp;<H9>技术动态</H9></A></TD></TR>
+              <TR>
+                <TD vAlign=top align=left width="100%" bgColor=#ffe4b5 
+                  height=2><IMG height=2 
+                  src="用V C++检测和隔离内存泄漏(一).files/blank.gif"></TD></TR>
+              <TR>
+                <TD vAlign=top width="100%" bgColor=#ffcf80 height=10><FONT 
+                  color=#e0611e>◆</FONT><A target=rightdown 
+                  href="http://asp.7i24.com/sg/tech/network/index.htm">&nbsp;<H9>网络技术</H9></A></TD></TR>
+              <TR>
+                <TD vAlign=top align=left width="100%" bgColor=#ffe4b5 
+                  height=2><IMG height=2 
+                  src="用V C++检测和隔离内存泄漏(一).files/blank.gif"></TD></TR>
+              <TR>
+                <TD vAlign=top width="100%" bgColor=#ffcf80 height=10><FONT 
+                  color=#e0611e>◆</FONT><A target=rightdown 
+                  href="http://asp.7i24.com/sg/tech/software/index.htm">&nbsp;<H9>软件开发</H9></A></TD></TR>
+              <TR>
+                <TD vAlign=top align=left width="100%" bgColor=#ffe4b5 
+                  height=2><IMG height=2 
+                  src="用V C++检测和隔离内存泄漏(一).files/blank.gif"></TD></TR>
+              <TR>
+                <TD vAlign=top width="100%" bgColor=#ffcf80 height=10><FONT 
+                  color=#e0611e>◆</FONT><A target=rightdown 
+                  href="http://asp.7i24.com/sg/tech/security/index.htm">&nbsp;<H9>安全技术</H9></A></TD></TR>
+              <TR>
+                <TD vAlign=top align=left width="100%" bgColor=#ffe4b5 
+                  height=2><IMG height=2 
+                  src="用V C++检测和隔离内存泄漏(一).files/blank.gif"></TD></TR>
+              <TR>
+                <TD vAlign=top width="100%" bgColor=#ffcf80 height=10><FONT 
+                  color=#e0611e>◆</FONT><A target=rightdown 
+                  href="http://asp.7i24.com/sg/tech/pagemake/index.htm">&nbsp;<H9>站点制作</H9></A></TD></TR>
+              <TR>
+                <TD vAlign=top align=left width="100%" bgColor=#ffe4b5 
+                  height=2><IMG height=2 
+                  src="用V C++检测和隔离内存泄漏(一).files/blank.gif"></TD></TR>
+              <TR>
+                <TD vAlign=top width="100%" bgColor=#ffcf80 height=10><FONT 
+                  color=#e0611e>◆</FONT><A target=rightdown 
+                  href="http://asp.7i24.com/sg/tech/faq/index.htm">&nbsp;<H9>技术问答</H9></A></TD></TR>
+              <TR>
+                <TD vAlign=top align=left width="100%" bgColor=#ffe4b5 
+                  height=2><IMG height=2 
+                  src="用V C++检测和隔离内存泄漏(一).files/blank.gif"></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!-- 左MENU代码结束  //--></TD>
+    <TD vAlign=top align=left width="83%" height="100%">
+      <TABLE height=70 cellSpacing=0 cellPadding=2 width="100%" bgColor=#ffffff 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=BUTTOM align=left width="70%" bgColor=#ffffff 
+            height=60><IFRAME marginWidth=0 marginHeight=0 
+            src="用V C++检测和隔离内存泄漏(一).files/iframe.htm" frameBorder=0 width=468 
+            scrolling=no 
+            height=60> <a href="http://ad.hermes.com.cn/clickbanner.php?member=tech"><img width="468" height="60" border="0" src="http://ad.hermes.com.cn/banner.php?size=0&member=tech"></a></IFRAME><BR>
+            <CENTER><A target=_blank 
+            href="http://www.healliance.com/"></A></CENTER></TD>
+          <TD vAlign=BUTTOM align=left width="30%" bgColor=#ffffff 
+            height=60>&nbsp; </TD></TR></TBODY></TABLE>
+      <TABLE height="100%" cellSpacing=0 cellPadding=0 width="100%" 
+      bgColor=#ffffff border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=center align=left width="80%" bgColor=#ffe4b5 
+            height=10>&nbsp;&nbsp;目前位置:<A 
+            href="http://asp.7i24.com/sg/tech/rightnew.html">首页</A>&gt;&gt;软件开发 
+          </TD>
+          <TD vAlign=center align=middle width="20%" bgColor=#ececec 
+            height=10>2001.01.02 </TD></TR>
+        <TR>
+          <TD vAlign=buttom align=middle width="100%" bgColor=#ffffff colSpan=2 
+          height="100%"><!-- 添加内容开始  //-->
+            <TABLE cellPadding=10 width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD height=2>
+                  <DIV align=left><BIG><B>软件开发</B></BIG> 
+                  <CENTER><TT>用V C++检测和隔离内存泄漏(一)</TT></CENTER>
+                  <P><BR>　　具有动态的分配和释放内存的能力是C/C++程序语言的重要特色之一。Visual C++ debugger 
+                  和 
+                  CRT库提供了一系列有效的检测和鉴定内存泄漏的工具。<BR><BR>　　设置内存泄漏检测<BR><BR>　　检测内存泄漏的基本工具是调试器和CRT调试堆函数。为了使用调试堆函数，在你的程序中你必须含有下面的说明： 
+<XMP>　　#define _CRTDBG_MAP_ALLOC#include <stdlib.h>#include <crtdbg.h>
+</XMP>　　#include说明必须按顺序说明。如果改变了顺序，所用的函数可能不能正常工作。包含crtdbg.h的_malloc_dbg和 
+                  _free_dbg将 
+                  malloc和free函数映射到测试版中，它可以跟踪内存的分配和释放。这种映射仅仅在一个测试体系中发生(也就是说，仅仅当_DEBUG被定义的时候)。释放的体系使用通常的malloc和 
+                  free功能。<BR><BR>　　#define说明映射CRT堆函数的低级版本到相应的测试版本。这个说明是不需要的，但是没有它，内存泄漏处含有的只是没有多大用处的信息。<BR><BR>　　一旦你已经增加了刚才的说明，你能够通过在你的程序中包含下面的说明来释放内存信息： 
+<XMP>　　_CrtDumpMemoryLeaks();
+</XMP>　　当调试情况下运行程序时，在输出窗口的Debug 
+                  标签处_CrtDumpMemoryLeaks表现出内存泄漏的信息。内存泄漏信息类似下面这样： <XMP>Detected memory leaks!
+Dumping objects ->
+C:\PROGRAM FILES\VISUAL STUDIO\MyProjects\leaktest\leaktest.cpp(20) : {18} normal block at 
+0x00780E80, 64 bytes long.
+Data: <                > CD CD CD CD CD CD CD CD CD CD CD CD CD CD CD CD 
+Object dump complete. 
+
+　　如果你没有用#define _CRTDBG_MAP_ALLOC说明，内存漏洞堆存处类似下面这样：
+Detected memory leaks!
+Dumping objects ->
+{18} normal block at 0x00780E80, 64 bytes long.
+Data: <                > CD CD CD CD CD CD CD CD CD CD CD CD CD CD CD CD 
+Object dump complete.
+</XMP>　　当_CRTDBG_MAP_ALLOC被定义时，_CrtDumpMemoryLeaks给了你更多的有用信息。如果_CRTDBG_MAP_ALLOC没有被定义，那么将向你如下显示：<BR><BR>　　内存分配数值（花括号内）<BR>　　模块的类型（normal、client或者CRT）<BR>　　以十六进制格式定位的内存<BR>　　以字节计模块的大小<BR>　　第一个十六字节的内容（也可以用十六进制）<BR>　　当定义了_CRTDBG_MAP_ALLOC的时候，显示的内容也向你展现了出现泄漏内存所分配地方的文件。在文件名之后括号内的数字（20，以此为例）是文件内的行数值。如果你双击包含行数值和文件名的输出行， 
+<XMP>　　C:\PROGRAM FILES\VISUAL STUDIO\MyProjects\leaktest\leaktest.cpp(20) : {18} normal block at 
+0x00780E80, 64 bytes long.
+</XMP>　　指针将会跳到源文件中内存被分配地方的行（在上面的情况下，leaktest.cpp的行号为20）。选择输出行并按F4将有同样的效果。 
+                  <BR><BR></DIV></TD></TR></TBODY></TABLE><!-- 添加内容结束  //--></TD></TR>
+        <TR>
+          <TD vAlign=buttom align=middle width="100%" bgColor=#ffffff colSpan=2 
+          height=10>|<A 
+            href="http://asp.7i24.com/sg/tech/software/2001.01.02.htm#index">回顶部</A>|<A 
+            href="javascript:(history.go(-1))">上一页</A>|<A 
+            href="http://asp.7i24.com/index.html">主页面</A>| </TD></TR>
+        <TR>
+          <TD vAlign=buttom align=middle width="100%" bgColor=#ffffff colSpan=2 
+          height=30>
+            <P align=center>
+            <HR color=#0066cc SIZE=1>
+            <BR>建议使用800*600的分辩率，IE4以上的浏览器浏览以取得良好的效果 <BR>Copyright (C) 2001-2002 
+            Netmay.Com All Rights Reserved<BR>Email: <A 
+            href="mailto:skyidea@hotmail.com">skyidea@hotmail.com</A> 
+            QQ:83150<BR></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></BODY></HTML>

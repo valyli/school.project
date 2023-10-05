@@ -1,0 +1,27 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Example03C - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\WINDOWS\TEMP\RSP316.TMP" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Debug/Example03C.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\多媒体编程\刘长明\源程序\Example3C\Example03C.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP316.TMP" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/Example03C.pdb" /debug /machine:I386 /out:"Debug/Example03C.exe" /pdbtype:sept  ".\Debug\Example03C.obj" "
+<h3>Output Window</h3>
+Compiling...
+Example03C.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+Example03C.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,33 @@
+DIV {
+	FONT-FAMILY: "宋体", "Arial"; FONT-SIZE: 9pt
+}
+TD {
+	FONT-FAMILY: "宋体", "Arial"; FONT-SIZE: 9pt
+}
+P {
+	FONT-FAMILY: "宋体", "Arial"; FONT-SIZE: 9pt
+}
+A:link {
+	COLOR: #000000; FONT-FAMILY: "宋体", "Arial"; FONT-SIZE: 9pt; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #cc0000; FONT-FAMILY: "宋体", "Arial"; FONT-SIZE: 9pt; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #000000; FONT-FAMILY: "宋体", "Arial"; FONT-SIZE: 9pt; TEXT-DECORATION: none
+}
+FONT {
+	FONT-FAMILY: "宋体", "Arial"; FONT-SIZE: 9pt
+}
+FORM {
+	FONT-FAMILY: "宋体", "Arial"; FONT-SIZE: 9pt; TEXT-DECORATION: underline; VERTICAL-ALIGN: middle
+}
+.in-1 {
+	BACKGROUND-COLOR: #ff6600; BORDER-BOTTOM: #000000 0px; BORDER-LEFT: #000000 0px; BORDER-RIGHT: #000000 0px; BORDER-TOP: #000000 0px; CLIP: ; COLOR: #ffffff; FONT-FAMILY: "宋体", "Arial"; FONT-SIZE: 9pt; HEIGHT: 12px; TEXT-ALIGN: center; TEXT-DECORATION: underline; VERTICAL-ALIGN: bottom; WHITE-SPACE: normal
+}
+INPUT {
+	FONT-FAMILY: "宋体", "Arial", "Arial Black", "Arial Narrow"; FONT-SIZE: 9pt; TEXT-DECORATION: underline
+}
+.bt-1 {
+	COLOR: #ffffff; FONT-FAMILY: "宋体", "Arial", "Arial Black", "Arial Narrow"; FONT-SIZE: 9pt; TEXT-DECORATION: none
+}

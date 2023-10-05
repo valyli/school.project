@@ -1,0 +1,49 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: homework3 - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Release/homework3.res" /d "NDEBUG" /d "_AFXDLL" "C:\WINDOWS\Desktop\lijia\213\homework3\homework3.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPB120.TMP" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/homework3.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\WINDOWS\Desktop\lijia\213\homework3\homework3.cpp"
+"C:\WINDOWS\Desktop\lijia\213\homework3\homework3Dlg.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPB120.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPB121.TMP" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/homework3.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\WINDOWS\Desktop\lijia\213\homework3\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPB121.TMP" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:no /pdb:"Release/homework3.pdb" /machine:I386 /out:"Release/homework3.exe"  .\Release\homework3.obj .\Release\homework3Dlg.obj .\Release\StdAfx.obj .\Release\homework3.res "
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+homework3.cpp
+homework3Dlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+homework3.exe - 0 error(s), 0 warning(s)
+<h3>
+--------------------Configuration: homework3 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+
+
+
+<h3>Results</h3>
+homework3.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

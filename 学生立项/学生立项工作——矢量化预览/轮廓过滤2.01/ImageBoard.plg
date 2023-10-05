@@ -1,0 +1,58 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ImageBoard - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "E:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP7F.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/ImageBoard.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\学生立项\轮廓过滤2.0\轮廓过滤2.0\ImageBoardView.cpp"
+]
+Creating command line "cl.exe @E:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP7F.tmp" 
+Creating temporary file "E:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP80.tmp" with contents
+[
+winmm.lib version.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/ImageBoard.pdb" /debug /machine:I386 /out:"Debug/ImageBoard.exe" /pdbtype:sept 
+".\Debug\AdjustColorDlg.obj"
+".\Debug\BCDlg.obj"
+".\Debug\CanvasSize.obj"
+".\Debug\ChildFrm.obj"
+".\Debug\ColorBitsDlg.obj"
+".\Debug\ColorGrid.obj"
+".\Debug\ConvoluteDlg.obj"
+".\Debug\CqOctree.obj"
+".\Debug\Dib.obj"
+".\Debug\dibapi.obj"
+".\Debug\FloatDibWnd.obj"
+".\Debug\GrayDlg.obj"
+".\Debug\ImageBoard.obj"
+".\Debug\ImageBoardDoc.obj"
+".\Debug\ImageBoardView.obj"
+".\Debug\IP.obj"
+".\Debug\MainFrm.obj"
+".\Debug\PaintParambar.obj"
+".\Debug\PaintToolbar.obj"
+".\Debug\PenParamsList.obj"
+".\Debug\PenWidth.obj"
+".\Debug\Plotter.obj"
+".\Debug\Scale.obj"
+".\Debug\SelectPasteDlg.obj"
+".\Debug\Splash.obj"
+".\Debug\StdAfx.obj"
+".\Debug\ImageBoard.res"
+]
+Creating command line "link.exe @E:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP80.tmp"
+<h3>Output Window</h3>
+Compiling...
+ImageBoardView.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+ImageBoard.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

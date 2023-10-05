@@ -1,0 +1,444 @@
+<HTML><HEAD><SCRIPT language="JavaScript" src="../resources/script.js" type="text/javascript"></SCRIPT><TITLE>XMLValidator.hpp Source File</TITLE><link href="XercesApi.css" rel="stylesheet" type="text/css"></HEAD><BODY alink="#ff0000" bgcolor="#ffffff" leftmargin="4" link="#0000ff" marginheight="4" marginwidth="4" text="#000000" topmargin="4" vlink="#0000aa"><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD align="left" height="60" rowspan="3" valign="top" width="135"><IMG border="0" height="60" hspace="0" src="../resources/logo.gif" vspace="0" width="135"></TD><TD align="left" colspan="4" height="5" valign="top" width="456"><IMG border="0" height="5" hspace="0" src="../resources/line.gif" vspace="0" width="456"></TD><TD align="left" height="60" rowspan="3" valign="top" width="29"><IMG border="0" height="60" hspace="0" src="../resources/right.gif" vspace="0" width="29"></TD></TR><TR><TD align="left" bgcolor="#0086b2" colspan="4" height="35" valign="top" width="456"><IMG alt="" border="0" height="35" hspace="0" src="../graphics/api-header.jpg" vspace="0" width="456"></TD></TR><TR><TD align="left" height="20" valign="top" width="168"><IMG border="0" height="20" hspace="0" src="../resources/bottom.gif" vspace="0" width="168"></TD><TD align="left" height="20" valign="top" width="96"><A href="http://xml.apache.org/" onMouseOut="rolloverOff('xml');" onMouseOver="rolloverOn('xml');" target="new"><IMG alt="http://xml.apache.org/" border="0" height="20" hspace="0" name="xml" onLoad="rolloverLoad('xml','../resources/button-xml-hi.gif','../resources/button-xml-lo.gif');" src="../resources/button-xml-lo.gif" vspace="0" width="96"></A></TD><TD align="left" height="20" valign="top" width="96"><A href="http://www.apache.org/" onMouseOut="rolloverOff('asf');" onMouseOver="rolloverOn('asf');" target="new"><IMG alt="http://www.apache.org/" border="0" height="20" hspace="0" name="asf" onLoad="rolloverLoad('asf','../resources/button-asf-hi.gif','../resources/button-asf-lo.gif');" src="../resources/button-asf-lo.gif" vspace="0" width="96"></A></TD><TD align="left" height="20" valign="top" width="96"><A href="http://www.w3.org/" onMouseOut="rolloverOff('w3c');" onMouseOver="rolloverOn('w3c');" target="new"><IMG alt="http://www.w3.org/" border="0" height="20" hspace="0" name="w3c" onLoad="rolloverLoad('w3c','../resources/button-w3c-hi.gif','../resources/button-w3c-lo.gif');" src="../resources/button-w3c-lo.gif" vspace="0" width="96"></A></TD></TR></TABLE><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD align="left" valign="top" width="120"><IMG border="0" height="14" hspace="0" src="../resources/join.gif" vspace="0" width="120"><BR>
+  <A href="../../index.html" onMouseOut="rolloverOff('side-ext-2');" onMouseOver="rolloverOn('side-ext-2');"><IMG alt="Home" border="0" height="12" hspace="0" name="side-ext-2" onLoad="rolloverLoad('side-ext-2','../graphics/ext-2-label-2.jpg','../graphics/ext-2-label-3.jpg');" src="../graphics/ext-2-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="../index.html" onMouseOut="rolloverOff('side-index');" onMouseOver="rolloverOn('side-index');"><IMG alt="Readme" border="0" height="12" hspace="0" name="side-index" onLoad="rolloverLoad('side-index','../graphics/index-label-2.jpg','../graphics/index-label-3.jpg');" src="../graphics/index-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../releases.html" onMouseOut="rolloverOff('side-releases');" onMouseOver="rolloverOn('side-releases');"><IMG alt="Release Info" border="0" height="12" hspace="0" name="side-releases" onLoad="rolloverLoad('side-releases','../graphics/releases-label-2.jpg','../graphics/releases-label-3.jpg');" src="../graphics/releases-label-3.jpg" vspace="0" width="120"></A><BR>
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+  <A href="../install.html" onMouseOut="rolloverOff('side-install');" onMouseOver="rolloverOn('side-install');"><IMG alt="Installation" border="0" height="12" hspace="0" name="side-install" onLoad="rolloverLoad('side-install','../graphics/install-label-2.jpg','../graphics/install-label-3.jpg');" src="../graphics/install-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="http://xml.apache.org/dist/xerces-c/" onMouseOut="rolloverOff('side-ext-18');" onMouseOver="rolloverOn('side-ext-18');"><IMG alt="Download" border="0" height="12" hspace="0" name="side-ext-18" onLoad="rolloverLoad('side-ext-18','../graphics/ext-18-label-2.jpg','../graphics/ext-18-label-3.jpg');" src="../graphics/ext-18-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../build.html" onMouseOut="rolloverOff('side-build');" onMouseOver="rolloverOn('side-build');"><IMG alt="Build" border="0" height="12" hspace="0" name="side-build" onLoad="rolloverLoad('side-build','../graphics/build-label-2.jpg','../graphics/build-label-3.jpg');" src="../graphics/build-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+  <A href="../faqs.html" onMouseOut="rolloverOff('side-faqs');" onMouseOver="rolloverOn('side-faqs');"><IMG alt="FAQs" border="0" height="12" hspace="0" name="side-faqs" onLoad="rolloverLoad('side-faqs','../graphics/faqs-label-2.jpg','../graphics/faqs-label-3.jpg');" src="../graphics/faqs-label-3.jpg" vspace="0" width="120"></A><BR>  
+  <A href="../samples.html" onMouseOut="rolloverOff('side-samples');" onMouseOver="rolloverOn('side-samples');"><IMG alt="Samples" border="0" height="12" hspace="0" name="side-samples" onLoad="rolloverLoad('side-samples','../graphics/samples-label-2.jpg','../graphics/samples-label-3.jpg');" src="../graphics/samples-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../api.html" onMouseOut="rolloverOff('side-api');" onMouseOver="rolloverOn('side-api');"><IMG alt="API Docs" border="0" height="12" hspace="0" name="side-api" onLoad="rolloverLoad('side-api','../graphics/api-label-2.jpg','../graphics/api-label-3.jpg');" src="../graphics/api-label-3.jpg" vspace="0" width="120"></A><BR>  
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+  <A href="../ApacheDOMC++Binding.html" onMouseOut="rolloverOff('side-ext-64');" onMouseOver="rolloverOn('side-ext-64');"><IMG alt="DOM C++ Binding" border="0" height="12" hspace="0" name="side-ext-64" onLoad="rolloverLoad('side-ext-64','../graphics/ext-64-label-2.jpg','../graphics/ext-64-label-3.jpg');" src="../graphics/ext-64-label-3.jpg" vspace="0" width="120"></A><BR> 
+  <A href="../program.html" onMouseOut="rolloverOff('side-program');" onMouseOver="rolloverOn('side-program');"><IMG alt="Programming" border="0" height="12" hspace="0" name="side-program" onLoad="rolloverLoad('side-program','../graphics/program-label-2.jpg','../graphics/program-label-3.jpg');" src="../graphics/program-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../migrate.html" onMouseOut="rolloverOff('side-migrate');" onMouseOver="rolloverOn('side-migrate');"><IMG alt="Migration Guide" border="0" height="12" hspace="0" name="side-migrate" onLoad="rolloverLoad('side-migrate','../graphics/migrate-label-2.jpg','../graphics/migrate-label-3.jpg');" src="../graphics/migrate-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="../feedback.html" onMouseOut="rolloverOff('side-feedback');" onMouseOver="rolloverOn('side-feedback');"><IMG alt="Feedback" border="0" height="12" hspace="0" name="side-feedback" onLoad="rolloverLoad('side-feedback','../graphics/feedback-label-2.jpg','../graphics/feedback-label-3.jpg');" src="../graphics/feedback-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../bug-report.html" onMouseOut="rolloverOff('side-bug-report');" onMouseOver="rolloverOn('side-bug-report');"><IMG alt="Bug-Reporting" border="0" height="12" hspace="0" name="side-bug-report" onLoad="rolloverLoad('side-bug-report','../graphics/bug-report-label-2.jpg','../graphics/bug-report-label-3.jpg');" src="../graphics/bug-report-label-3.jpg" vspace="0" width="120"></A><BR>  
+  <A href="../pdf.html" onMouseOut="rolloverOff('side-pdf');" onMouseOver="rolloverOn('side-pdf');"><IMG alt="PDF Document" border="0" height="12" hspace="0" name="side-pdf" onLoad="rolloverLoad('side-pdf','../graphics/pdf-label-2.jpg','../graphics/pdf-label-3.jpg');" src="../graphics/pdf-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="http://xml.apache.org/websrc/cvsweb.cgi/xml-xerces/c/" onMouseOut="rolloverOff('side-ext-96');" onMouseOver="rolloverOn('side-ext-96');"><IMG alt="CVS Repository" border="0" height="12" hspace="0" name="side-ext-96" onLoad="rolloverLoad('side-ext-96','../graphics/ext-96-label-2.jpg','../graphics/ext-96-label-3.jpg');" src="../graphics/ext-96-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="http://marc.theaimsgroup.com/?l=xerces-c-dev" onMouseOut="rolloverOff('side-ext-98');" onMouseOver="rolloverOn('side-ext-98');"><IMG alt="Mail Archive" border="0" height="12" hspace="0" name="side-ext-98" onLoad="rolloverLoad('side-ext-98','../graphics/ext-98-label-2.jpg','../graphics/ext-98-label-3.jpg');" src="../graphics/ext-98-label-3.jpg" vspace="0" width="120"></A><BR>
+
+<IMG border="0" height="14" hspace="0" src="../resources/close.gif" vspace="0" width="120"><BR></TD><TD align="left" valign="top" width="500"><TABLE border="0" cellpadding="3" cellspacing="0"><TR><TD>
+    <TABLE border="0" cellpadding="0" cellspacing="0" width="494"><TR><TD bgcolor="#FFFFFF" colspan="2" width="494"><TABLE border="0" cellpadding="0" cellspacing="0" width="494"><TR><TD bgcolor="#039acc" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#039acc" height="1" width="492"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="492"></TD><TD bgcolor="#0086b2" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR><TR><TD bgcolor="#039acc" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#0086b2" width="492"><FONT color="#ffffff" face="arial,helvetica,sanserif" size="+1"><IMG border="0" height="2" hspace="0" src="../resources/void.gif" vspace="0" width="2"><B>API Docs for SAX and DOM</B></FONT></TD><TD bgcolor="#017299" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR><TR><TD bgcolor="#0086b2" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#017299" height="1" width="492"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="492"></TD><TD bgcolor="#017299" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR></TABLE></TD></TR><TR><TD width="10">&nbsp;</TD><TD width="484"><FONT color="#000000" face="arial,helvetica,sanserif">
+
+	    <P>
+<!-- Generated by Doxygen 1.2.18 -->
+<center>
+<a class="qindex" href="index.html">Main Page</a> &nbsp; <a class="qindex" href="hierarchy.html">Class Hierarchy</a> &nbsp; <a class="qindex" href="classes.html">Alphabetical List</a> &nbsp; <a class="qindex" href="annotated.html">Compound List</a> &nbsp; <a class="qindex" href="files.html">File List</a> &nbsp; <a class="qindex" href="functions.html">Compound Members</a> &nbsp; <a class="qindex" href="globals.html">File Members</a> &nbsp; </center>
+<hr><h1>XMLValidator.hpp</h1><a href="XMLValidator_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><pre>00001 <span class="comment">/*</span>
+00002 <span class="comment"> * The Apache Software License, Version 1.1</span>
+00003 <span class="comment"> *</span>
+00004 <span class="comment"> * Copyright (c) 1999-2001 The Apache Software Foundation.  All rights</span>
+00005 <span class="comment"> * reserved.</span>
+00006 <span class="comment"> *</span>
+00007 <span class="comment"> * Redistribution and use in source and binary forms, with or without</span>
+00008 <span class="comment"> * modification, are permitted provided that the following conditions</span>
+00009 <span class="comment"> * are met:</span>
+00010 <span class="comment"> *</span>
+00011 <span class="comment"> * 1. Redistributions of source code must retain the above copyright</span>
+00012 <span class="comment"> *    notice, this list of conditions and the following disclaimer.</span>
+00013 <span class="comment"> *</span>
+00014 <span class="comment"> * 2. Redistributions in binary form must reproduce the above copyright</span>
+00015 <span class="comment"> *    notice, this list of conditions and the following disclaimer in</span>
+00016 <span class="comment"> *    the documentation and/or other materials provided with the</span>
+00017 <span class="comment"> *    distribution.</span>
+00018 <span class="comment"> *</span>
+00019 <span class="comment"> * 3. The end-user documentation included with the redistribution,</span>
+00020 <span class="comment"> *    if any, must include the following acknowledgment:</span>
+00021 <span class="comment"> *       "This product includes software developed by the</span>
+00022 <span class="comment"> *        Apache Software Foundation (http://www.apache.org/)."</span>
+00023 <span class="comment"> *    Alternately, this acknowledgment may appear in the software itself,</span>
+00024 <span class="comment"> *    if and wherever such third-party acknowledgments normally appear.</span>
+00025 <span class="comment"> *</span>
+00026 <span class="comment"> * 4. The names "Xerces" and "Apache Software Foundation" must</span>
+00027 <span class="comment"> *    not be used to endorse or promote products derived from this</span>
+00028 <span class="comment"> *    software without prior written permission. For written</span>
+00029 <span class="comment"> *    permission, please contact apache\@apache.org.</span>
+00030 <span class="comment"> *</span>
+00031 <span class="comment"> * 5. Products derived from this software may not be called "Apache",</span>
+00032 <span class="comment"> *    nor may "Apache" appear in their name, without prior written</span>
+00033 <span class="comment"> *    permission of the Apache Software Foundation.</span>
+00034 <span class="comment"> *</span>
+00035 <span class="comment"> * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED</span>
+00036 <span class="comment"> * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES</span>
+00037 <span class="comment"> * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+00038 <span class="comment"> * DISCLAIMED.  IN NO EVENT SHALL THE APACHE SOFTWARE FOUNDATION OR</span>
+00039 <span class="comment"> * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+00040 <span class="comment"> * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+00041 <span class="comment"> * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF</span>
+00042 <span class="comment"> * USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND</span>
+00043 <span class="comment"> * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,</span>
+00044 <span class="comment"> * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT</span>
+00045 <span class="comment"> * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF</span>
+00046 <span class="comment"> * SUCH DAMAGE.</span>
+00047 <span class="comment"> * ====================================================================</span>
+00048 <span class="comment"> *</span>
+00049 <span class="comment"> * This software consists of voluntary contributions made by many</span>
+00050 <span class="comment"> * individuals on behalf of the Apache Software Foundation, and was</span>
+00051 <span class="comment"> * originally based on software copyright (c) 1999, International</span>
+00052 <span class="comment"> * Business Machines, Inc., http://www.ibm.com .  For more information</span>
+00053 <span class="comment"> * on the Apache Software Foundation, please see</span>
+00054 <span class="comment"> * &lt;http://www.apache.org/&gt;.</span>
+00055 <span class="comment"> */</span>
+00056 
+00057  <span class="comment">/*</span>
+00058 <span class="comment">  * $Log: XMLValidator.hpp,v $</span>
+00059 <span class="comment">  * Revision 1.7  2002/11/07 21:59:22  tng</span>
+00060 <span class="comment">  * Pass elemDecl to XMLValidator::validateAttrValue so that we can include element name in error message.</span>
+00061 <span class="comment">  *</span>
+00062 <span class="comment">  * Revision 1.6  2002/11/04 15:00:21  tng</span>
+00063 <span class="comment">  * C++ Namespace Support.</span>
+00064 <span class="comment">  *</span>
+00065 <span class="comment">  * Revision 1.5  2002/09/04 18:17:55  tng</span>
+00066 <span class="comment">  * Do not set IDREF to used during prevalidation.</span>
+00067 <span class="comment">  *</span>
+00068 <span class="comment">  * Revision 1.4  2002/08/20 16:54:11  tng</span>
+00069 <span class="comment">  * [Bug 6251] Info during compilation.</span>
+00070 <span class="comment">  *</span>
+00071 <span class="comment">  * Revision 1.3  2002/07/11 18:55:44  knoaman</span>
+00072 <span class="comment">  * Add a flag to the preContentValidation method to indicate whether to validate</span>
+00073 <span class="comment">  * default/fixed attributes or not.</span>
+00074 <span class="comment">  *</span>
+00075 <span class="comment">  * Revision 1.2  2002/02/20 18:17:01  tng</span>
+00076 <span class="comment">  * [Bug 5977] Warnings on generating apiDocs.</span>
+00077 <span class="comment">  *</span>
+00078 <span class="comment">  * Revision 1.1.1.1  2002/02/01 22:21:52  peiyongz</span>
+00079 <span class="comment">  * sane_include</span>
+00080 <span class="comment">  *</span>
+00081 <span class="comment">  * Revision 1.17  2001/11/30 22:18:18  peiyongz</span>
+00082 <span class="comment">  * cleanUp function made member function</span>
+00083 <span class="comment">  * cleanUp object moved to file scope</span>
+00084 <span class="comment">  * double mutex lock removed</span>
+00085 <span class="comment">  *</span>
+00086 <span class="comment">  * Revision 1.16  2001/11/13 13:24:46  tng</span>
+00087 <span class="comment">  * Deprecate function XMLValidator::checkRootElement.</span>
+00088 <span class="comment">  *</span>
+00089 <span class="comment">  * Revision 1.15  2001/10/24 23:46:52  peiyongz</span>
+00090 <span class="comment">  * [Bug 4342] fix the leak.</span>
+00091 <span class="comment">  *</span>
+00092 <span class="comment">  * Revision 1.14  2001/06/05 16:51:17  knoaman</span>
+00093 <span class="comment">  * Add 'const' to getGrammar - submitted by Peter A. Volchek.</span>
+00094 <span class="comment">  *</span>
+00095 <span class="comment">  * Revision 1.13  2001/05/11 13:25:33  tng</span>
+00096 <span class="comment">  * Copyright update.</span>
+00097 <span class="comment">  *</span>
+00098 <span class="comment">  * Revision 1.12  2001/05/03 20:34:22  tng</span>
+00099 <span class="comment">  * Schema: SchemaValidator update</span>
+00100 <span class="comment">  *</span>
+00101 <span class="comment">  * Revision 1.11  2001/04/19 18:16:53  tng</span>
+00102 <span class="comment">  * Schema: SchemaValidator update, and use QName in Content Model</span>
+00103 <span class="comment">  *</span>
+00104 <span class="comment">  * Revision 1.10  2001/03/21 21:56:03  tng</span>
+00105 <span class="comment">  * Schema: Add Schema Grammar, Schema Validator, and split the DTDValidator into DTDValidator, DTDScanner, and DTDGrammar.</span>
+00106 <span class="comment">  *</span>
+00107 <span class="comment">  * Revision 1.9  2001/02/26 19:21:33  tng</span>
+00108 <span class="comment">  * Schema: add parameter prefix in findElem and findAttr.</span>
+00109 <span class="comment">  *</span>
+00110 <span class="comment">  * Revision 1.8  2000/12/14 18:49:58  tng</span>
+00111 <span class="comment">  * Fix API document generation warning: "Warning: end of member group without matching begin"</span>
+00112 <span class="comment">  *</span>
+00113 <span class="comment">  * Revision 1.7  2000/08/09 22:09:09  jpolast</span>
+00114 <span class="comment">  * added const XMLCh* getURIText()</span>
+00115 <span class="comment">  * allows parsers to use const URIs instead of appending</span>
+00116 <span class="comment">  * to a XMLBuffer.</span>
+00117 <span class="comment">  *</span>
+00118 <span class="comment">  * Revision 1.6  2000/03/02 19:54:25  roddey</span>
+00119 <span class="comment">  * This checkin includes many changes done while waiting for the</span>
+00120 <span class="comment">  * 1.1.0 code to be finished. I can't list them all here, but a list is</span>
+00121 <span class="comment">  * available elsewhere.</span>
+00122 <span class="comment">  *</span>
+00123 <span class="comment">  * Revision 1.5  2000/02/24 20:00:24  abagchi</span>
+00124 <span class="comment">  * Swat for removing Log from API docs</span>
+00125 <span class="comment">  *</span>
+00126 <span class="comment">  * Revision 1.4  2000/02/15 23:59:07  roddey</span>
+00127 <span class="comment">  * More updated documentation of Framework classes.</span>
+00128 <span class="comment">  *</span>
+00129 <span class="comment">  * Revision 1.3  2000/02/15 01:21:31  roddey</span>
+00130 <span class="comment">  * Some initial documentation improvements. More to come...</span>
+00131 <span class="comment">  *</span>
+00132 <span class="comment">  * Revision 1.2  2000/02/06 07:47:49  rahulj</span>
+00133 <span class="comment">  * Year 2K copyright swat.</span>
+00134 <span class="comment">  *</span>
+00135 <span class="comment">  * Revision 1.1.1.1  1999/11/09 01:08:38  twl</span>
+00136 <span class="comment">  * Initial checkin</span>
+00137 <span class="comment">  *</span>
+00138 <span class="comment">  * Revision 1.4  1999/11/08 20:44:41  rahul</span>
+00139 <span class="comment">  * Swat for adding in Product name and CVS comment log variable.</span>
+00140 <span class="comment">  *</span>
+00141 <span class="comment">  */</span>
+00142 
+00143 
+00144 <span class="preprocessor">#if !defined(XMLVALIDATOR_HPP)</span>
+<a name="l00145"></a><a class="code" href="XMLValidator_8hpp.html#a0">00145</a> <span class="preprocessor"></span><span class="preprocessor">#define XMLVALIDATOR_HPP</span>
+00146 <span class="preprocessor"></span>
+00147 <span class="preprocessor">#include &lt;<a class="code" href="XercesDefs_8hpp.html">xercesc/util/XercesDefs.hpp</a>&gt;</span>
+00148 <span class="preprocessor">#include &lt;<a class="code" href="XMLAttr_8hpp.html">xercesc/framework/XMLAttr.hpp</a>&gt;</span>
+00149 <span class="preprocessor">#include &lt;<a class="code" href="XMLValidityCodes_8hpp.html">xercesc/framework/XMLValidityCodes.hpp</a>&gt;</span>
+00150 <span class="preprocessor">#include &lt;xercesc/framework/XMLRefInfo.hpp&gt;</span>
+00151 
+00152 <a class="code" href="XercesDefs_8hpp.html#a2">XERCES_CPP_NAMESPACE_BEGIN</a>
+00153 
+<a name="l00154"></a><a class="code" href="XMLValidator_8hpp.html#a1">00154</a> <span class="keyword">class </span><a class="code" href="XMLValidator_8hpp.html#a1">ReaderMgr</a>;
+00155 <span class="keyword">class </span>XMLBuffer;
+00156 <span class="keyword">class </span>XMLBufferMgr;
+00157 <span class="keyword">class </span><a class="code" href="classXMLElementDecl.html">XMLElementDecl</a>;
+00158 <span class="keyword">class </span><a class="code" href="classXMLEntityHandler.html">XMLEntityHandler</a>;
+00159 <span class="keyword">class </span><a class="code" href="classXMLErrorReporter.html">XMLErrorReporter</a>;
+00160 <span class="keyword">class </span><a class="code" href="PlatformUtils_8hpp.html#a1">XMLMsgLoader</a>;
+00161 <span class="keyword">class </span>XMLScanner;
+00162 <span class="keyword">class </span>Grammar;
+00163 
+00164 
+<a name="l00180"></a><a class="code" href="classXMLValidator.html">00180</a> <span class="keyword">class </span><a class="code" href="XercesDefs_8hpp.html#a7"></a> <a class="code" href="classXMLValidator.html">XMLValidator</a>
+00181 {
+00182 <span class="keyword">public</span>:
+00183     <span class="comment">// -----------------------------------------------------------------------</span>
+00184     <span class="comment">//  Constructors are hidden, just the virtual destructor is exposed</span>
+00185     <span class="comment">// -----------------------------------------------------------------------</span>
+00186 
+00189 
+<a name="l00194"></a><a class="code" href="classXMLValidator.html#z412_0">00194</a>     <span class="keyword">virtual</span> ~<a class="code" href="classXMLValidator.html">XMLValidator</a>()
+00195     {
+00196     }
+00198 
+00199 
+00200     <span class="comment">// -----------------------------------------------------------------------</span>
+00201     <span class="comment">//  The virtual validator interface</span>
+00202     <span class="comment">// -----------------------------------------------------------------------</span>
+00203 
+00206 
+00226     <span class="keyword">virtual</span> <span class="keywordtype">int</span> checkContent
+00227     (
+00228         <a class="code" href="classXMLElementDecl.html">XMLElementDecl</a>* <span class="keyword">const</span>   elemDecl
+00229         , <a class="code" href="classQName.html">QName</a>** <span class="keyword">const</span>         children
+00230         , <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    childCount
+00231     ) = 0;
+00232 
+00241     <span class="keyword">virtual</span> <span class="keywordtype">void</span> faultInAttr
+00242     (
+00243                 <a class="code" href="classXMLAttr.html">XMLAttr</a>&amp;    toFill
+00244         , <span class="keyword">const</span> <a class="code" href="classXMLAttDef.html">XMLAttDef</a>&amp;  attDef
+00245     )   <span class="keyword">const</span> = 0;
+00246 
+00250     <span class="keyword">virtual</span> <span class="keywordtype">void</span> preContentValidation(<span class="keywordtype">bool</span> reuseGrammar,
+00251                                       <span class="keywordtype">bool</span> validateDefAttr = <span class="keyword">false</span>) = 0;
+00252 
+00260     <span class="keyword">virtual</span> <span class="keywordtype">void</span> postParseValidation() = 0;
+00261 
+00267     <span class="keyword">virtual</span> <span class="keywordtype">void</span> reset() = 0;
+00268 
+00275     <span class="keyword">virtual</span> <span class="keywordtype">bool</span> requiresNamespaces() <span class="keyword">const</span> = 0;
+00276 
+00287     <span class="keyword">virtual</span> <span class="keywordtype">void</span> validateAttrValue
+00288     (
+00289         <span class="keyword">const</span>   <a class="code" href="classXMLAttDef.html">XMLAttDef</a>*                  attDef
+00290         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>                attrValue
+00291         , <span class="keywordtype">bool</span>                              preValidation = <span class="keyword">false</span>
+00292         , <span class="keyword">const</span> <a class="code" href="classXMLElementDecl.html">XMLElementDecl</a>*             elemDecl = 0
+00293     ) = 0;
+00294 
+00302     <span class="keyword">virtual</span> <span class="keywordtype">void</span> validateElement
+00303     (
+00304         <span class="keyword">const</span>   <a class="code" href="classXMLElementDecl.html">XMLElementDecl</a>*             elemDef
+00305     ) = 0;
+00306 
+00310     <span class="keyword">virtual</span> Grammar* getGrammar() <span class="keyword">const</span> =0;
+00311 
+00315     <span class="keyword">virtual</span> <span class="keywordtype">void</span> setGrammar(Grammar* aGrammar) =0;
+00316 
+00317 
+00319 
+00320     <span class="comment">// -----------------------------------------------------------------------</span>
+00321     <span class="comment">//  Virtual DTD handler interface.</span>
+00322     <span class="comment">// -----------------------------------------------------------------------</span>
+00323 
+00326 
+00331     <span class="keyword">virtual</span> <span class="keywordtype">bool</span> handlesDTD() <span class="keyword">const</span> = 0;
+00332 
+00333     <span class="comment">// -----------------------------------------------------------------------</span>
+00334     <span class="comment">//  Virtual Schema handler interface.</span>
+00335     <span class="comment">// -----------------------------------------------------------------------</span>
+00336 
+00343     <span class="keyword">virtual</span> <span class="keywordtype">bool</span> handlesSchema() <span class="keyword">const</span> = 0;
+00344 
+00346 
+00347     <span class="comment">// -----------------------------------------------------------------------</span>
+00348     <span class="comment">//  Setter methods</span>
+00349     <span class="comment">//</span>
+00350     <span class="comment">//  setScannerInfo() is called by the scanner to tell the validator</span>
+00351     <span class="comment">//  about the stuff it needs to have access to.</span>
+00352     <span class="comment">// -----------------------------------------------------------------------</span>
+00353 
+00356 
+00370     <span class="keywordtype">void</span> setScannerInfo
+00371     (
+00372         XMLScanner* <span class="keyword">const</span>           owningScanner
+00373         , <a class="code" href="XMLValidator_8hpp.html#a1">ReaderMgr</a>* <span class="keyword">const</span>          readerMgr
+00374         , XMLBufferMgr* <span class="keyword">const</span>       bufMgr
+00375     );
+00376 
+00386     <span class="keywordtype">void</span> setErrorReporter
+00387     (
+00388         <a class="code" href="classXMLErrorReporter.html">XMLErrorReporter</a>* <span class="keyword">const</span> errorReporter
+00389     );
+00390 
+00392 
+00393 
+00394     <span class="comment">// -----------------------------------------------------------------------</span>
+00395     <span class="comment">//  Error emitter methods</span>
+00396     <span class="comment">// -----------------------------------------------------------------------</span>
+00397 
+00400 
+00419     <span class="keywordtype">void</span> emitError(<span class="keyword">const</span> <a class="code" href="classXMLValid.html#s112">XMLValid::Codes</a> toEmit);
+00420     <span class="keywordtype">void</span> emitError
+00421     (
+00422         <span class="keyword">const</span>   <a class="code" href="classXMLValid.html#s112">XMLValid::Codes</a> toEmit
+00423         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>    text1
+00424         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>    text2 = 0
+00425         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>    text3 = 0
+00426         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>    text4 = 0
+00427     );
+00428     <span class="keywordtype">void</span> emitError
+00429     (
+00430         <span class="keyword">const</span>   <a class="code" href="classXMLValid.html#s112">XMLValid::Codes</a> toEmit
+00431         , <span class="keyword">const</span> <span class="keywordtype">char</span>* <span class="keyword">const</span>     text1
+00432         , <span class="keyword">const</span> <span class="keywordtype">char</span>* <span class="keyword">const</span>     text2 = 0
+00433         , <span class="keyword">const</span> <span class="keywordtype">char</span>* <span class="keyword">const</span>     text3 = 0
+00434         , <span class="keyword">const</span> <span class="keywordtype">char</span>* <span class="keyword">const</span>     text4 = 0
+00435     );
+00436 
+00438 
+00439     <span class="comment">// -----------------------------------------------------------------------</span>
+00440     <span class="comment">//  Deprecated XMLValidator interface</span>
+00441     <span class="comment">// -----------------------------------------------------------------------</span>
+00449 <span class="comment"></span>    <span class="keywordtype">bool</span> checkRootElement
+<a name="l00450"></a><a class="code" href="classXMLValidator.html#a0">00450</a>     (
+00451         <span class="keyword">const</span>   <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>
+00452     ) { <span class="keywordflow">return</span> <span class="keyword">true</span>;};
+00453 
+00454     <span class="comment">// -----------------------------------------------------------------------</span>
+00455     <span class="comment">//  Notification that lazy data has been deleted</span>
+00456     <span class="comment">// -----------------------------------------------------------------------</span>
+00457     <span class="keyword">static</span> <span class="keywordtype">void</span> reinitMsgMutex();
+00458 
+00459     <span class="keyword">static</span> <span class="keywordtype">void</span> reinitMsgLoader();
+00460 
+00461 <span class="keyword">protected</span> :
+00462     <span class="comment">// -----------------------------------------------------------------------</span>
+00463     <span class="comment">//  Hidden constructors</span>
+00464     <span class="comment">// -----------------------------------------------------------------------</span>
+00465     <a class="code" href="classXMLValidator.html">XMLValidator</a>
+00466     (
+00467         <a class="code" href="classXMLErrorReporter.html">XMLErrorReporter</a>* <span class="keyword">const</span> errReporter = 0
+00468     );
+00469 
+00470 
+00471     <span class="comment">// -----------------------------------------------------------------------</span>
+00472     <span class="comment">//  Protected getters</span>
+00473     <span class="comment">// -----------------------------------------------------------------------</span>
+00474     <span class="keyword">const</span> XMLBufferMgr* getBufMgr() <span class="keyword">const</span>;
+00475     XMLBufferMgr* getBufMgr();
+00476     <span class="keyword">const</span> <a class="code" href="XMLValidator_8hpp.html#a1">ReaderMgr</a>* getReaderMgr() <span class="keyword">const</span>;
+00477     <a class="code" href="XMLValidator_8hpp.html#a1">ReaderMgr</a>* getReaderMgr();
+00478     <span class="keyword">const</span> XMLScanner* getScanner() <span class="keyword">const</span>;
+00479     XMLScanner* getScanner();
+00480 
+00481 
+00482 <span class="keyword">private</span> :
+00483     <span class="comment">// -----------------------------------------------------------------------</span>
+00484     <span class="comment">//  Unimplemented Constructors and Operators</span>
+00485     <span class="comment">// -----------------------------------------------------------------------</span>
+00486     <a class="code" href="classXMLValidator.html">XMLValidator</a>(<span class="keyword">const</span> <a class="code" href="classXMLValidator.html">XMLValidator</a>&amp;);
+00487     <span class="keywordtype">void</span> operator=(<span class="keyword">const</span> <a class="code" href="classXMLValidator.html">XMLValidator</a>&amp;);
+00488 
+00489 
+00490     <span class="comment">// -----------------------------------------------------------------------</span>
+00491     <span class="comment">//  Private data members</span>
+00492     <span class="comment">//</span>
+00493     <span class="comment">//  fErrorReporter</span>
+00494     <span class="comment">//      The error reporter we are to use, if any.</span>
+00495     <span class="comment">//</span>
+00496     <span class="comment">// -----------------------------------------------------------------------</span>
+00497     XMLBufferMgr*       fBufMgr;
+00498     <a class="code" href="classXMLErrorReporter.html">XMLErrorReporter</a>*   fErrorReporter;
+00499     <a class="code" href="XMLValidator_8hpp.html#a1">ReaderMgr</a>*          fReaderMgr;
+00500     XMLScanner*         fScanner;
+00501 
+00502 };
+00503 
+00504 
+00505 <span class="comment">// -----------------------------------------------------------------------</span>
+00506 <span class="comment">//  Setter methods</span>
+00507 <span class="comment">// -----------------------------------------------------------------------</span>
+00508 <span class="keyword">inline</span> <span class="keywordtype">void</span>
+<a name="l00509"></a><a class="code" href="classXMLValidator.html#z419_0">00509</a> <a class="code" href="classXMLValidator.html#z419_0">XMLValidator::setScannerInfo</a>(XMLScanner* <span class="keyword">const</span>      owningScanner
+00510                             , <a class="code" href="XMLValidator_8hpp.html#a1">ReaderMgr</a>* <span class="keyword">const</span>      readerMgr
+00511                             , XMLBufferMgr* <span class="keyword">const</span>   bufMgr)
+00512 {
+00513     <span class="comment">// We don't own any of these, we just reference them</span>
+00514     fScanner = owningScanner;
+00515     fReaderMgr = readerMgr;
+00516     fBufMgr = bufMgr;
+00517 }
+00518 
+00519 <span class="keyword">inline</span> <span class="keywordtype">void</span>
+<a name="l00520"></a><a class="code" href="classXMLValidator.html#z419_1">00520</a> <a class="code" href="classXMLValidator.html#z419_1">XMLValidator::setErrorReporter</a>(<a class="code" href="classXMLErrorReporter.html">XMLErrorReporter</a>* <span class="keyword">const</span> errorReporter)
+00521 {
+00522     fErrorReporter = errorReporter;
+00523 }
+00524 
+00525 
+00526 <span class="comment">// ---------------------------------------------------------------------------</span>
+00527 <span class="comment">//  XMLValidator: Protected getter</span>
+00528 <span class="comment">// ---------------------------------------------------------------------------</span>
+<a name="l00529"></a><a class="code" href="classXMLValidator.html#b1">00529</a> <span class="keyword">inline</span> <span class="keyword">const</span> XMLBufferMgr* <a class="code" href="classXMLValidator.html#b1">XMLValidator::getBufMgr</a>()<span class="keyword"> const</span>
+00530 <span class="keyword"></span>{
+00531     <span class="keywordflow">return</span> fBufMgr;
+00532 }
+00533 
+<a name="l00534"></a><a class="code" href="classXMLValidator.html#b2">00534</a> <span class="keyword">inline</span> XMLBufferMgr* <a class="code" href="classXMLValidator.html#b1">XMLValidator::getBufMgr</a>()
+00535 {
+00536     <span class="keywordflow">return</span> fBufMgr;
+00537 }
+00538 
+<a name="l00539"></a><a class="code" href="classXMLValidator.html#b3">00539</a> <span class="keyword">inline</span> <span class="keyword">const</span> <a class="code" href="XMLValidator_8hpp.html#a1">ReaderMgr</a>* <a class="code" href="classXMLValidator.html#b3">XMLValidator::getReaderMgr</a>()<span class="keyword"> const</span>
+00540 <span class="keyword"></span>{
+00541     <span class="keywordflow">return</span> fReaderMgr;
+00542 }
+00543 
+<a name="l00544"></a><a class="code" href="classXMLValidator.html#b4">00544</a> <span class="keyword">inline</span> <a class="code" href="XMLValidator_8hpp.html#a1">ReaderMgr</a>* <a class="code" href="classXMLValidator.html#b3">XMLValidator::getReaderMgr</a>()
+00545 {
+00546     <span class="keywordflow">return</span> fReaderMgr;
+00547 }
+00548 
+<a name="l00549"></a><a class="code" href="classXMLValidator.html#b5">00549</a> <span class="keyword">inline</span> <span class="keyword">const</span> XMLScanner* <a class="code" href="classXMLValidator.html#b5">XMLValidator::getScanner</a>()<span class="keyword"> const</span>
+00550 <span class="keyword"></span>{
+00551     <span class="keywordflow">return</span> fScanner;
+00552 }
+00553 
+<a name="l00554"></a><a class="code" href="classXMLValidator.html#b6">00554</a> <span class="keyword">inline</span> XMLScanner* <a class="code" href="classXMLValidator.html#b5">XMLValidator::getScanner</a>()
+00555 {
+00556     <span class="keywordflow">return</span> fScanner;
+00557 }
+00558 
+00559 <a class="code" href="XercesDefs_8hpp.html#a3">XERCES_CPP_NAMESPACE_END</a>
+00560 
+00561 <span class="preprocessor">#endif</span>
+</pre></div>    </FONT></TD></TR></TABLE><BR>
+</TD></TR></TABLE></TD></TR></TABLE><BR><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD bgcolor="#0086b2"><IMG height="1" src="images/dot.gif" width="1" alt=""></TD></TR><TR><TD align="center"><FONT color="#0086b2" size="-1"><I>
+              Copyright &copy; 2000 The Apache Software Foundation.
+              All Rights Reserved.
+            </I></FONT></TD></TR></TABLE></BODY></HTML>

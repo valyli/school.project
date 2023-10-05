@@ -1,0 +1,679 @@
+<HTML><HEAD><SCRIPT language="JavaScript" src="../resources/script.js" type="text/javascript"></SCRIPT><TITLE>AbstractDOMParser.hpp Source File</TITLE><link href="XercesApi.css" rel="stylesheet" type="text/css"></HEAD><BODY alink="#ff0000" bgcolor="#ffffff" leftmargin="4" link="#0000ff" marginheight="4" marginwidth="4" text="#000000" topmargin="4" vlink="#0000aa"><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD align="left" height="60" rowspan="3" valign="top" width="135"><IMG border="0" height="60" hspace="0" src="../resources/logo.gif" vspace="0" width="135"></TD><TD align="left" colspan="4" height="5" valign="top" width="456"><IMG border="0" height="5" hspace="0" src="../resources/line.gif" vspace="0" width="456"></TD><TD align="left" height="60" rowspan="3" valign="top" width="29"><IMG border="0" height="60" hspace="0" src="../resources/right.gif" vspace="0" width="29"></TD></TR><TR><TD align="left" bgcolor="#0086b2" colspan="4" height="35" valign="top" width="456"><IMG alt="" border="0" height="35" hspace="0" src="../graphics/api-header.jpg" vspace="0" width="456"></TD></TR><TR><TD align="left" height="20" valign="top" width="168"><IMG border="0" height="20" hspace="0" src="../resources/bottom.gif" vspace="0" width="168"></TD><TD align="left" height="20" valign="top" width="96"><A href="http://xml.apache.org/" onMouseOut="rolloverOff('xml');" onMouseOver="rolloverOn('xml');" target="new"><IMG alt="http://xml.apache.org/" border="0" height="20" hspace="0" name="xml" onLoad="rolloverLoad('xml','../resources/button-xml-hi.gif','../resources/button-xml-lo.gif');" src="../resources/button-xml-lo.gif" vspace="0" width="96"></A></TD><TD align="left" height="20" valign="top" width="96"><A href="http://www.apache.org/" onMouseOut="rolloverOff('asf');" onMouseOver="rolloverOn('asf');" target="new"><IMG alt="http://www.apache.org/" border="0" height="20" hspace="0" name="asf" onLoad="rolloverLoad('asf','../resources/button-asf-hi.gif','../resources/button-asf-lo.gif');" src="../resources/button-asf-lo.gif" vspace="0" width="96"></A></TD><TD align="left" height="20" valign="top" width="96"><A href="http://www.w3.org/" onMouseOut="rolloverOff('w3c');" onMouseOver="rolloverOn('w3c');" target="new"><IMG alt="http://www.w3.org/" border="0" height="20" hspace="0" name="w3c" onLoad="rolloverLoad('w3c','../resources/button-w3c-hi.gif','../resources/button-w3c-lo.gif');" src="../resources/button-w3c-lo.gif" vspace="0" width="96"></A></TD></TR></TABLE><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD align="left" valign="top" width="120"><IMG border="0" height="14" hspace="0" src="../resources/join.gif" vspace="0" width="120"><BR>
+  <A href="../../index.html" onMouseOut="rolloverOff('side-ext-2');" onMouseOver="rolloverOn('side-ext-2');"><IMG alt="Home" border="0" height="12" hspace="0" name="side-ext-2" onLoad="rolloverLoad('side-ext-2','../graphics/ext-2-label-2.jpg','../graphics/ext-2-label-3.jpg');" src="../graphics/ext-2-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="../index.html" onMouseOut="rolloverOff('side-index');" onMouseOver="rolloverOn('side-index');"><IMG alt="Readme" border="0" height="12" hspace="0" name="side-index" onLoad="rolloverLoad('side-index','../graphics/index-label-2.jpg','../graphics/index-label-3.jpg');" src="../graphics/index-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../releases.html" onMouseOut="rolloverOff('side-releases');" onMouseOver="rolloverOn('side-releases');"><IMG alt="Release Info" border="0" height="12" hspace="0" name="side-releases" onLoad="rolloverLoad('side-releases','../graphics/releases-label-2.jpg','../graphics/releases-label-3.jpg');" src="../graphics/releases-label-3.jpg" vspace="0" width="120"></A><BR>
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+  <A href="../install.html" onMouseOut="rolloverOff('side-install');" onMouseOver="rolloverOn('side-install');"><IMG alt="Installation" border="0" height="12" hspace="0" name="side-install" onLoad="rolloverLoad('side-install','../graphics/install-label-2.jpg','../graphics/install-label-3.jpg');" src="../graphics/install-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="http://xml.apache.org/dist/xerces-c/" onMouseOut="rolloverOff('side-ext-18');" onMouseOver="rolloverOn('side-ext-18');"><IMG alt="Download" border="0" height="12" hspace="0" name="side-ext-18" onLoad="rolloverLoad('side-ext-18','../graphics/ext-18-label-2.jpg','../graphics/ext-18-label-3.jpg');" src="../graphics/ext-18-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../build.html" onMouseOut="rolloverOff('side-build');" onMouseOver="rolloverOn('side-build');"><IMG alt="Build" border="0" height="12" hspace="0" name="side-build" onLoad="rolloverLoad('side-build','../graphics/build-label-2.jpg','../graphics/build-label-3.jpg');" src="../graphics/build-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+  <A href="../faqs.html" onMouseOut="rolloverOff('side-faqs');" onMouseOver="rolloverOn('side-faqs');"><IMG alt="FAQs" border="0" height="12" hspace="0" name="side-faqs" onLoad="rolloverLoad('side-faqs','../graphics/faqs-label-2.jpg','../graphics/faqs-label-3.jpg');" src="../graphics/faqs-label-3.jpg" vspace="0" width="120"></A><BR>  
+  <A href="../samples.html" onMouseOut="rolloverOff('side-samples');" onMouseOver="rolloverOn('side-samples');"><IMG alt="Samples" border="0" height="12" hspace="0" name="side-samples" onLoad="rolloverLoad('side-samples','../graphics/samples-label-2.jpg','../graphics/samples-label-3.jpg');" src="../graphics/samples-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../api.html" onMouseOut="rolloverOff('side-api');" onMouseOver="rolloverOn('side-api');"><IMG alt="API Docs" border="0" height="12" hspace="0" name="side-api" onLoad="rolloverLoad('side-api','../graphics/api-label-2.jpg','../graphics/api-label-3.jpg');" src="../graphics/api-label-3.jpg" vspace="0" width="120"></A><BR>  
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+  <A href="../ApacheDOMC++Binding.html" onMouseOut="rolloverOff('side-ext-64');" onMouseOver="rolloverOn('side-ext-64');"><IMG alt="DOM C++ Binding" border="0" height="12" hspace="0" name="side-ext-64" onLoad="rolloverLoad('side-ext-64','../graphics/ext-64-label-2.jpg','../graphics/ext-64-label-3.jpg');" src="../graphics/ext-64-label-3.jpg" vspace="0" width="120"></A><BR> 
+  <A href="../program.html" onMouseOut="rolloverOff('side-program');" onMouseOver="rolloverOn('side-program');"><IMG alt="Programming" border="0" height="12" hspace="0" name="side-program" onLoad="rolloverLoad('side-program','../graphics/program-label-2.jpg','../graphics/program-label-3.jpg');" src="../graphics/program-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../migrate.html" onMouseOut="rolloverOff('side-migrate');" onMouseOver="rolloverOn('side-migrate');"><IMG alt="Migration Guide" border="0" height="12" hspace="0" name="side-migrate" onLoad="rolloverLoad('side-migrate','../graphics/migrate-label-2.jpg','../graphics/migrate-label-3.jpg');" src="../graphics/migrate-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="../feedback.html" onMouseOut="rolloverOff('side-feedback');" onMouseOver="rolloverOn('side-feedback');"><IMG alt="Feedback" border="0" height="12" hspace="0" name="side-feedback" onLoad="rolloverLoad('side-feedback','../graphics/feedback-label-2.jpg','../graphics/feedback-label-3.jpg');" src="../graphics/feedback-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../bug-report.html" onMouseOut="rolloverOff('side-bug-report');" onMouseOver="rolloverOn('side-bug-report');"><IMG alt="Bug-Reporting" border="0" height="12" hspace="0" name="side-bug-report" onLoad="rolloverLoad('side-bug-report','../graphics/bug-report-label-2.jpg','../graphics/bug-report-label-3.jpg');" src="../graphics/bug-report-label-3.jpg" vspace="0" width="120"></A><BR>  
+  <A href="../pdf.html" onMouseOut="rolloverOff('side-pdf');" onMouseOver="rolloverOn('side-pdf');"><IMG alt="PDF Document" border="0" height="12" hspace="0" name="side-pdf" onLoad="rolloverLoad('side-pdf','../graphics/pdf-label-2.jpg','../graphics/pdf-label-3.jpg');" src="../graphics/pdf-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="http://xml.apache.org/websrc/cvsweb.cgi/xml-xerces/c/" onMouseOut="rolloverOff('side-ext-96');" onMouseOver="rolloverOn('side-ext-96');"><IMG alt="CVS Repository" border="0" height="12" hspace="0" name="side-ext-96" onLoad="rolloverLoad('side-ext-96','../graphics/ext-96-label-2.jpg','../graphics/ext-96-label-3.jpg');" src="../graphics/ext-96-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="http://marc.theaimsgroup.com/?l=xerces-c-dev" onMouseOut="rolloverOff('side-ext-98');" onMouseOver="rolloverOn('side-ext-98');"><IMG alt="Mail Archive" border="0" height="12" hspace="0" name="side-ext-98" onLoad="rolloverLoad('side-ext-98','../graphics/ext-98-label-2.jpg','../graphics/ext-98-label-3.jpg');" src="../graphics/ext-98-label-3.jpg" vspace="0" width="120"></A><BR>
+
+<IMG border="0" height="14" hspace="0" src="../resources/close.gif" vspace="0" width="120"><BR></TD><TD align="left" valign="top" width="500"><TABLE border="0" cellpadding="3" cellspacing="0"><TR><TD>
+    <TABLE border="0" cellpadding="0" cellspacing="0" width="494"><TR><TD bgcolor="#FFFFFF" colspan="2" width="494"><TABLE border="0" cellpadding="0" cellspacing="0" width="494"><TR><TD bgcolor="#039acc" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#039acc" height="1" width="492"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="492"></TD><TD bgcolor="#0086b2" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR><TR><TD bgcolor="#039acc" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#0086b2" width="492"><FONT color="#ffffff" face="arial,helvetica,sanserif" size="+1"><IMG border="0" height="2" hspace="0" src="../resources/void.gif" vspace="0" width="2"><B>API Docs for SAX and DOM</B></FONT></TD><TD bgcolor="#017299" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR><TR><TD bgcolor="#0086b2" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#017299" height="1" width="492"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="492"></TD><TD bgcolor="#017299" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR></TABLE></TD></TR><TR><TD width="10">&nbsp;</TD><TD width="484"><FONT color="#000000" face="arial,helvetica,sanserif">
+
+	    <P>
+<!-- Generated by Doxygen 1.2.18 -->
+<center>
+<a class="qindex" href="index.html">Main Page</a> &nbsp; <a class="qindex" href="hierarchy.html">Class Hierarchy</a> &nbsp; <a class="qindex" href="classes.html">Alphabetical List</a> &nbsp; <a class="qindex" href="annotated.html">Compound List</a> &nbsp; <a class="qindex" href="files.html">File List</a> &nbsp; <a class="qindex" href="functions.html">Compound Members</a> &nbsp; <a class="qindex" href="globals.html">File Members</a> &nbsp; </center>
+<hr><h1>AbstractDOMParser.hpp</h1><a href="AbstractDOMParser_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><pre>00001 <span class="comment">/*</span>
+00002 <span class="comment"> * The Apache Software License, Version 1.1</span>
+00003 <span class="comment"> *</span>
+00004 <span class="comment"> * Copyright (c) 2002 The Apache Software Foundation.  All rights</span>
+00005 <span class="comment"> * reserved.</span>
+00006 <span class="comment"> *</span>
+00007 <span class="comment"> * Redistribution and use in source and binary forms, with or without</span>
+00008 <span class="comment"> * modification, are permitted provided that the following conditions</span>
+00009 <span class="comment"> * are met:</span>
+00010 <span class="comment"> *</span>
+00011 <span class="comment"> * 1. Redistributions of source code must retain the above copyright</span>
+00012 <span class="comment"> *    notice, this list of conditions and the following disclaimer.</span>
+00013 <span class="comment"> *</span>
+00014 <span class="comment"> * 2. Redistributions in binary form must reproduce the above copyright</span>
+00015 <span class="comment"> *    notice, this list of conditions and the following disclaimer in</span>
+00016 <span class="comment"> *    the documentation and/or other materials provided with the</span>
+00017 <span class="comment"> *    distribution.</span>
+00018 <span class="comment"> *</span>
+00019 <span class="comment"> * 3. The end-user documentation included with the redistribution,</span>
+00020 <span class="comment"> *    if any, must include the following acknowledgment:</span>
+00021 <span class="comment"> *       "This product includes software developed by the</span>
+00022 <span class="comment"> *        Apache Software Foundation (http://www.apache.org/)."</span>
+00023 <span class="comment"> *    Alternately, this acknowledgment may appear in the software itself,</span>
+00024 <span class="comment"> *    if and wherever such third-party acknowledgments normally appear.</span>
+00025 <span class="comment"> *</span>
+00026 <span class="comment"> * 4. The names "Xerces" and "Apache Software Foundation" must</span>
+00027 <span class="comment"> *    not be used to endorse or promote products derived from this</span>
+00028 <span class="comment"> *    software without prior written permission. For written</span>
+00029 <span class="comment"> *    permission, please contact apache\@apache.org.</span>
+00030 <span class="comment"> *</span>
+00031 <span class="comment"> * 5. Products derived from this software may not be called "Apache",</span>
+00032 <span class="comment"> *    nor may "Apache" appear in their name, without prior written</span>
+00033 <span class="comment"> *    permission of the Apache Software Foundation.</span>
+00034 <span class="comment"> *</span>
+00035 <span class="comment"> * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED</span>
+00036 <span class="comment"> * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES</span>
+00037 <span class="comment"> * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+00038 <span class="comment"> * DISCLAIMED.  IN NO EVENT SHALL THE APACHE SOFTWARE FOUNDATION OR</span>
+00039 <span class="comment"> * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+00040 <span class="comment"> * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+00041 <span class="comment"> * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF</span>
+00042 <span class="comment"> * USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND</span>
+00043 <span class="comment"> * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,</span>
+00044 <span class="comment"> * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT</span>
+00045 <span class="comment"> * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF</span>
+00046 <span class="comment"> * SUCH DAMAGE.</span>
+00047 <span class="comment"> * ====================================================================</span>
+00048 <span class="comment"> *</span>
+00049 <span class="comment"> * This software consists of voluntary contributions made by many</span>
+00050 <span class="comment"> * individuals on behalf of the Apache Software Foundation, and was</span>
+00051 <span class="comment"> * originally based on software copyright (c) 2001, International</span>
+00052 <span class="comment"> * Business Machines, Inc., http://www.ibm.com .  For more information</span>
+00053 <span class="comment"> * on the Apache Software Foundation, please see</span>
+00054 <span class="comment"> * &lt;http://www.apache.org/&gt;.</span>
+00055 <span class="comment"> */</span>
+00056 
+00057 <span class="comment">/*</span>
+00058 <span class="comment"> * $Id: AbstractDOMParser.hpp,v 1.16 2003/01/03 20:09:36 tng Exp $</span>
+00059 <span class="comment"> *</span>
+00060 <span class="comment"> */</span>
+00061 <span class="preprocessor">#if !defined(ABSTRACTDOMPARSER_HPP)</span>
+<a name="l00062"></a><a class="code" href="AbstractDOMParser_8hpp.html#a0">00062</a> <span class="preprocessor"></span><span class="preprocessor">#define ABSTRACTDOMPARSER_HPP</span>
+00063 <span class="preprocessor"></span>
+00064 <span class="preprocessor">#include &lt;<a class="code" href="DOMDocument_8hpp.html">xercesc/dom/DOMDocument.hpp</a>&gt;</span>
+00065 <span class="preprocessor">#include &lt;<a class="code" href="XMLDocumentHandler_8hpp.html">xercesc/framework/XMLDocumentHandler.hpp</a>&gt;</span>
+00066 <span class="preprocessor">#include &lt;<a class="code" href="XMLErrorReporter_8hpp.html">xercesc/framework/XMLErrorReporter.hpp</a>&gt;</span>
+00067 <span class="preprocessor">#include &lt;<a class="code" href="XMLEntityHandler_8hpp.html">xercesc/framework/XMLEntityHandler.hpp</a>&gt;</span>
+00068 <span class="preprocessor">#include &lt;xercesc/util/ValueStackOf.hpp&gt;</span>
+00069 <span class="preprocessor">#include &lt;xercesc/validators/DTD/DocTypeHandler.hpp&gt;</span>
+00070 <span class="preprocessor">#include &lt;<a class="code" href="DOMDocumentType_8hpp.html">xercesc/dom/DOMDocumentType.hpp</a>&gt;</span>
+00071 <span class="preprocessor">#include &lt;xercesc/validators/DTD/DTDElementDecl.hpp&gt;</span>
+00072 <span class="preprocessor">#include &lt;xercesc/framework/XMLBufferMgr.hpp&gt;</span>
+00073 
+00074 
+00075 <a class="code" href="XercesDefs_8hpp.html#a2">XERCES_CPP_NAMESPACE_BEGIN</a>
+00076 
+<a name="l00077"></a><a class="code" href="AbstractDOMParser_8hpp.html#a1">00077</a> <span class="keyword">class </span><a class="code" href="AbstractDOMParser_8hpp.html#a1">XMLPScanToken</a>;
+00078 <span class="keyword">class </span>XMLScanner;
+00079 <span class="keyword">class </span><a class="code" href="classXMLValidator.html">XMLValidator</a>;
+00080 <span class="keyword">class </span>DOMDocumentImpl;
+00081 <span class="keyword">class </span>DOMDocumentTypeImpl;
+00082 <span class="keyword">class </span><a class="code" href="classDOMElement.html">DOMElement</a>;
+00083 <span class="keyword">class </span>GrammarResolver;
+00084 
+00085 
+<a name="l00090"></a><a class="code" href="classAbstractDOMParser.html">00090</a> <span class="keyword">class </span><a class="code" href="XercesDefs_8hpp.html#a11"></a> <a class="code" href="classAbstractDOMParser.html">AbstractDOMParser</a> :
+00091 
+00092     <span class="keyword">public</span> <a class="code" href="classXMLDocumentHandler.html">XMLDocumentHandler</a>
+00093     , <span class="keyword">public</span> <a class="code" href="classXMLErrorReporter.html">XMLErrorReporter</a>
+00094     , <span class="keyword">public</span> <a class="code" href="classXMLEntityHandler.html">XMLEntityHandler</a>
+00095     , <span class="keyword">public</span> DocTypeHandler
+00096 {
+00097 <span class="keyword">public</span> :
+00098     <span class="comment">// -----------------------------------------------------------------------</span>
+00099     <span class="comment">//  Class types</span>
+00100     <span class="comment">// -----------------------------------------------------------------------</span>
+00103 <span class="comment"></span>
+<a name="l00111"></a><a class="code" href="classAbstractDOMParser.html#z483_0">00111</a>     <span class="keyword">enum</span> ValSchemes
+00112     {
+00113         Val_Never
+00114         , Val_Always
+00115         , Val_Auto
+00116     };
+00118 
+00119 
+00120     <span class="comment">// -----------------------------------------------------------------------</span>
+00121     <span class="comment">//  Constructors and Detructor</span>
+00122     <span class="comment">// -----------------------------------------------------------------------</span>
+00125 <span class="comment"></span>
+00129     <span class="keyword">virtual</span> ~<a class="code" href="classAbstractDOMParser.html">AbstractDOMParser</a>();
+00130 
+00132 
+00133     <span class="comment">// -----------------------------------------------------------------------</span>
+00134     <span class="comment">//  Utility methods</span>
+00135     <span class="comment">// -----------------------------------------------------------------------</span>
+00136 
+00144     <span class="keywordtype">void</span> reset();
+00145 
+00159     <a class="code" href="classDOMDocument.html">DOMDocument</a>* adoptDocument();
+00160 
+00162 
+00163 
+00164     <span class="comment">// -----------------------------------------------------------------------</span>
+00165     <span class="comment">//  Getter methods</span>
+00166     <span class="comment">// -----------------------------------------------------------------------</span>
+00167 
+00170 
+00182     <a class="code" href="classDOMDocument.html">DOMDocument</a>* getDocument();
+00183 
+00191     <span class="keyword">const</span> <a class="code" href="classXMLValidator.html">XMLValidator</a>&amp; getValidator() <span class="keyword">const</span>;
+00192 
+00200     ValSchemes getValidationScheme() <span class="keyword">const</span>;
+00201 
+00212     <span class="keywordtype">bool</span> getDoSchema() <span class="keyword">const</span>;
+00213 
+00224     <span class="keywordtype">bool</span> getValidationSchemaFullChecking() <span class="keyword">const</span>;
+00225 
+00237     <span class="keywordtype">int</span> getErrorCount() <span class="keyword">const</span>;
+00238 
+00249     <span class="keywordtype">bool</span> getDoNamespaces() <span class="keyword">const</span>;
+00250 
+00263     <span class="keywordtype">bool</span> getExitOnFirstFatalError() <span class="keyword">const</span>;
+00264 
+00275     <span class="keywordtype">bool</span> getValidationConstraintFatal() <span class="keyword">const</span>;
+00276 
+00286     <span class="keywordtype">bool</span>  getCreateEntityReferenceNodes()<span class="keyword">const</span>;
+00287 
+00298     <span class="keywordtype">bool</span> getIncludeIgnorableWhitespace() <span class="keyword">const</span>;
+00299 
+00319     XMLCh* getExternalSchemaLocation() <span class="keyword">const</span>;
+00320 
+00340     XMLCh* getExternalNoNamespaceSchemaLocation() <span class="keyword">const</span>;
+00341 
+00353     <span class="keywordtype">bool</span> getLoadExternalDTD() <span class="keyword">const</span>;
+00354 
+00363     <span class="keywordtype">bool</span>  getCreateCommentNodes()<span class="keyword">const</span>;
+00364 
+00376     <span class="keywordtype">bool</span> getCalculateSrcOfs() <span class="keyword">const</span>;
+00377 
+00388     <span class="keywordtype">bool</span> getStandardUriConformant() <span class="keyword">const</span>;
+00389 
+00391 
+00392 
+00393     <span class="comment">// -----------------------------------------------------------------------</span>
+00394     <span class="comment">//  Setter methods</span>
+00395     <span class="comment">// -----------------------------------------------------------------------</span>
+00396 
+00399 
+00414     <span class="keywordtype">void</span> setDoNamespaces(<span class="keyword">const</span> <span class="keywordtype">bool</span> newState);
+00415 
+00432     <span class="keywordtype">void</span> setExitOnFirstFatalError(<span class="keyword">const</span> <span class="keywordtype">bool</span> newState);
+00433 
+00453     <span class="keywordtype">void</span> setValidationConstraintFatal(<span class="keyword">const</span> <span class="keywordtype">bool</span> newState);
+00454 
+00473     <span class="keywordtype">void</span> setCreateEntityReferenceNodes(<span class="keyword">const</span> <span class="keywordtype">bool</span> create);
+00474 
+00496     <span class="keywordtype">void</span> setIncludeIgnorableWhitespace(<span class="keyword">const</span> <span class="keywordtype">bool</span> include);
+00497 
+00514     <span class="keywordtype">void</span> setValidationScheme(<span class="keyword">const</span> ValSchemes newScheme);
+00515 
+00531     <span class="keywordtype">void</span> setDoSchema(<span class="keyword">const</span> <span class="keywordtype">bool</span> newState);
+00532 
+00549     <span class="keywordtype">void</span> setValidationSchemaFullChecking(<span class="keyword">const</span> <span class="keywordtype">bool</span> schemaFullChecking);
+00550 
+00571     <span class="keywordtype">void</span> setExternalSchemaLocation(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> schemaLocation);
+00572 
+00581     <span class="keywordtype">void</span> setExternalSchemaLocation(<span class="keyword">const</span> <span class="keywordtype">char</span>* <span class="keyword">const</span> schemaLocation);
+00582 
+00597     <span class="keywordtype">void</span> setExternalNoNamespaceSchemaLocation(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> noNamespaceSchemaLocation);
+00598 
+00607     <span class="keywordtype">void</span> setExternalNoNamespaceSchemaLocation(<span class="keyword">const</span> <span class="keywordtype">char</span>* <span class="keyword">const</span> noNamespaceSchemaLocation);
+00608 
+00625     <span class="keywordtype">void</span> setLoadExternalDTD(<span class="keyword">const</span> <span class="keywordtype">bool</span> newState);
+00626 
+00637     <span class="keywordtype">void</span> setCreateCommentNodes(<span class="keyword">const</span> <span class="keywordtype">bool</span> create);
+00638 
+00651     <span class="keywordtype">void</span> setCalculateSrcOfs(<span class="keyword">const</span> <span class="keywordtype">bool</span> newState);
+00652 
+00663     <span class="keywordtype">void</span> setStandardUriConformant(<span class="keyword">const</span> <span class="keywordtype">bool</span> newState);
+00664 
+00672     <span class="keywordtype">void</span> useScanner(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> scannerName);
+00673 
+00675 
+00676 
+00677     <span class="comment">// -----------------------------------------------------------------------</span>
+00678     <span class="comment">//  Parsing methods</span>
+00679     <span class="comment">// -----------------------------------------------------------------------</span>
+00680 
+00683 
+00699     <span class="keywordtype">void</span> parse(<span class="keyword">const</span> <a class="code" href="classInputSource.html">InputSource</a>&amp; source);
+00700 
+00717     <span class="keywordtype">void</span> parse(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> systemId);
+00718 
+00734     <span class="keywordtype">void</span> parse(<span class="keyword">const</span> <span class="keywordtype">char</span>* <span class="keyword">const</span> systemId);
+00735 
+00762     <span class="keywordtype">bool</span> parseFirst
+00763     (
+00764         <span class="keyword">const</span>   XMLCh* <span class="keyword">const</span>    systemId
+00765         ,       <a class="code" href="AbstractDOMParser_8hpp.html#a1">XMLPScanToken</a>&amp;  toFill
+00766     );
+00767 
+00795     <span class="keywordtype">bool</span> parseFirst
+00796     (
+00797         <span class="keyword">const</span>   <span class="keywordtype">char</span>* <span class="keyword">const</span>     systemId
+00798         ,       <a class="code" href="AbstractDOMParser_8hpp.html#a1">XMLPScanToken</a>&amp;  toFill
+00799     );
+00800 
+00828     <span class="keywordtype">bool</span> parseFirst
+00829     (
+00830         <span class="keyword">const</span>   <a class="code" href="classInputSource.html">InputSource</a>&amp;    source
+00831         ,       <a class="code" href="AbstractDOMParser_8hpp.html#a1">XMLPScanToken</a>&amp;  toFill
+00832     );
+00833 
+00856     <span class="keywordtype">bool</span> parseNext(<a class="code" href="AbstractDOMParser_8hpp.html#a1">XMLPScanToken</a>&amp; token);
+00857 
+00883     <span class="keywordtype">void</span> parseReset(<a class="code" href="AbstractDOMParser_8hpp.html#a1">XMLPScanToken</a>&amp; token);
+00884 
+00886 
+00887     <span class="comment">// -----------------------------------------------------------------------</span>
+00888     <span class="comment">//  Implementation of the XMLDocumentHandler interface.</span>
+00889     <span class="comment">// -----------------------------------------------------------------------</span>
+00890 
+00893 
+00906     <span class="keyword">virtual</span> <span class="keywordtype">void</span> docCharacters
+00907     (
+00908         <span class="keyword">const</span>   XMLCh* <span class="keyword">const</span>    chars
+00909         , <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    length
+00910         , <span class="keyword">const</span> <span class="keywordtype">bool</span>            cdataSection
+00911     );
+00912 
+00921     <span class="keyword">virtual</span> <span class="keywordtype">void</span> docComment
+00922     (
+00923         <span class="keyword">const</span>   XMLCh* <span class="keyword">const</span>    comment
+00924     );
+00925 
+00938     <span class="keyword">virtual</span> <span class="keywordtype">void</span> docPI
+00939     (
+00940         <span class="keyword">const</span>   XMLCh* <span class="keyword">const</span>    target
+00941         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>    data
+00942     );
+00943 
+00948     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classXMLDocumentHandler.html#z362_3">endDocument</a>();
+00949 
+00966     <span class="keyword">virtual</span> <span class="keywordtype">void</span> endElement
+00967     (
+00968         <span class="keyword">const</span>   <a class="code" href="classXMLElementDecl.html">XMLElementDecl</a>&amp; elemDecl
+00969         , <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    urlId
+00970         , <span class="keyword">const</span> <span class="keywordtype">bool</span>            isRoot
+00971         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>    elemPrefix
+00972     );
+00973 
+00982     <span class="keyword">virtual</span> <span class="keywordtype">void</span> endEntityReference
+00983     (
+00984         <span class="keyword">const</span>   <a class="code" href="classXMLEntityDecl.html">XMLEntityDecl</a>&amp;  entDecl
+00985     );
+00986 
+01005     <span class="keyword">virtual</span> <span class="keywordtype">void</span> ignorableWhitespace
+01006     (
+01007         <span class="keyword">const</span>   XMLCh* <span class="keyword">const</span>    chars
+01008         , <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    length
+01009         , <span class="keyword">const</span> <span class="keywordtype">bool</span>            cdataSection
+01010     );
+01011 
+01018     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classXMLDocumentHandler.html#z362_7">resetDocument</a>();
+01019 
+01024     <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classXMLDocumentHandler.html#z362_8">startDocument</a>();
+01025 
+01053     <span class="keyword">virtual</span> <span class="keywordtype">void</span> startElement
+01054     (
+01055         <span class="keyword">const</span>   <a class="code" href="classXMLElementDecl.html">XMLElementDecl</a>&amp;         elemDecl
+01056         , <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>            urlId
+01057         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>            elemPrefix
+01058         , <span class="keyword">const</span> RefVectorOf&lt;XMLAttr&gt;&amp;   attrList
+01059         , <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>            attrCount
+01060         , <span class="keyword">const</span> <span class="keywordtype">bool</span>                    isEmpty
+01061         , <span class="keyword">const</span> <span class="keywordtype">bool</span>                    isRoot
+01062     );
+01063 
+01073     <span class="keyword">virtual</span> <span class="keywordtype">void</span> startEntityReference
+01074     (
+01075         <span class="keyword">const</span>   <a class="code" href="classXMLEntityDecl.html">XMLEntityDecl</a>&amp;  entDecl
+01076     );
+01077 
+01096     <span class="keyword">virtual</span> <span class="keywordtype">void</span> XMLDecl
+01097     (
+01098         <span class="keyword">const</span>   XMLCh* <span class="keyword">const</span>    versionStr
+01099         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>    encodingStr
+01100         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>    standaloneStr
+01101         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>    actualEncStr
+01102     );
+01104 
+01105 
+01106     <span class="comment">// -----------------------------------------------------------------------</span>
+01107     <span class="comment">//  Implementation of the deprecated DocTypeHandler interface.</span>
+01108     <span class="comment">// -----------------------------------------------------------------------</span>
+01111 <span class="comment"></span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> attDef
+01112     (
+01113         <span class="keyword">const</span>   DTDElementDecl&amp;     elemDecl
+01114         , <span class="keyword">const</span> DTDAttDef&amp;          attDef
+01115         , <span class="keyword">const</span> <span class="keywordtype">bool</span>                ignoring
+01116     );
+01117 
+01118     <span class="keyword">virtual</span> <span class="keywordtype">void</span> doctypeComment
+01119     (
+01120         <span class="keyword">const</span>   XMLCh* <span class="keyword">const</span>    comment
+01121     );
+01122 
+01123     <span class="keyword">virtual</span> <span class="keywordtype">void</span> doctypeDecl
+01124     (
+01125         <span class="keyword">const</span>   DTDElementDecl&amp; elemDecl
+01126         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>    publicId
+01127         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>    systemId
+01128         , <span class="keyword">const</span> <span class="keywordtype">bool</span>            hasIntSubset
+01129         , <span class="keyword">const</span> <span class="keywordtype">bool</span>            hasExtSubset = <span class="keyword">false</span>
+01130     );
+01131 
+01132     <span class="keyword">virtual</span> <span class="keywordtype">void</span> doctypePI
+01133     (
+01134         <span class="keyword">const</span>   XMLCh* <span class="keyword">const</span>    target
+01135         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>    data
+01136     );
+01137 
+01138     <span class="keyword">virtual</span> <span class="keywordtype">void</span> doctypeWhitespace
+01139     (
+01140         <span class="keyword">const</span>   XMLCh* <span class="keyword">const</span>    chars
+01141         , <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>    length
+01142     );
+01143 
+01144     <span class="keyword">virtual</span> <span class="keywordtype">void</span> elementDecl
+01145     (
+01146         <span class="keyword">const</span>   DTDElementDecl&amp; decl
+01147         , <span class="keyword">const</span> <span class="keywordtype">bool</span>            isIgnored
+01148     );
+01149 
+01150     <span class="keyword">virtual</span> <span class="keywordtype">void</span> endAttList
+01151     (
+01152         <span class="keyword">const</span>   DTDElementDecl&amp; elemDecl
+01153     );
+01154 
+01155     <span class="keyword">virtual</span> <span class="keywordtype">void</span> endIntSubset();
+01156 
+01157     <span class="keyword">virtual</span> <span class="keywordtype">void</span> endExtSubset();
+01158 
+01159     <span class="keyword">virtual</span> <span class="keywordtype">void</span> entityDecl
+01160     (
+01161         <span class="keyword">const</span>   DTDEntityDecl&amp;  entityDecl
+01162         , <span class="keyword">const</span> <span class="keywordtype">bool</span>            isPEDecl
+01163         , <span class="keyword">const</span> <span class="keywordtype">bool</span>            isIgnored
+01164     );
+01165 
+01166     <span class="keyword">virtual</span> <span class="keywordtype">void</span> resetDocType();
+01167 
+01168     <span class="keyword">virtual</span> <span class="keywordtype">void</span> notationDecl
+01169     (
+01170         <span class="keyword">const</span>   <a class="code" href="classXMLNotationDecl.html">XMLNotationDecl</a>&amp;    notDecl
+01171         , <span class="keyword">const</span> <span class="keywordtype">bool</span>                isIgnored
+01172     );
+01173 
+01174     <span class="keyword">virtual</span> <span class="keywordtype">void</span> startAttList
+01175     (
+01176         <span class="keyword">const</span>   DTDElementDecl&amp; elemDecl
+01177     );
+01178 
+01179     <span class="keyword">virtual</span> <span class="keywordtype">void</span> startIntSubset();
+01180 
+01181     <span class="keyword">virtual</span> <span class="keywordtype">void</span> startExtSubset();
+01182 
+01183     <span class="keyword">virtual</span> <span class="keywordtype">void</span> TextDecl
+01184     (
+01185         <span class="keyword">const</span>   XMLCh* <span class="keyword">const</span>    versionStr
+01186         , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>    encodingStr
+01187     );
+01188 
+01189 
+01191 
+01192 
+01193     <span class="comment">// -----------------------------------------------------------------------</span>
+01194     <span class="comment">//  Deprecated Methods</span>
+01195     <span class="comment">// -----------------------------------------------------------------------</span>
+01208 <span class="comment"></span>    <span class="keywordtype">bool</span> getDoValidation() <span class="keyword">const</span>;
+01209 
+01223     <span class="keywordtype">void</span> setDoValidation(<span class="keyword">const</span> <span class="keywordtype">bool</span> newState);
+01224 
+01238     <span class="keywordtype">bool</span> getExpandEntityReferences() <span class="keyword">const</span>;
+01239 
+01256     <span class="keywordtype">void</span> setExpandEntityReferences(<span class="keyword">const</span> <span class="keywordtype">bool</span> expand);
+01257 
+01259 
+01260 <span class="keyword">protected</span> :
+01261     <span class="comment">// -----------------------------------------------------------------------</span>
+01262     <span class="comment">//  Protected Constructor Methods</span>
+01263     <span class="comment">// -----------------------------------------------------------------------</span>
+01275 <span class="comment"></span>    <a class="code" href="classAbstractDOMParser.html">AbstractDOMParser</a>(<a class="code" href="classXMLValidator.html">XMLValidator</a>* <span class="keyword">const</span> valToAdopt = 0);
+01276 
+01278 
+01279     <span class="comment">// -----------------------------------------------------------------------</span>
+01280     <span class="comment">//  Protected getter methods</span>
+01281     <span class="comment">// -----------------------------------------------------------------------</span>
+01289 <span class="comment"></span>    <a class="code" href="classDOMNode.html">DOMNode</a>* getCurrentNode();
+01290 
+01295     XMLScanner* getScanner() <span class="keyword">const</span>;
+01296 
+01301     GrammarResolver* getGrammarResolver() <span class="keyword">const</span>;
+01302 
+01308     <span class="keywordtype">bool</span> getParseInProgress() <span class="keyword">const</span>;
+01309 
+01311 
+01312 
+01313     <span class="comment">// -----------------------------------------------------------------------</span>
+01314     <span class="comment">//  Protected setter methods</span>
+01315     <span class="comment">// -----------------------------------------------------------------------</span>
+01316 
+01319 
+01327     <span class="keywordtype">void</span> setCurrentNode(<a class="code" href="classDOMNode.html">DOMNode</a>* toSet);
+01328 
+01335     <span class="keywordtype">void</span> setDocument(<a class="code" href="classDOMDocument.html">DOMDocument</a>* toSet);
+01336 
+01343     <span class="keywordtype">void</span> setParseInProgress(<span class="keyword">const</span> <span class="keywordtype">bool</span> toSet);
+01345 
+01346     <span class="comment">// -----------------------------------------------------------------------</span>
+01347     <span class="comment">//  Protected Helper methods</span>
+01348     <span class="comment">// -----------------------------------------------------------------------</span>
+01351 <span class="comment"></span>    <span class="keyword">virtual</span> <a class="code" href="classDOMElement.html">DOMElement</a>* createElementNSNode(<span class="keyword">const</span> XMLCh *fNamespaceURI,
+01352                                               <span class="keyword">const</span> XMLCh *qualifiedName);
+01353 
+01354     <span class="keywordtype">void</span> resetPool();
+01355 
+01359     <span class="keywordtype">bool</span> isDocumentAdopted() <span class="keyword">const</span>;
+01360 
+01362 
+01363 
+01364 <span class="keyword">private</span> :
+01365     <span class="comment">// -----------------------------------------------------------------------</span>
+01366     <span class="comment">//  Initialize/Cleanup methods</span>
+01367     <span class="comment">// -----------------------------------------------------------------------</span>
+01368     <span class="keywordtype">void</span> initialize();
+01369     <span class="keywordtype">void</span> cleanUp();
+01370 
+01371     <span class="comment">// -----------------------------------------------------------------------</span>
+01372     <span class="comment">//  Private data members</span>
+01373     <span class="comment">//</span>
+01374     <span class="comment">//  fCurrentNode</span>
+01375     <span class="comment">//  fCurrentParent</span>
+01376     <span class="comment">//      Used to track the current node during nested element events. Since</span>
+01377     <span class="comment">//      the tree must be built from a set of disjoint callbacks, we need</span>
+01378     <span class="comment">//      these to keep up with where we currently are.</span>
+01379     <span class="comment">//</span>
+01380     <span class="comment">//  fCurrentEntity</span>
+01381     <span class="comment">//      Used to track the current entity decl.  If a text decl is seen later on,</span>
+01382     <span class="comment">//      it is used to update the encoding and version information.</span>
+01383     <span class="comment">//</span>
+01384     <span class="comment">//  fDocument</span>
+01385     <span class="comment">//      The root document object, filled with the document contents.</span>
+01386     <span class="comment">//</span>
+01387     <span class="comment">//  fCreateEntityReferenceNodes</span>
+01388     <span class="comment">//      Indicates whether entity reference nodes should be created.</span>
+01389     <span class="comment">//</span>
+01390     <span class="comment">//  fIncludeIgnorableWhitespace</span>
+01391     <span class="comment">//      Indicates whether ignorable whiltespace should be added to</span>
+01392     <span class="comment">//      the DOM tree for validating parsers.</span>
+01393     <span class="comment">//</span>
+01394     <span class="comment">//  fScanner</span>
+01395     <span class="comment">//      The scanner used for this parser. This is created during the</span>
+01396     <span class="comment">//      constructor.</span>
+01397     <span class="comment">//</span>
+01398     <span class="comment">//  fNodeStack</span>
+01399     <span class="comment">//      Used to track previous parent nodes during nested element events.</span>
+01400     <span class="comment">//</span>
+01401     <span class="comment">//  fParseInProgress</span>
+01402     <span class="comment">//      Used to prevent multiple entrance to the parser while its doing</span>
+01403     <span class="comment">//      a parse.</span>
+01404     <span class="comment">//</span>
+01405     <span class="comment">//  fWithinElement</span>
+01406     <span class="comment">//      A flag to indicate that the parser is within at least one level</span>
+01407     <span class="comment">//      of element processing.</span>
+01408     <span class="comment">//</span>
+01409     <span class="comment">//  fDocumentType</span>
+01410     <span class="comment">//      Used to store and update the documentType variable information</span>
+01411     <span class="comment">//      in fDocument</span>
+01412     <span class="comment">//</span>
+01413     <span class="comment">//  fDocumentVector</span>
+01414     <span class="comment">//      Store all the previous fDocument(s) (thus not the current fDocument)</span>
+01415     <span class="comment">//      created in this parser.  It is destroyed when the parser is destructed.</span>
+01416     <span class="comment">//</span>
+01417     <span class="comment">//  fCreateCommentNodes</span>
+01418     <span class="comment">//      Indicates whether comment nodes should be created.</span>
+01419     <span class="comment">//</span>
+01420     <span class="comment">//  fDocumentAdoptedByUser</span>
+01421     <span class="comment">//      The DOMDocument ownership has been transferred to application</span>
+01422     <span class="comment">//      If set to true, the parser does not own the document anymore</span>
+01423     <span class="comment">//      and thus will not release its memory.</span>
+01424     <span class="comment">//</span>
+01425     <span class="comment">//  fInternalSubset</span>
+01426     <span class="comment">//      Buffer for storing the internal subset information.</span>
+01427     <span class="comment">//      Once complete (after DOCTYPE is finished scanning), send</span>
+01428     <span class="comment">//      it to DocumentType Node</span>
+01429     <span class="comment">// -----------------------------------------------------------------------</span>
+01430     <span class="keywordtype">bool</span>                          fCreateEntityReferenceNodes;
+01431     <span class="keywordtype">bool</span>                          fIncludeIgnorableWhitespace;
+01432     <span class="keywordtype">bool</span>                          fWithinElement;
+01433     <span class="keywordtype">bool</span>                          fParseInProgress;
+01434     <span class="keywordtype">bool</span>                          fCreateCommentNodes;
+01435     <span class="keywordtype">bool</span>                          fDocumentAdoptedByUser;
+01436     XMLBufferMgr                  fBufMgr;
+01437     XMLScanner*                   fScanner;
+01438     <a class="code" href="classDOMNode.html">DOMNode</a>*                      fCurrentParent;
+01439     <a class="code" href="classDOMNode.html">DOMNode</a>*                      fCurrentNode;
+01440     <a class="code" href="classDOMEntity.html">DOMEntity</a>*                    fCurrentEntity;
+01441     DOMDocumentImpl*              fDocument;
+01442     ValueStackOf&lt;DOMNode*&gt;*       fNodeStack;
+01443     DOMDocumentTypeImpl*          fDocumentType;
+01444     RefVectorOf&lt;DOMDocumentImpl&gt;* fDocumentVector;
+01445     GrammarResolver*              fGrammarResolver;
+01446     XMLStringPool*                fURIStringPool;
+01447     <a class="code" href="classXMLValidator.html">XMLValidator</a>*                 fValidator;
+01448     XMLBuffer&amp;                    fInternalSubset;
+01449 };
+01450 
+01451 
+01452 
+01453 <span class="comment">// ---------------------------------------------------------------------------</span>
+01454 <span class="comment">//  AbstractDOMParser: Getter methods</span>
+01455 <span class="comment">// ---------------------------------------------------------------------------</span>
+<a name="l01456"></a><a class="code" href="classAbstractDOMParser.html#z499_2">01456</a> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classAbstractDOMParser.html#z499_2">AbstractDOMParser::getExpandEntityReferences</a>()<span class="keyword"> const</span>
+01457 <span class="keyword"></span>{
+01458     <span class="keywordflow">return</span> !fCreateEntityReferenceNodes;
+01459 }
+<a name="l01460"></a><a class="code" href="classAbstractDOMParser.html#z489_9">01460</a> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classAbstractDOMParser.html#z489_9">AbstractDOMParser::getCreateEntityReferenceNodes</a>()<span class="keyword"> const</span>
+01461 <span class="keyword"></span>{
+01462     <span class="keywordflow">return</span> fCreateEntityReferenceNodes;
+01463 }
+01464 
+<a name="l01465"></a><a class="code" href="classAbstractDOMParser.html#z489_10">01465</a> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classAbstractDOMParser.html#z489_10">AbstractDOMParser::getIncludeIgnorableWhitespace</a>()<span class="keyword"> const</span>
+01466 <span class="keyword"></span>{
+01467     <span class="keywordflow">return</span> fIncludeIgnorableWhitespace;
+01468 }
+01469 
+<a name="l01470"></a><a class="code" href="classAbstractDOMParser.html#z503_3">01470</a> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classAbstractDOMParser.html#z503_3">AbstractDOMParser::getParseInProgress</a>()<span class="keyword"> const</span>
+01471 <span class="keyword"></span>{
+01472     <span class="keywordflow">return</span> fParseInProgress;
+01473 }
+01474 
+<a name="l01475"></a><a class="code" href="classAbstractDOMParser.html#z503_1">01475</a> <span class="keyword">inline</span> XMLScanner* <a class="code" href="classAbstractDOMParser.html#z503_1">AbstractDOMParser::getScanner</a>()<span class="keyword"> const</span>
+01476 <span class="keyword"></span>{
+01477     <span class="keywordflow">return</span> fScanner;
+01478 }
+01479 
+<a name="l01480"></a><a class="code" href="classAbstractDOMParser.html#z503_2">01480</a> <span class="keyword">inline</span> GrammarResolver* <a class="code" href="classAbstractDOMParser.html#z503_2">AbstractDOMParser::getGrammarResolver</a>()<span class="keyword"> const</span>
+01481 <span class="keyword"></span>{
+01482     <span class="keywordflow">return</span> fGrammarResolver;
+01483 }
+01484 
+<a name="l01485"></a><a class="code" href="classAbstractDOMParser.html#z489_14">01485</a> <span class="keyword">inline</span> <span class="keywordtype">bool</span> <a class="code" href="classAbstractDOMParser.html#z489_14">AbstractDOMParser::getCreateCommentNodes</a>()<span class="keyword"> const</span>
+01486 <span class="keyword"></span>{
+01487     <span class="keywordflow">return</span> fCreateCommentNodes;
+01488 }
+01489 
+01490 <span class="comment">// ---------------------------------------------------------------------------</span>
+01491 <span class="comment">//  AbstractDOMParser: Setter methods</span>
+01492 <span class="comment">// ---------------------------------------------------------------------------</span>
+<a name="l01493"></a><a class="code" href="classAbstractDOMParser.html#z499_3">01493</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classAbstractDOMParser.html#z499_3">AbstractDOMParser::setExpandEntityReferences</a>(<span class="keyword">const</span> <span class="keywordtype">bool</span> expand)
+01494 {
+01495     fCreateEntityReferenceNodes = !expand;
+01496 }
+01497 
+<a name="l01498"></a><a class="code" href="classAbstractDOMParser.html#z491_3">01498</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classAbstractDOMParser.html#z491_3">AbstractDOMParser::setCreateEntityReferenceNodes</a>(<span class="keyword">const</span> <span class="keywordtype">bool</span> create)
+01499 {
+01500     fCreateEntityReferenceNodes = create;
+01501 }
+01502 
+<a name="l01503"></a><a class="code" href="classAbstractDOMParser.html#z491_4">01503</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classAbstractDOMParser.html#z491_4">AbstractDOMParser::setIncludeIgnorableWhitespace</a>(<span class="keyword">const</span> <span class="keywordtype">bool</span> include)
+01504 {
+01505     fIncludeIgnorableWhitespace = include;
+01506 }
+01507 
+<a name="l01508"></a><a class="code" href="classAbstractDOMParser.html#z491_13">01508</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classAbstractDOMParser.html#z491_13">AbstractDOMParser::setCreateCommentNodes</a>(<span class="keyword">const</span> <span class="keywordtype">bool</span> create)
+01509 {
+01510     fCreateCommentNodes = create;
+01511 }
+01512 
+01513 
+01514 <span class="comment">// ---------------------------------------------------------------------------</span>
+01515 <span class="comment">//  AbstractDOMParser: Protected getter methods</span>
+01516 <span class="comment">// ---------------------------------------------------------------------------</span>
+<a name="l01517"></a><a class="code" href="classAbstractDOMParser.html#z503_0">01517</a> <span class="keyword">inline</span> <a class="code" href="classDOMNode.html">DOMNode</a>* <a class="code" href="classAbstractDOMParser.html#z503_0">AbstractDOMParser::getCurrentNode</a>()
+01518 {
+01519     <span class="keywordflow">return</span> fCurrentNode;
+01520 }
+01521 
+01522 
+01523 <span class="comment">// ---------------------------------------------------------------------------</span>
+01524 <span class="comment">//  AbstractDOMParser: Protected setter methods</span>
+01525 <span class="comment">// ---------------------------------------------------------------------------</span>
+<a name="l01526"></a><a class="code" href="classAbstractDOMParser.html#z505_0">01526</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classAbstractDOMParser.html#z505_0">AbstractDOMParser::setCurrentNode</a>(<a class="code" href="classDOMNode.html">DOMNode</a>* toSet)
+01527 {
+01528     fCurrentNode = toSet;
+01529 }
+01530 
+<a name="l01531"></a><a class="code" href="classAbstractDOMParser.html#z505_1">01531</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classAbstractDOMParser.html#z505_1">AbstractDOMParser::setDocument</a>(<a class="code" href="classDOMDocument.html">DOMDocument</a>* toSet)
+01532 {
+01533     fDocument = (DOMDocumentImpl *)toSet;
+01534 }
+01535 
+<a name="l01536"></a><a class="code" href="classAbstractDOMParser.html#z505_2">01536</a> <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classAbstractDOMParser.html#z505_2">AbstractDOMParser::setParseInProgress</a>(<span class="keyword">const</span> <span class="keywordtype">bool</span> toSet)
+01537 {
+01538     fParseInProgress = toSet;
+01539 }
+01540 
+01541 <a class="code" href="XercesDefs_8hpp.html#a3">XERCES_CPP_NAMESPACE_END</a>
+01542 
+01543 <span class="preprocessor">#endif</span>
+01544 <span class="preprocessor"></span>
+01545 
+01546 
+</pre></div>    </FONT></TD></TR></TABLE><BR>
+</TD></TR></TABLE></TD></TR></TABLE><BR><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD bgcolor="#0086b2"><IMG height="1" src="images/dot.gif" width="1" alt=""></TD></TR><TR><TD align="center"><FONT color="#0086b2" size="-1"><I>
+              Copyright &copy; 2000 The Apache Software Foundation.
+              All Rights Reserved.
+            </I></FONT></TD></TR></TABLE></BODY></HTML>

@@ -1,0 +1,156 @@
+VC下打印机的使用
+
+VC 5.0是开发Windows 95下应用程序的强大工具。本文将通过一
+
+个具体实例讨论用VC打印文字和图形的一些技术。在Windows 95下,
+
+显示器和打印机、绘图仪都被视为输出设备。系统默认的输出设备是
+
+显示器。要使用打印机,首先需要创建一个指向打印机的设备环境句柄,
+
+然后通过该句柄调用相关的绘图函数把所需的文字和图形输出至打印
+
+机上。当打印结束后,删除这个设备环境句柄即可。
+
+一、技术细节
+
+当我们在Windows95下安装好打印机后,总是需要设置一个为默认
+
+打印机,在Windows95的启动配置文件WIN.INI中[window]段中列出了
+
+带有关键字device的默认打印机。如果在文件WIN.INI中有如下几行:
+
+　
+
+[windows]
+
+[其他程序行]
+
+device=EPSON LQ-1600K,EPSON24,LPT1:
+
+在device后的字符串中就包含了系统中默认的打印机的三个重要
+
+属性.它们依次是打印机的设备名是LQ-1600K,驱动程序名是EPSON24,
+
+输出端口为LPT1。在程序中我们可调用API函数GetProfileString从
+
+WIN.INI文件中获得这个设备字符串。再将这个设备字符串进行分解,
+
+获得这三个属性,作为参数用API函数CreateDC调用。如果调用成功,
+
+则为默认打印机创建一个设备环境句柄,否则返回一个空值(NULL)。
+
+CreateDC函数的原形如下:
+
+HDC CreateDC(
+
+LPCTSTR lpszDriver,
+
+LPCTSTR lpszDevice,
+
+LPCTSTR lpszOutput,
+
+CONST DEVMODE *lpinitData
+
+);
+
+二、程序代码及说明
+
+新建一个名为Test的工程，窗体类型为对话框(Dialog based)
+
+模式。在窗体中加入一个按钮(Button),设置这个Button的属性:
+
+ID=IDC_PRINT,CAPTION="打印"。在类向导中找到该Button
+
+的单击事件对应的消息BN_CLICKED,增加其成员函数OnPrint。
+
+在TestDlg.cpp文件中找到OnPrint函数并作如下改动。
+
+void CTestDlg::OnPrint()
+
+{
+
+// 增加如下代码
+
+char szprinter[80];
+
+char *szDevice,*szDriver,*szOutput;
+
+HDC hdcprint; // 定义一个设备环境句柄
+
+　
+
+//定义一个打印作业
+
+Static DOCINFO di={sizeof(DOCINFO),"printer",NULL}; 
+
+　
+
+// 得到设备字符串存入数组szprinter中
+
+GetProfileString("windows","device",",,,",szprinter,80); 
+
+// 将设备字符串分解
+
+if(NULL!=(szDevice=strtok(szprinter,","))&&
+
+NULL!=(szDriver=strtok(NULL,","))&&
+
+NULL!=(szOutput=strtok(NULL,",")))
+
+// 创建一个打印机设备句柄 
+
+if((hdcprint=CreateDC(szDriver,szDevice,szOutput,NULL))!=0)
+
+{
+
+if(StartDoc(hdcprint,&di)>0) //开始执行一个打印作业
+
+{ 
+
+StartPage(hdcprint); //打印机走纸,开始打印
+
+SaveDC(hdcprint); //保存打印机设备句柄
+
+// 输出一行文字
+
+TextOut(hdcprint,1,1,"这是一个例子",12); 
+
+// 输出一条直线
+
+MoveToEx(hdcprint,20,20,NULL);
+
+LineTo(hdcprint,120,120);
+
+RestoreDC(hdcprint,-1); //恢复打印机设备句柄
+
+EndPage(hdcprint); //打印机停纸,停止打印
+
+EndDoc(hdcprint); //结束一个打印作业
+
+MessageBox("打印完毕!","提示",MB_ICONINFORMATION);
+
+}
+
+// 用API函数DeleteDC销毁一个打印机设备句柄 
+
+DeleteDC(hdcprint);
+
+}
+
+else
+
+{
+
+MessageBox("没有默认打印机,或者没有安装打印机!");
+
+return;
+
+}
+
+}
+
+在窗体中按下"打印"按钮,则打印机上会输出一行字"这是一个例子"。
+
+然后再输出一条直线。
+

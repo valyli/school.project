@@ -1,0 +1,45 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: test - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP133.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /FR"Debug/" /Fp"Debug/test.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"I:\IT维护项目开发\徐辉\完整程序\test.cpp"
+"I:\IT维护项目开发\徐辉\完整程序\ManageData.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP133.tmp" 
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP134.tmp" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib Kernel32.lib /nologo /subsystem:console /incremental:yes /pdb:"Debug/test.pdb" /debug /machine:I386 /out:"Debug/test.exe" /pdbtype:sept 
+".\Debug\StdAfx.obj"
+".\Debug\test.obj"
+".\Debug\ManageData.obj"
+]
+Creating command line "link.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP134.tmp"
+<h3>Output Window</h3>
+Compiling...
+test.cpp
+i:\it维护项目开发\徐辉\完整程序\test.h(103) : warning C4018: '<' : signed/unsigned mismatch
+d:\program files\microsoft visual studio\vc98\mfc\include\afxv_w32.h(14) : fatal error C1189: #error :  WINDOWS.H already included.  MFC apps must not #include <windows.h>
+ManageData.cpp
+i:\it维护项目开发\徐辉\完整程序\managedata.cpp(108) : fatal error C1010: unexpected end of file while looking for precompiled header directive
+Generating Code...
+Error executing cl.exe.
+Creating command line "bscmake.exe /nologo /o"Debug/test.bsc"  ".\Debug\StdAfx.sbr" ".\Debug\test.sbr" ".\Debug\ManageData.sbr""
+Creating browse info file...
+BSCMAKE: error BK1506 : cannot open file '.\Debug\test.sbr': No such file or directory
+Error executing bscmake.exe.
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+test.exe - 3 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

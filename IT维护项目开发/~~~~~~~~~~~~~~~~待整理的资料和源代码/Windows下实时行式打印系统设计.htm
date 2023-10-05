@@ -1,0 +1,290 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0067)http://www.pconline.com.cn/pcedu/sj/wz/frontpage/10111/15266_1.html -->
+<HTML><HEAD><TITLE>vc经验</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<SCRIPT language=JavaScript>
+<!--
+var mystat=0;//price select
+function myout(){mystat=0;window.setTimeout("mycheck()",5);}
+function myin(){mystat=1;}
+function mycheck(){if (mystat==0) MM_showHideLayers('price','','hide');}//price select
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+
+function MM_findObj(n, d) { //v3.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</SCRIPT>
+
+<STYLE type=text/css>.btd {
+	FONT-SIZE: 14px
+}
+</STYLE>
+<LINK href="file:///C|/WINDOWS/Desktop/ok/%D1%A7%C9%E8%BC%C6/%CD%F8%D2%B3%BD%FA%BC%B6%B0%E0/wangye/frontpage2000_2_1.files/text.css" rel=stylesheet>
+<META content="MSHTML 5.00.2614.3500" name=GENERATOR>
+<link rel="stylesheet" href="text1.css" type="text/css">
+</HEAD>
+<BODY aLink=#000000 bgColor=#303880 leftMargin=0 link=#000000 topMargin=0 
+vLink=#000000 marginheight="0" marginwidth="0">
+<DIV align=center><TABLE BACKGROUND=file:///C|/WINDOWS/Desktop/ok/%D1%A7%C9%E8%BC%C6/%CD%F8%D2%B3%BD%FA%BC%B6%B0%E0/wangye/frontpage2000_2_1.files/point.gif BORDER=0 CELLPADDING=6 
+      CELLSPACING=0 WIDTH="80%"> <TBODY> <TR> <TD ALIGN=middle>&nbsp;</TD>
+      <TD ALIGN=middle>
+        <div align="center"><FONT COLOR=#339900 
+            SIZE=3><B>&nbsp;Windows下实时行式打印系统设计</B></FONT><BR>
+        </div>
+      </TD><TD ALIGN=right CLASS=sfont ROWSPAN=2 WIDTH=128> 
+<P>&nbsp;</P></TD></TR> <TR> <TD WIDTH=90>&nbsp;</TD><TD ALIGN=middle>&nbsp;</TD></TR></TBODY></TABLE><TABLE BORDER=0 CELLPADDING=5 CELLSPACING=0 WIDTH="80%" BGCOLOR="#FFFFFF"> 
+<TBODY> <TR VALIGN=top> 
+      <TD CLASS=article> 
+        <P>所周知，Windows系统的页式打印系统有许多好的特性，比如所见即所得、设备无关等等。但是，在一些实时性要求很高的工业控制系统中，需要将系统随机出现的信息实时地打印出来，要求来一行打一行，而不能来一行打一页，而Windows系统的页式打印系统却很难满足这样的应用需求。鉴于这个原因，为了满足实时系统的打印要求，有必要设计一个新的实时行式打印系统。下面详细介绍如何在Windows 
+          2000/NT上实现这样一个系统。 </P>
+        <p>总体设计 </p>
+        <p>实时系统的基本要求是实时性。本文采用以共享内存为中转的打印假脱机技术，所有的打印操作在内存中提交完成，保证了应用系统对打印操作的及时响应。 
+        </p>
+        <p></p>
+        <p>另一要求是设备无关性，使提交打印的操作尽可能地做到与设备无关。程序不会因为打印机设备的不同，导致程序有较大的修改。如果打印机不同，只需加载相应的打印驱动程序即可。 
+        </p>
+        <p>总体上实时行式打印系统的设计分为两个部分，一个是以内存为基础的打印假脱机部分的设计；另一个是实时打印驱动层部分的设计。系统的概要设计图如下： 
+        </p>
+        <p>实时行打印假脱机部分 </p>
+        <p>这个部分的基本原理是使用一个基于共享内存技术的先入先出队列，用来存储其他应用程序提交的实时打印请求。打印进程从先入先出的环形队列取出打印请求,经过必要的处理之后，提交给打印驱动部分，由打印驱动部分负责驱动相应的打印机输出。 
+        </p>
+        <p>为满足其他应用程序提交打印请求的需要，在此使用了Windows操作系统提供的共享内存技术。共享内存是进程之间通信时用的一种技术，是一种更为标准、更为核心的技术，而且它在不同操作系统平台之间的移植性也比较好（Unix系列操作系统也有这种技术）。另一个好处是提高了实时性能，因为避免了多次内存复制的系统空间和时间上的开销。 
+        </p>
+        <p>Windows系统中与创建共享内存相关的系统函数有CreateFileMapping和MapViewOfFile。 </p>
+        <p>第一个函数用来在系统中创建一块共享内存，并返回共享内存的句柄。其参数说明如下： </p>
+        <p>HANDLE WINAPI CreateFileMapping ( </p>
+        <p>HANDLE hFile, </p>
+        <p>LPSECURITY _ATTRIBUTES lpsa, </p>
+        <p>DWORD dwPROTECT, </p>
+        <p>DWORD dwMaxSizeHigh, </p>
+        <p>DWORD dwMaxSizeLow, </p>
+        <p>LPCSTR lpszMapName); </p>
+        <p>hFile为文件句柄，要创建共享内存，该参数必须为0xffffffff; lpsa为安全属性结构指针; dwPROTECT是页保护标识，如PAGE_READONLY，PAGE_READWRITE等; 
+          dwMaxSizeHigh和dwMaxSizeLow共同定义了共享内存的尺寸，分别为共享内存大小的高32位和低32位; lpszMapName定义了共享内存的名字，必须确保其在系统范围内的惟一性。 
+        </p>
+        <p>第二个函数用来将创建的共享内存映射到调用进程的地址空间，并返回该地址空间的首地址。其参数说明如下： </p>
+        <p>MapViewOfFile( </p>
+        <p>HANDLE hFileMappingObject, </p>
+        <p>DWORD dwDesiredAccess, </p>
+        <p>DWORD dwFileOffsetHigh, </p>
+        <p>DWORD dwFileOffsetLow, </p>
+        <p>DWORD dwNumberOfBytesToMap); </p>
+        <p>hFileMappingObject定义了CreateFileMapping </p>
+        <p>函数返回的共享内存句柄; dwDesiredAccess定义了共享内存的访问模式，如：FILE_MAP_ALL_ACCESS </p>
+        <p>等; dwFileOffsetHigh和dwFileOffsetLow共同定义了共享内存起始位置的偏移量，分别为该偏移量的高32位和低32位，通常情况下二者都为零值; 
+          dwNumberOfBytesToMap定义了映射到本进程地址空间的共享内存的字节数，如果该值为零，则映射所有的共享内存。 </p>
+        <p>这里定义实时打印系统所用共享内存的名字为g_szRealTimePrintSystemShareMemName。REALTIMEPRINT_DB是一个结构类型，定义了共享内存的内部结构，它是实时打印系统的数据核心，包括了要打印的信息、写入指针、读出指针等信息。 
+          具体步骤如下(示意性代码): </p>
+        <p>REALTIMEPRINT_DB *g_pRealTimePrint- </p>
+        <p>SystemDb ； </p>
+        <p>HANDLE hShareMemHandle = NULL； </p>
+        <p>DWORD dwRTPSShmLen = sizeof(REALTIMEPRINT_DB); </p>
+        <p>//REALTIMEPRINT_DB 结构的长度 </p>
+        <p>hShareMemHandle = </p>
+        <p>//生成共享内存，并返回其句柄 </p>
+        <p>CreateFileMapping((HANDLE)0xffffffff,NULL,PAGE_READWRITE,0, </p>
+        <p>dwRTPSShmLen, //共享内存的大小 “g_szRealTimePrintSystemShareMemName”); </p>
+        <p>g_pRealTimePrintSystemDb = </p>
+        <p>//将共享内存映射到本进程的地址空间 </p>
+        <p>(REALTIMEPRINT_DB *)MapViewOfFile(hShareMemHandle，FILE_MAP_ALL_ACCESS,0,0,0); 
+        </p>
+        <p>在获得了共享内存的地址后，任何调用进程都可以将要打印的信息写到该共享内存中，供打印服务进程打印输出。基于系统实时性和效率方面的考虑，使用环形先入先出队列（FIFO），在此不再详述。 
+        </p>
+        <p>通常情况下，将上述功能封装成两个类，生成动态连接库供程序调用。一个类提供给需要提交打印信息请求的应用程序使用; 另一个类提供给响应打印请求的实时打印服务进程使用。在类中屏蔽以上算法细节和数据细节。 
+        </p>
+        <p>供提交打印信息请求的应用程序调用的类至少要提供如下接口操作： </p>
+        <p>class RealTimePrintSystemClnt </p>
+        <p>{//其他的数据和方法声明 </p>
+        <p>public: </p>
+        <p>BOOL IsWorking(); </p>
+        <p>//打印机是否正在工作？ </p>
+        <p>/*实时打印系统的FIFO队列是否已满？如果返回为TRUE，表示实时打印系统已经没有空闲响应程序的打印请求，应用程序要等到该返回值为FALSE时，重发打印请求。*/ 
+        </p>
+        <p>BOOL IsFull(); </p>
+        <p>/*程序请求实时打印操作。pData 表示要打印的实时信息，由ASCII字符或者汉字字符组成的字符串。dwDataLen 是要打印的实时信息的字符长度。crColor 
+          表示使用什么颜色打印，如果使用彩色喷墨打印机将可以打印彩色,默认值为0，表示黑色。pPrinterName 表示该打印请求将在哪一个打印机上打印输出，默认值为NULL，表示实时打印系统的默认打印机。返回值是实际提交给实时打印系统的信息长度，该值如果等于dwDataLen 
+          则表示该请求已经完全提交成功，如果等于零值则表示该请求没有被完整提交，应用程序要再次提交该请求。*/ </p>
+        <p>DWORD Request(LPCSTR pData,DWORD dwDataLen,COLORREF crColor=0，LPCSTR 
+          pPrinterName=NULL); </p>
+        <p>//其他的数据和方法声明 </p>
+        <p>}; </p>
+        <p>供响应打印请求的服务进程使用的类至少要提供如下操作: </p>
+        <p>class RealTimePrintSystemServ </p>
+        <p>{//其他的数据和方法声明 </p>
+        <p>//UnionPrintSystem是打印驱动层的封装类，实时打印系统使用它来打印实时信息 </p>
+        <p>UnionPrintSystem *m_pUnionPrintSystem; </p>
+        <p>public: </p>
+        <p>/*获得当前FIFO队列中的打印请求个数*/ </p>
+        <p>DWORD GetRequstNum(); </p>
+        <p>/*获得一个打印请求的数据，pData得到数据的首地址，dwDataLen得到数据的长度，crColor 得到打印颜色,pPrinterName 
+          得到执行请求打印机的名字。返回值为TRUE，表示成功，为FALSE表示失败。*/ </p>
+        <p>BOOL GetRequest(unsigned char ** pData,DWORD &amp;dwDataLen,COLORREF 
+          &amp;crColor，LPSTR pPrinterName); </p>
+        <p>/*实时打印系统的打印线程。在该打印线程中，要不断检测是否有打印请求，如果有打印请求，则取出打印请求，提交给打印驱动层，然后由打印驱动层驱动不同的打印机将请求在纸上打印出来。关于打印驱动层下面讲述。*/ 
+        </p>
+        <p>static DWORD WINAPI rtPrintThread(LPVOID lpParameter）； </p>
+        <p>}; </p>
+        <p>打印驱动部分 </p>
+        <p>为了实现系统设备无关性的要求，设计了打印统一驱动层部分。这样一旦打印机设备更改，应用程序只需加载新的打印机设备驱动即可，不会导致打印机系统程序和用户程序的修改，使系统具有较好的稳定性、兼容性和可扩充性。 
+        </p>
+        <p>首先，定义统一驱动部分，该部分主要完成以下功能：加载相应的具体打印机驱动程序，并负责将请求打印的字符信息翻译成不同打印机需要的打印点阵信息。 
+        </p>
+        <p>class UnionPrintSystem </p>
+        <p>{public: </p>
+        <p>GeneralPrinter *m_pPrinter； </p>
+        <p>//当前使用的打印机 </p>
+        <p>GeneralPrinter *m_pDefaultPrinter； </p>
+        <p>//系统默认的打印机 </p>
+        <p>GeneralPrinter *m_pPrinterSet[MAX_PRINTER_DRV_NUM]; </p>
+        <p>//安装的所有打印机 </p>
+        <p>HZDotArrayFont *m_pHzDAF； </p>
+        <p>//汉字字符的打印点阵信息提取器，可以提取多种打印字体的点阵信息,如24点阵楷体，48点阵宋体等 </p>
+        <p>public: </p>
+        <p>//加载一个打印机驱动程序 </p>
+        <p>void LoadPrinterDriver(GeneralPrinter *p); </p>
+        <p>//加载一个获取汉字打印点阵信息的驱动器 </p>
+        <p>void LoadHzDAFDriver(HZDotArrayFont *p); //选择一个工作打印机 </p>
+        <p>void SelectWorkPrinter(char *szPrinterName); //打印机控制 </p>
+        <p>void SetColor(int id) {m_pPrinter-&gt;SetColor(id);}; </p>
+        <p>//其他打印机控制函数 </p>
+        <p>/*打印一个字符串，可以包括汉字字符，只要调用该函数就可以将信息打印出来*/ </p>
+        <p>int PrintString(char *str,int len,char * ColorName=“黑色”); </p>
+        <p>}; </p>
+        <p>最后是打印机驱动程序的设计，这里是设备无关性设计的关键所在。为满足系统设备无关性的要求，设计了一个包含各种基本打印动作的打印机基类，所有的打印机都从该基类派生出来。在打印机的基类中定义了打印机的各种控制代码、打印机的种种操作方法，在具体的打印机类中将它们实例化。代码如下： 
+        </p>
+        <p>class GeneralPrinter </p>
+        <p>{public : </p>
+        <p>/*PRINTCOLOR是事先定义好的打印机颜色结构，用来定义打印机每一种颜色的控制代码*/ </p>
+        <p>PRINTCOLOR *m_pColor； </p>
+        <p>/*本打印机支持颜色的数量*/ </p>
+        <p>int m_iPrtColorNum; </p>
+        <p>/*打印机是否支持汉字的直接打印，即该打印机本身是否带有汉字的打印字库，如果打印机不支持汉字的直接打印，汉字的打印点阵信息将由字库点阵信息提取器类负责获取。*/ 
+        </p>
+        <p>BOOL m_bDirectPrintHz； </p>
+        <p>/*HPRINTHANDLE 是本系统事先定义好的打印机句柄结构，用来标识打印机的硬件端口，是数据输出到打印机的通道。*/ </p>
+        <p>PRINTHANDLE m_hPrinter； </p>
+        <p>char m_szPrinterName[PRINTR_PORTNAME_MAX_LEN]; </p>
+        <p>/*打印机名字，用来区别打印机的惟一标志*/ </p>
+        <p>PRINTERCONTROLCODE ...; </p>
+        <p>/*PRINTERCONTROLCODE 是本系统事先定义好的打印机控制代码结构，用来控制打印机行为，如打印机初始化控制代码，打印机设置页长控制代码等打印机支持的方法。*/ 
+        </p>
+        <p>public: </p>
+        <p>/*szPort是打印机所接端口的端口名字，如‘com1’，‘/dev/bbp0’等*/ </p>
+        <p>GeneralPrinter(char *szPort); </p>
+        <p>～GeneralPrinter（）； </p>
+        <p>virtual void ResetPrinter(); </p>
+        <p>/*打印机初始化的方法*/ </p>
+        <p>virtual void SetAutoCRLF(int iAuto); /*设置打印机是否自动换行的方法，iAuto为1表示自动换行，为0则不自动换行*/ 
+        </p>
+        <p>/*如果是彩色打印机的话，下面两个函数用来设置字符的打印颜色，szColorName是颜色的名字，如“黑色”，“红色”等，但必须是打印机支持的颜色。iColorId 
+          颜色的Id值一般为0～7之间的值。*/ </p>
+        <p>virtual void SetColor(char *szColorName)； </p>
+        <p>virtual void SetColor(int iColorId); </p>
+        <p>/*将打印机设置为图形模式下的操作，iMode 表示不同的图形模式，如180×180等*/ </p>
+        <p>virtual void SetGraphMode(int iMode); </p>
+        <p>/*用来打印字符串（包括汉字字符）的方法，iStrLen 表示字符串长度*/ </p>
+        <p>virtual int PrintString(char * szStr,int iStrLen); </p>
+        <p>/*用来打印图形的点阵信息，pData存放图形的点阵信息，比如汉字的打印点阵等*/ </p>
+        <p>virtual int PrintGraphDotArray(char * pData,int iDataLen); </p>
+        <p>/*其他方法的声明*/ </p>
+        <p>}; </p>
+        <p>驱动程序的编写实例 </p>
+        <p>要实现本系统的打印驱动，必须遵守本系统的规范，就是新的打印机驱动必须从基类GeneralPrinter派生出来，然后再将各种数据实例化，这样才能保证设备的无关性。下面以佳能的BJC5500彩色喷墨打印机为例说明驱动程序的编写方法。 
+        </p>
+        <p>class Printer_BJC5500 : public GeneralPrinter { </p>
+        <p>public: </p>
+        <p>PRINTCOLOR m_AllColor[BJC5500_PRT_ </p>
+        <p>COLOR_NUM]; </p>
+        <p>public: </p>
+        <p>Printer_BJC5500 (char *szPort); </p>
+        <p>~Printer_BJC5500 (); </p>
+        <p>virtual int PrintGraphDotArray(char * pData,int iDataLen); </p>
+        <p>}; </p>
+        <p>//只需要在构造函数中将各种数据实例化即可 </p>
+        <p>Printer_BJC5500 ：：Printer_BJC5500 (char *szPort){ </p>
+        <p>strcpy(szPrinterName,“BJC5500”）； </p>
+        <p>//赋予该打印机的惟一标志名字 </p>
+        <p>m_iPrtColorNum = 7； </p>
+        <p>//BJC5500能够支持7种颜色 </p>
+        <p>m_pColor = &amp;m_AllColor[0]; </p>
+        <p>//获得BJC5500打印机颜色控制代码的首地址 </p>
+        <p>m_bDirectPrintHz=FALSE； </p>
+        <p>//BJC5500不带汉字的硬字库，因而不支持汉字的直接打印，需要提取汉字的打印点阵信息，然后在打印机的图形模式下进行汉字的打印 </p>
+        <p>int i=0； </p>
+        <p>int cslen = 6； </p>
+        <p>//黑颜色的打印控制代码 </p>
+        <p>m_AllColor[i].szColorName =“黑色”； </p>
+        <p>//颜色的名字 </p>
+        <p>m_AllColor[i].iControlStrLen =cslen; </p>
+        <p>//打印控制代码的长度 </p>
+        <p>m_AllColor[i].szControlStr =“\x1b\x5b\x4d\x01\x00\x30”； </p>
+        <p>//打印控制代码 </p>
+        <p>i++; </p>
+        <p>//其他的颜色控制代码和其他打印机行为的控制代码 </p>
+        <p>m_pResetPrintStream.cs=“\x1b\x43\x1\x1b\x41\x1”; </p>
+        <p>//初始化打印机的控制代码 </p>
+        <p>m_pResetPrintStream.len=6; </p>
+        <p>//设置图形模式等其他功能的打印机控制代码 </p>
+        <p>} </p>
+        <p>如果该打印机的某些打印行为比较特殊，在此只需要重载相应的虚函数，比如BJC5500的打印图形的点阵信息比较特殊，在此重载了PrintGraphDotArray,限于篇幅，不再给出其实现。 
+        </p>
+        <p>通过以上代码，可以完成打印机驱动程序，同时又保证了程序接口的一致，实现了实时打印操作的设备无关性。 </p>
+        <p>加入新的打印驱动程序 </p>
+        <p>在系统的打印统一驱动层部分，有一个与该部分相关的配置文件PrinterDrive.ini,当安装一个打印驱动时，将会增加一个“Printer*Cfg”设置项，“*”表示1，2……相关设置项如下： 
+        </p>
+        <p>[SystemCfg] </p>
+        <p>DefalutPrinter=Canon_Bjc5500 </p>
+        <p>；缺省打印机 </p>
+        <p>[Printer1Cfg] </p>
+        <p>Name=Canon_Bjc5500 </p>
+        <p>DriveFile=c:\RealPrt\Drive\Bjc5500.dll </p>
+        <p>；打印机的设备驱动程序 </p>
+        <p>[Printer2Cfg] </p>
+        <p>;其他打印驱动的设置 </p>
+        <p>打印统一驱动层将读取该配置并分析内容，然后使用LoadLibray和GetProcAddress动态创建该打印驱动引擎（即一个指向GeneralPrinter 
+          的类指针），加载安装的驱动程序。 </p>
+        <p>部分代码如下（其中g_pUnionPrintSystemEng是打印统一驱动引擎的指针）： </p>
+        <p>typedef void* (*GetGeneralPrinterenginer_Func)(void); </p>
+        <p>GeneralPrinter *pPrtEng; </p>
+        <p>GetGeneralPrinterenginer_Func pFunc; </p>
+        <p>hHandle=LoadLibrary(“c:\RealPrt\Drive\Bjc5500.dll”); </p>
+        <p>if(hHandle ) { </p>
+        <p>pFunc=(GetGeneralPrinterenginer_Func )GetProcAddress(hHandle,“GetGeneralPrinterEnginer”); 
+        </p>
+        <p>if(pFunc) </p>
+        <p>V pPrtEng =(GeneralPrinter *)(*pFunc)(); </p>
+        <p>if(pPrtEng) </p>
+        <p>g_pUnionPrintSystemEng-&gt;LoadPrinterDriver(pPrtEng); </p>
+        <p>/*在此将打印驱动程序装入系统中*/ </p>
+        <p>} </p>
+        <p>通过这种方法，我们可以将新的打印驱动装入实时打印系统，实现设备无关性。 </p>
+        <p>总 结 </p>
+        <p>本打印系统主要设计了以下几个类： </p>
+        <p>● RealTimePrintSystemClnt: 提交打印操作请求，供打印实时信息的应用程序调用的封装类。 </p>
+        <p>● RealTimePrintSystemServ: 响应打印操作请求，供实时打印系统进程使用的封装类。 </p>
+        <p>● UnionPrintSystem: 打印统一驱动层的封装类。 </p>
+        <p>● GeneralPrinter: 打印机驱动的基类。 </p>
+        <p>● Printer_BJC5500: 佳能BJC5500彩色喷墨打印机驱动的封装类。 </p>
+        <p>● HZDotArrayFont: 汉字字符的打印点阵信息提取器的封装类。 </p>
+        <p>通过以上几个类，我们成功地建立了一个实时行式打印系统，同时又实现了打印设备的无关性，使应用不需随打印机的更改而改变。其中有许多技术细节，限于篇幅，在此没有提供完整的实现方法,但是基本的技术框架和重要的技术细节完全具备，读者可以在此基础上进行详细编码以实现系统。 
+        </p>
+        <p>读者也可以在此基础之上进行扩展，构建一个客户/服务器模式的分布式实时打印系统，因为该系统架构就是一个Client/Server 模式。还可以考虑规定打印优先级，将不同的打印信息送到不同的打印机上，也可以考虑Unix上的实现等等。这些都是可行的，最终以求得实现一个完美的实时行式打印系统。 
+        </p>
+        <p></p>
+      </TD>
+    </TR></TBODY></TABLE></DIV>
+</BODY></HTML>

@@ -1,0 +1,69 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: GridViewDemo - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0xc09 /fo"Release/GridViewDemo.res" /d "NDEBUG" /d "_AFXDLL" "E:\Sample2\GridViewDemo\GridViewDemo.rc"" 
+Creating temporary file "C:\TEMP\RSP5F.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /Fp"Release/GridViewDemo.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\Sample2\GridViewDemo\ChildFrm.cpp"
+"E:\Sample2\GridViewDemo\GridCtrl.cpp"
+"E:\Sample2\GridViewDemo\GridDropTarget.cpp"
+"E:\Sample2\GridViewDemo\GridViewDemo.cpp"
+"E:\Sample2\GridViewDemo\GridViewDemoDoc.cpp"
+"E:\Sample2\GridViewDemo\GridViewDemoView.cpp"
+"E:\Sample2\GridViewDemo\InPlaceEdit.cpp"
+"E:\Sample2\GridViewDemo\MainFrm.cpp"
+"E:\Sample2\GridViewDemo\TitleTip.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSP5F.tmp" 
+Creating temporary file "C:\TEMP\RSP60.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /Fp"Release/GridViewDemo.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\Sample2\GridViewDemo\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSP60.tmp" 
+Creating temporary file "C:\TEMP\RSP61.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:no /pdb:"Release/GridViewDemo.pdb" /machine:I386 /out:"Release/GridViewDemo.exe" 
+.\Release\ChildFrm.obj
+.\Release\GridCtrl.obj
+.\Release\GridDropTarget.obj
+.\Release\GridViewDemo.obj
+.\Release\GridViewDemoDoc.obj
+.\Release\GridViewDemoView.obj
+.\Release\InPlaceEdit.obj
+.\Release\MainFrm.obj
+.\Release\StdAfx.obj
+.\Release\TitleTip.obj
+.\Release\GridViewDemo.res
+]
+Creating command line "link.exe @C:\TEMP\RSP61.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+ChildFrm.cpp
+GridCtrl.cpp
+GridDropTarget.cpp
+GridViewDemo.cpp
+GridViewDemoDoc.cpp
+GridViewDemoView.cpp
+InPlaceEdit.cpp
+MainFrm.cpp
+TitleTip.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+GridViewDemo.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Examples4G - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\WINDOWS\TEMP\RSP1310.TMP" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Debug/Examples4G.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Examples4G\Example4G.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP1310.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP1311.TMP" with contents
+[
+kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib scrnsave.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/Examples4G.pdb" /debug /machine:I386 /out:"Debug/Examples4G.exe" /pdbtype:sept 
+.\Debug\Example4G.res
+.\Debug\Example4G.obj
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP1311.TMP"
+<h3>Output Window</h3>
+Compiling...
+Example4G.cpp
+C:\Examples4G\Example4G.cpp(58) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+C:\Examples4G\Example4G.cpp(58) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+C:\Examples4G\Example4G.cpp(81) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+C:\Examples4G\Example4G.cpp(81) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+C:\Examples4G\Example4G.cpp(90) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+C:\Examples4G\Example4G.cpp(90) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+Linking...
+
+
+
+<h3>Results</h3>
+Examples4G.exe - 0 error(s), 6 warning(s)
+</pre>
+</body>
+</html>

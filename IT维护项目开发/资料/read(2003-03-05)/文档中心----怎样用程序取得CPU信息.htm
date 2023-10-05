@@ -1,0 +1,980 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0049)http://www.xbit2008.com/document/index.asp?id=626 -->
+<HTML><HEAD><TITLE>文档中心</TITLE><LINK href="文档中心----怎样用程序取得CPU信息.files/css.css" 
+type=text/css rel=stylesheet>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META content="MSHTML 6.00.2600.0" name=GENERATOR></HEAD>
+<BODY text=#000000 bgColor=#ffffff leftMargin=4 topMargin=2>
+<TABLE cellSpacing=0 cellPadding=0 width=772 border=0>
+  <TBODY>
+  <TR>
+    <TD colSpan=2>
+      <OBJECT height=50 width=450 
+      classid=clsid:D27CDB6E-AE6D-11cf-96B8-444553540000><PARAM NAME="movie" VALUE="logo.swf"></OBJECT></TD></TR>
+  <TR>
+    <TD colSpan=2 height=12>&nbsp;</TD></TR>
+  <TR>
+    <TD vAlign=top width=150 bgColor=#dfffff>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <SCRIPT language=JavaScript type=text/javascript><!--
+function FrontPage_Form1_Validator(theForm)
+{
+
+ 
+  if (theForm.uid.value.length < 3)
+  {
+    alert("在 昵称 域中，请至少输入 3 个字符。");
+    theForm.uid.focus();
+    return (false);
+  }
+
+  if (theForm.uid.value.length > 20)
+  {
+    alert("在 昵称 域中，请最多输入 20 个字符。");
+    theForm.uid.focus();
+    return (false);
+  }
+
+ 
+
+  if (theForm.psd.value.length < 3)
+  {
+    alert("在 密码 域中，请至少输入 3 个字符。");
+    theForm.psd.focus();
+    return (false);
+  }
+
+  if (theForm.psd.value.length > 20)
+  {
+    alert("在 密码 域中，请最多输入 20 个字符。");
+    theForm.psd.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></SCRIPT>
+
+            <TABLE id=AutoNumber8 style="BORDER-COLLAPSE: collapse" 
+            borderColor=#0066ff cellSpacing=0 cellPadding=2 width="100%" 
+            border=1>
+              <TBODY>
+              <TR bgColor=#d4d0c8>
+                <TD borderColor=#0066ff bgColor=#0066ff height=15><B><FONT 
+                  color=#ffffff>会员登陆</FONT></B></TD></TR>
+              <TR>
+                <TD align=middle bgColor=#ffffcc>
+                  <FORM language=JavaScript name=FrontPage_Form1 
+                  onsubmit="return FrontPage_Form1_Validator(this)" 
+                  action=r_main.asp method=post 
+                  webbot-action="--WEBBOT-SELF--">昵称： <INPUT class=button3 
+                  onfocus=this.select() maxLength=20 size=10 value=glacier 
+                  name=uid><BR>密码： <INPUT class=button3 onfocus=this.select() 
+                  type=password maxLength=20 size=10 value=glacier name=psd> <INPUT class=button1 type=submit value=登陆> <A 
+                  href="http://www.xbit2008.com/document/reg.asp">注册</A> <A 
+                  href="http://www.xbit2008.com/document/getpsd.asp">忘记密码</A></FORM></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD height=12></TD></TR>
+        <TR>
+          <TD>
+            <TABLE id=AutoNumber8 style="BORDER-COLLAPSE: collapse" 
+            borderColor=#0066ff height=0 cellSpacing=0 cellPadding=2 
+            width="100%" bgColor=#ffffcc border=1>
+              <TBODY>
+              <TR bgColor=#d4d0c8>
+                <TD borderColor=#0066ff bgColor=#0066ff height=21><B><FONT 
+                  color=#ffffff>本文及作者信息</FONT></B></TD></TR>
+              <TR>
+                <TD align=middle height=70>
+                  <TABLE id=AutoNumber8 style="BORDER-COLLAPSE: collapse" 
+                  height=0 width="98%" align=center>
+                    <TBODY>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----怎样用程序取得CPU信息.files/boy.gif" width=16 
+                        border=0></TD>
+                      <TD width="81%"><A 
+                        onclick="javascript:window.open('user.asp?user=glacier','hongen_dict','resizable=0,status=no,toolbar=no,menubar=no,location=no,width=500,height=350');" 
+                        href="http://www.xbit2008.com/document/index.asp?id=626#">glacier</A></A> 
+                        <A 
+                        onclick="javascript:window.open('write_guest.asp?uid=glacier','hongen_dict','resizable=0,status=no,toolbar=no,menubar=no,location=no,width=500,height=350');" 
+                        href="http://www.xbit2008.com/document/index.asp?id=626#">留言</A> 
+                      </TD></TR>
+                    <TR>
+                      <TD colSpan=2>
+                        <DIV align=center><FONT color=#ff0000 
+                        size=3>★★★★★★★★★</FONT><FONT 
+                        color=#ff00ff>★★</FONT></DIV></TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=12 
+                        src="文档中心----怎样用程序取得CPU信息.files/feedback.gif" width=13 
+                        border=0></TD>
+                      <TD width="81%"><A 
+                        href="mailto:lyy_20@sina.com">lyy_20@sina.com</A></TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----怎样用程序取得CPU信息.files/oicq.gif" width=16 
+                        border=0></TD>
+                      <TD width="81%">12173849</TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----怎样用程序取得CPU信息.files/home.gif" width=16 
+                        border=0></TD>
+                      <TD width="81%"><A href="http://www.xbit2008.com/" 
+                        target=_bank>作者主页</A></TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----怎样用程序取得CPU信息.files/clock.gif" width=12 
+                        border=0></TD>
+                      <TD width="81%">加入：2002-7-26</TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----怎样用程序取得CPU信息.files/icq.gif" width=15 
+                        border=0></TD>
+                      <TD width="81%">登陆次数：319</TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=15 
+                        src="文档中心----怎样用程序取得CPU信息.files/rewrite.gif" width=16 
+                        border=0></TD>
+                      <TD width="81%"><A title=搜索glacier所有发表发表文章 
+                        href="http://www.xbit2008.com/document/uid_document.asp?uid=glacier" 
+                        target=_bank>发表文章</A>：<FONT 
+color=#ff0000>8</FONT>页</TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----怎样用程序取得CPU信息.files/palette_draw.gif" 
+                        width=9 border=0></TD>
+                      <TD width="81%"><A title=搜索glacier所有发表回复文章 
+                        href="http://www.xbit2008.com/document/uid_re.asp?uid=glacier" 
+                        target=_bank>回复文章</A><FONT 
+color=#ff0000>：2</FONT>页</TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----怎样用程序取得CPU信息.files/clock.gif" width=12 
+                        border=0></TD>
+                      <TD width="81%">发表：<FONT 
+                      color=#ff0000>2002-5-16</FONT></TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----怎样用程序取得CPU信息.files/icq.gif" width=15 
+                        border=0></TD>
+                      <TD width="81%">人气：<FONT color=#ff0000>45</FONT>人</TD></TR>
+                    <TR>
+                      <TD colSpan=8 height=0>　</TD></TR>
+                    <TR>
+                      <TD colSpan=2 height=0><IMG height=10 
+                        src="文档中心----怎样用程序取得CPU信息.files/ico.gif" width=10 
+                        border=0> 本文投票信息（<FONT color=#ff0000>0</FONT>票）</TD></TR>
+                    <TR>
+                      <TD colSpan=2 height=0>
+                        <TABLE cellSpacing=0 cellPadding=0 width="100%" 
+border=0>
+                          <TBODY>
+                          <TR>
+                            <TD width="30%">挺好：</TD>
+                            <TD width="70%">
+                              <TABLE borderColor=#ffffcc height=4 cellSpacing=0 
+                              cellPadding=0 width=0% bgColor=#ff0000 border=1>
+                                <TBODY>
+                                <TR>
+                                <TD>0　</TD></TR></TBODY></TABLE></TD></TR>
+                          <TR>
+                            <TD width="30%">一般：</TD>
+                            <TD width="70%">
+                              <TABLE borderColor=#ffffcc height=4 cellSpacing=0 
+                              cellPadding=0 width=0% bgColor=#ffff00 border=1>
+                                <TBODY>
+                                <TR>
+                                <TD height=15>0</TD></TR></TBODY></TABLE></TD></TR>
+                          <TR>
+                            <TD width="30%">很差：</TD>
+                            <TD width="70%">
+                              <TABLE borderColor=#ffffcc height=4 cellSpacing=0 
+                              cellPadding=0 width=0% bgColor=#00ff00 border=1>
+                                <TBODY>
+                                <TR>
+                                <TD>0　</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+                    <TR>
+                      <TD colSpan=8 height=0>　</TD></TR>
+                    <TR>
+                      <TD colSpan=2 height=0><IMG height=10 
+                        src="文档中心----怎样用程序取得CPU信息.files/ico.gif" width=10 
+                        border=0> 为本文投一票</TD></TR>
+                    <TR>
+                      <TD colSpan=2 height=14>
+                        <FORM name=form1 action=index.asp?id=626 method=post>
+                        <TABLE cellSpacing=0 cellPadding=0 width="100%" 
+border=0>
+                          <TBODY>
+                          <TR>
+                            <TD><INPUT type=radio value=a name=tp> 本文非常好</TD></TR>
+                          <TR>
+                            <TD><INPUT type=radio value=b name=tp> 本文一般好 
+</TD></TR>
+                          <TR>
+                            <TD><INPUT type=radio value=c name=tp> 本文很差劲 
+</TD></TR>
+                          <TR>
+                            <TD><INPUT type=submit value="投  票" name=ok> 
+                          </TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD height=12>&nbsp;</TD></TR>
+        <TR>
+          <TD>
+            <SCRIPT language=JavaScript1.2 
+            src="文档中心----怎样用程序取得CPU信息.files/menu.js"></SCRIPT>
+
+            <TABLE id=AutoNumber4 style="BORDER-COLLAPSE: collapse" 
+            borderColor=#0066ff height=152 cellSpacing=0 cellPadding=2 
+            width="100%" bgColor=#ffffcc border=1>
+              <TBODY>
+              <TR>
+                <TD borderColor=#0066ff width="100%" bgColor=#0066ff 
+                  height=18><B><FONT color=#ffffff>文档导航</FONT></B></TD></TR>
+              <TR>
+                <TD vAlign=top width="100%">
+                  <TABLE width="98%" align=left>
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <DIV class=parent id=KB1Parent><A title=编程 
+                        onclick="expandIt('KB1');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=626#"><IMG 
+                        height=17 src="文档中心----怎样用程序取得CPU信息.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=编程">编程</A> 
+                        </DIV>
+                        <DIV class=child id=KB1Child><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=ASP 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=ASP" 
+                        target=right>ASP</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=ASP.NET 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=ASP.NET" 
+                        target=right>ASP.NET</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=C＃ 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=C＃" 
+                        target=right>C＃</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=C＋＋ 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=C＋＋" 
+                        target=right>C＋＋</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Borland 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=C++Builder" 
+                        target=right C++Builder>C++Builder</A> <BR><IMG 
+                        height=17 src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=CORBA 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=CORBA" 
+                        target=right>CORBA</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=CSS 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=CSS" 
+                        target=right>CSS</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=C语言 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=C语言" 
+                        target=right>C语言</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Delphi 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=Delphi" 
+                        target=right>Delphi </A><BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=EJB 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=EJB" 
+                        target=right>EJB</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=HTML/DHTML 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=HTML/DHTML" 
+                        target=right>HTML/DHTML</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=J2EE 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=J2EE" 
+                        target=right>J2EE</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=JAVA 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=JAVA" 
+                        target=right>JAVA</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=JavaScript 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=JavaScript" 
+                        target=right>JavaScript</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=JSP 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=JSP" 
+                        target=right>JSP</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=LISP(AutoCAD的开发语言) 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=LISP" 
+                        target=right>LISP</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Palm 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=Palm" 
+                        target=right>Palm</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Perl 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=Perl" 
+                        target=right>Perl</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=PHP 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=PHP" 
+                        target=right>PHP</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=PowerBuilder 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=PowerBuild" 
+                        target=right>PowerBuild</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Socket 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=Socket" 
+                        target=right>Socket</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Struts 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=Struts" 
+                        target=right>Struts</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Microsoft 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=VB/VB.NET" 
+                        target=right VB.NET Basic Visual>VB/VB.NET</A> <BR><IMG 
+                        height=17 src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=VBS 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=VBS" 
+                        target=right>VBS</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=VC 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=VC" 
+                        target=right>VC</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Microsoft 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=VFoxPro" 
+                        target=right Visual FoxPro>VFoxPro</A> <BR><IMG 
+                        height=17 src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=WAP 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=WAP" 
+                        target=right>WAP</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Windows编程 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=Windows编程" 
+                        target=right>Windows编程</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=XML 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=XML" 
+                        target=right>XML</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=汇编语言 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=汇编语言" 
+                        target=right>汇编语言</A> <BR></DIV>
+                        <DIV class=parent id=KB2Parent><A title=网络 
+                        onclick="expandIt('KB2');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=626#"><IMG 
+                        height=17 src="文档中心----怎样用程序取得CPU信息.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=网络">网络</A> 
+                        </DIV>
+                        <DIV class=child id=KB2Child><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Windows2k 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=网络&amp;c=Windows2k" 
+                        target=right>Windows2k</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=我是网络高手 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=网络&amp;c=网络设备" 
+                        target=right 你是谁!>网络设备</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=网络协议 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=网络&amp;c=网络协议" 
+                        target=right>网络协议</A> <BR></DIV>
+                        <DIV class=parent id=KB3Parent><A title=数据库 
+                        onclick="expandIt('KB3');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=626#"><IMG 
+                        height=17 src="文档中心----怎样用程序取得CPU信息.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=数据库">数据库</A> 
+                        </DIV>
+                        <DIV class=child id=KB3Child><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=ACCESS 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=ACCESS" 
+                        target=right>ACCESS</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=DB2 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=DB2" 
+                        target=right>DB2</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=FoxPro 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=FoxPro" 
+                        target=right>FoxPro</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=INGRES 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=INGRES" 
+                        target=right>INGRES</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=MSSQL 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=MSSQL" 
+                        target=right>MSSQL</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=MYSQL 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=MYSQL" 
+                        target=right>MYSQL</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Oracle 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=Oracle" 
+                        target=right>Oracle</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=QBASE 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=QBASE" 
+                        target=right>QBASE</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=SQL 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=SQL" 
+                        target=right>SQL</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=SYBASE 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=SYBASE" 
+                        target=right>SYBASE</A> <BR></DIV>
+                        <DIV class=parent id=KB4Parent><A title=2D/3D设计空间,动画制作 
+                        onclick="expandIt('KB4');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=626#"><IMG 
+                        height=17 src="文档中心----怎样用程序取得CPU信息.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=制作设计">制作设计</A> 
+                        </DIV>
+                        <DIV class=child id=KB4Child><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=3D 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=3DSMax" 
+                        target=right MAX Studio>3DSMax</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Authorware 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=Authorware" 
+                        target=right>Authorware</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=AutoCAD 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=AutoCAD" 
+                        target=right>AutoCAD</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Dreamweaver 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=Dreamweaver" 
+                        target=right>Dreamweaver</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Fireworks 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=Fireworks" 
+                        target=right>Fireworks</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Flash 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=Flash" 
+                        target=right>Flash</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=FreeHand 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=FreeHand" 
+                        target=right>FreeHand</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Microsoft 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=FrontPage" 
+                        target=right FrontPage>FrontPage</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Adobe 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=Illustrator" 
+                        target=right Illustrator>Illustrator</A> <BR><IMG 
+                        height=17 src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Maya 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=Maya" 
+                        target=right>Maya</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=PhotoShop 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=PhotoShop" 
+                        target=right>PhotoShop</A> <BR></DIV>
+                        <DIV class=parent id=KB5Parent><A title=操作系统 
+                        onclick="expandIt('KB5');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=626#"><IMG 
+                        height=17 src="文档中心----怎样用程序取得CPU信息.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=操作系统">操作系统</A> 
+                        </DIV>
+                        <DIV class=child id=KB5Child><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Linux 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=操作系统&amp;c=Linux" 
+                        target=right>Linux</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=NetWare 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=操作系统&amp;c=NetWare" 
+                        target=right>NetWare</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=UNIX 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=操作系统&amp;c=UNIX" 
+                        target=right>UNIX</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Windows 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=操作系统&amp;c=Windows" 
+                        target=right>Windows</A> <BR></DIV>
+                        <DIV class=parent id=KB6Parent><A title=电脑的软硬相关故障和维护 
+                        onclick="expandIt('KB6');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=626#"><IMG 
+                        height=17 src="文档中心----怎样用程序取得CPU信息.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=故障维护">故障维护</A> 
+                        </DIV>
+                        <DIV class=child id=KB6Child><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=软件故障 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=故障维护&amp;c=软件故障" 
+                        target=right>软件故障</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=网络故障 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=故障维护&amp;c=网络故障" 
+                        target=right>网络故障</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=硬件故障 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=故障维护&amp;c=硬件故障" 
+                        target=right>硬件故障</A> <BR></DIV>
+                        <DIV class=parent id=KB7Parent><A title=计算机安全和黑客技术及计算机病毒 
+                        onclick="expandIt('KB7');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=626#"><IMG 
+                        height=17 src="文档中心----怎样用程序取得CPU信息.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=安全技术">安全技术</A> 
+                        </DIV>
+                        <DIV class=child id=KB7Child><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=DNS服务器 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=DNS服务器" 
+                        target=right>DNS服务器</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Email服务器 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=Email服务器" 
+                        target=right>Email服务器</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=FTP服务器 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=FTP服务器" 
+                        target=right>FTP服务器</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=HPUX 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=HPUX" 
+                        target=right>HPUX</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=IBM 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=IBM AIX" 
+                        target=right AIX>IBM AIX</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Linux 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=Linux" 
+                        target=right>Linux</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=UNIX 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=UNIX" 
+                        target=right>UNIX</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Web浏览器 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=Web浏览器" 
+                        target=right>Web浏览器</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=Windows 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=Windows" 
+                        target=right>Windows</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=WWW服务器 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=WWW服务器" 
+                        target=right>WWW服务器</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=攻击代码 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=攻击代码" 
+                        target=right>攻击代码</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=后门程序 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=后门程序" 
+                        target=right>后门程序</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=加密解密 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=加密解密" 
+                        target=right>加密解密</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=路由器/防火墙 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=路由及防火墙" 
+                        target=right>路由及防火墙 </A><BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=数据库 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=数据库" 
+                        target=right>数据库</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=通用漏洞 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=通用漏洞" 
+                        target=right>通用漏洞</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=溢出技术 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=溢出技术" 
+                        target=right>溢出技术</A> <BR></DIV>
+                        <DIV class=parent id=KB8Parent><A title=其他文章 
+                        onclick="expandIt('KB8');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=626#"><IMG 
+                        height=17 src="文档中心----怎样用程序取得CPU信息.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=其他文章">其他文章</A> 
+                        </DIV>
+                        <DIV class=child id=KB8Child><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=结构格式 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=其他文章&amp;c=结构格式" 
+                        target=right>结构格式</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=其他文章 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=其他文章&amp;c=其他文章" 
+                        target=right>其他文章</A> <BR><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=输入输出 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=其他文章&amp;c=输入输出" 
+                        target=right>输入输出</A> <BR></DIV>
+                        <DIV class=parent id=KB9Parent><A title=加密解密 
+                        onclick="expandIt('KB9');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=626#"><IMG 
+                        height=17 src="文档中心----怎样用程序取得CPU信息.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=加密解密">加密解密</A> 
+                        </DIV>
+                        <DIV class=child id=KB9Child><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/spacer.gif" width=20 
+                        border=0><IMG height=17 
+                        src="文档中心----怎样用程序取得CPU信息.files/blank.gif" width=32 
+                        border=0><A title=密码算法 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=加密解密&amp;c=密码算法" 
+                        target=right>密码算法</A> 
+              <BR></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD height=12>&nbsp;</TD></TR>
+        <TR>
+          <TD>
+            <TABLE id=AutoNumber8 style="BORDER-COLLAPSE: collapse" 
+            borderColor=#0066ff cellSpacing=0 cellPadding=2 width="100%" 
+            bgColor=#ffffcc border=1>
+              <TBODY>
+              <TR bgColor=#d4d0c8>
+                <TD borderColor=#0066ff bgColor=#0066ff height=15><B><FONT 
+                  color=#ffffff>相关文章</FONT></B></TD></TR>
+              <TR>
+                <TD vAlign=top align=middle>
+                  <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD>没有该文章！ 
+        </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+    <TD vAlign=top width=622>
+      <TABLE cellSpacing=0 cellPadding=0 width="96%" align=right border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <DIV align=right>
+            <MARQUEE scrollAmount=3 behavior=alternate width=590><FONT 
+            color=#ff0000>你还没有登陆,不能享有本站的所有服务,请<A 
+            href="http://www.xbit2008.com/document/main.asp">登临</\A></FONT></A></MARQUEE></DIV></TD></TR>
+        <TR>
+          <TD>
+            <DIV align=center>
+            <TABLE id=AutoNumber6 style="BORDER-COLLAPSE: collapse" 
+            borderColor=#111111 height=67 cellSpacing=0 cellPadding=0 
+            width="100%">
+              <TBODY>
+              <TR>
+                <TD colSpan=3><IMG src="文档中心----怎样用程序取得CPU信息.files/b010.gif" 
+                  border=0> <A 
+                  href="http://www.xbit2008.com/document/v_type_p.asp?p=编程">编程</A> 
+                </TD></TR>
+              <TR>
+                <TD><IMG src="文档中心----怎样用程序取得CPU信息.files/01.gif" border=0></TD>
+                <TD colSpan=2><IMG src="文档中心----怎样用程序取得CPU信息.files/001.gif" 
+                  border=0> <A 
+                  href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=VC">VC</A> 
+                </TD></TR>
+              <TR>
+                <TD width=29>　</TD>
+                <TD width=20 height=20><IMG 
+                  src="文档中心----怎样用程序取得CPU信息.files/01.gif" border=0> </TD>
+                <TD><IMG src="文档中心----怎样用程序取得CPU信息.files/lm.gif" border=0> 
+                  <FONT color=#ff00ff><B>怎样用程序取得CPU信息</B></FONT> <A 
+                  href="http://www.xbit2008.com/document/rewrite.asp?id=626"><IMG 
+                  height=15 alt=发表意见 
+                  src="文档中心----怎样用程序取得CPU信息.files/rewrite.gif" width=16 
+                  border=0></A> <A 
+                  href="http://www.xbit2008.com/document/add_fock.asp?id=626&amp;title=怎样用程序取得CPU信息" 
+                  target=_bank><IMG height=16 alt=添加到我的收藏夹 
+                  src="文档中心----怎样用程序取得CPU信息.files/fav_1.gif" width=16 
+                  border=0></A></TD></TR></TBODY></TABLE></DIV></TD></TR>
+        <TR>
+          <TD vAlign=top>很 多 软 件 可 以 判 断所 运 行 的 电 脑 类 型 而 自 动 做 不 同 的处 理。 
+            如PhotoShop 5 可 以 探 测CPU 是 否 有MMX 支 持 而 调 用 不同 的 处 理 函数，《 金 山 词 霸》 发 
+            现 有MMX 支 持 会 产 生 半 透明 的翻 译 提 示， 很 多 软 件 可 以 区 分Intel,Cyrix,AMD 
+            的CPU...<BR><BR>现 在， 且 让 我 细 细道 来 如 何 让 你 在 自 己 的 程 序 中 取 得CPU 信 
+            息。<BR><BR>主 要 可 利 用 利 用CPUID 汇 编 指 令( 机 器 码:0FH A2H, 如 果 你 的 编 译 器 不 
+            支 持CPUID 指 令， 只 有emit 机 器 码 了) 该 指 令 可 以 被 如 下CPU 识别<BR><BR>Intel 
+            486 以 上 的CPU,<BR>Cyrix M1 以 上 的CPU,<BR>AMD Am486 以 上 的CPU<BR><BR>(1) 
+            取CPU OEM 字 符 串, 判 断CPU 厂商<BR><BR>先 让EAX=0， 再 调 用CPUID<BR><BR>Inel 
+            的CPU 将 返 回:<BR><BR>EBX:756E6547H 'Genu'<BR>EDX:49656E69H 
+            'ineI'<BR>ECX:6C65746EH 'ntel'<BR>EBX,EDX,ECX 将 连 成"GenuineIntel", 真 
+            正 的Intel。<BR>Cyrix 的CPU 将 返 
+            回:<BR>EBX:43797269H<BR>EDX:78496E73H<BR>ECX:74656164H<BR>"CyrixInstead"，"Cyrix 
+            来 代 替"。<BR>AMD 的CPU 将 返 
+            回:<BR>EBX:41757468H<BR>EDX:656E7469H<BR>ECX:63414D44H<BR>"AuthenticAMD"， 
+            可 信 的AMD。<BR><BR>在Windows98 中， 用 右 键 单 击" 我 的 电 脑"， 选 择" 属 性- 常 规" 
+            <BR>在 计 算 机描 述 处 就 可 看 见CPU OEM 字 符 串。<BR><BR>(2)CPU 到 底 是 几86, 是 否 
+            支 持MMX<BR><BR>先 让EAX=1， 再 调 用CPUID<BR><BR>EAX 的 8 到11 位 就 表 明 是 
+            几86<BR><BR>3 - 386<BR>4 - i486<BR>5 - Pentium<BR>6 - Pentium Pro 
+            Pentium II<BR>2 - Dual Processors<BR>EDX 的 第0 位： 有 无FPU<BR><BR>EDX 的 
+            第23 位:CPU 是 否 支 持IA MMX, 很 重 要 啊 ！ 如 果 你 想 用 <BR>那57 条 新 增 的 指 令, 先 
+            检查 这 一 位 吧， 否 则 就 等 着 看Windows <BR>的" 该 程 序 执行 了 非 法 指 令， 将 被 关 闭" 
+            吧。<BR><BR>(3) 专 门 检 测 是 否P6 架 构<BR><BR>先 让EAX=1， 再 调 用CPUID<BR><BR>如 
+            果AL=1, 就 是Pentium Pro 或Pentium II<BR><BR>(4) 专 门 检 测AMD 的CPU 信 
+            息<BR><BR>先 让EAX=80000001H， 再 调 用CPUID<BR><BR>如 果EAX=51H, 是AMD 
+            K5<BR><BR>如 果EAX=66H, 是K6<BR><BR>K7 是 什 么 标 志， 只 有 等 大 家拿 到K7 的 芯 再 
+            说 了。<BR><BR>EDX 第0 位: 是 否 有FPU( 多 余 的 ！谁 用 过 没FPU 
+            的K5,K6?)<BR><BR>EDX 第23 位，CPU 是 否 支 持MMX,<BR><BR>程 序 如 下: 
+            是C++Builder 的 控 制台 程 序, 可 以 给 出 你 的" 心"<BR>的 信 息。 如 果 把这 个 技 术 用 
+            于DLL 中， 便 可 以 使VB 程 序 <BR>也 知 道" 心" 的 信 息。<BR><BR>//--CPUID 
+            Instruction Demo Program<BR>#include <BR><BR>#include 
+            <BR><BR>#pragma hdrstop<BR>//----<BR>#pragma inline<BR>#pragma 
+            argsused<BR>int main(int argc, char **argv)<BR>{<BR>char 
+            OEMString[13];<BR><BR>int 
+            iEAXValue,iEBXValue,iECXValue,iEDXValue;<BR>_asm {<BR>mov 
+            eax,0<BR>cpuid<BR>mov DWORD PTR OEMString,ebx<BR>mov DWORD PTR 
+            OEMString+4,edx<BR>mov DWORD PTR OEMString+8,ecx<BR>mov BYTE PTR 
+            OEMString+12,0<BR>}<BR><BR>cout&lt; &lt; "This CPU 's OEM String 
+            is:"&lt; &lt; OEMString&lt; &lt; endl;<BR><BR>_asm {<BR>mov 
+            eax,1<BR>cpuid<BR>mov iEAXValue,eax<BR>mov iEBXValue,ebx<BR>mov 
+            iECXValue,ecx<BR>mov 
+            iEDXValue,edx<BR>}<BR><BR>if(iEDXValue&amp;0x800000)<BR>cout &lt; 
+            &lt; "This is MMX CPU"&lt; &lt; endl;<BR>else<BR>cout &lt; &lt; 
+            "None MMX Support."&lt; &lt; endl;<BR><BR>int iCPUFamily=(0xf00 
+            &amp; iEAXValue) &gt; &gt;8;<BR>cout &lt; &lt; "CPU Family is:"&lt; 
+            &lt; iCPUFamily&lt; &lt; endl;<BR><BR>_asm{<BR>mov 
+            eax,2<BR>CPUID<BR>}<BR>if(_AL==1)<BR>cout &lt; &lt; "Pentium Pro or 
+            Pentium II Found";<BR><BR>getch();<BR>return 0;<BR>} <BR><BR></TD></TR>
+        <TR>
+          <TD><B><FONT color=#ff0000>本文有以下</FONT>[0]<FONT 
+            color=#ff0000>条回复记录</FONT> <A 
+            href="http://www.xbit2008.com/document/rewrite.asp?id=626">发表评论</A></B> 
+            | <A 
+            href="http://www.xbit2008.com/document/write.asp?p=编程&amp;c=VC">在此栏目发表新文章</A> 
+            | <A href="http://www.xbit2008.com/document/main.asp">登陆</A></TD></TR>
+        <TR>
+          <TD></TD></TR>
+        <TR>
+          <TD align=middle>
+            <TABLE cellSpacing=0 cellPadding=1 width="80%" border=0>
+              <TBODY></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD colSpan=2>　</TD></TR>
+  <TR>
+    <TD colSpan=2>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0 
+      dwcopytype="CopyTableCell">
+        <TBODY>
+        <TR>
+          <TD width=780 colSpan=5 height=18>
+            <TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#ff3300 
+            border=0>
+              <TBODY>
+              <TR>
+                <TD bgColor=#008000 height=18>
+                  <P align=center><A class=A1 
+                  href="http://www.xbit2008.com/document/write.asp">发表新文章</A> | 
+                  <A class=A1 href="http://www.xbit2008.com/document/main.asp" 
+                  target=_blank>文档首页</A> | <A class=A1 
+                  href="http://www.xbit2008.com/document/search.asp">搜索引擎</A> | 
+                  <A class=A1 href="http://www.xbit2008.com/document/uid.asp" 
+                  target=_bank>用户中心</A> | <A class=A1 
+                  href="http://www.xbit2008.com/document/user_online.asp" 
+                  target=_bank>在线会员</A> | <A class=A1 
+                  href="http://www.xbit2008.com/document/user_list.asp" 
+                  target=_bank>会员表</A> | <A class=A1 
+                  href="http://www.xbit2008.com/guestbook/guestbook.asp?uid=xbit" 
+                  target=_bank>问题帮助</A> | <A class=A1 
+                  href="http://www.xbit2008.com/OldFolk/login.asp" 
+                  target=_bank>同学_交友录</A> | <A class=A1 
+                  href="http://www.xbit2008.com/test/login.asp?uid=xbit" 
+                  target=_bank>考试中心</A> | <A class=A1 
+                  href="http://www.xbit2008.com/document/index.asp?id=626#" 
+                  target=_bank>聊天室</A> | <A class=A1 
+                  href="http://www.xbit2008.com/document/login.asp" 
+                  target=_bank>管理员登陆</A> </P></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD width=780 colSpan=5 height=8></TD></TR>
+        <TR>
+          <TD colSpan=5 height=18>
+            <DIV align=center>
+            <TABLE cellSpacing=0 cellPadding=0 width=460 border=0>
+              <TBODY>
+              <TR>
+                <TD width=49><IMG height=48 
+                  src="文档中心----怎样用程序取得CPU信息.files/by005.gif" width=47 align=left 
+                  border=0></TD>
+                <TD width=420>
+                  <P align=center>本站<FONT color=#ff0000><A 
+                  href="http://www.xbit2008.com/" 
+                  target=_blank>X-Bit工作室</A></FONT>-Copyright@2001～20?? 
+                  <BR>总公司地址：广东省广州室X-Bit大厦 <BR><FONT color=#ff0000><B>申明:</B> 
+                  本站部分内容是从网上收集,若有侵范你版权的请指出,本站马上删除</FONT> 
+                  <BR>建议使用IE4.0以上版本浏览器和800*600分辨率显示器浏览 
+            </P></TD></TR></TBODY></TABLE></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></BODY></HTML>

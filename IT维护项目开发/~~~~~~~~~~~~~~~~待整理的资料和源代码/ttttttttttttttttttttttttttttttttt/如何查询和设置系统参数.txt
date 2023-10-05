@@ -1,0 +1,19 @@
+如何查询和设置系统参数
+ 
+
+在Windows 3.1 SDK中介绍过SDK函数SystemParametersInfo，调用该函数可以
+查询和设置系统参数，诸如按键的重复速率设置、鼠标双击延迟时间、图标字
+体以及桌面覆盖位图等等。
+
+//Create a font that is used for icon titles.
+LOGFONT stFont
+ ∶: SystemParametersInfo (SPIF_GETICONTITLELOGFONT, sizeof (LOGFONT), &stFont, SPIF_SENDWININICHANGE)
+m_font.CreateFontIndirect (&stFont)
+
+//Change the wallpaper to leaves.bmp.
+∶ : SystemParametersInfo (SPI_SETDESKWALLPAPER, 0, _T (" forest.bmp"), SPIF_UPDATEINIFILE)
+
+
+ 
+
+

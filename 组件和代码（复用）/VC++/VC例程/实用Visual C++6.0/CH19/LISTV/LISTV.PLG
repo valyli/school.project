@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ListV - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/ListV.res" /d "_DEBUG" /d "_AFXDLL" "H:\工作中的书\kh\translate\Visual C++\program\ch19\ListV\ListV.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP3231.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /Fp"Debug/ListV.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /c 
+"H:\工作中的书\kh\translate\Visual C++\program\ch19\ListV\ListV.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch19\ListV\ListVDoc.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch19\ListV\ListVView.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch19\ListV\MainFrm.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP3231.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP3232.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /Fp"Debug/ListV.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /c 
+"H:\工作中的书\kh\translate\Visual C++\program\ch19\ListV\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP3232.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP3233.TMP" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/ListV.pdb" /debug /machine:I386 /out:"Debug/ListV.exe" /pdbtype:sept 
+".\Debug\ListV.obj"
+".\Debug\ListVDoc.obj"
+".\Debug\ListVView.obj"
+".\Debug\MainFrm.obj"
+".\Debug\StdAfx.obj"
+".\Debug\ListV.res"
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP3233.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+ListV.cpp
+ListVDoc.cpp
+ListVView.cpp
+MainFrm.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+ListV.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

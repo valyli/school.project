@@ -1,0 +1,43 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: mciWnd - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/mciWnd.res" /d "_DEBUG" /d "_AFXDLL" "H:\工作中的书\kh\translate\Visual C++\program\ch28\mciWnd\mciWnd.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP1335.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/mciWnd.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"H:\工作中的书\kh\translate\Visual C++\program\ch28\mciWnd\mciWnd.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch28\mciWnd\mciWndDlg.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP1335.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP1336.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/mciWnd.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"H:\工作中的书\kh\translate\Visual C++\program\ch28\mciWnd\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP1336.TMP" 
+Creating command line "link.exe vfw32.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/mciWnd.pdb" /debug /machine:I386 /out:"Debug/mciWnd.exe" /pdbtype:sept  ".\Debug\mciWnd.obj" ".\Debug\mciWndDlg.obj" ".\Debug\StdAfx.obj" ".\Debug\mciWnd.res" "
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+mciWnd.cpp
+mciWndDlg.cpp
+Generating Code...
+Linking...
+Creating command line "bscmake.exe /nologo /o"Debug/mciWnd.bsc"  ".\Debug\StdAfx.sbr" ".\Debug\mciWnd.sbr" ".\Debug\mciWndDlg.sbr""
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+mciWnd.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

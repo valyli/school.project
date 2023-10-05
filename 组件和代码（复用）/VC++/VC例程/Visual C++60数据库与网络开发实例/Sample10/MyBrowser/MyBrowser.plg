@@ -1,0 +1,60 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: MyBrowser - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x408 /fo"Debug/MyBrowser.res" /d "_DEBUG" /d "_AFXDLL" "E:\Sample10\MyBrowser\MyBrowser.rc"" 
+Creating temporary file "C:\TEMP\RSPF.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /Fp"Debug/MyBrowser.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /c 
+"E:\Sample10\MyBrowser\MainFrm.cpp"
+"E:\Sample10\MyBrowser\MyBrowser.cpp"
+"E:\Sample10\MyBrowser\MyBrowserDoc.cpp"
+"E:\Sample10\MyBrowser\MyBrowserView.cpp"
+"E:\Sample10\MyBrowser\UrlDlg.cpp"
+"E:\Sample10\MyBrowser\webbrowser.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSPF.tmp" 
+Creating temporary file "C:\TEMP\RSP10.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /Fp"Debug/MyBrowser.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /c 
+"E:\Sample10\MyBrowser\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSP10.tmp" 
+Creating temporary file "C:\TEMP\RSP11.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/MyBrowser.pdb" /debug /machine:I386 /out:"Debug/MyBrowser.exe" /pdbtype:sept 
+.\Debug\MainFrm.obj
+.\Debug\MyBrowser.obj
+.\Debug\MyBrowserDoc.obj
+.\Debug\MyBrowserView.obj
+.\Debug\StdAfx.obj
+.\Debug\UrlDlg.obj
+.\Debug\webbrowser.obj
+.\Debug\MyBrowser.res
+]
+Creating command line "link.exe @C:\TEMP\RSP11.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+MainFrm.cpp
+MyBrowser.cpp
+MyBrowserDoc.cpp
+MyBrowserView.cpp
+UrlDlg.cpp
+webbrowser.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+MyBrowser.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

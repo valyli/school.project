@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Example4C - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/Example4C.res" /d "_DEBUG" /d "_AFXDLL" "D:\Examples\Example4C\Example4C.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP5363.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/Example4C.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\Examples\Example4C\Example4C.cpp"
+"D:\Examples\Example4C\Example4CDoc.cpp"
+"D:\Examples\Example4C\Example4CView.cpp"
+"D:\Examples\Example4C\MainFrm.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP5363.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP5364.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/Example4C.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\Examples\Example4C\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP5364.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP5365.TMP" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/Example4C.pdb" /debug /machine:I386 /out:"Debug/Example4C.exe" /pdbtype:sept 
+.\Debug\Example4C.obj
+.\Debug\Example4CDoc.obj
+.\Debug\Example4CView.obj
+.\Debug\MainFrm.obj
+.\Debug\StdAfx.obj
+.\Debug\Example4C.res
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP5365.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+Example4C.cpp
+Example4CDoc.cpp
+Example4CView.cpp
+MainFrm.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+Example4C.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

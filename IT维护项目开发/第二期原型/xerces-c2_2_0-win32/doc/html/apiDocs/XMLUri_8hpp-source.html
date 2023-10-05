@@ -1,0 +1,349 @@
+<HTML><HEAD><SCRIPT language="JavaScript" src="../resources/script.js" type="text/javascript"></SCRIPT><TITLE>XMLUri.hpp Source File</TITLE><link href="XercesApi.css" rel="stylesheet" type="text/css"></HEAD><BODY alink="#ff0000" bgcolor="#ffffff" leftmargin="4" link="#0000ff" marginheight="4" marginwidth="4" text="#000000" topmargin="4" vlink="#0000aa"><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD align="left" height="60" rowspan="3" valign="top" width="135"><IMG border="0" height="60" hspace="0" src="../resources/logo.gif" vspace="0" width="135"></TD><TD align="left" colspan="4" height="5" valign="top" width="456"><IMG border="0" height="5" hspace="0" src="../resources/line.gif" vspace="0" width="456"></TD><TD align="left" height="60" rowspan="3" valign="top" width="29"><IMG border="0" height="60" hspace="0" src="../resources/right.gif" vspace="0" width="29"></TD></TR><TR><TD align="left" bgcolor="#0086b2" colspan="4" height="35" valign="top" width="456"><IMG alt="" border="0" height="35" hspace="0" src="../graphics/api-header.jpg" vspace="0" width="456"></TD></TR><TR><TD align="left" height="20" valign="top" width="168"><IMG border="0" height="20" hspace="0" src="../resources/bottom.gif" vspace="0" width="168"></TD><TD align="left" height="20" valign="top" width="96"><A href="http://xml.apache.org/" onMouseOut="rolloverOff('xml');" onMouseOver="rolloverOn('xml');" target="new"><IMG alt="http://xml.apache.org/" border="0" height="20" hspace="0" name="xml" onLoad="rolloverLoad('xml','../resources/button-xml-hi.gif','../resources/button-xml-lo.gif');" src="../resources/button-xml-lo.gif" vspace="0" width="96"></A></TD><TD align="left" height="20" valign="top" width="96"><A href="http://www.apache.org/" onMouseOut="rolloverOff('asf');" onMouseOver="rolloverOn('asf');" target="new"><IMG alt="http://www.apache.org/" border="0" height="20" hspace="0" name="asf" onLoad="rolloverLoad('asf','../resources/button-asf-hi.gif','../resources/button-asf-lo.gif');" src="../resources/button-asf-lo.gif" vspace="0" width="96"></A></TD><TD align="left" height="20" valign="top" width="96"><A href="http://www.w3.org/" onMouseOut="rolloverOff('w3c');" onMouseOver="rolloverOn('w3c');" target="new"><IMG alt="http://www.w3.org/" border="0" height="20" hspace="0" name="w3c" onLoad="rolloverLoad('w3c','../resources/button-w3c-hi.gif','../resources/button-w3c-lo.gif');" src="../resources/button-w3c-lo.gif" vspace="0" width="96"></A></TD></TR></TABLE><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD align="left" valign="top" width="120"><IMG border="0" height="14" hspace="0" src="../resources/join.gif" vspace="0" width="120"><BR>
+  <A href="../../index.html" onMouseOut="rolloverOff('side-ext-2');" onMouseOver="rolloverOn('side-ext-2');"><IMG alt="Home" border="0" height="12" hspace="0" name="side-ext-2" onLoad="rolloverLoad('side-ext-2','../graphics/ext-2-label-2.jpg','../graphics/ext-2-label-3.jpg');" src="../graphics/ext-2-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="../index.html" onMouseOut="rolloverOff('side-index');" onMouseOver="rolloverOn('side-index');"><IMG alt="Readme" border="0" height="12" hspace="0" name="side-index" onLoad="rolloverLoad('side-index','../graphics/index-label-2.jpg','../graphics/index-label-3.jpg');" src="../graphics/index-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../releases.html" onMouseOut="rolloverOff('side-releases');" onMouseOver="rolloverOn('side-releases');"><IMG alt="Release Info" border="0" height="12" hspace="0" name="side-releases" onLoad="rolloverLoad('side-releases','../graphics/releases-label-2.jpg','../graphics/releases-label-3.jpg');" src="../graphics/releases-label-3.jpg" vspace="0" width="120"></A><BR>
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+  <A href="../install.html" onMouseOut="rolloverOff('side-install');" onMouseOver="rolloverOn('side-install');"><IMG alt="Installation" border="0" height="12" hspace="0" name="side-install" onLoad="rolloverLoad('side-install','../graphics/install-label-2.jpg','../graphics/install-label-3.jpg');" src="../graphics/install-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="http://xml.apache.org/dist/xerces-c/" onMouseOut="rolloverOff('side-ext-18');" onMouseOver="rolloverOn('side-ext-18');"><IMG alt="Download" border="0" height="12" hspace="0" name="side-ext-18" onLoad="rolloverLoad('side-ext-18','../graphics/ext-18-label-2.jpg','../graphics/ext-18-label-3.jpg');" src="../graphics/ext-18-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../build.html" onMouseOut="rolloverOff('side-build');" onMouseOver="rolloverOn('side-build');"><IMG alt="Build" border="0" height="12" hspace="0" name="side-build" onLoad="rolloverLoad('side-build','../graphics/build-label-2.jpg','../graphics/build-label-3.jpg');" src="../graphics/build-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+  <A href="../faqs.html" onMouseOut="rolloverOff('side-faqs');" onMouseOver="rolloverOn('side-faqs');"><IMG alt="FAQs" border="0" height="12" hspace="0" name="side-faqs" onLoad="rolloverLoad('side-faqs','../graphics/faqs-label-2.jpg','../graphics/faqs-label-3.jpg');" src="../graphics/faqs-label-3.jpg" vspace="0" width="120"></A><BR>  
+  <A href="../samples.html" onMouseOut="rolloverOff('side-samples');" onMouseOver="rolloverOn('side-samples');"><IMG alt="Samples" border="0" height="12" hspace="0" name="side-samples" onLoad="rolloverLoad('side-samples','../graphics/samples-label-2.jpg','../graphics/samples-label-3.jpg');" src="../graphics/samples-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../api.html" onMouseOut="rolloverOff('side-api');" onMouseOver="rolloverOn('side-api');"><IMG alt="API Docs" border="0" height="12" hspace="0" name="side-api" onLoad="rolloverLoad('side-api','../graphics/api-label-2.jpg','../graphics/api-label-3.jpg');" src="../graphics/api-label-3.jpg" vspace="0" width="120"></A><BR>  
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+  <A href="../ApacheDOMC++Binding.html" onMouseOut="rolloverOff('side-ext-64');" onMouseOver="rolloverOn('side-ext-64');"><IMG alt="DOM C++ Binding" border="0" height="12" hspace="0" name="side-ext-64" onLoad="rolloverLoad('side-ext-64','../graphics/ext-64-label-2.jpg','../graphics/ext-64-label-3.jpg');" src="../graphics/ext-64-label-3.jpg" vspace="0" width="120"></A><BR> 
+  <A href="../program.html" onMouseOut="rolloverOff('side-program');" onMouseOver="rolloverOn('side-program');"><IMG alt="Programming" border="0" height="12" hspace="0" name="side-program" onLoad="rolloverLoad('side-program','../graphics/program-label-2.jpg','../graphics/program-label-3.jpg');" src="../graphics/program-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../migrate.html" onMouseOut="rolloverOff('side-migrate');" onMouseOver="rolloverOn('side-migrate');"><IMG alt="Migration Guide" border="0" height="12" hspace="0" name="side-migrate" onLoad="rolloverLoad('side-migrate','../graphics/migrate-label-2.jpg','../graphics/migrate-label-3.jpg');" src="../graphics/migrate-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="../feedback.html" onMouseOut="rolloverOff('side-feedback');" onMouseOver="rolloverOn('side-feedback');"><IMG alt="Feedback" border="0" height="12" hspace="0" name="side-feedback" onLoad="rolloverLoad('side-feedback','../graphics/feedback-label-2.jpg','../graphics/feedback-label-3.jpg');" src="../graphics/feedback-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="../bug-report.html" onMouseOut="rolloverOff('side-bug-report');" onMouseOver="rolloverOn('side-bug-report');"><IMG alt="Bug-Reporting" border="0" height="12" hspace="0" name="side-bug-report" onLoad="rolloverLoad('side-bug-report','../graphics/bug-report-label-2.jpg','../graphics/bug-report-label-3.jpg');" src="../graphics/bug-report-label-3.jpg" vspace="0" width="120"></A><BR>  
+  <A href="../pdf.html" onMouseOut="rolloverOff('side-pdf');" onMouseOver="rolloverOn('side-pdf');"><IMG alt="PDF Document" border="0" height="12" hspace="0" name="side-pdf" onLoad="rolloverLoad('side-pdf','../graphics/pdf-label-2.jpg','../graphics/pdf-label-3.jpg');" src="../graphics/pdf-label-3.jpg" vspace="0" width="120"></A><BR>
+
+  <IMG border="0" height="6" hspace="0" src="../resources/separator.gif" vspace="0" width="120"><BR>
+
+  <A href="http://xml.apache.org/websrc/cvsweb.cgi/xml-xerces/c/" onMouseOut="rolloverOff('side-ext-96');" onMouseOver="rolloverOn('side-ext-96');"><IMG alt="CVS Repository" border="0" height="12" hspace="0" name="side-ext-96" onLoad="rolloverLoad('side-ext-96','../graphics/ext-96-label-2.jpg','../graphics/ext-96-label-3.jpg');" src="../graphics/ext-96-label-3.jpg" vspace="0" width="120"></A><BR>
+  <A href="http://marc.theaimsgroup.com/?l=xerces-c-dev" onMouseOut="rolloverOff('side-ext-98');" onMouseOver="rolloverOn('side-ext-98');"><IMG alt="Mail Archive" border="0" height="12" hspace="0" name="side-ext-98" onLoad="rolloverLoad('side-ext-98','../graphics/ext-98-label-2.jpg','../graphics/ext-98-label-3.jpg');" src="../graphics/ext-98-label-3.jpg" vspace="0" width="120"></A><BR>
+
+<IMG border="0" height="14" hspace="0" src="../resources/close.gif" vspace="0" width="120"><BR></TD><TD align="left" valign="top" width="500"><TABLE border="0" cellpadding="3" cellspacing="0"><TR><TD>
+    <TABLE border="0" cellpadding="0" cellspacing="0" width="494"><TR><TD bgcolor="#FFFFFF" colspan="2" width="494"><TABLE border="0" cellpadding="0" cellspacing="0" width="494"><TR><TD bgcolor="#039acc" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#039acc" height="1" width="492"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="492"></TD><TD bgcolor="#0086b2" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR><TR><TD bgcolor="#039acc" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#0086b2" width="492"><FONT color="#ffffff" face="arial,helvetica,sanserif" size="+1"><IMG border="0" height="2" hspace="0" src="../resources/void.gif" vspace="0" width="2"><B>API Docs for SAX and DOM</B></FONT></TD><TD bgcolor="#017299" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR><TR><TD bgcolor="#0086b2" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD><TD bgcolor="#017299" height="1" width="492"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="492"></TD><TD bgcolor="#017299" height="1" width="1"><IMG border="0" height="1" hspace="0" src="../resources/void.gif" vspace="0" width="1"></TD></TR></TABLE></TD></TR><TR><TD width="10">&nbsp;</TD><TD width="484"><FONT color="#000000" face="arial,helvetica,sanserif">
+
+	    <P>
+<!-- Generated by Doxygen 1.2.18 -->
+<center>
+<a class="qindex" href="index.html">Main Page</a> &nbsp; <a class="qindex" href="hierarchy.html">Class Hierarchy</a> &nbsp; <a class="qindex" href="classes.html">Alphabetical List</a> &nbsp; <a class="qindex" href="annotated.html">Compound List</a> &nbsp; <a class="qindex" href="files.html">File List</a> &nbsp; <a class="qindex" href="functions.html">Compound Members</a> &nbsp; <a class="qindex" href="globals.html">File Members</a> &nbsp; </center>
+<hr><h1>XMLUri.hpp</h1><a href="XMLUri_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><pre>00001 <span class="comment">/*</span>
+00002 <span class="comment"> * The Apache Software License, Version 1.1</span>
+00003 <span class="comment"> *</span>
+00004 <span class="comment"> * Copyright (c) 2001 The Apache Software Foundation.  All rights</span>
+00005 <span class="comment"> * reserved.</span>
+00006 <span class="comment"> *</span>
+00007 <span class="comment"> * Redistribution and use in source and binary forms, with or without</span>
+00008 <span class="comment"> * modification, are permitted provided that the following conditions</span>
+00009 <span class="comment"> * are met:</span>
+00010 <span class="comment"> *</span>
+00011 <span class="comment"> * 1. Redistributions of source code must retain the above copyright</span>
+00012 <span class="comment"> *    notice, this list of conditions and the following disclaimer.</span>
+00013 <span class="comment"> *</span>
+00014 <span class="comment"> * 2. Redistributions in binary form must reproduce the above copyright</span>
+00015 <span class="comment"> *    notice, this list of conditions and the following disclaimer in</span>
+00016 <span class="comment"> *    the documentation and/or other materials provided with the</span>
+00017 <span class="comment"> *    distribution.</span>
+00018 <span class="comment"> *</span>
+00019 <span class="comment"> * 3. The end-user documentation included with the redistribution,</span>
+00020 <span class="comment"> *    if any, must include the following acknowledgment:</span>
+00021 <span class="comment"> *       "This product includes software developed by the</span>
+00022 <span class="comment"> *        Apache Software Foundation (http://www.apache.org/)."</span>
+00023 <span class="comment"> *    Alternately, this acknowledgment may appear in the software itself,</span>
+00024 <span class="comment"> *    if and wherever such third-party acknowledgments normally appear.</span>
+00025 <span class="comment"> *</span>
+00026 <span class="comment"> * 4. The names "Xerces" and "Apache Software Foundation" must</span>
+00027 <span class="comment"> *    not be used to endorse or promote products derived from this</span>
+00028 <span class="comment"> *    software without prior written permission. For written</span>
+00029 <span class="comment"> *    permission, please contact apache\@apache.org.</span>
+00030 <span class="comment"> *</span>
+00031 <span class="comment"> * 5. Products derived from this software may not be called "Apache",</span>
+00032 <span class="comment"> *    nor may "Apache" appear in their name, without prior written</span>
+00033 <span class="comment"> *    permission of the Apache Software Foundation.</span>
+00034 <span class="comment"> *</span>
+00035 <span class="comment"> * THIS SOFTWARE IS PROVIDED ``AS IS'' AND ANY EXPRESSED OR IMPLIED</span>
+00036 <span class="comment"> * WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES</span>
+00037 <span class="comment"> * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span>
+00038 <span class="comment"> * DISCLAIMED.  IN NO EVENT SHALL THE APACHE SOFTWARE FOUNDATION OR</span>
+00039 <span class="comment"> * ITS CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,</span>
+00040 <span class="comment"> * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT</span>
+00041 <span class="comment"> * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF</span>
+00042 <span class="comment"> * USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND</span>
+00043 <span class="comment"> * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,</span>
+00044 <span class="comment"> * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT</span>
+00045 <span class="comment"> * OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF</span>
+00046 <span class="comment"> * SUCH DAMAGE.</span>
+00047 <span class="comment"> * ====================================================================</span>
+00048 <span class="comment"> *</span>
+00049 <span class="comment"> * This software consists of voluntary contributions made by many</span>
+00050 <span class="comment"> * individuals on behalf of the Apache Software Foundation, and was</span>
+00051 <span class="comment"> * originally based on software copyright (c) 1999, International</span>
+00052 <span class="comment"> * Business Machines, Inc., http://www.ibm.com .  For more information</span>
+00053 <span class="comment"> * on the Apache Software Foundation, please see</span>
+00054 <span class="comment"> * &lt;http://www.apache.org/&gt;.</span>
+00055 <span class="comment"> */</span>
+00056 
+00057 <span class="comment">/*</span>
+00058 <span class="comment"> * $Id: XMLUri.hpp,v 1.7 2003/01/06 19:43:18 tng Exp $</span>
+00059 <span class="comment"> * $Log: XMLUri.hpp,v $</span>
+00060 <span class="comment"> * Revision 1.7  2003/01/06 19:43:18  tng</span>
+00061 <span class="comment"> * New feature StandardUriConformant to force strict standard uri conformance.</span>
+00062 <span class="comment"> *</span>
+00063 <span class="comment"> * Revision 1.6  2002/11/21 15:42:39  gareth</span>
+00064 <span class="comment"> * Implemented copy constructor and operator =. Patch by Jennifer Schachter.</span>
+00065 <span class="comment"> *</span>
+00066 <span class="comment"> * Revision 1.5  2002/11/04 15:22:05  tng</span>
+00067 <span class="comment"> * C++ Namespace Support.</span>
+00068 <span class="comment"> *</span>
+00069 <span class="comment"> * Revision 1.4  2002/09/23 18:41:00  tng</span>
+00070 <span class="comment"> * DOM L3: Support baseURI.   Add fURIText to XMLUri.   Added by Gareth Reakes and Thomas Ford.</span>
+00071 <span class="comment"> *</span>
+00072 <span class="comment"> * Revision 1.3  2002/08/23 20:45:24  tng</span>
+00073 <span class="comment"> * .Memory leak fix: XMLUri data not deleted if constructor failed.</span>
+00074 <span class="comment"> *</span>
+00075 <span class="comment"> * Revision 1.2  2002/02/20 18:17:02  tng</span>
+00076 <span class="comment"> * [Bug 5977] Warnings on generating apiDocs.</span>
+00077 <span class="comment"> *</span>
+00078 <span class="comment"> * Revision 1.1.1.1  2002/02/01 22:22:17  peiyongz</span>
+00079 <span class="comment"> * sane_include</span>
+00080 <span class="comment"> *</span>
+00081 <span class="comment"> * Revision 1.3  2001/08/29 19:03:03  peiyongz</span>
+00082 <span class="comment"> * Bugzilla# 2816:on AIX 4.2, xlC 3 r ev.1, Compilation error on inline method</span>
+00083 <span class="comment"> *</span>
+00084 <span class="comment"> * Revision 1.2  2001/08/16 14:09:44  peiyongz</span>
+00085 <span class="comment"> * Removed unused ctors and methods</span>
+00086 <span class="comment"> *</span>
+00087 <span class="comment"> * Revision 1.1  2001/08/10 16:23:41  peiyongz</span>
+00088 <span class="comment"> * XMLUri: creation</span>
+00089 <span class="comment"> *</span>
+00090 <span class="comment"> *</span>
+00091 <span class="comment"> */</span>
+00092 
+00093 <span class="preprocessor">#if !defined(XMLURI_HPP)</span>
+<a name="l00094"></a><a class="code" href="XMLUri_8hpp.html#a0">00094</a> <span class="preprocessor"></span><span class="preprocessor">#define XMLURI_HPP</span>
+00095 <span class="preprocessor"></span>
+00096 <span class="preprocessor">#include &lt;<a class="code" href="XercesDefs_8hpp.html">xercesc/util/XercesDefs.hpp</a>&gt;</span>
+00097 <span class="preprocessor">#include &lt;<a class="code" href="XMLException_8hpp.html">xercesc/util/XMLException.hpp</a>&gt;</span>
+00098 <span class="preprocessor">#include &lt;<a class="code" href="XMLUniDefs_8hpp.html">xercesc/util/XMLUniDefs.hpp</a>&gt;</span>
+00099 <span class="preprocessor">#include &lt;<a class="code" href="XMLString_8hpp.html">xercesc/util/XMLString.hpp</a>&gt;</span>
+00100 
+00101 <a class="code" href="XercesDefs_8hpp.html#a2">XERCES_CPP_NAMESPACE_BEGIN</a>
+00102 
+00103 <span class="comment">/*</span>
+00104 <span class="comment"> * This class is a direct port of Java's URI class, to distinguish</span>
+00105 <span class="comment"> * itself from the XMLURL, we use the name XMLUri instead of</span>
+00106 <span class="comment"> * XMLURI.</span>
+00107 <span class="comment"> *</span>
+00108 <span class="comment"> * TODO: how to relate XMLUri and XMLURL since URL is part of URI.</span>
+00109 <span class="comment"> *</span>
+00110 <span class="comment"> */</span>
+00111 
+<a name="l00112"></a><a class="code" href="classXMLUri.html">00112</a> <span class="keyword">class </span><a class="code" href="XercesDefs_8hpp.html#a6"></a> <a class="code" href="classXMLUri.html">XMLUri</a>
+00113 {
+00114 <span class="keyword">public</span>:
+00115 
+00116     <span class="comment">// -----------------------------------------------------------------------</span>
+00117     <span class="comment">//  Constructors and Destructor</span>
+00118     <span class="comment">// -----------------------------------------------------------------------</span>
+00119 
+00145     <a class="code" href="classXMLUri.html">XMLUri</a>(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span>    uriSpec);
+00146 
+00159     <a class="code" href="classXMLUri.html">XMLUri</a>(<span class="keyword">const</span> <a class="code" href="classXMLUri.html">XMLUri</a>* <span class="keyword">const</span>     baseURI
+00160          , <span class="keyword">const</span> XMLCh* <span class="keyword">const</span>      uriSpec);
+00161 
+00165     <a class="code" href="classXMLUri.html">XMLUri</a>(<span class="keyword">const</span> <a class="code" href="classXMLUri.html">XMLUri</a>&amp; toCopy);
+00166     <a class="code" href="classXMLUri.html">XMLUri</a>&amp; operator=(<span class="keyword">const</span> <a class="code" href="classXMLUri.html">XMLUri</a>&amp; toAssign);
+00167 
+00168     <span class="keyword">virtual</span> ~<a class="code" href="classXMLUri.html">XMLUri</a>();
+00169 
+00170     <span class="comment">// -----------------------------------------------------------------------</span>
+00171     <span class="comment">//  Getter methods</span>
+00172     <span class="comment">// -----------------------------------------------------------------------</span>
+00178 <span class="comment"></span>    <span class="keyword">const</span> XMLCh* getUriText() <span class="keyword">const</span>;
+00179 
+00185      <span class="keyword">const</span> XMLCh* getScheme() <span class="keyword">const</span>;
+00186 
+00192      <span class="keyword">const</span> XMLCh* getUserInfo() <span class="keyword">const</span>;
+00193 
+00194 
+00200      <span class="keyword">const</span> XMLCh* getHost() <span class="keyword">const</span>;
+00201 
+00207      <span class="keywordtype">int</span> getPort() <span class="keyword">const</span>;
+00208 
+00215      <span class="keyword">const</span> XMLCh* getPath() <span class="keyword">const</span>;
+00216 
+00224      <span class="keyword">const</span> XMLCh* getQueryString() <span class="keyword">const</span>;
+00225 
+00233      <span class="keyword">const</span> XMLCh* getFragment() <span class="keyword">const</span>;
+00234 
+00235     <span class="comment">// -----------------------------------------------------------------------</span>
+00236     <span class="comment">//  Setter methods</span>
+00237     <span class="comment">// -----------------------------------------------------------------------</span>
+00238 
+00246      <span class="keywordtype">void</span> setScheme(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> newScheme);
+00247 
+00255      <span class="keywordtype">void</span> setUserInfo(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> newUserInfo);
+00256 
+00264      <span class="keywordtype">void</span> setHost(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> newHost);
+00265 
+00275      <span class="keywordtype">void</span> setPort(<span class="keywordtype">int</span> newPort);
+00276 
+00297      <span class="keywordtype">void</span> setPath(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> newPath);
+00298 
+00307      <span class="keywordtype">void</span> setQueryString(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> newQueryString);
+00308 
+00317      <span class="keywordtype">void</span> setFragment(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> newFragment);
+00318 
+00319      <span class="comment">// -----------------------------------------------------------------------</span>
+00320     <span class="comment">//  Miscellaneous methods</span>
+00321     <span class="comment">// -----------------------------------------------------------------------</span>
+00322 
+00330     <span class="keyword">static</span> <span class="keywordtype">bool</span> isURIString(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> uric);
+00331 
+00332 
+00333 <span class="keyword">private</span>:
+00334 
+00335     <span class="keyword">static</span> <span class="keyword">const</span> XMLCh RESERVED_CHARACTERS[];
+00336     <span class="keyword">static</span> <span class="keyword">const</span> XMLCh MARK_CHARACTERS[];
+00337     <span class="keyword">static</span> <span class="keyword">const</span> XMLCh SCHEME_CHARACTERS[];
+00338     <span class="keyword">static</span> <span class="keyword">const</span> XMLCh USERINFO_CHARACTERS[];
+00339 
+00340     <span class="comment">//helper method for getUriText</span>
+00341     <span class="keywordtype">void</span> buildFullText();
+00342 
+00343     <span class="comment">// -----------------------------------------------------------------------</span>
+00344     <span class="comment">//  Private helper methods</span>
+00345     <span class="comment">// -----------------------------------------------------------------------</span>
+00346 
+00352     <span class="keyword">static</span> <span class="keywordtype">bool</span> isReservedCharacter(<span class="keyword">const</span> XMLCh theChar);
+00353 
+00359     <span class="keyword">static</span> <span class="keywordtype">bool</span> isUnreservedCharacter(<span class="keyword">const</span> XMLCh theChar);
+00360 
+00368     <span class="keyword">static</span> <span class="keywordtype">bool</span> isConformantSchemeName(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> scheme);
+00369 
+00375     <span class="keyword">static</span> <span class="keywordtype">void</span> isConformantUserInfo(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> userInfo);
+00390      <span class="keyword">static</span> <span class="keywordtype">bool</span> isWellFormedAddress(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> addr);
+00391 
+00399      <span class="keywordtype">bool</span> isGenericURI();
+00400 
+00401     <span class="comment">// -----------------------------------------------------------------------</span>
+00402     <span class="comment">//  Miscellaneous methods</span>
+00403     <span class="comment">// -----------------------------------------------------------------------</span>
+00404 
+00410      <span class="keywordtype">void</span> initialize(<span class="keyword">const</span> <a class="code" href="classXMLUri.html">XMLUri</a>&amp; toCopy);
+00411 
+00426      <span class="keywordtype">void</span> initialize(<span class="keyword">const</span> <a class="code" href="classXMLUri.html">XMLUri</a>* <span class="keyword">const</span> baseURI
+00427                    , <span class="keyword">const</span> XMLCh*  <span class="keyword">const</span> uriSpec);
+00428 
+00435      <span class="keywordtype">void</span> initializeScheme(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> uriSpec);
+00436 
+00444      <span class="keywordtype">void</span> initializeAuthority(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> uriSpec);
+00445 
+00452      <span class="keywordtype">void</span> initializePath(<span class="keyword">const</span> XMLCh* <span class="keyword">const</span> uriSpec);
+00453 
+00458      <span class="keywordtype">void</span> cleanUp();
+00459 
+00460     <span class="comment">// -----------------------------------------------------------------------</span>
+00461     <span class="comment">//  Data members</span>
+00462     <span class="comment">//</span>
+00463     <span class="comment">//  for all the data member, we own it,</span>
+00464     <span class="comment">//  responsible for the creation and/or deletion for</span>
+00465     <span class="comment">//  the memory allocated.</span>
+00466     <span class="comment">//</span>
+00467     <span class="comment">// -----------------------------------------------------------------------</span>
+00468 
+00469     XMLCh*          fScheme;
+00470     XMLCh*          fUserInfo;
+00471     XMLCh*          fHost;
+00472     <span class="keywordtype">int</span>             fPort;
+00473     XMLCh*          fPath;
+00474     XMLCh*          fQueryString;
+00475     XMLCh*          fFragment;
+00476     XMLCh*          fURIText;
+00477 
+00478 };
+00479 
+00480 <span class="comment">// ---------------------------------------------------------------------------</span>
+00481 <span class="comment">//  XMLUri: Getter methods</span>
+00482 <span class="comment">// ---------------------------------------------------------------------------</span>
+<a name="l00483"></a><a class="code" href="classXMLUri.html#a6">00483</a> <span class="keyword">inline</span> <span class="keyword">const</span> XMLCh* <a class="code" href="classXMLUri.html#a6">XMLUri::getScheme</a>()<span class="keyword"> const</span>
+00484 <span class="keyword"></span>{
+00485     <span class="keywordflow">return</span> fScheme;
+00486 }
+00487 
+<a name="l00488"></a><a class="code" href="classXMLUri.html#a7">00488</a> <span class="keyword">inline</span> <span class="keyword">const</span> XMLCh* <a class="code" href="classXMLUri.html#a7">XMLUri::getUserInfo</a>()<span class="keyword"> const</span>
+00489 <span class="keyword"></span>{
+00490     <span class="keywordflow">return</span> fUserInfo;
+00491 }
+00492 
+<a name="l00493"></a><a class="code" href="classXMLUri.html#a8">00493</a> <span class="keyword">inline</span> <span class="keyword">const</span> XMLCh* <a class="code" href="classXMLUri.html#a8">XMLUri::getHost</a>()<span class="keyword"> const</span>
+00494 <span class="keyword"></span>{
+00495     <span class="keywordflow">return</span> fHost;
+00496 }
+00497 
+<a name="l00498"></a><a class="code" href="classXMLUri.html#a9">00498</a> <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code" href="classXMLUri.html#a9">XMLUri::getPort</a>()<span class="keyword"> const</span>
+00499 <span class="keyword"></span>{
+00500     <span class="keywordflow">return</span> fPort;
+00501 }
+00502 
+<a name="l00503"></a><a class="code" href="classXMLUri.html#a10">00503</a> <span class="keyword">inline</span> <span class="keyword">const</span> XMLCh* <a class="code" href="classXMLUri.html#a10">XMLUri::getPath</a>()<span class="keyword"> const</span>
+00504 <span class="keyword"></span>{
+00505     <span class="keywordflow">return</span> fPath;
+00506 }
+00507 
+<a name="l00508"></a><a class="code" href="classXMLUri.html#a11">00508</a> <span class="keyword">inline</span> <span class="keyword">const</span> XMLCh* <a class="code" href="classXMLUri.html#a11">XMLUri::getQueryString</a>()<span class="keyword"> const</span>
+00509 <span class="keyword"></span>{
+00510     <span class="keywordflow">return</span> fQueryString;
+00511 }
+00512 
+<a name="l00513"></a><a class="code" href="classXMLUri.html#a12">00513</a> <span class="keyword">inline</span> <span class="keyword">const</span> XMLCh* <a class="code" href="classXMLUri.html#a12">XMLUri::getFragment</a>()<span class="keyword"> const</span>
+00514 <span class="keyword"></span>{
+00515     <span class="keywordflow">return</span> fFragment;
+00516 }
+00517 
+<a name="l00518"></a><a class="code" href="classXMLUri.html#a5">00518</a> <span class="keyword">inline</span> <span class="keyword">const</span> XMLCh* <a class="code" href="classXMLUri.html#a5">XMLUri::getUriText</a>()<span class="keyword"> const</span>
+00519 <span class="keyword"></span>{
+00520     <span class="comment">//</span>
+00521     <span class="comment">//  Fault it in if not already. Since this is a const method and we</span>
+00522     <span class="comment">//  can't use mutable members due the compilers we have to support,</span>
+00523     <span class="comment">//  we have to cast off the constness.</span>
+00524     <span class="comment">//</span>
+00525     <span class="keywordflow">if</span> (!fURIText)
+00526         ((<a class="code" href="classXMLUri.html">XMLUri</a>*)<span class="keyword">this</span>)-&gt;buildFullText();
+00527 
+00528     <span class="keywordflow">return</span> fURIText;
+00529 }
+00530 
+00531 <span class="comment">// ---------------------------------------------------------------------------</span>
+00532 <span class="comment">//  XMLUri: Helper methods</span>
+00533 <span class="comment">// ---------------------------------------------------------------------------</span>
+00534 <span class="keyword">inline</span> <span class="keywordtype">bool</span> XMLUri::isReservedCharacter(<span class="keyword">const</span> XMLCh theChar)
+00535 {
+00536     <span class="keywordflow">return</span> (<a class="code" href="classXMLString.html#z589_0">XMLString::indexOf</a>(RESERVED_CHARACTERS, theChar) != -1);
+00537 }
+00538 
+00539 <span class="keyword">inline</span> <span class="keywordtype">bool</span> XMLUri::isUnreservedCharacter(<span class="keyword">const</span> XMLCh theChar)
+00540 {
+00541     <span class="keywordflow">return</span> (<a class="code" href="classXMLString.html#z597_16">XMLString::isAlphaNum</a>(theChar) ||
+00542             <a class="code" href="classXMLString.html#z589_0">XMLString::indexOf</a>(MARK_CHARACTERS, theChar) != -1);
+00543 }
+00544 
+00545 <a class="code" href="XercesDefs_8hpp.html#a3">XERCES_CPP_NAMESPACE_END</a>
+00546 
+00547 <span class="preprocessor">#endif</span>
+</pre></div>    </FONT></TD></TR></TABLE><BR>
+</TD></TR></TABLE></TD></TR></TABLE><BR><TABLE border="0" cellpadding="0" cellspacing="0" width="620"><TR><TD bgcolor="#0086b2"><IMG height="1" src="images/dot.gif" width="1" alt=""></TD></TR><TR><TD align="center"><FONT color="#0086b2" size="-1"><I>
+              Copyright &copy; 2000 The Apache Software Foundation.
+              All Rights Reserved.
+            </I></FONT></TD></TR></TABLE></BODY></HTML>

@@ -1,0 +1,641 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0045)http://www.vcroad.net/shownews.asp?newsid=720 -->
+<HTML><HEAD><TITLE>VC 之路：：综合软件开发网站，以VC++编程为主</TITLE>
+<SCRIPT language=JavaScript>
+var currentpos,timer;
+
+function initialize()
+{
+timer=setInterval("scrollwindow()",50);
+}
+function sc(){
+clearInterval(timer);
+}
+function scrollwindow()
+{
+currentpos=document.body.scrollTop;
+window.scroll(0,++currentpos);
+if (currentpos != document.body.scrollTop)
+sc();
+}
+document.onmousedown=sc
+document.ondblclick=initialize
+</SCRIPT>
+
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content="MSHTML 5.00.3502.5390" name=GENERATOR>
+<META content=FrontPage.Editor.Document name=ProgId>
+<META 
+content="vcroad sdkroad VC之路  VC站点　VC编程　VC开发 程序人生　C++编程　SDK编程　API编程 网络编程　数据库编程　VC知识库 VC代码库　VC指南 Visual C++ 初学指南 技术写译  数据结构　算法　编程文摘 源代码 MFC VC资源 论坛 电子刊物 程序员 vc++ vc  编程 开发 visual c mfc 代码 图书 文章 开发工具 免费 合作开发 合作 dot net NET VS.NET VC7 VC6 programer atl stl com .net cnn china chinese sex softwares windows programmer programming  developer 软件 共享 行业 技术 开发 论坛 新闻 专家门诊 程序员大本营 VC VB Delphi ASP PHP Perl SQL" 
+name=keywords>
+<META content="Visual C++专业站点，初学指南，电子杂志,电子图书，技术写译，编程文摘，程序源代码，以及其它VC MFC相关资源" 
+name=description>
+<META content="default index,follow" name=robots>
+<STYLE>.textb {
+	BACKGROUND-COLOR: #dddddd; BORDER-BOTTOM: #000000 1px solid; BORDER-LEFT: #999999 0px solid; BORDER-RIGHT: #999999 0px solid; BORDER-TOP: #999999 0px solid; CURSOR: hand; FONT-SIZE: 9pt
+}
+.submit {
+	BACKGROUND-COLOR: #cfcfc9; BORDER-BOTTOM: #999999 1px solid; BORDER-LEFT: #e0e7e0 1px solid; BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #e0e7e0 1px solid; CURSOR: hand; FONT-SIZE: 9pt; HEIGHT: 18px
+}
+TD {
+	COLOR: #0000cc; FONT-SIZE: 12px; LINE-HEIGHT: 150%
+}
+A:visited {
+	COLOR: #000066
+}
+A:link {
+	COLOR: #0000cc
+}
+A:hover {
+	COLOR: #ff0000
+}
+INPUT {
+	BACKGROUND-COLOR: #f6f6f6; BORDER-BOTTOM: #000000 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; FONT-SIZE: 9pt; HEIGHT: 20px; POSITION: relative
+}
+TEXTAREA {
+	BACKGROUND-COLOR: #efefef; BORDER-BOTTOM: 1px solid; BORDER-LEFT: 1px solid; BORDER-RIGHT: 1px solid; BORDER-TOP: 1px solid; FONT-SIZE: 9pt
+}
+SELECT {
+	BACKGROUND-COLOR: #f6f6f6; FONT-SIZE: 9pt
+}
+.TableLine {
+	BORDER-COLLAPSE: collapse
+}
+</STYLE>
+<LINK href="在VC++下对文件属性的获取与更改.files/style.css" rel=stylesheet>
+<SCRIPT src="在VC++下对文件属性的获取与更改.files/Js.js"></SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0>
+<DIV align=center><!--第一行开始-->
+<TABLE bgColor=#000000 border=0 cellPadding=0 cellSpacing=0 width="98%">
+  <TBODY>
+  <TR>
+    <TD width=0%>&nbsp;</TD>
+    <TD class=top1 width="3%"><IMG border=0 hspace=3 
+      src="在VC++下对文件属性的获取与更改.files/TOPL.gif"></TD>
+    <TD class=top1 width="19%">&nbsp;</TD>
+    <TD align=right class=top1 width="74%">
+      <DIV align=right><A class=top1 
+      href="http://www.vcroad.net/shownews.asp?newsid=278" 
+      target=_blank>关于我们</A><FONT color=#ffffff> |</FONT> <A class=top1 
+      href="http://www.vcroad.net/showsearch.asp">资料搜索</A> <FONT 
+      color=#ffffff>|</FONT> <A class=top1 
+      href="http://www.vcroad.net/User.asp">关于会员</A> <FONT 
+      color=#ffffff>|</FONT> <A class=top1 
+      href="http://www.vcroad.net/tougao.asp" target=_blank>投稿说明</A> <FONT 
+      color=#ffffff>| </FONT><A class=top1 href="http://www.vcroad.net/forum/" 
+      target=_blank>开发社区</A><FONT color=#ffffff> |</FONT> </DIV></TD>
+    <TD align=right class=top1 width="3%"><IMG border=0 height=15 hspace=3 
+      src="在VC++下对文件属性的获取与更改.files/TOPR.gif" width=15></TD>
+    <TD width="1%"></TD></TR></TBODY></TABLE>
+<TABLE border=0 cellPadding=0 cellSpacing=0 width=755>
+  <TBODY>
+  <TR bgColor=#ffffff>
+    <TD height=1></TD></TR></TBODY></TABLE>
+<TABLE bgColor=#ffffff border=0 borderColorLight=#ffffff cellPadding=0 
+cellSpacing=0 class=TableLine width="98%">
+  <TBODY>
+  <TR>
+    <TD background=在VC++下对文件属性的获取与更改.files/pic_point1.gif height=84 
+    width="1%"></TD>
+    <TD align=middle background=在VC++下对文件属性的获取与更改.files/pic_point1.gif height=84 
+    vAlign=center width="19%"><A href="http://www.vcroad.net/default.asp"><IMG 
+      alt=综合软件开发网，以VC开发为主 border=0 height=53 
+      src="在VC++下对文件属性的获取与更改.files/logo.gif" width=125></A> </TD>
+    <TD background=在VC++下对文件属性的获取与更改.files/pic_point1.gif height=84 
+      width="68%"><DIV align=center>
+      <OBJECT classid=clsid:D27CDB6E-AE6D-11cf-96B8-444553540000 
+      codeBase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0 
+      height=66 width=480><PARAM NAME="movie" VALUE="images/Flash/vcroad.swf"><PARAM NAME="quality" VALUE="high">
+                                    <embed src="images/Flash/vcroad.swf" 
+      quality=high 
+      pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" 
+      type="application/x-shockwave-flash" width="480" height="66">          
+      </embed>         </OBJECT></DIV></TD>
+    <TD align=middle background=在VC++下对文件属性的获取与更改.files/pic_point1.gif height=84 
+    vAlign=center width="11%">
+      <TABLE align=right border=0 cellPadding=0 cellSpacing=1>
+        <TBODY>
+        <TR>
+          <TD align=middle vAlign=center><IMG height=16 
+            src="在VC++下对文件属性的获取与更改.files/home.gif" width=16><A href="http:///#" 
+            onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http:///')"></A></TD>
+          <TD align=middle vAlign=center><A class=top4 
+            href="http://www.vcroad.net/shownews.asp?newsid=720#" 
+            onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.vcroad.com');">设为首页</A></TD></TR>
+        <TR>
+          <TD align=middle vAlign=center><IMG height=16 
+            src="在VC++下对文件属性的获取与更改.files/hf.gif" width=16><A 
+          href="mailto:"></A></TD>
+          <TD align=middle vAlign=center><A class=top4 
+            href="mailto:vcroad@sina.com">联系我们</A></TD></TR>
+        <TR>
+          <TD align=middle vAlign=center><IMG height=13 
+            src="在VC++下对文件属性的获取与更改.files/bookmark.gif" width=15><A 
+            href="http:///" 
+            title="onClick=&quot;window.external.addFavorite('http:///','')&quot;"></A></TD>
+          <TD align=middle vAlign=center><A class=top4 
+            href="http://www.vcroad.net/shownews.asp?newsid=720#" 
+            onclick="javascript:window.external.AddFavorite('http://www.vcroad.com', 'VC之路：：综合软件开发网站，以VC++编程为主')">加入收藏</A></TD></TR></TBODY></TABLE></TD>
+    <TD background=在VC++下对文件属性的获取与更改.files/pic_point1.gif height=84 
+    width="1%"></TD></TR></TBODY></TABLE>
+<TABLE bgColor=#666666 cellPadding=0 cellSpacing=0 width="98%">
+  <TBODY>
+  <TR>
+    <TD bgColor=#ffffff width="100%">
+      <TABLE border=0 cellPadding=0 cellSpacing=1 width="100%">
+        <TBODY>
+        <TR bgColor=#000033>
+          <TD align=middle bgColor=#000033 height=18>
+            <TABLE border=1 borderColorDark=#ffffff borderColorLight=#cccccc 
+            cellPadding=0 cellSpacing=0 width="100%">
+              <TBODY>
+              <TR bgColor=#666666>
+                <TD height=19>
+                  <DIV align=center><SPAN class=lianjie2><A class=top3 
+                  href="http://www.vcroad.net/BigClass.asp?BigClassID=1&amp;BigClassName=程序人生&amp;BigClassType=1">程序人生</A></SPAN></DIV></TD></TR></TBODY></TABLE></TD>
+          <TD align=middle bgColor=#000033 height=18>
+            <TABLE border=1 borderColorDark=#ffffff borderColorLight=#cccccc 
+            cellPadding=0 cellSpacing=0 width="100%">
+              <TBODY>
+              <TR bgColor=#666666>
+                <TD height=19>
+                  <DIV align=center><SPAN class=lianjie2><A class=top3 
+                  href="http://www.vcroad.net/BigClass.asp?BigClassID=2&amp;BigClassName=开发指南&amp;BigClassType=1">开发指南</A></SPAN></DIV></TD></TR></TBODY></TABLE></TD>
+          <TD align=middle bgColor=#000033 height=18>
+            <TABLE border=1 borderColorDark=#ffffff borderColorLight=#cccccc 
+            cellPadding=0 cellSpacing=0 width="100%">
+              <TBODY>
+              <TR bgColor=#666666>
+                <TD height=19>
+                  <DIV align=center><SPAN class=lianjie2><A class=top3 
+                  href="http://www.vcroad.net/BigClass.asp?BigClassID=3&amp;BigClassName=CPP 文档&amp;BigClassType=1">CPP 
+                  文档</A></SPAN></DIV></TD></TR></TBODY></TABLE></TD>
+          <TD align=middle bgColor=#000033 height=18>
+            <TABLE border=1 borderColorDark=#ffffff borderColorLight=#cccccc 
+            cellPadding=0 cellSpacing=0 width="100%">
+              <TBODY>
+              <TR bgColor=#666666>
+                <TD height=19>
+                  <DIV align=center><SPAN class=lianjie2><A class=top3 
+                  href="http://www.vcroad.net/BigClass.asp?BigClassID=4&amp;BigClassName=SDK 文档&amp;BigClassType=1">SDK 
+                  文档</A></SPAN></DIV></TD></TR></TBODY></TABLE></TD>
+          <TD align=middle bgColor=#000033 height=18>
+            <TABLE border=1 borderColorDark=#ffffff borderColorLight=#cccccc 
+            cellPadding=0 cellSpacing=0 width="100%">
+              <TBODY>
+              <TR bgColor=#666666>
+                <TD height=19>
+                  <DIV align=center><SPAN class=lianjie2><A class=top3 
+                  href="http://www.vcroad.net/BigClass.asp?BigClassID=5&amp;BigClassName=MFC 文档&amp;BigClassType=1">MFC 
+                  文档</A></SPAN></DIV></TD></TR></TBODY></TABLE></TD>
+          <TD align=middle bgColor=#000033 height=18>
+            <TABLE border=1 borderColorDark=#ffffff borderColorLight=#cccccc 
+            cellPadding=0 cellSpacing=0 width="100%">
+              <TBODY>
+              <TR bgColor=#666666>
+                <TD height=19>
+                  <DIV align=center><SPAN class=lianjie2><A class=top3 
+                  href="http://www.vcroad.net/BigClass.asp?BigClassID=7&amp;BigClassName=专题文档&amp;BigClassType=1">专题文档</A></SPAN></DIV></TD></TR></TBODY></TABLE></TD>
+          <TD align=middle bgColor=#000033 height=18>
+            <TABLE border=1 borderColorDark=#ffffff borderColorLight=#cccccc 
+            cellPadding=0 cellSpacing=0 width="100%">
+              <TBODY>
+              <TR bgColor=#666666>
+                <TD height=19>
+                  <DIV align=center><SPAN class=lianjie2><A class=top3 
+                  href="http://www.vcroad.net/BigClass.asp?BigClassID=8&amp;BigClassName=在线教程&amp;BigClassType=1">在线教程</A></SPAN></DIV></TD></TR></TBODY></TABLE></TD>
+          <TD align=middle bgColor=#000033 height=18>
+            <TABLE border=1 borderColorDark=#ffffff borderColorLight=#cccccc 
+            cellPadding=0 cellSpacing=0 width="100%">
+              <TBODY>
+              <TR bgColor=#666666>
+                <TD height=19>
+                  <DIV align=center><SPAN class=lianjie2><A class=top3 
+                  href="http://www.vcroad.net/BigClass.asp?BigClassID=9&amp;BigClassName=代码中心&amp;BigClassType=1">代码中心</A></SPAN></DIV></TD></TR></TBODY></TABLE></TD>
+          <TD align=middle bgColor=#000033 height=18>
+            <TABLE border=1 borderColorDark=#ffffff borderColorLight=#cccccc 
+            cellPadding=0 cellSpacing=0 width="100%">
+              <TBODY>
+              <TR bgColor=#666666>
+                <TD height=19>
+                  <DIV align=center><SPAN class=lianjie2><A class=top3 
+                  href="http://www.vcroad.net/BigClass.asp?BigClassID=10&amp;BigClassName=资源中心&amp;BigClassType=1">资源中心</A></SPAN></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE border=0 cellPadding=0 cellSpacing=0 width="98%">
+  <TBODY>
+  <TR>
+    <TD bgColor=#ffffff width=1></TD>
+    <TD align=left bgColor=#ffffff class=top4 height=20 
+    style="BORDER-BOTTOM: #000000 1px double">
+      <TABLE border=1 borderColorDark=#ffffff borderColorLight=#cccccc 
+      cellPadding=0 cellSpacing=0 width="100%">
+        <TBODY>
+        <TR bgColor=#e4e4e4>
+          <TD height=19>
+            <DIV align=left></DIV>
+          <TD align=left bgColor=#ffffff class=top4 height=20 
+          style="BORDER-BOTTOM: #000000 1px double">
+            <TABLE border=1 borderColorDark=#ffffff borderColorLight=#cccccc 
+            cellPadding=0 cellSpacing=0 width="100%">
+              <TBODY>
+              <TR bgColor=#e4e4e4>
+                <TD height=19>
+                  <DIV align=left><IMG border=0 
+                  src="在VC++下对文件属性的获取与更改.files/where.gif">&nbsp;当前位置：<A 
+                  class=top4 href="http://www.vcroad.net/default.asp">首 页</A> 
+                  &gt; 阅读文章 </DIV></TD></TR></TBODY></TABLE></TD>
+          <TD align=middle bgColor=#ffffff class=top4 height=20 
+          style="BORDER-BOTTOM: #000000 1px double">
+            <TABLE border=1 borderColorDark=#ffffff borderColorLight=#cccccc 
+            cellPadding=0 cellSpacing=0 width="100%">
+              <TBODY>
+              <TR bgColor=#e4e4e4>
+                <TD height=19>
+                  <DIV align=center><A href="javascript:window.print()"><IMG 
+                  alt=打印本页 border=0 height=14 
+                  src="在VC++下对文件属性的获取与更改.files/printer.gif" 
+                width=16></A></DIV></TD></TR></TBODY></TABLE></TD>
+          <TD bgColor=#ffffff width=1></TD></TR></TBODY></TABLE>
+      <TABLE align=center border=0 cellPadding=0 cellSpacing=0 width="99%">
+        <TBODY>
+        <TR>
+          <TD width="79%">&nbsp; </TD>
+          <TD width="21%">
+            <TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+              <TBODY>
+              <TR>
+                <TD width=0%>&nbsp;</TD>
+                <TD bgColor=#ffffff width="20%">
+                  <DIV align=center><IMG height=19 
+                  src="在VC++下对文件属性的获取与更改.files/title_new_left.gif" 
+                  width=39></DIV></TD>
+                <TD bgColor=#666666 width="80%">
+                  <TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+                    <TBODY>
+                    <TR>
+                      <TD bgColor=#666666 height=10 width="23%">
+                        <DIV align=center></DIV></TD>
+                      <TD bgColor=#666666 height=10 width="38%">
+                        <DIV align=right></DIV></TD>
+                      <TD bgColor=#666666 height=10 width="39%">
+                        <DIV align=right><IMG height=19 
+                        src="在VC++下对文件属性的获取与更改.files/title_right_2.jpg" 
+                        width=60></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+      <TABLE align=center bgColor=#666666 border=0 cellPadding=0 cellSpacing=0 
+      width="99%">
+        <TBODY>
+        <TR>
+          <TD height=6></TD></TR></TBODY></TABLE>
+      <TABLE align=center border=0 cellPadding=0 cellSpacing=0 width="99%">
+        <TBODY>
+        <TR>
+          <TD height=178 width="79%">
+            <TABLE align=center border=0 cellPadding=0 cellSpacing=0 
+            style="TABLE-LAYOUT: fixed" width="100%">
+              <TBODY>
+              <TR></TR>
+              <TR>
+                <TD align=middle class=NEWSREADME colSpan=2>
+                  <TABLE bgColor=#009933 border=1 borderColorDark=#ffffff 
+                  borderColorLight=#cccccc cellPadding=0 cellSpacing=0 
+                  width="100%">
+                    <TBODY>
+                    <TR bgColor=#e4e4e4>
+                      <TD height=4>
+                        <DIV align=center><IMG height=16 
+                        src="在VC++下对文件属性的获取与更改.files/note.jpg" width=16> 
+                        <B>在VC++下对文件属性的获取与更改</B></DIV></TD></TR></TBODY></TABLE>
+                  <P>时间：2002-10-31 21:39:14&nbsp;作者：郎锐&nbsp;阅读 <FONT 
+                  color=#ff0000>739</FONT> 次</P></TD></TR>
+              <TR>
+                <TD align=middle colSpan=2>
+                  <TABLE align=center border=0 cellPadding=0 cellSpacing=0 
+                  style="TABLE-LAYOUT: fixed" width="98%">
+                    <TBODY>
+                    <TR>
+                      <TD class=news style="WORD-WRAP: break-word"><SPAN 
+                        class=txt><BR>　　<B>摘要：</B>本文讲述了在Visual C++ 
+                        下编程实现对磁盘文件的属性进行获取以及更改的一般方法，并给出部分相关的关键代码。<BR><BR>　　<B>一、 
+                        引言 
+                        </B><BR><BR>　　文件是数据在磁盘上最常用的一种存放形式，也是在程序设计中与之经常打交道的一种编程对象，不少程序尤其是数据传输和处理类的应用程序更是需要频繁的创建、读取和写入文件。对于一些要求不是很严格的程序，我们往往只关心文件的内容是否正确、文件大小是否有增减或是再严格一些，看文件名是否符合规定等等。以上这些要素对于大多数程序而言显然是可以满足实际需求的，但对于某些特殊行业的一些有着比较严格要求的软件系统，仅有以上要素还是远远不够的，往往还需要对文件的所有属性诸如文件的创建时间、文件的最后访问时间、文件的最后修改时间等等进行提取处理与重新设置。<BR><BR>　　<B>二、 
+                        WIN32_FIND_DATA结构</B><BR><BR>　　关于文件的全部属性信息，总计有以下以下9种：文件的标题名、文件的属性（只读、存档，隐藏等）、文件的创建时间、文件的最后访问时间、文件的最后修改时间、文件大小的高位双字、文件大小的低位双字、保留、保留。在这里只有文件标题名和文件的长度可以通过CFile类比较方便的获得，而对于其他几种属性的获取和设置就无能为力了。<BR><BR>　　在用findfirst()和findnext()函数去查找磁盘文件时经常使用的一个数据结构WIN32_FIND_DATA的成员变量里包含了以上所有的文件属性，因此可以通过这个结构作为获取和更改文件属性的手段。该结构的内容如下：<BR><BR>
+                        <TABLE bgColor=#ffffff height=23 width="100%">
+                          <TBODY>
+                          <TR>
+                            <TD>typedef struct _WIN32_FIND_DATA {<BR>　　DWORD 
+                              dwFileAttributes; //文件属性<BR>　　FILETIME 
+                              ftCreationTime; // 文件创建时间<BR>　　FILETIME 
+                              ftLastAccessTime; // 文件最后一次访问时间<BR>　　FILETIME 
+                              ftLastWriteTime; // 文件最后一次修改时间<BR>　　DWORD 
+                              nFileSizeHigh; // 文件长度高32位<BR>　　DWORD 
+                              nFileSizeLow; // 文件长度低32位<BR>　　DWORD dwReserved0; 
+                              // 系统保留<BR>　　DWORD dwReserved1; // 系统保留<BR>　　TCHAR 
+                              cFileName[ MAX_PATH ]; // 长文件名<BR>　　TCHAR 
+                              cAlternateFileName[ 14 ]; // 8.3格式文件名<BR>} 
+                              WIN32_FIND_DATA, 
+                        *PWIN32_FIND_DATA;</TD></TR></TBODY></TABLE><BR>　　可以通过FindFirstFile（）函数根据当前的文件存放路径查找该文件来把待操作文件的相关属性读取到WIN32_FIND_DATA结构中去：<BR><BR>
+                        <TABLE bgColor=#ffffff width="100%">
+                          <TBODY>
+                          <TR>
+                            <TD>WIN32_FIND_DATA ffd ;<BR>HANDLE hFind = 
+                              FindFirstFile("c:\\test.dat",&amp;ffd);</TD></TR></TBODY></TABLE><BR>　　在使用这个结构时不能手工修改这个结构中的任何数据，结构对于开发人员来说只能作为一个只读数据，其所有的成员变量都会由系统完成填写。在MSDN帮助中可以查找到关于WIN32_FIND_DATA结构的更加详细的说明。<BR><BR>　　<B>三、 
+                        文件属性信息的获取与更改</B><BR><BR>　　为了更好的保存获取到的文件属性信息，对应于文件属性构造一个自定义的FILE_INFO数据结构，获取的属性信息可暂存于此：<BR><BR>
+                        <TABLE bgColor=#ffffff width="100%">
+                          <TBODY>
+                          <TR>
+                            <TD>typedef struct _FILE_INFO {<BR>　　TCHAR 
+                              szFileTitle[128]; //文件的标题名<BR>　　DWORD 
+                              dwFileAttributes; //文件的属性<BR>　　FILETIME 
+                              ftCreationTime; //文件的创建时间<BR>　　FILETIME 
+                              ftLastAccessTime; //文件的最后访问时间<BR>　　FILETIME 
+                              ftLastWriteTime; //文件的最后修改时间<BR>　　DWORD 
+                              nFileSizeHigh; //文件大小的高位双字<BR>　　DWORD 
+                              nFileSizeLow; //文件大小的低位双字<BR>　　DWORD dwReserved0; 
+                              //保留，为0 <BR>　　DWORD dwReserved1; //保留，为0<BR>} 
+                              FILE_INFO, * 
+                        PFILE_INFO;</TD></TR></TBODY></TABLE><BR>　　首先用FindFirstFile（）函数将文件属性获取到WIN32_FIND_DATA 
+                        结构对象FindFileData中去，之后可以用FindClose（）将其关闭，并把FindFileData中的有关文件属性信息的内容复制到自定义结构FILE_INFO的结构对象FileInfo中备用。下面是关于这部分描述的部分关键代码： 
+                        <BR><BR>
+                        <TABLE bgColor=#ffffff width="100%">
+                          <TBODY>
+                          <TR>
+                            <TD>//声明结构对象<BR>FILE_INFO 
+                              FileInfo;<BR>WIN32_FIND_DATA 
+                              FindFileData;<BR>……<BR>//获取文件属性信息<BR>FindClose(FindFirstFile("Test.txt",&amp;FindFileData));<BR>memset(&amp;FileInfo,0,sizeof(FILE_INFO));<BR>……<BR>//将文件属性信息保存到FileInfo中备用<BR>strcpy(FileInfo.szFileTitle,myFile.GetFileTitle());<BR>FileInfo.dwFileAttributes 
+                              = 
+                              FindFileData.dwFileAttributes;<BR>FileInfo.ftCreationTime 
+                              = 
+                              FindFileData.ftCreationTime;<BR>FileInfo.ftLastAccessTime 
+                              = 
+                              FindFileData.ftLastAccessTime;<BR>FileInfo.ftLastWriteTime 
+                              = 
+                              FindFileData.ftLastWriteTime;<BR>FileInfo.nFileSizeHigh 
+                              = 
+                              FindFileData.nFileSizeHigh;<BR>FileInfo.nFileSizeLow 
+                              = 
+                        FindFileData.nFileSizeLow;<BR>……</TD></TR></TBODY></TABLE><BR>　　在获取到文件的原始属性信息后既可以原封不动的将属性重新写到文件，也可以对其中某一项或某几项属性内容进行修改后再行写入文件，从而达到更改文件属性的目的。比如可以用SetFileTime()函数设置文件的创建时间、最近一次访问时间以及最近一次修改的时间等等：<BR><BR>
+                        <TABLE bgColor=#ffffff width="100%">
+                          <TBODY>
+                          <TR>
+                            <TD>SetFileTime((HANDLE)destFile.m_hFile, 
+                              //待写入的文件句柄<BR>&amp;FileInfo.ftCreationTime, 
+                              //文件的创建时间<BR>&amp;FileInfo.ftLastAccessTime, 
+                              //文件最近一次的访问时间<BR>&amp;FileInfo.ftLastWriteTime); 
+                              //文件最近一次的修改时间</TD></TR></TBODY></TABLE><BR>　　也可以用SetFileAttributes() 
+                        函数实现对文件属性的修改： <BR><BR>
+                        <TABLE bgColor=#ffffff width="100%">
+                          <TBODY>
+                          <TR>
+                            <TD>SetFileAttributes(FileInfo.szFileTitle,FileInfo.dwFileAttributes);</TD></TR></TBODY></TABLE><BR>　　至于文件名的修改则更加简单，直接在创建文件时在CreateFile()或CFile类的成员函数Open里直接对文件名参数进行设置即可。<BR><BR>　　<B>小结：</B>本文通过对WIN32_FIND_DATA结构和SetFileTime（）、SetFileAttributes（）等主要函数实现了对磁盘文件的相关属性信息的获取与修改。用此技术可以在通讯等对文件有严格要求的应用领域实现文件全部信息（包括文件内容、文件名以及文件属性等）的完整传送。本文所述程序在Windows 
+                        98下由Microsoft Visual C++ 6.0编译调试通过。</SPAN> 
+                  </TD></TR></TBODY></TABLE></TD></TR>
+              <TR align=right>
+                <TD colSpan=2>责任编辑：VCRoad(朱彦力)&nbsp;（共计 748 篇） </TD></TR>
+              <TR>
+                <TD colSpan=2></TD></TR>
+              <TR>
+                <TD colSpan=2>&nbsp; </TD></TR></TBODY></TABLE>
+            <TABLE align=center border=0 cellPadding=0 cellSpacing=0 
+width="98%">
+              <TBODY>
+              <TR>
+                <TD><LINK href="在VC++下对文件属性的获取与更改.files/style.css" 
+                  rel=stylesheet type=text/css>
+                  <FIELDSET> 
+                  <LEGEND align=left>╣ 在VC++下对文件属性的获取与更改 <FONT 
+                  color=#ff0000><B>[回复数: 1]</B></FONT> ╠</LEGEND>
+                  <TABLE bgColor=#ffffff border=0 borderColorLight=#ffffff 
+                  cellSpacing=0 class=TableLine style="TABLE-LAYOUT: fixed" 
+                  width="100%">
+                    <TBODY>
+                    <TR>
+                      <TD class=MainContentS style="WORD-WRAP: break-word">
+                        <DIV align=right>
+                        <TABLE border=1 borderColorDark=#ffffff 
+                        borderColorLight=#cccccc cellPadding=0 cellSpacing=0 
+                        width="100%">
+                          <TBODY>
+                          <TR bgColor=#e4e4e4>
+                            <TD height=12 width="14%">
+                              <DIV align=left><IMG 
+                              src="在VC++下对文件属性的获取与更改.files/gbook.gif"><FONT 
+                              color=#666666>simon_cool</FONT></DIV></TD>
+                            <TD height=12 width="54%">&nbsp;</TD>
+                            <TD height=12 width="32%">
+                              <DIV align=right><FONT color=#666666 
+                              size=2>[2003-2-28发表] </FONT><FONT 
+                              size=2></FONT></DIV></TD></TR></TBODY></TABLE><BR></DIV>谢谢，很有用</TD></TR></TBODY></TABLE></FIELDSET> 
+                </TD></TR>
+              <TR>
+                <TD height=9>
+                  <SCRIPT language=JavaScript><!--
+function Form1_Validator(theForm)
+{
+if (theForm.name.value == "")
+{
+alert("请输入您注册的会员名！");
+theForm.name.focus();
+return (false);
+}
+
+if (theForm.password.value == "")
+{
+alert("请输入密码！");
+theForm.password.focus();
+return (false);
+}
+
+if (theForm.name.value.length > 20)
+{
+alert("名字太长！至多20个字符");
+theForm.name.focus();
+return (false);
+}
+
+if (theForm.content.value == "")
+{
+alert("没有内容！");
+theForm.content.focus();
+return (false);
+}
+
+if (theForm.content.value.length > 1000)
+{
+alert("限制1000个字符！");
+theForm.content.focus();
+return (false);
+}
+return (true);
+}
+//--></SCRIPT>
+                  <LINK href="在VC++下对文件属性的获取与更改.files/style.css" rel=stylesheet 
+                  type=text/css>
+                  <FIELDSET> 
+                  <LEGEND align=left>╣ 我要留言 ╠</LEGEND>
+                  <TABLE align=center bgColor=#ffffff border=0 cellPadding=0 
+                  cellSpacing=0 style="TABLE-LAYOUT: fixed" width="95%">
+                    <FORM action=GBookSave.asp?PageName1=shownews&amp;NewsID=720 
+                    method=post name=Form1 
+                    onsubmit="return Form1_Validator(this)">
+                    <TBODY>
+                    <TR>
+                      <TD width="100%">姓 名： <INPUT maxLength=16 name=name 
+                        size=10> &nbsp;&nbsp;密 码： <INPUT name=password size=10 
+                        type=password> <INPUT name=page type=hidden value=1> <A 
+                        class=LeftMenu href="http://www.vcroad.net/userreg.asp" 
+                        target=_blank>没有注册？</A></TD></TR>
+                    <TR>
+                      <TD style="WORD-WRAP: break-word" vAlign=top width="100%"><TEXTAREA cols=82 name=content rows=8></TEXTAREA></TD>
+                    <TR>
+                      <TD align=middle width="100%"><INPUT name=B1 type=submit value=提交> <INPUT name=B2 type=reset value=重写> 
+                  </TD></TR></FORM></TBODY></TABLE></FIELDSET> 
+                  <TABLE border=0 cellPadding=0 cellSpacing=0 height=6 
+                  width="90%">
+                    <TBODY>
+                    <TR>
+                      <TD></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+          <TD bgColor=#dddddd height=178 width="21%">
+            <TABLE border=0 cellPadding=0 cellSpacing=1 height="100%" 
+            width="100%">
+              <TBODY>
+              <TR>
+                <TD height="1%">
+                  <TABLE border=0 cellPadding=0 cellSpacing=1 width="100%">
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <TABLE align=center bgColor=#efefef border=0 
+                        cellPadding=0 cellSpacing=0 width="100%">
+                          <TBODY>
+                          <TR>
+                            <TD background=在VC++下对文件属性的获取与更改.files/hline.gif 
+                            height=1></TD></TR>
+                          <TR>
+                            <TD bgColor=#efefef class=maintitle height=18 
+                            width="100%">&nbsp;相关信息：SDK文件系统</TD></TR>
+                          <TR>
+                            <TD background=在VC++下对文件属性的获取与更改.files/hline.gif 
+                            height=1></TD></TR>
+                          <TR>
+                            <TD bgColor=#ffffff>
+                              <TABLE border=0 cellPadding=0 cellSpacing=5 
+                              style="TABLE-LAYOUT: fixed" width="100%">
+                                <TBODY>
+                                <TR>
+                                <TD style="WORD-WRAP: break-word">·&nbsp;<A 
+                                class=MainContentS 
+                                href="http://www.vcroad.net/shownews.asp?newsid=942" 
+                                target=_blank 
+                                title="">用递归写Win32的文件夹遍历</A>&nbsp;<FONT 
+                                class=TitleMore><FONT 
+                                class=TitleMore>2003-1-16</FONT></FONT><BR>·&nbsp;<A 
+                                class=MainContentS 
+                                href="http://www.vcroad.net/shownews.asp?newsid=572" 
+                                target=_blank title="">目录监视程序</A>&nbsp;<FONT 
+                                class=TitleMore><FONT 
+                                class=TitleMore>2002-10-25</FONT></FONT><BR>·&nbsp;<A 
+                                class=MainContentS 
+                                href="http://www.vcroad.net/shownews.asp?newsid=462" 
+                                target=_blank 
+                                title="">VB中得到当前目录API定义</A>&nbsp;<FONT 
+                                class=TitleMore><FONT 
+                                class=TitleMore>2002-10-16</FONT></FONT><BR>·&nbsp;<A 
+                                class=MainContentS 
+                                href="http://www.vcroad.net/shownews.asp?newsid=458" 
+                                target=_blank 
+                                title=利用Windows外壳扩展保护文件夹>利用Windows外壳扩展保护文件…</A>&nbsp;<FONT 
+                                class=TitleMore><FONT 
+                                class=TitleMore>2002-10-16</FONT></FONT><BR>·&nbsp;<A 
+                                class=MainContentS 
+                                href="http://www.vcroad.net/shownews.asp?newsid=456" 
+                                target=_blank 
+                                title="">SDK实现简单的文件拷贝等操作</A>&nbsp;<FONT 
+                                class=TitleMore><FONT 
+                                class=TitleMore>2002-10-16</FONT></FONT><BR></TD></TR>
+                                <TR>
+                                <TD align=right width="98%"><A class=MainMore 
+                                href="http://www.vcroad.net/showsearch.asp?keyword=SDK文件系统" 
+                                target=_blank>&gt;&gt;搜索更多</A>&nbsp;</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+                        <TABLE border=0 cellPadding=0 cellSpacing=0 height=6 
+                        width="90%">
+                          <TBODY>
+                          <TR>
+                            <TD></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+                  <P></P>
+                  <TABLE border=0 cellPadding=0 cellSpacing=1 width="100%">
+                    <TBODY>
+                    <TR>
+                      <TD height=17 width="30%">
+                        <DIV align=right><IMG height=18 
+                        src="在VC++下对文件属性的获取与更改.files/err.gif" width=18></DIV></TD>
+                      <TD height=17 width="70%"><A class=MainContentS 
+                        href="http://www.vcroad.net/forum/list.asp?boardid=10" 
+                        target=_blank>举报网站错误</A></TD></TR></TBODY></TABLE><BR><BR>
+                  <TABLE border=1 borderColorDark=#ffffff 
+                  borderColorLight=#cccccc cellPadding=0 cellSpacing=0 
+                  width="100%">
+                    <TBODY>
+                    <TR bgColor=#e4e4e4>
+                      <TD height=4>
+                        <DIV align=center><FONT size=2><IMG height=12 
+                        src="在VC++下对文件属性的获取与更改.files/arrow2.gif" width=24> 
+                        开发论坛</FONT></DIV></TD></TR></TBODY></TABLE>
+                  <TABLE align=center border=0 cellPadding=0 cellSpacing=0 
+                  width="59%">
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <DIV align=right><A class=MainContentS 
+                        href="http://www.vcroad.net/forum/list.asp?boardid=4" 
+                        target=_blank>SDK 编程论坛</A></DIV></TD></TR>
+                    <TR>
+                      <TD>
+                        <DIV align=right><A class=MainContentS 
+                        href="http://www.vcroad.net/forum/list.asp?boardid=3" 
+                        target=_blank>C/CPP 编程论坛</A></DIV></TD></TR>
+                    <TR>
+                      <TD>
+                        <DIV align=right><A class=MainContentS 
+                        href="http://www.vcroad.net/forum/list.asp?boardid=5" 
+                        target=_blank>VC/MFC 编程论坛</A></DIV></TD></TR>
+                    <TR>
+                      <TD>
+                        <DIV align=right></DIV></TD></TR>
+                    <TR>
+                      <TD height=23>
+                        <DIV align=right></DIV></TD></TR></TBODY></TABLE><BR>
+                  <DIV align=center><FONT size=2><SPAN class=MainContentS><IMG 
+                  height=16 src="在VC++下对文件属性的获取与更改.files/hf.gif" 
+                  width=16></SPAN></FONT> <A class=MainContentS 
+                  href="mailto:vcroad@sina.com">我要投稿</A></DIV></TD></TR>
+              <TR>
+                <TD height=8>
+                  <DIV 
+      align=center></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><LINK 
+      href="在VC++下对文件属性的获取与更改.files/style.css" rel=stylesheet type=text/css>
+      <TABLE border=0 cellPadding=0 cellSpacing=0 width="98%">
+        <TBODY>
+        <TR>
+          <TD bgColor=#ffffff width="1%"></TD>
+          <TD width="1%">
+          <TD align=middle class=top4 height=12 
+          style="BORDER-TOP: #000000 1px double" width="96%">| <A class=top4 
+            href="http://www.vcroad.net/shownews.asp?newsid=720#" 
+            onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.vcroad.com');">设为首页</A> 
+            | <A class=top4 
+            href="http://www.vcroad.net/shownews.asp?newsid=720#" 
+            onclick="javascript:window.external.AddFavorite('http://www.vcroad.com', 'VC之路：：综合软件开发网站，以VC++编程为主')">加入收藏</A> 
+            | <A class=top4 href="mailto:vcroad@sina.com">联系我们</A> | <A 
+            class=top4 href="mailto:wutao8@263.net">联系枣子</A> | <A class=top4 
+            href="http://www.vcroad.net/tougao.asp" target=admin>投稿说明</A> | <A 
+            class=top4 href="http://www.vcroad.net/forum/" target=admin>开发社区</A> 
+            |</TD>
+          <TD width="1%"></TD>
+          <TD bgColor=#ffffff width="1%"></TD></TR></TBODY></TABLE>
+      <TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD height=18>
+            <DIV align=center><FONT size=-1><SPAN class=text>CopyRight by VCROAD 
+            &copy;2000-2002 All Right 
+  Reserve</SPAN></FONT></DIV></TD></TR></TBODY></TABLE></TR></TBODY></DIV></BODY></HTML>

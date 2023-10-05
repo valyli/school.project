@@ -1,0 +1,27 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Button - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "c:\temp       \RSP305.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/Button.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ   /c 
+"C:\work\compile\Button\ButtonDlg.cpp"
+]
+Creating command line "cl.exe @"c:\temp       \RSP305.TMP"" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/Button.pdb" /debug /machine:I386 /out:"Debug/Button.exe" /pdbtype:sept  .\Debug\Button.obj .\Debug\ButtonDlg.obj .\Debug\StdAfx.obj .\Debug\Button.res "
+<h3>Output Window</h3>
+Compiling...
+ButtonDlg.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+Button.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

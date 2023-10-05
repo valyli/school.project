@@ -1,0 +1,37 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: HLinkTest - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\李佳\LOCALS~1\Temp\RSP10.tmp" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/HLinkTest.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\Visual C++60数据库与网络开发实例\Sample1\HLinkTest\HyperLink.cpp"
+]
+Creating command line "cl.exe @"C:\DOCUME~1\李佳\LOCALS~1\Temp\RSP10.tmp"" 
+Creating temporary file "C:\DOCUME~1\李佳\LOCALS~1\Temp\RSP11.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:no /pdb:"Release/HLinkTest.pdb" /machine:I386 /out:"Release/HLinkTest.exe" 
+".\Release\HLinkTest.obj"
+".\Release\HLinkTestDlg.obj"
+".\Release\HyperLink.obj"
+".\Release\StdAfx.obj"
+".\Release\HLinkTest.res"
+]
+Creating command line "link.exe @"C:\DOCUME~1\李佳\LOCALS~1\Temp\RSP11.tmp""
+<h3>Output Window</h3>
+Compiling...
+HyperLink.cpp
+E:\Visual C++60数据库与网络开发实例\Sample1\HLinkTest\HyperLink.cpp(272) : warning C4554: '&' : check operator precedence for possible error; use parentheses to clarify precedence
+Linking...
+
+
+
+<h3>Results</h3>
+HLinkTest.exe - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

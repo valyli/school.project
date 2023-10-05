@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="gb2312"?>
+<InfoBase>
+	<ProviderID>1</ProviderID>
+	<InfoBaseID>1</InfoBaseID>
+	<Name>Test InfoBase</Name>
+	<Descriptions>
+		<Description Language="english">Test InfoBase</Description>
+		<Description Language="chinese">测试InfoBase</Description>
+	</Descriptions>
+	<InfoBaseDataTypes>
+		<DataType Name="String" ID="1"/>
+		<DataType Name="Integer" ID="2"/>
+		<DataType Name="Binary" ID="3"/>
+		<DataType Name="Real" ID="4"/>
+	</InfoBaseDataTypes>
+	<InfoBaseActions>
+		<Action Name="Get" ID="1">
+			<Descriptions>
+				<Description Language="english">To get infomation</Description>
+				<Description Language="chinese">获取信息</Description>
+			</Descriptions>
+		</Action>
+		<Action Name="Set" ID="2">
+			<Descriptions>
+				<Description Language="english">To set infomation</Description>
+				<Description Language="chinese">设置信息</Description>
+			</Descriptions>
+		</Action>
+	</InfoBaseActions>
+	<InfoItems>
+		<InfoItem Name="CPUusage" ID="1">
+			<Descriptions>
+				<Description Language="english">CPU usage</Description>
+				<Description Language="chinese">CPU 利用率</Description>
+			</Descriptions>
+			<DataType ID="2"/>
+			<Actions>
+				<Action ID="1"/>
+			</Actions>
+			<SubTree>
+				<InfoItem Name="TestSubTree" ID="1">
+					<Descriptions>
+						<Description Language="english">Test Sub Tree</Description>
+						<Description Language="chinese">测试信息项子树</Description>
+					</Descriptions>
+					<DataType ID="1"/>
+					<Actions>
+						<Action ID="2">
+							<Parameter Name="ToDisplay1" ID="1" DataTypeID="1"/>
+							<Parameter Name="ToDisplay2" ID="2" DataTypeID="1"/>
+						</Action>
+					</Actions>
+					<SubTree/>
+				</InfoItem>
+			</SubTree>
+		</InfoItem>
+	</InfoItems>
+</InfoBase>

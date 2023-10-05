@@ -1,0 +1,31 @@
+function showTC()
+{
+	s='“太极链”世界首创 集“10比1文本广告交换”、“中文酷站排行榜”、“网站流量分析”为一体的系统，能迅速提升你的网站访问量。-->>www.textclick.com'
+	t='<td align=center nowrap width="17%"><a class=ls target=_blank href=http://210.74.232.81:78/direct2.asp?from_id='
+
+	str='<style>.ls{font-size:9pt; text-decoration:none}</style>'
+
+	str=str+'<table border=0><tr><td><table border=0 cellpadding=0 cellspacing=0 style="font-size:9pt"><tr><td bgcolor=black><a href=http://www.textclick.com target=_blank><img src=http://210.74.232.80/images/tc.gif alt="'+s+'" width=15 height=14 border=0 target=_blank align=left></a> <a href=http://www.textclick.com class=ls target=_blank title="'+s+'"><font color="#FFFFFF">太极链</font></a><font color="#FFFFFF"> - </font><a href=http://www.textclick.com/viewmain.asp?name=zxf52 title="" target=_blank class=ls><font color="#FFFFFF">1558953</font></a></td><td><img src=http://210.74.232.80/images/arc.gif width=16 height=16></td></tr></table>'
+
+	str=str+'<table width=582 border=1 cellpadding=0 cellspacing=0 bordercolorlight=#000000 bordercolordark=#FFFFFF height=40 bgcolor=><tr>'
+
+	str=str+'<td align=center nowrap width="17%"><b><a href=http://210.74.232.81:78/addirect2.asp?from_id=zxf52&to_id=787&e1=1049187955&e2=25108 title="上千部电影，任你无限下载。" target=_blank class=ls><font color=#FF0000>激情电影无限下载</font></a></b></td>'
+	str=str+t+'zxf52&to_id=14406&e1=1049187955&e2=27499 title="新品，精品，正版，解密，杀毒，补丁，资源中心...|太极链排名:807|日均:3885|URL:http://www.superdown.com">★软件万花筒★      </a></td>'
+	str=str+t+'zxf52&to_id=16719&e1=1049187955&e2=27456 title="精品网站导航,最实用的网吧管理软件“美萍网管大师”介绍下载!|太极链排名:3|日均:1470467|URL:HTTP://www.mpsoft.net">★美萍网管软件★    </a></td>'
+	str=str+t+'zxf52&to_id=24207&e1=1049187955&e2=27488 title="三国演义超强打点外挂----战争机器|太极链排名:6154|日均:143|URL:http://www.kof2000.com">战争机器            </a></td>'
+	str=str+t+'zxf52&to_id=36753&e1=1049187955&e2=28282 title="手机写真图片，短信，铃声|太极链排名:666|日均:5124|URL:http://www.hnjdzy.net/tom.htm">手机短信和图片      </a></td>'
+	str=str+t+'zxf52&to_id=67790&e1=1049187955&e2=21475 title="每天更新最新正式版软件、精品软件、注册码、机注册器。|太极链排名:863|日均:3610|URL:http://chzhy.126.com">软件特区            </a></td>'
+	str=str+'</tr><tr>'
+	str=str+'<td align=center nowrap width="17%"><b><a href=http://210.74.232.81:78/addirect2.asp?from_id=zxf52&to_id=770&e1=1049187955&e2=20695 title="性爱玩具、避孕套、催情药、性感内衣，性爱VCD，应有尽有。" target=_blank class=ls><font color=#FF0000>春宵一刻值千金★</font></a></b></td>'
+	str=str+t+'zxf52&to_id=95256&e1=1049187955&e2=29149 title="大量PC及零部件、房屋、招聘信息。速度快分类清楚易查询|太极链排名:2220|日均:887|URL:http://209.73.37.10/default.htm">跳蚤市场            </a></td>'
+	str=str+t+'zxf52&to_id=113870&e1=1049187955&e2=27595 title="常用软件下载，金山毒霸、超级解霸、天网防火墙、小游戏。|太极链排名:147|日均:31739|URL:http://downs.126.com">飞跃颠峰下载站      </a></td>'
+	str=str+t+'zxf52&to_id=156065&e1=1049187955&e2=18450 title="发布自编共享软件：电子书架、光驱面板|太极链排名:11249|日均:37|URL:http://eski.yeah.net/">爱思软件            </a></td>'
+	str=str+t+'zxf52&to_id=163462&e1=1049187955&e2=22683 title="大量fla,psd源文件！|太极链排名:538|日均:6967|URL:http://asp.6to23.com/seagulland/">psd源文件！         </a></td>'
+	str=str+t+'zxf52&to_id=184458&e1=1049187955&e2=21527 title="性感少妇|太极链排名:122|日均:38450|URL:http://cnlove.bl.am">性感少妇            </a></td>'
+
+	str=str+'</table></td></tr></table>'
+
+	str=str+'<img src=http://210.74.232.48/scripts/stat201.dll?default&user=zxf52&refer=www&cur=www border=0 width=1 height=1>'
+	document.write(str)
+}
+showTC()

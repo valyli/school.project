@@ -1,0 +1,60 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: bezier - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/bezier.res" /d "_DEBUG" /d "_AFXDLL" "D:\参考资料\源代码（上学期间）\Homework\VC++\BEZIER\bezier.rc"" 
+Creating temporary file "C:\DOCUME~1\李佳\LOCALS~1\Temp\RSP10D.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/bezier.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\参考资料\源代码（上学期间）\Homework\VC++\BEZIER\bezier.cpp"
+"D:\参考资料\源代码（上学期间）\Homework\VC++\BEZIER\bezierDoc.cpp"
+"D:\参考资料\源代码（上学期间）\Homework\VC++\BEZIER\bezierView.cpp"
+"D:\参考资料\源代码（上学期间）\Homework\VC++\BEZIER\CntrItem.cpp"
+"D:\参考资料\源代码（上学期间）\Homework\VC++\BEZIER\MainFrm.cpp"
+"D:\参考资料\源代码（上学期间）\Homework\VC++\BEZIER\Splash.cpp"
+]
+Creating command line "cl.exe @"C:\DOCUME~1\李佳\LOCALS~1\Temp\RSP10D.tmp"" 
+Creating temporary file "C:\DOCUME~1\李佳\LOCALS~1\Temp\RSP10E.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/bezier.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\参考资料\源代码（上学期间）\Homework\VC++\BEZIER\StdAfx.cpp"
+]
+Creating command line "cl.exe @"C:\DOCUME~1\李佳\LOCALS~1\Temp\RSP10E.tmp"" 
+Creating temporary file "C:\DOCUME~1\李佳\LOCALS~1\Temp\RSP10F.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/bezier.pdb" /debug /machine:I386 /out:"Debug/bezier.exe" /pdbtype:sept 
+".\Debug\bezier.obj"
+".\Debug\bezierDoc.obj"
+".\Debug\bezierView.obj"
+".\Debug\CntrItem.obj"
+".\Debug\MainFrm.obj"
+".\Debug\Splash.obj"
+".\Debug\StdAfx.obj"
+".\Debug\bezier.res"
+]
+Creating command line "link.exe @"C:\DOCUME~1\李佳\LOCALS~1\Temp\RSP10F.tmp""
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+bezier.cpp
+bezierDoc.cpp
+bezierView.cpp
+CntrItem.cpp
+MainFrm.cpp
+Splash.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+bezier.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

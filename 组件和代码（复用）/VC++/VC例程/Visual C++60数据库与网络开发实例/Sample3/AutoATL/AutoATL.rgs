@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		{8BE6903A-68EF-11D2-9AE7-00A0C9E52DCB} = s 'AutoATL'
+		'AutoATL.EXE'
+		{
+			val AppID = s {8BE6903A-68EF-11D2-9AE7-00A0C9E52DCB}
+		}
+	}
+}

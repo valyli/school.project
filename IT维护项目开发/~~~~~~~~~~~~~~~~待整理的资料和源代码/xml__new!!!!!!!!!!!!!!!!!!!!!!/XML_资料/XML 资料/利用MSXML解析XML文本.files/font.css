@@ -1,0 +1,63 @@
+.left {
+	FONT-SIZE: 12px; COLOR: white; LINE-HEIGHT: 20px; FONT-FAMILY: 宋体
+}
+A:link {
+	TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+A.left:link {
+	TEXT-DECORATION: none
+}
+A.left:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.left:hover {
+	COLOR: yellow; TEXT-DECORATION: underline
+}
+.txt {
+	FONT-SIZE: 12px; LINE-HEIGHT: 14px; FONT-FAMILY: 宋体
+}
+.linkt {
+	FONT-SIZE: 12px; COLOR: white; LINE-HEIGHT: 14px; FONT-FAMILY: 宋体
+}
+A.linkt:link {
+	TEXT-DECORATION: none
+}
+A.linkt:visited {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.linkt:hover {
+	COLOR: yellow; TEXT-DECORATION: underline
+}
+.mark {
+	FONT-SIZE: 12px; LINE-HEIGHT: 14px; FONT-FAMILY: 宋体
+}
+.search {
+	FONT-SIZE: 12px; LINE-HEIGHT: 20px; FONT-FAMILY: 宋体
+}
+A.search:link {
+	TEXT-DECORATION: none
+}
+A.search:visited {
+	TEXT-DECORATION: none
+}
+A.search:hover {
+	COLOR: red; TEXT-DECORATION: underline
+}
+.tt {
+	FONT-SIZE: 16px; LINE-HEIGHT: 18px; FONT-FAMILY: 宋体
+}
+A.tt:link {
+	FONT-SIZE: 16px; LINE-HEIGHT: 18px; FONT-FAMILY: 宋体; TEXT-DECORATION: none
+}
+A.tt:visited {
+	TEXT-DECORATION: none
+}
+A.tt:hover {
+	FONT-WEIGHT: bold; COLOR: #f4609f; TEXT-DECORATION: underline
+}

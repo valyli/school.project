@@ -1,0 +1,188 @@
+--------------------Configuration: SocketServer - Win32 Release--------------------
+Begining build with project "D:\cpp\RawSocketServerExample\SocketServer.dsp", at root.
+Active configuration is Win32 (x86) Application (based on Win32 (x86) Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /G5 /MT /W3 /GX /O2 /Ob2 /I "." /I ".\CommonFiles\Library" /I ".\CommonFiles\Lib32" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Release/SocketServer.pch" /Yu"stdafx.h" /Fo".\Release/" /Fd".\Release/" /FD /c "
+			"OLE Type Library Maker" with flags "/nologo /D "NDEBUG" /mktyplib203 /win32 "
+			"Win32 Resource Compiler" with flags "/l 0x409 /fo".\Release/SocketServer.res" /d "NDEBUG" "
+			"Browser Database Maker" with flags "/nologo /o".\Release/SocketServer.bsc" "
+			"COFF Linker for 80x86" with flags "/nologo /entry:"wWinMainCRTStartup" /subsystem:windows /incremental:no /pdb:".\Release/SocketServer.pdb" /machine:I386 /out:".\Release/SocketServer.exe" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating command line "rc.exe /l 0x409 /fo".\Release/SocketServer.res" /d "NDEBUG" "D:\cpp\RawSocketServerExample\SocketServer.rc"" 
+Creating temp file "f:\TEMP\RSPFE.tmp" with contents </nologo /G5 /MT /W3 /GX /O2 /Ob2 /I "." /I ".\CommonFiles\Library" /I ".\CommonFiles\Lib32" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Release/SocketServer.pch" /Yu"stdafx.h" /Fo".\Release/" /Fd".\Release/" /FD /c 
+"D:\cpp\RawSocketServerExample\SocketServer.cpp"
+"D:\cpp\RawSocketServerExample\SocketServerDlg.cpp"
+"D:\cpp\RawSocketServerExample\ClosingDialog.cpp"
+"D:\cpp\RawSocketServerExample\RawSocket.cpp"
+"D:\cpp\RawSocketServerExample\ThreadDispatcher.cpp"
+"D:\cpp\RawSocketServerExample\RawSocketServerWorker.cpp"
+"D:\cpp\RawSocketServerExample\CRITSECT.CPP"
+>
+Creating command line "cl.exe @f:\TEMP\RSPFE.tmp" 
+Creating temp file "f:\TEMP\RSPFF.tmp" with contents </nologo /G5 /MT /W3 /GX /O2 /Ob2 /I "." /I ".\CommonFiles\Library" /I ".\CommonFiles\Lib32" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp".\Release/SocketServer.pch" /Yc"stdafx.h" /Fo".\Release/" /Fd".\Release/" /FD /c 
+"D:\cpp\RawSocketServerExample\StdAfx.cpp"
+>
+Creating command line "cl.exe @f:\TEMP\RSPFF.tmp" 
+Creating temp file "f:\TEMP\RSP100.tmp" with contents </nologo /entry:"wWinMainCRTStartup" /subsystem:windows /incremental:no /pdb:".\Release/SocketServer.pdb" /machine:I386 /out:".\Release/SocketServer.exe" 
+.\Release\SocketServer.obj
+.\Release\SocketServerDlg.obj
+.\Release\StdAfx.obj
+.\Release\ClosingDialog.obj
+.\Release\SocketServer.res
+.\Release\RawSocket.obj
+.\Release\ThreadDispatcher.obj
+.\Release\RawSocketServerWorker.obj
+.\Release\CRITSECT.OBJ>
+Creating command line "link.exe @f:\TEMP\RSP100.tmp" 
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+SocketServer.cpp
+SocketServerDlg.cpp
+ClosingDialog.cpp
+RawSocket.cpp
+ThreadDispatcher.cpp
+RawSocketServerWorker.cpp
+CRITSECT.CPP
+Generating Code...
+Linking...
+LINK : warning LNK4089: all references to "comdlg32.dll" discarded by /OPT:REF
+
+
+
+SocketServer.exe - 0 error(s), 1 warning(s)
+--------------------Configuration: SocketServer - Win32 Debug--------------------
+Begining build with project "D:\cpp\RawSocketServerExample\SocketServer.dsp", at root.
+Active configuration is Win32 (x86) Application (based on Win32 (x86) Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MTd /W3 /Gm /GX /Zi /Od /I "." /I ".\CommonFiles\Library" /I ".\CommonFiles\Lib32" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR".\Debug/" /Fp".\Debug/SocketServer.pch" /Yu"stdafx.h" /Fo".\Debug/" /Fd".\Debug/" /FD /c "
+			"OLE Type Library Maker" with flags "/nologo /D "_DEBUG" /mktyplib203 /win32 "
+			"Win32 Resource Compiler" with flags "/l 0x409 /fo".\Debug/SocketServer.res" /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o".\Debug/SocketServer.bsc" "
+			"COFF Linker for 80x86" with flags "/nologo /entry:"wWinMainCRTStartup" /subsystem:windows /incremental:yes /pdb:".\Debug/SocketServer.pdb" /debug /machine:I386 /out:".\Debug/SocketServer.exe" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating command line "rc.exe /l 0x409 /fo".\Debug/SocketServer.res" /d "_DEBUG" "D:\cpp\RawSocketServerExample\SocketServer.rc"" 
+Creating temp file "f:\TEMP\RSP101.tmp" with contents </nologo /MTd /W3 /Gm /GX /Zi /Od /I "." /I ".\CommonFiles\Library" /I ".\CommonFiles\Lib32" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR".\Debug/" /Fp".\Debug/SocketServer.pch" /Yu"stdafx.h" /Fo".\Debug/" /Fd".\Debug/" /FD /c 
+"D:\cpp\RawSocketServerExample\SocketServer.cpp"
+"D:\cpp\RawSocketServerExample\SocketServerDlg.cpp"
+"D:\cpp\RawSocketServerExample\ClosingDialog.cpp"
+"D:\cpp\RawSocketServerExample\RawSocket.cpp"
+"D:\cpp\RawSocketServerExample\ThreadDispatcher.cpp"
+"D:\cpp\RawSocketServerExample\RawSocketServerWorker.cpp"
+"D:\cpp\RawSocketServerExample\CRITSECT.CPP"
+>
+Creating command line "cl.exe @f:\TEMP\RSP101.tmp" 
+Creating temp file "f:\TEMP\RSP102.tmp" with contents </nologo /MTd /W3 /Gm /GX /Zi /Od /I "." /I ".\CommonFiles\Library" /I ".\CommonFiles\Lib32" /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR".\Debug/" /Fp".\Debug/SocketServer.pch" /Yc"stdafx.h" /Fo".\Debug/" /Fd".\Debug/" /FD /c 
+"D:\cpp\RawSocketServerExample\StdAfx.cpp"
+>
+Creating command line "cl.exe @f:\TEMP\RSP102.tmp" 
+Creating temp file "f:\TEMP\RSP103.tmp" with contents </nologo /entry:"wWinMainCRTStartup" /subsystem:windows /incremental:yes /pdb:".\Debug/SocketServer.pdb" /debug /machine:I386 /out:".\Debug/SocketServer.exe" 
+.\Debug\SocketServer.obj
+.\Debug\SocketServerDlg.obj
+.\Debug\StdAfx.obj
+.\Debug\ClosingDialog.obj
+.\Debug\SocketServer.res
+.\Debug\RawSocket.obj
+.\Debug\ThreadDispatcher.obj
+.\Debug\RawSocketServerWorker.obj
+.\Debug\CRITSECT.OBJ>
+Creating command line "link.exe @f:\TEMP\RSP103.tmp" 
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+SocketServer.cpp
+SocketServerDlg.cpp
+ClosingDialog.cpp
+RawSocket.cpp
+ThreadDispatcher.cpp
+RawSocketServerWorker.cpp
+CRITSECT.CPP
+Generating Code...
+Linking...
+
+
+
+SocketServer.exe - 0 error(s), 0 warning(s)
+--------------------Configuration: SC - Win32 Release--------------------
+Begining build with project "D:\cpp\RawSocketServerExample\SocketClient\SC.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /G5 /MT /W3 /GX /O2 /Ob2 /I ".\CommonFiles\Library" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /Fp".\Release/SC.pch" /Yu"stdafx.h" /Fo".\Release/" /Fd".\Release/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "NDEBUG" "
+			"Browser Database Maker" with flags "/nologo /o".\Release/SC.bsc" "
+			"COFF Linker for 80x86" with flags "/nologo /subsystem:console /incremental:no /pdb:".\Release/SC.pdb" /machine:I386 /out:".\Release/SC.exe" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "f:\TEMP\RSP104.tmp" with contents </nologo /G5 /MT /W3 /GX /O2 /Ob2 /I "..\\" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /Fp".\Release/SC.pch" /Yu"stdafx.h" /Fo".\Release/" /Fd".\Release/" /FD /c 
+"D:\cpp\RawSocketServerExample\SocketClient\main.cpp"
+"D:\cpp\RawSocketServerExample\RawSocketServerWorker.cpp"
+"D:\cpp\RawSocketServerExample\ThreadDispatcher.cpp"
+"D:\cpp\RawSocketServerExample\RawSocket.cpp"
+>
+Creating command line "cl.exe @f:\TEMP\RSP104.tmp" 
+Creating temp file "f:\TEMP\RSP105.tmp" with contents </nologo /G5 /MT /W3 /GX /O2 /Ob2 /I "..\\" /D "WIN32" /D "NDEBUG" /D "_CONSOLE" /Fp".\Release/SC.pch" /Yc"stdafx.h" /Fo".\Release/" /Fd".\Release/" /FD /c 
+"D:\cpp\RawSocketServerExample\SocketClient\StdAfx.cpp"
+>
+Creating command line "cl.exe @f:\TEMP\RSP105.tmp" 
+Creating command line "link.exe /nologo /subsystem:console /incremental:no /pdb:".\Release/SC.pdb" /machine:I386 /out:".\Release/SC.exe"  .\Release\StdAfx.obj .\Release\main.obj .\Release\RawSocketServerWorker.obj .\Release\ThreadDispatcher.obj .\Release\RawSocket.obj" 
+Compiling...
+StdAfx.cpp
+Compiling...
+main.cpp
+RawSocketServerWorker.cpp
+ThreadDispatcher.cpp
+RawSocket.cpp
+Generating Code...
+Linking...
+LINK : warning LNK4089: all references to "comdlg32.dll" discarded by /OPT:REF
+
+
+
+SC.exe - 0 error(s), 1 warning(s)
+--------------------Configuration: SC - Win32 Debug--------------------
+Begining build with project "D:\cpp\RawSocketServerExample\SocketClient\SC.dsp", at root.
+Active configuration is Win32 (x86) Console Application (based on Win32 (x86) Console Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /G5 /MTd /W3 /Gm /GX /Zi /Od /I ".\CommonFiles\Library" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /FR".\Debug/" /Fp".\Debug/SC.pch" /Yu"stdafx.h" /Fo".\Debug/" /Fd".\Debug/" /FD /c "
+			"Win32 Resource Compiler" with flags "/l 0x409 /d "_DEBUG" "
+			"Browser Database Maker" with flags "/nologo /o".\Debug/SC.bsc" "
+			"COFF Linker for 80x86" with flags "/nologo /subsystem:console /incremental:yes /pdb:".\Debug/SC.pdb" /debug /machine:I386 /out:".\Debug/SC.exe" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating temp file "f:\TEMP\RSP106.tmp" with contents </nologo /G5 /MTd /W3 /Gm /GX /Zi /Od /I ".\CommonFiles\Library" /I "..\\" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /FR".\Debug/" /Fp".\Debug/SC.pch" /Yu"stdafx.h" /Fo".\Debug/" /Fd".\Debug/" /FD /c 
+"D:\cpp\RawSocketServerExample\SocketClient\main.cpp"
+"D:\cpp\RawSocketServerExample\RawSocketServerWorker.cpp"
+"D:\cpp\RawSocketServerExample\ThreadDispatcher.cpp"
+"D:\cpp\RawSocketServerExample\RawSocket.cpp"
+>
+Creating command line "cl.exe @f:\TEMP\RSP106.tmp" 
+Creating temp file "f:\TEMP\RSP107.tmp" with contents </nologo /G5 /MTd /W3 /Gm /GX /Zi /Od /I ".\CommonFiles\Library" /I "..\\" /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /FR".\Debug/" /Fp".\Debug/SC.pch" /Yc"stdafx.h" /Fo".\Debug/" /Fd".\Debug/" /FD /c 
+"D:\cpp\RawSocketServerExample\SocketClient\StdAfx.cpp"
+>
+Creating command line "cl.exe @f:\TEMP\RSP107.tmp" 
+Creating command line "link.exe /nologo /subsystem:console /incremental:yes /pdb:".\Debug/SC.pdb" /debug /machine:I386 /out:".\Debug/SC.exe"  .\Debug\StdAfx.obj .\Debug\main.obj .\Debug\RawSocketServerWorker.obj .\Debug\ThreadDispatcher.obj .\Debug\RawSocket.obj" 
+Compiling...
+StdAfx.cpp
+Compiling...
+main.cpp
+RawSocketServerWorker.cpp
+ThreadDispatcher.cpp
+RawSocket.cpp
+Generating Code...
+Linking...
+
+
+
+SC.exe - 0 error(s), 0 warning(s)

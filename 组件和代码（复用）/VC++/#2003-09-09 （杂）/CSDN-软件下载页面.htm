@@ -1,0 +1,348 @@
+<html>
+<head>
+<title>CSDN-软件下载页面</title>
+<meta http-equiv='Content-Type' content='text/html; charset=gb2312'>
+<link rel='stylesheet' type='text/css' href='/csdn.css'>
+</head>
+<div align="center">
+<style>
+.title0 {font-size:17px;font-family:arial;font-weight:bold;text-decoration:none;color:#FFFFFF;}
+A.title2:link {COLOR: #000000; TEXT-DECORATION: none}
+A.title2:visited {COLOR: #000000; TEXT-DECORATION: none}
+A.title2:active {COLOR: #ff0000; TEXT-DECORATION: none}
+A.title2:hover {COLOR: #ff0000; TEXT-DECORATION: none}
+</style>
+<script language="JavaScript">
+<!--
+function submit1(sign)
+{
+	var types=document.alogon.type.options[document.alogon.type.selectedIndex].value;				
+	if (document.alogon.name.value!="" && document.alogon.pass.value!="")
+	{
+		if (types!="1")
+			document.alogon.action="http://www.csdn.net/member/logon.asp";
+		else
+			document.alogon.action="http://expert.csdn.net/member/logon.asp";
+		if(sign)
+			document.alogon.submit();
+		//return true;
+	}
+	else
+	{
+		if (document.alogon.name.value=="")
+			alert("请输入用户名！");
+		if (document.alogon.pass.value=="")
+			alert("请输入密码");
+		return false;
+	}
+	return true;
+}
+function GetMyPass()
+{
+	if (document.alogon.name.value!="")
+	{
+		document.alogon.action="http://www.csdn.net/member/getpass.asp";
+		document.alogon.submit();
+	}
+	else
+	{
+		alert("请在姓名输入框里输入用户名或注册EMAIL！");
+	}	
+}
+// -->
+</script>
+<table width="770" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+      <td bgcolor="#004d99" width="20" height="25"></td>
+	  <form  method="POST" action="" target="_blank" name="alogon" onsubmit="return submit1(false);">
+      <td bgcolor="#004d99"><font color="#FFFFFF">姓 名:</font> 
+        <input type="text" name="name" size="7" class=FormText_1>
+      &nbsp;&nbsp; <font color="#FFFFFF">密 码: 
+      <input type="password" name="pass" size="7" class=FormText_1>
+      </font> 
+      <select name="type" class=FormText_1>
+        <option value="1" selected>我的论坛</option>
+        <option value="2">我的软件</option>
+        <option value="3">我的订单</option>
+        <option value="4">我的文档</option>
+        <option value="5">我的简历</option>
+      </select><INPUT TYPE="image" width=0 height=0>
+        &nbsp;&nbsp; <a href="" onclick="submit1(true);return false;"><font color="#FFFF33">进 入..</font></a>&nbsp;&nbsp; 
+        <a href="http://www.csdn.net/member/zc.asp" target="_blank"><font color="#FFFF33">[注 册]</font></a> &nbsp;&nbsp; <a href="javascript:GetMyPass()"><font color="#FFFF33">忘记密码</font> 
+        </a></td>
+	</form>
+    <td bgcolor="#990000" align="right" width="20"><img src="http://www.csdn.net/images/homeimage/top_1.gif" width="20" height="25"></td>
+	   <form action="http://www.csdn.net/search_ok.asp" method="post" target="_blank">
+      <td width="250" align="right" bgcolor="#009999"><font color="#FFFFFF">
+	  <font color="#FFFFFF"> 
+        <input type="text" name="search" size="15" class=FormText_1>
+        <select name="type" class=FormText_1>
+          <option value="1">新闻标题</option>
+		  <option value="2">软件名称</option>
+		  <option value="3">商品名称</option>
+		  <option value="4">文档标题</option>
+		  <option value="6">职位名称</option>		  
+        </select>
+        </font>      
+          <input type="submit" name="Submit" value="搜 索" class=td3>&nbsp;
+	  </font></td></form>
+
+	  
+  </tr>
+</table>
+<table width="770" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td height="70" width=150 align="center"><img src="http://www.csdn.net/images/homeimage/csdn.gif" width="120" height="60"></td>
+    <td align="center" width=470>
+	<script language="javascript">
+	var rand = Math.random().toString(); 
+	var ordval = parseInt(rand.substring(2,4)); 
+	function Showad(width)
+	{
+		if(width=='468')
+		{
+				document.write("<a href='http://market.csdn.net/teched2003.html' target='_blank'><img src='/adv//ed20030822001.gif' width=468 HEIGHT=60 border=0></a>");
+				return;
+		}
+		if(width=='120')
+		{
+		}
+		return;
+	}
+Showad('468')</script>
+	</td>
+    <td align="center" width=150>
+	<script>Showad('120')</script>	
+	</td>
+  </tr>
+</table>
+<table width="770" border="0" cellspacing="0" cellpadding="0">
+<tr><td bgcolor="#000000" colspan=2 width="770" height="1" align=center></td></tr>
+  <tr> 
+      <td bgcolor="#004d99" width="150" height="28" align=center><font class=title0>csdn.net</font></td>
+      <td width="620" align=center><script src="http://www.csdn.net/include/navigation1.js"></script>	  
+	  </td>
+  </tr>
+<tr><td bgcolor="#000000" colspan=2 width="770" height="1" align=center></td></tr>
+</table>
+  <table width="770" border="0" cellspacing="0" cellpadding="0">
+    <tr> 
+      <td bgcolor="#F3F9FC" width="10" height="23" ></td>
+      <td bgcolor="#F3F9FC" >
+	  <marquee behavior="scroll" scrollDelay=80 scrollamount="5" onmouseover="this.stop()" onmouseout="this.start()">
+		<script src="http://www.csdn.net/include/marquee.asp"></script>
+	  </marquee>
+	  </td>	  
+      <td bgcolor="#F3F9FC" width="101" align='right'>
+	  <script>document.write("<img src=http://count.csdn.net/count/pageview1.asp?columnid=5&itemid=15 border=0 width=0 height=0>");</script>
+	  <b>
+	  <script language="JavaScript">
+			<!--
+			document.ns = navigator.appName == "Netscape"
+			tmpDate = new Date();
+			date = tmpDate.getDate();
+			month= tmpDate.getMonth() + 1 ; 
+			if(document.ns)
+			{
+				year1=tmpDate.getYear()
+				year= year1.toString().substr(1,2);
+			}
+			else
+				year= tmpDate.getYear();
+			
+			document.write(year);
+			document.write(".");
+			document.write(month);
+			document.write(".");
+			document.write(date);
+			// -->
+			</script>
+	  </b>&nbsp;&nbsp;</td>
+    </tr>
+    <tr bgcolor="#999999"> 
+      <td colspan="3" height="1" ></td>
+    </tr>
+  </table>
+
+
+
+
+
+
+<object ID='WebBrowser1' WIDTH=0 HEIGHT=0 CLASSID='CLSID:8856F961-340A-11D0-A96B-00C04FD705A2'></object>
+<script language='JavaScript'><!--
+function print(){
+	WebBrowser1.ExecWB(6,1);
+}
+function mailto(){
+	document.mailto.email.value='';
+	var tmpText=prompt('请输入您朋友的EMail：',document.mailto.email.value);
+	if(tmpText){
+		document.mailto.email.value = tmpText;
+		document.mailto.submit();
+	}
+}
+// --></script>
+
+<body bgcolor='#FFFFFF' leftmargin='0' topmargin='0' marginwidth='0' marginheight='0'>
+<div align='center'>
+<table width='770' border='0' cellspacing='0' cellpadding='0'>
+<tr>
+<td width='620' valign='top' align='center'>
+<table width='620' border='0' cellspacing='0' cellpadding='0'>
+<tr>
+<td width='600' align='center'  height='10' >
+<div align='right'><a href='/' target='_blank'>CSDN</a>-<a href='/cnshare/' target='_blank'>软件频道</a>-软件分类: <a href='/cnshare/shtm/108.shtm'>C/C++类</a></div>
+</td>
+</tr>
+<tr>
+<td width='600' align='center' height='30' class=title3><font size='3'>GZip流压缩&Web流压缩组件(1.0.0.1)</font></td>
+</tr>
+<tr>
+<td align='center' height='2' >
+<p><font color='#999999'> <font color='#000000'>作者:</font><a href=mailto:Ashily@21cn.com>Ashily</a>　<font color='#000000'>网址:</font><a href=GZip流压缩&Web流压缩组件>GZip流压缩&Web流压缩组件</a>　<font color='#000000'>日期:</font>2002-1-4</font></p>
+</td>
+</tr>
+<tr align='right'>
+<td  height='10' ><font color='#999999'><a href='../openfile.asp?kind=1&id=5870'><img src='../../image/rjpd_downlond.GIF' width='80' height='20' border='0'></a>
+</font></td>
+</tr>
+<tr align='right'>
+<td height='10' ><script src='../../viewed.asp?softid=10433'></script>&nbsp;<font color='#999999'>(<font color='#000000'>软件大小</font>:246k)</font></td>
+</tr>
+<tr>
+<td align='center'  height='10' ></td>
+</tr>
+<tr>
+<td height='1' bgcolor='#999999'></td>
+</tr>
+<tr>
+<td ></td>
+</tr>
+</table>
+<table width='600' border='0' cellspacing='0' cellpadding='0'>
+<tr>
+<td height='20' >&nbsp;</td>
+</tr>
+<tr valign='top'>
+<td width='600' class=tdmain><script src='/adv/soft_ad.asp'></script>　　<br>　　作为信息时代象征的Internet的广泛使用是毋庸置疑的，作为Internet的终极用户，您可能经常有这种抱怨，我的机器够快的，但使用Internet时总觉得慢，作为ISP又抱怨用户不愿意掏钱买更好的线路，作为ICP又觉得没有太好的软件可以让数据的流量变小，这种受带宽限制的Internet着实让很多人伤心，何不制作一个数据压缩程序，将数据压缩一下，让他变得快些呢，Web&nbsp;&nbsp;Server和IE提供了部分这样的功能，也就是将网页的内容进行压缩，但这仅仅是部分功能。<br><br>　　对于象地理信息系统，图书查询系统，ERP系统等的，Internet要传输的数据量相当大，而象图形数据、XML数据、文本数据其压缩率是相当高的，甚至可以压缩到百分之几，正是由于这个要求，我制作了这么两个软件：一是传输流／文件的压缩软件，另一个是基于HTTP的压缩传输软件，这两个软件花费了我很多心血（尽管里面还有一些BUG），但我准备把他作为免费软件，来庆贺我的生日，如果你想使用或想得到源码请发邮件给我。<br><br>　　第一个软件，传输流／文件的压缩，利用Internet中惯常使用的gzip,&nbsp;&nbsp;deflate算法，可以和sun&nbsp;&nbsp;java的GZipInputStream和GZipOutputStream互操作<br>　　第二个软件，基于HTTP的压缩传输软件，可完全和IE的VBScript和JScript无缝融合<br>　　更详细信息请看使用文档Help.doc<br><br>　　例子文件包含这么几个：<br>	readme.doc	本文件<br>	help.doc	帮助文档<br>	GZCore.dll	gzip,deflate压缩/解压程序，使用前必须注册<br>	GZUtil.dll	GZCore.dll的缓冲区处理封装，用于Web的流处理，使用前必须注册<br>	GZip4Web.dll	基于Web的压缩文件/流的传送，使用前必须注册<br>	Test.zip	第一个产品的例子，&nbsp;&nbsp;C++代码工程<br>	Temp.asp	第一个产品的例子，&nbsp;&nbsp;直接用压缩程序发送GZip流<br>	SvrRecv.asp	第二个产品的例子，用于服务端处理接受的压缩流<br>	SvrSend.asp	第二个产品的例子，用于服务端处理发送的压缩流<br>	default.asp	第二个产品的例子，用于客户端处理处理接受文件,GZip流<br><br>　　如果您有好的建议或BUG汇报，请邮件给我，我先表示感谢。<br><br>　　重要说明，此软件不允许使用于商业用途，否则会受到牵连。<br>　　另注，由于本软件使用带来的任何损失，软件制作者概不负责。<br>　　<br><br>Ashley&nbsp;&nbsp;Wang<br>ashleywang@21cn.com<br>2001.12.24<br></td>
+</tr>
+</table>
+<table width='620' border='0' cellspacing='0' cellpadding='0'>
+<tr>
+<td align='center'  height='10' ></td>
+</tr>
+<tr align='right'>
+<td ><a href='javascript:mailto()'><img src='../../image/v_email.GIF' width='100' height='23' border='0'></a>&nbsp&nbsp<a href='javascript:print()'><img src='../../image/v_prinf.GIF' width='90' height='23' border='0'></a>&nbsp&nbsp</td>
+</tr>
+<tr>
+<td align='center'  height='10' ></td>
+</tr>
+<tr>
+<td height='1' bgcolor='#999999'></td>
+</tr>
+</table>
+</td>
+<td width='10' valign='top' align='center'>&nbsp;</td>
+<td width='150' valign='top' align='center' class=td1>
+<table width='150' border='0' cellspacing='0' cellpadding='0'>
+<tr>
+<td height='30'></td>
+</tr>
+<tr>
+<td><img src='../../image/rjpd_downpager.GIF' width='150' height='20'></td>
+</tr>
+<tr>
+<td>
+<table width='150' border='0' cellspacing='0' cellpadding='0'>
+<tr>
+<td ></td>
+<td height='10'></td>
+</tr>
+<tr>
+<td valign='top'><img src='../../image/1d.gif' width='20' height='16'></td>
+<td height='2'><a href='/cnshare/soft/10/10433.shtm'>
+GZip流压缩&Web流压缩组件</a></td>
+</tr>
+<tr>
+<td valign='top'><img src='../../image/1d.gif' width='20' height='16'></td>
+<td height='2'><a href='/cnshare/soft/10/10356.shtm'>
+文件捆绑器(VC源码)</a></td>
+</tr>
+<tr>
+<td valign='top'><img src='../../image/1d.gif' width='20' height='16'></td>
+<td height='2'><a href='/cnshare/soft/7/7210.shtm'>
+中国象棋源代码</a></td>
+</tr>
+<tr>
+<td valign='top'><img src='../../image/1d.gif' width='20' height='16'></td>
+<td height='2'><a href='/cnshare/soft/10/10117.shtm'>
+文件遍历</a></td>
+</tr>
+<tr>
+<td valign='top'><img src='../../image/1d.gif' width='20' height='16'></td>
+<td height='2'><a href='/cnshare/soft/9/9199.shtm'>
+轻轻松松抓图标(VC源码)</a></td>
+</tr>
+<tr>
+<td valign='top'><img src='../../image/1d.gif' width='20' height='16'></td>
+<td height='2'><a href='/cnshare/soft/9/9078.shtm'>
+爱圣(源码)</a></td>
+</tr>
+<tr>
+<td valign='top'><img src='../../image/1d.gif' width='20' height='16'></td>
+<td height='2'><a href='/cnshare/soft/8/8866.shtm'>
+封锁键盘鼠标的源程序（VC++）</a></td>
+</tr>
+<tr>
+<td valign='top'><img src='../../image/1d.gif' width='20' height='16'></td>
+<td height='2'><a href='/cnshare/soft/8/8208.shtm'>
+ts4lan v2.0 source</a></td>
+</tr>
+<tr>
+<td valign='top'><img src='../../image/1d.gif' width='20' height='16'></td>
+<td height='2'><a href='/cnshare/soft/8/8187.shtm'>
+加密之星袖珍版(VC源码)</a></td>
+</tr>
+<tr>
+<td valign='top'><img src='../../image/1d.gif' width='20' height='16'></td>
+<td height='2'><a href='/cnshare/soft/6/6235.shtm'>
+袖珍文件分割器(VC源码)</a></td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<form name='mailto' method='POST' action='/cnshare/mailto.asp'>
+<input type='hidden' name='softid' value=10433>
+<input type='hidden' name='softname' value=GZip流压缩&Web流压缩组件>
+<input type='hidden' name='email' value=''></form>
+</div>
+</body>
+  <br>
+  <hr noshade size="1" width="770">
+  <table width="500" border="0" cellspacing="0" cellpadding="0">
+    <tr align="center"> 
+      <td height="10" valign="bottom" > <a  href="http://www.csdn.net/intro/intro.asp?id=2">网站简介</a> 
+        - <a  href="http://www.csdn.net/intro/intro.asp?id=5">广告服务</a> - <a  href="http://www.csdn.net/map/map.shtm">网站地图</a> 
+        - <a  href="http://www.csdn.net/help/help.asp">帮助信息</a> - <a  href="http://www.csdn.net/intro/intro.asp?id=2">联系方式</a> - <a href="http://www.csdn.net/english">English</a> 
+      </td>
+      <td align="center" rowspan="3"><a href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001032100010"><img src="/images/biaoshi.gif" width="40" height="48" border="0"></a></td>
+    </tr>
+    <tr align="center">
+      <td valign="top" >百联美达美公司 版权所有 京ICP证020026号</td>
+    </tr>
+    <tr align="center"> 
+      <td valign="top" > <font face="Verdana">Copyright &copy; CSDN.net, Inc. 
+        All rights reserved</font></td>
+    </tr>
+    <tr>
+      <td height="15"></td>
+      <td></td>
+    </tr>
+  </table> 
+</div>
+</html>

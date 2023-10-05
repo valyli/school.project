@@ -1,0 +1,14 @@
+; ServerJNITLVModule.def : Declares the module parameters for the DLL.
+
+LIBRARY      "ServerJNITLVModule"
+DESCRIPTION  'ServerJNITLVModule Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here
+	SetTLV						@1
+	Java_Get_DataType			@2
+	Java_jni_TestDll_jstring	@3
+	Java_Get_jint				@4
+	Java_jni_TestDll_NewData	@5
+	GetTLV						@6
+	CreateFileMapping_Server	@7

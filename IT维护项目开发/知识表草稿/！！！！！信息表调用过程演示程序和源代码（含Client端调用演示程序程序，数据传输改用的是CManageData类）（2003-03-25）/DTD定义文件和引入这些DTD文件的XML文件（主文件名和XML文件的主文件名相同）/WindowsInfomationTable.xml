@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!DOCTYPE InfomationTable SYSTEM "InfomationTable.dtd">
+<InfomationTable>
+	<InfoServiceProviderId>1</InfoServiceProviderId><NameBaseId>1</NameBaseId><InfomationElementTableID>1</InfomationElementTableID><InfomationElementSection><InfomationElementID>1</InfomationElementID><Infomation>系统版本</Infomation><EnglishName>System Version</EnglishName><InfomationType>5</InfomationType><Description>操作系统的版本信息</Description></InfomationElementSection></InfomationTable>

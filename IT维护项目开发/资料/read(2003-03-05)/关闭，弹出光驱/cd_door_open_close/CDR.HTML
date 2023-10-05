@@ -1,0 +1,140 @@
+<!--#include virtual="header.shtml" -->
+<link rel="stylesheet" href="/global/global.css">
+
+<CENTER><H3><FONT COLOR="#AOAO99">
+CDR.EXE - Open/Close CD Drive(s) Programmatically
+</FONT></H3></CENTER><HR>
+
+<!-- Author and contact details -->
+
+This article was contributed by 
+<A HREF="mailto:chris@ndpcci.com">Chris Morse Sebrell</A>.
+
+<!-- Sample image - gif or jpg -->
+<P><IMG SRC="CDR.JPG" >
+
+<!-- For which environment is this code specific??? -->
+<p><u>Environment:</u> VC++ 4.x/5.x/6.x Win 95/98/NT/2K/ME
+
+<p>
+<!-- The 'p' starts a paragraph of normal text -->
+
+	In Windows Explorer, you can right-click on a CD-Drive and select the "Eject" option to open the CD Drive.  Unfortunately, there is no "Close" equivelant to Close the drive.  This project builds a command-line program that lets you open or close any or all of your CD-Drives.
+		
+<p>
+	To display the program's usage, run the program with no parameters:
+<PRE>
+	C:\> CDR
+	CDR by Chris M. Sebrell
+	usage:
+		CDR [open|close] [Drive-Letter|ALL]
+	example:
+		CDR open E:
+		CDR close ALL
+	C:\>
+</PRE>
+<p>
+	To OPEN or CLOSE the first logical CD Drive:
+<PRE>
+	C:\> CDR open
+	C:\> CDR close
+</PRE>
+<p>
+	If you have more than one CD Drive, you can specify a drive letter:
+<PRE>
+	C:\> CDR open g:
+	C:\> CDR close g:
+</PRE>
+<p>
+	If you have more than one CD Drive, you can specify ALL drives:
+<PRE>
+	C:\> CDR open all
+	C:\> CDR close all
+</PRE>
+
+<!-- create more blocks of article text as needed separated -->
+<!-- with the <p> HTML tag -->
+<p>
+	The main work routine in the program is CD_OpenClose(BOOL bOpen, TCHAR cDrive)
+<!-- start a block of source code -->
+<PRE>
+	// Open or Close CD Drive
+	// cDrive is Drive Letter to Open, or 0x01 for 'Default' drive
+	// Examples:
+	//    CD_OpenCloseDrive(TRUE, 'G');   // Open CD Door for Drive G: 
+	//    CD_OpenCloseDrive(FALSE, 'G');  // Close CD Door for Drive G:
+	//    CD_OpenCloseDrive(TRUE, 1);     // Open First Logical CD Drive Door
+	void CD_OpenCloseDrive(BOOL bOpenDrive, TCHAR cDrive)
+	{
+		MCI_OPEN_PARMS op;
+		MCI_STATUS_PARMS st;
+		DWORD flags;
+
+		TCHAR szDriveName[4];
+		strcpy(szDriveName, "X:");
+
+		::ZeroMemory(&op, sizeof(MCI_OPEN_PARMS));
+		op.lpstrDeviceType = (LPCSTR) MCI_DEVTYPE_CD_AUDIO;
+
+		if(cDrive > 1)
+		{
+			szDriveName[0] = cDrive;
+			op.lpstrElementName = szDriveName;
+			flags = MCI_OPEN_TYPE | MCI_OPEN_TYPE_ID | MCI_OPEN_ELEMENT | MCI_OPEN_SHAREABLE;
+		}
+		else flags = MCI_OPEN_TYPE | MCI_OPEN_TYPE_ID | MCI_OPEN_SHAREABLE;
+
+		if (!mciSendCommand(0,MCI_OPEN,flags,(unsigned long)&op)) 
+		{
+			st.dwItem = MCI_STATUS_READY;
+
+			if(bOpenDrive)
+				mciSendCommand(op.wDeviceID,MCI_SET,MCI_SET_DOOR_OPEN,0);
+			else
+				mciSendCommand(op.wDeviceID,MCI_SET,MCI_SET_DOOR_CLOSED,0);
+
+			mciSendCommand(op.wDeviceID,MCI_CLOSE,MCI_WAIT,0);
+		}
+	}
+<!-- end the block of source code -->
+</PRE>
+<p>
+	Next, to facilitate operating on ALL CD Drive Doors, add this routine (which calls the CD_OpenCloseDrive() function above):
+<PRE>
+	void CD_OpenCloseAllDrives(BOOL bOpenDrives)
+	{
+		// Determine All CD Drives and Open (or Close) each one
+		int nPos = 0;
+		UINT nCount = 0;
+		TCHAR szDrive[4];
+		strcpy(szDrive, "?:\\");
+
+		DWORD dwDriveList = ::GetLogicalDrives ();
+
+		while (dwDriveList) {
+			if (dwDriveList & 1) 
+			{
+				szDrive[0] = 0x41 + nPos;
+				if(::GetDriveType(szDrive) == DRIVE_CDROM)
+					CD_OpenCloseDrive(bOpenDrives, szDrive[0]);
+			}
+			dwDriveList >>= 1;
+			nPos++;
+		}
+	}
+</PRE>
+<p>
+	That's all!  The download includes source code & the compiled CDR.EXE program.  If anyone has additions, corrections, or a whole new approach to this, I'd love to hear about it.  I'll update this project with any new useful information I receive.
+<h3>Downloads</h3>
+<!-- demo and source files -->
+<A HREF="CDR.ZIP">
+Download project (Source & Executable)- 32 Kb</A><BR>
+
+<h3>History</h3>
+Date Posted:  November 20, 2000<BR>
+
+<!-- Only use the following if the article is updated --> 
+<!-- Date Last Updated:  [today's date in the format month day, year] -->
+
+<!--#include virtual="footer.shtml" -->
+

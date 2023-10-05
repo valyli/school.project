@@ -1,0 +1,90 @@
+.h1 {
+	FONT-WEIGHT: bold; COLOR: #cc6600
+}
+.listprice {
+	TEXT-DECORATION: line-through
+}
+.price {
+	COLOR: #990000
+}
+BODY {
+	FONT-SIZE: 12px; LINE-HEIGHT: 130%
+}
+TABLE {
+	FONT-SIZE: 12px; LINE-HEIGHT: 130%
+}
+INPUT {
+	FONT-SIZE: 12px; LINE-HEIGHT: 130%
+}
+SELECT {
+	FONT-SIZE: 12px; LINE-HEIGHT: 130%
+}
+TD {
+	FONT-SIZE: 12px; LINE-HEIGHT: 130%
+}
+A.second_dh:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.second_dh:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.second_dh:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ffffff; TEXT-DECORATION: underline
+}
+A:visited {
+	COLOR: #003399
+}
+A:active {
+	COLOR: #ff9933
+}
+A:link {
+	COLOR: #003399
+}
+A.h1:visited {
+	COLOR: #cc6600
+}
+A.h1:active {
+	COLOR: #ff9933
+}
+A.h1:link {
+	COLOR: #cc6600
+}
+.second_dh_filter {
+	FILTER: DropShadow(Color=#000000, OffX=1, OffY=1, Positive=1)
+}
+.colorgrey {
+	COLOR: #666666
+}
+.colorblue {
+	COLOR: #003399
+}
+.font14 {
+	FONT-SIZE: 14px
+}
+.bg_text {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #0066cc; BACKGROUND-COLOR: #e6f0ff
+}
+.center_text {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ff0000
+}
+.seach_bottom {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ffffff
+}
+.book_bg_text {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #539e25; BACKGROUND-COLOR: #f4fcf1
+}
+.video_bg_text {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #c04e4e; BACKGROUND-COLOR: #ffeeee
+}
+.music_bg_text {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #993399; BACKGROUND-COLOR: #f8e9f8
+}
+.game_bg_text {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #898a75; BACKGROUND-COLOR: #e9e9e4
+}
+.soft_bg_text {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #339999; BACKGROUND-COLOR: #d8f1f1
+}
+.h2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 18px; COLOR: #ff0000; LINE-HEIGHT: 25px
+}

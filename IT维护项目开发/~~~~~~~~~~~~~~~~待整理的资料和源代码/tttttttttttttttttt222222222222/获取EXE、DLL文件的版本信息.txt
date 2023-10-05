@@ -1,0 +1,9 @@
+How can I extract the version information stored in the RT_VERSION resource in an .exe/.dll file?
+
+ You can use the following Win32 api's to it: GetFileVersionInfo(), GetFileVersionInfoSize() and VerQueryValue(), defined in winver.h. Basically, the process is: Get the size of the memory block needed for the resource, by using GetFileVersionInfoSize(). Then, allocate memory, and call GetFileVersionInfo(). Then , just use VerQueryValue() to extract the relevant info. 
+
+References and samples:
+
+Bob Moore's sample 
+VC++ "Generic" Sample 
+

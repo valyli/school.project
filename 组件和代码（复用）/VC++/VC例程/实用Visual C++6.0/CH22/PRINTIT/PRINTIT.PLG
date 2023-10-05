@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: PrintIt - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/PrintIt.res" /d "_DEBUG" /d "_AFXDLL" "H:\工作中的书\kh\translate\Visual C++\program\ch22\PrintIt\PrintIt.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP9316.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/PrintIt.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"H:\工作中的书\kh\translate\Visual C++\program\ch22\PrintIt\MainFrm.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch22\PrintIt\PrintIt.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch22\PrintIt\PrintItDoc.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch22\PrintIt\PrintItView.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP9316.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP9317.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/PrintIt.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"H:\工作中的书\kh\translate\Visual C++\program\ch22\PrintIt\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP9317.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP9318.TMP" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/PrintIt.pdb" /debug /machine:I386 /out:"Debug/PrintIt.exe" /pdbtype:sept 
+".\Debug\MainFrm.obj"
+".\Debug\PrintIt.obj"
+".\Debug\PrintItDoc.obj"
+".\Debug\PrintItView.obj"
+".\Debug\StdAfx.obj"
+".\Debug\PrintIt.res"
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP9318.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+MainFrm.cpp
+PrintIt.cpp
+PrintItDoc.cpp
+PrintItView.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+PrintIt.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

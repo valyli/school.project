@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!ELEMENT OperationList (InfoModuleTypeProviderId,InfoModuleTypeId,InfoModuleProviderId,InfoServiceProviderId,NameBaseId,FunctionSection+)>
+<!ELEMENT InfoModuleTypeProviderId (#PCDATA)>
+<!ELEMENT InfoModuleTypeId (#PCDATA)>
+<!ELEMENT InfoModuleProviderId (#PCDATA)>
+<!ELEMENT InfoServiceProviderId (#PCDATA)>
+<!ELEMENT NameBaseId (#PCDATA)>
+<!ELEMENT FunctionSection (OperationID,InfomationElementTableID,InfomationElementID,OperationType,ServiceFileName,SupportSystemType,ModuleType,InterfaceFunction,ParameterType,IsStorageReturnValueInParameter,ParameterValue)>
+<!ELEMENT OperationID (#PCDATA)>
+<!ELEMENT InfomationElementTableID (#PCDATA)>
+<!ELEMENT InfomationElementID (#PCDATA)>
+<!ELEMENT OperationType (#PCDATA)>
+<!ELEMENT ServiceFileName (#PCDATA)>
+<!ELEMENT SupportSystemType (#PCDATA)>
+<!ELEMENT ModuleType (#PCDATA)>
+<!ELEMENT InterfaceFunction (#PCDATA)>
+<!ELEMENT ParameterType (#PCDATA)>
+<!ELEMENT IsStorageReturnValueInParameter (#PCDATA)>
+<!ELEMENT ParameterValue (#PCDATA)>

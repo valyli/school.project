@@ -1,0 +1,5 @@
+ How can I find the path my application or DLL was loaded from?
+
+ The Win32 API GetModuleFileName() is what you need. If you pass NULL as the module handle parameter, the function returns the path of the module that created the process (in other words - the application's exe file). If you want to find the path for a DLL, pass the DLLs instance handle, instead, which you can obtain from the first parameter in your DLL's DLLMain() function. 
+
+

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="gb2312"?>
+<InfomationTable>
+	<InfomationElementTableID>2</InfomationElementTableID>
+	<InfomationElementSection><InfomationElementID>1</InfomationElementID><Infomation>BIOSID</Infomation><EnglishName>BIOSID</EnglishName><InfomationType>5</InfomationType><Description>BIOSID</Description></InfomationElementSection><InfomationElementSection><InfomationElementID>2</InfomationElementID><Infomation>BIOSType</Infomation><EnglishName>BIOSType</EnglishName><InfomationType>5</InfomationType><Description>BIOSType</Description></InfomationElementSection><InfomationElementSection><InfomationElementID>3</InfomationElementID><Infomation>BIOSDate</Infomation><EnglishName>BIOSDate</EnglishName><InfomationType>5</InfomationType><Description>BIOSDate</Description></InfomationElementSection></InfomationTable>

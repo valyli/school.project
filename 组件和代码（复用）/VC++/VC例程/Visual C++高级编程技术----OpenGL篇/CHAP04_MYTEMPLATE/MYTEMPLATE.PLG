@@ -1,0 +1,59 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: MyTemplate - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/MyTemplate.res" /d "_DEBUG" "E:\Visual C++高级编程技术----OpenGL篇\Chap04_mytemplate\MyTemplate.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP41A0.TMP" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\Visual C++高级编程技术----OpenGL篇\Chap04_mytemplate\DlgAbout.cpp"
+"E:\Visual C++高级编程技术----OpenGL篇\Chap04_mytemplate\FormCommandView.cpp"
+"E:\Visual C++高级编程技术----OpenGL篇\Chap04_mytemplate\MainFrm.cpp"
+"E:\Visual C++高级编程技术----OpenGL篇\Chap04_mytemplate\MyTemplate.cpp"
+"E:\Visual C++高级编程技术----OpenGL篇\Chap04_mytemplate\MyTemplateDoc.cpp"
+"E:\Visual C++高级编程技术----OpenGL篇\Chap04_mytemplate\RenderView.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP41A0.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP41A1.TMP" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /Fp"Release/MyTemplate.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"E:\Visual C++高级编程技术----OpenGL篇\Chap04_mytemplate\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP41A1.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP41A2.TMP" with contents
+[
+opengl32.lib glu32.lib glaux.lib /nologo /subsystem:windows /incremental:yes /pdb:"Release/MyTemplate.pdb" /machine:I386 /out:"Release/MyTemplate.exe" /pdbtype:sept 
+".\Release\DlgAbout.obj"
+".\Release\FormCommandView.obj"
+".\Release\MainFrm.obj"
+".\Release\MyTemplate.obj"
+".\Release\MyTemplateDoc.obj"
+".\Release\RenderView.obj"
+".\Release\StdAfx.obj"
+".\Release\MyTemplate.res"
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP41A2.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+
+
+E:\Visual C++??????----OpenGL?\Chap04_mytemplate\MyTemplate.rc (31): error RC2135 : file not found: res\MyTemplate.ico
+
+
+E:\Visual C++??????----OpenGL?\Chap04_mytemplate\MyTemplate.rc (32): error RC2135 : file not found: res\MyTemplateDoc.ico
+
+
+E:\Visual C++??????----OpenGL?\Chap04_mytemplate\MyTemplate.rc (39): error RC2135 : file not found: res\Toolbar.bmp
+Error executing rc.exe.
+
+
+
+<h3>Results</h3>
+MyTemplate.exe - 3 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,981 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0069)http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml -->
+<HTML xmlns:fo = 
+"http://www.w3.org/1999/XSL/Format"><HEAD><TITLE>Xindice 简介</TITLE>
+<META 
+content="本文是对一个名为 Xindice（发音为 zeen-dea-chay）的开放源码 Native-XML 数据库系统的简介。它也是对 Native-XML 数据库概念的简介。" 
+name=ABSTRACT>
+<META 
+content="本文是对一个名为 Xindice（发音为 zeen-dea-chay）的开放源码 Native-XML 数据库系统的简介。它也是对 Native-XML 数据库概念的简介。" 
+name=DESCRIPTION>
+<META content="Xindice 简介" name=TITLE>
+<META 
+content="Native XML Databases,Native-XML 数据库 Xindice, web application,web 应用程序 open source,开放源码 developerWorks, web architecture,web 体系结构 arun gaikwad" 
+name=keywords>
+<SCRIPT language=JavaScript type=text/javascript>
+var forumURL = "";</SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript>
+var emailAbstract = "本文是对一个名为 Xindice（发音为 zeen-dea-chay）的开放源码 Native-XML 数据库系统的简介。它也是对 Native-XML 数据库概念的简介。";</SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript>
+var demoURL = "";</SCRIPT>
+
+<META 
+content="xml tutorials, xml training, xml standards, xml code, xml resources, xml programming, open source standards, xml how to xml 教程, xml 培训, xml 标准, xml 代码, xml 资源, xml 编程, 开放源码标准" 
+name=KEYWORDS>
+<META content=xml name=zone>
+<META content=papers_html name=dWCategory>
+<META content=/developerWorks/cn/cncontent.nsf/cn_dW_feedback name=OWNER>
+<META content=2002-10-8 name=LASTUPDATE>
+<META scheme=iso8601 content=2002-10-8 name=DC.DATE>
+<META content=GB2312 name=charset>
+<META content=Public name=SECURITY>
+<META scheme=rfc1766 content=zh-cn name=DC.LANGUAGE>
+<META content=text/xhtml name=FORMAT>
+<META content="Copyright (c) 2000 by IBM Corporation" name=COPYRIGHT>
+<META content=index,follow name=ROBOTS>
+<META content=cn name=IBM.COUNTRY>
+<META name=DOCUMENTCOUNTRYCODE value="us">
+<META name=DOCUMENTLANGUAGECODE value="en">
+<META http-equiv=PICS-Label 
+content='(PICS-1.1 "http://www.rsac.org/ratingsv01.html" l gen true comment "RSACi North America Server" by "webmaster@mail.software.ibm.com" for "http://www.ibm.com/software" on "1997.08.13T17:59-0800" r (n 0 s 0 v 0 l 0))'>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META http-equiv=Expires content=0>
+<SCRIPT language=JavaScript src="Xindice 简介.files/forumwindow.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT language=JavaScript src="Xindice 简介.files/style.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT language=JavaScript src="Xindice 简介.files/spinbox.js" 
+type=text/javascript></SCRIPT>
+
+<META content="MSHTML 6.00.2800.1141" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff leftMargin=2 topMargin=2 marginwidth="2" marginheight="2">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=tbgc width=160><A 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www.ibm.com/cn/&amp;origin=dwheader"><IMG 
+      height=47 alt=IBM src="Xindice 简介.files/ibm-logo.gif" width=160 
+      border=0></A></TD>
+    <TD class=tbg width=195><FONT color=#99ccff size=2><B>China</B></FONT><A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#main"><IMG 
+      height=1 alt="Skip to main content" src="Xindice 简介.files/c.gif" width=195 
+      border=0></A></TD>
+    <TD class=tbgc vAlign=top align=right width="100%">
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <FORM id=form1 name=form1 
+        action=http://210.82.67.149/cgi-bin/dWsearch.pl method=get>
+        <TBODY>
+        <TR>
+          <TD colSpan=6><IMG height=2 alt="" src="Xindice 简介.files/c.gif" 
+            width=390 border=0></TD></TR>
+        <TR vAlign=center>
+          <TD class=dwsearch><SELECT class=dwsearch name=selScope> <OPTION 
+              value=dW selected>dW 中国所有内容<OPTION 
+              value=dW>.................<OPTION value=dW>dW 中国技术专区:<OPTION 
+              value=comptZ>　组件技术<OPTION value=javaZ>　Java 技术<OPTION 
+              value=linuxZ>　Linux<OPTION 
+              value=xmlZ>　XML<OPTION>.................<OPTION value=dW>dW 
+              中国特别专题:<OPTION value=securityZ>　安全<OPTION 
+              value=unicodeZ>　Unicode<OPTION 
+              value=webarchZ>　网站架构<OPTION>.................<OPTION value=all>IBM 
+              全部内容</OPTION></SELECT></TD>
+          <TD><IMG height=1 alt="" src="Xindice 简介.files/c.gif" width=5 
+            border=0></TD>
+          <TD><INPUT class=dwsearch maxLength=100 size=15 name=UserRestriction 
+            height="15"></TD>
+          <TD><IMG height=1 alt="" src="Xindice 简介.files/c.gif" width=5 
+            border=0></TD>
+          <TD><INPUT type=image height=23 alt="Search button" width=64 
+            src="Xindice 简介.files/search.gif" value=Search border=0 
+          name=Search></TD>
+          <TD vAlign=top><IMG height=1 alt="" src="Xindice 简介.files/c.gif" 
+            width=30 border=0></TD></TR>
+        <TR vAlign=top>
+          <TD class=dwsmall colSpan=6><A style="COLOR: #ffffff" 
+            href="http://210.82.67.149/help.htm" target=_blank>搜索帮助</A><IMG 
+            height=1 alt="" src="Xindice 简介.files/c.gif" width=1 border=0></TD></TR>
+        <TR>
+          <TD colSpan=6><IMG height=4 alt="" src="Xindice 简介.files/c.gif" 
+            width=390 border=0></TD></TR></FORM></TBODY></TABLE></TD></TR><A id=main 
+  name=main>
+  <TR>
+    <TD class=hbg width=160 height=21>&nbsp;</TD>
+    <TD class=bbg vAlign=top colSpan=2 height=21>&nbsp;&nbsp;&nbsp; <A 
+      class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/&amp;origin=dwhead">IBM 
+      主页</A> <SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN> <A 
+      class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/products/index.shtml&amp;origin=dwhead">产品与服务</A> 
+      <SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN> <A class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/support/index.shtml&amp;origin=dwhead">支持与下载</A> 
+      <SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN> <A class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/account/index.shtml&amp;origin=dwhead">个性化服务</A></TD></TR></TBODY></TABLE><!-- Color Bar -->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR class=hil>
+    <TD width="100%" height=1><IMG height=1 alt="" 
+      src="Xindice 简介.files/c.gif" width=592></TD></TR>
+  <TR class=dwr1>
+    <TD width="100%" height=2><IMG height=2 alt="" 
+      src="Xindice 简介.files/c.gif" width=592></TD></TR>
+  <TR class=dwg3>
+    <TD width="100%" height=1><IMG height=1 alt="" 
+      src="Xindice 简介.files/c.gif" width=592></TD></TR>
+  <TR class=bbg>
+    <TD width="100%" height=1><IMG height=1 alt="" 
+      src="Xindice 简介.files/c.gif" width=592></TD></TR>
+  <TR class=hil>
+    <TD width="100%" height=1><IMG height=1 alt="" 
+      src="Xindice 简介.files/c.gif" width=592></TD></TR></TBODY></TABLE><!-- Breadcrumb Trail -->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR vAlign=top><!-- RIGHT GUTTER -->
+    <TD width=5><IMG height=1 alt="" src="Xindice 简介.files/c.gif" width=5 
+      border=0></TD>
+    <TD width="100%">
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD width="100%"><IMG height=4 alt="" src="Xindice 简介.files/c.gif" 
+            width=2 border=0><BR><B><A href="http://www.ibm.com/">IBM</A> : <A 
+            href="http://www-900.ibm.com/developerWorks/cn/index.shtml">developerWorks 
+            中国网站</A> : <A 
+            href="http://www-900.ibm.com/developerWorks/cn/xml/index.shtml">XML 
+            &amp; Web services</A> : <A 
+            href="http://www-900.ibm.com/developerWorks/cn/cnpapers.nsf/xml-papers-bynewest?OpenView&amp;count=500">所有的文章 
+            </A></B></TD>
+          <TD align=right width=136><A 
+            href="http://www-900.ibm.com/developerWorks/cn/index.shtml"><IMG 
+            height=24 alt="developerWorks 中国网站" 
+            src="Xindice 简介.files/dwlogo-small.gif" width=136 border=0></A></TD>
+          <TD width=5><IMG height=1 alt="" src="Xindice 简介.files/c.gif" 
+            width=5 border=0></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!-- End Breadcrumb Trail -->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD colSpan=5><IMG height=15 alt="" src="Xindice 简介.files/c.gif" width=5 
+      border=0></TD></TR>
+  <TR vAlign=top>
+    <TD width=2><IMG height=1 alt="" src="Xindice 简介.files/c.gif" width=2 
+      border=0></TD>
+    <TD><SPAN class=atitle>Xindice 简介</SPAN> </TD>
+    <TD width=8><IMG height=1 alt="" 
+      src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+      width=8 border=0></TD>
+    <TD align=right width=180><IMG height=1 alt="" 
+      src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+      width=180 border=0><BR><A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index_eng.shtml" 
+      target=_blank><B>英文原文</B></A> </TD>
+    <TD width=6><IMG height=1 alt="" 
+      src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+      width=6 border=0></TD></TR>
+  <TR vAlign=top>
+    <TD bgColor=#000000 colSpan=5><IMG height=1 alt="" 
+      src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+      width=100 border=0></TD></TR>
+  <TR vAlign=top>
+    <TD bgColor=#ffffff colSpan=5><IMG height=8 alt="" 
+      src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+      width=100 border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD width=5><IMG height=1 alt="" 
+      src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+      width=5 border=0></TD>
+    <TD width="100%">
+      <TABLE cellSpacing=0 cellPadding=0 width=168 align=right border=0>
+        <TBODY>
+        <TR>
+          <TD width=8><IMG height=21 alt="" 
+            src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+            width=5></TD>
+          <TD width=160>
+            <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+              <TBODY>
+              <TR>
+                <TD width=160 bgColor=#000000 height=1><IMG height=1 alt="" 
+                  src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                  width=160></TD></TR>
+              <TR>
+                <TD align=middle background="Xindice 简介.files/bg-gold.gif" 
+                height=5><B>内容：</B></TD></TR>
+              <TR>
+                <TD width=160 bgColor=#666666 height=1><IMG height=1 alt="" 
+                  src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                  width=160></TD></TR>
+              <TR>
+                <TD>
+                  <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#IDAYR1CF">简介</A></TD></TR>
+                    <TR>
+                      <TD height=1><IMG height=5 alt="" 
+                        src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                        width=160></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#IDALS1CF">为什么需要 
+                        Native-XML 数据库系统？</A></TD></TR>
+                    <TR>
+                      <TD height=1><IMG height=5 alt="" 
+                        src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                        width=160></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#IDACT1CF">Xindice 
+                        安装</A></TD></TR>
+                    <TR>
+                      <TD height=1><IMG height=5 alt="" 
+                        src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                        width=160></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#IDADU1CF">Xindice 
+                        管理</A></TD></TR>
+                    <TR>
+                      <TD height=1><IMG height=5 alt="" 
+                        src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                        width=160></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#IDAXAZCF">使用 
+                        XUpdate 进行数据库更新</A></TD></TR>
+                    <TR>
+                      <TD height=1><IMG height=5 alt="" 
+                        src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                        width=160></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#IDAPFZCF">结束语</A></TD></TR>
+                    <TR>
+                      <TD height=1><IMG height=5 alt="" 
+                        src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                        width=160></TD></TR><!--Standard links for every article-->
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#resources">参考资料</A></TD></TR>
+                    <TR>
+                      <TD height=1><IMG height=5 alt="" 
+                        src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                        width=160></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#author1">关于作者</A></TD></TR>
+                    <TR>
+                      <TD height=1><IMG height=5 alt="" 
+                        src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                        width=160></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#rating">对本文的评价</A></TD></TR>
+                    <TR>
+                      <TD><IMG height=10 alt="" 
+                        src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                        width=160></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+            <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+              <TBODY>
+              <TR>
+                <TD width=160 bgColor=#000000 height=1><IMG height=1 alt="" 
+                  src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                  width=160></TD></TR>
+              <TR>
+                <TD align=middle background="Xindice 简介.files/bg-gold.gif" 
+                height=5><B>相关内容：</B></TD></TR>
+              <TR>
+                <TD width=160 bgColor=#666666 height=1><IMG height=1 alt="" 
+                  src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                  width=160></TD></TR>
+              <TR>
+                <TD>
+                  <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD height=1><IMG height=5 alt="" 
+                        src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                        width=160></TD></TR></TBODY></TABLE></TD>
+                <TD><!--Related Zone content-->
+              <TR>
+                <TD><A href="http://www.ibm.com/developerworks/web/">更多 dW Web 
+                  体系结构参考资料</A></TD></TR>
+              <TR>
+                <TD height=1><IMG height=5 alt="" 
+                  src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                  width=160></TD></TR>
+              <TR>
+                <TD height=1><IMG height=5 alt="" 
+                  src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                  width=160></TD></TR><!--Related Zone Navigation content-->
+              <TR>
+                <TD>
+                  <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD width=160 bgColor=#000000 height=1><IMG height=1 
+                        alt="" 
+                        src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                        width=160></TD></TR>
+                    <TR>
+                      <TD align=middle background="Xindice 简介.files/bg-gold.gif" 
+                      height=5><A class=nav 
+                        href="http://www-900.ibm.com/developerworks/cn/xml/"><B>在 
+                        xml 和 Web 服务专区还有：</B></A></TD></TR>
+                    <TR>
+                      <TD width=160 bgColor=#666666 height=1><IMG height=1 
+                        alt="" 
+                        src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                        width=160></TD></TR>
+                    <TR>
+                      <TD>
+                        <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+                          <TBODY>
+                          <TR>
+                            <TD><A 
+                              href="http://www-900.ibm.com/developerWorks/cn/cnedu.nsf/xml-onlinecourse-bytitle?OpenView&amp;Count=500iew&amp;Count=500">教学</A></TD></TR>
+                          <TR>
+                            <TD height=1><IMG height=5 alt="" 
+                              src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                              width=160></TD></TR>
+                          <TR>
+                            <TD><A 
+                              href="http://www-900.ibm.com/developerWorks/cn/cntools.nsf/dw/xml-dtds-bysite?OpenDocument&amp;count=100">工具与产品</A></TD></TR>
+                          <TR>
+                            <TD height=1><IMG height=5 alt="" 
+                              src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                              width=160></TD></TR>
+                          <TR>
+                            <TD><A 
+                              href="http://www-900.ibm.com/developerWorks/cn/cnpapers.nsf/xml-papers-bynewest?OpenView&amp;count=500">所有的文章</A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD height=1><IMG height=5 alt="" 
+                  src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                  width=160></TD></TR>
+              <TR>
+                <TD>
+                  <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+                    <TBODY>
+                    <TR>
+                      <TD width=160 bgColor=#000000 height=1><IMG height=1 
+                        alt="" 
+                        src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                        width=160></TD></TR>
+                    <TR>
+                      <TD align=middle background="Xindice 简介.files/bg-gold.gif" 
+                      height=5><A class=nav 
+                        href="http://www-124.ibm.com/developerworks/oss/"><B>在开放源码项目专区还有：</B></A></TD></TR>
+                    <TR>
+                      <TD width=160 bgColor=#666666 height=1><IMG height=1 
+                        alt="" 
+                        src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                        width=160></TD></TR>
+                    <TR>
+                      <TD>
+                        <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+                          <TBODY>
+                          <TR>
+                            <TD><A 
+                              href="http://www-106.ibm.com/developerworks/views/opensource/tutorials.jsp">教程</A></TD></TR>
+                          <TR>
+                            <TD height=1><IMG height=5 alt="" 
+                              src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                              width=160></TD></TR>
+                          <TR>
+                            <TD><A 
+                              href="http://www-106.ibm.com/developerworks/views/opensource/projects.jsp">项目和补丁程序</A></TD></TR>
+                          <TR>
+                            <TD height=1><IMG height=5 alt="" 
+                              src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                              width=160></TD></TR>
+                          <TR>
+                            <TD><A 
+                              href="http://www-106.ibm.com/developerworks/views/opensource/code.jsp">代码和组件</A></TD></TR>
+                          <TR>
+                            <TD height=1><IMG height=5 alt="" 
+                              src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                              width=160></TD></TR>
+                          <TR>
+                            <TD><A 
+                              href="http://www-106.ibm.com/developerworks/views/opensource/articles.jsp">文章</A></TD></TR>
+                          <TR>
+                            <TD height=1><IMG height=5 alt="" 
+                              src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                              width=160></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+              <TR>
+                <TD height=1><IMG height=5 alt="" 
+                  src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                  width=160></TD></TR></TD></TR></TBODY></TABLE>
+            <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+              <TBODY>
+              <TR>
+                <TD width=150 bgColor=#000000 colSpan=2 height=2><IMG height=2 
+                  alt="" 
+                  src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                  width=160></TD></TR>
+              <TR>
+                <TD width=150 bgColor=#ffffff colSpan=2 height=2><IMG height=2 
+                  alt="" 
+                  src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(1).gif" 
+                  width=160></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><SPAN 
+      class=atitle2>开放源码 Native-XML 数据库系统</SPAN><BR>
+      <P><A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#author1">Arun 
+      Gaikwad</A>（<A 
+      href="mailto:agaikwat@comcast.net">agaikwat@comcast.net</A>）<BR>独立软件顾问<BR>2002 
+      年 9 月</P>
+      <BLOCKQUOTE>本文是对一个名为 Xindice（发音为 zeen-dea-chay）的开放源码 Native-XML 
+        数据库系统的简介。它也是对 Native-XML 数据库概念的简介。</BLOCKQUOTE>
+      <P><A name=IDAYR1CF><SPAN class=atitle2>简介</SPAN></A><BR>随着 XML 本身日益流行（Web 
+      服务就是 XML 的最新应用），Native-XML 数据库系统（NXD）的重要性也在不断增加。在提到“XML 
+      数据库”这一词时，会引发许多疑问，包括：</P>
+      <UL>
+        <LI>为什么要使用另一种类型的数据库技术呢？ 
+        <LI>它与关系数据库管理系统（RDBMS）有什么不同呢？ 
+        <LI>什么时候我应当使用 Native-XML 数据库系统，而什么时候应当使用关系数据库系统呢？ 
+        <LI>有哪些 Native-XML 数据库产品可供使用呢？ </LI></UL>
+      <P>我将在名为 Xindice 的 Native-XML 数据库系统的帮助下设法回答其中的一些问题。</P>
+      <P>Xindice 是一个开放源码 Native-XML 数据库系统。在本文中，您将学习如何：</P>
+      <UL>
+        <LI>安装 Xindice 
+        <LI>创建和删除集合 
+        <LI>将文档插入这些集合以及删除这些集合中的文档 
+        <LI>使用 XQuery 查询这些文档 </LI></UL>
+      <P>可以在命令行上执行这些操作，或者使用 Java API 将它们嵌入到 Java 程序中。您还将学习使用 Java API 来编写 JDBC 
+      样式的程序，以便与 Xindice 进行通信。</P>
+      <P><A name=IDALS1CF><SPAN class=atitle2>为什么需要 Native-XML 
+      数据库系统？</SPAN></A><BR>您可能认为 XML 
+      数据库系统是多余的，但一旦开始使用它，您会惊奇地发现如果没有它您都不知道该怎么活了。我这样说纯粹是出于个人体验。大约两年前当我第一次听说 
+      Native-XML 
+      数据库系统时，我完全没当一回事，并且认为它只是一种宣传而已。那个时候，我正参与为一家大型的金融经纪公司进行项目开发。我们打算使用 XML 
+      来发送和接收金融传输数据。有必要将传输数据保存在某种永久性存储器中。作为一名关系数据库程序员，我的首选是使用关系数据库系统保存这些 XML 
+      文档。我决定使用新型 RDBMS 支持的 CLOB（字符大对象，Character Large Object）来保存这些 XML 文档。因为 
+      RDBMS 支持 Java API 插入和检索 CLOB，所以这是一项非常轻松的任务。随着我们项目的进展，我发现这种方法有一个重要缺陷。它只能进行 
+      DIDO（进文档，出文档）。不能从 DOM 树检索部分文档或节点。我本来想找到一种非常有用的工具，它可以保存 XML 
+      文档、在节点上执行类似数据库的查询以及检索部分或整个文档。这时 NXD 引起了我的注意。如果我必须重新做这个项目，我肯定使用 
+      NXD。如果您需要简单的 DIDO 功能，您可能希望使用 RDBMS 保存您的文档，但是为了扩展功能（如 Query 和 Update），您应当考虑 
+      NXD。</P>
+      <P>有时候，人们通过将文档节点映射成关系格式来设法把 XML 文档保存到规范化的关系数据库表中。这种做法并非始终都是轻而易举的。从 RDBMS 
+      表构建 XML 文档相对容易，但不易存储它们，因为 XML 文档是层次结构的，并且几乎都是自由格式的。一些可能适合 NXD 的应用包括：</P>
+      <UL>
+        <LI>会员数据库 
+        <LI>目录 
+        <LI>公司门户 
+        <LI>部件数据库 
+        <LI>企业对企业文档交换 
+        <LI>Web 服务 </LI></UL>
+      <P>目前许多可用的数据库产品都宣称是 Native-XML 
+      数据库系统。当我对其中的一些产品进行评估时，发现有两个产品名列前茅。一个是商业产品，另一个是 Apache 的 
+      Xindice。那个商业产品的功能非常强大，并提供了 GUI 界面来执行管理工作，而 Xindice 是仍然在不断改进的开放源码项目。Xindice 
+      提供了命令行界面来管理数据库和 Java API。由于 Xindice 的简易性、开放源码特性和强大的集合管理，所以我选择它来编写这篇文章。由 
+      Chaudhri、Rashid 和 Zicari 编辑的即将出版的书籍 <I>XML Data Management</I> 
+      讲述了许多其它产品、案例研究和性能基准测试（请参阅<A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#resources">参考资料</A>）。</P>
+      <P>现在，让我们看看如何设置和使用 Xindice。</P>
+      <P><A name=IDACT1CF><SPAN class=atitle2>Xindice 
+      安装</SPAN></A><BR>安装和配置非常容易。我花了 15 分钟就安装并配置好了 Xindice。下面是所需的步骤：</P>
+      <OL>
+        <LI>从 <A href="http://www.xindice.org/" 
+        target=_new>http://www.xindice.org/</A> 下载 zip 文件。 
+        <LI>将文件解压缩到合适的目录。 
+        <LI>将 Xindice bin 
+        目录添加到路径中。例如，<CODE>C:\Xindice\xml-xindice-1.0\bin</CODE>。 
+        <LI>设置 JAVA_HOME 环境变量，使之指向安装 JDK 的位置。请记住，您需要 Sun 的 Java SDK 版本 1.3 
+        或更高版本。 
+        <LI>设置 XINDICE_HOME 环境变量，使之指向安装 Xindice 的位置。 
+        <LI>将 Xindice.jar 文件添加到 
+        CLASSPATH。例如，<CODE>C:\Xindice\xml-xindice-1.0\java\lib\Xindice.jar</CODE>。 
+
+        <LI>启动数据库服务器。例如，转到目录 <CODE>C:\Xindice\xml-xindice-1.0</CODE> 
+        <LI>输入 <CODE>startup</CODE> 启动运行在端口 4080 上的服务器 
+        <LI>从您的 Web 浏览器定位到 <CODE>http://localhost:4080</CODE>，并查看 Xindice Web 页面 
+        </LI></OL>
+      <P><A name=IDADU1CF><SPAN class=atitle2>Xindice 
+      管理</SPAN></A><BR>现在，您将执行一些基本的管理工作，如创建集合。集合类似于 RDBMS 
+      中的表。集合可以是基于模式的，也可以是基于非模式的。基于模式的集合需要以良好定义的 XML Schema 作为开始。Xindice 集合无需 XML 
+      Schema。让我们创建一个名为 <I>partsdb</I> 的集合。</P>
+      <P>在命令行上，输入：</P>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+xindiceadmin ac -c /db -n partsdb
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>响应是：</P>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+Created db/partsdb
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>如果您尝试再次执行该命令，响应是：</P>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+ERROR: Collection Duplicated.
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>您已经成功创建了集合。现在，通过输入下述命令列出集合：</P>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+xindiceadmin lc -c /db
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>响应是：</P>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+System
+Partsdb
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>要删除集合，可以使用参数 <I>dc</I>（不是 <I>lc</I>）。</P>
+      <P><A name=IDAKV1CF><SPAN 
+      class=atitle3>集合管理</SPAN></A><BR>在本节，我将为您演示如何管理集合。要将名为 parts.xml（请参阅<A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#listing1">清单 
+      1</A>）的新文档添加到集合中，使用命令：</P>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+xindice ad -c /db/partsdb -f C:\xml\parts.xml --n parts
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P><I>parts</I> 是键。如果省略了该键（它是 <CODE>--n</CODE> 选项），Xindice 会创建自己的键。</P><A 
+      name=listing1><B>清单 1. parts.xml</B></A>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+&lt;?xml version="1.0"?&gt;
+&lt;parts&gt;
+   &lt;part sku="101"&gt;
+      &lt;desc&gt;Ball Bearing&lt;/desc&gt;
+      &lt;maker&gt;S.K.F.&lt;/maker&gt;
+      &lt;instock&gt;Yes&lt;/instock&gt;
+      &lt;price&gt;$20.00&lt;/price&gt;
+   &lt;/part&gt;
+   &lt;part sku="102"&gt;
+      &lt;desc&gt;Gasket&lt;/desc&gt;
+      &lt;maker&gt;A.B.C.&lt;/maker&gt;
+      &lt;instock&gt;Yes&lt;/instock&gt;
+      &lt;price&gt;$2.00&lt;/price&gt;
+   &lt;/part&gt;
+&lt;/parts&gt;
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>当您添加文档时，应当验证其 XML 语法是否正确。现在，通过发出下列命令，您可以检索这个文档：</P>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+xindice rd -c /db/partsdb -n parts -f  <I>&lt;your file&gt;</I>
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>文档用您提供的文件名进行保存。如果省略了文件名，则显示文档。类似地，可以通过使用 <I>dd</I> 命令选项删除该文档。</P>
+      <P><A name=IDAVW1CF><SPAN 
+      class=atitle3>查询文档</SPAN></A><BR>您可以对文档执行一些查询。Xindice 使用类 XQuery 
+      的语法。如果您想检索 SKU 为 101 的部件的有关信息，请输入：</P>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+xindice xpath -c /db/partsdb -q /parts/part[@sku="101"]
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P><A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#listing2">清单 
+      2</A> 显示了文档中的查询结果。</P><A name=listing2><B>清单 2. 查询结果</B></A>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+&lt;?xml version="1.0"?&gt;
+&lt;part sku="101" xmlns:src="http://xml.apache.org/xindice/Query" 
+        src:col="/db/partsdb" src:key="parts"&gt;
+   &lt;desc&gt;Ball Bearing&lt;/desc&gt;
+   &lt;maker&gt;S.K.F.&lt;/maker&gt;
+   &lt;instock&gt;Yes&lt;/instock&gt;
+   &lt;price&gt;$20.00&lt;/price&gt;
+&lt;/part&gt;
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>请注意，Xindice 在 part 
+      标记中添加了一些新的属性。这些属性非常有用，可以用来发现文档的出处，例如集合（<CODE>src:col</CODE>）和键（<CODE>src:key</CODE>）。</P>
+      <P>命令行操作当然是有用的，但是，任何工具的实际能力在于利用 API 进行编程。Xindice 提供了 Java API 
+      来开发应用程序。我将简要研究如何编写 Java 程序来访问 Xindice。</P>
+      <P><A name=IDAWX1CF><SPAN class=atitle3>使用 Java 进行应用程序开发</SPAN></A><BR><A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#listing3">清单 
+      3</A> 显示了一个 Parts.java 程序，该程序访问存储在 partsdb 下的 parts 文档：</P><A 
+      name=listing3><B>清单 3. Parts.java 程序</B></A>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+import org.xmldb.api.base.*;
+import org.xmldb.api.modules.*;
+import org.xmldb.api.*;
+
+public class Parts {
+   public static void main(String[] args) throws Exception {
+      Collection col = null;
+      try {
+         String driver = "org.apache.xindice.client.xmldb.DatabaseImpl";
+         Class c = Class.forName(driver);
+
+         Database database = (Database) c.newInstance();
+         DatabaseManager.registerDatabase(database);
+
+         col = DatabaseManager.getCollection("xmldb:xindice:///db/partsdb");
+
+         String xpath = "//parts/part[@sku='101']";
+         XPathQueryService service =
+            (XPathQueryService) col.getService("XPathQueryService", "1.0");
+         ResourceSet resultSet = service.query(xpath);
+         ResourceIterator results = resultSet.getIterator();
+         while (results.hasMoreResources()) {
+            Resource res = results.nextResource();
+            System.out.println((String) res.getContent());
+         }
+      }
+      catch (XMLDBException e) {
+         System.err.println("XML:DB Exception occurred " + e.errorCode);
+      }
+      finally {
+         if (col != null) {
+            col.close();
+         }
+      }
+   }
+}
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>在您编译并执行了 Parts.java 程序之后，它输出类似于<A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#listing2">清单 
+      2</A> 的 XML 文档。Java 代码是自说明的，但是让我们研究一些细节。请注意，这个程序假定 Xindice 
+      服务器与该程序运行在相同的机器上，但这不是必需的。可以远程访问服务器。如果服务器运行在另一台机器上，例如 <I>myhost</I>，则 URI 
+      为：</P>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+Xindice://myhost:4080/db/partsdb
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>现在，研究一下代码的详细信息。开始的三行是所需的 Java 类的导入（import）语句。</P>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+import org.xmldb.api.base.*;    // imports base API module. 
+				// Required by all applications using XML:DB.
+import org.xmldb.api.*          // imports DatabaseManager Class.
+import org.xmldb.api.modules.*; // XpathQueryService is a module defined in the API.
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>下一步就是按照下列代码所做的那样注册数据库驱动程序：</P>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+         String driver = "org.apache.xindice.client.xmldb.DatabaseImpl";
+         Class c = Class.forName(driver);
+
+         Database database = (Database) c.newInstance();
+         DatabaseManager.registerDatabase(database);
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>一旦注册了驱动程序，通过调用 getCollection 方法并提供如下所示的数据库 URI，您就可以访问并检索集合：</P>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+         col = DatabaseManager.getCollection("xmldb:xindice:///db/partsdb");
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>接下来，获取对名为 XPathQueryService 服务的引用，如下所示：</P>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+         String xpath = "//parts/part[@sku='101']";
+         XPathQueryService service =
+            (XPathQueryService) col.getService("XPathQueryService", "1.0");
+         ResourceIterator results = resultSet.getIterator();
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>下面的步骤相当简单 — 只要遍历结果集并将其打印出来：</P>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+         while (results.hasMoreResources()) {
+            Resource res = results.nextResource();
+            System.out.println((String) res.getContent());
+         }
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P><A name=IDAXAZCF><SPAN class=atitle2>使用 XUpdate 
+      进行数据库更新</SPAN></A><BR>到目前为止，您已经了解了如何在 Xindice 中存储和检索 XML 
+      文档。但是如何更新这些已存储的文档呢？答案是使用 XUpdate。可以使用 XUpdate 添加和删除元素，以及更改元素的内容。更新 Xindice 
+      的最好方法就是将 XUpdate 语句嵌入到 Java 程序中。在本节，您将看到 XUpdate 的一些重要特性以及将 XUpdate 嵌入 
+      Java 程序的示例。</P>
+      <P><I><B>注：</B>XUpdate 规范仍在开发之中。</I> </P>
+      <P>使用 XUpdate 可以执行下列（和其它）重要操作。</P>
+      <UL>
+        <LI>
+        <P><A name=insbefore><B>xupdate:insert-before</B> </A>在选定的节点前插入新节点。</P>
+        <P>在 partsdb XML 文档中的 <I>maker</I> 元素前插入名为 <I>model</I> 的新元素，如下所示：</P>
+        <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+border=1>
+          <TBODY>
+          <TR>
+            <TD><PRE><CODE>
+&lt;xupdate:modifications version="1.0" xmlns:xupdate=http://www.xmldb.org/xupdate&gt;
+  &lt;xupdate:insert-before select="/parts/part[@sku="101"]/maker"&gt;
+    &lt;xupdate:element name="model"&gt;BAB-101&lt;/xupdate:element&gt;
+  &lt;/xupdate:insert-before&gt;
+&lt;/xupdate:modifications&gt;
+</CODE></PRE></TD></TR></TBODY></TABLE>
+        <P>这更新了 partsdb XML 文档。<A 
+        href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#listing4">清单 
+        4</A> 显示了新文档。</P><A name=listing4><B>清单 4. 新文档</B></A>
+        <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+border=1>
+          <TBODY>
+          <TR>
+            <TD><PRE><CODE>
+&lt;?xml version="1.0"?&gt;
+&lt;parts&gt;
+   &lt;part sku="101"&gt;
+     &lt;desc&gt;Ball Bearing&lt;/desc&gt;
+     &lt;model&gt;BAB-101&lt;/model&gt;
+     &lt;maker&gt;S.K.F.&lt;/maker&gt;
+     &lt;instock&gt;Yes&lt;/instock&gt;
+     &lt;price&gt;$20.00&lt;/price&gt;
+   &lt;/part&gt;
+   &lt;part sku="102"&gt;
+     &lt;desc&gt;Gasket&lt;/desc&gt;
+     &lt;maker&gt;A.B.C.&lt;/maker&gt;
+     &lt;instock&gt;Yes&lt;/instock&gt;
+     &lt;price&gt;$2.00&lt;/price&gt;
+   &lt;/part&gt;
+&lt;/parts&gt;
+</CODE></PRE></TD></TR></TBODY></TABLE><BR>
+        <LI>
+        <P><B>xupdate:insert-after</B> 在选定的节点后插入了一个新元素。</P>
+        <P><CODE>insert-after</CODE> 类似于 
+        <CODE>insert-before</CODE>，但是在选定的节点之后添加元素。可以如下所示插入元素 <I>model</I>：</P>
+        <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+border=1>
+          <TBODY>
+          <TR>
+            <TD><PRE><CODE>
+&lt;xupdate:modifications version="1.0" xmlns:xupdate=http://www.xmldb.org/xupdate&gt;
+  &lt;xupdate:insert-after select="/parts/part[@sku="101"]/desc"&gt;
+    &lt;xupdate:element name="model"&gt;BAB-101&lt;/xupdate:element&gt;
+  &lt;/xupdate:insert-after&gt;
+&lt;/xupdate:modifications&gt;
+</CODE></PRE></TD></TR></TBODY></TABLE><BR>
+        <LI>
+        <P><B>xupdate:update</B> 替换所有选定节点的子节点。</P>
+        <P>使用 <CODE>xupdate:update</CODE> 将 SKU 为 102 的部件的价格更改为 $31.00，如下所示：</P>
+        <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+border=1>
+          <TBODY>
+          <TR>
+            <TD><PRE><CODE>
+&lt;xupdate:modifications version="1.0" xmlns:xupdate=http://www.xmldb.org/xupdate&gt;
+   &lt;xupdate:update select="/parts/part[@sku="102"]/price"&gt;31.00&lt;/xupdate:update&gt;
+&lt;/xupdate:modifications&gt;
+</CODE></PRE></TD></TR></TBODY></TABLE><BR>
+        <LI>
+        <P><B>xupdate:append</B> 将特定的节点附加到选定的节点。</P>
+        <P>附加与插入非常相似。</P>
+        <LI>
+        <P><B>xupdate:remove</B> 除去选定的节点。</P>
+        <P>可以删除名为 <I>model</I> 元素，如下所示：</P>
+        <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+border=1>
+          <TBODY>
+          <TR>
+            <TD><PRE><CODE>
+&lt;xupdate:modifications version="1.0" xmlns:xupdate=http://www.xmldb.org/xupdate&gt;
+   &lt;xupdate:remove select="/parts/part[@sku="101"]/model"/&gt;
+&lt;/xupdate:modifications&gt;
+</CODE></PRE></TD></TR></TBODY></TABLE><BR>
+        <LI>
+        <P><B>xupdate:rename</B> 重命名选定的节点。</P>
+        <P>可以将元素 <I>maker</I> 重命名为 <I>manufacturer</I>，如下所示：</P>
+        <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+border=1>
+          <TBODY>
+          <TR>
+            <TD><PRE><CODE>
+&lt;xupdate:modifications version="1.0" xmlns:xupdate=http://www.xmldb.org/xupdate&gt;
+   &lt;xupdate:rename select="/parts/part/maker"&gt;manufacturer&lt;/xupdate:rename&gt;
+&lt;/xupdate:modifications&gt;
+</CODE></PRE></TD></TR></TBODY></TABLE><BR>
+        <LI>
+        <P><B>xupdate:variable</B> 定义变量。</P>
+        <P>使用 <CODE>xupdate:variable</CODE> 定义变量并将选定的节点赋给它。例如，假定您希望移动 
+        <I>price</I> 之后的 <I>instock</I> 节点。可以使用 
+        <CODE>xupdate:variable</CODE>、<CODE>xupdate:remove</CODE> 和 
+        <CODE>xupdate:insert-after</CODE> 完成该工作，如下所示：</P>
+        <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+border=1>
+          <TBODY>
+          <TR>
+            <TD><PRE><CODE>
+&lt;xupdate:modifications version="1.0" xmlns:xupdate=http://www.xmldb.org/xupdate&gt;
+  &lt;xupdate:variable name=v_instock select="/parts/part/instock"/&gt;
+  &lt;xupdate:remove select="/parts/part/instock"/&gt;
+  &lt;xupdate:insert-after select="/parts/part/price"&gt;
+    &lt;xupdate:value-of select="$v_instock"/&gt;
+  &lt;/xupdate:insert-after&gt;
+&lt;/xupdate:modifications&gt;
+</CODE></PRE></TD></TR></TBODY></TABLE></LI></UL>
+      <P>可以看到，XUpdate 是用来更新 XML 内容的一种非常简单的语言。还可以使用 Java API 来实现这些修改。<A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#listing5">清单 
+      5</A> 显示了一个简单的 Java 程序，它可以执行先前描述的 <A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#insbefore">xupdate:insert-before</A> 
+      操作。该程序类似于<A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#listing3">清单 
+      3</A> 中从数据库打印 XML 内容的 Parts.java 程序。</P><A name=listing5><B>清单 5. 执行 
+      xupdate:insert-before 的 Java 程序</B></A>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+import org.xmldb.api.base.*;
+import org.xmldb.api.modules.*;
+import org.xmldb.api.*;
+
+public class PartsXupdate {
+   public static void main(String[] args) throws Exception {
+      Collection col = null;
+      try {
+         String driver = "org.apache.xindice.client.xmldb.DatabaseImpl";
+         Class c = Class.forName(driver);
+         
+         Database database = (Database) c.newInstance();
+         DatabaseManager.registerDatabase(database);
+         
+         col = DatabaseManager.getCollection("xmldb:xindice:///db/partsdb");
+         
+         String xupd = "&lt;xupdate:modifications version="1.0"" +
+            "xmlns:xupdate=http://www.xmldb.org/xupdate&gt;" +
+            "&lt;xupdate:insert-before select="/parts/part[@sku="101"]/maker"&gt;" +
+            "&lt;xupdate:element name="model"&gt;BAB-101&lt;/xupdate:element&gt;" +
+            "&lt;/xupdate:insert-before&gt;" +
+            "&lt;/xupdate:modifications&gt;";
+            
+            /* We are using XUpdateQueryService */
+            XUpdateQueryService service =
+               (XUpdateQueryService) col.getService("XUpdateQueryService", "1.0");
+               
+            service.update(xupd);
+      }
+      catch (XMLDBException e) {
+         System.err.println("XML:DB Exception occurred " + e.errorCode);
+      }
+      finally {
+          if (col != null) { col.close();}
+      }
+   }
+}
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>请注意，我使用了 XUpdateQueryService 而不是 XPathQueryService。</P>
+      <P><A name=IDAPFZCF><SPAN 
+      class=atitle2>结束语</SPAN></A><BR>在这篇文章中，您已经了解了如何使用 Native-XML 数据库系统构建基于 XML 
+      的应用程序。NXD 不会代替 RDBMS。大多数情况下，NXD 和 RDBMS 可以一起使用。NXD 将来肯定会扮演非常重要的角色。</P>
+      <P><A name=resources><SPAN class=atitle2>参考资料</SPAN></A> 
+      <UL>
+        <LI>请下载 <A href="http://www.xindice.org/">Xindice</A>。 <BR><BR>
+        <LI>在 Ron Bourret 的网站上查找有关 <A href="http://www.rpbourret.com/xml/">XML 
+        和数据库</A>的信息。 <BR><BR>
+        <LI>请阅读 Cameron Laird 的系列文章“Adventures in high-performance XML 
+        persistence”的<A 
+        href="http://www-106.ibm.com/developerworks/xml/library/x-hipersis.html">第 
+        1 部分</A>和<A 
+        href="http://www-106.ibm.com/developerworks/xml/library/x-hipersis2.html">第 
+        2 部分</A>，这个系列的文章很好地讨论了存储 XML的其它方法（<I>developerWorks</I>，2002 年 7 月和 2002 
+        年 9 月）。 <BR><BR>
+        <LI>请查阅由 Akmal B. Chaudhri、Awais Rashid 和 Roberto Zicari 合著的 <I><A 
+        href="http://www.aw.com/catalog/academic/product/1,4096,0201844524,00.html">XML 
+        Data Management</A></I>（Addison-Wesley，ISBN 0201844524）。该书提供了大量有关 XML 
+        数据库产品体系结构、案例研究和性能基准测试的有用信息。 <BR><BR>
+        <LI>如果您有兴趣将 XML 存储在关系数据库系统中，请查看 Mark Graves 所著的 <I>Designing XML 
+        Databases</I>（Prentice-Hall，ISBN 0130889016）。这本书非常有用，它描述了几种方法，并提供了许多新型 
+        RDBMS 的 Java 代码示例。 <BR><BR>
+        <LI>请研究 Richard Edwards 博士有关 <A 
+        href="http://www.sees.bangor.ac.uk/~rich/research.html">XML 资源库</A>和 <A 
+        href="http://sourceforge.net/projects/minx/">minx</A> 的成果，这是用来将 XML 
+        文档存储在关系数据库中的通用体系结构。 <BR><BR>
+        <LI>在 Akmal B. Chaudhri 的<A 
+        href="http://www.btinternet.com/~webdatabases/html/benchmarks.html">基准测试页面</A>上可以发现许多 
+        XML 数据库系统的性能基准测试，它们是由世界各地的不同研究小组开发的。 </LI></UL>
+      <P></P>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD><A name=author1><SPAN class=atitle2>关于作者</SPAN><BR>Arun Gaikwad 
+            是一位独立软件顾问。在大型软件项目的设计、开发和实现方面，他有超过 11 年的工作经验。可以通过 <A 
+            href="mailto:agaikwat@comcast.net">agaikwat@comcast.net</A> 
+        与他联系。</TD></TR></TBODY></TABLE><!-- END PAPER BODY--></TD>
+    <TD width=10><IMG height=1 alt="" src="Xindice 简介.files/c.gif" width=10 
+      border=0></TD></TR></TBODY></TABLE><!-- END PAPER BODY--><BR clear=all><IMG 
+height=10 alt="" src="Xindice 简介.files/c.gif" width=100 border=0><BR>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD align=right width="100%"><A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-wa-xindice/index.shtml#top">到页首</A></TD>
+    <TD width=5><IMG height=1 alt="" src="Xindice 简介.files/c.gif" width=5 
+      border=0></TD></TR>
+  <TR vAlign=top>
+    <TD bgColor=#000000 colSpan=2><IMG height=1 alt="" 
+      src="Xindice 简介.files/c.gif" width=100 border=0></TD></TR>
+  <TR vAlign=top>
+    <TD bgColor=#ffffff colSpan=2><IMG height=8 alt="" 
+      src="Xindice 简介.files/c.gif" width=100 border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=10 width="100%" border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD>
+      <FORM action=/developerWorks/cn/cnratings.nsf/RateArticle?CreateDocument 
+      method=post><INPUT type=hidden value=" Xindice 简介" name=ArticleTitle> 
+      <INPUT type=hidden value=xml name=Zone> <INPUT type=hidden 
+      value=/developerWorks/cn/thankyou/feedback-xml.html name=RedirectURL> <A 
+      name=rating><B>您对这篇文章的看法如何？</B></A> 
+      <TABLE cellSpacing=0 cellPadding=0 width=600 border=0>
+        <TBODY>
+        <TR>
+          <TD colSpan=5><IMG height=8 alt="" src="Xindice 简介.files/c.gif" 
+            width=100 border=0></TD></TR>
+        <TR vAlign=top>
+          <TD width="16%"><INPUT type=radio value=5 name=Rating>真棒！(5)</TD>
+          <TD width="20%"><INPUT type=radio value=4 name=Rating>好文章 (4)</TD>
+          <TD width="24%"><INPUT type=radio value=3 name=Rating>一般；尚可 (3)</TD>
+          <TD width="22%"><INPUT type=radio value=2 name=Rating>需提高 (2)</TD>
+          <TD width="18%"><INPUT type=radio value=1 name=Rating>太差！ 
+        (1)</TD></TR></TBODY></TABLE><BR><B>意见？</B><BR><TEXTAREA name=Comments rows=5 wrap=virtual cols=60></TEXTAREA> 
+      <BR><BR><INPUT type=submit value=提交反馈意见></FORM></TD></TR>
+  <TR vAlign=top>
+    <TD bgColor=#ffffff><IMG height=8 alt="" src="Xindice 简介.files/c.gif" 
+      width=100 border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD align=right>(c) Copyright IBM Corp. 2001, (c) Copyright IBM China 
+      2001, All Right Reserved</TD></TR>
+  <TR vAlign=top>
+    <TD class=bbg height=21>&nbsp;&nbsp;<A class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/ibm/index.shtml&amp;origin=dwhead">关于 
+      IBM</A><SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN><A 
+      class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/ibm/privacy/index.shtml&amp;origin=dwhead">隐私条约</A><SPAN 
+      class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN><A class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/ibm/legal/index.shtml&amp;origin=dwhead">法律条款</A><SPAN 
+      class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN><A class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/ibm/contact/index.shtml&amp;origin=dwhead">联系 
+      IBM</A></TD></TR></TBODY></TABLE>
+<SCRIPT language=JavaScript1.2 src="Xindice 简介.files/stats.js" 
+type=text/javascript></SCRIPT>
+<NOSCRIPT><IMG height=1 alt="" 
+src="D:\Documents and Settings\Administrator.HOMESRV\桌面\Xindice 简介.files\c(2).gif" 
+width=1 border=0></NOSCRIPT> </A></BODY></HTML>

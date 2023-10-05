@@ -1,0 +1,387 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\ShutDown.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\ShutDown.ico"
+IDI_LOCK                ICON    DISCARDABLE     "res\\Lock.ico"
+IDI_KEY                 ICON    DISCARDABLE     "res\\Key.ico"
+IDI_ICON_INPUT          ICON    DISCARDABLE     "res\\Input.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 235, 63
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 定时关机V1.0"
+FONT 9, "宋体"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,7,7,21,21
+    LTEXT           "定时关机 1.0 版",IDC_STATIC,40,10,119,8,SS_NOPREFIX
+    LTEXT           "作者：chf   ",IDC_STATIC,40,26,57,8
+    DEFPUSHBUTTON   "确定",IDOK,178,7,50,14,WS_GROUP
+    LTEXT           "2000年8月",IDC_STATIC,99,26,64,8,SS_CENTERIMAGE
+    LTEXT           "如果需要源代码，请写信：",IDC_STATIC,40,41,102,8
+    LTEXT           "chf@371.net",IDC_STATIC_MAIL,143,40,72,9,SS_CENTERIMAGE
+END
+
+IDD_SHUTDOWN_DIALOG DIALOGEX 0, 0, 272, 213
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | 
+    WS_SYSMENU
+EXSTYLE WS_EX_APPWINDOW
+CAPTION "定时关机"
+FONT 9, "宋体"
+BEGIN
+    DEFPUSHBUTTON   "退出",IDOK,181,178,52,14
+    ICON            IDR_MAINFRAME,IDC_STATIC,5,7,20,20
+    CTEXT           "Static",IDC_STATIC_NOW,96,9,131,11,SS_CENTERIMAGE
+    GROUPBOX        "预定时间",IDC_STATIC,28,34,141,70
+    GROUPBOX        "自定义时间",IDC_STATIC,28,110,141,51
+    PUSHBUTTON      "隐藏",IDC_BUTTON_HIDE,112,178,52,14
+    PUSHBUTTON      "现在关机",IDC_BUTTON_SHUTDOWN,43,178,52,14
+    LTEXT           "现在时间：",IDC_STATIC,60,9,42,11,SS_CENTERIMAGE
+    CTEXT           "时间1：",IDC_STATIC,41,47,36,12,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    CTEXT           "时间2：",IDC_STATIC,41,65,36,12,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    CTEXT           "时间3：",IDC_STATIC,41,83,36,12,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    CTEXT           "到达时间：",IDC_STATIC,41,122,42,12,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    CTEXT           "多少时间以后：",IDC_STATIC,41,140,56,12,SS_CENTERIMAGE | 
+                    SS_SUNKEN
+    CONTROL         "DateTimePicker1",IDC_DATETIMEPICKER1,"SysDateTimePick32",
+                    DTS_RIGHTALIGN | DTS_UPDOWN | WS_TABSTOP | 0x8,94,46,54,
+                    13
+    CONTROL         "DateTimePicker1",IDC_DATETIMEPICKER2,"SysDateTimePick32",
+                    DTS_RIGHTALIGN | DTS_UPDOWN | WS_TABSTOP | 0x8,94,64,54,
+                    13
+    CONTROL         "DateTimePicker1",IDC_DATETIMEPICKER3,"SysDateTimePick32",
+                    DTS_RIGHTALIGN | DTS_UPDOWN | WS_TABSTOP | 0x8,94,82,54,
+                    13
+    CONTROL         "DateTimePicker1",IDC_DATETIMEPICKER4,"SysDateTimePick32",
+                    DTS_RIGHTALIGN | DTS_UPDOWN | WS_TABSTOP | 0x8,109,122,
+                    54,13
+    CONTROL         "DateTimePicker1",IDC_DATETIMEPICKER5,"SysDateTimePick32",
+                    DTS_RIGHTALIGN | DTS_UPDOWN | WS_TABSTOP | 0x8,109,140,
+                    54,13
+    CONTROL         "",IDC_STATIC,"Static",SS_GRAYFRAME | SS_SUNKEN,36,25,
+                    204,1
+    GROUPBOX        "条件设置",IDC_STATIC,180,34,68,127
+    CONTROL         "时间1",IDC_CHECK1,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    190,48,48,9
+    CONTROL         "时间2",IDC_CHECK2,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    190,66,48,9
+    CONTROL         "时间3",IDC_CHECK3,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    190,83,48,9
+    CONTROL         "时间4",IDC_CHECK4,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    190,124,48,9
+    CONTROL         "时间5",IDC_CHECK5,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,
+                    190,141,48,9
+    CONTROL         "",IDC_STATIC,"Static",SS_GRAYFRAME | SS_SUNKEN,186,103,
+                    55,1
+    CONTROL         "",IDC_STATIC,"Static",SS_GRAYFRAME | SS_SUNKEN,186,111,
+                    55,1
+END
+
+IDD_PWDDLG DIALOG DISCARDABLE  0, 0, 199, 113
+STYLE DS_SYSMODAL | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | 
+    WS_CAPTION
+CAPTION "系统锁定"
+FONT 9, "宋体"
+BEGIN
+    EDITTEXT        IDC_EDIT1,62,58,99,12,ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "确定",IDOK,43,80,50,14
+    PUSHBUTTON      "取消",IDCANCEL,106,80,50,14
+    ICON            IDI_LOCK,IDC_STATIC,16,19,20,20
+    GROUPBOX        "警告",IDC_STATIC,7,7,185,99
+    LTEXT           "系统已被锁定，如果您被授权使用",IDC_STATIC,53,19,122,9
+    LTEXT           "密码：",IDC_STATIC,35,60,20,8,SS_CENTERIMAGE
+    LTEXT           "这台机器，初始密码为""12345678""",IDC_STATIC,53,30,131,
+                    9
+    LTEXT           "请输入密码：（可用Tab键选择）",IDC_STATIC,53,42,122,9
+END
+
+IDD_KEYDLG DIALOG DISCARDABLE  0, 0, 169, 115
+STYLE DS_SYSMODAL | DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | 
+    WS_CAPTION
+CAPTION "请设置密码"
+FONT 9, "宋体"
+BEGIN
+    EDITTEXT        IDC_EDIT_OLDKEY,86,17,67,13,ES_PASSWORD | ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_NEWKEY,86,37,67,13,ES_PASSWORD | ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT_NEWKEYOK,86,57,67,13,ES_PASSWORD | 
+                    ES_AUTOHSCROLL
+    DEFPUSHBUTTON   "确定",IDOK,24,91,50,14
+    PUSHBUTTON      "取消",IDCANCEL,94,91,50,14
+    LTEXT           "输入旧密码：",IDC_STATIC,34,20,51,9,SS_CENTERIMAGE
+    LTEXT           "输入新密码：",IDC_STATIC,34,39,51,9,SS_CENTERIMAGE
+    LTEXT           "确认新密码：",IDC_STATIC,34,59,51,9,SS_CENTERIMAGE
+    GROUPBOX        "",IDC_STATIC,6,3,156,78
+    ICON            IDI_KEY,IDC_STATIC,9,10,20,20
+END
+
+IDD_DIALOG_INPUT DIALOG DISCARDABLE  0, 0, 270, 47
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "输入窗口"
+FONT 9, "宋体"
+BEGIN
+    EDITTEXT        IDC_EDIT_STRING,38,24,165,13,ES_AUTOHSCROLL | ES_NUMBER
+    DEFPUSHBUTTON   "确定",IDOK,212,6,50,14
+    PUSHBUTTON      "取消",IDCANCEL,212,24,50,14
+    LTEXT           "请输入数据：",IDC_STATIC_TITLE,30,9,160,9
+    ICON            IDI_ICON_INPUT,IDC_STATIC,3,6,21,21
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "080404B0"
+        BEGIN
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "ShutDown Microsoft 基础类应用程序\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "ShutDown\0"
+            VALUE "LegalCopyright", "版权所有 (C) 2000\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "ShutDown.EXE\0"
+            VALUE "ProductName", "ShutDown 应用程序\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x804, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 228
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 56
+    END
+
+    IDD_SHUTDOWN_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 5
+        RIGHTMARGIN, 265
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 206
+    END
+
+    IDD_PWDDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 192
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 106
+    END
+
+    IDD_KEYDLG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 162
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 108
+    END
+
+    IDD_DIALOG_INPUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 3
+        RIGHTMARGIN, 264
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 43
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MENU_MAIN MENU DISCARDABLE 
+BEGIN
+    POPUP "主菜单"
+    BEGIN
+        MENUITEM "显示主界面",                  ID_MENU_MAIN
+        MENUITEM "现在关机",                    ID_MENU_NOWSHUT
+        MENUITEM "重新启动计算机",              ID_MENU_REBOOT
+        MENUITEM SEPARATOR
+        MENUITEM "弹出 CD-ROM",                 ID_MENU_OUT
+        MENUITEM "关闭 CD-ROM",                 ID_MENU_CLOSE
+        MENUITEM SEPARATOR
+        MENUITEM "添加启动菜单",                ID_MENU_SHORTCUT
+        MENUITEM SEPARATOR
+        MENUITEM "锁定系统",                    ID_MENU_SYSTEM
+        MENUITEM "更改密码",                    ID_MENU_PASSWORD
+        MENUITEM "设置锁定时间",                ID_MENU_IDLEMIN
+        MENUITEM SEPARATOR
+        MENUITEM "关于...",                     ID_MENU_ABORT
+        MENUITEM SEPARATOR
+        MENUITEM "退出",                        ID_MENU_EXIT
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Cursor
+//
+
+IDC_HAND                CURSOR  DISCARDABLE     "res\\Hand.cur"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "关于 ShutDown(&A)..."
+    IDS_ALREADY_RUNNING     "定时关机 已经运行!"
+    IDS_INIT_IDLE_ERROR     "动态库初始化错误!"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_MENU_MAIN            "显示主界面"
+    ID_MENU_NOWSHUT         "现在关机"
+    ID_MENU_SHORTCUT        "在启动菜单添加本程序"
+    ID_MENU_OUT             "弹出 CD-ROM"
+    ID_MENU_CLOSE           "关闭 CD-ROM"
+    ID_MENU_SYSTEM          "锁定系统"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_MENU_PASSWORD        "更改锁定系统密码"
+    ID_MENU_IDLEMIN         "设置锁定时间"
+    ID_MENU_REBOOT          "重新启动计算机"
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\ShutDown.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

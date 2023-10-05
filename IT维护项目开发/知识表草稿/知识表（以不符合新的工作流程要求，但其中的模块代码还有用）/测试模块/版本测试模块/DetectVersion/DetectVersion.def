@@ -1,0 +1,9 @@
+; DetectVersion.def : Declares the module parameters for the DLL.
+
+LIBRARY      "DetectVersion"
+DESCRIPTION  'DetectVersion Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here
+	DetectWindowsVersion_DetectWindowsVersionModule		@1
+	DetectDLLVersion_DetectWindowsVersionModule			@2

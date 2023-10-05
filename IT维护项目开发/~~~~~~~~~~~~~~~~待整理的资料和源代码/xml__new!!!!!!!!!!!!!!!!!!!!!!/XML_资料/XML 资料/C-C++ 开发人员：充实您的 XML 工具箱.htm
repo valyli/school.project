@@ -1,0 +1,891 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0064)http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml -->
+<HTML 
+xmlns="http://www.w3.org/1999/xhtml"><HEAD><TITLE>C/C++ 开发人员：充实您的 XML 工具箱</TITLE>
+<META content="MSHTML 6.00.2800.1141" name=GENERATOR>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META content="developerWorks 中国网站" name=TITLE>
+<META content=papers_html name=dWCategory>
+<META content=xml name=zone>
+<META 
+content="本文针对哪些不熟悉 XML 开发的 C 和 C++ 程序员，概述了为 XML 开发作准备而装配的工具。工具表概述了常规 XML 工具，如 IDE 和模式设计器、解析器、XSLT 工具、SOAP 和 XML-RPC 库，以及其它可以在 C 和／或 C++ 中使用或者实际上以 C 和／或 C++ 编写的库。本文包括了关于在 Windows、Unix 和 Linux 上安装开放源码库的建议，还有关键 XML 术语的简要词汇表。" 
+name=ABSTRACT>
+<META 
+content="本文针对哪些不熟悉 XML 开发的 C 和 C++ 程序员，概述了为 XML 开发作准备而装配的工具。工具表概述了常规 XML 工具，如 IDE 和模式设计器、解析器、XSLT 工具、SOAP 和 XML-RPC 库，以及其它可以在 C 和／或 C++ 中使用或者实际上以 C 和／或 C++ 编写的库。本文包括了关于在 Windows、Unix 和 Linux 上安装开放源码库的建议，还有关键 XML 术语的简要词汇表。" 
+name=DESCRIPTION>
+<META content="C/C++ 开发人员：充实您的 XML 工具箱" name=TITLE>
+<META 
+content="XML tools advice, XML Toolbox, C developers, C++ developers, C/C++, XSLT processing, XML parsers, parsing, XSL transformation, SOAP, XML-RPC, Rick Parrish, XML 工具建议, XML 工具箱, C 开发人员, C++ 开发人员, XSLT 处理, XML 解析器, 解析, XSL 转换" 
+name=KEYWORDS>
+<SCRIPT language=JavaScript type=text/javascript>
+
+
+
+var forumURL = "http://www-105.ibm.com/developerWorks/xml_df.nsf/AllViewTemplate?OpenForm&amp;amp;amp;RestrictToCategory=34";
+
+
+
+ 
+
+
+
+</SCRIPT>
+
+<SCRIPT language=JavaScript src="C-C++ 开发人员：充实您的 XML 工具箱.files/forumwindow.js" 
+type=text/javascript>
+
+
+
+</SCRIPT>
+
+<META content=/developerWorks/cn/cncontent.nsf/cn_dW_feedback name=OWNER>
+<META content="2001**** initials" name=LASTUPDATE>
+<META content=Public name=SECURITY>
+<META content=text/xhtml name=FORMAT>
+<META content="Copyright (c) 2000 by IBM Corporation" name=COPYRIGHT>
+<META content=index,follow name=ROBOTS>
+<META content=cn name=IBM.COUNTRY>
+<META name=DOCUMENTCOUNTRYCODE value="us">
+<META name=DOCUMENTLANGUAGECODE value="en">
+<META http-equiv=PICS-Label 
+content='(PICS-1.1 "http://www.rsac.org/ratingsv01.html" l gen true comment "RSACi North America Server" by "webmaster@mail.software.ibm.com" for "http://www.ibm.com/software" on "1997.08.13T17:59-0800" r (n 0 s 0 v 0 l 0))'>
+<META http-equiv=Expires content=0>
+<SCRIPT language=JavaScript src="C-C++ 开发人员：充实您的 XML 工具箱.files/style.js" 
+type=text/javascript>
+
+
+
+</SCRIPT>
+
+<SCRIPT language=JavaScript src="C-C++ 开发人员：充实您的 XML 工具箱.files/spinbox.js" 
+type=text/javascript>
+
+
+
+</SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=2 topMargin=2 marginwidth="2" marginheight="2">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=tbgc width=160><A 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www.ibm.com/cn/&amp;origin=dwheader"><IMG 
+      height=47 alt=IBM src="C-C++ 开发人员：充实您的 XML 工具箱.files/ibm-logo.gif" 
+      width=160 border=0></A></TD>
+    <TD class=tbg width=195><FONT color=#99ccff size=2><B>China</B></FONT><A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#main"><IMG 
+      height=1 alt="Skip to main content" 
+      src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=195 border=0></A></TD>
+    <TD class=tbgc vAlign=top align=right width="100%">
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <FORM id=form1 name=form1 
+        action=http://210.82.67.149/cgi-bin/dWsearch.pl method=get>
+        <TBODY>
+        <TR>
+          <TD colSpan=6><IMG height=2 alt="" 
+            src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=390 border=0></TD></TR>
+        <TR vAlign=center>
+          <TD class=dwsearch><SELECT class=dwsearch name=selScope> <OPTION 
+              value=dW selected>dW 中国所有内容<OPTION 
+              value=dW>.................<OPTION value=dW>dW 中国技术专区:<OPTION 
+              value=comptZ>　组件技术<OPTION value=javaZ>　Java 技术<OPTION 
+              value=linuxZ>　Linux<OPTION 
+              value=xmlZ>　XML<OPTION>.................<OPTION value=dW>dW 
+              中国特别专题:<OPTION value=securityZ>　安全<OPTION 
+              value=unicodeZ>　Unicode<OPTION 
+              value=webarchZ>　网站架构<OPTION>.................<OPTION value=all>IBM 
+              全部内容</OPTION></SELECT></TD>
+          <TD><IMG height=1 alt="" src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" 
+            width=5 border=0></TD>
+          <TD><INPUT class=dwsearch maxLength=100 size=15 name=UserRestriction 
+            height="15"></TD>
+          <TD><IMG height=1 alt="" src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" 
+            width=5 border=0></TD>
+          <TD><INPUT type=image height=23 alt="Search button" width=64 
+            src="C-C++ 开发人员：充实您的 XML 工具箱.files/search.gif" value=Search border=0 
+            name=Search></TD>
+          <TD vAlign=top><IMG height=1 alt="" 
+            src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=30 border=0></TD></TR>
+        <TR vAlign=top>
+          <TD class=dwsmall colSpan=6><A style="COLOR: #ffffff" 
+            href="http://210.82.67.149/help.htm" target=_blank>搜索帮助</A><IMG 
+            height=1 alt="" src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=1 
+            border=0></TD></TR>
+        <TR>
+          <TD colSpan=6><IMG height=4 alt="" 
+            src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=390 
+        border=0></TD></TR></FORM></TBODY></TABLE></TD></TR><A id=main name=main>
+  <TR>
+    <TD class=hbg width=160 height=21>&nbsp;</TD>
+    <TD class=bbg vAlign=top colSpan=2 height=21>&nbsp;&nbsp;&nbsp; <A 
+      class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/&amp;origin=dwhead">IBM 
+      主页</A> <SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN> <A 
+      class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/products/index.shtml&amp;origin=dwhead">产品与服务</A> 
+      <SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN> <A class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/support/index.shtml&amp;origin=dwhead">支持与下载</A> 
+      <SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN> <A class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/account/index.shtml&amp;origin=dwhead">个性化服务</A></TD></TR></TBODY></TABLE><!-- Color Bar -->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR class=hil>
+    <TD width="100%" height=1><IMG height=1 alt="" 
+      src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=592></TD></TR>
+  <TR class=dwr1>
+    <TD width="100%" height=2><IMG height=2 alt="" 
+      src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=592></TD></TR>
+  <TR class=dwg3>
+    <TD width="100%" height=1><IMG height=1 alt="" 
+      src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=592></TD></TR>
+  <TR class=bbg>
+    <TD width="100%" height=1><IMG height=1 alt="" 
+      src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=592></TD></TR>
+  <TR class=hil>
+    <TD width="100%" height=1><IMG height=1 alt="" 
+      src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=592></TD></TR></TBODY></TABLE><!-- Breadcrumb Trail -->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR vAlign=top><!-- RIGHT GUTTER -->
+    <TD width=5><IMG height=1 alt="" src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" 
+      width=5 border=0></TD>
+    <TD width="100%">
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD width="100%"><IMG height=4 alt="" 
+            src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=2 border=0><BR><B><A 
+            href="http://www.ibm.com/">IBM</A> : <A 
+            href="http://www-900.ibm.com/developerWorks/cn/index.shtml">developerWorks 
+            中国网站</A> : <A 
+            href="http://www-900.ibm.com/developerWorks/cn/xml/index.shtml">XML 
+            &amp; Web services</A> : <A 
+            href="http://www-900.ibm.com/developerWorks/cn/cnpapers.nsf/xml-papers-bynewest?OpenView&amp;count=500">所有的文章 
+            </A></B></TD>
+          <TD align=right width=136><A 
+            href="http://www-900.ibm.com/developerWorks/cn/index.shtml"><IMG 
+            height=24 alt="developerWorks 中国网站" 
+            src="C-C++ 开发人员：充实您的 XML 工具箱.files/dwlogo-small.gif" width=136 
+            border=0></A></TD>
+          <TD width=5><IMG height=1 alt="" 
+            src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=5 
+        border=0></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!-- End Breadcrumb Trail -->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD colSpan=5><IMG height=15 alt="" 
+      src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=5 border=0></TD></TR>
+  <TR vAlign=top>
+    <TD width=2><IMG height=1 alt="" src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" 
+      width=2 border=0></TD>
+    <TD><SPAN class=atitle>C/C++ 开发人员：充实您的 XML 工具箱</SPAN></TD>
+    <TD width=8><IMG height=1 alt="" src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" 
+      width=8 border=0></TD>
+    <TD vAlign=bottom align=right width=180><NOBR><A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index_eng.shtml" 
+      target=_blank><B>英文原文</B></A></NOBR></TD>
+    <TD width=6><IMG height=1 alt="" src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" 
+      width=6 border=0></TD></TR>
+  <TR vAlign=top>
+    <TD bgColor=#000000 colSpan=5><IMG height=1 alt="" 
+      src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=100 border=0></TD></TR>
+  <TR vAlign=top>
+    <TD bgColor=#ffffff colSpan=5><IMG height=8 alt="" 
+      src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=100 
+border=0></TD></TR></TBODY></TABLE><!-- START BODY AREA-->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD width=5><IMG height=1 alt="" src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" 
+      width=5 border=0></TD>
+    <TD width="100%"><!-- START STANDARD SIDEBAR AREA-->
+      <TABLE cellSpacing=0 cellPadding=0 width=168 align=right border=0>
+        <TBODY>
+        <TR>
+          <TD width=8><IMG height=21 alt="" 
+            src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=5></TD>
+          <TD width=160>
+            <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+              <TBODY>
+              <TR>
+                <TD width=160 bgColor=#000000 height=1><IMG height=1 alt="" 
+                  src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=160></TD></TR>
+              <TR>
+                <TD align=middle 
+                background="C-C++ 开发人员：充实您的 XML 工具箱.files/bg-gold.gif" 
+                  height=5><B>内容：</B></TD></TR>
+              <TR>
+                <TD width=160 bgColor=#666666 height=1><IMG height=1 alt="" 
+                  src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=160></TD></TR>
+              <TR>
+                <TD align=right>
+                  <TABLE cellSpacing=0 cellPadding=3 width="98%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#tools">两套工具</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#dialect">设计您自己的 
+                        XML 方言</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#design">设计工具</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#Ctools">C 
+                        和 C++ 工具</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#parsers">解析器</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#transforms">XML 
+                        转换：XSLT 和 XQuery</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#messaging">消息传递：XML-RPC 
+                        和 SOAP 工具</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#conclusion">结束语</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#XMLterminology">XML 
+                        术语</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#resources">参考资料</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#author1">关于作者</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#rating">对本文的评价</A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!-- Start Related Content Area-->
+            <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+              <TBODY>
+              <TR>
+                <TD width=160 bgColor=#000000 height=1><IMG height=1 alt="" 
+                  src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=160></TD></TR>
+              <TR>
+                <TD align=middle 
+                background="C-C++ 开发人员：充实您的 XML 工具箱.files/bg-gold.gif" 
+                  height=5><B>相关内容：</B></TD></TR>
+              <TR>
+                <TD width=160 bgColor=#666666 height=1><IMG height=1 alt="" 
+                  src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=160></TD></TR>
+              <TR>
+                <TD align=right>
+                  <TABLE cellSpacing=0 cellPadding=3 width="98%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><A 
+                        href="http://www-106.ibm.com/developerWorks/xml/library/java-xml-toolkit/index.html">Java 
+                        developers' XML toolbox</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/perl-xml-toolkit/index.shtml">Perl 
+                        开发人员的 XML 工具箱</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/php-xml-toolkit/index.shtml">PHP 
+                        开发人员的 XML 工具箱</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/index.shtml">dW 
+                        XML 的更多参考资料</A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+            <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+              <TBODY>
+              <TR>
+                <TD width=150 bgColor=#000000 colSpan=2 height=2><IMG height=2 
+                  alt="" src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" 
+              width=160></TD></TR>
+              <TR>
+                <TD width=150 bgColor=#ffffff colSpan=2 height=2><IMG height=2 
+                  alt="" src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" 
+              width=160></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><SPAN 
+      class=atitle2>对循序渐进使用 XML 的 C 和 C++ 程序员的工具的建议</SPAN>
+      <P><A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#author1">Rick 
+      Parrish</A>（<A 
+      href="mailto:rfmobile@swbell.net">rfmobile@swbell.net</A>）<BR>独立顾问<BR>2001 
+      年 9 月</P>
+      <BLOCKQUOTE>本文针对哪些不熟悉 XML 开发的 C 和 C++ 程序员，概述了为 XML 开发作准备而装配的工具。工具表概述了常规 
+        XML 工具，如 IDE 和模式设计器、解析器、XSLT 工具、SOAP 和 XML-RPC 库，以及其它可以在 C 和／或 C++ 
+        中使用或者实际上以 C 和／或 C++ 编写的库。本文包括了关于在 Windows、Unix 和 Linux 上安装开放源码库的建议，还有关键 
+        XML 术语的简要词汇表。</BLOCKQUOTE>
+      <P>似乎满眼望去，一些新的以源码形式发布的与 XML 相关的工具都是用 Java 编写。尽管 Java 在 XML 竞技场中占有明显优势，许多 
+      C/C++ 程序员还是在进行 XML 的开发，而且现在有许多 XML 工具可供 C 和 C++ 程序员使用。我们将面对 XML 
+      库问题，如验证、模式和 API 模型。接着，我们将研究常规 XML 工具的集合，如 IDE 
+      和模式设计器。最后，我们将用一个列表进行总结，并且讨论可以在 C 和／或 C++ 中使用或者实际上以 C 和／或 C++ 编写的库。</P>
+      <P>在本文中，将跳过关于使用 XML 的争论；我假设您已经拥有充分的理由来等待掌握这种技术。另外，我们将把 XML 的更详细说明留给<A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#resources">参考资料</A>中的背景资源讲述。只要说 
+      XML 是数据交换的标准（不仅是文件格式）就够了。数据可以是以 XML 
+      格式的应用程序文件形式来进行交换的，或者通过网络连接进行交换，该网络连接只是因在线事务结束或网络连接关闭而遭到放弃之前存在短暂片刻。</P>
+      <P>此外，本文并不是评价工具的比较性评论。我的目的是说明您可能需要的工具类型，并向您指出可能的候选工具。您仍需要根据项目需要来研究、测试和比较工具特征，以装配最终的工具箱。</P>
+      <P><A id=tools name=tools><SPAN class=atitle2>两套工具</SPAN></A><BR>要将 XML 
+      合并到自己的软件项目中，在您的工具箱里应该有两套工具。第一套是方言设计器（或者更适当的叫法是“模式设计器”）。第二套工具包括将解析和 XML 
+      生成特性添加到应用程序的软件库。</P>
+      <P><A id=dialect name=dialect><SPAN class=atitle2>设计您自己的 XML 
+      方言</SPAN></A><BR>XML 方言只是一组特殊的 XML 标记，以及一些关于如何组合这些标记的规则。目前，指定或定义 XML 
+      方言的两种主要方式是通过文档类型定义（DTD）或 XML 模式。我将把这两者都称作<I>模式</I>。</P>
+      <P>您的项目域也许已经有了一个为您设计的特定模式。如果没有，您可以使用纯文本编辑器创建自己的模式。更精细的方法是使用可以检查语法的真正<I> 
+      方言设计器</I>。（当以后尝试使用错误的模式来验证 XML 数据时，该模式不会起作用。）</P>
+      <P><A id=design name=design><SPAN 
+      class=atitle2>设计工具</SPAN></A><BR>目前，大多数程序员的文本编辑器 — 尤其是在 IDE 中找到的文本编辑器 — 
+      拥有正规的宏和模板支持，可用于某些特性，如语法突出显示和自动完成部分输入的字或短语。因此，我省略了关于任何只执行语法突出显示和自动完成的 XML 
+      编辑器的讨论。Microsoft Word 或 Emacs 宏就可以实现这些特性，因此“XML 编辑器”应该有更多特性。</P>
+      <P>表 1 中显示的工具分为三种类别：</P>
+      <UL>
+        <LI>IDE（集成开发环境，即瑞士军刀方法）
+        <LI>模式敏感的 XML 编辑器（补充在模式或 DTD 中找到的许可标记结构和属性）
+        <LI>模式设计器（用于编写自己的模式或 DTD）</LI></UL><BR><BR>
+      <P>因为表 1 中的所有工具都运行应用程序，所以它们适合于所有 XML 开发人员 — 不仅是那些使用 C++ 
+      的开发人员（与本文中其它表中列出的工具不同）。</P><B>表 1. 各种平台的方言设计工具</B> 
+      <TABLE width="100%" border=1>
+        <TBODY>
+        <TR>
+          <TD><B>产品</B></TD>
+          <TD><B>供应商</B></TD>
+          <TD><B>描述</B></TD>
+          <TD><B>许可证</B></TD>
+          <TD><B>平台</B></TD></TR>
+        <TR>
+          <TD><A 
+            href="http://www.extensibility.com/solutions/turbo_xml/index.htm">Turbo 
+            XML</A></TD>
+          <TD>TIBCO/Extensibility</TD>
+          <TD>XML 模式／DTD 设计器和 IDE</TD>
+          <TD>商业</TD>
+          <TD>Java、Win32</TD></TR>
+        <TR>
+          <TD><A 
+            href="http://www.activestate.com/Products/Productivity/ASPN_Komodo/index.html">Komodo</A></TD>
+          <TD>Active State</TD>
+          <TD>XML 编辑器和 IDE</TD>
+          <TD>商业</TD>
+          <TD>Linux、Win32、其它</TD></TR>
+        <TR>
+          <TD><A href="http://www.xmlspy.com/">XML Spy</A></TD>
+          <TD>Altova</TD>
+          <TD>用于 XML 编辑和模式设计的 IDE</TD>
+          <TD>商业</TD>
+          <TD>Win32</TD></TR>
+        <TR>
+          <TD><A href="http://msdn.microsoft.com/xml/notepad/intro.asp">XML 
+            Notepad</A></TD>
+          <TD>Microsoft</TD>
+          <TD>XML 编辑器</TD>
+          <TD>免费</TD>
+          <TD>Win32</TD></TR>
+        <TR>
+          <TD><A href="http://www.morphon.com/">Morphon XML</A></TD>
+          <TD>Lunatech Research</TD>
+          <TD>模式敏感的 XML 数据编辑器</TD>
+          <TD>商业</TD>
+          <TD>Java</TD></TR>
+        <TR>
+          <TD><A href="http://www.ltg.ed.ac.uk/~ht/xed.html">XED</A></TD>
+          <TD>爱丁堡大学</TD>
+          <TD>模式敏感的 XML 数据编辑器</TD>
+          <TD>非商业</TD>
+          <TD>Win32、Linux、Unix</TD></TR>
+        <TR>
+          <TD><A href="http://www.alphaworks.ibm.com/tech/xeena/">Xeena</A></TD>
+          <TD>IBM alphaWorks</TD>
+          <TD>模式敏感的 XML 数据编辑器</TD>
+          <TD>免费试用／商业</TD>
+          <TD>Mac、Unix、Win32</TD></TR>
+        <TR>
+          <TD><A href="http://www.pierlou.com/">Visual XML</A></TD>
+          <TD>Pierlou</TD>
+          <TD>模式敏感的 XML 数据编辑器</TD>
+          <TD>非商业</TD>
+          <TD>Java</TD></TR>
+        <TR>
+          <TD><A 
+            href="http://www.outer-court.com/basic/netpadd.htm">Netpadd</A></TD>
+          <TD>Phillip Lenssen</TD>
+          <TD>Microsoft 的 XML Notepad 的替代品</TD>
+          <TD>非商业</TD>
+          <TD>Win32</TD></TR>
+        <TR>
+          <TD><A href="http://www.softquad.com/products/xmetal/">XMetal</A></TD>
+          <TD>Softquad</TD>
+          <TD>DTD 敏感的 XML 编辑器</TD>
+          <TD>商业</TD>
+          <TD>Win32</TD></TR>
+        <TR>
+          <TD><A href="http://www.merlotxml.org/">Merlot</A></TD>
+          <TD>Channelpoint</TD>
+          <TD>可视 XML 编辑器；支持 DTD 插件</TD>
+          <TD>非商业</TD>
+          <TD>Java</TD></TR>
+        <TR>
+          <TD><A href="http://www.elcel.com/products/xmlvalid.html">XML 
+            Validator</A></TD>
+          <TD>ElCel Technologies</TD>
+          <TD>命令行 XML 验证工具</TD>
+          <TD>非商业</TD>
+          <TD>Win32</TD></TR>
+        <TR>
+          <TD><A href="http://www.elcel.com/products/xmlcanon.html">XML 
+            Canon</A></TD>
+          <TD>ElCel Technologies</TD>
+          <TD>通过将 XML 数据与 DTD 合并来生成规范的 XML</TD>
+          <TD>非商业</TD>
+          <TD>Win32</TD></TR></TBODY></TABLE><BR>
+      <P><A id=Ctools name=Ctools><SPAN class=atitle2>C 和 C++ 
+      工具</SPAN></A><BR>本文的其余部分提供了通过软件库向 C/C++ 程序员添加 XML 
+      功能的基础。在本文的下一部分中，您将发现可以找到更多的命令行实用程序，软件库包含了它们作为测试和／或样本程序。例如，Transformiix 
+      可以用作一个库、Perl 模块或命令行工具。</P>
+      <TABLE cellSpacing=0 cellPadding=5 width="30%" align=right border=1>
+        <TBODY>
+        <TR>
+          <TD background="C-C++ 开发人员：充实您的 XML 工具箱.files/bg-gold.gif"><A 
+            id=licenseSB name=licenseSB><B>发放许可证</B></A><BR>
+            <P>在所有工具表中，<I>商业</I>许可证表示必须购买该工具，才能将它用于产品环境中。试用版本（有时间限制或者禁用了主要特性）通常可供下载和评估。所有其它工具都有非商业许可证，不需要支付费用就能使用，但如果将它们用于商业项目中，请确保您将遵守许可证条款进行使用。例如，使用任何开放源码作为共享库或 
+            DLL，应符合这些 XML 库附带的开放源码许可证协定（通常是 
+            LGPL）。在表中，当可能不完全安装工具就能确定许可证类型时，就会指定非商业许可证的类型；该表使用<I> 
+            非商业</I>来指定许可证条款比较模糊的免费软件。</P>
+            <P>常用的开放源码是 Apache、GPL、BSD 和 LGPL。并不允许在商业软件包中包含 GPL 代码，而 Apache 和 
+            LGPL 
+        代码可以在销售的软件中使用。这四个产品都限制在没有得到许可的情况下在派生产品中使用它们的名称。</P></TD></TR></TBODY></TABLE>
+      <P>到现在为止，我尝试尽量少用 XML 相关的术语。可是，在您进一步阅读之前，如果还不熟悉 XML 基础知识，您也许应该浏览在 <A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#XMLterminology">XML 
+      术语</A>侧栏中定义的术语。这些术语将帮助您理解本文的其余部分，并且在您亲自深入研究所提到的工具和库时帮助挑出它们的特征。</P>
+      <P><A id=parsers name=parsers><SPAN class=atitle2>解析器</SPAN></A><BR>一旦您拥有了 
+      DTD 或模式以及与其相配的 XML 文档，就需要一个解析器来读取并解释该 XML 文档。<A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#table2">表 
+      2</A> 概述了 C/C++ 开发人员的解析器库。可是，在开始研究表中的网格时，需要一点背景知识。</P>
+      <P><A id="" name=""><SPAN class=atitle3>验证</SPAN></A><BR>XML 
+      解析器有两种形式：验证和非验证。您需要哪一种呢？如果您不使用正式的 DTD 或模式，验证特性对于您来说并不重要。如果您已经或者正在计划使用 DTD 
+      或模式，您也许会首选验证解析器。（在这种情况下，我建议您还要学习如何阅读和手工写 DTD／模式，这样当发生验证问题时，您就可以处理错误。有时，错误在 
+      DTD／模式中，因此您可以调试 DTD／模式文件和 XML 数据。）</P>
+      <P><A id="" name=""><SPAN class=atitle3>解析器 API 模型</SPAN></A><BR>用于将软件与 
+      XML 解析器结合的两种常用 API 模型是：文档模型和事件模型。文档 API 模型对 XML 
+      数据进行解析以生成一个对象。对象将文档的内容抽象成树结构。应用程序对这个树结构对象进行操作。事件 API 模型使用回调机制向应用程序通报 XML 
+      数据的结构。事件／回调通常在进行解析时发生。</P>
+      <P><A id="" name=""><SPAN class=atitle3>API 标准：DOM 和 
+      SAX</SPAN></A><BR>一般解析器 API 模型已经被进一步改进成特定 API 标准。W3C 已经推荐 DOM（级别 1 和 2，级别 
+      3 正在草拟中）作为标准化文档 API 模型。SAX 虽然不是 W3C 项目，但它已经占有了事实上的标准事件 API 模型的地位。</P>
+      <P><A id="" name=""><SPAN class=atitle3>W3C 标准</SPAN></A><BR>当比较解析器和其它 XML 
+      工具中的特性时，请寻找 W3C 推荐的和正在形成的规范的支持，如名称空间、XPath、XLink、XInclude 和 
+      XInfoset。请记住，XML 技术成熟得非常快，对第一级规范（如 
+      DOM）的支持也许缺少了该规范第二级中引入的重要功能。如果最新规范形式的功能对于您的项目很重要，请相应地选择工具。</P>
+      <P><A id="" name=""><SPAN class=atitle3>阅读下表</SPAN></A><BR>在表 2 
+      中，“事件”栏指定了支持一个推或事件模型 API（如 SAX）的解析器。“文档”栏指定了支持拉或文档模型 API（如 
+      DOM）的解析器。与前面一样，该表列出了商业和非商业工具（请参阅侧栏<A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#licenseSB">发放许可证</A>以获取关于软件许可证的详细信息）。</P><B>表 
+      2. C/C++ 开发人员的解析器</B> <A id=table2 name=table2></A>
+      <TABLE width="100%" border=1>
+        <TBODY>
+        <TR>
+          <TD><B>库</B></TD>
+          <TD><B>供应商</B></TD>
+          <TD><B>事件</B></TD>
+          <TD><B>文档</B></TD>
+          <TD><B>特点</B></TD>
+          <TD><B>许可证</B></TD></TR>
+        <TR>
+          <TD><A href="http://expat.sourceforge.net/">expat</A></TD>
+          <TD>James Clark/expat 小组</TD>
+          <TD>本机与 SAX</TD>
+          <TD>-</TD>
+          <TD>带有本机 API 和 SAX 封装器的、非常快速的推模型解析器。</TD>
+          <TD>LGPL（免费）</TD></TR>
+        <TR>
+          <TD><A href="http://www.xmlsoft.org/">libxml</A></TD>
+          <TD>Gnome</TD>
+          <TD>SAX</TD>
+          <TD>DOM</TD>
+          <TD>非常强壮；SAX 与 DOM 封装器；执行 DTD 验证</TD>
+          <TD>LGPL（免费）</TD></TR>
+        <TR>
+          <TD><A 
+            href="http://msdn.microsoft.com/library/en-us/dnmsxml/html/dnmsxmlnewinjuly.asp">MSXML</A></TD>
+          <TD>Microsoft</TD>
+          <TD>SAX</TD>
+          <TD>DOM</TD>
+          <TD>Win32 的 Microsoft XML 库</TD>
+          <TD>EULA（免费）</TD></TR>
+        <TR>
+          <TD><A href="http://xml.apache.org/xerces-c/">Xerces</A></TD>
+          <TD>Apache Software Foundation</TD>
+          <TD>SAX</TD>
+          <TD>DOM</TD>
+          <TD>执行 SAX 及 DOM 级别 1 和 2；DTD 验证；增加的 XML 模式</TD>
+          <TD>Apache（免费）</TD></TR>
+        <TR>
+          <TD><A href="http://www.vivid-creations.com/">XTL</A></TD>
+          <TD>Vivid Creations</TD>
+          <TD>SAX</TD>
+          <TD>DOM</TD>
+          <TD>带 SAX 和 DOM 的基于 STL 的 XML 工具箱</TD>
+          <TD>商业</TD></TR>
+        <TR>
+          <TD><A 
+href="http://www.cogsci.ed.ac.uk/~richard/rxp.html">RXP</A></TD>
+          <TD>爱丁堡大学</TD>
+          <TD>-</TD>
+          <TD>本机</TD>
+          <TD>验证以 C 编写的了解名称空间的 XML 解析器</TD>
+          <TD>GPL（免费）</TD></TR>
+        <TR>
+          <TD><A href="http://www.ibm.com/alphaWorks/tech/xml4c/">XML4C</A></TD>
+          <TD>IBM alphaWorks</TD>
+          <TD>SAX</TD>
+          <TD>DOM</TD>
+          <TD>IBM 发起的 Xerces 的变体</TD>
+          <TD>Apache（免费）</TD></TR>
+        <TR>
+          <TD><A 
+            href="http://otn.oracle.com/tech/xml/xdk_c/content.html">Oracle XDK 
+            8i</A></TD>
+          <TD>Oracle</TD>
+          <TD>SAX</TD>
+          <TD>DOM</TD>
+          <TD>Oracle 主办的用于 C++ 的 XML 工具箱</TD>
+          <TD>非商业</TD></TR>
+        <TR>
+          <TD><A href="http://www.extreme.indiana.edu/soap/xpp/">Pull 
+            Parser</A></TD>
+          <TD>Extreme! Lab</TD>
+          <TD>-</TD>
+          <TD>本机</TD>
+          <TD>印地安那大学发起的用于 C++ 的轻量型 XML 工具箱</TD>
+          <TD>非商业</TD></TR>
+        <TR>
+          <TD><A href="http://www.xmlbooster.com/">XML Booster</A></TD>
+          <TD>PhiDaNi Software</TD>
+          <TD>-</TD>
+          <TD>本机</TD>
+          <TD>解析器发生器，生成 C 源码解析器</TD>
+          <TD>商业</TD></TR></TBODY></TABLE>
+      <P><B>开放源码前三名</B><BR>三种最流行的开放源码 XML 库是 expat、libxml 和 
+      Xerces。这三者都是跨平台的，每一种都充当 XSLT 库实现的基础，一旦满足了基本 XML 需要之后，它就会给您一条成长途径。</P>
+      <UL>
+        <LI>expat 是 James Clark 创始的开放源码面向事件的 XML 解析库。他已经将该项目转让给了 SourceForge 
+        中的一个小组。有一个 SAX 封装器可供使用。在许多项目中都可以找到 expat 解析器，如开放源码浏览器 Mozilla、XSLT 处理器 
+        Transformiix 和 RDF 工具 repat。
+        <LI>libxml 为类似于 SAX 和 DOM 的操作提供了双重方式 API。它支持对 DTD 的验证，并且在 Gnome 的 XSLT 
+        处理器 <I>libxslt</I> 中使用。libxml 经过重写，已作为 libxml(2) 发布，也许还称为 
+        <I>libxml2</I>。这个库的用户应该确保他们拥有了当前版本。
+        <LI>Xerces 是非常坚固的、拥有大量文档的库，它充当 IBM alphaWorks XML4C 库的基础。Xerces 还用于 
+        Apache XSLT 处理器 Xalan 中。Xerces 支持 DOM、SAX，以及对 DTD 的验证。最新版本读取并解释了部分“W3C 
+        XML 模式推荐”（打算到 2001 年底实现完整的 XML 模式支持）。</LI></UL>
+      <P>将这三种最流行的库其中一种编译并链接到您的项目毫不费力。大多数软件包都包括了每个平台的详尽说明。这里是一些样本安装说明。</P>
+      <P><A id="" name=""><SPAN class=atitle3>在 Windows 上构建开放源码库</SPAN></A><BR>在 
+      Windows 上从头构建 <I>libxml</I> 是很简单的四个步骤：</P>
+      <OL>
+        <LI>下载源 tarball 文件。
+        <LI>使用诸如 Winzip 之类的程序将内容解压缩到一个目录中。请确认指示了解压缩实用程序保留 <I>libxml</I> 
+        可能需要的任何子目录的路径名。
+        <LI>定位 <CODE>./win32/dsp</CODE> 子文件夹中的 <CODE>libxml2.dsw</CODE> 文件，并从 MS 
+        Developer Studio 中打开它。
+        <LI>从 DevStudio 中的顶部菜单选择 Build All。这将构建所有样本和测试程序，以及运行它们所需的 libxml 
+        DLL。</LI></OL><BR><BR>
+      <P>可以使用上述步骤在 Windows 上构建 Xerces。唯一的区别就是查找 
+      <CODE>./c/samples/Projects/Win32/VC6</CODE> 子文件夹中的 
+      <CODE>samples.dsw</CODE> 工作空间文件。</P>
+      <P>expat 已经开始包括了 DSP 项目 makefile。请查看 <CODE>lib</CODE> 和 <CODE>xmlwf</CODE> 
+      子文件夹。</P>
+      <P><A id="" name=""><SPAN class=atitle3>在 Unix 上构建开放源码库</SPAN></A><BR>对于在 
+      Linux 或 Unix 
+      上运行的项目，大多数情况下，您可以将源代码解包（untar）到一个空目录中，设置某些选项，然后输入“make”来构建共享库。Solaris 
+      用户：不要忘记使用 GNU 解包实用程序。在 Slackware Linux 下的 bash shell 中，我使用以下代码：</P>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE>
+
+
+<CODE>tar -x 
+
+
+
+</CODE></PRE></TD></TR></TBODY></TABLE><BR>
+      <P><A id="" name=""><SPAN class=atitle3>XML 和 COM</SPAN></A><BR>MSXML 是 
+      Microsoft 针对 Windows 系列操作系统提供的专利 XML，它被实现成一个可脚本化的 COM 
+      对象集合，因此可以在其它语言环境中出色地工作，而且提供了大量文档。这个库支持 DOM，而且还有一个本机面向文档的接口。它还支持 SAX 
+事件。</P>
+      <P>作为 MSXML 的替代品，“Apache XML 项目”的 Xerces 库附带了一个 COM 封装器，这可以使它在许多情况下充当 
+      MSXML 的仿制品。Vivid Creations 在它的 XTL 库中提供了 SAX 和 DOM API 的 COM 封装器，该产品也是 
+      MSXML 的替代品。</P>
+      <P><A id=transforms name=transforms><SPAN class=atitle2>XML 转换：XSLT 和 
+      XQuery</SPAN></A><BR><I>转换</I>是 XML 发展过程中从只是在元素和属性级别处理 XML 数据向前进阶的下一步。XML 
+      转换对进入 XML 数据进行操作，以产生 XML 输出。转换可以重新组织标记结构、添加／除去标记和属性、进行过滤以放大 XML 
+      数据的所选择部分。</P>
+      <P>XQuery 文档将转换过程称作查询，但含义是一样的。</P>
+      <P>XSLT 和 XQuery 是 XML 方言，用于指定如何对随机 XML 数据执行这样的操作。您可以编写一个脚本文件，改用 XSLT 或 
+      XQurey 来代替 XML，从而代替将一些 XML 数据装入到 DOM 中，而且必须由程序操纵 DOM 
+      版本来产生期望的结果。这种更通用的方法会产生更好的灵活性，并会缩短开发时间。现在，您的 Web 开发人员（他们不是 C/C++ 
+      程序员）可以编写自己的 XML 转换，这可以让 C++ 程序员来完成更复杂的工作。</P><B>表 3. C/C++ 转换／查询库</B> 
+      <TABLE width="100%" border=1>
+        <TBODY>
+        <TR>
+          <TD><B>库</B></TD>
+          <TD><B>供应商</B></TD>
+          <TD><B>特点</B></TD>
+          <TD><B>许可证</B></TD></TR>
+        <TR>
+          <TD><A href="http://xmlsoft.org/XSLT/">libxslt</A></TD>
+          <TD>Gnome</TD>
+          <TD>构建在 libxml 之上</TD>
+          <TD>非商业</TD></TR>
+        <TR>
+          <TD><A href="http://xml.apache.org/xalan-c/">Xalan</A></TD>
+          <TD>Apache</TD>
+          <TD>构建在 Xerces 解析器之上</TD>
+          <TD>Apache（免费）</TD></TR>
+        <TR>
+          <TD><A 
+            href="http://www.mitre.org/mii/techproducts/transform.htm">Transformiix</A></TD>
+          <TD>MITRE</TD>
+          <TD>构建在 expat 之上的 XSLT 处理器</TD>
+          <TD>非商业</TD></TR>
+        <TR>
+          <TD><A href="http://sourceforge.net/projects/xsltc/">xsltc</A></TD>
+          <TD>Oliver Gerardin</TD>
+          <TD>XSLT 编译器，产生 C 代码</TD>
+          <TD>非商业</TD></TR>
+        <TR>
+          <TD><A 
+            href="http://www.gingerall.com/charlie-bin/get/webGA/act/sablotron.act">sablotron</A></TD>
+          <TD>Ginger Alliance</TD>
+          <TD>XSL 引擎</TD>
+          <TD>非商业</TD></TR></TBODY></TABLE>
+      <P><A id=messaging name=messaging><SPAN class=atitle2>消息传递：XML-RPC 和 SOAP 
+      工具</SPAN></A><BR>对本文来说，<I>消息传递</I>是指让两个软件代理程序互相通信。这种消息传递有时称作面向消息的中间件。（这不是类似于 
+      AOL、MSN 或 ICQ 的消息传递，知道吗？现在<I>有</I>一个尚处于未完成阶段的基于 XML 的即时消息传递协议成果称作 
+      Jabber。我已经在<A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#resources">参考资料</A>中包含了一个链接以满足您的好奇心，但再次声明，那并不是我要在这里讨论的东西。）</P>
+      <P>使用 XML 进行消息传递已经非常流行，以至于已经产生了两个替代品：XML-RPC 和 
+      SOAP。这些协议最显著的特征是根据开发人员用于实现的工具选择，客户机、服务器和同级设备可能会大相径庭。虽然所有开发人员都习惯使用他们偏爱的语言、开发工具箱或软件库，但他们仍然可以合作。</P>
+      <P>（附带说明：Gregor Purdy 已经用已提议的替代方法编写了一篇出色的 XML-RPC 评论（请参阅<A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#resources">参考资料</A>））。</P>
+      <P>表 4 
+      包括了用于面向消息中间件类别的一些库。这并不是一个此类别中资源的详尽列表，有一些新的工具正在快速发展，但它是一个好的起点。</P><B>表 4. 
+      C/C++ 消息传递库</B> 
+      <TABLE width="100%" border=1>
+        <TBODY>
+        <TR>
+          <TD><B>库</B></TD>
+          <TD><B>供应商</B></TD>
+          <TD><B>特点</B></TD>
+          <TD><B>许可证</B></TD>
+          <TD><B>平台</B></TD></TR>
+        <TR>
+          <TD><A href="http://4s4c.com/">4S4C SOAP 服务</A></TD>
+          <TD>Simon Fell</TD>
+          <TD>开放源码 SOAP 成果</TD>
+          <TD>非商业</TD>
+          <TD>Linux、Unix、Win32</TD></TR>
+        <TR>
+          <TD><A 
+            href="http://www.sqldata.com/soapclient/SoapClient30.htm">SOAP 
+            客户机</A></TD>
+          <TD>SQL Data</TD>
+          <TD>C++ SOAP 客户机工具箱</TD>
+          <TD>商业</TD>
+          <TD>Win32</TD></TR>
+        <TR>
+          <TD><A href="http://www.mozilla.org/">SOAP 组件</A></TD>
+          <TD>mozilla.org</TD>
+          <TD>可脚本化 XPCOM 组件</TD>
+          <TD>非商业</TD>
+          <TD>许多</TD></TR>
+        <TR>
+          <TD><A href="http://xmlrpc-c.sourceforge.net/">XML-RPC for 
+          C/C++</A></TD>
+          <TD>First Peer</TD>
+          <TD>C 语言编写的 XML-RPC 库</TD>
+          <TD>非商业</TD>
+          <TD>Linux、Unix、Win32</TD></TR>
+        <TR>
+          <TD><A href="http://www.mozilla.org/">XML-RPC 组件</A></TD>
+          <TD>mozilla.org</TD>
+          <TD>可脚本化 XPCOM 组件</TD>
+          <TD>非商业</TD>
+          <TD>许多</TD></TR>
+        <TR>
+          <TD><A href="http://xmlrpc-epi.sourceforge.net/">XML-RPC for 
+            C/C++</A></TD>
+          <TD>Epinions</TD>
+          <TD>C 语言编写的 XML-RPC 库</TD>
+          <TD>非商业</TD>
+          <TD>Linux、Unix、Win32</TD></TR></TBODY></TABLE><BR>
+      <P><A id=conclusion name=conclusion><SPAN 
+      class=atitle2>题外话</SPAN></A><BR>这些工具应该给您的 XML 工具箱一个很好的起点。如果想要推荐已经尝试过的其它用于 
+      XML 的 C/C++ 
+      工具或者要发表任何其它意见，请加入本文所附的讨论中（请使用“参考资料”中的链接或单击文章页面顶部或底部的“讨论”图标）。</P><A 
+      id=XMLterminology name=XMLterminology><SPAN class=atitle3>XML 
+      术语</SPAN></A><BR><BR>
+      <TABLE cellSpacing=0 cellPadding=5 width="85%" align=center border=1>
+        <TBODY>
+        <TR>
+          <TD background="C-C++ 开发人员：充实您的 XML 工具箱.files/bg-gold.gif">
+            <P>这些 XML 术语也许会在您理解本文中讨论的库时派上用场：</P>
+            <UL>
+              <LI><I><B>文档模型：</B></I>用于将 XML 
+              数据当作树型对象进行解析和操纵的技术，也称作“拉”模型。请参阅作为示例的 DOM API 标准。
+              <LI><I><B>DOM：</B></I>“文档对象模型”是 XML 文档的一种特殊树型结构编程模型，W3C 
+              将它描述成一个标准。DOM 标准目前分成三个级别。DOM 1.0 是指 DOM 级别 1.0 一致性；DOM 级别 2 
+              是最新的规范，W3C 正将它认可为“推荐”；DOM 级别 3 在本文创作时正在草拟中。
+              <LI><I><B>DTD：</B></I>文档类型定义。一种 XML 文件，定义了 XML 元素和那些元素的 XML 
+              属性，而且指定了如何嵌套 XML 标记以及元素可以包含什么数据的规则。请参阅 Jane Fung 的<A 
+              href="http://www-900.ibm.com/developerWorks/cn/xml/x-dtdint/index.shtml">XML 
+              和 DTD 简介</A>以获取更多详细信息。
+              <LI><I><B>事件模型：</B></I>用于通过使用回调或处理程序对 XML 
+              数据进行解析的技术；也称作“推”模型。例如，<I>请参阅</I> SAX API 标准。
+              <LI><I><B>名称空间：</B></I>明确从不同的 DTD 或模式中标识出 XML 标记的方法，这样它们可以混合在同一个 
+              XML 文档中。RDF 非常依赖于这个特性；XML 1.0 标记“xmlns”可以用于在 XML 文档中定义名称空间。
+              <LI><I><B>RDF：</B></I>资源描述框架，用于将 XML 属性数据和通常驻留在别处的信息相关联的一种压缩 XML 
+              方言。您的驱动程序的许可证就类似于描述您的 RDF XML 文件。
+              <LI><I><B>SAX：</B></I>Simple API for XML 是用于 XML 解析器实现的标准编程接口；SAX 
+              使用面向事件的编程模型。SAX 是由 David Megginson 最早开发的事实上的标准，现在由 XML-dev 邮件列表维护。
+              <LI><I><B>SOAP：</B></I>“简单对象访问协议”是类似于 XML-RPC（<I>请参阅</I> 
+              XML-RPC）的网络协议。通过使用 SOAP，应用程序可以创建远程对象、调用该对象上的方法，以及检索结果。
+              <LI><I><B>验证：</B></I>关于 DTD 和模式，验证结构良好的 XML 文档是否正确。
+              <LI><I><B>结构良好：</B></I>一个 XML 文档，它的标记和数据符合 XML 1.0 语法。
+              <LI><I><B>W3C：</B></I>世界万维网联盟，它已经成为大多数 XML 相关技术的重要标准主体。W3C 
+              将最终认可的规范称作“推荐”（而不是标准）。
+              <LI><I><B>XML 1.0：</B></I>W3C 颂扬的第一个 XML 语法标准；建立了 XML 
+              数据的基本规则，如所有标记都必须以斜杠（<CODE><SPAN 
+              class=boldcode>/</SPAN></CODE>）结束，如：<CODE></CODE>，或者后跟一个结束标记，如：<CODE> 
+              close the tag on your way out</CODE>。
+              <LI><I><B>XML-RPC：</B></I>XML 远程过程调用。XML-RPC 是用于跨网络调用方法和服务的标准 XML 
+              方言；就象您认为的那样，XML-RPC 使用 XML 进行客户机和服务器之间的消息传递。
+              <LI><I><B>XML 模式：</B></I>XML 模式是一种 W3C 推荐，它类似于 DTD，用于定义 XML 
+              文档的结构，但具有更好的灵活性。XML 模式使用 XML 1.0 语法来指定模式，这与用于 DTD 的比较早期的 SGML 
+语法相反。
+              <LI><I><B>XQuery：</B></I>其部分功能类似于 XSLT，但设计得更有利于充当 XML 数据的查询语言 — 
+              类似于在关系数据库中使用 SQL。作为规范，它还不如 XSLT 成熟，XQuery 也许会成为今后十年里的 SQL。
+              <LI><I><B>XSLT：</B></I>可扩展样式语言转换，一种用于转换 XML 内容的 XML 方言。将 XSLT 
+              文件应用于某些 XML 输入数据，以生成期望的 XML 输出数据。</LI></UL></TD></TR></TBODY></TABLE>
+      <P><A id=resources name=resources><SPAN class=atitle2>参考资料</SPAN></A></P>
+      <UL>
+        <LI>将您对 C/C++ 工具的见解或问题添加到本文的<A 
+        href="javascript:void%20forumWindow()">讨论</A>中。（您可以使用此链接，或者单击页面顶部或底部的“讨论”图标。）
+        <LI>请访问 <A href="http://www.w3.org/xml">W3C XML 页面</A>，该页面提供了 XML 
+        规范中的大部分内容。
+        <LI>请访问 <A href="http://www.xmlsoftware.com/">XML 相关软件</A>的汇总站点。
+        <LI>请在此使用 <A 
+        href="http://www.zvon.org/xxl/XMLTutorial/General/book_en.html">Zvon 的通用 
+        XML 教程</A>或 developerWorks 的 Doug Tidwell 撰写的 <A 
+        href="http://www-900.ibm.com/developerWorks/cn/cnedu.nsf/xml-onlinecourse-bytitle/0374F45F16A9A00F48256A7700110651?OpenDocument">XML 
+        入门</A>以及 <A 
+        href="http://www-900.ibm.com/developerWorks/cn/cnedu.nsf/xml-onlinecourse-bytitle">XML 
+        专区教学</A>区域中的其它课程来获取 XML 的基础知识。
+        <LI>请阅读 Howard Katz 的 <A 
+        href="http://www-900.ibm.com/developerWorks/cn/xml/x-xquery/index.shtml">XQuery 
+        简介</A>。
+        <LI>请认真阅读 Gregor Purdy 撰写的出色的 <A 
+        href="http://www.focusresearch.com/gregor/sw/XPC/XPC-0.2.html">critique 
+        of XML-RPC</A>。
+        <LI>请在 Jane Fung 的文章<A 
+        href="http://www-900.ibm.com/developerWorks/cn/xml/x-dtdint/index.shtml">XML 
+        和 DTD 简介</A>中学习编写 DTD 的基础知识。
+        <LI>请在 Michael Kay 的技术概述 <A 
+        href="http://www-900.ibm.com/developerWorks/cn/xml/x-xslt/index.shtml">XSLT 
+        是什么类型的语言？</A>中了解 XSLT。
+        <LI>请在 <A href="http://www.jabber.org/">Jabber</A> 
+        上了解<I>其它</I>类型的消息传递（即时消息传递）的信息。
+        <LI>通过认真学习 IBM Certified Developer Program 的 <A 
+        href="http://www-4.ibm.com/software/ad/certify/adcdxmv1.html">XML 
+        Certification guidelines</A> 来掌握 XML 开发人员技能。</LI></UL><A id="" 
+      name=""><SPAN class=atitle3>本文中提到的 XML 标准</SPAN></A><BR>
+      <UL>
+        <LI><A href="http://www.w3.org/TR/REC-xml">XML 规范 1.0</A>：W3C 核心 XML 1.0 
+        规范。
+        <LI><A href="http://www.w3.org/TR/REC-DOM-Level-1/">DOM 级别 1.0</A>：W3C 
+        文档对象模型级别 1 API 推荐。
+        <LI><A href="http://www.w3.org/TR/DOM-Level-2-Core/">DOM 级别 2.0</A>：W3C 
+        文档对象模型级别 2 API 推荐。
+        <LI><A 
+        href="http://www.megginson.com/SAX/index.html">SAX/SAX2</A>：Simple API 
+        for XML 事件模型事实上的标准。
+        <LI><A href="http://www.w3.org/TR/REC-xml-names/">名称空间</A>：处理 XML 名称空间的 
+        W3C 推荐。
+        <LI><A href="http://www.w3.org/TR/xmlschema-0/">XML 模式</A>：关于 W3C XML 
+        模式推荐的一切</LI></UL><BR><BR>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD><A id=author1 name=author1><SPAN 
+            class=atitle2>关于作者</SPAN><BR>Rick 
+            是一个老资格的程序员，他的职业生涯就是炒股和克服最后期限，同时给女招待足以使她们脸红的慷慨的小费。他的名字已经传遍了小镇里的每一个咖啡馆。他还喜欢在以技术为主题的研讨会上发表演讲。他的设计标新立异，现在他正在研究更时髦的建模方法，如 
+            UML。他汽车的保险杆上写着：“I for XHTML.”。可以通过 <A 
+            href="mailto:rfmobile@swbell.net">rfmobile@swbell.net</A> 与 Rick 
+            联系。</A></TD></TR></TBODY></TABLE><BR clear=all><IMG height=10 alt="" 
+      src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=100 border=0><BR>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD align=right width="100%"><A 
+            href="http://www-900.ibm.com/developerWorks/cn/xml/x-ctlbx/index.shtml#top">到页首</A></TD>
+          <TD width=5><IMG height=1 alt="" 
+            src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=5 border=0></TD></TR>
+        <TR vAlign=top>
+          <TD bgColor=#000000 colSpan=2><IMG height=1 alt="" 
+            src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=100 border=0></TD></TR>
+        <TR vAlign=top>
+          <TD bgColor=#ffffff colSpan=2><IMG height=8 alt="" 
+            src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=100 
+        border=0></TD></TR></TBODY></TABLE><!--   NOTES to local content team :::::::
+
+Please modify rate article form with Japanese coding-->
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD>
+            <FORM 
+            action=/developerWorks/cn/cnratings.nsf/RateArticle?CreateDocument 
+            method=post><INPUT type=hidden value="C/C++ 开发人员：充实您的 XML 工具箱" 
+            name=ArticleTitle> <INPUT type=hidden value=xml name=Zone> <INPUT 
+            type=hidden value=/developerWorks/cn/thankyou/feedback-xml.html 
+            name=RedirectURL> <A id=rating name=rating><B>您对这篇文章的看法如何？</B></A> 
+            <TABLE cellSpacing=0 cellPadding=0 width=600 border=0>
+              <TBODY>
+              <TR>
+                <TD colSpan=5><IMG height=8 alt="" 
+                  src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=100 
+                border=0></TD></TR>
+              <TR vAlign=top>
+                <TD width="16%"><INPUT type=radio value=5 
+name=Rating>真棒！(5)</TD>
+                <TD width="20%"><INPUT type=radio value=4 name=Rating>好文章 
+                (4)</TD>
+                <TD width="24%"><INPUT type=radio value=3 name=Rating>一般；尚可 
+                (3)</TD>
+                <TD width="22%"><INPUT type=radio value=2 name=Rating>需提高 
+                (2)</TD>
+                <TD width="18%"><INPUT type=radio value=1 name=Rating>太差！ 
+                (1)</TD></TR></TBODY></TABLE><BR><B>意见？</B><BR><TEXTAREA name=Comments rows=5 wrap=virtual cols=60></TEXTAREA><BR><BR><INPUT type=submit value=提交反馈意见></FORM></TD></TR>
+        <TR vAlign=top>
+          <TD bgColor=#ffffff><IMG height=8 alt="" 
+            src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" width=100 
+        border=0></TD></TR></TBODY></TABLE></TD><!-- RIGHT GUTTER-->
+    <TD width=1><IMG height=1 alt="" src="C-C++ 开发人员：充实您的 XML 工具箱.files/c.gif" 
+      width=1 border=0></TD></TR></TBODY></TABLE><!--FOOTER --><!-- Do not changes this include-->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD align=right>(c) Copyright IBM Corp. 2001, (c) Copyright IBM China 
+      2001, All Right Reserved</TD></TR>
+  <TR vAlign=top>
+    <TD class=bbg height=21>&nbsp;&nbsp;<A class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/ibm/index.shtml&amp;origin=dwhead">关于 
+      IBM</A><SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN><A 
+      class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/ibm/privacy/index.shtml&amp;origin=dwhead">隐私条约</A><SPAN 
+      class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN><A class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/ibm/legal/index.shtml&amp;origin=dwhead">法律条款</A><SPAN 
+      class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN><A class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/ibm/contact/index.shtml&amp;origin=dwhead">联系 
+      IBM</A></TD></TR></TBODY></TABLE>
+<SCRIPT language=JavaScript1.2 src="C-C++ 开发人员：充实您的 XML 工具箱.files/stats.js" 
+type=text/javascript></SCRIPT>
+<NOSCRIPT><IMG height=1 alt="" 
+src="D:\Documents and Settings\Administrator.HOMESRV\桌面\C-C++ 开发人员：充实您的 XML 工具箱.files\c(1).gif" 
+width=1 border=0></NOSCRIPT> </A></BODY></HTML>

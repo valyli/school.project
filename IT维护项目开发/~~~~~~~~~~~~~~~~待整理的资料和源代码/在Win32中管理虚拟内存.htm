@@ -1,0 +1,872 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0045)http://www.vcroad.net/shownews.asp?newsid=513 -->
+<HTML><HEAD><TITLE>VC 之路：：综合软件开发网站，以VC++编程为主</TITLE>
+<SCRIPT language=JavaScript>
+var currentpos,timer;
+
+function initialize()
+{
+timer=setInterval("scrollwindow()",50);
+}
+function sc(){
+clearInterval(timer);
+}
+function scrollwindow()
+{
+currentpos=document.body.scrollTop;
+window.scroll(0,++currentpos);
+if (currentpos != document.body.scrollTop)
+sc();
+}
+document.onmousedown=sc
+document.ondblclick=initialize
+</SCRIPT>
+
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META content="MSHTML 6.00.2800.1126" name=GENERATOR>
+<META content=FrontPage.Editor.Document name=ProgId>
+<META 
+content="vcroad sdkroad VC之路  VC站点　VC编程　VC开发 程序人生　C++编程　SDK编程　API编程 网络编程　数据库编程　VC知识库 VC代码库　VC指南 Visual C++ 初学指南 技术写译  数据结构　算法　编程文摘 源代码 MFC VC资源 论坛 电子刊物 程序员 vc++ vc  编程 开发 visual c mfc 代码 图书 文章 开发工具 免费 合作开发 合作 dot net NET VS.NET VC7 VC6 programer atl stl com .net cnn china chinese sex softwares windows programmer programming  developer 软件 共享 行业 技术 开发 论坛 新闻 专家门诊 程序员大本营 VC VB Delphi ASP PHP Perl SQL" 
+name=keywords>
+<META content="Visual C++专业站点，初学指南，电子杂志,电子图书，技术写译，编程文摘，程序源代码，以及其它VC MFC相关资源" 
+name=description>
+<META content="default index,follow" name=robots>
+<STYLE>.textb {
+	BORDER-RIGHT: #999999 0px solid; BORDER-TOP: #999999 0px solid; FONT-SIZE: 9pt; BORDER-LEFT: #999999 0px solid; CURSOR: hand; BORDER-BOTTOM: #000000 1px solid; BACKGROUND-COLOR: #dddddd
+}
+.submit {
+	BORDER-RIGHT: #999999 1px solid; BORDER-TOP: #e0e7e0 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: #e0e7e0 1px solid; CURSOR: hand; BORDER-BOTTOM: #999999 1px solid; HEIGHT: 18px; BACKGROUND-COLOR: #cfcfc9
+}
+TD {
+	FONT-SIZE: 12px; COLOR: #0000cc; LINE-HEIGHT: 150%
+}
+A:visited {
+	COLOR: #000066
+}
+A:link {
+	COLOR: #0000cc
+}
+A:hover {
+	COLOR: #ff0000
+}
+INPUT {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: #000000 1px solid; BORDER-BOTTOM: #000000 1px solid; POSITION: relative; HEIGHT: 20px; BACKGROUND-COLOR: #f6f6f6
+}
+TEXTAREA {
+	BORDER-RIGHT: 1px solid; BORDER-TOP: 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: 1px solid; BORDER-BOTTOM: 1px solid; BACKGROUND-COLOR: #efefef
+}
+SELECT {
+	FONT-SIZE: 9pt; BACKGROUND-COLOR: #f6f6f6
+}
+.TableLine {
+	BORDER-COLLAPSE: collapse
+}
+</STYLE>
+<LINK href="在Win32中管理虚拟内存.files/style.css" rel=stylesheet>
+<SCRIPT src="在Win32中管理虚拟内存.files/Js.js"></SCRIPT>
+</HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0>
+<DIV align=center><!--第一行开始-->
+<TABLE cellSpacing=0 cellPadding=0 width="98%" bgColor=#000000 border=0>
+  <TBODY>
+  <TR>
+    <TD width=0%>&nbsp;</TD>
+    <TD class=top1 width="3%"><IMG hspace=3 src="在Win32中管理虚拟内存.files/TOPL.gif" 
+      border=0></TD>
+    <TD class=top1 width="19%">&nbsp;</TD>
+    <TD class=top1 align=right width="74%">
+      <DIV align=right><A class=top1 
+      href="http://www.vcroad.net/shownews.asp?newsid=278" 
+      target=_blank>关于我们</A><FONT color=#ffffff> |</FONT> <A class=top1 
+      href="http://www.vcroad.net/showsearch.asp">资料搜索</A> <FONT 
+      color=#ffffff>|</FONT> <A class=top1 
+      href="http://www.vcroad.net/User.asp">关于会员</A> <FONT 
+      color=#ffffff>|</FONT> <A class=top1 
+      href="http://www.vcroad.net/tougao.asp" target=_blank>投稿说明</A> <FONT 
+      color=#ffffff>| </FONT><A class=top1 href="http://www.vcroad.net/forum/" 
+      target=_blank>开发社区</A><FONT color=#ffffff> |</FONT> </DIV></TD>
+    <TD class=top1 align=right width="3%"><IMG height=15 hspace=3 
+      src="在Win32中管理虚拟内存.files/TOPR.gif" width=15 border=0></TD>
+    <TD width="1%"></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=755 border=0>
+  <TBODY>
+  <TR bgColor=#ffffff>
+    <TD height=1></TD></TR></TBODY></TABLE>
+<TABLE class=TableLine cellSpacing=0 cellPadding=0 width="98%" bgColor=#ffffff 
+borderColorLight=#ffffff border=0>
+  <TBODY>
+  <TR>
+    <TD width="1%" background=在Win32中管理虚拟内存.files/pic_point1.gif height=84></TD>
+    <TD vAlign=center align=middle width="19%" 
+    background=在Win32中管理虚拟内存.files/pic_point1.gif height=84><A 
+      href="http://www.vcroad.net/index.asp"><IMG height=53 alt=综合软件开发网，以VC开发为主 
+      src="在Win32中管理虚拟内存.files/logo.gif" width=125 border=0></A> </TD>
+    <TD width="68%" background=在Win32中管理虚拟内存.files/pic_point1.gif height=84>
+      <DIV align=center>
+      <OBJECT 
+      codeBase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0 
+      height=66 width=480 classid=clsid:D27CDB6E-AE6D-11cf-96B8-444553540000><PARAM NAME="movie" VALUE="images/Flash/vcroad.swf"><PARAM NAME="quality" VALUE="high">
+                                    <embed src="images/Flash/vcroad.swf" 
+      quality=high 
+      pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" 
+      type="application/x-shockwave-flash" width="480" height="66">          
+      </embed>         </OBJECT></DIV></TD>
+    <TD vAlign=center align=middle width="11%" 
+    background=在Win32中管理虚拟内存.files/pic_point1.gif height=84>
+      <TABLE cellSpacing=1 cellPadding=0 align=right border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=center align=middle><IMG height=16 
+            src="在Win32中管理虚拟内存.files/home.gif" width=16><A 
+            onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http:///')" 
+            href="http:///#"></A></TD>
+          <TD vAlign=center align=middle><A class=top4 
+            onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.vcroad.com');" 
+            href="http://www.vcroad.net/shownews.asp?newsid=513#">设为首页</A></TD></TR>
+        <TR>
+          <TD vAlign=center align=middle><IMG height=16 
+            src="在Win32中管理虚拟内存.files/hf.gif" width=16><A href="mailto:"></A></TD>
+          <TD vAlign=center align=middle><A class=top4 
+            href="mailto:vcroad@sina.com">联系我们</A></TD></TR>
+        <TR>
+          <TD vAlign=center align=middle><IMG height=13 
+            src="在Win32中管理虚拟内存.files/bookmark.gif" width=15><A 
+            title="onClick=&quot;window.external.addFavorite('http:///','')&quot;" 
+            href="http:///"></A></TD>
+          <TD vAlign=center align=middle><A class=top4 
+            onclick="javascript:window.external.AddFavorite('http://www.vcroad.com', 'VC之路：：综合软件开发网站，以VC++编程为主')" 
+            href="http://www.vcroad.net/shownews.asp?newsid=513#">加入收藏</A></TD></TR></TBODY></TABLE></TD>
+    <TD width="1%" background=在Win32中管理虚拟内存.files/pic_point1.gif 
+  height=84></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" bgColor=#666666>
+  <TBODY>
+  <TR>
+    <TD width="100%" bgColor=#ffffff>
+      <TABLE cellSpacing=1 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR bgColor=#000033>
+          <TD align=middle bgColor=#000033 height=18>
+            <TABLE cellSpacing=0 borderColorDark=#ffffff cellPadding=0 
+            width="100%" borderColorLight=#cccccc border=1>
+              <TBODY>
+              <TR bgColor=#666666>
+                <TD height=19>
+                  <DIV align=center><SPAN class=lianjie2><A class=top3 
+                  href="http://www.vcroad.net/BigClass.asp?BigClassID=1&amp;BigClassName=程序人生&amp;BigClassType=1">程序人生</A></SPAN></DIV></TD></TR></TBODY></TABLE></TD>
+          <TD align=middle bgColor=#000033 height=18>
+            <TABLE cellSpacing=0 borderColorDark=#ffffff cellPadding=0 
+            width="100%" borderColorLight=#cccccc border=1>
+              <TBODY>
+              <TR bgColor=#666666>
+                <TD height=19>
+                  <DIV align=center><SPAN class=lianjie2><A class=top3 
+                  href="http://www.vcroad.net/BigClass.asp?BigClassID=2&amp;BigClassName=开发指南&amp;BigClassType=1">开发指南</A></SPAN></DIV></TD></TR></TBODY></TABLE></TD>
+          <TD align=middle bgColor=#000033 height=18>
+            <TABLE cellSpacing=0 borderColorDark=#ffffff cellPadding=0 
+            width="100%" borderColorLight=#cccccc border=1>
+              <TBODY>
+              <TR bgColor=#666666>
+                <TD height=19>
+                  <DIV align=center><SPAN class=lianjie2><A class=top3 
+                  href="http://www.vcroad.net/BigClass.asp?BigClassID=3&amp;BigClassName=CPP 文档&amp;BigClassType=1">CPP 
+                  文档</A></SPAN></DIV></TD></TR></TBODY></TABLE></TD>
+          <TD align=middle bgColor=#000033 height=18>
+            <TABLE cellSpacing=0 borderColorDark=#ffffff cellPadding=0 
+            width="100%" borderColorLight=#cccccc border=1>
+              <TBODY>
+              <TR bgColor=#666666>
+                <TD height=19>
+                  <DIV align=center><SPAN class=lianjie2><A class=top3 
+                  href="http://www.vcroad.net/BigClass.asp?BigClassID=4&amp;BigClassName=SDK 文档&amp;BigClassType=1">SDK 
+                  文档</A></SPAN></DIV></TD></TR></TBODY></TABLE></TD>
+          <TD align=middle bgColor=#000033 height=18>
+            <TABLE cellSpacing=0 borderColorDark=#ffffff cellPadding=0 
+            width="100%" borderColorLight=#cccccc border=1>
+              <TBODY>
+              <TR bgColor=#666666>
+                <TD height=19>
+                  <DIV align=center><SPAN class=lianjie2><A class=top3 
+                  href="http://www.vcroad.net/BigClass.asp?BigClassID=5&amp;BigClassName=MFC 文档&amp;BigClassType=1">MFC 
+                  文档</A></SPAN></DIV></TD></TR></TBODY></TABLE></TD>
+          <TD align=middle bgColor=#000033 height=18>
+            <TABLE cellSpacing=0 borderColorDark=#ffffff cellPadding=0 
+            width="100%" borderColorLight=#cccccc border=1>
+              <TBODY>
+              <TR bgColor=#666666>
+                <TD height=19>
+                  <DIV align=center><SPAN class=lianjie2><A class=top3 
+                  href="http://www.vcroad.net/BigClass.asp?BigClassID=7&amp;BigClassName=专题文档&amp;BigClassType=1">专题文档</A></SPAN></DIV></TD></TR></TBODY></TABLE></TD>
+          <TD align=middle bgColor=#000033 height=18>
+            <TABLE cellSpacing=0 borderColorDark=#ffffff cellPadding=0 
+            width="100%" borderColorLight=#cccccc border=1>
+              <TBODY>
+              <TR bgColor=#666666>
+                <TD height=19>
+                  <DIV align=center><SPAN class=lianjie2><A class=top3 
+                  href="http://www.vcroad.net/BigClass.asp?BigClassID=8&amp;BigClassName=在线教程&amp;BigClassType=1">在线教程</A></SPAN></DIV></TD></TR></TBODY></TABLE></TD>
+          <TD align=middle bgColor=#000033 height=18>
+            <TABLE cellSpacing=0 borderColorDark=#ffffff cellPadding=0 
+            width="100%" borderColorLight=#cccccc border=1>
+              <TBODY>
+              <TR bgColor=#666666>
+                <TD height=19>
+                  <DIV align=center><SPAN class=lianjie2><A class=top3 
+                  href="http://www.vcroad.net/BigClass.asp?BigClassID=9&amp;BigClassName=代码中心&amp;BigClassType=1">代码中心</A></SPAN></DIV></TD></TR></TBODY></TABLE></TD>
+          <TD align=middle bgColor=#000033 height=18>
+            <TABLE cellSpacing=0 borderColorDark=#ffffff cellPadding=0 
+            width="100%" borderColorLight=#cccccc border=1>
+              <TBODY>
+              <TR bgColor=#666666>
+                <TD height=19>
+                  <DIV align=center><SPAN class=lianjie2><A class=top3 
+                  href="http://www.vcroad.net/BigClass.asp?BigClassID=10&amp;BigClassName=资源中心&amp;BigClassType=1">资源中心</A></SPAN></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=1 bgColor=#ffffff></TD>
+    <TD class=top4 style="BORDER-BOTTOM: #000000 1px double" align=left 
+    bgColor=#ffffff height=20>
+      <TABLE cellSpacing=0 borderColorDark=#ffffff cellPadding=0 width="100%" 
+      borderColorLight=#cccccc border=1>
+        <TBODY>
+        <TR bgColor=#e4e4e4>
+          <TD height=19>
+            <DIV align=left></DIV>
+          <TD class=top4 style="BORDER-BOTTOM: #000000 1px double" align=left 
+          bgColor=#ffffff height=20>
+            <TABLE cellSpacing=0 borderColorDark=#ffffff cellPadding=0 
+            width="100%" borderColorLight=#cccccc border=1>
+              <TBODY>
+              <TR bgColor=#e4e4e4>
+                <TD height=19>
+                  <DIV align=left><IMG src="在Win32中管理虚拟内存.files/where.gif" 
+                  border=0>&nbsp;当前位置：<A class=top4 
+                  href="http://www.vcroad.net/index.asp">首 页</A> &gt; 阅读文章 
+                </DIV></TD></TR></TBODY></TABLE></TD>
+          <TD class=top4 style="BORDER-BOTTOM: #000000 1px double" align=middle 
+          bgColor=#ffffff height=20>
+            <TABLE cellSpacing=0 borderColorDark=#ffffff cellPadding=0 
+            width="100%" borderColorLight=#cccccc border=1>
+              <TBODY>
+              <TR bgColor=#e4e4e4>
+                <TD height=19>
+                  <DIV align=center><A href="javascript:window.print()"><IMG 
+                  height=14 alt=打印本页 src="在Win32中管理虚拟内存.files/printer.gif" 
+                  width=16 border=0></A></DIV></TD></TR></TBODY></TABLE></TD>
+          <TD width=1 bgColor=#ffffff></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width="99%" align=center border=0>
+        <TBODY>
+        <TR>
+          <TD width="79%">&nbsp; </TD>
+          <TD width="21%">
+            <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD width=0%>&nbsp;</TD>
+                <TD width="20%" bgColor=#ffffff>
+                  <DIV align=center><IMG height=19 
+                  src="在Win32中管理虚拟内存.files/title_new_left.gif" 
+width=39></DIV></TD>
+                <TD width="80%" bgColor=#666666>
+                  <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD width="23%" bgColor=#666666 height=10>
+                        <DIV align=center></DIV></TD>
+                      <TD width="38%" bgColor=#666666 height=10>
+                        <DIV align=right></DIV></TD>
+                      <TD width="39%" bgColor=#666666 height=10>
+                        <DIV align=right><IMG height=19 
+                        src="在Win32中管理虚拟内存.files/title_right_2.jpg" 
+                        width=60></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width="99%" align=center 
+      bgColor=#666666 border=0>
+        <TBODY>
+        <TR>
+          <TD height=6></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width="99%" align=center border=0>
+        <TBODY>
+        <TR>
+          <TD width="79%" height=178>
+            <TABLE style="TABLE-LAYOUT: fixed" cellSpacing=0 cellPadding=0 
+            width="100%" align=center border=0>
+              <TBODY>
+              <TR></TR>
+              <TR>
+                <TD class=NEWSREADME align=middle colSpan=2>
+                  <TABLE cellSpacing=0 borderColorDark=#ffffff cellPadding=0 
+                  width="100%" bgColor=#009933 borderColorLight=#cccccc 
+border=1>
+                    <TBODY>
+                    <TR bgColor=#e4e4e4>
+                      <TD height=4>
+                        <DIV align=center><IMG height=16 
+                        src="在Win32中管理虚拟内存.files/note.jpg" width=16> 
+                        <B>在Win32中管理虚拟内存</B></DIV></TD></TR></TBODY></TABLE>
+                  <P>时间：2002-10-19 22:45:59&nbsp;阅读 <FONT 
+                  color=#ff0000>974</FONT> 次</P></TD></TR>
+              <TR>
+                <TD align=middle colSpan=2>
+                  <TABLE style="TABLE-LAYOUT: fixed" cellSpacing=0 cellPadding=0 
+                  width="98%" align=center border=0>
+                    <TBODY>
+                    <TR>
+                      <TD class=news style="WORD-WRAP: break-word">
+                        <P align=center><SPAN class=90v>Randy Kath</SPAN></P>
+                        <P align=center><SPAN class=90v>Microsoft Developer 
+                        Network 技术小组</SPAN></P>
+                        <P align=center><SPAN 
+                        class=90v>创建于：1993年1月20日</SPAN></P><B>
+                        <P><SPAN class=90v>摘要</SPAN></B></P>
+                        <P><SPAN class=90v>在Microsoft Windows NT 
+                        操作系统中，假如您对每组函数的功能，以及它们每个函数的作用，没有足够的认识，那么在Win32 
+                        应用程序中，决定使用哪个函数，或者哪组函数来管理内存将是困难的。为了简化这个问题，本篇技术文章主要是围绕Win32虚拟内存管理函数的：它包括哪些函数是可用的、如何使用它们，以及使用它们会对操作系统产生什么影响。本文将讨论如下的主题： 
+                        </SPAN>
+                        <UL>
+                          <LI><SPAN class=90v>保留、提交，和释放虚拟内存</SPAN> </LI></UL>
+                        <UL>
+                          <LI><SPAN class=90v>在虚拟内存页上改变保护</SPAN> </LI></UL>
+                        <UL>
+                          <LI><SPAN class=90v>锁定虚拟内存页</SPAN> </LI></UL>
+                        <UL>
+                          <LI><SPAN class=90v>查询一个进程的虚拟内存</SPAN> </LI></UL>
+                        <P><SPAN class=90v>在Microsoft Developer Network 
+                        CD中有一个叫作ProcessWalker的示例程序，它将会在本篇技术文章中出现。该示例程序对于探索一个进程的内存地址空间是很有用的。它还使用了虚拟内存函数来实现一个相互链接的列表结构。</SPAN></P>
+                        <P><B><SPAN class=90v>　</SPAN></P>
+                        <P><SPAN class=90v>概述</SPAN></B></P>
+                        <P><SPAN 
+                        class=90v>本文是三篇相关技术文章中的其中一篇，这三篇文章分别是棗“在Win32中管理虚拟内存”、“在Win32中管理内存-映射文件”，以及快要完成的“在Win32中管理堆（heap）内存”棗它们解释了如何在Win32编程接口的应用程序中管理内存。在每篇文章的概述部分，要指明Win32编程模型中基本的内存部件，并且指出如果您对特殊领域的较有兴趣，那么应该参考哪一篇文章。</SPAN></P>
+                        <P><SPAN class=90v>Microsoft Windows 
+                        操作系统的第一个版本介绍了基于一个单个的全局堆（global heap）和多个专有的局部堆（local 
+                        heaps）来管理动态内存的方法，所有应用程序和系统共存该全局堆（global 
+                        heap），而每一个应用程序具有其单独的局部堆（local 
+                        heaps）。同时还提供了全局和局部的内存管理函数，为这种新的内存管理系统提供了扩展的特性。最近，Microsoft 
+                        C的运行时(CRT)库被修改以包含如下功能，即使用如malloc和free这样的纯粹的CRT函数来管理Windows中的堆。所以，现在开发者应该作出选择了棗要么学习作为Windows 
+                        3.1版本的一部分来提供的新的应用程序编程接口(API)，要么坚持使用可移植的、典型的、并且为人所熟悉的CRT函数在为Windows 
+                        3.1所编写的应用程序中管理内存。</SPAN></P>
+                        <P><SPAN class=90v>随着Win32 
+                        API内容的不断增加，选择机会也随之增加。Win32提供了三个附加的函数组来管理应用程序的内存：内存-映射（memory-mapped）文件函数、堆内存（heap 
+                        memory）函数，以及虚拟内存函数。这些新的函数并不替代在Windows 
+                        3.1中现存的内存管理函数；相反它们提供了新的特性，使得开发者在为他们的Win32应用程序编写内存管理部分时，日子会轻松得多。</SPAN></P>
+                        <P><SPAN class=90v>图1. Win32 
+                        API为应用程序编程的多样性提供了不同级别的内存管理。</SPAN></P>
+                        <P><SPAN 
+                        class=90v>总之，如图1所看到的，在Win32中有六组内存管理函数，所有这些函数都被设计成单独使用。所以，您应该使用哪种函数呢？要回答这一问题主要依靠以下两件事：您希望的内存管理类型是什么，以及与之相关联的函数在操作系统中是如何实现的。换句话说，您是否是正在建立一个大的数据库应用程序，因而希望操作一个大的内存结构的子集合，或者您正计划一些简单的动态内存结构，例如链接列表或二进制树（binary 
+                        trees）。在这两种情况下，您都需要搞清楚哪些函数提供的功能最适合您的意向，并确切地了解在使用每个函数时要占用多少资源。</SPAN></P>
+                        <P><SPAN 
+                        class=90v>表1将Win32中的内存管理函数组进行了分类，并且分别指出在本系列的三篇技术文章中，每一篇所描述的相关的组的行为。在每篇技术文章中，通过描述作为对使用这些函数的响应的系统行为，重点强调了这些函数对系统所产生的影响。</SPAN></P>
+                        <P><SPAN class=90v>表1. 在Win32中可用的内存管理函数</SPAN></P>
+                        <TABLE cellSpacing=1 cellPadding=7 width=568 border=1>
+                          <TBODY>
+                          <TR>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>内存设置</SPAN></TD>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>受影响的系统资源</SPAN></TD>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>相关的技术文章</SPAN></TD></TR>
+                          <TR>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>虚拟内存函数</SPAN></TD>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>一个进程的虚拟地址空间</SPAN> 
+                              <P><SPAN class=90v>系统页文件</SPAN></P>
+                              <P><SPAN class=90v>系统内存</SPAN></P>
+                              <P><SPAN class=90v>硬盘空间</SPAN></P></TD>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>“在Win32中管理虚拟内存”</SPAN></TD></TR>
+                          <TR>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>内存-映射文件函数</SPAN></TD>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>一个进程的虚拟地址空间</SPAN> 
+                              <P><SPAN class=90v>系统页文件</SPAN></P>
+                              <P><SPAN class=90v>标准文件I/O</SPAN></P>
+                              <P><SPAN class=90v>系统内存</SPAN></P>
+                              <P><SPAN class=90v>硬盘空间</SPAN></P></TD>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>“在Win32中管理内存-映射文件”</SPAN></TD></TR>
+                          <TR>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>堆（Heap）内存函数</SPAN></TD>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>一个进程的虚拟地址空间</SPAN> 
+                              <P><SPAN class=90v>系统内存</SPAN></P>
+                              <P><SPAN class=90v>进程堆资源结构</SPAN></P></TD>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>“在Win32中管理堆内存”</SPAN></TD></TR>
+                          <TR>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>全局堆内存函数</SPAN></TD>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>一个进程的堆资源结构</SPAN></TD>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>“在Win32中管理堆内存”</SPAN></TD></TR>
+                          <TR>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>局部堆内存函数</SPAN></TD>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>一个进程的堆资源结构</SPAN></TD>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>“在Win32中管理堆内存”</SPAN></TD></TR>
+                          <TR>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>C运行时参考库</SPAN></TD>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>一个进程的堆资源结构</SPAN></TD>
+                            <TD vAlign=top width="33%"><SPAN 
+                              class=90v>“在Win32中管理堆内存”</SPAN></TD></TR></TBODY></TABLE>
+                        <P><SPAN 
+                        class=90v>每篇技术文章都是围绕Win32函数的用途问题而展开讨论的。要想对Windows 
+                        NT操作系统如何管理系统内存有更详细的了解，请参阅Microsoft Developer Network 
+                        CD上的“The Virtual-Memory Manager in Windows 
+                        NT”（技术文章，Win32和Windows NT的文章）。</SPAN></P>
+                        <P><B><SPAN class=90v>　</SPAN></P>
+                        <P><SPAN class=90v>Windows NT内存系统概述</SPAN></B></P>
+                        <P><SPAN class=90v>Windows 
+                        NT使用一个以页为基础的虚拟内存系统，该系统使用32位线性地址。在内部，系统管理被称为页的4096字节段中的所有内存。每页的物理内存都被备份 
+                        ?/FONT&gt; 
+                        对于临时的内存页使用页文件(pagefile)，而对于只读的内存页，则使用磁盘文件。在同一时刻，最多可以有16个不同的页文件。代码、资源和其它只读数据都是通过它们创建的文件直接备份。</SPAN></P>
+                        <P><SPAN class=90v>Windows NT为系统中的每一个应用程序（进程）提供一个独立的、2 
+                        GB的用户地址空间。对于应用程序来说，好象是有2 
+                        GB的可用内存，而不用考虑实际可用的物理内存的量。如果某个应用程序要求的内存比可用的内存更多时，Windows 
+                        NT是这样满足这种要求的，它从这个和/或其他的进程把非关键内存分页(paging)到一个页文件，并且释放这些物理内存页。结果，在Windows 
+                        NT中，全局堆不再存在。相反，每一个进程都有其自己的32位地址空间，在其中，该进程的所有内存被分配, 
+                        包括代码、资源、数据、DLL（动态链接库），和动态内存。实际上，系统仍然要受到可用的硬件资源的限制，但是实现了与系统中应用程序无关的、对于可用资源的管理。</SPAN></P>
+                        <P><SPAN class=90v>　</SPAN></P><B>
+                        <P><SPAN class=90v>在Win32中的虚拟内存</SPAN></B></P>
+                        <P><SPAN class=90v>Windows NT在内存和地址空间之间作出了区分。每个进程分配到2 
+                        GB的用户地址空间，而不管对于该进程的实际可用物理内存有多少。而且，所有进程都使用相同范围的线性32位地址，范围从0000000016-7FFFFFFF16，而不考虑可用内存的地址。Windows 
+                        NT负责在适当的时间把内存页映射(paging)到磁盘以及从磁盘页映射回内存，使得每个进程都确保能够寻址到它所需要的内存。尽管有可能出现两个进程试图同时访问同一虚拟地址上的内存，但是，实际上Windows 
+                        NT虚拟内存管理程序是在不同的物理位置描述这两个内存的位置。而且这两个地址都不见得与原始的虚拟地址一致。这就是虚拟内存。</SPAN></P>
+                        <P><SPAN 
+                        class=90v>因为虚拟内存的存在，一个应用程序能够管理它自己的地址空间，而不必考虑在系统中对于其它进程的影响。在Windows 
+                        NT中的内存管理程序负责查看在任何给定的时间里，所有的应用程序是否有足够的物理内存进行有效的操作。与在Windows 
+                        3.1版本或更早的版本中不同，Windows 
+                        NT操作系统下的应用程序不必考虑和其它应用程序共享系统内存这个问题。并且，即使在应用程序自己的地址空间内，它们仍能够与其它的应用程序共享内存。</SPAN></P>
+                        <P><SPAN 
+                        class=90v>区分内存和地址空间的一个好处是，为应用程序提供了将非常大的文件加载到内存的能力。不必将一个大的文件读进内存中，Windows 
+                        NT为应用程序保留该文件所需的地址范围提供了支持。然后，在需要的时候，该文件部分就可以被浏览了（物理性地读进内存）。通过虚拟内存的支持，对于大段的动态内存的分配同样可以做到这一点。</SPAN></P>
+                        <P><SPAN 
+                        class=90v>在Windows的早期版本中，在一个应用程序能够操作内存中的地址之前，该应用程序必须首先分配内存。在Windows 
+                        NT中，每一个进程的地址空间已经分配好了，是否有内存与该段地址空间中的地址相关联是另外的问题。Win32虚拟内存管理函数为分别管理进程的地址和内存提供了低级别的支持。</SPAN></P>
+                        <P><SPAN class=90v>Win32虚拟内存函数的全体是：</SPAN> 
+                        <UL>
+                          <LI><SPAN class=90v>VirtualAlloc 和 VirtualFree</SPAN> 
+                          </LI></UL>
+                        <UL>
+                          <LI><SPAN class=90v>VirtualLock 和 VirtualUnlock</SPAN> 
+                          </LI></UL>
+                        <UL>
+                          <LI><SPAN class=90v>VirtualQuery 或 
+                          VirtualQueryEx</SPAN> </LI></UL>
+                        <UL>
+                          <LI><SPAN class=90v>VirtualProtect 或 VirtualProtectEx 
+                          </SPAN></LI></UL>
+                        <P><SPAN 
+                        class=90v>对于每个函数，如有与之相对应的，则它们共同组成一组。分配内存请使用VirtualAlloc，一旦已经分配，则必须使用VirtualFree来释放。类似地，对于被使用VirtualLock锁定的页，当不再需要时，则必须用VirtualUnlock来解除锁定。VirtualQuery和VirtualProtect没有与之相对应的函数，但它们俩都有完整功能(complementary)的函数（在函数名字上的Ex扩展来指示）。这样，就允许它们在除调用进程之外的其他进程中使用，但是，此时调用进程需要有适当的特权才可以这样。这些函数将在下面的适当的上下文中解释。</SPAN></P>
+                        <P><SPAN class=90v>　</SPAN></P><B>
+                        <P><SPAN class=90v>自由的、保留的和已提交的虚拟内存</SPAN></B></P>
+                        <P><SPAN 
+                        class=90v>在任意给定的时间，进程中每个地址都可以被当作是自由的、保留的或已提交的。进程开始时，所有地址的都是自由的，意味着它们都是自由空间并且可以被提交到内存，或者为将来使用而保留起来。在任何自由的地址能够被使用前，它必须首先被分配为保留的或已提交的。试图访问一个保留的或已提交的地址都将产生一个访问冲突异常(access 
+                        violation exception)。</SPAN></P>
+                        <P><SPAN class=90v>一个进程中的所有2 
+                        GB的地址要么为了使用而是自由的、要么为了将来的使用而是保留的、要么已提交到特定的内存（在使用的）。图2描述了一个假设的进程，它包含自由的、保留的和已提交的地址。</SPAN></P>
+                        <P><SPAN class=90v>图 2. 一个进程的2 
+                        GB的虚存地址空间被分配为自由的、保留的和已提交的内存区位置。</SPAN></P>
+                        <P><SPAN class=90v>　</SPAN></P><B>
+                        <P><SPAN class=90v>保留的地址</SPAN></B></P>
+                        <P><SPAN 
+                        class=90v>当在一个进程中保留地址时，没有物理内存页被提交，并且，也许更为重要的是，在页文件中没有为备份该内存而保留空间。而且，保留一个地址范围将不会保证将来会有可用的物理内存来提交给这些地址。实际上，它只是保存了一个指定的自由地址地址，一直到需要使用它时，而阻止了其它分配对该段地址的请求。如果没有这种类型的保护，那么例程操作(routine 
+                        operations)，例如加载一个DLL或者资源，可能会占有指定的地址，并且危害以后对它的使用。</SPAN></P>
+                        <P><SPAN class=90v>保留地址是一个快速的操作，完全与被保留的地址范围的大小没有关系。不论保留1 
+                        GB的地址范围，还是保留4K的地址范围，该函数的速度都非常快。这并不令人惊奇，因为在此操作期间，没有资源被分配。该函数只是进入进程的虚拟地址描述符(VAD)树。有关VAD的详细信息，请参阅 
+                        Developer Network CD 的“The Virtual-Memory Manager in 
+                        Windows NT”（技术文章，Win32和Windows NT文章）</SPAN></P>
+                        <P><SPAN 
+                        class=90v>要想保留一段地址范围，需要参照下列代码来调用VirtualAlloc函数：</SPAN></P>
+                        <BLOCKQUOTE>
+                          <P><SPAN class=90v>/* 保留 10 MB 的地址空间 */</SPAN></P>
+                          <P><SPAN class=90v>lpBase = VirtualAlloc (NULL, 
+                          </SPAN></P>
+                          <P><SPAN class=90v>10485760, </SPAN></P>
+                          <P><SPAN class=90v>MEM_RESERVE, </SPAN></P>
+                          <P><SPAN 
+                        class=90v>PAGE_NOACCESS);</SPAN></P></BLOCKQUOTE>
+                        <P><SPAN 
+                        class=90v>如这里所示，第一个参数，lpAddress，使用的是NULL值，指导该函数在某一个最方便的位置保留地址范围。另外，也可能一个指定的地址已经被传递，为要保留的范围指示一个准确的初始地址。无论两种方法中的哪一种，该函数的返回值都指示出被保留的地址范围的开始位置，除非该函数无法完成请求。要是这样，VirtualAlloc函数的返回值将是一个错误状态值。</SPAN></P>
+                        <P><SPAN class=90v>第二个参数指示函数应该分配的地址范围。该值的大小可以是从一页到2 
+                        GB的任意值，但是VirtualAlloc实际上被限制为一个较小的范围。能够被保留的最小值为64K，而能够被保留的最大值为该进程中最大的连续自由地址空间。请求的保留地址，结果是得到64K的地址范围。反之，请求2 
+                        GB的范围将会失败，因为在任何给定的时间里，有那么多的可用地址空间是不可能的。（请记住，加载一个应用程序的动作也要使用初始2 
+                        GB地址空间中的一部分。）</SPAN></P>
+                        <BLOCKQUOTE><B>
+                          <P><SPAN class=90v>注意</B> Windows 
+                          NT在每一个进程的地址空间中生成一个保护设施(safeguard)。每一个进程的顶端65,536字节和低端65,536字节都被系统永久地保留。这些地址空间部分被保留为陷阱迷失指针（trap 
+                          stray 
+                          pointers）棗试图在0000000016-0000FFFF16或7FFF000016-7FFFFFFF16范围内寻址内存的指针。并不是巧合，在这个范围内，只需忽略这些地址中的低四位（最右边的两个字节）就可很容易地检测到该指针。从根本来讲，如果高四位是000016或7FFF16，那么这个指针是无效的；所有其它的值都表示有效的地址。</SPAN></P></BLOCKQUOTE>
+                        <P><SPAN 
+                        class=90v>在VirtualAlloc函数中的最后两个参数，dwAllocationType和dwProtect被用来决定如何分配地址以及与它们相关联的保护。地址可被分配为MEM_COMMIT或者MEM_RESERVE类型。PAGE_READONLY、PAGE_READWRITE和PAGE_NOACCESS是三种可以被应用到虚拟内存的保护。无论何值被传递到该函数，被保留的地址总是PAGE_NOACCESS，这是系统强制的默认值。已提交的页可以是只读的、也可以可读写的，或者是不能访问的。</SPAN></P>
+                        <P><SPAN class=90v>　</SPAN></P><B>
+                        <P><SPAN class=90v>已提交的内存</SPAN></B></P>
+                        <P><SPAN 
+                        class=90v>要使用保留的地址，内存首先必须被提交给该地址。提交内存到地址与保留内存相类似棗调用VirtualAlloc，并且在调用时设置dwAllocation参数等于MEM_COMMIT。在这一时刻，资源被提交到地址上。每一次，内存可以按一页的大小被提交。能够被提交的最大内存值仅仅取决于连续的自由或者保留地址的最大范围（但两者不可组合在一起），无须考虑系统的可用物理内存的大小。</SPAN></P>
+                        <P><SPAN 
+                        class=90v>当内存被提交时，内存物理页被分配，并且该段空间被保留在在一个页文件中。也就是说，已提交的内存页总是以物理内存页或者在已经被分页的磁盘上的页文件的形式存在。当提交一个大块内存时，在初始阶段，其部分或者全部内存没有驻留在物理内存中也是有可能的。某些内存页一开始驻留在页文件中，直到它被访问。在系统中，一旦内存页已提交，虚拟内存管理器象对待所有其它的内存页一样对待它们。</SPAN></P>
+                        <P><SPAN class=90v>在Windows NT虚拟内存系统中，使用了页表（page 
+                        tables）来访问物理内存页。每个页表本身也是一个内存页，象已提交的页一样。偶而，当提交内存时，同时还必须对页表分配附加的页。所以，提交一页内存的请求可能需要为页表分配一页，为请求的页分配一页，并且在页文件中需要两页空间来备份这些页中的每一页。因此，VirtualAlloc完成一个内存提交请求所需要的时间变化很大，它取决于系统的状态以及请求的空间大小。</SPAN></P>
+                        <P><SPAN 
+                        class=90v>下面的示例演示了如何将上例中被保留地址的指定页提交到一个内存页中。</SPAN></P>
+                        <BLOCKQUOTE>
+                          <P><SPAN class=90v>/* 为第3页地址提交内存。 */</SPAN></P>
+                          <P><SPAN class=90v>lpPage3 = VirtualAlloc (lpBase + (2 
+                          * 4096),</SPAN></P>
+                          <P><SPAN class=90v>4096,</SPAN></P>
+                          <P><SPAN class=90v>MEM_COMMIT,</SPAN></P></BLOCKQUOTE>
+                        <P><SPAN class=90v>PAGE_READWRITE);</SPAN></P>
+                        <P><SPAN 
+                        class=90v>请注意，对于lpAddress没有指定为NULL，而是指定了一个特定的地址来准确地指示被保留地址的哪一页会变成提交给内存的页。而且，初始时该内存页被赋予PAGE_READWRITE保护，而不是象在前面示例中的PAGE_NOACCESS。该函数的返回地址是第一页已提交地址的虚拟地址。</SPAN></P>
+                        <P><SPAN class=90v>　</SPAN></P><B>
+                        <P><SPAN class=90v>释放虚拟内存</SPAN></B></P>
+                        <P><SPAN 
+                        class=90v>一旦地址被以保留的或者已提交的形式分配，VirtualFree是唯一可以释放它们的方法棗那就是，将它们返回到自由的地址。VirtualFree还可以用来对已提交的页解除提交，同时，返回这些地址到保留状态。当解除地址的提交时，所有与该地址相关的物理内存和页文件空间都被释放。下面的示例演示如何对在前一个示例中已提交的内存页解除提交。</SPAN></P>
+                        <BLOCKQUOTE>
+                          <P><SPAN class=90v>/* 对第3页地址解除提交内存。 */</SPAN></P>
+                          <P><SPAN class=90v>VirtualFree (lpBase + (2 * 
+                          4096),</SPAN></P>
+                          <P><SPAN class=90v>4096,</SPAN></P>
+                          <P><SPAN class=90v>MEM_DECOMMIT,</SPAN></P>
+                          <P><SPAN 
+                        class=90v>PAGE_NOACCESS);</SPAN></P></BLOCKQUOTE>
+                        <P><SPAN 
+                        class=90v>只有已提交的地址才能被解除提交。当您需要对一个大范围的地址解除提交时，牢记这一点是非常重要的。例如，假设您有一定范围的地址，在其中多个地址的子集已被提交，而其它部分被保留。要想使全部范围的地址保留，唯一方法就是一个一个地对每个被提交的地址子集解除提交。如果试图对整个范围的地址解除提交将会失败，因为保留的地址无法解除提交。</SPAN></P>
+                        <P><SPAN 
+                        class=90v>与之相反，在一次操作中相同范围的地址都能被释放。因为在地址被释放时，一个地址的状态并不重要。下面的示例演示释放在第一个示例中被保留的10 
+                        MB范围的地址。</SPAN></P>
+                        <BLOCKQUOTE>
+                          <P><SPAN class=90v>/* 释放整个 10 MB 范围的地址。 */</SPAN></P>
+                          <P><SPAN class=90v>VirtualFree (lpBase,</SPAN></P>
+                          <P><SPAN class=90v>10485760,</SPAN></P>
+                          <P><SPAN class=90v>MEM_RELEASE,</SPAN></P>
+                          <P><SPAN 
+                        class=90v>PAGE_NOACCESS);</SPAN></P></BLOCKQUOTE>
+                        <P><B><SPAN class=90v>　</SPAN></P>
+                        <P><SPAN class=90v>改变虚拟内存页的保护</SPAN></B></P>
+                        <P><SPAN 
+                        class=90v>Win32提供VirtualProtect函数，作为对已提交内存改变页保护的一个方法。例如，一个应用程序可以按PAGE_READWRITE来提交一个页的地址，并且立即将数据填写到该页中。然后，该页的保护将被改变为PAGE_READONLY，这样可以有效地保护数据不被该进程中的任何线程重写。下面的示例使用VirtualProtect函数使一个不能被访问的页可用。</SPAN></P>
+                        <BLOCKQUOTE>
+                          <P><SPAN class=90v>/*将页保护改变成可读/写。*/</SPAN></P>
+                          <P><SPAN class=90v>VirtualProtect (lpStack + 
+                          4096,</SPAN></P>
+                          <P><SPAN class=90v>4096,</SPAN></P>
+                          <P><SPAN class=90v>PAGE_READWRITE,</SPAN></P>
+                          <P><SPAN class=90v>lpdwOldProt);</SPAN></P></BLOCKQUOTE>
+                        <P><SPAN 
+                        class=90v>可以将下面的环境看作是使用该函数的环境。一个用于缓冲数据的应用程序接收到一组大小变化的数据流，根据特定的硬件配置和其它的软件应用程序对CPU时间的竞争，数据流可能某时(at 
+                        times)超出进程的能力。为了防止这种现象发生，应用程序设计了一个内存系统，可以在开始时为一个缓冲提交一些内存页。然后，应用程序则使用PAGE_NOACCESS保护来保护内存的顶端页，使得任何想要访问该内存的请求都会产生一个异常。应用程序也在该代码的外层代码中使用一个异常处理程序来处理访问冲突。</SPAN></P>
+                        <P><SPAN 
+                        class=90v>当一个访问冲突发生时，应用程序能够确定缓冲区是否已经到了其极限。该应用程序通过将页保护改变为PAGE_READWRITE来响应，允许该缓冲区接收任何附加的数据，并且继续不间断的执行。同时，应用程序加载另一个线程来减缓数据流，直到该缓冲区恢复到一个理想的操作范围。当情况恢复到正常，顶端的页又返回到PAGE_NOACCESS，并且附加的线程也结束了。这种情况描述了在Win32中，如何将页保护和异常处理程序结合使用来提供独一无二的内存管理机会。</SPAN></P>
+                        <P><SPAN class=90v>　</SPAN></P><B>
+                        <P><SPAN class=90v>锁定虚拟内存页</SPAN></B></P>
+                        <P><SPAN class=90v>在Windows NT中的进程有一个被称为工作组（<I>working 
+                        set</I>）的最小页，是为了进程能够顺利地运行，在运行时在内存中必须被提供。Windows 
+                        NT在启动时为一个进程分配了默认数量的页数，并且逐渐地调整该数，使得系统中所有激活的进程的性能达到一种平衡的最优。当一个进程正在运行时（实际上是，是一个进程的线程正在运行时），Windows 
+                        NT在“努力工作”以确保该进程的工作组页总是驻留在物理内存中。</SPAN></P>
+                        <P><SPAN class=90v>在Windows 
+                        NT中的进程被授权使用VirtualLock和VirtualUnlock函数来巧妙地影响该系统的行为。从根本上讲，一个进程可以建立特定的页将它锁定到工作组中。然而，这并不给进程的工作组以自由的范围。它不能影响组成它的工作组的页数，（系统为每一个进程按规范来调整工作组），并且它无法控制何时工作组在内存中以及何时不在内存中。每次一个进程的工作组锁住的页数码最多不超过32。如果一个应用程序将被提交的内存页锁定在工作组中，这样做可能利大于弊，因为这样做可能会迫使该进程中的其他关键页被替代。如果那样的话，页可能会页映射到磁盘，在被访问的任何时候都会发生页故障。于是，该进程将花费许多的CPU时间却只是将关键页映射到内存和映射出内存。</SPAN></P>
+                        <P><SPAN 
+                        class=90v>请牢记，在Win32中锁定一页内存并不意味着该页内存将不能被页映射到磁盘。相反，它意味着当进程正在运行时，被锁定的内存页将是在一段物理内存中。不仅仅是有可能，而是非常可能，当一个进程处于理想情况时，该进程的整个页的工作组将被页映射到磁盘。当该进程的工作情况变差时，则工作组页将立即被页映射回内存中，包括 
+                        VirtualLocked 页。</SPAN></P>
+                        <P><SPAN class=90v>下面的例子在进程运行时，锁定一段地址到内存中。</SPAN></P>
+                        <BLOCKQUOTE>
+                          <P><SPAN class=90v>/* 锁定关键地址(critical 
+                          addresses)到内存中。*/</SPAN></P>
+                          <P><SPAN class=90v>VirtualLock (lpCriticalData, 
+                          1024);</SPAN></P></BLOCKQUOTE>
+                        <P><SPAN 
+                        class=90v>请注意，在本例中被锁定到内存的地址范围小于一页。并不是必需要整段范围都在内存的单个页中。最后的结果(net 
+                        result)是包含该地址中的数据的整页的内存被锁定到内存，而不仅仅是指出的地址的数据被锁定到内存中。如果该数据跨越了页的边界，则两页都将被锁定。</SPAN></P>
+                        <P><SPAN class=90v>　</SPAN></P><B>
+                        <P><SPAN class=90v>查询一个进程的虚拟内存</SPAN></B></P>
+                        <P><SPAN class=90v>给定一个进程的地址空间为2 
+                        GB，如果没有查询地址信息的能力，那么想要管理地址的全部范围将是困难的。因为地址本身代表独立的内存，对于它们，这些内存有可能被提交，或者不被提交，对它们进行查询，仅仅是读取保存它们状态的数据结构一件事罢了。在Windows 
+                        NT中，该结构是以前提到过的虚拟地址描述符树。Win32在VirtualQuery和VirtualQueryEx函数中提供了“遍历VAD结构”的能力。同样，Ex后缀指出哪个函数可从一个进程中被调用来查询另一个进程棗假如调用进程有足够的安全特权来执行该函数。下面的示例是从ProcessWalker示例程序中分离出来的：</SPAN></P>
+                        <BLOCKQUOTE>
+                          <P><SPAN class=90v>/*查询子进程中的下一个内存区。*/</SPAN></P>
+                          <P><SPAN class=90v>VirtualQueryEx 
+                          (hChildProcess,</SPAN></P>
+                          <P><SPAN class=90v>lpMem,</SPAN></P>
+                          <P><SPAN class=90v>lpList,</SPAN></P>
+                          <P><SPAN class=90v>sizeof 
+                          (MEMORY_BASIC_INFORMATION));</SPAN></P></BLOCKQUOTE>
+                        <P><SPAN 
+                        class=90v>ProcessWalker应用程序的主函数是遍历一个进程的地址空间，标识它的每一个唯一的地址区，并且显示有关每个区的特定状态信息。它是通过每次枚举从进程底部到上部的每个区域来完成的。LpMem被用来指出每个区域的位置。开始时它被设为0，从每个新区域的查询返回后，它通过查询的区域大小而递增。该过程一直重复下去，直到lpMem达到系统最高的保留区域。</SPAN></P>
+                        <P><SPAN 
+                        class=90v>LpList是一个指向MEMORY_BASIC_INFORMATION结构的指针，该结构被VirtualQueryEx函数所填充。当该函数返回时，该结构代表被查询区域的有关信息。该结构包含下列成员：</SPAN></P>
+                        <BLOCKQUOTE>
+                          <P><SPAN class=90v>typedef struct 
+                          _MEMORY_BASIC_INFORMATION { /* mbi */</SPAN></P>
+                          <P><SPAN class=90v>PVOID BaseAddress; /* 区域的基本地址 
+                          */</SPAN></P>
+                          <P><SPAN class=90v>PVOID AllocationBase; /* 分配基本地址 
+                          */</SPAN></P>
+                          <P><SPAN class=90v>DWORD AllocationProtect; /* 初始访问保护 
+                          */</SPAN></P>
+                          <P><SPAN class=90v>DWORD RegionSize; /* 区域的字节大小 
+                          */</SPAN></P>
+                          <P><SPAN class=90v>DWORD State; /* 已提交的、保留的、自由的 
+                          */</SPAN></P>
+                          <P><SPAN class=90v>DWORD Protect; /* 当前访问保护 
+                          */</SPAN></P>
+                          <P><SPAN class=90v>DWORD Type; /* 页类型 */</SPAN></P>
+                          <P><SPAN class=90v>} 
+                          MEMORY_BASIC_INFORMATION;</SPAN></P></BLOCKQUOTE>
+                        <P><SPAN 
+                        class=90v>VirtualQuery函数将为任何连接的地址区域返回这种状态信息。函数确定区域的底层边界和区域的大小，以及该区域中的地址的确切状态。它用于确定该区域的地址可以是该区域中的任何地址。因此，如果您想确定在任何给定的时间里有多少堆栈空间已经被提交，请按照这些步骤进行：</SPAN> 
+
+                        <OL>
+                          <LI><SPAN class=90v>为问题中的线程取得线程环境。</SPAN> 
+                          <LI><SPAN 
+                          class=90v>调用VirtualQuery函数，将线程环境信息中的堆栈指针地址作为函数中lpMem参数来提供。</SPAN> 
+                          </LI></OL>
+                        <P><SPAN 
+                        class=90v>该查询返回被提交内存的大小，并且分别以RegionSize和BaseAddres的形式返回在MEMORY_BASIC_INFORMATION结构中基本堆栈的地址。</SPAN></P>
+                        <P><SPAN 
+                        class=90v>内存区域，由VirtualQueryRegions来定义，是一个连续的地址范围，其保护、类型和基本分配是相同的。类型和保护值在本篇技术文章的前面曾做过描述。基本分配是lpAddress参数值，当整个内存区域通过VirtualAlloc函数第一次被分配时该参数被使用。在MEMORY_BASIC_INFORMATION结构中，它作为AllocationBase字段被表示出来。</SPAN></P>
+                        <P><SPAN 
+                        class=90v>当自由的地址成为保留的或已提交的情况时，那时它们的基本分配被确定。从任何角度来说，内存区域都不是静态的。一旦在保留地址区域中的一个单页被提交，则该区域被分成一个或多个保留区域和一个被提交区域。当页内存改变状态时，这种情况就会继续下去。类似地，当多个PAGE_READWRITE的已提交页中的一个被改变成PAGE_READONLY保护时，该区域也被分成多个较小的区域。</SPAN></P>
+                        <P><SPAN class=90v>　</SPAN></P><B>
+                        <P><SPAN class=90v>总结</SPAN></B></P>
+                        <P><SPAN class=90v>在Win32中的虚拟内存管理函数提供在Windows 
+                        NT中直接管理虚拟内存的能力。每个进程的2 
+                        GB用户地址空间被分成为保留的、已提交的或者自由的虚拟地址内存区。一个区被定义为一个连续的地址范围，其保护、类型和每个地址的基本分配是相同的，在每个区中是一个或多个地址页，也可携带保护和页锁定标志状态位。</SPAN></P>
+                        <P><SPAN 
+                        class=90v>虚拟内存管理函数为应用程序提供了转换虚拟地址空间页状态的能力。一个应用程序可以把内存类型从已提交的改变为保留的，或把保护模式从 
+                        PAGE_READWRITE 改变为 
+                        PAGE_READONLY，从而防止对某段地址空间的访问。一个应用程序可以锁定一页内存到工作组，使得一个进程最少地分页关键内存页。虚拟内存函数被认为是低级函数，意味着它们的速度相对较快，但是缺乏很多高级函数所具有的功能。</SPAN></P></TD></TR></TBODY></TABLE></TD></TR>
+              <TR align=right>
+                <TD colSpan=2>责任编辑：VCRoad(朱彦力)&nbsp;（共计 755 篇） </TD></TR>
+              <TR>
+                <TD colSpan=2></TD></TR>
+              <TR>
+                <TD colSpan=2>&nbsp; </TD></TR></TBODY></TABLE>
+            <TABLE cellSpacing=0 cellPadding=0 width="98%" align=center 
+border=0>
+              <TBODY>
+              <TR>
+                <TD><LINK href="在Win32中管理虚拟内存.files/style.css" type=text/css 
+                  rel=stylesheet>
+                  <FIELDSET><LEGEND align=left>╣ 在Win32中管理虚拟内存 <FONT 
+                  color=#ff0000><B>[回复数: 0]</B></FONT> ╠</LEGEND>
+                  <TABLE class=TableLine style="TABLE-LAYOUT: fixed" 
+                  cellSpacing=0 width="100%" bgColor=#ffffff 
+                  borderColorLight=#ffffff border=0>
+                    <TBODY></TBODY></TABLE></FIELDSET> </TD></TR>
+              <TR>
+                <TD height=9>
+                  <SCRIPT language=JavaScript><!--
+function Form1_Validator(theForm)
+{
+if (theForm.name.value == "")
+{
+alert("请输入您注册的会员名！");
+theForm.name.focus();
+return (false);
+}
+
+if (theForm.password.value == "")
+{
+alert("请输入密码！");
+theForm.password.focus();
+return (false);
+}
+
+if (theForm.name.value.length > 20)
+{
+alert("名字太长！至多20个字符");
+theForm.name.focus();
+return (false);
+}
+
+if (theForm.content.value == "")
+{
+alert("没有内容！");
+theForm.content.focus();
+return (false);
+}
+
+if (theForm.content.value.length > 1000)
+{
+alert("限制1000个字符！");
+theForm.content.focus();
+return (false);
+}
+return (true);
+}
+//--></SCRIPT>
+                  <LINK href="在Win32中管理虚拟内存.files/style.css" type=text/css 
+                  rel=stylesheet>
+                  <FIELDSET><LEGEND align=left>╣ 我要留言 ╠</LEGEND>
+                  <TABLE style="TABLE-LAYOUT: fixed" cellSpacing=0 cellPadding=0 
+                  width="95%" align=center bgColor=#ffffff border=0>
+                    <FORM name=Form1 onsubmit="return Form1_Validator(this)" 
+                    action=GBookSave.asp?PageName1=shownews&amp;NewsID=513 
+                    method=post>
+                    <TBODY>
+                    <TR>
+                      <TD width="100%">姓 名： <INPUT maxLength=16 size=10 
+                        name=name> &nbsp;&nbsp;密 码： <INPUT type=password size=10 
+                        name=password> <INPUT type=hidden value=1 name=page> <A 
+                        class=LeftMenu href="http://www.vcroad.net/userreg.asp" 
+                        target=_blank>没有注册？</A></TD></TR>
+                    <TR>
+                      <TD style="WORD-WRAP: break-word" vAlign=top width="100%"><TEXTAREA name=content rows=8 cols=82></TEXTAREA></TD>
+                    <TR>
+                      <TD align=middle width="100%"><INPUT type=submit value=提交 name=B1> <INPUT type=reset value=重写 name=B2> 
+                  </TD></TR></FORM></TBODY></TABLE></FIELDSET> 
+                  <TABLE height=6 cellSpacing=0 cellPadding=0 width="90%" 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+          <TD width="21%" bgColor=#dddddd height=178>
+            <TABLE height="100%" cellSpacing=1 cellPadding=0 width="100%" 
+            border=0>
+              <TBODY>
+              <TR>
+                <TD height="1%">
+                  <TABLE cellSpacing=1 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <TABLE cellSpacing=0 cellPadding=0 width="100%" 
+                        align=center bgColor=#efefef border=0>
+                          <TBODY>
+                          <TR>
+                            <TD background=在Win32中管理虚拟内存.files/hline.gif 
+                            height=1></TD></TR>
+                          <TR>
+                            <TD class=maintitle width="100%" bgColor=#efefef 
+                            height=18>&nbsp;相关信息：SDK进程线程</TD></TR>
+                          <TR>
+                            <TD background=在Win32中管理虚拟内存.files/hline.gif 
+                            height=1></TD></TR>
+                          <TR>
+                            <TD bgColor=#ffffff>
+                              <TABLE style="TABLE-LAYOUT: fixed" cellSpacing=5 
+                              cellPadding=0 width="100%" border=0>
+                                <TBODY>
+                                <TR>
+                                <TD style="WORD-WRAP: break-word">·&nbsp;<A 
+                                class=MainContentS title="" 
+                                href="http://www.vcroad.net/shownews.asp?newsid=886" 
+                                target=_blank>WIN32程序设计之线程</A><FONT 
+                                class=TitleMore>[<FONT 
+                                color=#ff0000>图</FONT>]</FONT>&nbsp;<FONT 
+                                class=TitleMore><FONT 
+                                class=TitleMore>2002-12-10</FONT></FONT><BR>·&nbsp;<A 
+                                class=MainContentS title="" 
+                                href="http://www.vcroad.net/shownews.asp?newsid=512" 
+                                target=_blank>新的USER32的新内容</A>&nbsp;<FONT 
+                                class=TitleMore><FONT 
+                                class=TitleMore>2002-10-19</FONT></FONT><BR>·&nbsp;<A 
+                                class=MainContentS title="" 
+                                href="http://www.vcroad.net/shownews.asp?newsid=491" 
+                                target=_blank>Win32 多线程的性能</A>&nbsp;<FONT 
+                                class=TitleMore><FONT 
+                                class=TitleMore>2002-10-16</FONT></FONT><BR>·&nbsp;<A 
+                                class=MainContentS title="" 
+                                href="http://www.vcroad.net/shownews.asp?newsid=490" 
+                                target=_blank>WIN32的时空观</A>&nbsp;<FONT 
+                                class=TitleMore><FONT 
+                                class=TitleMore>2002-10-16</FONT></FONT><BR>·&nbsp;<A 
+                                class=MainContentS title="" 
+                                href="http://www.vcroad.net/shownews.asp?newsid=480" 
+                                target=_blank>禁止Win32平台的任务切换</A>&nbsp;<FONT 
+                                class=TitleMore><FONT 
+                                class=TitleMore>2002-10-16</FONT></FONT><BR></TD></TR>
+                                <TR>
+                                <TD align=right width="98%"><A class=MainMore 
+                                href="http://www.vcroad.net/showsearch.asp?keyword=SDK进程线程" 
+                                target=_blank>&gt;&gt;搜索更多</A>&nbsp;</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+                        <TABLE height=6 cellSpacing=0 cellPadding=0 width="90%" 
+                        border=0>
+                          <TBODY>
+                          <TR>
+                            <TD></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+                  <P></P>
+                  <TABLE cellSpacing=1 cellPadding=0 width="100%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD width="30%" height=17>
+                        <DIV align=right><IMG height=18 
+                        src="在Win32中管理虚拟内存.files/err.gif" width=18></DIV></TD>
+                      <TD width="70%" height=17><A class=MainContentS 
+                        href="http://www.vcroad.net/forum/list.asp?boardid=10" 
+                        target=_blank>举报网站错误</A></TD></TR></TBODY></TABLE><BR><BR>
+                  <TABLE cellSpacing=0 borderColorDark=#ffffff cellPadding=0 
+                  width="100%" borderColorLight=#cccccc border=1>
+                    <TBODY>
+                    <TR bgColor=#e4e4e4>
+                      <TD height=4>
+                        <DIV align=center><FONT size=2><IMG height=12 
+                        src="在Win32中管理虚拟内存.files/arrow2.gif" width=24> 
+                        开发论坛</FONT></DIV></TD></TR></TBODY></TABLE>
+                  <TABLE cellSpacing=0 cellPadding=0 width="59%" align=center 
+                  border=0>
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <DIV align=right><A class=MainContentS 
+                        href="http://www.vcroad.net/forum/list.asp?boardid=4" 
+                        target=_blank>SDK 编程论坛</A></DIV></TD></TR>
+                    <TR>
+                      <TD>
+                        <DIV align=right><A class=MainContentS 
+                        href="http://www.vcroad.net/forum/list.asp?boardid=3" 
+                        target=_blank>C/CPP 编程论坛</A></DIV></TD></TR>
+                    <TR>
+                      <TD>
+                        <DIV align=right><A class=MainContentS 
+                        href="http://www.vcroad.net/forum/list.asp?boardid=5" 
+                        target=_blank>VC/MFC 编程论坛</A></DIV></TD></TR>
+                    <TR>
+                      <TD>
+                        <DIV align=right></DIV></TD></TR>
+                    <TR>
+                      <TD height=23>
+                        <DIV align=right></DIV></TD></TR></TBODY></TABLE><BR>
+                  <DIV align=center><FONT size=2><SPAN class=MainContentS><IMG 
+                  height=16 src="在Win32中管理虚拟内存.files/hf.gif" 
+                  width=16></SPAN></FONT> <A class=MainContentS 
+                  href="mailto:vcroad@sina.com">我要投稿</A></DIV></TD></TR>
+              <TR>
+                <TD height=8>
+                  <DIV 
+      align=center></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><LINK 
+      href="在Win32中管理虚拟内存.files/style.css" type=text/css rel=stylesheet>
+      <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+        <TBODY>
+        <TR>
+          <TD width="1%" bgColor=#ffffff></TD>
+          <TD width="1%">
+          <TD class=top4 style="BORDER-TOP: #000000 1px double" align=middle 
+          width="96%" height=12>| <A class=top4 
+            onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.vcroad.com');" 
+            href="http://www.vcroad.net/shownews.asp?newsid=513#">设为首页</A> | <A 
+            class=top4 
+            onclick="javascript:window.external.AddFavorite('http://www.vcroad.com', 'VC之路：：综合软件开发网站，以VC++编程为主')" 
+            href="http://www.vcroad.net/shownews.asp?newsid=513#">加入收藏</A> | <A 
+            class=top4 href="mailto:vcroad@sina.com">联系我们</A> | <A class=top4 
+            href="mailto:wutao8@263.net">联系枣子</A> | <A class=top4 
+            href="http://www.vcroad.net/tougao.asp" target=admin>投稿说明</A> | <A 
+            class=top4 href="http://www.vcroad.net/forum/" target=admin>开发社区</A> 
+            |</TD>
+          <TD width="1%"></TD>
+          <TD width="1%" bgColor=#ffffff></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD height=18>
+            <DIV align=center><FONT size=-1><SPAN class=text>CopyRight by VCROAD 
+            &copy;2000-2002 All Right 
+  Reserve</SPAN></FONT></DIV></TD></TR></TBODY></TABLE></TR></TBODY></DIV></BODY></HTML>

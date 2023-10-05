@@ -1,0 +1,90 @@
+BODY {
+	COLOR: #000000; FONT-FAMILY: "宋体"; FONT-SIZE: 12px
+}
+DIV {
+	COLOR: #333333; FONT-SIZE: 12px
+}
+TD {
+	COLOR: #333333; FONT-FAMILY: "宋体"; FONT-SIZE: 12px
+}
+A:link {
+	COLOR: #3366cc; FONT-FAMILY: "宋体"; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #3366cc; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #6699ff; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff4400; TEXT-DECORATION: none
+}
+.kbhide {
+	DISPLAY: none
+}
+#floater {
+	LEFT: 0px; POSITION: absolute; TOP: 0px; VISIBILITY: visible; WIDTH: 5px; Z-INDEX: -1
+}
+.sfont {
+	LINE-HEIGHT: 20px
+}
+.greenb {
+	COLOR: #308080; FONT-WEIGHT: bold
+}
+.title {
+	COLOR: #009933; FONT-SIZE: 14px; FONT-WEIGHT: bold; LINE-HEIGHT: 144%
+}
+.pt9 {
+	FONT-SIZE: 12px
+}
+.tch {
+	COLOR: #ff0000
+}
+.article {
+	FONT-SIZE: 14px; LINE-HEIGHT: 150%
+}
+.underline {
+	TEXT-DECORATION: underline
+}
+.spanclass {
+	HEIGHT: 1px; LEFT: 1px; POSITION: absolute; TOP: 1px; VISIBILITY: hidden; WIDTH: 760px
+}
+A.p1 {
+	COLOR: #000000
+}
+A.p1:visited {
+	COLOR: #000000
+}
+A.p1:hover {
+	COLOR: #ff4400
+}
+A.p1:active {
+	COLOR: #ff6600
+}
+.dh {
+	COLOR: #eeeeee; FONT-FAMILY: "宋体"; FONT-SIZE: 12px; LINE-HEIGHT: 19px
+}
+.bodyright {
+	BORDER-LEFT: #000000 1px solid; BORDER-RIGHT: #ffdda2 1px solid
+}
+.bodyleft {
+	BORDER-LEFT: #ffdda2 1px solid; BORDER-RIGHT: #000000 1px solid
+}
+.leftbottom {
+	BORDER-BOTTOM: #ffdda2 1px solid; BORDER-LEFT: #ffdda2 1px solid
+}
+.topbottom {
+	BORDER-BOTTOM: #ffdda2 1px solid; BORDER-TOP: #000000 1px solid
+}
+.rightbottom {
+	BORDER-BOTTOM: #ffdda2 1px solid; BORDER-RIGHT: #ffdda2 1px solid
+}
+.bottom {
+	BORDER-BOTTOM: #444444 1px solid
+}
+.allborder {
+	BORDER-BOTTOM: #dddddd 1px solid; BORDER-LEFT: #dddddd 1px solid; BORDER-RIGHT: #dddddd 1px solid; BORDER-TOP: #dddddd 1px solid
+}
+.dingwei {
+	POSITION: relative
+}

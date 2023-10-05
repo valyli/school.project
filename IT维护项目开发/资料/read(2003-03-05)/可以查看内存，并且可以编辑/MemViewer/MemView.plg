@@ -1,0 +1,57 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: MemView - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x1009 /fo"Debug/MemView.res" /d "_DEBUG" /d "_AFXDLL" "F:\new stuff(2003-03-05)\download\可以查看内存，并且可以编辑\MemViewer\MemView.rc"" 
+Creating temporary file "E:\TEMP\RSPAF.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/MemView.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\new stuff(2003-03-05)\download\可以查看内存，并且可以编辑\MemViewer\BEdit.cpp"
+"F:\new stuff(2003-03-05)\download\可以查看内存，并且可以编辑\MemViewer\MainFrm.cpp"
+"F:\new stuff(2003-03-05)\download\可以查看内存，并且可以编辑\MemViewer\MemView.cpp"
+"F:\new stuff(2003-03-05)\download\可以查看内存，并且可以编辑\MemViewer\MemViewDoc.cpp"
+"F:\new stuff(2003-03-05)\download\可以查看内存，并且可以编辑\MemViewer\MemViewView.cpp"
+]
+Creating command line "cl.exe @E:\TEMP\RSPAF.tmp" 
+Creating temporary file "E:\TEMP\RSPB0.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/MemView.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\new stuff(2003-03-05)\download\可以查看内存，并且可以编辑\MemViewer\StdAfx.cpp"
+]
+Creating command line "cl.exe @E:\TEMP\RSPB0.tmp" 
+Creating temporary file "E:\TEMP\RSPB1.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/MemView.pdb" /debug /machine:I386 /out:"Debug/MemView.exe" /pdbtype:sept 
+".\Debug\BEdit.obj"
+".\Debug\MainFrm.obj"
+".\Debug\MemView.obj"
+".\Debug\MemViewDoc.obj"
+".\Debug\MemViewView.obj"
+".\Debug\StdAfx.obj"
+".\Debug\MemView.res"
+]
+Creating command line "link.exe @E:\TEMP\RSPB1.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+BEdit.cpp
+MainFrm.cpp
+MemView.cpp
+MemViewDoc.cpp
+MemViewView.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+MemView.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

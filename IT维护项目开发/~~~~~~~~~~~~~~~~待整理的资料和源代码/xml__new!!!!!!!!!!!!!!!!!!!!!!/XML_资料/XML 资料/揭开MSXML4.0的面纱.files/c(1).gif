@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>eNet首页</title>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<SCRIPT language="javascript" src="/includes/fudong.js"></SCRIPT>
+
+<link rel="stylesheet" href="enet3.css" type="text/css">
+<style type="text/css">
+#supertext {
+position:absolute;
+left:-200;
+top:-200;
+visibility:hide;
+visibility:hidden;
+
+}
+
+#supertext2 {
+position:absolute;
+left:-200;
+top:-200;
+visibility:hide;
+visibility:hidden;
+
+}
+</style>
+
+
+
+</head>
+<body bgcolor="#FFFFFF" text="#000000" topmargin="5" marginheight="5">
+<!-- 满屏飘开始
+<div id=floater style="HEIGHT: 0px; POSITION: absolute; WIDTH: 0px; left: 0px; top: 0px; z-index:100;  visibility: hidden;" >
+<a href="http://ad5.enet.com.cn/adcount.php?id=AD20021213001&url=http%3A%2F%2Fwww.intel.com%2Fcn%2Fhome%2Fcampaign%2Fholiday%2Foffers%2Findex.htm%20" target=_blank>
+<img src="/images/adv/intel80X80.gif" width="80" height="80" border="0"></a> 
+</div>
+<script>
+setTimeout("document.all.floater.style.visibility='visible';",21500);
+floater();
+</script>
+ 满屏飘结束 -->
+
+
+<table width="750" border="0" cellspacing="0" cellpadding="0" align="center">
+    <tr> 
+      <td width="255"><a href="/index.shtml"><img src="images/logo.gif" width="255" height="32" border="0" alt="eNet首页"></a></td>
+      <td width="495">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0">
+  <tr>
+    <td height="18"><a href="http://home.enet.com.cn/index.shtml" target="_blank" class="nav1">eNet首页</a> | <a href="http://news.enet.com.cn/index.shtml" target="_blank" class="nav1">资讯中心</a> 
+      | <a href="http://hardware.enet.com.cn/index.shtml" target="_blank" class="nav1">硬件资讯</a> 
+      | <a href="http://school.enet.com.cn/index.shtml" target="_blank" class="nav1">技术</a> 
+      | <a href="http://cio.enet.com.cn/" target="_blank" class="nav1">应用与方案</a>  
+      | <a href="http://www.win118.com" target="_blank" class="nav1"><font color="red">企业建站</font></a> 
+      | <a href="http://download.enet.com.cn/index.shtml" target="_blank" class="nav1">下载</a> 
+      | <a href="http://sms.enet.com.cn/" target="_blank" class="nav1">短信</a> | <a href="http://games.enet.com.cn/" target="_blank" class="nav1">游戏</a>
+      </td>
+  </tr>
+  <tr>
+    <td height="18"><a href="http://shop.enet.com.cn/" target="_blank" class="nav1"><font color="red">商城</font></a> 
+      | <a href="http://price.enet.com.cn/index.shtml" target="_blank" class="nav1">最低报价</a> 
+      | <a href="http://eshop.enet.com.cn/shuma.shtml?categoryid=95" target="_blank" class="nav1">数码</a> 
+      | <a href="http://store.enet.com.cn/" target="_blank" class="nav1">经销商</a> | <a href="http://pc.enet.com.cn/" target="_blank" class="nav1"><font color="red">PC导购中心</font></a> 
+      | <a href="http://shop.enet.com.cn/marketplace/browsecategory.jsp?categoryid=4" target="_blank" class="nav1">笔记本</a> 
+      | <a href="http://tech

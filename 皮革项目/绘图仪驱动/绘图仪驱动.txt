@@ -1,0 +1,3 @@
+OEM 版软件绘图仪驱动程序
+下载 sup.exe 解压到安装目录下的support目录下     
+drv.exe解压到安装目录下 　 

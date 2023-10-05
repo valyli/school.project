@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="gb2312"?>
+<OperationList>
+	<InfoModuleTypeProviderId>1</InfoModuleTypeProviderId>
+	<InfoModuleTypeId>1</InfoModuleTypeId>
+	<InfoModuleProviderId>1</InfoModuleProviderId>
+	<InfoServiceProviderId>1</InfoServiceProviderId>
+	<NameBaseId>1</NameBaseId>
+	<FunctionSection>
+		<OperationID>1</OperationID>
+		<InfomationElementTableID>1</InfomationElementTableID>
+		<InfomationElementID>1</InfomationElementID>
+		<OperationType>0</OperationType>
+		<ServiceFileName>DetectVersion.dll</ServiceFileName>
+		<SupportSystemType>255</SupportSystemType>
+		<ModuleType>1</ModuleType>
+		<InterfaceFunction>DetectWindowsVersion_DetectWindowsVersionModule</InterfaceFunction>
+		<ParameterType>5</ParameterType>
+		<IsStorageReturnValueInParameter>1</IsStorageReturnValueInParameter>
+		<ParameterValue></ParameterValue>
+	</FunctionSection>
+</OperationList>

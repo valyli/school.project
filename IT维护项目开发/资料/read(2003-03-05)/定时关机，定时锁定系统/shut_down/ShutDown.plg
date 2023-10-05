@@ -1,0 +1,61 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ShutDown - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/ShutDown.res" /d "_DEBUG" "F:\new stuff(2003-03-05)\download\定时关机，定时锁定系统\shut_down\ShutDown.rc"" 
+Creating temporary file "E:\TEMP\RSP7F.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR"Debug/" /Fp"Debug/ShutDown.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\new stuff(2003-03-05)\download\定时关机，定时锁定系统\shut_down\Input.cpp"
+"F:\new stuff(2003-03-05)\download\定时关机，定时锁定系统\shut_down\KeyDlg.cpp"
+"F:\new stuff(2003-03-05)\download\定时关机，定时锁定系统\shut_down\PwdDlg.cpp"
+"F:\new stuff(2003-03-05)\download\定时关机，定时锁定系统\shut_down\Shortcut.cpp"
+"F:\new stuff(2003-03-05)\download\定时关机，定时锁定系统\shut_down\ShutDown.cpp"
+"F:\new stuff(2003-03-05)\download\定时关机，定时锁定系统\shut_down\ShutDownDlg.cpp"
+]
+Creating command line "cl.exe @E:\TEMP\RSP7F.tmp" 
+Creating temporary file "E:\TEMP\RSP80.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR"Debug/" /Fp"Debug/ShutDown.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\new stuff(2003-03-05)\download\定时关机，定时锁定系统\shut_down\StdAfx.cpp"
+]
+Creating command line "cl.exe @E:\TEMP\RSP80.tmp" 
+Creating temporary file "E:\TEMP\RSP81.tmp" with contents
+[
+winmm.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/ShutDown.pdb" /debug /machine:I386 /out:"Debug/ShutDown.exe" /pdbtype:sept 
+".\Debug\Input.obj"
+".\Debug\KeyDlg.obj"
+".\Debug\PwdDlg.obj"
+".\Debug\Shortcut.obj"
+".\Debug\ShutDown.obj"
+".\Debug\ShutDownDlg.obj"
+".\Debug\StdAfx.obj"
+".\Debug\ShutDown.res"
+".\IdleUI.lib"
+]
+Creating command line "link.exe @E:\TEMP\RSP81.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+Input.cpp
+KeyDlg.cpp
+PwdDlg.cpp
+Shortcut.cpp
+ShutDown.cpp
+ShutDownDlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+ShutDown.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

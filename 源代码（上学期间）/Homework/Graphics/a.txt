@@ -1,0 +1,67 @@
+void ellipse(DDSURFACEDESC* ddsd,int xx1,int yy1,int xx2,int yy2,WORD color)
+{	int xx,yy,x1,x2,x3,x4,y1,y2,y3,y4,pk;
+	int xc,yc,rx,ry,rx2,ry2,tworx2,twory2,px,py;
+	xc = (xx1 + xx2) >> 1;
+	yc = (yy1 + yy2) >> 1;
+	if(xx1 > xx2)
+		rx = (xx1 - xx2) >> 1;
+	else
+		rx = (xx2 - xx1) >> 1;
+	if(yy1 > yy2)
+		ry = (yy1 - yy2) >> 1;
+	else
+		ry = (yy2 - yy1) >> 1;
+	rx2 = rx * rx;
+	ry2 = ry * ry;
+	tworx2 = rx2<<1;
+	twory2 = ry2<<1;
+	xx = 0;
+	yy = ry;
+	px = 0;
+	py = tworx2 * yy;
+	pk = ry2 - rx2*ry + rx2>>2; 
+	x1 = xc , y1 = yc + ry;
+	x2 = xc , y2 = yc + ry;
+	x3 = xc , y3 = yc - ry;
+	x4 = xc , y4 = yc - ry;
+	writePixel(ddsd,x1,y1,color);
+	writePixel(ddsd,x2,y2,color);
+	writePixel(ddsd,x3,y3,color);
+	writePixel(ddsd,x4,y4,color);
+	while(px < py)
+	{	xx++;
+		px+= twory2;
+		x1++,x2--,x3++,x4--;
+		if(pk < 0)
+			pk+= ry2 + px;
+		else
+		{	yy--;
+			y1--,y2--,y3++,y4++;
+			py -= tworx2;
+			pk+= ry2 + px - py;
+		}
+		writePixel(ddsd,x1,y1,color);
+		writePixel(ddsd,x2,y2,color);
+		writePixel(ddsd,x3,y3,color);
+		writePixel(ddsd,x4,y4,color);
+	}
+	pk = (int)sqrt(((ry2*(xx*2+1)*(xx*2+1))>>2) + rx2*(yy-1)*(yy-1) - rx2*ry2);
+	while(yy>0)
+	{	yy--;
+		y1--,y2--,y3++,y4++;
+		py-=tworx2;
+		if(pk>0)
+		{	pk+=rx2 - py;
+		}
+		else
+		{	xx++;
+			x1++,x2--,x3++,x4--;
+			px+=twory2;
+			pk+=rx2-py+px;
+		}
+		writePixel(ddsd,x1,y1,color);
+		writePixel(ddsd,x2,y2,color);
+		writePixel(ddsd,x3,y3,color);
+		writePixel(ddsd,x4,y4,color);
+	}
+}

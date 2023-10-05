@@ -1,0 +1,59 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: MonthCal - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\WINDOWS\TEMP\RSPB0A2.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/MonthCal.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\MonthCal\calendar.cpp"
+"D:\MonthCal\font.cpp"
+"D:\MonthCal\mci.cpp"
+"D:\MonthCal\MonthCal.cpp"
+"D:\MonthCal\MonthCalDlg.cpp"
+"D:\MonthCal\picture.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPB0A2.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPB0A3.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/MonthCal.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\MonthCal\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPB0A3.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPB0A4.TMP" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/MonthCal.pdb" /debug /machine:I386 /out:"Debug/MonthCal.exe" /pdbtype:sept 
+.\Debug\calendar.obj
+.\Debug\font.obj
+.\Debug\mci.obj
+.\Debug\MonthCal.obj
+.\Debug\MonthCalDlg.obj
+.\Debug\picture.obj
+.\Debug\StdAfx.obj
+.\Debug\MonthCal.res
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPB0A4.TMP"
+<h3>Output Window</h3>
+Compiling...
+Skipping... (no relevant changes detected)
+StdAfx.cpp
+Compiling...
+Skipping... (no relevant changes detected)
+calendar.cpp
+font.cpp
+mci.cpp
+MonthCal.cpp
+MonthCalDlg.cpp
+picture.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+MonthCal.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

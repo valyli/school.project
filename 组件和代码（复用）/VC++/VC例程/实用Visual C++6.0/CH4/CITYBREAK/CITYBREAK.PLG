@@ -1,0 +1,40 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: CityBreak - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/CityBreak.res" /d "_DEBUG" /d "_AFXDLL" "G:\tsengyong\C++ 程序\CityBreak\CityBreak.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPA314.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/CityBreak.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"G:\tsengyong\C++ 程序\CityBreak\CityBreak.cpp"
+"G:\tsengyong\C++ 程序\CityBreak\CityBreakDlg.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPA314.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPA315.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/CityBreak.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"G:\tsengyong\C++ 程序\CityBreak\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPA315.TMP" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/CityBreak.pdb" /debug /machine:I386 /out:"Debug/CityBreak.exe" /pdbtype:sept  ".\Debug\CityBreak.obj" ".\Debug\CityBreakDlg.obj" ".\Debug\StdAfx.obj" ".\Debug\CityBreak.res" "
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+CityBreak.cpp
+CityBreakDlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+CityBreak.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

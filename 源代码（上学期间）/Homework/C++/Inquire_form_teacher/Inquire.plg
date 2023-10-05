@@ -1,0 +1,68 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Inquire - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/Inquire.res" /d "_DEBUG" /d "_AFXDLL" "D:\Code\Inquire_form_teacher\Inquire.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPE143.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/Inquire.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\Code\Inquire_form_teacher\ChildFrm.cpp"
+"D:\Code\Inquire_form_teacher\dlink.cpp"
+"D:\Code\Inquire_form_teacher\Inquire.cpp"
+"D:\Code\Inquire_form_teacher\InquireDoc.cpp"
+"D:\Code\Inquire_form_teacher\InquireView.cpp"
+"D:\Code\Inquire_form_teacher\MainFrm.cpp"
+"D:\Code\Inquire_form_teacher\resclass.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPE143.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPE144.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/Inquire.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\Code\Inquire_form_teacher\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPE144.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPE145.TMP" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/Inquire.pdb" /debug /machine:I386 /out:"Debug/Inquire.exe" /pdbtype:sept 
+.\Debug\ChildFrm.obj
+.\Debug\dlink.obj
+.\Debug\Inquire.obj
+.\Debug\InquireDoc.obj
+.\Debug\InquireView.obj
+.\Debug\MainFrm.obj
+.\Debug\resclass.obj
+.\Debug\StdAfx.obj
+.\Debug\Inquire.res
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPE145.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+ChildFrm.cpp
+dlink.cpp
+D:\Code\Inquire_form_teacher\dlink.cpp(279) : warning C4101: 'x' : unreferenced local variable
+D:\Code\Inquire_form_teacher\dlink.cpp(279) : warning C4101: 'i' : unreferenced local variable
+D:\Code\Inquire_form_teacher\dlink.cpp(279) : warning C4101: 'y' : unreferenced local variable
+Inquire.cpp
+InquireDoc.cpp
+d:\code\inquire_form_teacher\dlink.h(258) : warning C4102: 'End' : unreferenced label
+        d:\code\inquire_form_teacher\dlink.h(253) : while compiling class-template member function 'struct node<class CStudent> *__thiscall CD_Link<class CStudent>::Location(class CStudent)'
+InquireView.cpp
+MainFrm.cpp
+resclass.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+Inquire.exe - 0 error(s), 4 warning(s)
+</pre>
+</body>
+</html>

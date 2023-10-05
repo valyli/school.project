@@ -1,0 +1,83 @@
+
+	// AutoATL.idl : IDL source for AutoATL.exe
+//
+// This file will be processed by the MIDL tool to
+// produce the type library (AutoATL.tlb) and marshalling code.
+import "oaidl.idl";
+import "ocidl.idl";
+	
+	interface IDocument;
+	
+	[
+		object,
+		uuid(8BE6903B-68EF-11D2-9AE7-00A0C9E52DCB),
+		dual,
+		helpstring("IApplication Interface"),
+		pointer_default(unique)
+	]
+	interface IApplication : IDispatch
+	{
+		[id(1), helpstring("method Beep")] HRESULT Beep();
+		[propget, id(2), helpstring("property ActiveDocument")] HRESULT ActiveDocument([out, retval] IDocument* *pVal);
+	};
+[
+	uuid(8BE69039-68EF-11D2-9AE7-00A0C9E52DCB),
+	version(1.0),
+	helpstring("AutoATL 1.0 Type Library")
+]
+library AutoATLLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+	[
+		uuid(8BE6903D-68EF-11D2-9AE7-00A0C9E52DCB),
+		helpstring("_IApplicationEvents Interface")
+	]
+	dispinterface _IApplicationEvents
+	{
+		properties:
+		methods:
+	};
+	[
+		object,
+		uuid(05C18770-6A95-11D2-9AE8-00A0C9E52DCB),
+		dual,
+		helpstring("IDocument Interface"),
+		pointer_default(unique)
+	]
+	interface IDocument : IDispatch
+	{
+		[id(1), helpstring("method Hello")] HRESULT Hello();
+	};
+
+	[
+		uuid(8BE6903C-68EF-11D2-9AE7-00A0C9E52DCB),
+		helpstring("Application Class")
+	]
+	coclass Application
+	{
+		[default] interface IApplication;
+		[default, source] dispinterface _IApplicationEvents;
+	};
+	[
+		uuid(05C18772-6A95-11D2-9AE8-00A0C9E52DCB),
+		helpstring("_IDocumentEvents Interface")
+	]
+	dispinterface _IDocumentEvents
+	{
+		properties:
+		methods:
+	};
+
+	[
+		uuid(05C18771-6A95-11D2-9AE8-00A0C9E52DCB),
+		helpstring("Document Class")
+	]
+	coclass Document
+	{
+		[default] interface IDocument;
+		[default, source] dispinterface _IDocumentEvents;
+	};
+};
+
+	

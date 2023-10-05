@@ -1,0 +1,14 @@
+typedef struct tagSMM_c2s
+{
+    SMM_CHAR cIp[19] ;  //ip地址
+    SMM_INT  uiPort;    //端口
+    Transfer_C2S_Struct m_Data_Transfer_C2S_Struct;
+};
+
+
+typedef struct tagSMM_s2c
+{
+    SMM_CHAR cIp[19] ;  //ip地址
+    SMM_INT  uiPort;     //端口
+    Transfer_S2C_Struct m_Data_Transfer_S2C_Struct;
+};

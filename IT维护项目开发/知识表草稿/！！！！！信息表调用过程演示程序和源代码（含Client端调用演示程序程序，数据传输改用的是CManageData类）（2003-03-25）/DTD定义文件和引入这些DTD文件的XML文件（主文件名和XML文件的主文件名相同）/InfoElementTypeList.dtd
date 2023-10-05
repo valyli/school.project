@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<!ELEMENT InfomationTable (InfoServiceProviderId,NameBaseId,InfoElementDataTypeList)>
+<!ELEMENT InfoServiceProviderId (#PCDATA)>
+<!ELEMENT NameBaseId (#PCDATA)>
+<!ELEMENT InfoElementDataTypeList (DataType*)>
+<!ELEMENT DataType (#PCDATA)>

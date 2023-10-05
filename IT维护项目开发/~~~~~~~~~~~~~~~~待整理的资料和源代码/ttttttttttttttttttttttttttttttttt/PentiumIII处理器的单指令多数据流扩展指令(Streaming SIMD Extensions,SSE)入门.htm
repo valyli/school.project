@@ -1,0 +1,709 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0045)http://tzsvc.xiloo.com/doc/files/pentium1.htm -->
+<HTML><HEAD><TITLE>宗胜的编程乐园--文档 <http://tzsvc.xiloo.com></TITLE><!-- #BeginTemplate "/Templates/index3_old.dwt" --><!-- #BeginEditable "doctitle" --><!-- #EndEditable -->
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<STYLE type=text/css>A {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+</STYLE>
+
+<SCRIPT language=JAVASCRIPT>
+<!-- 
+var timerID = null;
+var timerRunning = false;
+function stopclock (){
+if(timerRunning)
+clearTimeout(timerID);
+timerRunning = false;
+}
+function showtime () {
+var now = new Date();
+var hours = now.getHours();
+var minutes = now.getMinutes();
+var seconds = now.getSeconds()
+var timeValue = "现在时间是: " + ((hours >12) ? hours -12 :hours)
+timeValue += ((minutes < 10) ? ":0" : ":") + minutes
+timeValue += ((seconds < 10) ? ":0" : ":") + seconds
+timeValue += (hours >= 12) ? " P.M." : " A.M."
+window.status = timeValue;
+timerID = setTimeout("showtime()",1000);
+timerRunning = true;
+}
+function startclock () {
+stopclock();
+showtime();
+}
+-->
+</SCRIPT>
+
+<SCRIPT language=JavaScript>
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+</SCRIPT>
+
+<META content="MSHTML 5.50.4134.100" name=GENERATOR></HEAD>
+<BODY text=#000000 bgColor=#ffffff leftMargin=0 onload=startclock()>
+<TABLE cellSpacing=0 cellPadding=0 width=772 border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top align=left bgColor=#ffffff>
+      <TABLE height=8 cellSpacing=0 cellPadding=0 width=776 align=center 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD width=311 bgColor=#ffffff height=11><FONT color=#ffffff>　
+            <SCRIPT language=JavaScript> <!---
+today=new Date();
+var hours = today.getHours();
+var minutes = today.getMinutes();
+var seconds = today.getSeconds();
+var timeValue = "<FONT COLOR=black>" + ((hours >12) ? hours -12 :hours); timeValue += ((minutes < 10) ? "<BLINK><FONT COLOR=black>:</FONT></BLINK>0" : "<BLINK><FONT COLOR=black>:</FONT></BLINK>") + minutes+"</FONT></FONT>";
+timeValue += (hours >= 12) ? "<FONT COLOR=blue><I><B>pm</B></I></FONT>" : "<FONT COLOR=blue><B><I>am</I></B></FONT>";
+function initArray(){
+this.length=initArray.arguments.length
+for(var i=0;i<this.length;i++)
+this[i+1]=initArray.arguments[i] }
+var d=new initArray("<font color=RED>星期日","<font color=black>星期一","<font color=black>星期二","<font color=black>星期三","<font color=black>星期四","<font color=black>星期五","<font color=GREEN>星期六"); document.write("<font color=black>",today.getYear(),"<font color=red>年","<font color=black>",today.getMonth()+1,"<font color=red>月","<font color=black>",today.getDate(),"<font color=red>日 </FONT>",d[today.getDay()+1]," ",timeValue); //--></SCRIPT>
+             <FONT color=#000000 size=2>登录</FONT></FONT></TD>
+          <TD vAlign=bottom align=right width=51 bgColor=#ffffff height=11><A 
+            href="http://tzsvc.xiloo.com/index.htm"><IMG height=17 
+            src="PentiumIII处理器的单指令多数据流扩展指令(Streaming SIMD Extensions,SSE)入门.files/head.jpg" 
+            width=51 border=0></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/mywriting/mywriting.htm"><FONT 
+            color=#000000 size=2>作品</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 
+            height=11><FONT color=#000000 size=2><A 
+            href="http://tzsvc.xiloo.com/firststu/firststu.htm">新手</A></FONT></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/doc/doc.htm"><FONT color=#000000 
+            size=2>文章</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/skill/dll.htm"><FONT color=#000000 
+            size=2>技巧</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/book/vc.htm"><FONT color=#000000 
+            size=2>教程</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/code/code.htm"><FONT color=#000000 
+            size=2>源码</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/ks/ks.htm"><FONT color=#000000 
+            size=2>考试</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/job/job.htm"><FONT color=#000000 
+            size=2>求职</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/download/download.htm"><FONT 
+            color=#000000 size=2>下载</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/virus/virus.htm"><FONT color=#000000 
+            size=2>病毒</FONT></A></TD>
+          <TD vAlign=bottom align=left width=56 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/programmer/programmer.htm"><FONT 
+            color=#000000 size=2>人生</FONT></A></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD vAlign=top align=left bgColor=#0070b0></TD></TR>
+  <TR vAlign=bottom align=left>
+    <TD>
+      <TABLE cellSpacing=0 cellPadding=0 width=761 align=center border=0>
+        <TBODY>
+        <TR>
+          <TD width=188 height=49><IMG height=67 
+            src="PentiumIII处理器的单指令多数据流扩展指令(Streaming SIMD Extensions,SSE)入门.files/zititle.jpg" 
+            width=187></TD>
+          <TD width=452 height=49><A 
+            href="http://asiafriendfinder.com/go/f122344"><IMG height=67 src="" 
+            width=450 align=absBottom border=0></A></TD>
+          <TD width=121 height=49><FONT size=2><IFRAME border=0 
+            src="PentiumIII处理器的单指令多数据流扩展指令(Streaming SIMD Extensions,SSE)入门.files/showlink.htm" 
+            frameBorder=0 width=120 scrolling=no 
+        height=60></IFRAME></FONT></TD></TR></TBODY></TABLE></TD></TR>
+  <TR bgColor=#0070b0>
+    <TD><FONT color=#ffffff size=2><FONT size=2>　|<A target=_blank 
+      href="http://www.sn163.net/cgi-bin/bbs3000/bbs.cgi?id=200205011106"><FONT 
+      color=#ffffff size=2>编程论坛</FONT></A>|<A target=_blank 
+      href="http://www.sn163.net/cgi-bin/gb2000/gb.cgi?id=tangzs"><FONT 
+      color=#ffffff size=2>请您留言</FONT></A>|</FONT><A target=_blank 
+      href="mailto:tzs168@yahoo.com.cn"><FONT color=#ffffff 
+      size=2>联系我们</FONT></A>|</FONT></TD></TR>
+  <TR>
+    <TD vAlign=top align=left>
+      <TABLE cellSpacing=0 cellPadding=0 width=777 border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top align=middle width=165 bgColor=#e8ecf8 
+            height=104><IMG height=60 
+            src="PentiumIII处理器的单指令多数据流扩展指令(Streaming SIMD Extensions,SSE)入门.files/word.jpg" 
+            width=140><BR><BR><FONT size=2><A 
+            href="http://tzsvc.xiloo.com/other/new.htm">本站更新列表&gt;&gt;</A></FONT><BR><BR><FONT 
+            size=2><A 
+            href="http://tzsvc.xiloo.com/other/goodpage.htm">好站链接&gt;&gt;</A></FONT><BR></TD>
+          <TD vAlign=top align=left width=12 height=104><IMG height=15 
+            src="PentiumIII处理器的单指令多数据流扩展指令(Streaming SIMD Extensions,SSE)入门.files/mid_conner.gif" 
+            width=10></TD>
+          <TD vAlign=top align=left width=600 height=104><!-- #BeginEditable "data" -->
+            <TABLE height=64 cellSpacing=0 cellPadding=0 width=599 border=0>
+              <TBODY>
+              <TR>
+                <TD><FONT 
+                  size=2>日期:2002/5/1　　　　　　　　　　　　　　　　　　　　　　　　文章出处:vcbase</FONT></TD></TR>
+              <TR>
+                <TD height=17><FONT size=2>标题:</FONT><FONT 
+                  class=content><B><FONT color=#000000 
+                  size=2>PentiumIII处理器的单指令多数据流扩展指令(Streaming SIMD 
+                  Extensions,SSE)入门</FONT></B></FONT></TD></TR>
+              <TR>
+                <TD>&nbsp;</TD></TR>
+              <TR>
+                <TD vAlign=top align=left height=1603>
+                  <P><FONT class=content size=2>作者:Bipin Patwardhan 翻译:foenix 
+                  </FONT></P>
+                  <P><FONT size=2>关键字 : 
+                  <BR>Pentium,处理器,单指令多数据流扩展指令,SSE,指令集</FONT></P>
+                  <P><FONT size=2>概要 : <BR>随着Intel Pentium 
+                  III处理器的发布，给程序设计人员又带来了许多新的特性。利用这些新特性，程序员可以为用户创造出更好的产品. Pentium 
+                  III和Pentium III Xeon(至强处理器)的许多新特性，可以使她能够比Pentium II和Pentium II 
+                  Xeon处理器有更快的运行速度，这些新特性包括一个处理器序列号(unique processor 
+                  ID)和新增SSE处理器指令集,这些新的指令集就像Pentium 
+                  II在经典Pentium的基础上添加的MMX指令集.</FONT></P>
+                  <P><FONT size=2>在这篇文章里,我们将向你展示Pentium 
+                  III处理器和她的这些新特性,并且将着重讲述Pentium III处理器的新指令集. </FONT></P>
+                  <P><FONT size=2><BR>1.Pentium 
+                  III处理器概要<BR>1999年2月,Intel发布了她的最新款处理器Pentium 
+                  III处理器,和以往的新处理器推出一样,速度的提高是最主要的性能改善.Intel在发布她的新处理器时一贯遵循着摩尔定律,即每过18个月处理器的速度将提高一倍(the 
+                  processor speed doubles every 18 months),但是Pentium 
+                  III处理器的并没有比Pentium II的速度提高一倍,在Pentium II和Pentium II 
+                  Xeon处理器运行在333MHz~400MHz时,Pentium III也只不过运行 
+                  在450MHz~550MHz而已,处理器的速度并没有多大的提高,但是性能的提升确是很明显的.</FONT></P>
+                  <P><FONT size=2>从本质上说，Pentium III处理器只不过是一个运行在更高速度的Pentium 
+                  II处理器,另外再增加了一些新的指令集:Streaming SIMD 
+                  Extensions(单指令多数据流扩展指令集,或者称为SSE).这些新指令集的增加并不会影响原来的程序运行,因为Pentium 
+                  III处理器采用的是完全兼容于原来Pentium II处理器的IA-32构架.</FONT></P>
+                  <P><FONT size=2>如果Pentium III处理器的速度并没有比Pentium 
+                  II有倍速的提高,那我们为什么还要去选购她呢?</FONT></P>
+                  <P><FONT size=2>2.Pentium III处理器的新特性 <BR>Pentium 
+                  III处理器添加了两个有趣也是很有用的新特性:处理器序列号(processor serial 
+                  number)和SSE指令集.由于Pentium 
+                  III处理器的序列号涉及到用户隐私的争议,为了避免这种争议,在这里我们将把注意力放在Pentium 
+                  III处理器的SIMD新指令集上.<BR><BR>SSE包含一个SIMD的首字母，SIMD是Single 
+                  Instruction Multiple 
+                  Data(单指令多数据)的首字母的缩写.通常,处理器在一个指令周期只能处理一个数据,这叫做Single 
+                  Instruction Single 
+                  Data(单指令单数据),缩写为SIDI.和SIDI不同的是,如果处理器具有SIMD能力,那么她就可以在一个CPU指令周期同时处理多个数据. 
+                  </FONT></P>
+                  <P><FONT size=2>3.MMX vs SSE 
+                  <BR>MMX和SSE都是在原来的处理器指令集的基础上添加的扩展指令集,都是SIMD(单指令多数据)指令,不同的是他们处理的数据类型不同. 
+                  MMX只能在整数上支持SIMD,而SSE指令增加了单精度浮点数的SIMD支持.MMX可以进行同时对2个32位的整数操作,而SSE可以同时对4个32位的浮点数操作. 
+                  <BR><BR>MMX和SSE的一个主要的区别是MMX并没有定义新的寄存器,而SSE定义了8个全新的128位寄存器,每个寄存器可以同时存放4个单精度浮点数(每个32位长),他们在寄存器中排列顺序见下图1. 
+                  <BR>图一:新数据类型排列 </FONT></P>
+                  <P><FONT 
+                  size=2>这里有一个问题,既然MMX没有定义新的寄存器,那么她又有什么寄存器可操作呢?事实上,MMX是和原来的浮点寄存器共享的.一个浮点寄存器是80位长的,她的低端64位被用做MMX的寄存器.这样,一个应用程序就不能在执行MMX指令的同时进行浮点操作了.同时,处理器还要花掉大量的时钟周期去维护寄存器状态从MMX操作和浮点操作之间的切换.SSE指令集就没有这些限制了.由于她定义了全新的寄存器,应用程序可以在进行整数SIMD操作(MMX)的同时进行浮点数的SIMD操作(SSE),同样,SSE还可以在执行浮点数的非SIMD操作的同时进行SIMD操作. 
+                  </FONT></P>
+                  <P><FONT 
+                  size=2>MMX和SSE的寄存器排列见下图2.图2(a)是MMX和浮点数共享一个寄存器的情况,图2(b)是SSE的独立寄存器排列. 
+                  <BR>图二:MMX和SSE的寄存器 </FONT></P>
+                  <P><FONT 
+                  size=2>MMX和SSE寄存器有一个共同点,那就是都有8个寄存器.MMX的寄存器被命名为mm0~mm7,SSE的寄存器名字是xmm0~xmm7. 
+                  </FONT></P>
+                  <P><FONT size=2>4.程序中的应用 <BR>Pentium 
+                  III的SSE指令集是为SIMD设计的,她可以同时操作4个单精度浮点值.因此,利用这些加强的浮点计算能力,对3D应用程序的细节表现是有实质性的提高的.事实上,SSE就是为3D应用创建的.游戏和其他的使用后端3D来显示2D和2.5D图象的程序,和使用矢量图形的应用程序一样都能分享到这种好处. 
+                  </FONT></P>
+                  <P><FONT size=2>4.1 
+                  3D运算<BR>计算机表示的3D图形是用大量的表示图形顶点的浮点数组成的,通过操作这些顶点数据就可以改变3D图形的外观.通过使用SSE指令集,应用程序可以获得更多的帮助,处理器可以在一个时钟周期内处理更多的数据,大大加快了3D图形的顶点计算速度,可以给用户带来更深刻的3D体验.</FONT></P>
+                  <P><FONT size=2>同样,应用程序开发者还可以用更多的顶点数据和更复杂的算法来创造出更为生动的3D图象效果来. 
+                  </FONT></P>
+                  <P><FONT 
+                  size=2>使用SSE指令集可以显著的改善一些在3D操作中经常用到的计算,像矩阵乘法、矩阵变换以及矩阵之间的加、减、乘、向量矩阵相乘、矢量化、 
+                  矢量点相乘和光照计算等等. </FONT></P>
+                  <P><FONT size=2>5.单指令多数据流指令集 
+                  <BR>SSE增加了70条新的指令,同时也添加了一个状态/控制字(status/control 
+                  word).SSE指令集必须要得到操作系统的支持,支持她的操作系统必须能够保存和恢复这个处理器的状态字.目前,只有Microsoft的Windows98和Windows2000支持SSE指令集.SSE定义了新的指令、新的数据类型和指令范畴. 
+                  </FONT></P>
+                  <P><FONT 
+                  size=2>这些新添加的指令不是全部用来浮点数SIMD操作的,在这70条新指令中,有50条是浮点数的SIMD操作的,12条是针对整数的SIMD操作的,还有8条是cache操作（cacheability 
+                  ）指令.在这篇文章里,我们将着重讨论这50条浮点数的SIMD操作指令. </FONT></P>
+                  <P><FONT size=2>5.1 分类 <BR>Pentium 
+                  III的SIMD新指令集可以按照不同的分类标准得到不同的分类方法. </FONT></P>
+                  <P><FONT size=2>如果我们按照指令的操作数划分,可以得到"数据包装"(Data Packing)的分类方法. 
+                  <BR>如果按照指令的动作特征划分,可以得到"指令范畴"(Instruction Categories)分类方法. 
+                  <BR>如果按照指令的计算特征划分,可以得到"指令分组"(Instruction Groups)分类方法. 
+                  </FONT></P>
+                  <P><FONT size=2>5.1.1 
+                  数据包装分类<BR>如果我们按照指令的操作数划分浮点数的SIMD部分,我们可以得到两个明显的分类:操作包裹数据(packed 
+                  data)的指令和操作标量数据(scalar data)的指令.因此,我们可以得到包裹指令(packed 
+                  instructions )和标量指令(scalar instructions)这两个种类. </FONT></P>
+                  <P><FONT size=2>在Pentium 
+                  III指令集中,包裹指令和标量指令可以很方便的被区分出来.包裹指令的都带有"ps"前缀,而标量指令有一个"ss"前缀. 
+                  SSE还定义了一个新的数据类型(data 
+                  type),可以用来储存4个单精度浮点数,这个新的数据类型可以用下面的图3来表示.图中的元素"A"包含了4 
+                  个单精度浮点数a0,a1,a2,a3. <BR>图三:SSE的新数据类型</FONT></P>
+                  <P><FONT 
+                  size=2>上面的图三可以帮助我们理解包裹指令和标量指令之间的区别.SSE的包裹指令同时操作这个新数据类型的4个元素,而标量指令只操作这个新数据类型的最后一个元素,其他三个元素的内容将在指令执行前后保持不变. 
+                  </FONT></P>
+                  <P><FONT 
+                  size=2>图4说明了包裹指令的操作方法.如图所示,有两个操作数A和B,都是SSE定义的新数据类型.操作结果将被保存在数据C.C和A、B是一样的数据类型.操作数A有四个组成元素a0,a1,a2,a3,同样操作数B也有四个元素b0,b1,b2,b3.下图中的op是要进行的操作指令.</FONT></P><BR>
+                  <P><FONT 
+                  size=2>操作指令是被分别作用于A和B的四个元素的,操作结果将被放在C的相应元素中.指令op是在同一个时间对这四个元素操作的,并在同一个计算单元中进行计算. 
+                  </FONT></P>
+                  <P><FONT 
+                  size=2>一个标量指令使用和上面一样的操作指令op,操作数A和B,如下图5示例说明.在这里操作指令只作用于操作数A和B的最后一个元素.同样,结果只储存在C的相应最后一个元素中.还有,在这里虽然只有一个元素被改变,操作指令op仍然同时操作所有的4个元素,并且也是在一个计算单元中进行的. 
+                  <BR>图五：标量操作</FONT></P>
+                  <P><FONT size=2>5.1.2 指令范畴分类(按照指令动作类型划分) 
+                  <BR>SSE指令集中几乎所有的包裹指令都有一个标量指令和她对应.SSE指令也可以不按操作数分类,而是把她分成下面的几个类: 
+                  </FONT></P>
+                  <P><FONT size=2>· 计算指令(computation instructions) <BR>· 
+                  分支指令(branching instructions) <BR>· Cache指令(cacheability 
+                  instructions) <BR>· 数据移动和排序指令(data movement and ordering 
+                  instructions) </FONT></P>
+                  <P><FONT size=2>5.1.3 指令组分类(按照指令计算特征分类) <BR>SSE指令还可以被分成下面的几类: 
+                  </FONT></P>
+                  <P><FONT size=2>· 算术指令(arithmetic instructions) <BR>· 
+                  比较指令(comparison instructions) <BR>· 逻辑指令(logical instructions) 
+                  <BR>· 清洗指令(shuffle instructions) <BR>· 转换指令(conversion 
+                  instructions) <BR>· 状态操作指令(state management instructions) 
+                  <BR>· Cache指令(cacheability instructions) <BR>· 数据操作指令(data 
+                  management instructions) <BR>· 附加整数指令(additional integer 
+                  instructions)</FONT></P>
+                  <P><FONT size=2>5.2 优点 
+                  <BR>SSE最主要的优点是可以大大减小数据计算的指令操作数目.如果不使用SIMD和SSE,要进行一个400次的浮点数乘法计算,需要循环使用400次的乘法指令.而如果使用了SIMD和SSE,则只要进行100次的乘法指令就可以完成相同的任务了,因为这里每次的乘法操作都可以同时对4个浮点数进行计算. 
+                  <BR><BR>Pentium III处理器的单指令多数据流扩展指令(Streaming SIMD Extensions, 
+                  SSE)入门<BR>第二部分<BR>作者:Bipin Patwardhan 翻译:foenix</FONT></P>
+                  <P><FONT size=2>关键字 : 
+                  <BR>Pentium,处理器,单指令多数据流扩展指令,SSE,指令集</FONT></P>
+                  <P><FONT size=2>概要 : <BR>随着Intel Pentium 
+                  III处理器的发布，给程序设计人员又带来了许多新的特性。利用这些新特性，程序员可以为用户创造出更好的产品. Pentium 
+                  III和Pentium III Xeon(至强处理器)的许多新特性，可以使她能够比Pentium II和Pentium II 
+                  Xeon处理器有更快的运行速度，这些新特性包括一个处理器序列号(unique processor 
+                  ID)和新增SSE处理器指令集,这些新的指令集就像Pentium 
+                  II在经典Pentium的基础上添加的MMX指令集.</FONT></P>
+                  <P><FONT size=2>1. 使用SSE 
+                  <BR>在具体描述了SSE指令集以后,让我们看看怎样才能在应用程序中使用他们呢. </FONT></P>
+                  <P><FONT size=2>1.1 
+                  汇编语言<BR>传统地,程序员希望能够使用汇编语言来利用新处理器的新特性.通常这是必须的,因为高级的程序开发工具只有在处理器正式推出以后的某个适当的时间才会由新版本发布支持. 
+                  Pentium III的情况也是这样.现在,只有Intel的C/C++编译器和Microsoft Macro 
+                  Assembler(6.11d及以上版本)才认识新的SSE指令集. </FONT></P>
+                  <P><FONT 
+                  size=2>这里有一个矛盾的地方:如果用纯汇编语言来写一个大型的、复杂的应用程序是非常困难的,但是这样写出来的代码执行速度又是最快的. 
+                  </FONT></P>
+                  <P><FONT size=2>我们也可以使用SSE SDK(Software Developers 
+                  Kit,软件开发工具包)开发包,Intel在开发包中提供了两种编程机制去使用SSE指令集:一个intrinsics库和一个表示SSE定义的新数据类型的C++类.使用这些机制比单纯用汇编语言简单.这是很明显的,因为这样程序员再也不用由自己去管理SSE的寄存器了,可以很方便的创建出大型的应用程序.但是这种机制写出的代码又比用汇编语言写的代码执行速度慢了.图6说明了这三种开发方法在程序执行速度和开发困难程度之间的矛盾. 
+                  <BR><BR>图六: 在不同开发环境下的程序执行速度和开发困难程度之间的矛盾 </FONT></P>
+                  <P><FONT size=2>1.1.1 
+                  示例:乘法<BR>假设有两个128位的数a和b分别存储在寄存器xmm1和xmm2中,他们的计算结果保存在寄存器xmm0中.用C语言嵌入汇编的代码如下:</FONT></P>
+                  <P><FONT size=2>#include <BR>... <BR>_asm { <BR>push esi; 
+                  <BR>push edi; <BR>; a is loaded into xmm1 <BR>; b is loaded 
+                  into xmm2 <BR>mov xmm0, xmm1; <BR>mulps xmm0, xmm2; <BR>; 
+                  store result into c <BR>pop edi; <BR>pop esi; <BR>} <BR>... 
+                  </FONT></P>
+                  <P><FONT size=2>图7用图表来表示了这种包裹乘法(packed multiplication)的计算 
+                  <BR></FONT></P>
+                  <P><FONT size=2>1.2 
+                  Intrinsics库<BR>使用Intrinsics库是第一种附加的编程机制.Intrinsics库为C语言提供了一个使用SSE指令集的接口.所有的SSE指令在这个库中都被包装成了C函数.两个包裹数据(packed 
+                  data)相加的汇编指令是addps.相应的,在intrinsics库中将两个包裹数据相加的对应函数是_mm_add_ps.为了配合这些新增的函数,intrinsics库还定义了一个新的数据类型(__m128)来表示128位长的数据,可以用来保存4个单精度浮点数. 
+                  </FONT></P>
+                  <P><FONT 
+                  size=2>要使用intrinsics库,还需要在程序中包含(include)xmmintrin.h头文件. 
+                  </FONT></P>
+                  <P><FONT size=2>1.2.1 
+                  示例:乘法<BR>假设有两个128位数a和b,他们的计算结果将被保存在另一个128位数c中.a,b和c都是__m128数据.__m128是128位数据类型,已经在头文件xmmintrin.h中定义了.函数_mm_set_ps功能是把他的4个参数按照第一个参数为最高位、最后一个参数为最低位的顺序排列组合成一个128数. 
+                  </FONT></P>
+                  <P><FONT size=2>#include <BR>... <BR>__m128 a, b, c; <BR>a = 
+                  _mm_set_ps(4, 3, 2, 1) <BR>b = _mm_set_ps(4, 3, 2, 1) <BR>c = 
+                  _mm_set_ps(0, 0, 0, 0) <BR>c = _mm_mul_ps(a, b); <BR>... 
+                  </FONT></P>
+                  <P><FONT size=2>1.3 C++ <BR>第二种附加的编程机制是使用C++语言.SSE 
+                  SDK开发包提供了一个C++类:F32vec4,用来处理和表示一个128位的新数据类型.所有的新数据类型的操作都被封装在这个类中了.在类的内部,他也是使用intrinsics库的. 
+                  </FONT></P>
+                  <P><FONT size=2>要使用这个C++类,,还必须在程序中包含(include)fvec.h头文件. 
+                  </FONT></P>
+                  <P><FONT size=2>1.3.1 
+                  示例:乘法<BR>我们再次假设有两个128位的数a和b,他们的计算结果放在另一个128位数c中.所有的数据都定义成F32vec4类.类的构造函数功能就相当于_mm_set_ps函数. 
+                  </FONT></P>
+                  <P><FONT size=2>#include ... <BR>F32vec4 a(4, 3, 2, 1), b(4, 
+                  3, 2, 1), c(0, 0, 0, 0); <BR>... <BR>c =a * b; <BR>... 
+                  </FONT></P>
+                  <P><FONT size=2>1.4 
+                  编译器支持<BR>前面已经说过,只有Intel的C\C++编译器和Microsoft的Macro 
+                  Assembler支持新的SSE指令集.Intel编译器已经整合到Microsoft的Visual 
+                  Studio集成开发环境中了.Visual 
+                  Studio集成开发环境可以被配置成使用Intel的编译器来编译整个工程或者工程中的某个文件. </FONT></P>
+                  <P><FONT size=2>2. 
+                  SSE指令详细资料<BR>在我们介绍SSE指令用法的例子以前,让我们先来看看SSE指令集的所有指令列表. 
+                  </FONT></P>
+                  <P><FONT size=2>Arithmetic Instructions(算术指令) <BR>addps, addss 
+                  <BR>subps, subss <BR>mulps, mulss <BR>divps, divss <BR>sqrtps, 
+                  sqrtss <BR>maxps, maxss <BR>minps, minss </FONT></P>
+                  <P><FONT size=2>Logical Instructions(逻辑指令) <BR>andps 
+                  <BR>andnps <BR>orps <BR>xorps </FONT></P>
+                  <P><FONT size=2>Compare Instructions(比较指令) <BR>cmpps, cmpss 
+                  <BR>comiss <BR>ucomiss </FONT></P>
+                  <P><FONT size=2>Shuffle Instructions(清洗指令) <BR>shufps 
+                  <BR>unpchkps <BR>unpcklps </FONT></P>
+                  <P><FONT size=2>Conversion Instructions(转换指令) <BR>cvtpi2ps, 
+                  cvtpi2ss <BR>cvtps2pi, cvtss2si </FONT></P>
+                  <P><FONT size=2>Data Movement Instructions(数据移动指令) <BR>movaps 
+                  <BR>movups <BR>movhps <BR>movlps <BR>movmskps <BR>movss 
+                  </FONT></P>
+                  <P><FONT size=2>State Management Instructions(状态管理指令) 
+                  <BR>ldmxcsr <BR>fxsave <BR>stmxscr <BR>fxstor </FONT></P>
+                  <P><FONT size=2>Cacheability Control Instructions(cache控制指令) 
+                  <BR>maskmovq <BR>movntq <BR>movntps <BR>prefetch <BR>sfence 
+                  </FONT></P>
+                  <P><FONT size=2>Additional SIMD Integer 
+                  Instructions(附加的SIMD整数指令) <BR>pextrw <BR>pinsrw <BR>pmaxub, 
+                  pmaxsw <BR>pminub, pminsw <BR>pmovmskb <BR>pmulhuw <BR>pshufw 
+                  </FONT></P>
+                  <P><FONT size=2>3. 例子<BR>在这一节,我们将介绍几个例子来帮你理解Pentium 
+                  III的SSE指令集应用.在每个例子中,我们都将介绍三种解决方案,分别使用汇编语言、intrinsics库和C++类.附加例子将在下一部分的附加示例节中介绍. 
+                  </FONT></P>
+                  <P><FONT size=2>3.1 包裹乘法 
+                  <BR>在前面我们已经用三种不同的开发机制介绍了两个包裹数据的乘法计算,这三种机制分别是使用汇编语言、intrinsics库和C++类来编写. 
+                  </FONT></P>
+                  <P><FONT size=2>3.2 
+                  比较操作<BR>让我们来考虑一下比较的事件.如果不使用SSE,我们每次只能对一对浮点数进行比较.使用了SSE以后,可以同时对4对浮点数进行比较. 
+                  </FONT></P>
+                  <P><FONT 
+                  size=2>在C和C++中比较4对浮点数,我们可以像下面一样写一个循环,把每次的比较放在循环里面.另外我们还需要定义保存比较结果的变量.代码可以类似于下面的例子. 
+                  </FONT></P>
+                  <P><FONT size=2>float a[4], b[4] <BR>int i, c[4]; <BR>// 
+                  assume that a contains 4.5 6.7 2.3 and 1.2 <BR>// assume that 
+                  b contains 4.3 6.9 2.0 and 1.5 <BR>for (i = 0;i &lt; 4; i++ ) 
+                  <BR>c[i] = a[i] &lt; b[i]; <BR>// take action on comparison 
+                  result </FONT></P>
+                  <P><FONT 
+                  size=2>在SSE指令集中,比较指令是cmpps,她有两个128位的操作数和一个选项参数.选项参数是用来指明指令比较类型的:是大于、小于、大于等于还是小于等于的比较.cmpps指令用来比较4对浮点数的大小,并将比较结果放在第一个操作数中.如果比较的结果是真,相对应的元素将被置为FFFFFFFF,如果为非,则被置为00000000.这个结果还可以被映射到一个普通的(8位或者16位)寄存器中,这个普通的寄存器用一个位来映射SSE寄存器的一个元素.我们可以从这个映射的寄存器来得到比较的结果. 
+                  </FONT></P>
+                  <P><FONT size=2>下面举例来说明cmpps指令的用法. </FONT></P>
+                  <P><FONT size=2>; assume that xmm0 contains 4.5 6.7 2.3 and 
+                  1.2 <BR>; assume that xmm1 contains 4.3 6.9 2.0 and 1.5 
+                  </FONT></P>
+                  <P><FONT size=2>; compare for less than condition <BR>cmpps 
+                  xmm0, xmm1, 1; </FONT></P>
+                  <P><FONT size=2>; move result of comparison as a mask into eax 
+                  <BR>movmskps eax, xmm0; </FONT></P>
+                  <P><FONT size=2>; test eax against some value <BR>test eax, 5; 
+                  </FONT></P>
+                  <P><FONT size=2>; jump if true, to the given label <BR>je 
+                  match13 </FONT></P>
+                  <P><FONT size=2>这个操作也可以用图8的图示来表示. <BR><BR><BR>3.3 
+                  分支移除<BR>通常,在程序中我们喜欢用下面的条件语句. </FONT></P>
+                  <P><FONT size=2>a =(a &lt; b) ? c :d; </FONT></P>
+                  <P><FONT 
+                  size=2>在上面的代码中,比较操作影响着后面代码的执行路径.如果我们能够移除条件判断,程序将能执行的更快.下面的这段汇编代码将比上面的代码执行得更快,这不仅仅是因为下面的代码是用汇编语言写的,更重要的是这里的分支判断已经被移除了. 
+                  </FONT></P>
+                  <P><FONT size=2>; assume that xmm0 stores a, xmm1 stores b 
+                  <BR>; assume that xmm3 stores c and xmm4 stores d </FONT></P>
+                  <P><FONT size=2>cmpps xmm0, xmm1, 1; <BR>movaps xmm2, xmm0; 
+                  <BR>andps xmm0, xmm3; <BR>andnps xmm2, xmm4; <BR>orps xmm0, 
+                  xmm2; </FONT></P>
+                  <P><FONT size=2>; xmm0 contains the result, which is either c 
+                  or d<BR>Pentium III处理器的单指令多数据流扩展指令(Streaming SIMD Extensions, 
+                  SSE)入门<BR>第三部分<BR>作者:Bipin Patwardhan 翻译:foenix</FONT></P>
+                  <P><FONT size=2>关键字 : 
+                  <BR>Pentium,处理器,单指令多数据流扩展指令,SSE,指令集</FONT></P>
+                  <P><FONT size=2>概要 : <BR>随着Intel Pentium 
+                  III处理器的发布，给程序设计人员又带来了许多新的特性。利用这些新特性，程序员可以为用户创造出更好的产品. Pentium 
+                  III和Pentium III Xeon(至强处理器)的许多新特性，可以使她能够比Pentium II和Pentium II 
+                  Xeon处理器有更快的运行速度，这些新特性包括一个处理器序列号(unique processor 
+                  ID)和新增SSE处理器指令集,这些新的指令集就像Pentium 
+                  II在经典Pentium的基础上添加的MMX指令集.</FONT></P>
+                  <P><FONT size=2><BR>1. Data Swizzling <BR>要利用Pentium 
+                  III处理器SSE指令的加速功能也是要有一定的代价的.因为SSE指令只能操作她定义的新数据类型(128位).如果应用程序使用自己的数据类型格式,那么在进行SSE指令操作之前要将他转换为这种新数据类型,操作完成之后又要把他转换回来. 
+                  </FONT></P>
+                  <P><FONT size=2>这种把一种数据格式转换到另一种数据格式的操作就称为"data swizzling". 
+                  </FONT></P>
+                  <P><FONT 
+                  size=2>这种转换是需要时间和耗费处理器核心周期的.如果一个应用程序频繁的进行数据格式转换,处理器核心周期的浪费是很严重的.因此,这种数据格式的转换是必须得到关注的. 
+                  </FONT></P>
+                  <P><FONT size=2>1.1 数据组织 
+                  <BR>通常,3D应用程序将一个顶点保存在一个和他相配的数据结构中.当表达多个顶点时,应用程序使用这个结构的数组,也叫做AoS来表示.一个典型的操作是对表示顶点的x、y和z坐标进行的.下面的代码就给出了这样一个表示3D顶点的数据结构.如果要表示大量的这样的顶点,就要用到这个结构的一个数组了,如图9所示. 
+                  </FONT></P>
+                  <P><FONT size=2>struct point { <BR>float x, y, z; <BR>}; 
+                  <BR>... <BR>point dataset[...]; </FONT></P>
+                  <P><FONT size=2><BR>图九 :结构数组 </FONT></P>
+                  <P><FONT 
+                  size=2>SSE的优点,就是可以同时对多个顶点的进行处理.这样我们就必须要能够方便的处理到表示多个顶点的数据(比如表示4个顶点x坐标的4个浮点数).这是可以实现的,我们可以把表示一个顶点的x、y和z三个坐标值分别集合在一起,然后应用程序对他们进行处理.要实现这些,应用程序必须重新组织数据到三个单独的数组中,或者创建一个数组结构,结构中每个数组对应一个这样的坐标值数组.这个数据结构也称为SoA结构.(我是这样理解的: 
+                  在不用SSE时是把表示一个顶点的三个坐标值组合到一个数据结构中,处理时一个值一个值的进行.而使用SSE以后,可以把所有点的各坐标值分别组合到3个数组中,处理时取出这样一个数组的4个值同时执行). 
+                  </FONT></P>
+                  <P><FONT size=2>下面的代码就定义了这样的一个数组结构,如图10用图表来表示的数组结构. 
+</FONT></P>
+                  <P><FONT size=2>struct point { <BR>float *x, *y, *z; <BR>}; 
+                  </FONT></P>
+                  <P><FONT size=2><BR>图十: 数组结构 </FONT></P>
+                  <P><FONT size=2>2. 内存问题 <BR>2.1 
+                  对齐<BR>简单的处理和使用新数据类型变量是没有问题的.然而,一个推荐的做法是使用16字节边界对齐来定义新数据类型变量.可以通过设置一个特定的编译器参数或者在变量声名时显式的使用一个对齐标记来实现. 
+                  </FONT></P>
+                  <P><FONT 
+                  size=2>声名变量时可以指定__declspec编译器标记来强制变量使用16字节边界对齐,就像下面的例子代码所示.下面的变量myVar在使用这个对齐标记以后将被强制到16字节边界对齐.但当在直接声明这个新数据类型变量(也就是SSE定义的128位新数据类型)时就不需要指定这个对齐标记了,编译器会在遇到这个新数据类型时自动按16字节对齐.下面是对齐标记的用法 
+                  : </FONT></P>
+                  <P><FONT size=2>__declspec(align(16)) float[4] myVar; 
+                  </FONT></P>
+                  <P><FONT size=2>2.2 
+                  动态分配<BR>由于新数据类型要求的16字节边界对齐,使得在动态分配内存或者用指针来分配内存时会产生问题. 
+                  </FONT></P>
+                  <P><FONT size=2>当使用指针访问数组时,我们必须保证这个指针是16字节边界对齐的. </FONT></P>
+                  <P><FONT 
+                  size=2>在运行时分配内存可以使用malloc或者new命令.默认情况下这两种方法分配的指针都不是16字节边界对齐的.因此我们必须把这个分配得到的指针转换到16字节对齐,或者使用_mm_malloc函数来分配内存.使用_mm_malloc函数分配的内存块是按16字节边界对齐的. 
+                  和malloc函数有一个free函数一样,_mm_malloc函数也有一个对应的函数_mm_free.分配内存块使用_mm_malloc函数而清除(free)内存块用_mm_free函数. 
+                  </FONT></P>
+                  <P><FONT size=2>2.3 自定义数据类型 
+                  <BR>指针必须是16字节边界对齐的限制很麻烦,如果能够不理睬这种限制就好了. </FONT></P>
+                  <P><FONT 
+                  size=2>在使用128位新数据类型时,我们经常需要去访问储存在里面的(4个)浮点数.在使用汇编语言时我们没有许多的选择.但在使用C或者C++和intrinsics库时,我们总是用__mm128数据类型来表示这个128位的数据.使用这种数据类型(__mm128)时,一旦这个数值被设置以后,我们就不大可能直接去访问存储在里面的单独的浮点数了.有一个途径是把存储在里面的浮点数转移到一个浮点数数组里面,修改他们的数值以后再把他们转换回去.另一种途径是把这个新的数据类型映射到一个浮点数数组的方法来访问这些必要的元素.上面的第一种方法比较浪费时间而第二种方法如果使用不当则会发生问题. 
+                  </FONT></P>
+                  <P><FONT 
+                  size=2>定义一个自定义的数据类型能够避免这个问题.这个自定义的数据类型用联合(union)的方法把新数据类型(__mm128)和一个4个元素的浮点数数组关联起来.下面给出代码,现在可以用sse4来声名新数据类型了. 
+                  </FONT></P>
+                  <P><FONT size=2>union sse4 { <BR>__m128 m; <BR>float f[4]; 
+                  <BR>}; </FONT></P>
+                  <P><FONT 
+                  size=2>使用上面定义的数据类型,声明变量时不必使用对齐标记来强制16字节对齐,因为编译器在遇到这个数据联合里面的__m128数据类型时会自动按16字节对齐来分配内存的.这个数据类型的一个好处就是可以直接访问到存储在里面的单独的浮点数. 
+                  </FONT></P>
+                  <P><FONT size=2>2.4 侦测CPU <BR>使用SSE指令集需要有Pentium 
+                  III处理器,应用程序一个首要的任务就是要去检查有没有Pentium III芯片.这可以用cpuid的指令完成. 
+                  </FONT></P>
+                  <P><FONT 
+                  size=2>想要cpuid工作,需要把eax寄存器设置为特定的值.这里我们只想得到CPU的ID,需要把eax寄存器置为1然后调用cpuid指令. 
+                  下面给出检查PentiumIII处理器是否存在的代码.要想使下面的代码工作,还必须包含fvec.h头文件. 
+                  </FONT></P>
+                  <P><FONT size=2>BOOL CheckP3HW() <BR>{ <BR>BOOL SSEHW = FALSE; 
+                  <BR>_asm { <BR>// Move the number 1 into eax - this will move 
+                  the <BR>// feature bits into EDX when a CPUID is issued, that 
+                  <BR>// is, EDX will then hold the key to the cpuid <BR>mov 
+                  eax, 1 </FONT></P>
+                  <P><FONT size=2>// Does this processor have SSE support? 
+                  <BR>cpuid </FONT></P>
+                  <P><FONT size=2>// Perform CPUID (puts processor feature info 
+                  in EDX) <BR>// Shift the bits in edx to the right by 26, thus 
+                  bit 25 <BR>// (SSE bit) is now in CF bit in EFLAGS register. 
+                  <BR>shr edx,0x1A </FONT></P>
+                  <P><FONT size=2>// If CF is not set, jump over next 
+                  instruction <BR>jnc nocarryflag </FONT></P>
+                  <P><FONT size=2>// set the return value to 1 if the CF flag is 
+                  set <BR>mov [SSEHW], 1 </FONT></P>
+                  <P><FONT size=2>nocarryflag: <BR>} <BR>return SSEHW; <BR>} 
+                  </FONT></P>
+                  <P><FONT size=2>SSE SDK还有一个Pentium 
+                  III和SSE寄存器的异常模式.用下面的代码也可以用来检查是否有Pentium 
+                  III处理器.要编译下面的代码,需要包含fvec.h头文件. </FONT></P>
+                  <P><FONT size=2>// Checking for SSE emulation support <BR>BOOL 
+                  CheckP3Emu() <BR>{ <BR>BOOL SSEEmu = TRUE; <BR>Fvec32 pNormal 
+                  = (1.0, 2.0, 3.0, 4.0); <BR>Fvec32 pZero = 0.0; <BR>// 
+                  Checking for SSE HW emulation <BR>__try { <BR>_asm { <BR>// 
+                  Issue a move instruction that will cause exception <BR>// 
+                  w/out HW support emulation <BR>movups xmm1, [pNormal] 
+                  </FONT></P>
+                  <P><FONT size=2>// Issue a computational instruction that will 
+                  cause <BR>// exception w/out HW support emulation <BR>divps 
+                  xmm1, [pZero] <BR>} <BR>} <BR>// If there''s an exception, set 
+                  emulation variable to false 
+                  <BR>__except(EXCEPTION_EXECUTE_HANDLER) { <BR>SSEEmu = FALSE; 
+                  <BR>} <BR>return SSEEmu; <BR>} </FONT></P>
+                  <P><FONT size=2>3. 参考 <BR>For more details about the 
+                  architecture of the Pentium III, refer [11], [12], [13] and 
+                  [10]. <BR>For more information about Processor identification 
+                  and CPUID, refer [15] and [7]. <BR>For more information about 
+                  the Streaming SIMD Extensions, refer [19]. <BR>For more 
+                  information about the programming issue, the software 
+                  conventions and the software development strategies, refer 
+                  [9], [16] and [17] respectively. <BR>For more about 
+                  application tuning for SSE and the VTune performance 
+                  enhancement application, refer [1] and [8] respectively. 
+                  <BR>For more details about VTune and the Intel C/C++ Compiler, 
+                  refer [3] and [2] respectively. <BR>For additional information 
+                  about the Pentium III processor and its capabilities, refer 
+                  [14], [18], [20], [6], [5] and [4]. </FONT></P>
+                  <P><FONT size=2>4. 附加示例<BR>在这一节,我们将向你介绍几个SSE指令集(Streaming SIMD 
+                  Extensions)使用的例子. </FONT></P>
+                  <P><FONT size=2>4.1 
+                  数组操作<BR>下面的例子中,我们创建了两个数组,每个包含400个浮点数.将两个数组的每个元素相乘,结果保存在第三个数组中.前面两个数组作为操作数A和B,保存结果的数组为C.下面给出所有的代码. 
+                  </FONT></P>
+                  <P><FONT size=2>#include &lt; FVEC.H &gt;<BR>#define ARRSIZE 
+                  400 <BR>__declspec(align(16)) float a[ARRSIZE], b[ARRSIZE], 
+                  c[ARRSIZE]; </FONT></P>
+                  <P><FONT size=2>4.1.1 Assembly Language </FONT></P>
+                  <P><FONT size=2>_asm { <BR>push esi; <BR>push edi; <BR>mov 
+                  edi, a; <BR>mov esi, b; <BR>mov edx, c; <BR>mov ecx, 100; 
+                  <BR>loop: <BR>movaps xmm0, [edi]; <BR>movups xmm1, [esi]; 
+                  <BR>mulps xmm0, xmm1; <BR>movups [edx], xmm0; <BR>add edi, 16; 
+                  <BR>add esi, 16; <BR>add edx, 16;<BR>dec ecx;<BR>jnz 
+                  loop;<BR>pop edi;<BR>pop esi;<BR>}</FONT></P>
+                  <P><FONT size=2>4.1.2 Intrinsics </FONT></P>
+                  <P><FONT size=2>__m128 m1, m2, m3; <BR>for ( int i = 0; i &lt; 
+                  ARRSIZE; i += 4 ) <BR>{ <BR>m1= _mm_loadu_ps(a+i); <BR>m2= 
+                  _mm_loadu_ps(b+i); <BR>m3= _mm_mul_ps(m1,m2); 
+                  <BR>_mm_storeu_ps(c+i, m3); <BR>}</FONT></P>
+                  <P><FONT size=2>4.1.3 C++ </FONT></P>
+                  <P><FONT size=2>F32vec4 f1, f2, f3; </FONT></P>
+                  <P><FONT size=2>for ( int i = 0; i &lt; ARRSIZE; i +=4 )<BR>{ 
+                  <BR>loadu(f1, a+i); <BR>loadu(f2, b+i); <BR>f3 = f1 * f2; 
+                  <BR>storeu(c+i, f3); <BR>}</FONT></P>
+                  <P><FONT size=2>4.2 矢量3D 
+                  <BR>下面的例子介绍3D矢量.矢量被封装在一个类中.在下面类的函数里面调用了intrinsics库.</FONT></P>
+                  <P><FONT size=2>类声明. </FONT></P>
+                  <P><FONT size=2>union sse4 {<BR>__m128 m;<BR>float 
+                  f[4];<BR>};</FONT></P>
+                  <P><FONT size=2>class sVector3 {<BR>protected:<BR>sse4 
+                  val;<BR>public:<BR>sVector3(float, float, 
+                  float);<BR>float&amp; operator [](int);<BR>sVector3&amp; 
+                  operator +=(const sVector3&amp;);<BR>float length() 
+                  const;<BR>friend float dot(const sVector3&amp;, const 
+                  sVector3&amp;);<BR>};</FONT></P>
+                  <P><FONT size=2>类实现. </FONT></P>
+                  <P><FONT size=2>sVector3::sVector3(float x, float y, float z) 
+                  {<BR>val.m = _mm_set_ps(0, z, y, x);<BR>}<BR>float&amp; 
+                  sgmVector3::operator [](int i) {<BR>return 
+                  val.f[i];<BR>}<BR>sVector3&amp; sVector3::operator +=(const 
+                  sVector3&amp; v) {<BR>val.m = _mm_add_ps(val.m, 
+                  v.val.m);<BR>return *this;<BR>}<BR>float sVector3::length() 
+                  const {<BR>sse4 m1;<BR>m1.m = _mm_sqrt_ps(_mm_mul_ps(val.m, 
+                  val.m));<BR>return m1.f[0] + m1.f[1] + m1.f[2];<BR>}<BR>float 
+                  dot(const sVector3&amp; v1, const sVector3&amp; v2) 
+                  {<BR>sVector3 v(v1);<BR>v.val.m = _mm_mul_ps(v.val.m, 
+                  v2.val.m);<BR>return v.val.f[0] + v.val.f[1] + 
+                  v.val.f[2];<BR>}</FONT></P>
+                  <P><FONT size=2>4.3 
+                  4x4矩阵<BR>下面的例子介绍一个4x4的矩阵.矩阵被封装在一个类中.在下面类的函数里面调用了intrinsics库.</FONT></P>
+                  <P><FONT size=2>类声明. </FONT></P>
+                  <P><FONT size=2>float const sEPSILON = 1.0e-10f;</FONT></P>
+                  <P><FONT size=2>union sse16 {<BR>__m128 m[4];<BR>float 
+                  f[4][4];<BR>};</FONT></P>
+                  <P><FONT size=2>class sMatrix4 {<BR>protected:<BR>sse16 
+                  val;<BR>sse4 
+                  sFuzzy;<BR>public:<BR>sMatrix4(float*);<BR>float&amp; 
+                  operator()(int, int);<BR>sMatrix4&amp; operator +=(const 
+                  sMatrix4&amp;);<BR>bool operator ==(const sMatrix4&amp;) 
+                  const;<BR>sVector4 operator *(const sVector4&amp;) 
+                  const;<BR>private:<BR>float RCD(const sMatrix4&amp; B, int i, 
+                  int j) const;<BR>};</FONT></P>
+                  <P><FONT size=2>类实现. </FONT></P>
+                  <P><FONT size=2>sMatrix4::sMatrix4(float* fv) {<BR>val.m[0] = 
+                  _mm_set_ps(fv[3], fv[2], fv[1], fv[0]);<BR>val.m[1] = 
+                  _mm_set_ps(fv[7], fv[6], fv[5], fv[4]);<BR>val.m[2] = 
+                  _mm_set_ps(fv[11], fv[10], fv[9], fv[8]);<BR>val.m[3] = 
+                  _mm_set_ps(fv[15], fv[14], fv[13], fv[12]);<BR>float f = 
+                  sEPSILON;<BR>sFuzzy.m = _mm_set_ps(f, f, f, 
+                  f);<BR>}<BR>float&amp; sMatrix4::operator()(int i, int j) 
+                  {<BR>return val.f[i][j];<BR>}<BR>sMatrix4&amp; 
+                  sMatrix4::operator +=(const sMatrix4&amp; M) {<BR>val.m[0] = 
+                  _mm_add_ps(val.m[0], M.val.m[0]);<BR>val.m[1] = 
+                  _mm_add_ps(val.m[1], M.val.m[1]);<BR>val.m[2] = 
+                  _mm_add_ps(val.m[2], M.val.m[2]);<BR>val.m[3] = 
+                  _mm_add_ps(val.m[3], M.val.m[3]);<BR>return 
+                  *this;<BR>}<BR>bool sMatrix4::operator ==(const sMatrix4&amp; 
+                  M) const {<BR>int res[4];<BR>res[0] = res[1] = res[2] = res[3] 
+                  = 0;<BR>res[0] = 
+                  _mm_movemask_ps(_mm_cmplt_ps(_mm_sub_ps(<BR>_mm_max_ps(val.m[0], 
+                  M.val.m[0]),<BR>_mm_min_ps(val.m[0], M.val.m[0])), 
+                  sFuzzy.m));<BR>res[1] = 
+                  _mm_movemask_ps(_mm_cmplt_ps(_mm_sub_ps(<BR>_mm_max_ps(val.m[1], 
+                  M.val.m[1]),<BR>_mm_min_ps(val.m[1], M.val.m[1])), 
+                  sFuzzy.m));<BR>res[2] = 
+                  _mm_movemask_ps(_mm_cmplt_ps(_mm_sub_ps(<BR>_mm_max_ps(val.m[2], 
+                  M.val.m[2]),<BR>_mm_min_ps(val.m[2], M.val.m[2])), 
+                  sFuzzy.m));<BR>res[3] = 
+                  _mm_movemask_ps(_mm_cmplt_ps(_mm_sub_ps(<BR>_mm_max_ps(val.m[3], 
+                  M.val.m[3]),<BR>_mm_min_ps(val.m[3], M.val.m[3])), 
+                  sFuzzy.m));<BR>if ( (15 == res[0]) &amp;&amp; (15 == 
+                  res[1])<BR>&amp;&amp; (15 == res[2]) &amp;&amp; (15 == res[3]) 
+                  )<BR>return 1;<BR>return 0;<BR>}<BR>sVector4 
+                  sMatrix4::operator *(const sVector4&amp; v) const {<BR>return 
+                  sVector4(<BR>val.f[0][0] * v[0] + val.f[0][1] * v[1]<BR>+ 
+                  val.f[0][2] * v[2] + val.f[0][3] * v[3],<BR>val.f[1][0] * v[0] 
+                  + val.f[1][1] * v[1]<BR>+ val.f[1][2] * v[2] + val.f[1][3] * 
+                  v[3],<BR>val.f[2][0] * v[0] + val.f[2][1] * v[1]<BR>+ 
+                  val.f[2][2] * v[2] + val.f[2][3] * v[3],<BR>val.f[3][0] * v[0] 
+                  + val.f[3][1] * v[1]<BR>+ val.f[3][2] * v[2] + val.f[3][3] * 
+                  v[3]);<BR>}<BR>float sMatrix4::RCD(const sMatrix4&amp; B, int 
+                  i, int j) const {<BR>return val.f[i][0] * B.val.f[0][j] + 
+                  val.f[i][1] * B.val.f[1][j]<BR>+ val.f[i][2] * B.val.f[2][j] + 
+                  val.f[i][3] * B.val.f[3][j];<BR>}<BR>[参考书目] </FONT></P>
+                  <P><FONT size=2>[1] James Abel, Kumar Balasubramanian, Mike 
+                  Bargeron, Tom Craver, and Mike Phlipot. Applications tuning 
+                  for streaming simd extensions. Technical report, Intel 
+                  Corporation, 1999. </FONT></P>
+                  <P><FONT size=2>[2] Intel Corporation. Intel C/C++ Compiler 
+                  Web Site. http://developer.intel.com/vtune/icl. </FONT></P>
+                  <P><FONT size=2>[3] Intel Corporation. Vtune Performance 
+                  Analyzer Web Site. 
+                  http://developer.intel.com/vtune/performance. </FONT></P>
+                  <P><FONT size=2>[4] Intel Corpotation. Developer Relations 
+                  Group Web Site. http://developer.intel.com/drg. </FONT></P>
+                  <P><FONT size=2>[5] Intel Corpotation. Intel Developer Web 
+                  Site. http://developer.intel.com. </FONT></P>
+                  <P><FONT size=2>[6] Intel Corpotation. Web site. 
+                  http://www.intel.com. </FONT></P>
+                  <P><FONT size=2>[7] Stephan Fischer, James Mi, and Albert 
+                  Tang. Pentium iii processor serial number feature and 
+                  applications. Technical report, Intel Corporation, 1999. 
+                  </FONT></P>
+                  <P><FONT size=2>[8] Joe Wolf III. Programming methods for the 
+                  pentium iii processor streaming simd extensions using the 
+                  vtune performance enhancement environment. Technical report, 
+                  Intel Corporation, 1999. </FONT></P>
+                  <P><FONT size=2>[9] Intel Corporation. Data Alignment and 
+                  Programming Issues for the Streaming SIMD Extensions with the 
+                  Intel C/C++ Compiler, 1999. App Note ap833. </FONT></P>
+                  <P><FONT size=2>[10] Intel Corporation. Intel Architecture 
+                  Optimization Reference Manual, 1999. </FONT></P>
+                  <P><FONT size=2>[11] Intel Corporation. Intel Architecture 
+                  Software Development Manual. Volume 1: Basic Architecture, 
+                  1999. </FONT></P>
+                  <P><FONT size=2>[12] Intel Corporation. Intel Architecture 
+                  Software Development Manual. Volume 2: Instruction Set 
+                  Reference, 1999. </FONT></P>
+                  <P><FONT size=2>[13] Intel Corporation. Intel Architecture 
+                  Software Development Manual. Volume 3: Systems Programming 
+                  Guide, 1999. </FONT></P>
+                  <P><FONT size=2>[14] Intel Corporation. Intel Pentium III 
+                  Processor Performance Brief, 1999. </FONT></P>
+                  <P><FONT size=2>[15] Intel Corporation. Intel Processor 
+                  Identification and CPUID Instruction, 1999. App Note Ap-485. 
+                  </FONT></P>
+                  <P><FONT size=2>[16] Intel Corporation. Software Conventions 
+                  for Streaming SIMD Extensions, 1999. App Note AP589. 
+                  </FONT></P>
+                  <P><FONT size=2>[17] Intel Corporation. Software Development 
+                  Strategies for Streaming SIMD Extensions, 1999. App Note 
+                  AP814. </FONT></P>
+                  <P><FONT size=2>[18] Jagannath Keshavan and Vladimir 
+                  Penkovski. Pentium iii processor implementation trade-offs. 
+                  Technical report, Intel Corporation, 1999. </FONT></P>
+                  <P><FONT size=2>[19] Shreekant Thakkar and Tom Huff. Internet 
+                  streaming simd extensions. Technical report, Intel 
+                  Corporation, 1999. </FONT></P>
+                  <P><FONT size=2>[20] Paul Zagacki, Deep Duch, Emil Hsiech, 
+                  Daniel Melaku, and Vladimir Pentkovski. Architecture of 3d 
+                  software stack for peak pentium iii processor performance. 
+                  Technical report, Intel Corporation, 1999<BR></FONT></P>
+                  <P></P></TD></TR>
+              <TR>
+                <TD align=middle><FONT size=2>上一页 第0页 下一页</FONT></TD></TR>
+              <TR>
+                <TD align=middle><FONT size=2><INPUT onclick=history.go(-1) type=button value=后退 name=button> 
+<INPUT onclick=history.go(1) type=button value=前进 name=button2> 
+<INPUT onclick=window.close() type=button value=关闭 name=button3> 
+                  </FONT></TD></TR></TBODY></TABLE><!-- #EndEditable --></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=764 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <HR SIZE=1>
+    </TD></TR>
+  <TR>
+    <TD align=middle><FONT size=2>Copyright(C)2002 
+      宗胜的编程乐园　http://tzsvc.xiloo.com <BR>文章版权归原作者所有，如仍有问题，请与我联系 </FONT></TD></TR>
+  <TR>
+    <TD>
+      <HR SIZE=1>
+    </TD></TR></TBODY></TABLE><!-- #EndTemplate --></BODY></HTML>

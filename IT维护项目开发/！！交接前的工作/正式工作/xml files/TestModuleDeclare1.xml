@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="gb2312"?>
+<ModuleDeclare>
+	<Module Name="Test CPU usage" FileName="CPUusage.dll">
+		<ProviderID>1</ProviderID>
+		<InfoBaseID>1</InfoBaseID>
+		<InfoItemList>
+			<InfoItem ID="1" AcitonID="1" FunctionName="GetCPUusage"/>
+		</InfoItemList>
+	</Module>
+</ModuleDeclare>

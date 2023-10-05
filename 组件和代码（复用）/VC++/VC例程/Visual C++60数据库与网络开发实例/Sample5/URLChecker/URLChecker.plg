@@ -1,0 +1,57 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: URLChecker - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/URLChecker.res" /d "_DEBUG" "E:\Sample5\URLChecker\URLChecker.rc"" 
+Creating temporary file "C:\TEMP\RSPA3.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /Fp"Debug/URLChecker.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /c 
+"E:\Sample5\URLChecker\AboutDlg.cpp"
+"E:\Sample5\URLChecker\TrayIcon.cpp"
+"E:\Sample5\URLChecker\URLChecker.cpp"
+"E:\Sample5\URLChecker\URLCheckerDlg.cpp"
+"E:\Sample5\URLChecker\webworld.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSPA3.tmp" 
+Creating temporary file "C:\TEMP\RSPA4.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /Fp"Debug/URLChecker.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /c 
+"E:\Sample5\URLChecker\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSPA4.tmp" 
+Creating temporary file "C:\TEMP\RSPA5.tmp" with contents
+[
+WinInet.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/URLChecker.pdb" /debug /machine:I386 /out:"Debug/URLChecker.exe" /pdbtype:sept 
+.\Debug\AboutDlg.obj
+.\Debug\StdAfx.obj
+.\Debug\TrayIcon.obj
+.\Debug\URLChecker.obj
+.\Debug\URLCheckerDlg.obj
+.\Debug\webworld.obj
+.\Debug\URLChecker.res
+]
+Creating command line "link.exe @C:\TEMP\RSPA5.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+AboutDlg.cpp
+TrayIcon.cpp
+URLChecker.cpp
+URLCheckerDlg.cpp
+webworld.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+URLChecker.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

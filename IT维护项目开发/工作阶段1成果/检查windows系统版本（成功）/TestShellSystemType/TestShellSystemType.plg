@@ -1,0 +1,36 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: TestShellSystemType - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "E:\TEMP\RSP18A.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/TestShellSystemType.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"G:\IT维护项目开发\工作阶段成果\检查windows系统版本（成功）\TestShellSystemType\CheckSystemType.cpp"
+]
+Creating command line "cl.exe @E:\TEMP\RSP18A.tmp" 
+Creating temporary file "E:\TEMP\RSP18B.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/TestShellSystemType.pdb" /debug /machine:I386 /out:"Debug/TestShellSystemType.exe" /pdbtype:sept 
+".\Debug\CheckSystemType.obj"
+".\Debug\StdAfx.obj"
+".\Debug\TestShellSystemType.obj"
+".\Debug\TestShellSystemTypeDlg.obj"
+".\Debug\TestShellSystemType.res"
+]
+Creating command line "link.exe @E:\TEMP\RSP18B.tmp"
+<h3>Output Window</h3>
+Compiling...
+CheckSystemType.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+TestShellSystemType.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

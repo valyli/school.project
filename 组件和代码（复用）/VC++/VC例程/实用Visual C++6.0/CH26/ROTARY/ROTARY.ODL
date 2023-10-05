@@ -1,0 +1,73 @@
+// Rotary.odl : type library source for ActiveX Control project.
+
+// This file will be processed by the Make Type Library (mktyplib) tool to
+// produce the type library (Rotary.tlb) that will become a resource in
+// Rotary.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(721757A3-EE5C-11D2-BF13-444553540000), version(1.0),
+  helpfile("Rotary.hlp"),
+  helpstring("Rotary ActiveX Control module"),
+  control ]
+library ROTARYLib
+{
+	importlib(STDOLE_TLB);
+	importlib(STDTYPE_TLB);
+
+	//  Primary dispatch interface for CRotaryCtrl
+
+	[ uuid(721757A4-EE5C-11D2-BF13-444553540000),
+	  helpstring("Dispatch interface for Rotary Control"), hidden ]
+	dispinterface _DRotary
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CRotaryCtrl)
+			[id(DISPID_FORECOLOR), bindable, requestedit] OLE_COLOR ForeColor;
+			[id(1)] boolean TickEnable;
+			[id(2)] boolean NumTicks;
+			//}}AFX_ODL_PROP
+
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CRotaryCtrl)
+			//}}AFX_ODL_METHOD
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+	};
+
+	//  Event dispatch interface for CRotaryCtrl
+
+	[ uuid(721757A5-EE5C-11D2-BF13-444553540000),
+	  helpstring("Event interface for Rotary Control") ]
+	dispinterface _DRotaryEvents
+	{
+		properties:
+			//  Event interface has no properties
+
+		methods:
+			// NOTE - ClassWizard will maintain event information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_EVENT(CRotaryCtrl)
+			[id(1)] void Repositioned(double dNewPosition);
+			//}}AFX_ODL_EVENT
+	};
+
+	//  Class information for CRotaryCtrl
+
+	[ uuid(721757A6-EE5C-11D2-BF13-444553540000),
+	  helpstring("Rotary Control"), control ]
+	coclass Rotary
+	{
+		[default] dispinterface _DRotary;
+		[default, source] dispinterface _DRotaryEvents;
+	};
+
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};

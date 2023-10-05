@@ -1,0 +1,198 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0057)http://www.gcjy.com/pcedu/empolder/gj/vc/10207/78853.html -->
+<HTML><HEAD><TITLE>得到远程机器MAC地址源代码　[VC/C#]</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<SCRIPT language=JavaScript>
+<!--
+var mystat=0;//price select
+function myout(){mystat=0;window.setTimeout("mycheck()",5);}
+function myin(){mystat=1;}
+function mycheck(){if (mystat==0) MM_showHideLayers('price','','hide');}//price select
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+
+function MM_findObj(n, d) { //v3.0
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document); return x;
+}
+
+function MM_showHideLayers() { //v3.0
+  var i,p,v,obj,args=MM_showHideLayers.arguments;
+  for (i=0; i<(args.length-2); i+=3) if ((obj=MM_findObj(args[i]))!=null) { v=args[i+2];
+    if (obj.style) { obj=obj.style; v=(v=='show')?'visible':(v='hide')?'hidden':v; }
+    obj.visibility=v; }
+}
+//-->
+</SCRIPT>
+
+<STYLE type=text/css>.btd {
+	FONT-SIZE: 14px
+}
+</STYLE>
+<LINK href="得到远程机器MAC地址源代码(上).files/text.css" rel=stylesheet>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY aLink=#000000 bgColor=#303880 leftMargin=0 link=#000000 topMargin=0 
+vLink=#000000 marginheight="0" marginwidth="0">
+<DIV align=center>
+<SCRIPT src="得到远程机器MAC地址源代码(上).files/hp_top.js">
+</SCRIPT>
+
+<SCRIPT src="得到远程机器MAC地址源代码(上).files/ad_top_410art.js">
+</SCRIPT>
+
+<SCRIPT src="得到远程机器MAC地址源代码(上).files/ad_top_130art.js">
+</SCRIPT>
+
+<SCRIPT src="得到远程机器MAC地址源代码(上).files/pcedu_top2.js">
+
+</SCRIPT>
+
+<DIV align=center>
+<TABLE bgColor=#ffffff border=0 cellPadding=0 cellSpacing=0 width=760>
+  <TBODY>
+  <TR>
+    <TD bgColor=#ffdda2 width=1><IMG height=1 
+      src="得到远程机器MAC地址源代码(上).files/blank.gif" width=1></TD>
+    <TD bgColor=#ffa200 width=7></TD>
+    <TD bgColor=#000000 width=1><IMG height=1 
+      src="得到远程机器MAC地址源代码(上).files/blank.gif" width=1></TD>
+    <TD align=middle vAlign=top>
+      <TABLE bgColor=#000000 border=0 cellPadding=0 cellSpacing=0 height=1 
+      width="100%">
+        <TBODY>
+        <TR>
+          <TD></TD></TR></TBODY></TABLE>
+      <SCRIPT src="得到远程机器MAC地址源代码(上).files/pcedu_menu.js">
+</SCRIPT>
+
+      <SCRIPT src="得到远程机器MAC地址源代码(上).files/ad_568_art.js">
+</SCRIPT>
+
+      <DIV align=right>
+      <TABLE border=0 cellPadding=2 cellSpacing=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD height=25>您现在的位置：<A 
+            href="http://www.gcjy.com/pcedu/index.html">网络学院</A>&nbsp;&gt;&nbsp;<A 
+            href="http://www.gcjy.com/pcedu/empolder/index.html">开发教室</A>&nbsp;&gt;&nbsp;<A 
+            href="http://www.gcjy.com/pcedu/empolder/gj/index.html">工具平台</A>&nbsp;&gt;&nbsp;<A 
+            href="http://www.gcjy.com/pcedu/empolder/gj/vc/index.html">VC/C#</A></TD></TR></TBODY></TABLE>
+      <TABLE background=得到远程机器MAC地址源代码(上).files/point.gif border=0 cellPadding=6 
+      cellSpacing=0 width="99%">
+        <TBODY>
+        <TR>
+          <TD align=middle></TD>
+          <TD align=middle><FONT color=#339900 
+            size=3><B>得到远程机器MAC地址源代码</B></FONT><BR></TD>
+          <TD align=right class=sfont rowSpan=2 width=126>
+            <P>出处：PConline<BR>责任编辑：zwg</P></TD></TR>
+        <TR>
+          <TD width=96>[02-7-26 2:10] </TD>
+          <TD align=middle>作者：网上收集 </TD></TR></TBODY></TABLE>
+      <TABLE border=0 cellPadding=5 cellSpacing=0 width="99%">
+        <TBODY>
+        <TR vAlign=top>
+          <TD class=article>
+            <P><BR><B>网上收集</B> <BR><B><FONT 
+            color=red>如侵犯您的权力，对请来信告知</FONT></B><BR><BR>#include 
+            <STDIO.H><BR>#include <STDLIB.H><BR>#include 
+            <WINSOCK2.H><BR>#include "iphlpapi.h"<BR><BR>#pragma comment ( lib, 
+            "ws2_32.lib" )<BR>#pragma comment ( lib, "Iphlpapi.lib" 
+            )<BR><BR>void main( int argc, char ** argv )<BR>{<BR>int 
+            numberOfHost = 1;<BR>struct hostent 
+            *remoteHostent;<BR><BR><B>//处理命令行参数</B><BR>if ( argc == 3 
+            )<BR>numberOfHost = atoi( argv[2] );<BR>if ( ( argc &gt;3 ) || ( 
+            argc &lt; 2 ) )<BR>{<BR>printf( "RmtHost v0.2 - Get remote HostName 
+            /MacAddress\n" );<BR>printf( "by ShotgunLabs ( Shotgun@xici.net 
+            )\n\n" );<BR>printf( "Usage　:\n\tRmtHost.exe 
+            [RemoteIP]<NUMBEROFHOSTTOSCAN>\n\n" );<BR>printf( 
+            "Example:\n\tRmtHost.exe 192.168.0.3\n" );<BR>printf( "\tRmtHost.exe 
+            192.168.0.3 255\n\n" );<BR>exit( 0 );<BR>}<BR></P>
+            <P align=center><A 
+            href="http://www.gcjy.com/pcedu/empolder/gj/vc/10207/78853_1.html">[下一页]</A><BR></P><SPAN 
+            class=article></SPAN>
+            <TABLE border=0 cellPadding=3 cellSpacing=0 width="99%">
+              <TBODY>
+              <TR>
+                <TD>
+                  <DIV id=divArticleComment></DIV></TD></TR></TBODY></TABLE><BR><SPAN 
+            class=article><B>相关文章:</B><BR><BR>
+            <BLOCKQUOTE></BLOCKQUOTE></SPAN></TD></TR>
+        <TR align=middle>
+          <TD class=article>
+            <SCRIPT src="">
+</SCRIPT>
+            <BR><BR>
+            <SCRIPT language=JavaScript 
+            src="得到远程机器MAC地址源代码(上).files/hotfiles.js">
+</SCRIPT>
+          </TD></TR></TBODY></TABLE></DIV>
+      <P></P></TD>
+    <TD vAlign=top width=4><IMG height=1 
+      src="得到远程机器MAC地址源代码(上).files/000000.gif" width=4></TD>
+    <TD bgColor=#dee7f7 vAlign=top width=171>
+      <TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+        <TBODY>
+        <TR>
+          <TD bgColor=#000000 height=1></TD></TR>
+        <TR align=middle bgColor=#756da1>
+          <TD height=20><FONT color=#ffffff>内容搜索　</FONT></TD></TR></TBODY></TABLE>
+      <TABLE align=center bgColor=#fff7ef border=0 cellPadding=0 cellSpacing=0 
+      width="100%">
+        <FORM action=http://search.pconline.com.cn/cgi-bin/search method=get>
+        <TBODY>
+        <TR align=middle>
+          <TD height=40><INPUT name=word size=13> <INPUT class=pt9 type=submit value=" GO "> </TD></TR>
+        <TR align=middle vAlign=top>
+          <TD height=34><SELECT class=pt9 name=lm> <OPTION selected 
+              value=0>任何时间</OPTION> <OPTION value=1>三个月内</OPTION> <OPTION 
+              value=3>一年</OPTION></SELECT> <A 
+            href="http://www.pconline.com.cn/tpy/search.html"><FONT 
+            color=#000000>高级搜索</FONT></A> <INPUT name=w type=hidden value=0> 
+            <INPUT name=si type=hidden value=pcedu> <INPUT name=tn type=hidden 
+            value=bear> <INPUT name=cl type=hidden value=2> 
+      </TD></TR></FORM></TBODY></TABLE>
+      <DIV align=center>
+      <SCRIPT src="得到远程机器MAC地址源代码(上).files/ad_158_art.js">
+</SCRIPT>
+      <BR></DIV>
+      <TABLE border=0 cellPadding=0 cellSpacing=0 width="100%">
+        <TBODY>
+        <TR align=middle bgColor=#756da1>
+          <TD height=20><FONT color=#ffffff>本栏今日焦点　</FONT></TD></TR></TBODY></TABLE>
+      <DIV align=right>
+      <TABLE border=0 cellPadding=5 cellSpacing=0 width=170>
+        <TBODY>
+        <TR class=sfont>
+          <TD>
+            <SCRIPT src="得到远程机器MAC地址源代码(上).files/pcedu_top12.js">
+</SCRIPT>
+          </TD></TR></TBODY></TABLE></DIV>
+      <DIV align=center>
+      <DIV align=center></DIV>
+      <DIV align=center></DIV></DIV></TD>
+    <TD bgColor=#ffa200 class=bodyright width=6><IMG height=1 
+      src="得到远程机器MAC地址源代码(上).files/blank.gif" width=1></TD></TR></TBODY></TABLE>
+<TABLE bgColor=#ffa200 border=0 cellPadding=0 cellSpacing=0 width=760>
+  <TBODY>
+  <TR>
+    <TD class=leftbottom height=7 width=7><IMG height=9 
+      src="得到远程机器MAC地址源代码(上).files/blank.gif" width=7></TD>
+    <TD class=topbottom><IMG src="得到远程机器MAC地址源代码(上).files/blank.gif"></TD>
+    <TD class=rightbottom width=6><IMG src="得到远程机器MAC地址源代码(上).files/blank.gif" 
+      width=6></TD></TR></TBODY></TABLE></DIV><BR>
+<SCRIPT src="得到远程机器MAC地址源代码(上).files/pc_but.js">
+</SCRIPT>
+
+<SCRIPT language=JavaScript 
+src="得到远程机器MAC地址源代码(上).files/pcedu_count.js"> 
+</SCRIPT>
+
+<SCRIPT language=JavaScript src="得到远程机器MAC地址源代码(上).files/10207.htm" 
+temp_stop="http://pcbbs.pconline.com.cn/bbs/ArticleComment.jsp?url=http://www.pconline.com.cn/pcedu/empolder/gj/vc/10207/78853.html&amp;forum=&amp;title=得到远程机器MAC地址源代码 &amp;max=15 &amp;content=得到远程机器MAC地址源代码">
+</SCRIPT>
+</DIV></BODY></HTML>

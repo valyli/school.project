@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0069)http://asp.6to23.com/vcprogram/articlemanage/article/zvczfwhxgzcb.htm -->
+<HTML><HEAD><TITLE>Untitled Document</TITLE><!-- #BeginEditable "doctitle" --><!-- #EndEditable -->
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<STYLE type=text/css>.small {
+	FONT-FAMILY: "宋体"; FONT-SIZE: 9pt
+}
+.big {
+	FONT-FAMILY: "宋体"; FONT-SIZE: 9pt
+}
+.in1 {
+	BACKGROUND: none transparent scroll repeat 0% 0%; BORDER-BOTTOM: #000000 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; COLOR: #003333; FONT: 9pt "宋体"
+}
+A:hover {
+	COLOR: #ff8800; FONT-SIZE: 9pt; TEXT-DECORATION: underline
+}
+A:link {
+	COLOR: #3300cc; FONT-SIZE: 9pt; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #006699; FONT-SIZE: 9pt; TEXT-DECORATION: none
+}
+</STYLE>
+
+<SCRIPT lanuage="JScript">
+function turnit(ss,ii)
+{
+ if (ss.style.display=="none") 
+  {ss.style.display="";
+   ii.src="image/c2.gif";
+   }
+ else
+  {ss.style.display="none"; 
+   ii.src="image/c1.gif";}
+   }
+</SCRIPT>
+
+<META content="MSHTML 5.00.3502.5390" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<TABLE bgColor=#6699cc border=1 borderColor=#6699cc borderColorDark=#6699cc 
+borderColorLight=#000000 cellPadding=0 cellSpacing=0 height=22 width=222>
+  <TBODY>
+  <TR>
+    <TD height=25 width=118>
+      <DIV align=center><FONT face=幼圆 size=2>文档中心</FONT></DIV></TD>
+    <TD height=25 width=98>
+      <DIV align=center><FONT face=幼圆 
+size=2>GUI用户接口</FONT></DIV></TD></TR></TBODY></TABLE>
+<TABLE border=1 borderColorDark=#cccccc borderColorLight=#000000 cellPadding=0 
+cellSpacing=0 width=620>
+  <TBODY>
+  <TR>
+    <TD height=27>
+      <P align=center><FONT face=Arial size=2>在VC++中访问和修改系统注册表</FONT> </P></TD></TR>
+  <TR>
+    <TD height=31>
+      <DIV align=left><FONT color=#cc0000 face=Arial size=2>作者</FONT><FONT 
+      face=Arial size=2>:</FONT><FONT face=Arial size=2>陈伟<BR></FONT><FONT 
+      face=Arial size=2><FONT color=#cc0000>发表日期</FONT>:</FONT><FONT face=Arial 
+      size=2>2001/05/14</FONT><FONT face=Arial size=2><FONT 
+      color=#000000><BR><FONT color=#cc0000>转自<FONT 
+      color=#000000>:www.china-pub.com</FONT></FONT></FONT></FONT></DIV></TD></TR>
+  <TR>
+    <TD height=20><FONT color=#cc0000 face=Arial size=2>内容提要</FONT></TD></TR>
+  <TR vAlign=top>
+    <TD height=56><FONT face=Arial 
+      size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT><FONT class=line 
+      face=Arial size=2>在实际的编程工作中，我们遇到了如何在Visual 
+      C＋＋中对Windows95／98注册表整个树状结构信息进行访问和修改的问题，如查询和修改注册表中用户姓名和公司名称的有关信息。通过编程实践，我们实现了在Visual 
+      C＋＋中查询和修改系统注册表的有关信息。下面以一个实例说明具体的编程方法。</FONT></TD></TR>
+  <TR>
+    <TD height=20><FONT color=#cc0000 face=Arial size=2>关键词</FONT></TD></TR>
+  <TR vAlign=top>
+    <TD height=20><FONT face=Arial 
+      size=2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</FONT></TD></TR>
+  <TR>
+    <TD height=20><FONT color=#cc0000 face=Arial size=2>文章正文</FONT></TD></TR>
+  <TR vAlign=top>
+    <TD height=250>&nbsp;&nbsp;<FONT class=line face=Arial 
+      size=2>Windows95／98的注册表包含了Windows95／98的系统配置、PC机的硬件配置、Win32应用程序和用户的其他设置信息。注册表和INI文件不同，它是多层次的树状数据结构，具有六个分支（根键），每个分支又由许多的键和键值组成，而每个键则代表一个特定的配置项目。<BR>　　在实际的编程工作中，我们遇到了如何在Visual 
+      C＋＋中对Windows95／98注册表整个树状结构信息进行访问和修改的问题，如查询和修改注册表中用户姓名和公司名称的有关信息。通过编程实践，我们实现了在Visual 
+      <BR>C＋＋中查询和修改系统注册表的有关信息。下面以一个实例说明具体的编程方法。<BR>　　在Visual C＋＋ 
+      6.0或5.0环境中新建一基于对话框的工程，设置了两个命令按钮，名为“查询用户信息”和“修改用户信息”，用来查询和修改注册表中用户姓名和公司名称。这里须要指出的是，用户的信息位于系统注册表中 
+      <BR>\HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\的位置，键值名RegisteredOwner和RegisteredOrganization分别表示用户的姓名和用户公司的名称。<BR>　　<B>1.查询用户信息的代码</B><BR>　　HKEY 
+      hKEY; ／／定义有关的 hKEY, 在查询结束时要关闭。<BR>　　LPCTSTR 
+      data_Set=″Software\\Microsoft\\Windows\\CurrentVersion\\″;<BR>　　／／打开与路径 
+      data_Set 相关的 
+      hKEY，第一个参数为根键名称，第二个参数表。<BR>　　／／表示要访问的键的位置，第三个参数必须为0，KEY_READ表示以查询的方式。<BR>　　／／访问注册表，hKEY则保存此函数所打开的键的句柄。<BR>　　long 
+      ret0=(::RegOpenKeyEx(HKEY_LOCAL_MACHINE,data_Set, 0, KEY_READ, 
+      ＆hKEY));<BR>　　if(ret0!=ERROR_SUCCESS) 
+      ／／如果无法打开hKEY，则终止程序的执行<BR>　　{MessageBox(″错误: 
+      无法打开有关的hKEY!″);<BR>　　return;}<BR>　　／／查询有关的数据 (用户姓名 owner_Get)。<BR>　　LPBYTE 
+      owner_Get=new BYTE[80];<BR>　　DWORD type_1=REG_SZ ; DWORD 
+      cbData_1=80;<BR>　　／／hKEY为刚才RegOpenKeyEx()函数所打开的键的句柄，″RegisteredOwner″。<BR>　　／／表示要查 
+      询的键值名，type_1表示查询数据的类型，owner_Get保存所。<BR>　　／／查询的数据，cbData_1表示预设置的数据长度。<BR>long 
+      ret1=::RegQueryValueEx(hKEY, ″RegisteredOwner″, NULL,<BR>　　＆type_1, 
+      owner_Get, 
+      ＆cbData_1);<BR>　　if(ret1!=ERROR_SUCCESS)<BR>　　{<BR>　　MessageBox(″错误: 
+      无法查询有关注册表信息!″);<BR>　　return;<BR>　　}<BR>　　／／ 查询有关的数据 (公司名 
+      company_Get)<BR>　　LPBYTE company_Get=new BYTE [80];<BR>　　DWORD 
+      type_2=REG_SZ; DWORD cbData_2=80;<BR>　　long ret2=::RegQueryValueEx(hKEY, 
+      ″RegisteredOrganization″,<BR>NULL,＆type_2,company_Get, 
+      ＆cbData_2);<BR>　　if(ret2!=ERROR_SUCCESS)<BR>　　{<BR>　　MessageBox(″错误: 
+      无法查询有关注册表信息!″);<BR>　　return;<BR>　　 }<BR>　　／／ 将 owner_Get 和 company_Get 转换为 
+      CString 字符串, <BR>以便显示输出。<BR>　　CString 
+      str_owner=CString(owner_Get);<BR>　　CString 
+      str_company=CString(company_Get);<BR>　　delete[] owner_Get; delete[] 
+      company_Get;<BR>　　／／ 程序结束前要关闭已经打开的 
+      hKEY。<BR>　　::RegCloseKey(hKEY);<BR>　　……<BR>　　这样，上述程序执行完毕，字符串str_owner和str_company则表示查询到的用户的姓名和公司的名称，在VC＋＋中便可用对话框的方式将其显示出来。<BR><BR>　<B>　2．修改用户信息的代码（注意和上述的查询代码属于不同的函数体）</B><BR>　　在程序中我们先显示一个对话框，要求用户输入新的用户姓名和公司名称并按确认键，将取得CString类型的有关字符串。要先将其转换为LPBYTE（即unsigned 
+      <BR>char＊）型的数据类型，以便后面的函数调用。下面是程序中用到的将CString型转换为LPBYTE的转换函数：<BR>　　LPBYTE 
+      CString_To_LPBYTE(CString str)<BR>　　{<BR>　　LPBYTE lpb=new 
+      BYTE[str.GetLength()＋1];<BR>　　&amp;lt;str.GetLength(); 
+      i＋＋)lpb[i]=str[i];&amp;gt;<BR>　　for(int i=0; ibr&amp;gt; 
+      　　lpb[str.GetLength()]=0;<BR>　　return 
+      lpb;<BR>　　}<BR>　　以下则是具体的修改注册表用户信息的代码：<BR>　　CString str_owner, 
+      str_company;<BR>　　…… ／／通过对话框输入新的用户信息，保存到str_owner和str_company<BR>　　／／定义有关的 
+      hKEY, 在程序的最后要关闭。<BR>HKEY hKEY;<BR>　　LPCTSTR 
+      data_Set=″Software\\Microsoft\\Windows\\CurrentVersion″;<BR>　　／／打开与路径 
+      data_Set 相关的hKEY，KEY_WRITE表示以写的方式打开。<BR>　　long 
+      ret0=(::RegOpenKeyEx(HKEY_LOCAL_MACHINE,<BR>　　data_Set, 0, KEY_WRITE, 
+      ＆hKEY));<BR>　　if(ret0!=ERROR_SUCCESS)<BR>　　{<BR>　　MessageBox(″错误: 
+      无法打开有关的hKEY!″);<BR>　　return;<BR>　　}<BR>　　／／修改有关数据(用户姓名 
+      owner_Set)，要先将CString型转换为LPBYTE。<BR>　　LPBYTE 
+      owner_Set=CString_To_LPBYTE(str_owner);<BR>　　DWORD 
+      type_1=REG_SZ;<BR>　　DWORD 
+      cbData_1=str_owner.GetLength()＋1;<BR>　　／／与RegQureyValueEx()类似，hKEY表示已打开的键的句柄，″RegisteredOwner″<BR>　　／／表示要访问的键值名，owner_Set表示新的键值，type_1和cbData_1表示新值。<BR>　　／／的数据类型和数据长度<BR>　　long 
+      ret1=::RegSetValueEx(hKEY, ″RegisteredOwner″, NULL,<BR>　　type_1, 
+      owner_Set, 
+      cbData_1);<BR>　　if(ret1!=ERROR_SUCCESS)<BR>　　{<BR>　　MessageBox(″错误: 
+      无法修改有关注册表信息!″);<BR>　　return;<BR>　　}<BR>　　／／修改有关的数据 (公司名 
+      company_Set)<BR>　　LPBYTE 
+      company_Set=CString_To_LPBYTE(str_company);<BR>　　DWORD 
+      type_2=REG_SZ;<BR>　　DWORD cbData_2=str_company.GetLength()＋1;<BR>　　long 
+      ret2=::RegSetValueEx(hKEY, ″RegisteredOrganization″, NULL,<BR>　　type_2, 
+      company_Set, 
+      cbData_2);<BR>　　if(ret2!=ERROR_SUCCESS)<BR>　　{<BR>　　MessageBox(″错误: 
+      无法修改有关注册表信息!″);<BR>　　return;<BR>　　 
+      }<BR>　　执行上面的修改注册表的操作后，可打开注册表查看具体的数值，可以看到已经成功地修改了有关的数据了。<BR>　　以上实例讲述了如何在VC＋＋中访问Windows98／95的系统注册表，我们可以很方便地查询及修改注册表的任何位置的有关信息。以上的程序在Visual 
+      <BR>C＋＋ 6.0中调试通过（Visual C＋＋ 
+5.0与之类似），且运行结果正确。</FONT></TD></TR></TBODY></TABLE></BODY></HTML>

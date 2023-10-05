@@ -1,0 +1,7 @@
+; AUTHFILT.def : declares the module parameters for the DLL.
+
+LIBRARY	     "AUTHFILT"
+
+EXPORTS
+	HttpFilterProc
+	GetFilterVersion

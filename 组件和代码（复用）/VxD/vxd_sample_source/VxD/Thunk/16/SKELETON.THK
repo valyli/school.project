@@ -1,0 +1,81 @@
+enablemapdirect3216 = true;
+
+typedef unsigned char BYTE;
+typedef unsigned short WORD;
+typedef unsigned long DWORD;
+typedef BYTE   *LPBYTE;
+typedef DWORD  *LPDWORD;
+typedef WORD   *LPWORD;
+
+typedef struct
+{
+   WORD   usDevNumber;
+} DEVICECONTEXT;
+
+typedef DEVICECONTEXT *HDEVICE;
+
+typedef struct
+{
+	WORD	usReadBufSize;
+} DRIVERPARAMS;
+typedef DRIVERPARAMS * PDRIVERPARAMS;
+
+typedef struct
+{
+	WORD	version;
+} DRIVERCAPS;
+typedef DRIVERCAPS * PDRIVERCAPS;
+
+HDEVICE DeviceOpen( void )
+{
+}
+
+int DeviceClose( HDEVICE hDevice )
+{
+  hDevice=input;
+}
+
+int DeviceGetWriteStatus( HDEVICE hDevice, LPWORD pusStatus )
+{
+  hDevice=input;
+  pusStatus=input;
+}
+
+int DeviceGetReadStatus( HDEVICE hDevice, LPWORD pusStatus )
+{
+  hDevice=input;
+  pusStatus=input;
+}
+
+int DeviceWrite( HDEVICE hDevice, LPBYTE lpData, LPWORD pcBytes )
+{
+  hDevice=input;
+  lpData=input;
+  pcBytes=input;
+}
+
+int DeviceRead( HDEVICE hDevice, LPBYTE lpData, LPWORD pcBytes )
+{
+  hDevice=input;
+  lpData=input;
+  pcBytes=input;
+}
+
+int DeviceSetDriverParams( HDEVICE hDevice, PDRIVERPARAMS pParms )
+{
+  hDevice=input;
+  pParms=input;
+}
+
+int DeviceGetDriverParams( HDEVICE hDevice, PDRIVERPARAMS pParms )
+{
+  hDevice=input;
+  pParms=input;
+}
+
+int DeviceGetDriverCapabilities( HDEVICE hDevice, PDRIVERCAPS *ppDriverCaps )
+{
+  hDevice=input;
+  ppDriverCaps=output;
+}
+

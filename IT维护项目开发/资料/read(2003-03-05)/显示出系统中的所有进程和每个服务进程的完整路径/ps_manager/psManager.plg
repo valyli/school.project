@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: psManager - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Release/psManager.res" /d "NDEBUG" "F:\new stuff(2003-03-05)\download\显示出系统中的所有进程和每个服务进程的完整路径\ps_manager\psManager.rc"" 
+Creating temporary file "E:\TEMP\RSPE8.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release/psManager.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"F:\new stuff(2003-03-05)\download\显示出系统中的所有进程和每个服务进程的完整路径\ps_manager\ConfirmTerminationDlg.cpp"
+"F:\new stuff(2003-03-05)\download\显示出系统中的所有进程和每个服务进程的完整路径\ps_manager\psManager.cpp"
+"F:\new stuff(2003-03-05)\download\显示出系统中的所有进程和每个服务进程的完整路径\ps_manager\psManagerDlg.cpp"
+"F:\new stuff(2003-03-05)\download\显示出系统中的所有进程和每个服务进程的完整路径\ps_manager\TerminatorHelpers.cpp"
+]
+Creating command line "cl.exe @E:\TEMP\RSPE8.tmp" 
+Creating temporary file "E:\TEMP\RSPE9.tmp" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release/psManager.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"F:\new stuff(2003-03-05)\download\显示出系统中的所有进程和每个服务进程的完整路径\ps_manager\StdAfx.cpp"
+]
+Creating command line "cl.exe @E:\TEMP\RSPE9.tmp" 
+Creating temporary file "E:\TEMP\RSPEA.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:no /pdb:"Release/psManager.pdb" /machine:I386 /out:"Release/psManager.exe" 
+".\Release\ConfirmTerminationDlg.obj"
+".\Release\psManager.obj"
+".\Release\psManagerDlg.obj"
+".\Release\StdAfx.obj"
+".\Release\TerminatorHelpers.obj"
+".\Release\psManager.res"
+]
+Creating command line "link.exe @E:\TEMP\RSPEA.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+ConfirmTerminationDlg.cpp
+psManager.cpp
+psManagerDlg.cpp
+TerminatorHelpers.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+psManager.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

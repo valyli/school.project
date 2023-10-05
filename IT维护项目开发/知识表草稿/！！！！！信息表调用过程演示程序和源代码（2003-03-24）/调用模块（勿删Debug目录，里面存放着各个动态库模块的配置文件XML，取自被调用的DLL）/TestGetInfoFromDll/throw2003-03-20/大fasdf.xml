@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="gb2312"?>
+<InfomationTable>
+	<InfomationElementTableID>7</InfomationElementTableID>
+	<InfomationElementSection><InfomationElementID>1</InfomationElementID><Infomation>333</Infomation><EnglishName>asdf</EnglishName><InfomationType>3</InfomationType><Description>adsfadf</Description></InfomationElementSection><InfomationElementSection><InfomationElementID>2</InfomationElementID><Infomation>55555</Infomation><EnglishName>555555</EnglishName><InfomationType>6</InfomationType><Description>555555555</Description></InfomationElementSection><InfomationElementSection><InfomationElementID>3</InfomationElementID><Infomation>adsf</Infomation><EnglishName>adsf</EnglishName><InfomationType>3</InfomationType><Description>adsfadf</Description></InfomationElementSection></InfomationTable>

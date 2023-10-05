@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="gb2312"?>
+<InfomationTable>
+	<InfoServiceProviderId>0</InfoServiceProviderId><NameBaseId>0</NameBaseId><InfomationElementTableID>4</InfomationElementTableID><InfomationElementSection><InfomationElementID>1</InfomationElementID><Infomation>Detect CPU Usage</Infomation><EnglishName>DetectCpuUsage</EnglishName><InfomationType>2</InfomationType><Description>检测CPU利用率</Description></InfomationElementSection></InfomationTable>

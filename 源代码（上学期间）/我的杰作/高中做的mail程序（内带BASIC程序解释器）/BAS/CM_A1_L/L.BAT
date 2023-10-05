@@ -1,0 +1,1 @@
+type e-@mail.txt

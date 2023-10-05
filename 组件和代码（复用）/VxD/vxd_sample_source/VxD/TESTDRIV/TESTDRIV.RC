@@ -1,0 +1,31 @@
+#include <windows.h>
+
+#include "testdriv.h"
+
+AboutBox DIALOG 22, 17, 144, 75
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "About Generic"
+BEGIN
+   DEFPUSHBUTTON "OK"	IDOK, 53, 59, 32, 14, WS_GROUP
+   PUSHBUTTON      "Cancel",IDCANCEL,129,23,50,14
+   EDITTEXT        IDC_EDIT1,46,9,71,13,ES_AUTOHSCROLL
+   LTEXT           "Write Data",IDC_STATIC,9,12,36,8
+END
+
+DeviceMenu MENU
+BEGIN
+   POPUP "&Device"
+   BEGIN
+      MENUITEM "Open", IDM_OPEN
+      MENUITEM "Close", IDM_CLOSE
+      MENUITEM "Read", IDM_READ
+      MENUITEM "Write", IDM_WRITE
+      MENUITEM "GetReadStatus", IDM_GETREADSTATUS
+      MENUITEM "GetWriteStatus", IDM_GETWRITESTATUS
+      MENUITEM "GetDriverParams", IDM_GETDRIVERPARAMS
+      MENUITEM "SetDriverParams", IDM_SETDRIVERPARAMS
+      MENUITEM "GetDriverCapabilities", IDM_GETDRIVERCAPS
+      MENUITEM "About TESTDRIV", IDM_ABOUT
+  END
+END
+

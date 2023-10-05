@@ -1,0 +1,40 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Person - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/Person.res" /d "_DEBUG" /d "_AFXDLL" "G:\tsengyong\C++ 程序\Person\Person.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP3232.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/Person.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"G:\tsengyong\C++ 程序\Person\Person.cpp"
+"G:\tsengyong\C++ 程序\Person\PersonDlg.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP3232.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP3233.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/Person.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"G:\tsengyong\C++ 程序\Person\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP3233.TMP" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/Person.pdb" /debug /machine:I386 /out:"Debug/Person.exe" /pdbtype:sept  ".\Debug\Person.obj" ".\Debug\PersonDlg.obj" ".\Debug\StdAfx.obj" ".\Debug\Person.res" "
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+Person.cpp
+PersonDlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+Person.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

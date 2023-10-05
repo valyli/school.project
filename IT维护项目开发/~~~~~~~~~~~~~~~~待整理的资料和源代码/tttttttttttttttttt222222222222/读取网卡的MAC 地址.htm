@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0047)http://www.ithome-cn.net/technology/vc/vc78.htm -->
+<HTML><HEAD><TITLE>读取网卡的MAC 地址</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<H2 align=left><FONT color=#0000ff size=2>[<A 
+href="http://www.ithome-cn.net/technology/vc/vclist.htm">返回</A>]<BR></FONT><FONT 
+color=#800000 size=2>计算机世界2000年第9期</FONT></H2>
+<H2 align=center><FONT color=#008080 face=宋体 size=3><STRONG>读取网卡的MAC 
+地址</STRONG></FONT></H2>
+<P align=right><FONT color=#008080 size=3><EM>深圳　温卫江</EM></FONT></P><FONT 
+color=#0000ff size=2>
+<P></FONT><FONT color=#0000ff face=宋体 
+size=2>　　在实际的应用系统中，我们往往会需要在程序运行时获取当前机器的网卡的MAC 
+地址，以便作为某种标识之用，如控制程序的合法性等。下文介绍如何用Microsoft Visual C ＋＋6.0 
+开发这样的程序。<BR><BR>　　这里采用的方法是通过Windows 9x/NT/Win2000 中内置的NetApi32.DLL 
+的功能来实现的。首先通过发送NCBENUM 命令，获取网卡的数目和每张网卡的内部编号，然后对每个网卡标号发送NCBASTAT 命令获取其MAC 
+地址。注意：这里的网卡是指捆绑了NetBEIU 协议的通信协议栈，可以在网卡的属性处查看到。<BR><BR>　　请运行VC 
+＋＋，打开一个新的工程，选择创建一个Win32 Console 程序，然后按下文输入代码，并请参见其中的注释：<BR><BR>＃include 
+"stdafx.h"<BR><BR>＃include &lt;windows.h&gt;<BR>＃include 
+&lt;wincon.h&gt;<BR>＃include &lt;stdlib.h&gt;<BR>＃include 
+&lt;stdio.h&gt;<BR>＃include &lt;time.h&gt;<BR><BR><BR>// 因为是通过NetAPI 
+来获取网卡信息，<BR>所以需要包含其题头文件nb30.h<BR>＃include &lt;nb30.h&gt;<BR><BR>typedef struct 
+_ASTAT_<BR>{<BR>　　ADAPTER_STATUS adapt;<BR>　　NAME_BUFFER　　NameBuff 
+[30];<BR>}ASTAT, ＊PASTAT;<BR><BR>ASTAT Adapter;<BR>// 定义一个存放返回网卡信息的变量<BR><BR>// 
+输入参数：lana_num 为网卡编号，<BR>一般地，从0 开始，但在Windows 2000 中<BR>并不一定是连续分配的<BR>void 
+getmac_one (int lana_num)<BR>{<BR>　　NCB ncb;<BR>　　UCHAR 
+uRetCode;<BR><BR>　　memset( ＆ncb, 0, sizeof(ncb) );<BR>　　ncb.ncb_command = 
+NCBRESET;<BR>ncb.ncb_lana_num = lana_num;　　<BR>// 指定网卡号<BR><BR>// 
+首先对选定的网卡发送一个<BR>NCBRESET 命令，以便进行初始化<BR>　　uRetCode = Netbios( ＆ncb );<BR>printf( 
+"The NCBRESET <BR>return code is: 0x ％x \n", uRetCode );<BR><BR>　　memset( ＆ncb, 
+0, sizeof(ncb) );<BR>　　ncb.ncb_command = NCBASTAT;<BR>　　ncb.ncb_lana_num = 
+lana_num;　 // 指定网卡号<BR><BR>strcpy((char ＊)ncb.ncb_callname，“＊　　　" );　 
+<BR>ncb.ncb_buffer = (unsigned char ＊) ＆Adapter;　　　<BR>// 
+指定返回的信息存放的变量<BR>　　ncb.ncb_length = sizeof(Adapter);<BR><BR>// 接着，可以发送NCBASTAT 
+命令<BR>以获取网卡的信息<BR>　　uRetCode = Netbios( ＆ncb );<BR>printf( "The NCBASTAT return 
+code is:<BR>0x ％x \n", uRetCode );<BR>　　if ( uRetCode == 0 )<BR>　　{<BR>　　　　// 
+把网卡MAC 地址格式化　成<BR>常用的16 进制形式，如0010 －A4E4 －5802<BR>printf( "The Ethernet Number[ 
+％d] is:<BR>％02X ％02X －％02X ％02X －％02X 
+％02X\n",<BR>　　　　　　lana_num,<BR>　　　　　　Adapter.adapt.adapter_address[0],<BR>　　　　　　Adapter.adapt.adapter_address[1],<BR>　　　　　　Adapter.adapt.adapter_address[2],<BR>　　　　　　Adapter.adapt.adapter_address[3],<BR>　　　　　 
+Adapter.adapt.adapter_address[4],<BR>　　　　　 Adapter.adapt.adapter_address[5] 
+);<BR>　　}<BR>}<BR><BR>int main(int argc, char ＊argv[]) <BR>{<BR>　　NCB 
+ncb;<BR>　　UCHAR uRetCode;<BR>　　LANA_ENUM lana_enum;<BR><BR>　　memset( ＆ncb, 0, 
+sizeof(ncb) );<BR>　　ncb.ncb_command = NCBENUM;<BR><BR>　　ncb.ncb_buffer = 
+(unsigned char ＊) ＆lana_enum;<BR>　　ncb.ncb_length = sizeof(lana_enum);<BR><BR>　 
+// 向网卡发送NCBENUM 命令，<BR>　 以获取当前机器的网卡信息，<BR>　 如有多少个网卡、每张网卡的编号等<BR>　　uRetCode = 
+Netbios( ＆ncb );<BR>printf( "The NCBENUM return code is: <BR>　　 0x ％x \n", 
+uRetCode );<BR>　　　 if ( uRetCode == 0 )<BR>　　　 {<BR>　　　 printf( "Ethernet Count 
+is : ％d\n\n", lana_enum.length);<BR><BR>　　　 // 对每一张网卡，以其网卡编号为<BR>　　　　 
+输入编号，获取其MAC 地址<BR>　　　 for ( int i=0; i<BR>　　此时，按F7 编译，按F5 
+运行即可。<BR>　　这段代码可以直接嵌入相关的应用<BR>系统之中，或封装成.DLL 或COM 控件，以便可以在Visual Basic、Visual 
+<BR>Foxpro、Power Builder 或Delphi 等其他程序中调用。　　</FONT></P></BODY></HTML>

@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: PanSDI - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/PanSDI.res" /d "_DEBUG" /d "_AFXDLL" "H:\工作中的书\kh\translate\Visual C++\program\ch18\PanSDI\PanSDI.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP1362.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/PanSDI.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"H:\工作中的书\kh\translate\Visual C++\program\ch18\PanSDI\MainFrm.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch18\PanSDI\PanSDI.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch18\PanSDI\PanSDIDoc.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch18\PanSDI\PanSDIView.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP1362.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP1363.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/PanSDI.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"H:\工作中的书\kh\translate\Visual C++\program\ch18\PanSDI\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP1363.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP1364.TMP" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/PanSDI.pdb" /debug /machine:I386 /out:"Debug/PanSDI.exe" /pdbtype:sept 
+".\Debug\MainFrm.obj"
+".\Debug\PanSDI.obj"
+".\Debug\PanSDIDoc.obj"
+".\Debug\PanSDIView.obj"
+".\Debug\StdAfx.obj"
+".\Debug\PanSDI.res"
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP1364.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+MainFrm.cpp
+PanSDI.cpp
+PanSDIDoc.cpp
+PanSDIView.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+PanSDI.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

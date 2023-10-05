@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="gb2312"?>
+<InfomationTable>
+	<InfomationElementTableID>
+	</InfomationElementTableID>
+	<InfomationElementTableID>5</InfomationElementTableID><InfomationElementSection><InfomationElementID>1</InfomationElementID><Infomation>系统版本</Infomation><EnglishName>System Version</EnglishName><InfomationType>3</InfomationType><Description>操作系统的版本信息</Description></InfomationElementSection></InfomationTable>

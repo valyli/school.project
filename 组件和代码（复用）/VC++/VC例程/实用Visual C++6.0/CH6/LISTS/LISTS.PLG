@@ -1,0 +1,40 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Lists - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/Lists.res" /d "_DEBUG" /d "_AFXDLL" "F:\工作中的书\kh\translate\Visual C++\programs\ch6\Lists\Lists.rc"" 
+Creating temporary file "C:\DOCUME~1\hokinfai\LOCALS~1\Temp\RSP34.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/Lists.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\工作中的书\kh\translate\Visual C++\programs\ch6\Lists\Lists.cpp"
+"F:\工作中的书\kh\translate\Visual C++\programs\ch6\Lists\ListsDlg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\hokinfai\LOCALS~1\Temp\RSP34.tmp" 
+Creating temporary file "C:\DOCUME~1\hokinfai\LOCALS~1\Temp\RSP35.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/Lists.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\工作中的书\kh\translate\Visual C++\programs\ch6\Lists\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\hokinfai\LOCALS~1\Temp\RSP35.tmp" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/Lists.pdb" /debug /machine:I386 /out:"Debug/Lists.exe" /pdbtype:sept  ".\Debug\Lists.obj" ".\Debug\ListsDlg.obj" ".\Debug\StdAfx.obj" ".\Debug\Lists.res" "
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+Lists.cpp
+ListsDlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+Lists.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

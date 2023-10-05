@@ -1,0 +1,57 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: UsingDB - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/UsingDB.res" /d "_DEBUG" /d "_AFXDLL" "H:\工作中的书\kh\translate\Visual C++\program\ch24\UsingDB\UsingDB.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPC3A4.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /Fp"Debug/UsingDB.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /c 
+"H:\工作中的书\kh\translate\Visual C++\program\ch24\UsingDB\MainFrm.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch24\UsingDB\UsingDB.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch24\UsingDB\UsingDBDoc.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch24\UsingDB\UsingDBSet.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch24\UsingDB\UsingDBView.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPC3A4.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPC3A5.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /Fp"Debug/UsingDB.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /c 
+"H:\工作中的书\kh\translate\Visual C++\program\ch24\UsingDB\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPC3A5.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPC3A6.TMP" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/UsingDB.pdb" /debug /machine:I386 /out:"Debug/UsingDB.exe" /pdbtype:sept 
+".\Debug\MainFrm.obj"
+".\Debug\StdAfx.obj"
+".\Debug\UsingDB.obj"
+".\Debug\UsingDBDoc.obj"
+".\Debug\UsingDBSet.obj"
+".\Debug\UsingDBView.obj"
+".\Debug\UsingDB.res"
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPC3A6.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+MainFrm.cpp
+UsingDB.cpp
+UsingDBDoc.cpp
+UsingDBSet.cpp
+UsingDBView.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+UsingDB.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Hotspot4 - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"WinRel/hotspot4.res" /d "NDEBUG" /d "_AFXDLL" "D:\新建文件夹\Hotspot4\hotspot4.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPA025.TMP" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "_AFXDLL" /Fp"WinRel/Hotspot4.pch" /Yu"stdafx.h" /Fo"WinRel/" /Fd"WinRel/" /FD /c 
+"D:\新建文件夹\Hotspot4\DIBAPI.CPP"
+"D:\新建文件夹\Hotspot4\editlink.cpp"
+"D:\新建文件夹\Hotspot4\hotspdoc.cpp"
+"D:\新建文件夹\Hotspot4\hotspot4.cpp"
+"D:\新建文件夹\Hotspot4\hotspvw.cpp"
+"D:\新建文件夹\Hotspot4\linktext.cpp"
+"D:\新建文件夹\Hotspot4\mainfrm.cpp"
+"D:\新建文件夹\Hotspot4\MYFILE.CPP"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPA025.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPA026.TMP" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "NDEBUG" /D "WIN32" /D "_WINDOWS" /D "_MBCS" /D "_AFXDLL" /Fp"WinRel/Hotspot4.pch" /Yc"stdafx.h" /Fo"WinRel/" /Fd"WinRel/" /FD /c 
+"D:\新建文件夹\Hotspot4\stdafx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPA026.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPA027.TMP" with contents
+[
+/nologo /subsystem:windows /incremental:no /pdb:"WinRel/Hotspot4.pdb" /machine:I386 /out:"WinRel/Hotspot4.exe" 
+".\WinRel\DIBAPI.OBJ"
+".\WinRel\editlink.obj"
+".\WinRel\hotspdoc.obj"
+".\WinRel\hotspot4.obj"
+".\WinRel\hotspvw.obj"
+".\WinRel\linktext.obj"
+".\WinRel\mainfrm.obj"
+".\WinRel\MYFILE.OBJ"
+".\WinRel\stdafx.obj"
+".\WinRel\hotspot4.res"
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPA027.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+stdafx.cpp
+Compiling...
+DIBAPI.CPP
+editlink.cpp
+hotspdoc.cpp
+hotspot4.cpp
+hotspvw.cpp
+linktext.cpp
+mainfrm.cpp
+MYFILE.CPP
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+Hotspot4.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

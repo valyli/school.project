@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ImageBoard - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Release/ImageBoard.res" /d "NDEBUG" /d "_AFXDLL" "C:\Documents and Settings\Paul\桌面\本科生立项（提交版）\位图矢量化2.03\ImageBoard.rc"" 
+Creating temporary file "C:\DOCUME~1\Paul\LOCALS~1\Temp\RSP50.tmp" with contents
+[
+winmm.lib winver.lib /nologo /subsystem:windows /incremental:no /pdb:"Release/ImageBoard.pdb" /machine:I386 /out:"Release/ImageBoard.exe" 
+".\Release\AdjustColorDlg.obj"
+".\Release\BCDlg.obj"
+".\Release\CanvasSize.obj"
+".\Release\ChildFrm.obj"
+".\Release\ColorBitsDlg.obj"
+".\Release\ColorGrid.obj"
+".\Release\ConvoluteDlg.obj"
+".\Release\CqOctree.obj"
+".\Release\Dib.obj"
+".\Release\dibapi.obj"
+".\Release\FloatDibWnd.obj"
+".\Release\GrayDlg.obj"
+".\Release\ImageBoard.obj"
+".\Release\ImageBoardDoc.obj"
+".\Release\ImageBoardView.obj"
+".\Release\IP.obj"
+".\Release\MainFrm.obj"
+".\Release\PaintParambar.obj"
+".\Release\PaintToolbar.obj"
+".\Release\PenParamsList.obj"
+".\Release\PenWidth.obj"
+".\Release\Plotter.obj"
+".\Release\Scale.obj"
+".\Release\SelectPasteDlg.obj"
+".\Release\Splash.obj"
+".\Release\StdAfx.obj"
+".\Release\ImageBoard.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\Paul\LOCALS~1\Temp\RSP50.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Linking...
+LINK : fatal error LNK1181: cannot open input file "winver.lib"
+Error executing link.exe.
+
+
+
+<h3>Results</h3>
+ImageBoard.exe - 1 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

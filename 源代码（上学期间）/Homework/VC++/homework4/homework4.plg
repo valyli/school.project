@@ -1,0 +1,57 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: homework4 - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Release/homework4.res" /d "NDEBUG" /d "_AFXDLL" "C:\Windows\Desktop\homework4\homework4.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP2A3.TMP" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/homework4.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Windows\Desktop\homework4\homework4.cpp"
+"C:\Windows\Desktop\homework4\homework4Doc.cpp"
+"C:\Windows\Desktop\homework4\homework4View.cpp"
+"C:\Windows\Desktop\homework4\MainFrm.cpp"
+"C:\Windows\Desktop\homework4\SelStyleDlg.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP2A3.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP02A4.TMP" with contents
+[
+/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Release/homework4.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Windows\Desktop\homework4\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP02A4.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP02A5.TMP" with contents
+[
+/nologo /subsystem:windows /incremental:no /pdb:"Release/homework4.pdb" /machine:I386 /out:"Release/homework4.exe" 
+.\Release\homework4.obj
+.\Release\homework4Doc.obj
+.\Release\homework4View.obj
+.\Release\MainFrm.obj
+.\Release\SelStyleDlg.obj
+.\Release\StdAfx.obj
+.\Release\homework4.res
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP02A5.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+homework4.cpp
+homework4Doc.cpp
+homework4View.cpp
+MainFrm.cpp
+SelStyleDlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+homework4.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

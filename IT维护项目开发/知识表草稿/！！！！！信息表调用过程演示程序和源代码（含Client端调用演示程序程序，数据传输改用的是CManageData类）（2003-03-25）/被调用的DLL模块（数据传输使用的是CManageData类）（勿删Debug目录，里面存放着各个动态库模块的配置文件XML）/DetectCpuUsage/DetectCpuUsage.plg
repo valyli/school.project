@@ -1,0 +1,38 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: DetectCpuUsage - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPA.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_AFXEXT" /Fp"Debug/DetectCpuUsage.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\Documents and Settings\Administrator\×ÀÃæ\DetectCpuUsage\DetectCpuUsage.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPA.tmp" 
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPB.tmp" with contents
+[
+/nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/DetectCpuUsage.pdb" /debug /machine:I386 /def:".\DetectCpuUsage.def" /out:"Debug/DetectCpuUsage.dll" /implib:"Debug/DetectCpuUsage.lib" /pdbtype:sept 
+".\Debug\CheckCpuUsage.obj"
+".\Debug\CheckSystemType.obj"
+".\Debug\DetectCpuUsage.obj"
+".\Debug\ManageData.obj"
+".\Debug\ModuleInfoList.obj"
+".\Debug\StdAfx.obj"
+".\Debug\DetectCpuUsage.res"
+]
+Creating command line "link.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPB.tmp"
+<h3>Output Window</h3>
+Compiling...
+DetectCpuUsage.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+DetectCpuUsage.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ProfileDemo - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/ProfileDemo.res" /d "_DEBUG" /d "_AFXDLL" "E:\Sample7\ProfileDemo\ProfileDemo.rc"" 
+Creating temporary file "C:\TEMP\RSPBA.tmp" with contents
+[
+/nologo /MDd /W4 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/ProfileDemo.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\Sample7\ProfileDemo\Mapi.cpp"
+"E:\Sample7\ProfileDemo\ProfileDemo.cpp"
+"E:\Sample7\ProfileDemo\ProfileDemoDlg.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSPBA.tmp" 
+Creating temporary file "C:\TEMP\RSPBB.tmp" with contents
+[
+/nologo /MDd /W4 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/ProfileDemo.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\Sample7\ProfileDemo\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSPBB.tmp" 
+Creating temporary file "C:\TEMP\RSPBC.tmp" with contents
+[
+mapi32.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/ProfileDemo.pdb" /debug /machine:I386 /out:"Debug/ProfileDemo.exe" /pdbtype:sept 
+.\Debug\Mapi.obj
+.\Debug\ProfileDemo.obj
+.\Debug\ProfileDemoDlg.obj
+.\Debug\StdAfx.obj
+.\Debug\ProfileDemo.res
+]
+Creating command line "link.exe @C:\TEMP\RSPBC.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+Mapi.cpp
+E:\Sample7\ProfileDemo\Mapi.cpp(242) : warning C4189: 'ptaSvc' : local variable is initialized but not referenced
+ProfileDemo.cpp
+ProfileDemoDlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+ProfileDemo.exe - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,1033 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0051)http://www.copathway.com/vchelp/last.asp?class_id=1 -->
+<HTML><HEAD><TITLE>Visual C++/MFC开发指南更新列表</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb_2312-80">
+<META content="MSHTML 6.00.2800.1141" name=GENERATOR>
+<META content=提供最新的开发信息，源代码，电子图书，开发工具，开发资料， name=Description>
+<META 
+content="vc++,vc,编程,开发,visual c,mfc,代码,图书,文章,开发工具,免费,合作开发,合作,dot net,NET,VS.NET,VC7,VC6" 
+name=Keywords>
+<META content=index,follow name=robots>
+<STYLE>.trfocus {
+	BACKGROUND-COLOR: #ffffff
+}
+.trfocus2 {
+	BACKGROUND-COLOR: #ffff00
+}
+.trmod0 {
+	BACKGROUND-COLOR: #f0f0f0
+}
+.trmod1 {
+	BACKGROUND-COLOR: #e6e6e6
+}
+A {
+	COLOR: blue; TEXT-DECORATION: underline
+}
+A:hover {
+	COLOR: red; TEXT-DECORATION: underline
+}
+IMG {
+	BORDER-TOP-WIDTH: 0px; BORDER-LEFT-WIDTH: 0px; BORDER-BOTTOM-WIDTH: 0px; BORDER-RIGHT-WIDTH: 0px
+}
+BODY {
+	MARGIN-TOP: 10px; FONT-SIZE: 9pt; COLOR: #000000; LINE-HEIGHT: 13pt; FONT-FAMILY: "宋体"; BACKGROUND-COLOR: #ffffff
+}
+SMALL {
+	FONT-SIZE: 9pt
+}
+TD {
+	FONT-SIZE: 9pt; LINE-HEIGHT: 13pt; FONT-FAMILY: "宋体"
+}
+.BIGFONT {
+	FONT-SIZE: 12pt; LINE-HEIGHT: 15pt; FONT-FAMILY: "宋体"
+}
+</STYLE>
+
+<SCRIPT language=JavaScript>
+<!--
+function openNewWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+function openUserWindow(theURL)
+{
+	openNewWindow(theURL,'用户资料','scrollbars=yes,resizable=NO,width=660,height=400')
+}
+function openMessageWindow(theURL)
+{
+	openNewWindow(theURL,'留言','scrollbars=yes,resizable=NO,width=660,height=350')
+}
+function openDeleteWindow(theURL)
+{
+	openNewWindow(theURL,'删除主题','scrollbars=yes,resizable=NO,width=660,height=400')
+}
+function openBulletinWindow(theURL)
+{
+	openNewWindow(theURL,'论坛公告','scrollbars=yes,resizable=NO,width=660,height=300')
+}
+function openImageWindow(theURL)
+{
+	openNewWindow(theURL,'头像列表','scrollbars=yes,resizable=NO,width=660,height=350')
+}
+
+var cur_obj;
+function dealAlphaMenu(o)
+{
+	var sobj,fobj,cur_alf,cmd;
+	eval("sobj="+o+".style;");
+	eval("fobj="+o+".filters;");
+	if(o == cur_obj)
+	{
+		cur_alf = fobj.alpha.opacity;
+		cur_alf +=45;
+		fobj.alpha.opacity = cur_alf;
+		cmd = "dealAlphaMenu('"+o+"')";
+		if(cur_alf<90)
+			window.setTimeout(cmd,200);
+		else
+			sobj.zIndex=2;
+	}
+}
+
+function openSubMenu(o)
+{
+	var sobj,fobj,cmd;
+	eval("sobj="+o+".style;");
+	eval("fobj="+o+".filters;");
+	if(sobj.visibility != "visible")
+	{
+		sobj.zIndex=3;
+		sobj.visibility="visible";
+		fobj.alpha.opacity =50;
+		cmd = "dealAlphaMenu('"+o+"')";
+		window.setTimeout(cmd,200);
+	}
+	cur_obj = o;
+}
+function closeSubMenu(o)
+{
+	var cmd
+	cmd = "mycheck('"+o+"')";
+	cur_obj=null;
+	window.setTimeout(cmd,500);
+}
+function mycheck(o)
+{
+	var sobj;
+	if(o != cur_obj)
+	{
+		eval("sobj="+o+".style;");
+		sobj.visibility="hidden";
+//		cur_obj =null;
+	}
+}
+
+//-->
+</SCRIPT>
+</HEAD>
+<BODY><!--包含头 -->
+<TABLE cellSpacing=1 cellPadding=3 width="96%" align=center bgColor=#000000 
+border=0><!--标记放置区域-->
+  <TBODY>
+  <TR align=middle bgColor=#939393><!--图形LOGO标记放置区域-->
+    <TD vAlign=center align=middle width="30%">
+      <OBJECT 
+      codeBase=http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=4,0,2,0 
+      height=60 width=200 classid=clsid:D27CDB6E-AE6D-11cf-96B8-444553540000><PARAM NAME="movie" VALUE="/vchelp/images/vc2.swf"><PARAM NAME="quality" VALUE="high">
+                                                <embed 
+      src="/vchelp/images/vc2.swf" quality=high 
+      pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" 
+      type="application/x-shockwave-flash" width="200" height="60">              
+      </embed>             </OBJECT><!-- <img src=img/brand_200_60.gif width=200 height=60 alt="LOGO1">--></TD>
+    <TD vAlign=center align=middle width="70%">
+      <SCRIPT language=JavaScript 
+      src="Visual C++-MFC开发指南更新列表.files/myads.htm"></SCRIPT>
+    </TD></TR></TBODY></TABLE>
+<P>
+<TABLE cellSpacing=0 cellPadding=0 width="96%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top align=middle width="17%">
+      <TABLE cellSpacing=1 cellPadding=1 width="100%" bgColor=#000000 
+        border=0><TBODY>
+        <TR bgColor=#939393>
+          <TD><B><A href="http://www.copathway.com/vchelp/vchelp.asp"><FONT 
+            color=white>返回首页</FONT></A></B></TD></TR>
+        <TR bgColor=#939393>
+          <TD><B><A 
+            href="http://www.copathway.com/vchelp/last.asp?class_id=1"><FONT 
+            color=white>VC++/MFC Help</FONT></A></B></TD></TR>
+        <TR bgColor=#939393>
+          <TD><B><A 
+            href="http://www.copathway.com/vchelp/last.asp?class_id=2"><FONT 
+            color=white>VC#/dotNet Help</FONT></A></B></TD></TR>
+        <TR bgColor=#939393>
+          <TD><B><A 
+            href="http://www.copathway.com/vchelp/last.asp?class_id=3"><FONT 
+            color=white>CE eMbedded Help</FONT></A></B></TD></TR>
+        <TR bgColor=#939393>
+          <TD><B><A 
+            href="http://www.copathway.com/vchelp/last.asp?class_id=4"><FONT 
+            color=white>开发有感</FONT></A></B></TD></B></TR>
+        <TR bgColor=#939393>
+          <TD><B><A href="http://www.copathway.com/cndevforum/cndevforum.asp" 
+            target=_blank><FONT color=white>开发论坛</FONT></A></B></TD></TR>
+        <TR bgColor=#939393>
+          <TD><B><A href="http://www.copathway.com/copathway/copathway.asp" 
+            target=_blank><FONT color=white>合作开发</FONT></A></B></TD></TR>
+        <TR bgColor=#939393>
+          <TD><B><A href="http://www.copathway.com/itbookreview/index.asp" 
+            target=_blank><FONT color=white>个人专栏</FONT></A></B></TD></TR>
+        <TR bgColor=#939393>
+          <TD><B><A href="http://www.copathway.com/chat/index.asp" 
+            target=_blank><FONT color=white>聊天室</FONT></A></B></TD></TR>
+        <TR bgColor=#939393>
+          <TD><B><FONT color=white>网站搜索</FONT></B></TD></TR>
+        <FORM action=/vchelp/search.asp method=get>
+        <TR bgColor=#f0f0f0>
+          <TD align=middle>搜索 <INPUT maxLength=20 size=10 name=terms><BR>方式 
+            <SELECT size=1 name=class_id> <OPTION value=1 
+              selected>搜索标题</OPTION> <OPTION value=2>搜索说明</OPTION></SELECT><BR>匹配 
+            <SELECT size=1 name=and_search> <OPTION value=yes 
+              selected>所有条件</OPTION> <OPTION value=no>任一条件</OPTION></SELECT><BR><INPUT type=submit value=提交><INPUT type=reset value=重置 name=reset> 
+          </TD></TR></FORM>
+        <TR bgColor=#939393>
+          <TD>
+            <TABLE cellSpacing=1 cellPadding=2 width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD width="75%"><A 
+                  href="http://www.copathway.com/vchelp/last.asp?class_id=1&amp;c_id=1"><B><FONT 
+                  color=white>界面/窗口</FONT></B></A></TD>
+                <TD onmouseover="openSubMenu('cata1')" style="CURSOR: hand" 
+                onmouseout="closeSubMenu('cata1')" align=left 
+                  width="25%"><SPAN><FONT 
+                  color=white><U>&gt;&gt;&gt;</U></FONT></SPAN> <SPAN id=cata1 
+                  onmouseover="openSubMenu('cata1')" 
+                  style="Z-INDEX: 3; FILTER: alpha(opacity=0); VISIBILITY: hidden; WIDTH: 168px; POSITION: absolute" 
+                  onmouseout="closeSubMenu('cata1')">
+                  <TABLE cellSpacing=1 cellPadding=1 width="100%" 
+                  bgColor=#000000 border=0>
+                    <TBODY>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=22">窗口作图</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=1">文档/视</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=5">Dialog/PropertySheet</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=2">Button</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=3">ListBox/ComboBox</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=4">Edit/Static</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=6">ScrollBar</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=7">Splitter</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=8">TreeCtrl</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=9">ListCtrl</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=10">TabCtrl</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=11">HeaderCtrl</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=12">RichEditCtrl</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=13">ToolBar</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=65">ProgressBar</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=14">StatusBar</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=17">SliderBar/UpDownBar</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=16">Menu</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=15">杂项</A></TD></TR></TBODY></TABLE></SPAN></TD></TR></TBODY></TABLE></TD></TR>
+        <TR bgColor=#939393>
+          <TD>
+            <TABLE cellSpacing=1 cellPadding=2 width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD width="75%"><A 
+                  href="http://www.copathway.com/vchelp/last.asp?class_id=1&amp;c_id=2"><B><FONT 
+                  color=white>平台/系统</FONT></B></A></TD>
+                <TD onmouseover="openSubMenu('cata2')" style="CURSOR: hand" 
+                onmouseout="closeSubMenu('cata2')" align=left 
+                  width="25%"><SPAN><FONT 
+                  color=white><U>&gt;&gt;&gt;</U></FONT></SPAN> <SPAN id=cata2 
+                  onmouseover="openSubMenu('cata2')" 
+                  style="Z-INDEX: 3; FILTER: alpha(opacity=0); VISIBILITY: hidden; WIDTH: 168px; POSITION: absolute" 
+                  onmouseout="closeSubMenu('cata2')">
+                  <TABLE cellSpacing=1 cellPadding=1 width="100%" 
+                  bgColor=#000000 border=0>
+                    <TBODY>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=25">Win32/SDK/DDK</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=24">DLL</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=32">剪贴板</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=26">文件操作</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=28">进程，线程</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=38">同步操作</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=27">Shell</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=59">IE开发</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=71">托盘</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=73">杂项</A></TD></TR></TBODY></TABLE></SPAN></TD></TR></TBODY></TABLE></TD></TR>
+        <TR bgColor=#939393>
+          <TD>
+            <TABLE cellSpacing=1 cellPadding=2 width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD width="75%"><A 
+                  href="http://www.copathway.com/vchelp/last.asp?class_id=1&amp;c_id=3"><B><FONT 
+                  color=white>组件</FONT></B></A></TD>
+                <TD onmouseover="openSubMenu('cata3')" style="CURSOR: hand" 
+                onmouseout="closeSubMenu('cata3')" align=left 
+                  width="25%"><SPAN><FONT 
+                  color=white><U>&gt;&gt;&gt;</U></FONT></SPAN> <SPAN id=cata3 
+                  onmouseover="openSubMenu('cata3')" 
+                  style="Z-INDEX: 3; FILTER: alpha(opacity=0); VISIBILITY: hidden; WIDTH: 168px; POSITION: absolute" 
+                  onmouseout="closeSubMenu('cata3')">
+                  <TABLE cellSpacing=1 cellPadding=1 width="100%" 
+                  bgColor=#000000 border=0>
+                    <TBODY>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=29">COM/DCOM/COM+</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=30">ActiveX</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=70">ATL/WTL</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=31">杂项</A></TD></TR></TBODY></TABLE></SPAN></TD></TR></TBODY></TABLE></TD></TR>
+        <TR bgColor=#939393>
+          <TD>
+            <TABLE cellSpacing=1 cellPadding=2 width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD width="75%"><A 
+                  href="http://www.copathway.com/vchelp/last.asp?class_id=1&amp;c_id=4"><B><FONT 
+                  color=white>打印</FONT></B></A></TD>
+                <TD onmouseover="openSubMenu('cata4')" style="CURSOR: hand" 
+                onmouseout="closeSubMenu('cata4')" align=left 
+                  width="25%"><SPAN><FONT 
+                  color=white><U>&gt;&gt;&gt;</U></FONT></SPAN> <SPAN id=cata4 
+                  onmouseover="openSubMenu('cata4')" 
+                  style="Z-INDEX: 3; FILTER: alpha(opacity=0); VISIBILITY: hidden; WIDTH: 168px; POSITION: absolute" 
+                  onmouseout="closeSubMenu('cata4')">
+                  <TABLE cellSpacing=1 cellPadding=1 width="100%" 
+                  bgColor=#000000 border=0>
+                    <TBODY>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=33">打印预览</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=34">直接打印</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=35">打印设置</A></TD></TR></TBODY></TABLE></SPAN></TD></TR></TBODY></TABLE></TD></TR>
+        <TR bgColor=#939393>
+          <TD>
+            <TABLE cellSpacing=1 cellPadding=2 width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD width="75%"><A 
+                  href="http://www.copathway.com/vchelp/last.asp?class_id=1&amp;c_id=5"><B><FONT 
+                  color=white>通信/网络</FONT></B></A></TD>
+                <TD onmouseover="openSubMenu('cata5')" style="CURSOR: hand" 
+                onmouseout="closeSubMenu('cata5')" align=left 
+                  width="25%"><SPAN><FONT 
+                  color=white><U>&gt;&gt;&gt;</U></FONT></SPAN> <SPAN id=cata5 
+                  onmouseover="openSubMenu('cata5')" 
+                  style="Z-INDEX: 3; FILTER: alpha(opacity=0); VISIBILITY: hidden; WIDTH: 168px; POSITION: absolute" 
+                  onmouseout="closeSubMenu('cata5')">
+                  <TABLE cellSpacing=1 cellPadding=1 width="100%" 
+                  bgColor=#000000 border=0>
+                    <TBODY>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=36">WinSocket</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=37">管道</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=39">网络协议</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=76">WEB/XML</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=40">串口/并口</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=41">服务器/客户模式</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=44">杂项</A></TD></TR></TBODY></TABLE></SPAN></TD></TR></TBODY></TABLE></TD></TR>
+        <TR bgColor=#939393>
+          <TD>
+            <TABLE cellSpacing=1 cellPadding=2 width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD width="75%"><A 
+                  href="http://www.copathway.com/vchelp/last.asp?class_id=1&amp;c_id=10"><B><FONT 
+                  color=white>数据库</FONT></B></A></TD>
+                <TD onmouseover="openSubMenu('cata10')" style="CURSOR: hand" 
+                onmouseout="closeSubMenu('cata10')" align=left 
+                  width="25%"><SPAN><FONT 
+                  color=white><U>&gt;&gt;&gt;</U></FONT></SPAN> <SPAN id=cata10 
+                  onmouseover="openSubMenu('cata10')" 
+                  style="Z-INDEX: 3; FILTER: alpha(opacity=0); VISIBILITY: hidden; WIDTH: 168px; POSITION: absolute" 
+                  onmouseout="closeSubMenu('cata10')">
+                  <TABLE cellSpacing=1 cellPadding=1 width="100%" 
+                  bgColor=#000000 border=0>
+                    <TBODY>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=50">数据访问</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=42">ODBC</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=43">ADO</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=49">OLE 
+                        DB</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=45">MSSQL</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=46">Oracle</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=47">工具</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=48">杂项</A></TD></TR></TBODY></TABLE></SPAN></TD></TR></TBODY></TABLE></TD></TR>
+        <TR bgColor=#939393>
+          <TD>
+            <TABLE cellSpacing=1 cellPadding=2 width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD width="75%"><A 
+                  href="http://www.copathway.com/vchelp/last.asp?class_id=1&amp;c_id=7"><B><FONT 
+                  color=white>C/C++</FONT></B></A></TD>
+                <TD onmouseover="openSubMenu('cata7')" style="CURSOR: hand" 
+                onmouseout="closeSubMenu('cata7')" align=left 
+                  width="25%"><SPAN><FONT 
+                  color=white><U>&gt;&gt;&gt;</U></FONT></SPAN> <SPAN id=cata7 
+                  onmouseover="openSubMenu('cata7')" 
+                  style="Z-INDEX: 3; FILTER: alpha(opacity=0); VISIBILITY: hidden; WIDTH: 168px; POSITION: absolute" 
+                  onmouseout="closeSubMenu('cata7')">
+                  <TABLE cellSpacing=1 cellPadding=1 width="100%" 
+                  bgColor=#000000 border=0>
+                    <TBODY>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=54">数据结构</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=51">算法</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=52">加解密</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=58">字符串</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=53">杂项</A></TD></TR></TBODY></TABLE></SPAN></TD></TR></TBODY></TABLE></TD></TR>
+        <TR bgColor=#939393>
+          <TD>
+            <TABLE cellSpacing=1 cellPadding=2 width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD width="75%"><A 
+                  href="http://www.copathway.com/vchelp/last.asp?class_id=1&amp;c_id=12"><B><FONT 
+                  color=white>多媒体/游戏</FONT></B></A></TD>
+                <TD onmouseover="openSubMenu('cata12')" style="CURSOR: hand" 
+                onmouseout="closeSubMenu('cata12')" align=left 
+                  width="25%"><SPAN><FONT 
+                  color=white><U>&gt;&gt;&gt;</U></FONT></SPAN> <SPAN id=cata12 
+                  onmouseover="openSubMenu('cata12')" 
+                  style="Z-INDEX: 3; FILTER: alpha(opacity=0); VISIBILITY: hidden; WIDTH: 168px; POSITION: absolute" 
+                  onmouseout="closeSubMenu('cata12')">
+                  <TABLE cellSpacing=1 cellPadding=1 width="100%" 
+                  bgColor=#000000 border=0>
+                    <TBODY>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=18">图形操作</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=19">音频/视频</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=21">OpenGL</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=75">DirectX</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=23">杂项</A></TD></TR></TBODY></TABLE></SPAN></TD></TR></TBODY></TABLE></TD></TR>
+        <TR bgColor=#939393>
+          <TD>
+            <TABLE cellSpacing=1 cellPadding=2 width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD width="75%"><A 
+                  href="http://www.copathway.com/vchelp/last.asp?class_id=1&amp;c_id=8"><B><FONT 
+                  color=white>VS开发环境</FONT></B></A></TD>
+                <TD onmouseover="openSubMenu('cata8')" style="CURSOR: hand" 
+                onmouseout="closeSubMenu('cata8')" align=left 
+                  width="25%"><SPAN><FONT 
+                  color=white><U>&gt;&gt;&gt;</U></FONT></SPAN> <SPAN id=cata8 
+                  onmouseover="openSubMenu('cata8')" 
+                  style="Z-INDEX: 3; FILTER: alpha(opacity=0); VISIBILITY: hidden; WIDTH: 168px; POSITION: absolute" 
+                  onmouseout="closeSubMenu('cata8')">
+                  <TABLE cellSpacing=1 cellPadding=1 width="100%" 
+                  bgColor=#000000 border=0>
+                    <TBODY>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=56">调试</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=57">技巧</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=55">Add-in</A></TD></TR></TBODY></TABLE></SPAN></TD></TR></TBODY></TABLE></TD></TR>
+        <TR bgColor=#939393>
+          <TD>
+            <TABLE cellSpacing=1 cellPadding=2 width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD width="75%"><A 
+                  href="http://www.copathway.com/vchelp/last.asp?class_id=1&amp;c_id=13"><B><FONT 
+                  color=white>开发工具</FONT></B></A></TD>
+                <TD onmouseover="openSubMenu('cata13')" style="CURSOR: hand" 
+                onmouseout="closeSubMenu('cata13')" align=left 
+                  width="25%"><SPAN><FONT 
+                  color=white><U>&gt;&gt;&gt;</U></FONT></SPAN> <SPAN id=cata13 
+                  onmouseover="openSubMenu('cata13')" 
+                  style="Z-INDEX: 3; FILTER: alpha(opacity=0); VISIBILITY: hidden; WIDTH: 168px; POSITION: absolute" 
+                  onmouseout="closeSubMenu('cata13')">
+                  <TABLE cellSpacing=1 cellPadding=1 width="100%" 
+                  bgColor=#000000 border=0>
+                    <TBODY>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=60">帮助文件工具</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=61">报表工具</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=62">网络工具</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=64">图形工具</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=72">开发包</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=63">杂项</A></TD></TR></TBODY></TABLE></SPAN></TD></TR></TBODY></TABLE></TD></TR>
+        <TR bgColor=#939393>
+          <TD>
+            <TABLE cellSpacing=1 cellPadding=2 width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD width="75%"><A 
+                  href="http://www.copathway.com/vchelp/last.asp?class_id=1&amp;c_id=14"><B><FONT 
+                  color=white>教程</FONT></B></A></TD>
+                <TD onmouseover="openSubMenu('cata14')" style="CURSOR: hand" 
+                onmouseout="closeSubMenu('cata14')" align=left 
+                  width="25%"><SPAN><FONT 
+                  color=white><U>&gt;&gt;&gt;</U></FONT></SPAN> <SPAN id=cata14 
+                  onmouseover="openSubMenu('cata14')" 
+                  style="Z-INDEX: 3; FILTER: alpha(opacity=0); VISIBILITY: hidden; WIDTH: 168px; POSITION: absolute" 
+                  onmouseout="closeSubMenu('cata14')">
+                  <TABLE cellSpacing=1 cellPadding=1 width="100%" 
+                  bgColor=#000000 border=0>
+                    <TBODY>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=66">闻怡洋VC基础教程</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=67">闻怡洋VC专题教程</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=114">雷神C++/MFC教程</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=68">李久进的VC教程</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=107">其他教程</A></TD></TR></TBODY></TABLE></SPAN></TD></TR></TBODY></TABLE></TD></TR>
+        <TR bgColor=#939393>
+          <TD>
+            <TABLE cellSpacing=1 cellPadding=2 width="100%" border=0>
+              <TBODY>
+              <TR>
+                <TD width="75%"><A 
+                  href="http://www.copathway.com/vchelp/last.asp?class_id=1&amp;c_id=11"><B><FONT 
+                  color=white>杂项</FONT></B></A></TD>
+                <TD onmouseover="openSubMenu('cata11')" style="CURSOR: hand" 
+                onmouseout="closeSubMenu('cata11')" align=left 
+                  width="25%"><SPAN><FONT 
+                  color=white><U>&gt;&gt;&gt;</U></FONT></SPAN> <SPAN id=cata11 
+                  onmouseover="openSubMenu('cata11')" 
+                  style="Z-INDEX: 3; FILTER: alpha(opacity=0); VISIBILITY: hidden; WIDTH: 168px; POSITION: absolute" 
+                  onmouseout="closeSubMenu('cata11')">
+                  <TABLE cellSpacing=1 cellPadding=1 width="100%" 
+                  bgColor=#000000 border=0>
+                    <TBODY>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=74">应用程序</A></TD></TR>
+                    <TR bgColor=#f0f0f0>
+                      <TD><A 
+                        href="http://www.copathway.com/vchelp/type.asp?class_id=1&amp;type_id=69">杂项</A></TD></TR></TBODY></TABLE></SPAN></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+    <TD width="1%"></TD>
+    <TD vAlign=top align=left width="82%">
+      <P align=center>VCHelp的发展需要你的支持，希望大家能够为网站投稿，详情请看<A 
+      href="http://www.copathway.com/vchelp/about/submit.asp" 
+      target=_blank>投稿指南</A></P>
+      <P><A 
+      href="http://www.copathway.com/vchelp/last.asp">全部内容</A>&gt;&gt;Visual 
+      C++开发
+      <P>
+      <TABLE cellSpacing=1 cellPadding=1 width="100%" bgColor=#000000 
+        border=0><TBODY>
+        <TR bgColor=#939393>
+          <TD align=left width="15%"><FONT color=white><B>分类</B></FONT></TD>
+          <TD align=left width="55%"><FONT color=white><B>名称</B></FONT></TD>
+          <TD align=left width="18%"><FONT color=white><B>作者</B></FONT></TD>
+          <TD align=left width="12%"><FONT color=white><B>日期</B></FONT></TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=107&amp;class_id=1">其他教程</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=967">Mosaic 
+            汇编语言教程</A> 
+            〖该文章被浏览/下载346次〗<BR>翻译的&nbsp;&nbsp;http://www.madwizard.org/&nbsp;&nbsp; 
+            网站的 Mosaic 汇编语言教程</TD>
+          <TD vAlign=top align=left>free2000fly_sohu</TD>
+          <TD vAlign=top align=left>2003-3-13</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=72&amp;class_id=1">开发包</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=2&amp;article_id=957">基于DEM三维地形生成解决方案</A> 
+            〖该文章被浏览/下载235次〗<BR>“虚拟地景生成系统”是基于Windows2000系统和Visual C++ 
+            6.0平台，利用基本OpenGL函数编程技术开发的三维可视化成果。</TD>
+          <TD vAlign=top align=left>潘立群</TD>
+          <TD vAlign=top align=left>2003-3-12</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=74&amp;class_id=1">应用程序</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=956">网络版五子棋</A> 
+            〖该文章被浏览/下载190次〗<BR>只能用于人与人对下，不能用于人机，因为是学习vc而做的一个练习，我希望对初学者有一定帮助</TD>
+          <TD vAlign=top align=left>yi zhoucheng</TD>
+          <TD vAlign=top align=left>2003-3-12</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=69&amp;class_id=1">杂项</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=953">VCHelp 
+            论坛2002年问题集</A> 〖该文章被浏览/下载801次〗<BR>论坛上的问题集</TD>
+          <TD vAlign=top align=left>wyy</TD>
+          <TD vAlign=top align=left>2003-3-10</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=50&amp;class_id=1">数据访问</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=2&amp;article_id=919">Universal 
+            Database interface lib 2.0</A> 
+            〖该文章被浏览/下载1227次〗<BR>通用数据库接口库,目前支持ORACLE,DB2</TD>
+          <TD vAlign=top align=left>贾水生</TD>
+          <TD vAlign=top align=left>2003-2-27</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=64&amp;class_id=1">图形工具</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=2&amp;article_id=951">图象格式读写库函数</A> 
+            〖该文章被浏览/下载2686次〗<BR>各种图像格式的读写，包括BMP，JPEG，PCX，TGA，ICO，TIFF，PNG，WMF(读取)</TD>
+          <TD vAlign=top align=left>郑仙斌</TD>
+          <TD vAlign=top align=left>2003-2-18</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=53&amp;class_id=1">杂项</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=950">Date 
+            SDK</A> 〖该文章被浏览/下载500次〗<BR>一个用MFC DLL开发的日期函数库</TD>
+          <TD vAlign=top align=left>xiaojin8039</TD>
+          <TD vAlign=top align=left>2003-2-18</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=29&amp;class_id=1">COM/DCOM/COM+</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=949">Office2000下内部COM插件的编程实现</A> 
+            〖该文章被浏览/下载963次〗<BR>Office2000下内部COM插件的编程实现 附详细说明</TD>
+          <TD vAlign=top align=left>徐景周</TD>
+          <TD vAlign=top align=left>2003-2-18</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=25&amp;class_id=1">Win32/SDK/DDK</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=948">CPU利用率检测组件</A> 
+            〖该文章被浏览/下载606次〗<BR>CPU利用率组件示例程序，此示例程序还实现了动态菲屏功能(每次启动程序都会看到不同的菲屏显示效果)等功能</TD>
+          <TD vAlign=top align=left>徐景周</TD>
+          <TD vAlign=top align=left>2003-2-18</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=74&amp;class_id=1">应用程序</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=2&amp;article_id=947">简易背单词</A> 
+            〖该文章被浏览/下载1000次〗<BR>实现了背单词的基本功能,可以从汉到英,也可以从英到汉.</TD>
+          <TD vAlign=top align=left>凌仕晓</TD>
+          <TD vAlign=top align=left>2003-2-18</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=107&amp;class_id=1">其他教程</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=946">许士敏提供的多篇开发技巧</A> 
+            〖该文章被浏览/下载4061次〗<BR>LINUX与WINDOWS系统间网络通信的实现 VC++实现GSM英文短信息收发功能 
+            VC++下高精度定时处理的实现 VC调用外部函数库方法 基于MAPX控件的鹰眼图实现方法 
+            基于VC++和ActiveX控件的接收机串行通信接口程序设计 用C++类库开发虚拟设备驱动程序(VxD)</TD>
+          <TD vAlign=top align=left>许士敏</TD>
+          <TD vAlign=top align=left>2003-1-23</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=30&amp;class_id=1">ActiveX</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=2&amp;article_id=945">在ActiveX控件中如何动态调用DLL函数之"准"一体化方法</A> 
+            〖该文章被浏览/下载942次〗<BR>在ActiveX控件中如何动态调用DLL函数之"准"一体化方法</TD>
+          <TD vAlign=top align=left>马云冬(xacn)</TD>
+          <TD vAlign=top align=left>2003-1-23</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=40&amp;class_id=1">串口/并口</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=2&amp;article_id=944">多串口控制解决方案</A> 
+            〖该文章被浏览/下载3673次〗<BR>在现代的各种实时监控系统和通信系统中，在Windows 
+            9X/2000/NT下利用VC++对RS-232串口编程是常用的手段。本程序以动态连接库(DLL)形式实现对多串口的操作,并提供设置界面和调试界面。</TD>
+          <TD vAlign=top align=left>许士敏</TD>
+          <TD vAlign=top align=left>2003-1-15</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=74&amp;class_id=1">应用程序</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=2&amp;article_id=941">坦克大战游戏</A> 
+            〖该文章被浏览/下载2716次〗<BR>坦克大战游戏 修改单人玩坦克运动不流畅的问题(原来忘记了应该刷新一次2p的坦克数)</TD>
+          <TD vAlign=top align=left>张奇，袁绍明，陈宇</TD>
+          <TD vAlign=top align=left>2003-1-12</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=19&amp;class_id=1">音频/视频</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=2&amp;article_id=943">摄像头视频预览</A> 
+            〖该文章被浏览/下载2798次〗<BR>通过调用Vfw32.lib中的函数，可以实现摄像头的视频捕获。</TD>
+          <TD vAlign=top align=left>pony1976</TD>
+          <TD vAlign=top align=left>2003-1-8</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=15&amp;class_id=1">杂项</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=2&amp;article_id=942">Outlook风格的单列使用不同的颜色显示新邮件数</A> 
+            〖该文章被浏览/下载868次〗<BR>Outlook风格的单列使用不同的颜色显示新邮件数</TD>
+          <TD vAlign=top align=left></TD>
+          <TD vAlign=top align=left>2003-1-8</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=30&amp;class_id=1">ActiveX</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=940">多进制转换组件及其示例源码</A> 
+            〖该文章被浏览/下载713次〗<BR>多进制转换组件及其示例程序源码，此示例程序还实现了动态菲屏功能(每次启动程序都会看到不同的菲屏显示效果)等功能，运行多进制转换功能前，请先正确注册组件。</TD>
+          <TD vAlign=top align=left>徐景周</TD>
+          <TD vAlign=top align=left>2003-1-7</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=65&amp;class_id=1">ProgressBar</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=2&amp;article_id=939">彩色渐变进度条</A> 
+            〖该文章被浏览/下载1597次〗<BR>如何产生彩色渐变进度条</TD>
+          <TD vAlign=top align=left>薛印波</TD>
+          <TD vAlign=top align=left>2003-1-7</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=30&amp;class_id=1">ActiveX</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=938">实现存储dbf库 
+            排序&nbsp;&nbsp;预览&nbsp;&nbsp;打印&nbsp;&nbsp;字体及纸张的设置的控件</A> 
+            〖该文章被浏览/下载906次〗<BR>可以支持很多功能 包括&nbsp;&nbsp;存储dbf库 
+            排序&nbsp;&nbsp;预览&nbsp;&nbsp;打印&nbsp;&nbsp;字体及纸张的设置 
+            CWPrintocx.ocx控件先注册一下</TD>
+          <TD vAlign=top align=left>wjn66@sina.com</TD>
+          <TD vAlign=top align=left>2003-1-7</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=74&amp;class_id=1">应用程序</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=937">日程安排类软件</A> 
+            〖该文章被浏览/下载1189次〗<BR>该程序演示了一个日程安排类软件的基本代码，同时也是一个基本完整的应用软件</TD>
+          <TD vAlign=top align=left>JianHua_Wan@etang.com</TD>
+          <TD vAlign=top align=left>2003-1-7</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=72&amp;class_id=1">开发包</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=936">封装好的一个显示BMP,JPG,GIF,WMF图形的类</A> 
+            〖该文章被浏览/下载1447次〗<BR>有三种数据接口:图形文件,系统二进制资源,数据块,支持的图片格式有:BMP,GIF,JPG,WMF.如有兴趣与本人联系:yukun_z_cn@yahoo.com.cn</TD>
+          <TD vAlign=top align=left>张玉坤</TD>
+          <TD vAlign=top align=left>2003-1-7</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=74&amp;class_id=1">应用程序</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=935">GetAny 
+            可以获得鼠标指向的类名、文本、RGB颜色值等</A> 
+          〖该文章被浏览/下载458次〗<BR>可以获得鼠标指向的类名、文本、RGB颜色值等</TD>
+          <TD vAlign=top align=left>fswqjqmoney@163.com</TD>
+          <TD vAlign=top align=left>2003-1-7</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=74&amp;class_id=1">应用程序</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=2&amp;article_id=924">递归的应用 
+            -- 最简单分形图形实现</A> 〖该文章被浏览/下载1150次〗<BR>最简单分形图形实现</TD>
+          <TD vAlign=top align=left>胡卓玮</TD>
+          <TD vAlign=top align=left>2003-1-7</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=18&amp;class_id=1">图形操作</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=2&amp;article_id=907">FLib图象处理库</A> 
+            〖该文章被浏览/下载2899次〗<BR>本封装库对图象读取,特效,显示及压缩算法进行了封装</TD>
+          <TD vAlign=top align=left>付黎</TD>
+          <TD vAlign=top align=left>2003-1-7</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=73&amp;class_id=1">杂项</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=934">System 
+            Information</A> 〖该文章被浏览/下载1459次〗<BR>获取系统信息</TD>
+          <TD vAlign=top align=left></TD>
+          <TD vAlign=top align=left>2002-12-24</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=10&amp;class_id=1">TabCtrl</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=933">Creating 
+            a Tabbed Tool Bar</A> 〖该文章被浏览/下载976次〗<BR>可以分片的Toolbar</TD>
+          <TD vAlign=top align=left></TD>
+          <TD vAlign=top align=left>2002-12-24</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=72&amp;class_id=1">开发包</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=932">En/Decode 
+            Mime-Content with MimeSniffer</A> 〖该文章被浏览/下载536次〗<BR>邮件编码，解码控件</TD>
+          <TD vAlign=top align=left></TD>
+          <TD vAlign=top align=left>2002-12-24</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=76&amp;class_id=1">WEB/XML</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=931">MSXML 
+            C++ Wrapper Class</A> 〖该文章被浏览/下载891次〗<BR>XML封装类，利用MSXML功能</TD>
+          <TD vAlign=top align=left></TD>
+          <TD vAlign=top align=left>2002-12-24</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=7&amp;class_id=1">Splitter</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=930">Invisible 
+            Splitter Window</A> 〖该文章被浏览/下载696次〗<BR>不可见的分隔条</TD>
+          <TD vAlign=top align=left></TD>
+          <TD vAlign=top align=left>2002-12-24</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=73&amp;class_id=1">杂项</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=929">Drive 
+            Explorer</A> 〖该文章被浏览/下载721次〗<BR>显示磁盘与目录内容</TD>
+          <TD vAlign=top align=left></TD>
+          <TD vAlign=top align=left>2002-12-24</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=39&amp;class_id=1">网络协议</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=928">POP3 
+            Client With Attachment</A> 〖该文章被浏览/下载873次〗<BR>实现POP3协议，并能支持附件</TD>
+          <TD vAlign=top align=left>AV</TD>
+          <TD vAlign=top align=left>2002-12-24</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=73&amp;class_id=1">杂项</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=927">WAB 
+            Tool</A> 〖该文章被浏览/下载272次〗<BR>访问WAB文件（地址本）内容</TD>
+          <TD vAlign=top align=left>MSDN</TD>
+          <TD vAlign=top align=left>2002-12-24</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=72&amp;class_id=1">开发包</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=2&amp;article_id=925">VC++通用GIS功能开发解决方案</A> 
+            〖该文章被浏览/下载1891次〗<BR>VC++通用GIS功能开发解决方案</TD>
+          <TD vAlign=top align=left>潘立群</TD>
+          <TD vAlign=top align=left>2002-12-23</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=43&amp;class_id=1">ADO</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=1&amp;article_id=923">ADO操作Access示例</A> 
+            〖该文章被浏览/下载2240次〗<BR>ADO操作Access示例</TD>
+          <TD vAlign=top align=left>徐景周</TD>
+          <TD vAlign=top align=left>2002-12-22</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=44&amp;class_id=1">杂项</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=2&amp;article_id=922">一个GUI版本的Net 
+            Send</A> 〖该文章被浏览/下载922次〗<BR>一个GUI版本的Net Send</TD>
+          <TD vAlign=top align=left>轩黎明</TD>
+          <TD vAlign=top align=left>2002-12-22</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=74&amp;class_id=1">应用程序</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=2&amp;article_id=921">全屏俄罗斯方块程序 
+            </A>〖该文章被浏览/下载1347次〗<BR>全屏俄罗斯方块程序 </TD>
+          <TD vAlign=top align=left>顾海伟</TD>
+          <TD vAlign=top align=left>2002-12-22</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=30&amp;class_id=1">ActiveX</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=2&amp;article_id=920">恒创软件 
+            ActiveX控件应用</A> 〖该文章被浏览/下载969次〗<BR>方便灵活的报表控件</TD>
+          <TD vAlign=top align=left>恒创软件</TD>
+          <TD vAlign=top align=left>2002-12-22</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=31&amp;class_id=1">杂项</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=2&amp;article_id=918">用友华表</A> 
+            〖该文章被浏览/下载1679次〗<BR>用友华表 Excel读写控件 Cell组件、插件</TD>
+          <TD vAlign=top align=left>用友华表</TD>
+          <TD vAlign=top align=left>2002-12-5</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=114&amp;class_id=1">雷神C++/MFC教程</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=2&amp;article_id=917">每天跟我学MFC（5）</A> 
+            〖该文章被浏览/下载6151次〗<BR>VC数据库编程专题（下）</TD>
+          <TD vAlign=top align=left>雷神</TD>
+          <TD vAlign=top align=left>2002-12-4</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD vAlign=top><A 
+            href="http://www.copathway.com/vchelp/type.asp?type_id=23&amp;class_id=1">杂项</A></TD>
+          <TD vAlign=top align=left><A 
+            href="http://www.copathway.com/vchelp/view_article.asp?ft=2&amp;article_id=915">打飞机（Fighter）游戏</A> 
+            〖该文章被浏览/下载1684次〗<BR>打飞机（Fighter）是一款有趣又益智的游戏。它可以培养游戏者的逻辑推理能力，适合各种年龄段的人玩。</TD>
+          <TD vAlign=top align=left>魏镇江</TD>
+          <TD vAlign=top align=left>2002-12-4</TD></TR>
+        <TR bgColor=#f0f0f0>
+          <TD align=middle colSpan=4>总页数/当前页21/1<BR>转移到 1 <A 
+            href="http://www.copathway.com/vchelp/last.asp?c_id=&amp;class_id=1&amp;page=2">2</A> 
+            <A 
+            href="http://www.copathway.com/vchelp/last.asp?c_id=&amp;class_id=1&amp;page=3">3</A> 
+            <A 
+            href="http://www.copathway.com/vchelp/last.asp?c_id=&amp;class_id=1&amp;page=4">4</A> 
+            <A 
+            href="http://www.copathway.com/vchelp/last.asp?c_id=&amp;class_id=1&amp;page=5">5</A> 
+            <A 
+            href="http://www.copathway.com/vchelp/last.asp?c_id=&amp;class_id=1&amp;page=6">6</A> 
+            <A 
+            href="http://www.copathway.com/vchelp/last.asp?c_id=&amp;class_id=1&amp;page=7">7</A> 
+            <A 
+            href="http://www.copathway.com/vchelp/last.asp?c_id=&amp;class_id=1&amp;page=8">8</A> 
+            <A 
+            href="http://www.copathway.com/vchelp/last.asp?c_id=&amp;class_id=1&amp;page=9">9</A> 
+            <A 
+            href="http://www.copathway.com/vchelp/last.asp?c_id=&amp;class_id=1&amp;page=10">10</A> 
+            <A 
+            href="http://www.copathway.com/vchelp/last.asp?c_id=&amp;class_id=1&amp;page=11">11</A> 
+            <A 
+            href="http://www.copathway.com/vchelp/last.asp?c_id=&amp;class_id=1&amp;page=12">12</A> 
+            <A 
+            href="http://www.copathway.com/vchelp/last.asp?c_id=&amp;class_id=1&amp;page=13">13</A> 
+            <A 
+            href="http://www.copathway.com/vchelp/last.asp?c_id=&amp;class_id=1&amp;page=14">14</A> 
+            <A 
+            href="http://www.copathway.com/vchelp/last.asp?c_id=&amp;class_id=1&amp;page=15">15</A> 
+            <A 
+            href="http://www.copathway.com/vchelp/last.asp?c_id=&amp;class_id=1&amp;page=16">16</A> 
+            <A 
+            href="http://www.copathway.com/vchelp/last.asp?c_id=&amp;class_id=1&amp;page=17">17</A> 
+            <A 
+            href="http://www.copathway.com/vchelp/last.asp?c_id=&amp;class_id=1&amp;page=18">18</A> 
+            <A 
+            href="http://www.copathway.com/vchelp/last.asp?c_id=&amp;class_id=1&amp;page=19">19</A> 
+            <A 
+            href="http://www.copathway.com/vchelp/last.asp?c_id=&amp;class_id=1&amp;page=20">20</A> 
+            <A 
+            href="http://www.copathway.com/vchelp/last.asp?c_id=&amp;class_id=1&amp;page=21">21</A> 
+          </TD></TR></TBODY></TABLE></P></TD></TR></TBODY></TABLE>
+<P 
+align=center>特别说明，未经本站允许不得复制本站栏目和内容<BR>本站所提供所有资源都不作为商业用途，如果你违反本规定将自行承担所有责任<BR><A 
+title=页面执行时间：109.375ms href="http://www.copathway.com/">VCHelp</A>网站版权所有 
+闻怡洋制作<BR>(c)1998-2003 All Rights Reserved </P><!-- 尾包含 --></BODY></HTML>

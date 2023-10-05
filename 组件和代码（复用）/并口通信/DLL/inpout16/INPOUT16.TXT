@@ -1,0 +1,74 @@
+Documentation for inpout16.zip
+
+Inpout16 is a DLL for port access in 16-bit programs 
+by Jan Axelson
+Lakeview Research
+jaxelson@lvr.com
+
+Important information and cautions:
+
+1. Use this DLL entirely at your own risk. Writing directly 
+to hardware ports can result in system crashes, loss of 
+data, and even permanent damage. Inpout16 was developed to allow access to parallel ports and ports on custom hardware, but you can use it to attempt to access any hardware that is 
+mapped as an I/O port. You've been warned!
+ 
+2. Use this DLL only with 16-bit programs. 32-bit programs 
+require a 32-bit DLL.
+ 
+3. Windows 3.1 and Windows 95 allow direct port access with Inpout16 unless a Vxd has control of the port and blocks access. Under Windows NT, direct port access is not allowed, and you must use a kernel-mode device driver.
+ 
+4. For the latest parallel-port programming and interfacing 
+information, visit Parallel Port Central at: 
+ 
+http://www.lvr.com 
+ 
+Jan Axelson 
+ 
+*** 
+ 
+Inpout.zip contains the following: 
+ 
+inpout16.dll 
+A DLL that adds Inp and Out to Visual Basic 3 and 16-bit Visual Basic 4 programs. 
+ 
+inpout16.bas 
+Declarations for Inp and Out 
+ 
+inpout16.mak 
+Visual Basic 3 test program for inpout16. (The project will also load into 16-bit Visual Basic 4.)
+ 
+inpout16.frm 
+Form for inpout16.mak 
+ 
+inpout16.pbs 
+Source code for inpout16 (compiled with PowerBasic DLL compiler v1.1)
+ 
+*** 
+ 
+How to use inpout32: 
+ 
+1. Copy inpout16.dll to your default Windows directory (usually \Windows). 
+2. Add inpout16.bas to your Visual Basic project (File menu, 
+Add File). 
+3. This is the syntax for writing a byte to a port: 
+   Out PortAddress, ByteToWrite 
+ 
+   This is the syntax for reading a byte from a port: 
+   ByteRead = Inp(PortAddress) 
+ 
+Examples: 
+  Out &h378, &h55 
+  ByteRead = Inp(&h378) 
+ 
+(The syntax is identical to QuickBasic's Inp and Out). 
+ 
+*** 
+ 
+How to run the test program (inpout.mak): 
+1. Copy inpout16.dll to your default Windows directory. 
+2. Open the project inpout16.mak.
+3. Set PortAddress equal to the port address you want to 
+test. 
+3. Clicking the command button causes the program to write a 
+value to the port. Each click increments the value, 
+resetting to 0 at 255.

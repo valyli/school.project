@@ -1,0 +1,17 @@
+重要的文件
+
+Base.h			各种数据和结构体的定义
+注意：
+如果在编译中出现头文件引入错误，则如下内容可以注释掉，错误便没有了
+
+//Include for MSXML
+#import <msxml.dll> named_guids
+using namespace MSXML;
+
+
+
+ManageData.h		CManageData类文件，此类用于传输参数和返回值的数据
+ManageData.cpp
+
+TransferModule.h	CTransferModule类文件，此类用于在Client端搜索可用的dll模块和负责调用这些模块
+TransferModule.cpp

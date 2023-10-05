@@ -1,0 +1,51 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: PerfMonDemo - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/PerfMonDemo.res" /d "_DEBUG" /d "_AFXDLL" "F:\new stuff(2003-03-05)\download\得到系统下各种计量数据，支持NT 2000\perfmon_demo\PerfMonDemo.rc"" 
+Creating temporary file "E:\TEMP\RSP78.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/PerfMonDemo.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\new stuff(2003-03-05)\download\得到系统下各种计量数据，支持NT 2000\perfmon_demo\perfmon.cpp"
+"F:\new stuff(2003-03-05)\download\得到系统下各种计量数据，支持NT 2000\perfmon_demo\PerfMonDemo.cpp"
+"F:\new stuff(2003-03-05)\download\得到系统下各种计量数据，支持NT 2000\perfmon_demo\PerfMonDemoDlg.cpp"
+]
+Creating command line "cl.exe @E:\TEMP\RSP78.tmp" 
+Creating temporary file "E:\TEMP\RSP79.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/PerfMonDemo.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"F:\new stuff(2003-03-05)\download\得到系统下各种计量数据，支持NT 2000\perfmon_demo\StdAfx.cpp"
+]
+Creating command line "cl.exe @E:\TEMP\RSP79.tmp" 
+Creating temporary file "E:\TEMP\RSP7A.tmp" with contents
+[
+pdh.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/PerfMonDemo.pdb" /debug /machine:I386 /out:"Debug/PerfMonDemo.exe" /pdbtype:sept 
+".\Debug\perfmon.obj"
+".\Debug\PerfMonDemo.obj"
+".\Debug\PerfMonDemoDlg.obj"
+".\Debug\StdAfx.obj"
+".\Debug\PerfMonDemo.res"
+]
+Creating command line "link.exe @E:\TEMP\RSP7A.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+perfmon.cpp
+PerfMonDemo.cpp
+PerfMonDemoDlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+PerfMonDemo.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

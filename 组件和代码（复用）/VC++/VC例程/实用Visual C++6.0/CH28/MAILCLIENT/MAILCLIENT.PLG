@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: MailClient - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/MailClient.res" /d "_DEBUG" /d "_AFXDLL" "I:\programs\ch28\MailClient\MailClient.rc"" 
+Creating temporary file "C:\DOCUME~1\hokinfai\LOCALS~1\Temp\RSP16.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/MailClient.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"I:\programs\ch28\MailClient\MailClient.cpp"
+"I:\programs\ch28\MailClient\MailClientDoc.cpp"
+"I:\programs\ch28\MailClient\MailClientView.cpp"
+"I:\programs\ch28\MailClient\MainFrm.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\hokinfai\LOCALS~1\Temp\RSP16.tmp" 
+Creating temporary file "C:\DOCUME~1\hokinfai\LOCALS~1\Temp\RSP17.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/MailClient.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"I:\programs\ch28\MailClient\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\hokinfai\LOCALS~1\Temp\RSP17.tmp" 
+Creating temporary file "C:\DOCUME~1\hokinfai\LOCALS~1\Temp\RSP18.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/MailClient.pdb" /debug /machine:I386 /out:"Debug/MailClient.exe" /pdbtype:sept 
+.\Debug\MailClient.obj
+.\Debug\MailClientDoc.obj
+.\Debug\MailClientView.obj
+.\Debug\MainFrm.obj
+.\Debug\StdAfx.obj
+.\Debug\MailClient.res
+]
+Creating command line "link.exe @C:\DOCUME~1\hokinfai\LOCALS~1\Temp\RSP18.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+MailClient.cpp
+MailClientDoc.cpp
+MailClientView.cpp
+MainFrm.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+MailClient.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,34 @@
+--------------------Configuration: PrintManager - Win32 Release--------------------
+Begining build with project "D:\tmp\PrintManager\PrintManager.dsp", at root.
+Active configuration is Win32 (x86) Application (based on Win32 (x86) Application)
+
+Project's tools are:
+			"32-bit C/C++ Compiler for 80x86" with flags "/nologo /MD /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_AFXDLL" /Fp"Release/PrintManager.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c "
+			"OLE Type Library Maker" with flags "/nologo /D "NDEBUG" /mktyplib203 /o NUL /win32 "
+			"Win32 Resource Compiler" with flags "/l 0x410 /fo"Release/PrintManager.res" /d "NDEBUG" /d "_AFXDLL" "
+			"Browser Database Maker" with flags "/nologo /o"Release/PrintManager.bsc" "
+			"COFF Linker for 80x86" with flags "/nologo /subsystem:windows /incremental:no /pdb:"Release/PrintManager.pdb" /machine:I386 /out:"Release/PrintManager.exe" "
+			"Custom Build" with flags ""
+			"<Component 0xa>" with flags ""
+
+Creating command line "rc.exe /l 0x410 /fo"Release/PrintManager.res" /d "NDEBUG" /d "_AFXDLL" "D:\tmp\PrintManager\PrintManager.rc"" 
+Creating temp file "C:\TEMP\RSP12B.tmp" with contents </nologo /subsystem:windows /incremental:no /pdb:"Release/PrintManager.pdb" /machine:I386 /out:"Release/PrintManager.exe" 
+.\Release\PrintManager.obj
+.\Release\PrintManagerDlg.obj
+.\Release\StdAfx.obj
+.\Release\PrintManager.res
+.\Release\ListCtrlPrint.obj
+.\Release\ListPrintPage1.obj
+.\Release\ListPrintPage2.obj
+.\Release\ListPrintSetup.obj
+.\Release\PrintStatus.obj
+.\Release\PrinterJob.obj
+.\Release\FontCombo.obj
+.\Release\CoolButton.obj>
+Creating command line "link.exe @C:\TEMP\RSP12B.tmp" 
+Compiling resources...
+Linking...
+
+
+
+PrintManager.exe - 0 error(s), 0 warning(s)

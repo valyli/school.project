@@ -1,0 +1,64 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Database - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/Database.res" /d "_DEBUG" "E:\Sample15\Database\Database.rc"" 
+Creating temporary file "C:\TEMP\RSP34.tmp" with contents
+[
+/nologo /MTd /W4 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /Fp"Debug/Database.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /c 
+"E:\Sample15\Database\DaoRecordsetEmployees.cpp"
+"E:\Sample15\Database\Database.cpp"
+"E:\Sample15\Database\DatabaseDoc.cpp"
+"E:\Sample15\Database\DatabaseView.cpp"
+"E:\Sample15\Database\DialogData.cpp"
+"E:\Sample15\Database\MainFrm.cpp"
+"E:\Sample15\Database\RecordsetEmployees.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSP34.tmp" 
+Creating temporary file "C:\TEMP\RSP35.tmp" with contents
+[
+/nologo /MTd /W4 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /Fp"Debug/Database.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /c 
+"E:\Sample15\Database\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\TEMP\RSP35.tmp" 
+Creating temporary file "C:\TEMP\RSP36.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/Database.pdb" /debug /machine:I386 /out:"Debug/Database.exe" /pdbtype:sept 
+.\Debug\DaoRecordsetEmployees.obj
+.\Debug\Database.obj
+.\Debug\DatabaseDoc.obj
+.\Debug\DatabaseView.obj
+.\Debug\DialogData.obj
+.\Debug\MainFrm.obj
+.\Debug\RecordsetEmployees.obj
+.\Debug\StdAfx.obj
+.\Debug\Database.res
+]
+Creating command line "link.exe @C:\TEMP\RSP36.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+DaoRecordsetEmployees.cpp
+Database.cpp
+DatabaseDoc.cpp
+E:\Sample15\Database\DatabaseDoc.cpp(135) : warning C4189: 'numRec' : local variable is initialized but not referenced
+DatabaseView.cpp
+DialogData.cpp
+MainFrm.cpp
+RecordsetEmployees.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+Database.exe - 0 error(s), 1 warning(s)
+</pre>
+</body>
+</html>

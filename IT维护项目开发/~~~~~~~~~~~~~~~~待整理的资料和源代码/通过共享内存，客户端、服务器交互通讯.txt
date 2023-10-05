@@ -1,0 +1,102 @@
+Client/Server interprocess communication via shared memory 
+
+--------------------------------------------------------------------------------
+This article was contributed by Zoran M.Todorovic. 
+Win32 offers several possibilities for interprocess communication (shared memory, mailslots, named pipes to name a few). Each has its advantages and disadvantages - the best one does not actually exist. This article describes how to use shared memory for interprocess communication in the following scenario: 
+
+Multiple processes are communicating to one process (kind of similar to client/server architecture on a local machine). 
+Data transfer is bidirectional which means that each process (client) sends data to the server and collects an answer. 
+Data transfer is initiated by the clients. 
+Access to shared memory must be protected from concurrent access which results in data corruption - synchronization. 
+Note: Shared memory is a very convenient method for interprocess communication on a local machine since it will work both on Windows 95 and on Windows NT. Named Pipes (better choice since it works also via a network) are not fully supported on Windows 95.
+
+Since multiple clients are communicating to the server, it is assumed that the server proccess must be started first. However, this is not a requirement. First, I will describe the server side and then the client side.
+
+Server
+Server should create (during initialization) a named file mapping object whose size is defined by the project requirement. Name of the file mapping object should not be something obvious otherwise there is a possibility that it already exists. Also, take care what happens if it is allowed to start multiple instances of the server. For the purpose of this article, it is assumed that only one instance of the server is allowed to be started at any time. After creating a name file mapping object, server should map a view to this object in order to obtain a pointer to the shared memory for further use. 
+
+struct TSharedMemory {
+    // Programmer defined structure (project specific)
+};
+TSharedMemory *Msg;
+
+HANDLE hmem = ::CreateFileMapping((HANDLE)0xFFFFFFFF,NULL,PAGE_READWRITE,0,
+                                    sizeof(TSharedMemory),"ApplicationSpecificFileMappingName");
+Msg = (TSharedMemory*)::MapViewOfFile(hmem,FILE_MAP_WRITE,0,0,sizeof(TSharedMemory));
+
+Besides shared memory, server must also create two named event objects. These events are used by the client to trigger the server to process client data (HExec) and by the server to indicate to the client that data are processed and answer is ready for the client (HDone). 
+
+HANDLE HExec = ::CreateEvent(NULL,FALSE,FALSE,"ApplicationSpecificEventExec");
+HANDLE HDone = ::CreateEvent(NULL,FALSE,FALSE,"ApplicationSpecificEventDone");
+
+Server should allocate a separate background thread for communication with the clients. Thread executive function should be (pseudo-code):
+
+while (TRUE) {
+    // Timeout is 1 second but can be anything else 
+    retcode = ::WaitForMultipleObjects(HExec and local event EKillThread, 1000);
+    if (retcode is WAIT_TIMEOUT) {
+        // Handle timeout if needed
+    } else if (retcode is EKillThread) {
+        // Kill thread
+        break;
+    } else if (retcode is HExec) {
+        // Client signalled that data in shared memory is ready
+        // Handle data, set answer to the client (all via Msg pointer to shared memory)
+        ::SetEvent(HDone);
+    }
+};
+
+Basically, thread is waiting for the event HExec to be signalled (this is done by the client after the shared memory is filled with data). Server processes data, places its own answer into the shared memory and triggers the client by signalling the event HDone.
+
+Client
+Client is started after the server. During initialization, client should open a file mapping object created by the server and map a view to this object to obtain a pointer for local use:
+
+HANDLE hmem = ::OpenFileMapping(FILE_MAP_WRITE,FALSE,"ApplicationSpecificFileMappingName");
+if (hmem)
+    Msg = (TSharedMemory*)::MapViewOfFile(hmem,FILE_MAP_WRITE,0,0,sizeof(TSharedMemory));
+
+When the client is finished, it should unmap a view to a file and close a handle obtained with ::OpenFileMapping(). 
+
+::UnmapViewOfFile((LPVOID)Msg);
+::CloseHandle(hmem);
+
+Client must also create several named event objects and a named mutex object. Mutex HFree is created by each client. This mutex is used to synchronize access to the shared memory among the active clients. Using this mutex, only one client can access the shared memory at any time. Two events are already created by the server so that client will actually get a handle to already existing event. As described before, these two events are used for communication between the client who has access to the shared memory and the server.
+
+HANDLE HFree = ::CreateMutex(NULL,FALSE,"ApplicationSpecificEventFree");
+HANDLE HExec = ::CreateEvent(NULL,FALSE,FALSE,"ApplicationSpecificEventExec");
+HANDLE HDone = ::CreateEvent(NULL,FALSE,FALSE,"ApplicationSpecificEventExec");
+
+Client does not have to allocate a thread for communication with the server since this communication is always initiated by the client. However, if the communication to the server is performed from the main application thread, it can compromise the performance of the application since the thread is blocked until the complete communication session with the server is finished. The following pseudo-code describes how to communicate with the server.
+
+retcode = 1;
+if (::WaitForSingleObject(HFree,250) == WAIT_OBJECT_0) {
+    // Fill a shared memory with data using Msg pointer
+    .....
+    // Signal Server to process this request
+    ::SetEvent(HExec);
+    if (::WaitForSingleObject(HDone,250) == WAIT_TIMEOUT) {
+        retcode = 1;
+    }
+    // Server finished processing data 
+    // Handle data returned by the Server
+    // Release mutex for others to send messages
+    ::ReleaseMutex(HFree);
+    retcode = 0;
+}
+return retcode; 
+
+In order to initiate communication with the server, client must first get ownership of the mutex (it will not get it immediatelly only if some other client is already communicating with the server). Once it gets the ownership of the mutex, client can safely access the shared memory. It populates the shared memory (for the purpose of this article, shared memory is represented with a structure TSharedMemory; client has a pointer variable Msg of type TSharedMemory) and signals the event HExec. Since this event if named, it is visible by the server. Server handles the data from shared memory, puts its own answer there and signals the event HDone. Client (who is waiting for the event HDone to be signalled) wakes up and handles the server answer. Only then will the server release ownership of the mutex HFree so that other clients can communicate with the server.
+
+The only sensitive issue here are the timeout values for the two functions WaitForSingleObject. This should be determined by the programmer according to project requirements (it depends on how fast the server handles the data received by the client). 
+
+There are two other possibilities that must be considered in a real-world implementation. What happens if the client is started before the server or if the server is closed while the client is running. 
+
+If the client is started before the server, then ::OpenFileMapping() function will fail and return an invalid handle (since server has not created a file mapping object). This is detected by checking the value of a pointer to a shared memory object (in this case it is NULL). When a communication to the server is initiated by the client it should first check this pointer. If it is NULL, client should try to open a file mapping object and map a view to a file. Pointer value should be checked again. If it is still NULL, server is not running and client returns FALSE to the caller. If the server is started, everything works.
+
+If the server is closed while the client is successfully connected to it (hmem and Msg have valid values), then ::WaitForSingleObject(HDone) will fail with a return code WAIT_TIMEOUT. The client assumes that the server is not running and should unmap a view to a file mapping object and close a handle to it in order to simulate the previous scenario (server is not started). Next call to the client is handled in a way described above.
+
+Conclusion
+This is a very powerful mechanism to transfer large ammount of data between the client and the server. It is also very fast (actual interprocess communication) and secure. However, it is limited to the local machine - it does not work via a network.
+
+This article does not cover the issue of error handling which is very important in a real-world implementation.
+

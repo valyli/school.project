@@ -1,0 +1,1061 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0049)http://www.xbit2008.com/document/index.asp?id=801 -->
+<HTML><HEAD><TITLE>文档中心</TITLE><LINK 
+href="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/css.css" type=text/css 
+rel=stylesheet>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META content="MSHTML 6.00.2600.0" name=GENERATOR></HEAD>
+<BODY text=#000000 bgColor=#ffffff leftMargin=4 topMargin=2>
+<TABLE cellSpacing=0 cellPadding=0 width=772 border=0>
+  <TBODY>
+  <TR>
+    <TD colSpan=2>
+      <OBJECT height=50 width=450 
+      classid=clsid:D27CDB6E-AE6D-11cf-96B8-444553540000><PARAM NAME="movie" VALUE="logo.swf"></OBJECT></TD></TR>
+  <TR>
+    <TD colSpan=2 height=12>&nbsp;</TD></TR>
+  <TR>
+    <TD vAlign=top width=150 bgColor=#dfffff>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <SCRIPT language=JavaScript type=text/javascript><!--
+function FrontPage_Form1_Validator(theForm)
+{
+
+ 
+  if (theForm.uid.value.length < 3)
+  {
+    alert("在 昵称 域中，请至少输入 3 个字符。");
+    theForm.uid.focus();
+    return (false);
+  }
+
+  if (theForm.uid.value.length > 20)
+  {
+    alert("在 昵称 域中，请最多输入 20 个字符。");
+    theForm.uid.focus();
+    return (false);
+  }
+
+ 
+
+  if (theForm.psd.value.length < 3)
+  {
+    alert("在 密码 域中，请至少输入 3 个字符。");
+    theForm.psd.focus();
+    return (false);
+  }
+
+  if (theForm.psd.value.length > 20)
+  {
+    alert("在 密码 域中，请最多输入 20 个字符。");
+    theForm.psd.focus();
+    return (false);
+  }
+  return (true);
+}
+//--></SCRIPT>
+
+            <TABLE id=AutoNumber8 style="BORDER-COLLAPSE: collapse" 
+            borderColor=#0066ff cellSpacing=0 cellPadding=2 width="100%" 
+            border=1>
+              <TBODY>
+              <TR bgColor=#d4d0c8>
+                <TD borderColor=#0066ff bgColor=#0066ff height=15><B><FONT 
+                  color=#ffffff>会员登陆</FONT></B></TD></TR>
+              <TR>
+                <TD align=middle bgColor=#ffffcc>
+                  <FORM language=JavaScript name=FrontPage_Form1 
+                  onsubmit="return FrontPage_Form1_Validator(this)" 
+                  action=r_main.asp method=post 
+                  webbot-action="--WEBBOT-SELF--">昵称： <INPUT class=button3 
+                  onfocus=this.select() maxLength=20 size=10 value=glacier 
+                  name=uid><BR>密码： <INPUT class=button3 onfocus=this.select() 
+                  type=password maxLength=20 size=10 value=glacier name=psd> <INPUT class=button1 type=submit value=登陆> <A 
+                  href="http://www.xbit2008.com/document/reg.asp">注册</A> <A 
+                  href="http://www.xbit2008.com/document/getpsd.asp">忘记密码</A></FORM></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD height=12></TD></TR>
+        <TR>
+          <TD>
+            <TABLE id=AutoNumber8 style="BORDER-COLLAPSE: collapse" 
+            borderColor=#0066ff height=0 cellSpacing=0 cellPadding=2 
+            width="100%" bgColor=#ffffcc border=1>
+              <TBODY>
+              <TR bgColor=#d4d0c8>
+                <TD borderColor=#0066ff bgColor=#0066ff height=21><B><FONT 
+                  color=#ffffff>本文及作者信息</FONT></B></TD></TR>
+              <TR>
+                <TD align=middle height=70>
+                  <TABLE id=AutoNumber8 style="BORDER-COLLAPSE: collapse" 
+                  height=0 width="98%" align=center>
+                    <TBODY>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/boy.gif" 
+                        width=16 border=0></TD>
+                      <TD width="81%"><A 
+                        onclick="javascript:window.open('user.asp?user=glacier','hongen_dict','resizable=0,status=no,toolbar=no,menubar=no,location=no,width=500,height=350');" 
+                        href="http://www.xbit2008.com/document/index.asp?id=801#">glacier</A></A> 
+                        <A 
+                        onclick="javascript:window.open('write_guest.asp?uid=glacier','hongen_dict','resizable=0,status=no,toolbar=no,menubar=no,location=no,width=500,height=350');" 
+                        href="http://www.xbit2008.com/document/index.asp?id=801#">留言</A> 
+                      </TD></TR>
+                    <TR>
+                      <TD colSpan=2>
+                        <DIV align=center><FONT color=#ff0000 
+                        size=3>★★★★★★★★★</FONT><FONT 
+                        color=#ff00ff>★★</FONT></DIV></TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=12 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/feedback.gif" 
+                        width=13 border=0></TD>
+                      <TD width="81%"><A 
+                        href="mailto:lyy_20@sina.com">lyy_20@sina.com</A></TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/oicq.gif" 
+                        width=16 border=0></TD>
+                      <TD width="81%">12173849</TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/home.gif" 
+                        width=16 border=0></TD>
+                      <TD width="81%"><A href="http://www.xbit2008.com/" 
+                        target=_bank>作者主页</A></TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/clock.gif" 
+                        width=12 border=0></TD>
+                      <TD width="81%">加入：2002-7-26</TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/icq.gif" 
+                        width=15 border=0></TD>
+                      <TD width="81%">登陆次数：319</TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=15 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/rewrite.gif" 
+                        width=16 border=0></TD>
+                      <TD width="81%"><A title=搜索glacier所有发表发表文章 
+                        href="http://www.xbit2008.com/document/uid_document.asp?uid=glacier" 
+                        target=_bank>发表文章</A>：<FONT 
+color=#ff0000>8</FONT>页</TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/palette_draw.gif" 
+                        width=9 border=0></TD>
+                      <TD width="81%"><A title=搜索glacier所有发表回复文章 
+                        href="http://www.xbit2008.com/document/uid_re.asp?uid=glacier" 
+                        target=_bank>回复文章</A><FONT 
+color=#ff0000>：2</FONT>页</TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/clock.gif" 
+                        width=12 border=0></TD>
+                      <TD width="81%">发表：<FONT 
+                      color=#ff0000>2002-9-15</FONT></TD></TR>
+                    <TR>
+                      <TD width=0><IMG height=16 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/icq.gif" 
+                        width=15 border=0></TD>
+                      <TD width="81%">人气：<FONT color=#ff0000>40</FONT>人</TD></TR>
+                    <TR>
+                      <TD colSpan=8 height=0>　</TD></TR>
+                    <TR>
+                      <TD colSpan=2 height=0><IMG height=10 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/ico.gif" 
+                        width=10 border=0> 本文投票信息（<FONT 
+                      color=#ff0000>0</FONT>票）</TD></TR>
+                    <TR>
+                      <TD colSpan=2 height=0>
+                        <TABLE cellSpacing=0 cellPadding=0 width="100%" 
+border=0>
+                          <TBODY>
+                          <TR>
+                            <TD width="30%">挺好：</TD>
+                            <TD width="70%">
+                              <TABLE borderColor=#ffffcc height=4 cellSpacing=0 
+                              cellPadding=0 width=0% bgColor=#ff0000 border=1>
+                                <TBODY>
+                                <TR>
+                                <TD>0　</TD></TR></TBODY></TABLE></TD></TR>
+                          <TR>
+                            <TD width="30%">一般：</TD>
+                            <TD width="70%">
+                              <TABLE borderColor=#ffffcc height=4 cellSpacing=0 
+                              cellPadding=0 width=0% bgColor=#ffff00 border=1>
+                                <TBODY>
+                                <TR>
+                                <TD height=15>0</TD></TR></TBODY></TABLE></TD></TR>
+                          <TR>
+                            <TD width="30%">很差：</TD>
+                            <TD width="70%">
+                              <TABLE borderColor=#ffffcc height=4 cellSpacing=0 
+                              cellPadding=0 width=0% bgColor=#00ff00 border=1>
+                                <TBODY>
+                                <TR>
+                                <TD>0　</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+                    <TR>
+                      <TD colSpan=8 height=0>　</TD></TR>
+                    <TR>
+                      <TD colSpan=2 height=0><IMG height=10 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/ico.gif" 
+                        width=10 border=0> 为本文投一票</TD></TR>
+                    <TR>
+                      <TD colSpan=2 height=14>
+                        <FORM name=form1 action=index.asp?id=801 method=post>
+                        <TABLE cellSpacing=0 cellPadding=0 width="100%" 
+border=0>
+                          <TBODY>
+                          <TR>
+                            <TD><INPUT type=radio value=a name=tp> 本文非常好</TD></TR>
+                          <TR>
+                            <TD><INPUT type=radio value=b name=tp> 本文一般好 
+</TD></TR>
+                          <TR>
+                            <TD><INPUT type=radio value=c name=tp> 本文很差劲 
+</TD></TR>
+                          <TR>
+                            <TD><INPUT type=submit value="投  票" name=ok> 
+                          </TD></TR></TBODY></TABLE></FORM></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD height=12>&nbsp;</TD></TR>
+        <TR>
+          <TD>
+            <SCRIPT language=JavaScript1.2 
+            src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/menu.js"></SCRIPT>
+
+            <TABLE id=AutoNumber4 style="BORDER-COLLAPSE: collapse" 
+            borderColor=#0066ff height=152 cellSpacing=0 cellPadding=2 
+            width="100%" bgColor=#ffffcc border=1>
+              <TBODY>
+              <TR>
+                <TD borderColor=#0066ff width="100%" bgColor=#0066ff 
+                  height=18><B><FONT color=#ffffff>文档导航</FONT></B></TD></TR>
+              <TR>
+                <TD vAlign=top width="100%">
+                  <TABLE width="98%" align=left>
+                    <TBODY>
+                    <TR>
+                      <TD>
+                        <DIV class=parent id=KB1Parent><A title=编程 
+                        onclick="expandIt('KB1');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=801#"><IMG 
+                        height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=编程">编程</A> 
+                        </DIV>
+                        <DIV class=child id=KB1Child><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=ASP 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=ASP" 
+                        target=right>ASP</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=ASP.NET 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=ASP.NET" 
+                        target=right>ASP.NET</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=C＃ 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=C＃" 
+                        target=right>C＃</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=C＋＋ 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=C＋＋" 
+                        target=right>C＋＋</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Borland 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=C++Builder" 
+                        target=right C++Builder>C++Builder</A> <BR><IMG 
+                        height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=CORBA 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=CORBA" 
+                        target=right>CORBA</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=CSS 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=CSS" 
+                        target=right>CSS</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=C语言 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=C语言" 
+                        target=right>C语言</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Delphi 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=Delphi" 
+                        target=right>Delphi </A><BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=EJB 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=EJB" 
+                        target=right>EJB</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=HTML/DHTML 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=HTML/DHTML" 
+                        target=right>HTML/DHTML</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=J2EE 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=J2EE" 
+                        target=right>J2EE</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=JAVA 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=JAVA" 
+                        target=right>JAVA</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=JavaScript 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=JavaScript" 
+                        target=right>JavaScript</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=JSP 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=JSP" 
+                        target=right>JSP</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=LISP(AutoCAD的开发语言) 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=LISP" 
+                        target=right>LISP</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Palm 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=Palm" 
+                        target=right>Palm</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Perl 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=Perl" 
+                        target=right>Perl</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=PHP 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=PHP" 
+                        target=right>PHP</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=PowerBuilder 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=PowerBuild" 
+                        target=right>PowerBuild</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Socket 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=Socket" 
+                        target=right>Socket</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Struts 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=Struts" 
+                        target=right>Struts</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Microsoft 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=VB/VB.NET" 
+                        target=right VB.NET Basic Visual>VB/VB.NET</A> <BR><IMG 
+                        height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=VBS 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=VBS" 
+                        target=right>VBS</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=VC 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=VC" 
+                        target=right>VC</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Microsoft 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=VFoxPro" 
+                        target=right Visual FoxPro>VFoxPro</A> <BR><IMG 
+                        height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=WAP 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=WAP" 
+                        target=right>WAP</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Windows编程 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=Windows编程" 
+                        target=right>Windows编程</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=XML 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=XML" 
+                        target=right>XML</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=汇编语言 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=汇编语言" 
+                        target=right>汇编语言</A> <BR></DIV>
+                        <DIV class=parent id=KB2Parent><A title=网络 
+                        onclick="expandIt('KB2');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=801#"><IMG 
+                        height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=网络">网络</A> 
+                        </DIV>
+                        <DIV class=child id=KB2Child><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Windows2k 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=网络&amp;c=Windows2k" 
+                        target=right>Windows2k</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=我是网络高手 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=网络&amp;c=网络设备" 
+                        target=right 你是谁!>网络设备</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=网络协议 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=网络&amp;c=网络协议" 
+                        target=right>网络协议</A> <BR></DIV>
+                        <DIV class=parent id=KB3Parent><A title=数据库 
+                        onclick="expandIt('KB3');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=801#"><IMG 
+                        height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=数据库">数据库</A> 
+                        </DIV>
+                        <DIV class=child id=KB3Child><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=ACCESS 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=ACCESS" 
+                        target=right>ACCESS</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=DB2 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=DB2" 
+                        target=right>DB2</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=FoxPro 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=FoxPro" 
+                        target=right>FoxPro</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=INGRES 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=INGRES" 
+                        target=right>INGRES</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=MSSQL 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=MSSQL" 
+                        target=right>MSSQL</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=MYSQL 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=MYSQL" 
+                        target=right>MYSQL</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Oracle 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=Oracle" 
+                        target=right>Oracle</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=QBASE 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=QBASE" 
+                        target=right>QBASE</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=SQL 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=SQL" 
+                        target=right>SQL</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=SYBASE 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=数据库&amp;c=SYBASE" 
+                        target=right>SYBASE</A> <BR></DIV>
+                        <DIV class=parent id=KB4Parent><A title=2D/3D设计空间,动画制作 
+                        onclick="expandIt('KB4');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=801#"><IMG 
+                        height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=制作设计">制作设计</A> 
+                        </DIV>
+                        <DIV class=child id=KB4Child><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=3D 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=3DSMax" 
+                        target=right MAX Studio>3DSMax</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Authorware 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=Authorware" 
+                        target=right>Authorware</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=AutoCAD 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=AutoCAD" 
+                        target=right>AutoCAD</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Dreamweaver 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=Dreamweaver" 
+                        target=right>Dreamweaver</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Fireworks 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=Fireworks" 
+                        target=right>Fireworks</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Flash 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=Flash" 
+                        target=right>Flash</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=FreeHand 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=FreeHand" 
+                        target=right>FreeHand</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Microsoft 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=FrontPage" 
+                        target=right FrontPage>FrontPage</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Adobe 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=Illustrator" 
+                        target=right Illustrator>Illustrator</A> <BR><IMG 
+                        height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Maya 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=Maya" 
+                        target=right>Maya</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=PhotoShop 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=制作设计&amp;c=PhotoShop" 
+                        target=right>PhotoShop</A> <BR></DIV>
+                        <DIV class=parent id=KB5Parent><A title=操作系统 
+                        onclick="expandIt('KB5');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=801#"><IMG 
+                        height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=操作系统">操作系统</A> 
+                        </DIV>
+                        <DIV class=child id=KB5Child><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Linux 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=操作系统&amp;c=Linux" 
+                        target=right>Linux</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=NetWare 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=操作系统&amp;c=NetWare" 
+                        target=right>NetWare</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=UNIX 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=操作系统&amp;c=UNIX" 
+                        target=right>UNIX</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Windows 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=操作系统&amp;c=Windows" 
+                        target=right>Windows</A> <BR></DIV>
+                        <DIV class=parent id=KB6Parent><A title=电脑的软硬相关故障和维护 
+                        onclick="expandIt('KB6');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=801#"><IMG 
+                        height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=故障维护">故障维护</A> 
+                        </DIV>
+                        <DIV class=child id=KB6Child><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=软件故障 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=故障维护&amp;c=软件故障" 
+                        target=right>软件故障</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=网络故障 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=故障维护&amp;c=网络故障" 
+                        target=right>网络故障</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=硬件故障 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=故障维护&amp;c=硬件故障" 
+                        target=right>硬件故障</A> <BR></DIV>
+                        <DIV class=parent id=KB7Parent><A title=计算机安全和黑客技术及计算机病毒 
+                        onclick="expandIt('KB7');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=801#"><IMG 
+                        height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=安全技术">安全技术</A> 
+                        </DIV>
+                        <DIV class=child id=KB7Child><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=DNS服务器 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=DNS服务器" 
+                        target=right>DNS服务器</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Email服务器 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=Email服务器" 
+                        target=right>Email服务器</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=FTP服务器 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=FTP服务器" 
+                        target=right>FTP服务器</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=HPUX 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=HPUX" 
+                        target=right>HPUX</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=IBM 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=IBM AIX" 
+                        target=right AIX>IBM AIX</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Linux 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=Linux" 
+                        target=right>Linux</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=UNIX 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=UNIX" 
+                        target=right>UNIX</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Web浏览器 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=Web浏览器" 
+                        target=right>Web浏览器</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=Windows 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=Windows" 
+                        target=right>Windows</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=WWW服务器 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=WWW服务器" 
+                        target=right>WWW服务器</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=攻击代码 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=攻击代码" 
+                        target=right>攻击代码</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=后门程序 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=后门程序" 
+                        target=right>后门程序</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=加密解密 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=加密解密" 
+                        target=right>加密解密</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=路由器/防火墙 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=路由及防火墙" 
+                        target=right>路由及防火墙 </A><BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=数据库 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=数据库" 
+                        target=right>数据库</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=通用漏洞 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=通用漏洞" 
+                        target=right>通用漏洞</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=溢出技术 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=安全技术&amp;c=溢出技术" 
+                        target=right>溢出技术</A> <BR></DIV>
+                        <DIV class=parent id=KB8Parent><A title=其他文章 
+                        onclick="expandIt('KB8');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=801#"><IMG 
+                        height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=其他文章">其他文章</A> 
+                        </DIV>
+                        <DIV class=child id=KB8Child><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=结构格式 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=其他文章&amp;c=结构格式" 
+                        target=right>结构格式</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=其他文章 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=其他文章&amp;c=其他文章" 
+                        target=right>其他文章</A> <BR><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=输入输出 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=其他文章&amp;c=输入输出" 
+                        target=right>输入输出</A> <BR></DIV>
+                        <DIV class=parent id=KB9Parent><A title=加密解密 
+                        onclick="expandIt('KB9');return false;" 
+                        href="http://www.xbit2008.com/document/index.asp?id=801#"><IMG 
+                        height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/plus.gif" 
+                        width=35 border=0></A><A 
+                        href="http://www.xbit2008.com/document/v_type_p.asp?p=加密解密">加密解密</A> 
+                        </DIV>
+                        <DIV class=child id=KB9Child><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/spacer.gif" 
+                        width=20 border=0><IMG height=17 
+                        src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/blank.gif" 
+                        width=32 border=0><A title=密码算法 
+                        href="http://www.xbit2008.com/document/v_type.asp?p=加密解密&amp;c=密码算法" 
+                        target=right>密码算法</A> 
+              <BR></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD height=12>&nbsp;</TD></TR>
+        <TR>
+          <TD>
+            <TABLE id=AutoNumber8 style="BORDER-COLLAPSE: collapse" 
+            borderColor=#0066ff cellSpacing=0 cellPadding=2 width="100%" 
+            bgColor=#ffffcc border=1>
+              <TBODY>
+              <TR bgColor=#d4d0c8>
+                <TD borderColor=#0066ff bgColor=#0066ff height=15><B><FONT 
+                  color=#ffffff>相关文章</FONT></B></TD></TR>
+              <TR>
+                <TD vAlign=top align=middle>
+                  <TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD>没有该文章！ 
+        </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD>
+    <TD vAlign=top width=622>
+      <TABLE cellSpacing=0 cellPadding=0 width="96%" align=right border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <DIV align=right>
+            <MARQUEE scrollAmount=3 behavior=alternate width=590><FONT 
+            color=#ff0000>你还没有登陆,不能享有本站的所有服务,请<A 
+            href="http://www.xbit2008.com/document/main.asp">登临</\A></FONT></A></MARQUEE></DIV></TD></TR>
+        <TR>
+          <TD>
+            <DIV align=center>
+            <TABLE id=AutoNumber6 style="BORDER-COLLAPSE: collapse" 
+            borderColor=#111111 height=67 cellSpacing=0 cellPadding=0 
+            width="100%">
+              <TBODY>
+              <TR>
+                <TD colSpan=3><IMG 
+                  src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/b010.gif" 
+                  border=0> <A 
+                  href="http://www.xbit2008.com/document/v_type_p.asp?p=编程">编程</A> 
+                </TD></TR>
+              <TR>
+                <TD><IMG 
+                  src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/01.gif" 
+                  border=0></TD>
+                <TD colSpan=2><IMG 
+                  src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/001.gif" 
+                  border=0> <A 
+                  href="http://www.xbit2008.com/document/v_type.asp?p=编程&amp;c=VC">VC</A> 
+                </TD></TR>
+              <TR>
+                <TD width=29>　</TD>
+                <TD width=20 height=20><IMG 
+                  src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/01.gif" 
+                  border=0> </TD>
+                <TD><IMG 
+                  src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/lm.gif" 
+                  border=0> <FONT color=#ff00ff><B>WinNT &amp; 
+                  Win2K下实现进程的完全隐藏</B></FONT> [载自 ] <A 
+                  href="http://www.xbit2008.com/document/rewrite.asp?id=801"><IMG 
+                  height=15 alt=发表意见 
+                  src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/rewrite.gif" 
+                  width=16 border=0></A> <A 
+                  href="http://www.xbit2008.com/document/add_fock.asp?id=801&amp;title=WinNT &amp; Win2K下实现进程的完全隐藏" 
+                  target=_bank><IMG height=16 alt=添加到我的收藏夹 
+                  src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/fav_1.gif" 
+                  width=16 border=0></A></TD></TR></TBODY></TABLE></DIV></TD></TR>
+        <TR>
+          <TD 
+            vAlign=top>面对众多的计算机高手，考虑许久，终于还是决定出来献丑一下，文章内尽量使用最简洁易懂的词汇及例子来介绍，希望能够对一些初学与进阶者有所帮助。 
+            <BR>关于进程的隐藏，98下的例子数不胜数。WinNT/Win2K下的隐藏方法，西祠的高手shotgun在去年的6月就已经在网上发布出实例《揭开木马的神秘面纱&lt;四&gt;》 
+            ，我也多次拜读他的文章，对他的计算机水平及热心帮助朋友的作风十分敬佩。这里也可算是对shotgun的文章的补充与深入介绍吧，好了，闲话少说。 
+            <BR>在WinNT下"真正隐藏进程"这一说法，可以讲是根本不可能实现，只要我们的程序是以进程内核的形式运行，都是不可能逃离CTRL+ALT+DEL的法眼。那么奇怪了，这岂不是与我们的标题《WinNT 
+            &amp; 
+            Win2K下实现进程的完全隐藏》相矛盾吗？是的，实际上应该是：以非进程方式执行目标代码，而逃避进程查看器的检查，从而达到"进程隐藏"的目的。 
+            <BR>我们这里用的，是在宿主进程中，以线程的方式执行我们的代码。实现起来非常简单。首先，我们先建立一个不执行任何语句的线程 
+            <BR>DWORD stdcall ThreadProc(LPVOID *lpVoid){ <BR>return 0; <BR>} 
+            <BR>然后，将线程代码拷备至宿主进程所能够执行的任何地方(即页面属性为PAGGE_EXECUTE_READWRITE)，如：共享内存影射区、宿主进程内。这里我们选择宿主进程，拷备的时侯，我们需要先在宿主进程中使用VirtualAllocEx函数申请一段内存，然后再使用WriteProcessMemory将线程体写入宿主进程中。 
+            <BR>以上工作完成后，我们便可CreateRemoteThread函数激活其执行。下面给出一个完整的例子 <BR>//远程线程执行体 
+            <BR>DWORD __stdcall ThreadProc (void *lpPara){ <BR>return 0; <BR>} 
+            <BR>int main(int argc, char* argv[]){ <BR>const DWORD 
+            THREADSIZE=1024*4;//暂定线程体大小为4K，实际上没这么大，稍后我将会介绍 <BR>DWORD byte_write; 
+            <BR>//获得指定进程ID句柄，并设其权限为PROCESS_ALL_ACCESS,992是宿进程的ID号,获取ID号的方法这里我就不多讲了 
+            <BR>HANDLE hWnd = ::OpenProcess (PROCESS_ALL_ACCESS,FALSE,992); 
+            <BR>if(!hWnd)return 0; <BR>void *pRemoteThread 
+            =::VirtualAllocEx(hWnd,0,THREADSIZE,MEM_COMMIT| 
+            MEM_RESERVE,PAGE_EXECUTE_READWRITE);//申请 
+            <BR>if(!pRemoteThread)return 0; 
+            <BR>if(!::WriteProcessMemory(hWnd,pRemoteThread,&amp;ThreadProc,THREADSIZE,0))//写入进程 
+            <BR>return 0; <BR>//启动线程 <BR>HANDLE hThread = ::CreateRemoteThread 
+            (hWnd ,0,0,(DWORD (__stdcall *)(void *))pRemoteThread 
+            ,NULL,0,&amp;byte_write); <BR>if(!hThread){ //还有内存分配未释放 <BR>return 
+            0; <BR>} <BR>return 0; <BR>} 
+            <BR>到这里，对于隐藏的方法就算告一段落，相信看过的朋友对这个思路有个非常明确的概念了吧。 
+            <BR><BR>在理解隐藏的方法后，我们着重开始写线程的执行部分了。如下： <BR>DWORD __stdcall 
+            ThreadProc(void *lpPara){ <BR>MessageBox(NULL,"hello","hello",0); 
+            <BR>return 0; <BR>} 
+            <BR>编译执行后，你会发现出现一个非法操作错误，为什么呢？在我们以段页式内存管理的win2K操作系统中，编译时会把所有的常量编译在PE文件的.data节中，而代码段则在.text中，所以，我们拷备到宿主进程中的代码是在.text中的代码，MessageBox(NULL,(char 
+            *)指针,p,0);所指向的地址是本进程的内存虚拟地址。而在宿主进程中是无法访问的。解决的方法很简单，按旧照搬的将"hello"也拷备到目标进程中，然后再引用。同理，MessageBox函数地址编译时，也是保存在.Import中，写过Win2k病毒的朋友都知道，所有常量与函数入口地址都需在代码段定义与得出，我们这里也与他有点类似。言归正传，同样情况我们也把函数的入口地址一起写入目标进程中。//先定义参数结构 
+            <BR>typedef struct _RemotePara{//参数结构 <BR>char pMessageBox[12]; 
+            <BR>DWORD dwMessageBox; <BR>}RemotePara; <BR>//付值 <BR>RemotePara 
+            myRemotePara; 
+            <BR>::ZeroMemory(&amp;myRemotePara,sizeof(RemotePara)); 
+            <BR>HINSTANCE hUser32 = ::LoadLibrary ("user32.dll"); 
+            <BR>myRemotePara.dwMessageBox =(DWORD) ::GetProcAddress (hUser32 , 
+            "MessageBoxA"); <BR>strcat(myRemotePara.pMessageBox,"hello\0"); 
+            <BR>//写进目标进程 <BR>RemotePara *pRemotePara =(RemotePara *) 
+            ::VirtualAllocEx (hWnd 
+            ,0,sizeof(RemotePara),MEM_COMMIT,PAGE_READWRITE);//注意申请空间时的页面保护属性 
+            <BR>if(!pRemotePara)return 0; <BR>if(!::WriteProcessMemory (hWnd 
+            ,pRemotePara,&amp;myRemotePara,sizeof myRemotePara,0))return 0; 
+            <BR>//启动进将参数传递进入 <BR>HANDLE hThread = ::CreateRemoteThread (hWnd 
+            ,0,0,(DWORD (__stdcall *)(void *))pRemoteThread 
+            ,pRemotePara,0,&amp;byte_write); <BR>if(!hThread){ <BR>return 0; 
+            <BR>}好了，就这么简单，下在给出一个弹出一个MessageBox的实例：// RemoteThread.cpp : Defines 
+            the entry point for the console application. <BR>// <BR><BR>#include 
+            "stdafx.h" <BR><BR>typedef struct _RemotePara{//参数结构 <BR>char 
+            pMessageBox[12]; <BR>DWORD dwMessageBox; <BR>}RemotePara; <BR>//远程线程 
+            <BR>DWORD __stdcall ThreadProc (RemotePara *lpPara){ <BR>typedef int 
+            (__stdcall 
+            *MMessageBoxA)(HWND,LPCTSTR,LPCTSTR,DWORD);//定义MessageBox函数 
+            <BR>MMessageBoxA myMessageBoxA; <BR>myMessageBoxA =(MMessageBoxA) 
+            lpPara-&gt;dwMessageBox ;//得到函数入口地址 
+            <BR>myMessageBoxA(NULL,lpPara-&gt;pMessageBox 
+            ,lpPara-&gt;pMessageBox,0);//call <BR>return 0; <BR>} <BR>void 
+            EnableDebugPriv();//提升应用级调试权限 <BR><BR>int main(int argc, char* 
+            argv[]){ <BR>const DWORD THREADSIZE=1024*4; <BR>DWORD byte_write; 
+            <BR>EnableDebugPriv();//提升权限 <BR>HANDLE hWnd = ::OpenProcess 
+            (PROCESS_ALL_ACCESS,FALSE,992); <BR>if(!hWnd)return 0; <BR>void 
+            *pRemoteThread =::VirtualAllocEx(hWnd,0,THREADSIZE,MEM_COMMIT| 
+            MEM_RESERVE,PAGE_EXECUTE_READWRITE); <BR>if(!pRemoteThread)return 0; 
+            <BR>if(!::WriteProcessMemory(hWnd,pRemoteThread,&amp;ThreadProc,THREADSIZE,0)) 
+            <BR>return 0; <BR><BR>//再付值 <BR>RemotePara myRemotePara; 
+            <BR>::ZeroMemory(&amp;myRemotePara,sizeof(RemotePara)); 
+            <BR>HINSTANCE hUser32 = ::LoadLibrary ("user32.dll"); 
+            <BR>myRemotePara.dwMessageBox =(DWORD) ::GetProcAddress (hUser32 , 
+            "MessageBoxA"); <BR>strcat(myRemotePara.pMessageBox,"hello\0"); 
+            <BR>//写进目标进程 <BR>RemotePara *pRemotePara =(RemotePara *) 
+            ::VirtualAllocEx (hWnd 
+            ,0,sizeof(RemotePara),MEM_COMMIT,PAGE_READWRITE);//注意申请空间时的页面属性 
+            <BR>if(!pRemotePara)return 0; <BR>if(!::WriteProcessMemory (hWnd 
+            ,pRemotePara,&amp;myRemotePara,sizeof myRemotePara,0))return 0; 
+            <BR><BR>//启动线程 <BR>HANDLE hThread = ::CreateRemoteThread (hWnd 
+            ,0,0,(DWORD (__stdcall *)(void *))pRemoteThread 
+            ,pRemotePara,0,&amp;byte_write); <BR>if(!hThread){ <BR>return 0; 
+            <BR>} <BR>return 0; <BR>} <BR><BR><BR>//提升权限 <BR>void 
+            EnableDebugPriv( void ) <BR>{ <BR>HANDLE hToken; <BR>LUID 
+            sedebugnameValue; <BR>TOKEN_PRIVILEGES tkp; <BR><BR>if ( ! 
+            OpenProcessToken( GetCurrentProcess(), <BR>TOKEN_ADJUST_PRIVILEGES | 
+            TOKEN_QUERY, &amp;hToken ) ) <BR>return; <BR>if ( ! 
+            LookupPrivilegeValue( NULL, SE_DEBUG_NAME, &amp;sedebugnameValue ) 
+            ){ <BR>CloseHandle( hToken ); <BR>return; <BR>} 
+            <BR>tkp.PrivilegeCount = 1; <BR>tkp.Privileges[0].Luid = 
+            sedebugnameValue; <BR>tkp.Privileges[0].Attributes = 
+            SE_PRIVILEGE_ENABLED; <BR>if ( ! AdjustTokenPrivileges( hToken, 
+            FALSE, &amp;tkp, sizeof tkp, NULL, NULL ) ) <BR>CloseHandle( hToken 
+            ); <BR>} <BR><BR>好了，程序编译执行后会在进程号为992的进程中创建一线程，弹出hello对话框。是不是非常简单呢！ 
+            <BR>这里有几个地方需要注意的： 
+            <BR>1、远程线程在宿主进程中申请空间时，空间大小的确定了是我一直无法解决的问题。我曾使用两个贴近一起的线程，以线程间的距离大小，并加上参数大小，作为申请空间时，仍然会出现非法操作，如下： 
+            <BR>static void StartThread (LPVOID *lpPara){ <BR>return ; <BR>} 
+            <BR>static void EndThread(LPVOID *lpPara){ <BR>return; <BR>} 
+            <BR>然后使用DWORD dwLenght = (DWORD)((char *)&amp;StartThread - (char 
+            *)&amp;EndThread);//得到StartThread线程代码长度， <BR>dwLenght += 
+            sizeof(ThreadPara); 
+            <BR>仍会出现非法操作让我很迷惑。在win2k中，线程的默认堆栈的页大小是4KB，这里我在为线程申请内存时，申请的大小暂时使用一个常数，始终为4KB的倍数，选取时尽量取大，在线程可成功运行后，再一点点改小。办法是笨了点，如这里的朋友有更好的方法，请不吝赐教。 
+            <BR>2、什么时侯，什么参数是需要从外部传递进来的呢？我这里并没有一个十分有力的答案，我的理解是：PE文件中除了.text节以外的所有节，均需使用外部参数传递到线程中使用，如：.rsrc、.data、rdata等其他的15个节。在我们实际编写的过程中，初学者并不知道我们的代码会编译在什么地方，这个时侯，我们可以在运行的时侯ALT 
+            + 8（VC中快捷键）反编译过来，一般有lea eax p、push offset 
+            p等取地址语句，这个时侯，我们大都需要以参数传递进来。所以，大家在编写的时侯，一定要注意参数，因为线程的执行是在别的进程中，一个普通权限的应用程序是无法跨越进程来调试其他进程的。包括VC，也无法调试我们的远程线程，熟悉汇编的朋友，可用softice调试，这需要一定的功底。 
+            <BR>3、权限，这一点很重要，shotgun在这方面也介绍得很清楚了，网上相关的文章也很多，我就不多说了。文中的EnableDebugPriv函数可使本进程在internet、winLogin、lsass等进程中创建线程。win2k的进程查看器无法将其杀除。 
+            <BR>4、进程ID获方法较多，如：EnumProcesses、CreateToolhelp32Snapshot/Process32First/Process32Next、NtQuerySystemInformation等函数均可，为减少代码，例子中的进程ID是直接在进程查看器中得到的。最后，我们再回到shotgun的文章中，这时侯我们因已经非常清楚他的方法中为何会多出一个DLL文件了。远程线程的线程体本身就是LoadLibrary函数，即，线程的入口地址就是LoadLibrary的入口地址，这是系统Kernel32.dll中的函数，任何进程都可调用。线程中使用LoadLibrary函数将我们的DLL加载到系统空间内，线程一执行，我们的DLL就开始工作了。线程执行结束后，别忘了使用VirtualFreeEx将其申请的内存区释放。 
+            <BR>两种方法一比较，很明显： 
+            <BR>1、在使用DLL时，创建十分简单，也不需要太多的操作系统与内存操作知识，并可直接调试DLL文件。实现起来比较简单。 
+            <BR>2、直接拷备到进程中的方法稍为复杂一点，一不小心，很容易出现非法操作。当然，也去掉那了个让人讨厌DLL文件。程序执行后，很难找到他的来源地，是除了病毒以外的木马隐藏的首选方法。这里我大量参考了nongmin.cn(农民)程序的源码，他的程序对我的帮助非常大。虽然未有谋面，但对他的计算机水平与作为十分的敬佩，并尊从他的作风，以后我所写的所有非商业软件或小代码，均以源码形式出现。这里写得有点乱，希望对大家能够有所帮助，愿与所有爱好计算机，从事计算机工作的朋友们共勉。AntGhazi/2002.1.14书 
+            <BR></TD></TR>
+        <TR>
+          <TD><B><FONT color=#ff0000>本文有以下</FONT>[0]<FONT 
+            color=#ff0000>条回复记录</FONT> <A 
+            href="http://www.xbit2008.com/document/rewrite.asp?id=801">发表评论</A></B> 
+            | <A 
+            href="http://www.xbit2008.com/document/write.asp?p=编程&amp;c=VC">在此栏目发表新文章</A> 
+            | <A href="http://www.xbit2008.com/document/main.asp">登陆</A></TD></TR>
+        <TR>
+          <TD></TD></TR>
+        <TR>
+          <TD align=middle>
+            <TABLE cellSpacing=0 cellPadding=1 width="80%" border=0>
+              <TBODY></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD colSpan=2>　</TD></TR>
+  <TR>
+    <TD colSpan=2>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0 
+      dwcopytype="CopyTableCell">
+        <TBODY>
+        <TR>
+          <TD width=780 colSpan=5 height=18>
+            <TABLE cellSpacing=0 cellPadding=0 width="100%" bgColor=#ff3300 
+            border=0>
+              <TBODY>
+              <TR>
+                <TD bgColor=#008000 height=18>
+                  <P align=center><A class=A1 
+                  href="http://www.xbit2008.com/document/write.asp">发表新文章</A> | 
+                  <A class=A1 href="http://www.xbit2008.com/document/main.asp" 
+                  target=_blank>文档首页</A> | <A class=A1 
+                  href="http://www.xbit2008.com/document/search.asp">搜索引擎</A> | 
+                  <A class=A1 href="http://www.xbit2008.com/document/uid.asp" 
+                  target=_bank>用户中心</A> | <A class=A1 
+                  href="http://www.xbit2008.com/document/user_online.asp" 
+                  target=_bank>在线会员</A> | <A class=A1 
+                  href="http://www.xbit2008.com/document/user_list.asp" 
+                  target=_bank>会员表</A> | <A class=A1 
+                  href="http://www.xbit2008.com/guestbook/guestbook.asp?uid=xbit" 
+                  target=_bank>问题帮助</A> | <A class=A1 
+                  href="http://www.xbit2008.com/OldFolk/login.asp" 
+                  target=_bank>同学_交友录</A> | <A class=A1 
+                  href="http://www.xbit2008.com/test/login.asp?uid=xbit" 
+                  target=_bank>考试中心</A> | <A class=A1 
+                  href="http://www.xbit2008.com/document/index.asp?id=801#" 
+                  target=_bank>聊天室</A> | <A class=A1 
+                  href="http://www.xbit2008.com/document/login.asp" 
+                  target=_bank>管理员登陆</A> </P></TD></TR></TBODY></TABLE></TD></TR>
+        <TR>
+          <TD width=780 colSpan=5 height=8></TD></TR>
+        <TR>
+          <TD colSpan=5 height=18>
+            <DIV align=center>
+            <TABLE cellSpacing=0 cellPadding=0 width=460 border=0>
+              <TBODY>
+              <TR>
+                <TD width=49><IMG height=48 
+                  src="文档中心----WinNT &amp; Win2K下实现进程的完全隐藏.files/by005.gif" 
+                  width=47 align=left border=0></TD>
+                <TD width=420>
+                  <P align=center>本站<FONT color=#ff0000><A 
+                  href="http://www.xbit2008.com/" 
+                  target=_blank>X-Bit工作室</A></FONT>-Copyright@2001～20?? 
+                  <BR>总公司地址：广东省广州室X-Bit大厦 <BR><FONT color=#ff0000><B>申明:</B> 
+                  本站部分内容是从网上收集,若有侵范你版权的请指出,本站马上删除</FONT> 
+                  <BR>建议使用IE4.0以上版本浏览器和800*600分辨率显示器浏览 
+            </P></TD></TR></TBODY></TABLE></DIV></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></BODY></HTML>

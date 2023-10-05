@@ -1,0 +1,12 @@
+; RegisterTable.def : Declares the module parameters for the DLL.
+
+LIBRARY      "RegisterTable"
+DESCRIPTION  'RegisterTable Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here
+	InfoList					@1
+	Get_RegisteredOwner			@2
+	Get_RegisteredOrganization	@3
+	Set_RegisteredOrganization	@4
+	Set_RegisteredOwner			@5

@@ -1,0 +1,347 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Chinese (P.R.C.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+#pragma code_page(936)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 4, 2\r\n"
+    "#pragma code_page(936)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\媒体播放器.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""l.chs\\afxres.rc""          // Standard components\r\n"
+    "#endif\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON    DISCARDABLE     "res\\icon1.ico"
+IDI_tag                 ICON    DISCARDABLE     "res\\smell.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  0, 0, 266, 105
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "关于 媒体播放器"
+FONT 9, "宋体"
+BEGIN
+    ICON            IDR_MAINFRAME,IDC_STATIC,11,17,21,21
+    LTEXT           "媒体播放器 2.0 版 （试用版）",IDC_STATIC,40,11,119,8,
+                    SS_NOPREFIX
+    LTEXT           "版权所有  XD (C) 2001",IDC_STATIC,40,27,119,8
+    DEFPUSHBUTTON   "确定",IDOK,209,7,50,14,WS_GROUP
+    CONTROL         "作者：夏冬（CNU）",IDC_STATIC,"Static",
+                    SS_LEFTNOWORDWRAP | WS_GROUP,39,42,76,11
+    GROUPBOX        "",IDC_STATIC,19,53,226,37,BS_CENTER
+    CTEXT           "",IDC_mem,43,69,177,18
+END
+
+IDD_MY_DIALOG DIALOGEX 0, 0, 436, 103
+STYLE WS_POPUP | WS_VISIBLE | WS_BORDER
+EXSTYLE WS_EX_APPWINDOW
+FONT 10, "楷体_GB2312"
+BEGIN
+    CONTROL         "play",IDC_play,"Button",BS_OWNERDRAW | WS_TABSTOP,127,
+                    73,25,24
+    CONTROL         "pause",IDC_pause,"Button",BS_OWNERDRAW | WS_TABSTOP,152,
+                    73,25,24
+    CONTROL         "stop",IDC_stop,"Button",BS_OWNERDRAW | WS_TABSTOP,176,
+                    73,25,24
+    CONTROL         "before",IDC_before,"Button",BS_OWNERDRAW | WS_TABSTOP,
+                    201,73,25,24
+    CONTROL         "back",IDC_back,"Button",BS_OWNERDRAW | WS_TABSTOP,102,
+                    73,25,24
+    CONTROL         "last",IDC_last,"Button",BS_OWNERDRAW | WS_TABSTOP,77,73,
+                    25,24
+    CONTROL         "next",IDC_next,"Button",BS_OWNERDRAW | WS_TABSTOP,225,
+                    73,25,24
+    CONTROL         "open",IDC_open,"Button",BS_OWNERDRAW | WS_TABSTOP,249,
+                    73,25,24
+    CONTROL         "",IDC_close,"Button",BS_OWNERDRAW | WS_TABSTOP,312,12,
+                    22,22
+    CONTROL         "Slider1",IDC_SLIDER1,"msctls_trackbar32",TBS_AUTOTICKS | 
+                    TBS_TOP | WS_TABSTOP,118,44,179,19
+    CONTROL         "Slider2",IDC_SLIDER2,"msctls_trackbar32",TBS_AUTOTICKS | 
+                    TBS_VERT | TBS_BOTH | WS_TABSTOP,324,60,23,37
+    GROUPBOX        "音量",IDC_STATIC,323,51,35,47
+    LTEXT           "\n小",IDC_STATIC,346,57,9,18
+    LTEXT           "大",IDC_STATIC,346,83,10,11
+    CONTROL         "door",IDC_door,"Button",BS_OWNERDRAW | WS_TABSTOP,288,
+                    73,25,24
+    CONTROL         "",IDC_MASKEDBOX1,"{C932BA85-4374-101B-A56C-00AA003668DC}",
+                    WS_TABSTOP,128,7,159,19
+    CONTROL         "",IDC_MASKEDBOX2,"{C932BA85-4374-101B-A56C-00AA003668DC}",
+                    WS_TABSTOP,128,26,80,13
+    CONTROL         "",IDC_MASKEDBOX3,"{C932BA85-4374-101B-A56C-00AA003668DC}",
+                    WS_TABSTOP,208,26,79,13
+    GROUPBOX        "",IDC_STATIC,73,0,290,101
+    CONTROL         "",IDC_about,"Button",BS_OWNERDRAW | WS_TABSTOP,87,12,22,
+                    22
+    CONTROL         176,IDC_STATIC,"Static",SS_BITMAP,365,0,71,127
+    CONTROL         175,IDC_STATIC,"Static",SS_BITMAP,0,0,71,126
+    CONTROL         "min",IDC_min,"Button",BS_OWNERDRAW | WS_TABSTOP,355,5,6,
+                    10
+END
+
+
+#ifndef _MAC
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "000004b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "xd.com\0"
+            VALUE "FileDescription", "媒体播放器\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "媒体播放器\0"
+            VALUE "LegalCopyright", "Copyright  XD [c] 2001\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "媒体播放器.exe\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "xd.com 媒体播放器\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+        BLOCK "080404b0"
+        BEGIN
+            VALUE "Comments", "\0"
+            VALUE "CompanyName", "\0"
+            VALUE "FileDescription", "媒体播放器 Microsoft 基础类应用程序\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "媒体播放器\0"
+            VALUE "LegalCopyright", "版权所有 (C) 2001\0"
+            VALUE "LegalTrademarks", "\0"
+            VALUE "OriginalFilename", "媒体播放器.EXE\0"
+            VALUE "PrivateBuild", "\0"
+            VALUE "ProductName", "媒体播放器 应用程序\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+            VALUE "SpecialBuild", "\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x0, 1200, 0x804, 1200
+    END
+END
+
+#endif    // !_MAC
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 259
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 98
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_B                   BITMAP  DISCARDABLE     "res\\bitmap1.bmp"
+IDB_B1                  BITMAP  DISCARDABLE     "res\\bmp00001.bmp"
+IDB_pause               BITMAP  DISCARDABLE     "res\\bmp00002.bmp"
+IDB_pause1              BITMAP  DISCARDABLE     "res\\bmp00003.bmp"
+IDB_pause2              BITMAP  DISCARDABLE     "res\\bmp00004.bmp"
+IDB_B2                  BITMAP  DISCARDABLE     "res\\bmp00005.bmp"
+IDB_stop                BITMAP  DISCARDABLE     "res\\bmp00006.bmp"
+IDB_stop1               BITMAP  DISCARDABLE     "res\\bmp00007.bmp"
+IDB_stop2               BITMAP  DISCARDABLE     "res\\bmp00008.bmp"
+IDB_before              BITMAP  DISCARDABLE     "res\\bmp00009.bmp"
+IDB_before1             BITMAP  DISCARDABLE     "res\\bmp00010.bmp"
+IDB_before2             BITMAP  DISCARDABLE     "res\\bmp00011.bmp"
+IDB_back                BITMAP  DISCARDABLE     "res\\bmp00012.bmp"
+IDB_back1               BITMAP  DISCARDABLE     "res\\bmp00013.bmp"
+IDB_back2               BITMAP  DISCARDABLE     "res\\bmp00014.bmp"
+IDB_last                BITMAP  DISCARDABLE     "res\\bmp00015.bmp"
+IDB_last1               BITMAP  DISCARDABLE     "res\\bmp00016.bmp"
+IDB_last2               BITMAP  DISCARDABLE     "res\\bmp00017.bmp"
+IDB_next                BITMAP  DISCARDABLE     "res\\bmp00018.bmp"
+IDB_next1               BITMAP  DISCARDABLE     "res\\bmp00019.bmp"
+IDB_next2               BITMAP  DISCARDABLE     "res\\bmp00020.bmp"
+IDB_open                BITMAP  DISCARDABLE     "res\\bmp00021.bmp"
+IDB_open1               BITMAP  DISCARDABLE     "res\\bmp00022.bmp"
+IDB_door                BITMAP  DISCARDABLE     "res\\bmp00023.bmp"
+IDB_door1               BITMAP  DISCARDABLE     "res\\bitmap2.bmp"
+IDB_smile               BITMAP  DISCARDABLE     "res\\bmp00024.bmp"
+IDB_smile1              BITMAP  DISCARDABLE     "res\\bmp00025.bmp"
+IDB_lbox                BITMAP  DISCARDABLE     "res\\bmp00026.bmp"
+IDB_rbox                BITMAP  DISCARDABLE     "res\\bmp00027.bmp"
+IDB_about1              BITMAP  DISCARDABLE     "res\\about1.bmp"
+IDB_about2              BITMAP  DISCARDABLE     "res\\about2.bmp"
+IDB_min1                BITMAP  DISCARDABLE     "res\\bmp00028.bmp"
+IDB_min2                BITMAP  DISCARDABLE     "res\\bmp00029.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_MY_DIALOG DLGINIT
+BEGIN
+    IDC_MASKEDBOX1, 0x37a, 221, 0
+0x0024, 0x0000, 0x006d, 0x0067, 0x006b, 0x0067, 0x0074, 0x0067, 0x006e, 
+0x006e, 0x006d, 0x006e, 0x006d, 0x006e, 0x0069, 0x006e, 0x0069, 0x0067, 
+0x0074, 0x0068, 0x006b, 0x0067, 0x006f, 0x0067, 0x0067, 0x0067, 0x0076, 
+0x006d, 0x006b, 0x0068, 0x0069, 0x006e, 0x006a, 0x0067, 0x0067, 0x006e, 
+0x0076, 0x006d, 0x0023, 0x0000, 0x0001, 0x0000, 0x001b, 0x0000, 0x0001, 
+0x8001, 0x0000, 0x0016, 0x0000, 0x001a, 0x0000, 0x0002, 0x8001, 0x0001, 
+0x0000, 0x2100, 0x3443, 0x0812, 0x0000, 0xbb00, 0x001c, 0x3400, 0x0003, 
+0xed00, 0xedac, 0x00ac, 0x0600, 0x2400, 0x0000, 0x0100, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0700, 0x0000, 0x0080, 0x00ff, 0xff00, 0x00ff, 
+0x0000, 0xff00, 0xffff, 0x01ff, 0x0000, 0x4000, 0x0300, 0xe352, 0x910b, 
+0xce8f, 0x9d11, 0x00e3, 0x00aa, 0xb84b, 0x0151, 0x0086, 0xbc00, 0x7402, 
+0x01b7, 0x0b00, 0xacbf, 0xe5cc, 0x475f, 0x3242, 0x3133, 0x0032, 0x0000, 
+0x0200, 0x5f00, "\000" 
+    IDC_MASKEDBOX2, 0x37a, 214, 0
+0x0024, 0x0000, 0x006d, 0x0067, 0x006b, 0x0067, 0x0074, 0x0067, 0x006e, 
+0x006e, 0x006d, 0x006e, 0x006d, 0x006e, 0x0069, 0x006e, 0x0069, 0x0067, 
+0x0074, 0x0068, 0x006b, 0x0067, 0x006f, 0x0067, 0x0067, 0x0067, 0x0076, 
+0x006d, 0x006b, 0x0068, 0x0069, 0x006e, 0x006a, 0x0067, 0x0067, 0x006e, 
+0x0076, 0x006d, 0x0023, 0x0000, 0x0001, 0x0000, 0x001b, 0x0000, 0x0001, 
+0x8001, 0x0000, 0x0016, 0x0000, 0x001a, 0x0000, 0x0002, 0x8001, 0x0001, 
+0x0000, 0x2100, 0x3443, 0x0812, 0x0000, 0x7800, 0x000e, 0x2c00, 0x0002, 
+0xed00, 0xedac, 0x00ac, 0x0600, 0x2400, 0x0000, 0x0100, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0700, 0x0000, 0x0080, 0x00ff, 0xff00, 0x00ff, 
+0x0000, 0xff00, 0xffff, 0x01ff, 0x0000, 0x4000, 0x0300, 0xe352, 0x910b, 
+0xce8f, 0x9d11, 0x00e3, 0x00aa, 0xb84b, 0x0151, 0x0086, 0x9000, 0x9001, 
+0x015f, 0x0400, 0xcecb, 0xe5cc, 0x0000, 0x0000, 0x0002, 0x005f, 
+    IDC_MASKEDBOX3, 0x37a, 214, 0
+0x0024, 0x0000, 0x006d, 0x0067, 0x006b, 0x0067, 0x0074, 0x0067, 0x006e, 
+0x006e, 0x006d, 0x006e, 0x006d, 0x006e, 0x0069, 0x006e, 0x0069, 0x0067, 
+0x0074, 0x0068, 0x006b, 0x0067, 0x006f, 0x0067, 0x0067, 0x0067, 0x0076, 
+0x006d, 0x006b, 0x0068, 0x0069, 0x006e, 0x006a, 0x0067, 0x0067, 0x006e, 
+0x0076, 0x006d, 0x0023, 0x0000, 0x0001, 0x0000, 0x001b, 0x0000, 0x0001, 
+0x8001, 0x0000, 0x0016, 0x0000, 0x001a, 0x0000, 0x0002, 0x8001, 0x0001, 
+0x0000, 0x2100, 0x3443, 0x0812, 0x0000, 0x4300, 0x000e, 0x2c00, 0x0002, 
+0xed00, 0xedac, 0x00ac, 0x0600, 0x2400, 0x0000, 0x0100, 0x0000, 0x0000, 
+0x0000, 0x0000, 0x0000, 0x0700, 0x0000, 0x0080, 0x00ff, 0xff00, 0x00ff, 
+0x0000, 0xff00, 0xffff, 0x01ff, 0x0000, 0x4000, 0x0300, 0xe352, 0x910b, 
+0xce8f, 0x9d11, 0x00e3, 0x00aa, 0xb84b, 0x0151, 0x0086, 0x9000, 0x9001, 
+0x015f, 0x0400, 0xcecb, 0xe5cc, 0x0000, 0x0000, 0x0002, 0x005f, 
+    0
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_ABOUTBOX            "关于 媒体播放器(&A)..."
+END
+
+#endif    // Chinese (P.R.C.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_CHS)
+#ifdef _WIN32
+LANGUAGE 4, 2
+#pragma code_page(936)
+#endif //_WIN32
+#include "res\媒体播放器.rc2"  // non-Microsoft Visual C++ edited resources
+#include "l.chs\afxres.rc"          // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

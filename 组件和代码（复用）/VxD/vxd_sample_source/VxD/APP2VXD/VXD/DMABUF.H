@@ -1,0 +1,20 @@
+// DMABUF.h - include file for VxD DMABUF
+#define DMABUF_ID                 0xDB0
+#define DMABUF_FUNC_ALLOCBUFFER   0x1000
+#define DMABUF_FUNC_FREEBUFFER    0x1001
+
+#define DMABUF_ALREADY_ALLOCED	  0x0001
+#define DMABUF_SIZE_TOO_BIG	      0x0002
+#define DMABUF_BUF_NOT_AVAIL	  0x0003
+#define DMABUF_BUF_NOT_ALLOCED    0x0004
+#define DMABUF_INVALID_PARAMETER   0x0005
+#define DMABUF_INVALID_FUNC        0x0006
+
+typedef struct
+{
+   DWORD Size;
+   DWORD PhysAddr;
+   DWORD LinAddr;
+} DMA_BUFFER_DESCRIPTOR;
+
+

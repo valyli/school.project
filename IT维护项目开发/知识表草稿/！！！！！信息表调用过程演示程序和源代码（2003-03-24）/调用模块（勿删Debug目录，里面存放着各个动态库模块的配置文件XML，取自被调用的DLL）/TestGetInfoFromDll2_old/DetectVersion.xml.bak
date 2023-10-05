@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<OperationList>
+	<FunctionSection>
+		<OperationID>1</OperationID>
+		<InfomationElementTableID>1</InfomationElementTableID>
+		<InfomationElementID>1</InfomationElementID>
+		<OperationType>0</OperationType>
+		<ServiceFileName>DetectVersion.dll</ServiceFileName>
+		<SupportSystemType>255</SupportSystemType>
+		<ModuleType>1</ModuleType>
+		<InterfaceFunction>getversion</InterfaceFunction>
+		<ParameterType>5</ParameterType>
+		<IsStorageReturnValueInParameter>1</IsStorageReturnValueInParameter>
+		<ParameterValue></ParameterValue>
+	</FunctionSection>
+	<FunctionSection>
+		<OperationID>2</OperationID>
+		<InfomationElementTableID>1</InfomationElementTableID>
+		<InfomationElementID>1</InfomationElementID>
+		<OperationType>0</OperationType>
+		<ServiceFileName>DetectVersion.dll</ServiceFileName>
+		<SupportSystemType>255</SupportSystemType>
+		<ModuleType>1</ModuleType>
+		<InterfaceFunction>getversion2</InterfaceFunction>
+		<ParameterType>5</ParameterType>
+		<IsStorageReturnValueInParameter>1</IsStorageReturnValueInParameter>
+		<ParameterValue>nothing</ParameterValue>
+	</FunctionSection>
+</OperationList>

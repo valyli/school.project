@@ -1,0 +1,53 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: SDICoin - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\WINDOWS\TEMP\RSP3311.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/SDICoin.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\vc\SDICoin\MainFrm.cpp"
+"D:\vc\SDICoin\SDICoin.cpp"
+"D:\vc\SDICoin\SDICoinDoc.cpp"
+"D:\vc\SDICoin\SDICoinView.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP3311.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP3312.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/SDICoin.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\vc\SDICoin\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP3312.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP3313.TMP" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/SDICoin.pdb" /debug /machine:I386 /out:"Debug/SDICoin.exe" /pdbtype:sept 
+.\Debug\MainFrm.obj
+.\Debug\SDICoin.obj
+.\Debug\SDICoinDoc.obj
+.\Debug\SDICoinView.obj
+.\Debug\StdAfx.obj
+.\Debug\SDICoin.res
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP3313.TMP"
+<h3>Output Window</h3>
+Compiling...
+Skipping... (no relevant changes detected)
+StdAfx.cpp
+Compiling...
+Skipping... (no relevant changes detected)
+MainFrm.cpp
+SDICoin.cpp
+SDICoinDoc.cpp
+SDICoinView.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+SDICoin.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

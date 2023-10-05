@@ -1,0 +1,12 @@
+document.write('·<a href="/pcedu/sj/pm/photoshop/10207/79386.html" target="_blank" CLASS=p1>用Photoshop制作奇幻球体</a><br>');
+document.write('·<a href="/pcedu/soft/gj/media/10207/79445.html" target="_blank" CLASS=p1>用Winamp开设个人广播</a><br>');
+document.write('·<a href="/pcedu/empolder/db/10207/79556.html" target="_blank" CLASS=p1>MySQL接口的VC实现与应用(2)</a><br>');
+document.write('·<a href="/pcedu/soft/virus/da/10207/79384.html" target="_blank" CLASS=p1>感染后删除"开始"菜单的病毒</a><br>');
+document.write('·<a href="/pcedu/sj/wz/flash/10207/79420.html" target="_blank" CLASS=p1>FLASH文字特效六合一</a><br>');
+document.write('·<a href="/empolder/gj/vc/10207/78852.html" target="_blank" CLASS=p1>得到网卡信息源代码</a><br>');
+document.write('·<a href="/pcedu/empolder/db/10207/79554.html" target="_blank" CLASS=p1>MySQL接口的VC实现与应用</a><br>');
+document.write('·<a href="/pcedu/soft/gj/photo/10207/75967.html" target="_blank" CLASS=p1>美丽的图片一把抓</a><br>');
+document.write('·<a href="/pcedu/tuijian/network/search/10207/79259.html" target="_blank" CLASS=p1>干净利索的搜索工具ASC 2002</a><br>');
+document.write('·<a href="/pcedu/empolder/gj/vc/10207/78856.html" target="_blank" CLASS=p1>枚举本地-远程NT系统进程</a><br>');
+document.write('·<a href="/pcedu/teach/install/soft/10207/78926.html" target="_blank" CLASS=p1>随意卸载DirectX</a><br>');
+document.write('·<a href="/pcedu/redian/person/200207-wcx/index.htm" target="_blank" CLASS=p1><font color=red>《站长兵法》独家连载</font></a><br>');

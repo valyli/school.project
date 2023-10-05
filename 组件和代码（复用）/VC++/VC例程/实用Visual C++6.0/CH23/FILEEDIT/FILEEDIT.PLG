@@ -1,0 +1,43 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: FileEdit - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/FileEdit.res" /d "_DEBUG" /d "_AFXDLL" "H:\工作中的书\kh\translate\Visual C++\program\ch23\FileEdit\FileEdit.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPA1B2.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/FileEdit.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"H:\工作中的书\kh\translate\Visual C++\program\ch23\FileEdit\FileEdit.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch23\FileEdit\FileEditDlg.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPA1B2.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPA1B3.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/FileEdit.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"H:\工作中的书\kh\translate\Visual C++\program\ch23\FileEdit\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPA1B3.TMP" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/FileEdit.pdb" /debug /machine:I386 /out:"Debug/FileEdit.exe" /pdbtype:sept  ".\Debug\FileEdit.obj" ".\Debug\FileEditDlg.obj" ".\Debug\StdAfx.obj" ".\Debug\FileEdit.res" "
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+FileEdit.cpp
+FileEditDlg.cpp
+Generating Code...
+Linking...
+Creating command line "bscmake.exe /nologo /o"Debug/FileEdit.bsc"  ".\Debug\StdAfx.sbr" ".\Debug\FileEdit.sbr" ".\Debug\FileEditDlg.sbr""
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+FileEdit.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

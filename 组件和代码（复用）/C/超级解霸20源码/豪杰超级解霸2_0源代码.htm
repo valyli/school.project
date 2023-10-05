@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0082)http://soft.cs.uestc.edu.cn:8000/software/pub/Multimedia/Sthvcd/Source/sthvcd2.htm -->
+<HTML><HEAD><TITLE>豪杰超级解霸2.0源代码</TITLE>
+<META content="text/html; charset=gb_2312-80" http-equiv=Content-Type>
+<META content="tl, default" name="Microsoft Border">
+<META content=none name="Microsoft Theme">
+<META content="MSHTML 5.00.2014.210" name=GENERATOR></HEAD>
+<BODY background="">
+<H3 align=center><FONT color=#ff00ff 
+size=6><STRONG>豪杰超级解霸2.0源代码</STRONG></FONT></H3>
+<HR>
+
+<P><A 
+href="http://soft.cs.uestc.edu.cn:8000/software/pub/Multimedia/Sthvcd/Source/ftp/sthvcd2.zip">超级解霸2.0源代码</A>是基于MCI调用的一个播放程序，是工作在WINDOWS 
+3.xx的16位程序，其中很多技术在当时是没有资料的机密技术，有些至今还是很有价值的机密技术，可能对于有野心要做一个和我们超级解霸做竞争的播放程序的人，这里的源代码一定会帮很多忙，不过我们超级解霸目前的技术已经远远不止这些了，我们的想法是这些源代码可能会对其他的应用有借鉴作用。</P>
+<P>注意超级解霸2.0具有“自杀功能”所以你在运行编译好的STHVCD2.0后一定要注意其中的“自杀”部分，以免你的工作成果也被“自杀”掉。其实这个“自杀”用在卸载程序中十分有用。</P>
+<P><A 
+href="http://soft.cs.uestc.edu.cn:8000/software/pub/Multimedia/Sthvcd/Source/ftp/sthvcd2.zip">超级解霸2.0源代码</A>是使用BC3.1进行编译的，使用其他的编译器可能不成功。</P>
+<P>在MAIN.C中的KillCopy()调用就是进行“自杀”的代码。</P>
+<P>超级解霸2.0用到VXD进行视频缓冲区的直接写屏处理和VESA标准进行显示模式切换，特别地针对S3 
+Trio32/64进行了低分辨率模式的初始化，这些可能对于想了解如何初始化一个非标准显示模式是非常有用的，超级解霸2.0使用了某些VBE2.0的驱动程序技术进行低分辨率模式的初始化，见S3TRIO.C和SPECMODE.C。</P>
+<P>FEATURE.C是检查加密用的，虽然超级解霸2.0有一点点加密，其实就是进行BIOS比较，所以如果有QEMM等等EMM程序使BIOS段内容变化很容易导致误检查，当时可能冤枉一些用户，所以后来的超级解霸几乎都不加密。</P>
+<P>CDROM.C是使用DPMI技术调用CDFS进行CDROM操作。</P>
+<P>CAPTURE.C是保存图象的源代码，对于如何截取VCD图象感兴趣的朋友可以细读这个C程序。</P>
+<P>FYUVRGB.C和BFYUVRGB.C和YUVRGB32.ASM和YUVRGB16.ASM是超级解霸2.0视频加速的关键法宝，采用了32位算法使图象显示更快，是为什么使用MCI接口却能比原来还快的原因。</P>
+<P>VESADCI.C是采用了“外挂中文汉字系统”所使用的函数截取技术，该技术至今还被使用，而且也被翻译、字典软件所使用，具体见TurnOnEscape()和TurnOffEscape()，这是对Escape（）函数进行截取技术以便取得DCI调用的控制权。这与在翻译、字典软件及“外挂中文汉字系统”中大量用来截取TextOutExt（）函数的原理是一样的。</P>
+<P>在VESADCI.C还包含了如何使用VXD来控制显示缓冲区的内存影象到物理内存的变换处理。</P>
+<P>SNDCTRL.C是深入MCI调用的DLL内部进行声音控制操作，从而实现各种音频格式的变换。</P>
+<P>（注：这个<A 
+href="http://soft.cs.uestc.edu.cn:8000/software/pub/Multimedia/Sthvcd/Source/ftp/sthvcd2.zip">超级解霸2.0源代码</A>不包含相应的MCI驱动程序的DLL，所以如果想试一试编译后的效果的话可以找一个2.0版本，把他的所有其他文件都拷来就可以运行了，再次提醒注意“自杀”代码）</P></BODY></HTML>

@@ -1,0 +1,21 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: MLaunch - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/MLaunch.res" /d "_DEBUG" /d "_AFXDLL" "G:\tsengyong\C++ ³ÌÐò\MLaunch\MLaunch.rc"" 
+Creating command line "link.exe /nologo /subsystem:windows /incremental:yes /pdb:"Debug/MLaunch.pdb" /debug /machine:I386 /out:"Debug/MLaunch.exe" /pdbtype:sept  ".\Debug\MLaunch.obj" ".\Debug\MLaunchDlg.obj" ".\Debug\StdAfx.obj" ".\Debug\MLaunch.res" ".\Debug\Modeless.obj" "
+<h3>Output Window</h3>
+Compiling resources...
+Linking...
+
+
+
+<h3>Results</h3>
+MLaunch.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

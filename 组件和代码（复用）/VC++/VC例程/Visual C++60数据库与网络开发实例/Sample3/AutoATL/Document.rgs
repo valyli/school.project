@@ -1,0 +1,24 @@
+HKCR
+{
+	AutoATL.Document.1 = s 'Document Class'
+	{
+		CLSID = s '{05C18771-6A95-11D2-9AE8-00A0C9E52DCB}'
+	}
+	AutoATL.Document = s 'Document Class'
+	{
+		CLSID = s '{05C18771-6A95-11D2-9AE8-00A0C9E52DCB}'
+		CurVer = s 'AutoATL.Document.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {05C18771-6A95-11D2-9AE8-00A0C9E52DCB} = s 'Document Class'
+		{
+			ProgID = s 'AutoATL.Document.1'
+			VersionIndependentProgID = s 'AutoATL.Document'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			val AppID = s '{8BE6903A-68EF-11D2-9AE7-00A0C9E52DCB}'
+			'TypeLib' = s '{8BE69039-68EF-11D2-9AE7-00A0C9E52DCB}'
+		}
+	}
+}

@@ -1,0 +1,81 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: 媒体播放器 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/媒体播放器.res" /d "_DEBUG" "G:\媒体播放器\媒体播放器.rc"" 
+Creating temporary file "D:\DOCUME~1\xd1\LOCALS~1\Temp\RSP41.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR"Debug/" /Fp"Debug/媒体播放器.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"G:\媒体播放器\font2.cpp"
+"G:\媒体播放器\msmask1.cpp"
+"G:\媒体播放器\picture2.cpp"
+"G:\媒体播放器\VolumeInXXX.cpp"
+"G:\媒体播放器\VolumeOutMaster.cpp"
+"G:\媒体播放器\VolumeOutWave.cpp"
+"G:\媒体播放器\媒体播放器.cpp"
+"G:\媒体播放器\媒体播放器Dlg.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\xd1\LOCALS~1\Temp\RSP41.tmp" 
+Creating temporary file "D:\DOCUME~1\xd1\LOCALS~1\Temp\RSP42.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR"Debug/" /Fp"Debug/媒体播放器.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"G:\媒体播放器\StdAfx.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\xd1\LOCALS~1\Temp\RSP42.tmp" 
+Creating temporary file "D:\DOCUME~1\xd1\LOCALS~1\Temp\RSP43.tmp" with contents
+[
+Winmm.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/媒体播放器.pdb" /debug /machine:I386 /out:"Debug/媒体播放器.exe" /pdbtype:sept 
+".\Debug\font2.obj"
+".\Debug\msmask1.obj"
+".\Debug\picture2.obj"
+".\Debug\StdAfx.obj"
+".\Debug\VolumeInXXX.obj"
+".\Debug\VolumeOutMaster.obj"
+".\Debug\VolumeOutWave.obj"
+".\Debug\媒体播放器.obj"
+".\Debug\媒体播放器Dlg.obj"
+".\Debug\媒体播放器.res"
+]
+Creating command line "link.exe @D:\DOCUME~1\xd1\LOCALS~1\Temp\RSP43.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+font2.cpp
+msmask1.cpp
+picture2.cpp
+VolumeInXXX.cpp
+VolumeOutMaster.cpp
+VolumeOutWave.cpp
+媒体播放器.cpp
+媒体播放器Dlg.cpp
+Generating Code...
+Linking...
+Creating temporary file "D:\DOCUME~1\xd1\LOCALS~1\Temp\RSP45.tmp" with contents
+[
+/nologo /o"Debug/媒体播放器.bsc" 
+".\Debug\StdAfx.sbr"
+".\Debug\font2.sbr"
+".\Debug\msmask1.sbr"
+".\Debug\picture2.sbr"
+".\Debug\VolumeInXXX.sbr"
+".\Debug\VolumeOutMaster.sbr"
+".\Debug\VolumeOutWave.sbr"
+".\Debug\媒体播放器.sbr"
+".\Debug\媒体播放器Dlg.sbr"]
+Creating command line "bscmake.exe @D:\DOCUME~1\xd1\LOCALS~1\Temp\RSP45.tmp"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+媒体播放器.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

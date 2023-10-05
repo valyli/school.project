@@ -1,0 +1,24 @@
+10 CLS
+20 X = 159: Y = 99: R = 90: U = 0: a = 2: O = 2
+30 SCREEN 1
+   FOR Z = 1 TO 18
+40 T = T + 1
+50 Q = SIN(3.14 * T / 180)
+60 Y1 = -90 * Q + Y
+70 P = COS(3.14 * T / 180)
+80 X1 = 90 * P + X
+90 CIRCLE (X1, Y1), O, a: PAINT (X1, Y1), a
+100 FOR I = 1 TO 500
+110 K$ = INKEY$: IF K$ = CHR$(27) THEN END
+120 NEXT I
+130 NEXT Z: O = O + 2: a = a + 1: IF a > 3 THEN a = 1
+140 IF O > 130 THEN
+150 O = 2
+160 CLS
+170 END IF
+180 GOTO 30
+190 END
+
+
+
+

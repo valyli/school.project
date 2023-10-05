@@ -1,0 +1,15 @@
+; CClientModuleTransfer.def : Declares the module parameters for the DLL.
+
+LIBRARY      "CClientModuleTransfer"
+DESCRIPTION  'CClientModuleTransfer Windows Dynamic Link Library'
+
+EXPORTS
+    ; Explicit exports can go here
+	ClientTransferModuleByCManageData							@1
+	ClientTransferModuleByTLV									@2
+	ClientGetAllModuleInfoToMemory								@3
+	CallClientTransferModuleByCManageData						@4
+	SetModuleHandleAndFunctionAddress							@5
+	GetModuleHandleAndFunctionAddress							@6
+	FreeClientTransferModule									@7
+	LoadClientTransferModuleAndFounctionHandleByCManageData		@8

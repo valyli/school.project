@@ -1,0 +1,38 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: VideoPlayer - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\WINDOWS\TEMP\RSPB163.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/VideoPlayer.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\Ñî¹¤Ã÷Ãû´Ì\Example6a-mci\VideoPlayerDlg.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPB163.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPB164.TMP" with contents
+[
+winmm.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/VideoPlayer.pdb" /debug /machine:I386 /out:"Debug/VideoPlayer.exe" /pdbtype:sept 
+".\Debug\Digitalvideo.obj"
+".\Debug\infodlg.obj"
+".\Debug\StdAfx.obj"
+".\Debug\VideoPlayer.obj"
+".\Debug\VideoPlayerDlg.obj"
+".\Debug\VideoPlayer.res"
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPB164.TMP"
+<h3>Output Window</h3>
+Compiling...
+VideoPlayerDlg.cpp
+Linking...
+LINK : LNK6004: Debug/VideoPlayer.exe not found or not built by the last incremental link; performing full link
+
+
+
+<h3>Results</h3>
+VideoPlayer.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

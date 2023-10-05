@@ -1,0 +1,433 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0050)http://www.vckbase.com/document/viewdoc.asp?id=356 -->
+<HTML><HEAD><TITLE>VC知识库文章</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312"><LINK 
+href="共享内存封装类.files/style.css" rel=stylesheet>
+<META content="MSHTML 6.00.2800.1126" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff leftMargin=0 topMargin=0>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR bgColor=#a0d39b>
+    <TD height=30>&nbsp;<IMG height=13 src="共享内存封装类.files/vckcom.gif" 
+      width=109></TD>
+    <TD vAlign=bottom align=right height=30><IMG height=27 
+      src="共享内存封装类.files/earch.gif" width=89></TD></TR>
+  <TR bgColor=#eeeeee>
+    <TD width="76%"><FONT class=small color=#333333>::</FONT><A 
+      href="http://www.vckbase.com/"><FONT color=black>首页</FONT></A> &gt;&gt; <A 
+      href="http://www.vckbase.com/document"><FONT color=black>文档中心</FONT></A> 
+      &gt;&gt; <A href="http://www.vckbase.com/document/journal"><FONT 
+      color=black>在线杂志</FONT></A> &gt;&gt; <A 
+      href="http://www.vckbase.com/document/listdoc.asp?sclsid=1305"><FONT 
+      color=black>多任务(多进程、多线程)</FONT></A></TD>
+    <TD class=small align=right width="24%">[ <A 
+      href="http://www.vckbase.com/document/journal/redir.asp?journal=14"><FONT 
+      color=black>在线杂志 第14期</FONT></A> ] </TD></TR></TBODY></TABLE>
+<TABLE height=35 cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <FORM name=form2 action=/SYS/script/find.asp method=post>
+  <TBODY>
+  <TR>
+    <TD>
+      <DIV align=right><INPUT class=rect maxLength=20 size=10 name=keyword> 
+      <SELECT class=rect name=gclsid> <OPTION value=100 selected>文档</OPTION> 
+        <OPTION value=200>代码</OPTION> <OPTION value=400>工具</OPTION></SELECT> 
+      <INPUT type=image height=15 width=21 src="共享内存封装类.files/go.gif" 
+      align=absMiddle border=0 name=imageField> 
+</DIV></TD></TR></FORM></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD background=共享内存封装类.files/dotline2.gif height=1></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=40 height=74></TD>
+    <TD vAlign=top width=* height=74>[ 本文适合中级读者 已阅读5005次 ]<BR><BR>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD>
+            <P align=center><B>共享内存封装类<BR></B>作者:<A 
+            href="mailto:awzzz999@163.com">awzzz</A></P>
+            <P><A 
+            href="http://www.vckbase.com/code/downcode.asp?id=1582">下载本文配套代码</A><BR><BR>本文介绍一个共享内存封装类，使共享内存的使用更简单化，特别适合更懒的程序员使用:-)<BR><BR><B><IMG 
+            height=16 src="共享内存封装类.files/paragraph.gif" width=14> 
+            一、实现目标：</B>简单化使用共享内存<BR><BR><B><IMG height=16 
+            src="共享内存封装类.files/paragraph.gif" width=14> 二、使用说明</B>：<BR><BR><B>1. 
+            创建共享内存CSFMServer对象</B>, 
+            需要为CSFMServer对象指定专用的名字，只要<BR>系统中存在一个这样的对象，就可以在其他程序中简单方便地使用该共享内存。 
+</P><PRE>CSFMServer(char *szFileName, char *szMapName, DWORD dwSize); 
+Create(char *szFileName, char *szMapName, DWORD dwSize); </PRE>参数1:NULL或指定的文件(将创建或打开并读写/麻烦) 
+            <BR>参数2:要创建的共享内存对象名 <BR>参数3:要创建的共享内存对象大小 <BR><BR>例如 <PRE>m_SFMS.Create(NULL, "_ZZZ_OBJ_", 1);</PRE><B>2. 本地使用共享内存</B> 
+            <BR>使用 LPVOID GetBuffer() 返回共享内存地址,例如 <PRE>char *p = (char*)m_SFMS.GetBuffer();
+if (p)
+	strcpy(p, "1234567890");</PRE><B>3. 
+            创建共享内存CSFMClient对象</B>，也需要为CSFMClient对象指定专用的名字（上一步使用的那个），即可使用共享内存。 <PRE>CSFMClient(DWORD dwAccess, char *szMapName);
+Open(DWORD dwAccess, char *szMapName);
+</PRE>参数1:共享内存对象访问方式(FILE_MAP_READ|FILE_MAP_WRITE)<BR>参数2:共享内存对象名<BR><BR>例如:<PRE>CSFMClient *pCSFMC = new CSFMClient(FILE_MAP_READ, "_OBJ_ZZZ_");</PRE><B>4. 
+            本地使用共享内存</B><BR>使用 LPVOID GetBuffer() 返回共享内存地址，例如 <PRE>char *p = (char*)pCSFMC-&gt;GetBuffer();
+if (p) strcpy(p, "1234567890");
+</PRE><BR><B><IMG height=16 src="共享内存封装类.files/paragraph.gif" 
+            width=14> 三、该类的具体实现代码</B>如下:<BR><BR><FONT 
+            color=#009900>//------------------------------------------------<BR>// 
+            2002/07/05 <BR>// awzzz <BR>// SFMMem.h: interface for the 
+            CSFMServer class. 
+            <BR>//------------------------------------------------</FONT> <PRE>#if !defined(AFX_SFMSERVER_H__2D76A439_6388_4B07_AE7A_C82F458642ED__INCLUDED_)
+#define AFX_SFMSERVER_H__2D76A439_6388_4B07_AE7A_C82F458642ED__INCLUDED_
+
+#if _MSC_VER &gt; 1000
+#pragma once
+#endif // _MSC_VER &gt; 1000
+
+#define	DEFAULT_FILENAME	NULL
+#define	DEFAULT_MAPNAME		"_SFM_OBJ_"
+#define	DEFAULT_MAPSIZE		(0xFFFF + 1)
+</PRE><FONT color=#009900>// Shared FileMap Server </FONT><PRE>class CSFMServer  
+{
+public:
+	CSFMServer();
+	virtual ~CSFMServer();
+	CSFMServer(char *szFileName, char *szMapName, DWORD dwSize);
+
+protected:
+	HANDLE	m_hFile;
+	HANDLE	m_hFileMap;
+	LPVOID	m_lpFileMapBuffer;
+
+	char	*m_pFileName;
+	char	*m_pMapName;
+	DWORD	m_dwSize;
+
+	int		m_iCreateFlag;
+
+private:
+	void _Init();
+	void _Destory();
+
+public:
+	void Create(char *szFileName, char *szMapName, DWORD dwSize);
+	LPVOID GetBuffer();
+	DWORD GetSize();
+};
+</PRE><FONT color=#009900>// Shared FileMap Client<BR></FONT><PRE>class CSFMClient  
+{
+public:
+	CSFMClient();
+	virtual ~CSFMClient();
+	CSFMClient(DWORD dwAccess, char *szMapName);
+
+protected:
+	HANDLE	m_hFileMap;
+	LPVOID	m_lpFileMapBuffer;
+
+	char	*m_pMapName;
+
+	int		m_iOpenFlag;
+
+private:
+	void _Init();
+	void _Destory();
+
+public:
+	void Open(DWORD dwAccess, char *szMapName);
+	LPVOID GetBuffer();
+	DWORD GetSize();
+};
+
+#endif // !defined(AFX_SFMSERVER_H__2D76A439_6388_4B07_AE7A_C82F458642ED__INCLUDED_)
+</PRE><FONT 
+            color=#009900>//------------------------------------------------------<BR>// 
+            SFMMem.cpp: implementation of the CSFMServer class. 
+            <BR>//------------------------------------------------------</FONT><BR><PRE>#include "stdafx.h"
+#include "SFMMem.h"
+
+#ifdef _DEBUG
+#undef THIS_FILE
+static char THIS_FILE[]=__FILE__;
+#define new DEBUG_NEW
+#endif
+
+<FONT color=#009900>// Construction/Destruction</FONT>
+
+CSFMServer::CSFMServer()
+{
+	_Init();
+	//
+	Create(DEFAULT_FILENAME, DEFAULT_MAPNAME, DEFAULT_MAPSIZE);
+}
+
+CSFMServer::~CSFMServer()
+{
+	_Destory();
+}
+
+CSFMServer::CSFMServer(char *szFileName, char *szMapName, DWORD dwSize)
+{
+	_Init();
+	//
+	Create(szFileName, szMapName, dwSize);
+}
+
+void CSFMServer::_Init()
+{
+	m_hFile = NULL;
+	m_hFileMap = NULL;
+	m_lpFileMapBuffer = NULL;
+
+	m_pFileName = NULL;
+	m_pMapName = NULL;
+	m_dwSize = 0;
+
+	m_iCreateFlag = 0;
+}
+
+void CSFMServer::_Destory()
+{
+	if (m_lpFileMapBuffer)
+	{
+		UnmapViewOfFile(m_lpFileMapBuffer);
+		m_lpFileMapBuffer = NULL;
+	}
+	
+	if (m_hFileMap)
+	{
+		CloseHandle(m_hFileMap);
+		m_hFileMap = NULL;
+	}
+	
+	if (m_hFile &amp;&amp; m_hFile != INVALID_HANDLE_VALUE)
+	{
+		CloseHandle(m_hFile);
+		m_hFile = NULL;
+	}
+
+	if (m_pFileName)
+	{
+		free(m_pFileName);
+		m_pFileName = NULL;
+	}
+
+	if (m_pMapName)
+	{
+		free(m_pMapName);
+		m_pMapName = NULL;
+	}
+
+	_Init();
+}
+
+void CSFMServer::Create(char *szFileName, char *szMapName, DWORD dwSize)
+{
+	if (m_iCreateFlag)
+		_Destory();
+
+	if (szFileName)
+		m_pFileName = _strdup(szFileName);
+	//else m_pFileName = NULL;
+
+	if (szMapName)
+		m_pMapName = _strdup(szMapName);
+	else m_pMapName = _strdup(DEFAULT_MAPNAME);
+
+	if (dwSize &gt; 0)
+		m_dwSize = dwSize;
+	else m_dwSize = DEFAULT_MAPSIZE;
+
+	if (m_pFileName)
+	{
+		// file
+		m_hFile = CreateFile(
+			m_pFileName,
+			GENERIC_READ|GENERIC_WRITE,
+			FILE_SHARE_READ|FILE_SHARE_WRITE,
+			NULL,
+			OPEN_ALWAYS,//OPEN_EXISTING,
+			FILE_ATTRIBUTE_NORMAL,
+			NULL
+			);
+	}
+	else
+	{
+		// system
+		m_hFile = (HANDLE)0xFFFFFFFF;
+	}
+
+	if (m_hFile)
+	{
+		m_hFileMap = CreateFileMapping(
+			m_hFile,
+			NULL,
+			PAGE_READWRITE,
+			0,
+			m_dwSize,
+			m_pMapName
+			);
+
+		//使只有一个CSFMServer对象能操作内存对象
+		//if (m_hFileMap != NULL &amp;&amp; ERROR_ALREADY_EXISTS == GetLastError())
+		//{
+		//	CloseHandle(m_hFileMap);
+		//	m_hFileMap = NULL;
+		//}
+	}
+
+	if (m_hFileMap)
+	{
+		m_lpFileMapBuffer = MapViewOfFile(
+			m_hFileMap,
+			FILE_MAP_ALL_ACCESS,//FILE_MAP_WRITE|FILE_MAP_READ,
+			0,
+			0,
+			m_dwSize
+			);
+	}
+
+	m_iCreateFlag = 1;
+}
+
+LPVOID CSFMServer::GetBuffer()
+{
+	return (m_lpFileMapBuffer)?(m_lpFileMapBuffer):(NULL);
+}
+
+DWORD CSFMServer::GetSize()
+{
+	return m_dwSize;
+}
+
+<FONT color=#009900>// Construction/Destruction</FONT>
+
+CSFMClient::CSFMClient()
+{
+	_Init();
+	//
+	Open(FILE_MAP_READ, DEFAULT_MAPNAME);
+}
+
+CSFMClient::~CSFMClient()
+{
+	_Destory();
+}
+
+CSFMClient::CSFMClient(DWORD dwAccess, char *szMapName)
+{
+	_Init();
+	//
+	Open(dwAccess, szMapName);
+}
+
+void CSFMClient::Open(DWORD dwAccess, char *szMapName)
+{
+	if (m_iOpenFlag)
+		_Destory();
+
+	if (szMapName)
+		m_pMapName = _strdup(szMapName);
+	else m_pMapName = _strdup(DEFAULT_MAPNAME);
+
+	m_hFileMap = OpenFileMapping(
+		dwAccess,
+		TRUE,
+		m_pMapName
+		);
+
+	if (m_hFileMap)
+	{
+		m_lpFileMapBuffer = MapViewOfFile(
+			m_hFileMap,
+			dwAccess,
+			0,
+			0,
+			0
+			);
+	}
+
+	m_iOpenFlag = 1;
+}
+
+void CSFMClient::_Init()
+{
+	m_hFileMap = NULL;
+	m_lpFileMapBuffer = NULL;
+
+	m_pMapName = NULL;
+
+	m_iOpenFlag = 0;
+}
+
+void CSFMClient::_Destory()
+{
+	if (m_lpFileMapBuffer)
+	{
+		UnmapViewOfFile(m_lpFileMapBuffer);
+		m_lpFileMapBuffer = NULL;
+	}
+	
+	if (m_hFileMap)
+	{
+		CloseHandle(m_hFileMap);
+		m_hFileMap = NULL;
+	}
+
+	if (m_pMapName)
+	{
+		free(m_pMapName);
+		m_pMapName = NULL;
+	}
+
+	_Init();
+}
+
+LPVOID CSFMClient::GetBuffer()
+{
+	return (m_lpFileMapBuffer)?(m_lpFileMapBuffer):(NULL);
+}
+
+DWORD CSFMClient::GetSize()
+{
+	// unnable use
+	return 0;
+}
+</PRE>测试环境：Win2K+VC6+普通应用程序<BR>未对服务程序/ISAPI等其他应用进行测试，应该也是可以的<BR></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><BR>
+<DIV align=center><BR><BR>
+<TABLE class=small height=18 cellSpacing=0 cellPadding=0 width="98%" border=0>
+  <TBODY>
+  <TR vAlign=center>
+    <TD width="27%" bgColor=#a0d39b><IMG height=10 
+      src="共享内存封装类.files/toplogo.gif" width=10>最新评论 <A 
+      href="http://www.vckbase.com/SYS/script/viewcomment.asp?gclsid=100&amp;itemid=356" 
+      target=_blank>[发表评论]</A></TD>
+    <TD align=right width="73%" bgColor=#a0d39b><IMG height=9 
+      src="共享内存封装类.files/rec1.gif" width=9> <A 
+      href="http://www.vckbase.com/SYS/script/viewcomment.asp?gclsid=100&amp;itemid=356" 
+      target=_blank>查看所有评论</A> <IMG height=9 src="共享内存封装类.files/rec1.gif" 
+      width=9> <A 
+      href="http://www.vckbase.com/SYS/script/writemail.asp?gclsid=100&amp;itemid=356&amp;title=%B9%B2%CF%ED%C4%DA%B4%E6%B7%E2%D7%B0%C0%E0" 
+      target=_blank>推荐给好友</A> <IMG height=9 src="共享内存封装类.files/rec1.gif" 
+      width=9> <A href="javascript:window.print();">打印</A></TD></TR></TBODY></TABLE>
+<TABLE class=small cellSpacing=1 cellPadding=0 width="98%" bgColor=#ffffff 
+border=0>
+  <TBODY>
+  <TR>
+    <TD bgColor=#ffffff><BR><IMG height=11 src="共享内存封装类.files/doc2.gif" 
+      width=11 align=absMiddle> 没有同步保护阿！ ( fallwind 发表于 2003-1-14 
+      11:40:00)<BR><BR><IMG height=11 src="共享内存封装类.files/doc2.gif" width=11 
+      align=absMiddle> 
+      补充说明：<BR><BR>void&nbsp;CShareMemDlg::OnButton2()&nbsp;<BR>{<BR>//&nbsp;TODO:&nbsp;Add&nbsp;your&nbsp;control&nbsp;notification&nbsp;handler&nbsp;code&nbsp;here<BR><BR>CSFMClient&nbsp;*pCSFMC&nbsp;=&nbsp;new&nbsp;CSFMClient(FILE_MAP_READ,&nbsp;"_OBJ_ZZZ_");<BR>char&nbsp;*p&nbsp;=&nbsp;(char*)pCSFMC-&gt;GetBuffer();<BR>if&nbsp;(p)&nbsp;strcpy(p,&nbsp;"1234567890");<BR>delete&nbsp;pCSFMC;//释放<BR>}<BR><BR>以下行<BR>if&nbsp;(p)&nbsp;strcpy(p,&nbsp;"1234567890");<BR>是为了测试出错情况<BR><BR>因为<BR>CSFMClient&nbsp;*pCSFMC&nbsp;=&nbsp;new&nbsp;CSFMClient(FILE_MAP_READ,&nbsp;"_OBJ_ZZZ_");<BR>FILE_MAP_READ只能读，不能写，写为|FILE_MAP_WRITE<BR><BR>当时没写注释，自己现在都晕了 
+      ( awzzz 发表于 2002-9-6 17:00:00)<BR><BR><IMG height=11 
+      src="共享内存封装类.files/doc2.gif" width=11 align=absMiddle> 
+      呵呵！我差点忘了，共享内存由操作系统管理和分配，用户只能申请使用权...... ( Micro 发表于 2002-7-27 
+      13:48:00)<BR><BR><IMG height=11 src="共享内存封装类.files/doc2.gif" width=11 
+      align=absMiddle> Micro老哥，当没有其他用户使用时共享内存时，共享内存变会真正释放的。 ( tdy 发表于 2002-7-21 
+      8:28:00)<BR><BR><IMG height=11 src="共享内存封装类.files/doc2.gif" width=11 
+      align=absMiddle> 
+      据我所知,使用共享内存的一个实例应该没有权限直接释放共享内存.因为其他例程可能正在使用.我们是不是应该使用象COM组件的方法,为每一块共享内存设一标识位,内存的每次实例化使该标识加1,用完后减1,而当该标识为0时,则彻底释放该共享内存....:) 
+      ( Micro 发表于 2002-7-16 11:31:00)<BR><BR><IMG height=11 
+      src="共享内存封装类.files/doc2.gif" width=11 align=absMiddle> 对服务程序测试成功有效 ( awzzz 
+      发表于 2002-7-15 8:34:00)<BR><BR><IMG height=11 src="共享内存封装类.files/doc2.gif" 
+      width=11 align=absMiddle> 懒好！ ( VC70新手 发表于 2002-7-14 
+      19:46:00)<BR><BR>.......................................................<BR><A 
+      href="http://www.vckbase.com/SYS/script/viewcomment.asp?gclsid=100&amp;itemid=356" 
+      target=_blank>More...</A> </TD></TR></TBODY></TABLE></DIV><BR>
+<DIV align=right><BR><SPAN class=small>版权所有 &copy; 2002 VC知识库 
+<BR><BR></SPAN></DIV></BODY></HTML>

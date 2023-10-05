@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="gb2312"?>
+<InfomationElementListTable>
+	<InfomationElementTableSection>
+		<InfomationElementTableID>1</InfomationElementTableID>
+		<InfomationElementTableName_Chinese>Windows信息表</InfomationElementTableName_Chinese>
+		<InfomationElementTableName_English>WindowsInfomationTable</InfomationElementTableName_English>
+		<Description>操作系统的版本信息</Description>
+		<EqualInfomationElementTableID></EqualInfomationElementTableID>
+	</InfomationElementTableSection>
+</InfomationElementListTable>

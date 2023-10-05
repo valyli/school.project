@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0044)http://www.china-askpro.com/msg36/qa00.shtml -->
+<HTML><HEAD><TITLE>问专家-做一个DLL时，不用def文件不行吗</TITLE>
+<META content="text/html; charset=gb2312" http-equiv=Content-Type>
+<META 
+content="编程, 源程序, programming, source code, C/C++, MFC, C++ Builder, Borland C++, Turbo C, C, BCB, 其他方面, " 
+name=keywords>
+<META content="MSHTML 5.00.3315.2870" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff vLink=#0000ff>
+<TABLE cellPadding=1 cellSpacing=0 width=900>
+  <TBODY>
+  <TR>
+    <TD height=0 vAlign=top width=135></TD>
+    <TD rowSpan=6 vAlign=top width=761><!-- VC -->
+      <CENTER>
+      <SCRIPT src="问专家-做一个DLL时，不用def文件不行吗.files/person.htm"></SCRIPT>
+      </CENTER><!-- VC -->
+      <P><FONT size=-1><A 
+      href="http://www.china-askpro.com/cgi-bin/birdcast.cgi">把这个问题推荐给朋友</A></FONT> 
+<!-- QA Start -->
+      <H3 align=center><FONT color=#009900>做一个DLL时，不用def文件不行吗</FONT></H3>
+      <P><FONT size=-1><BR></FONT>
+      <P><FONT size=-1><B>编号：</B>QA003500<BR><B>建立日期: </B>2000年11月6日 
+      <B>最后修改日期：</B>2000年11月6日 <BR></FONT><FONT size=-1><B>所属类别：</B> </FONT>
+      <UL><FONT size=-1><I><A 
+        href="http://www.china-askpro.com/cpp.shtml">C/C++ - 
+        其他方面</A><BR></I></FONT></UL>
+      <P><FONT color=#660000 size=-1><IMG height=32 
+      src="问专家-做一个DLL时，不用def文件不行吗.files/q.gif" width=32> <B>zkyzpp</B>: 
+      </FONT><BR><FONT size=-1>&nbsp;&nbsp;&nbsp;&nbsp;操作系统: 98 
+      <BR>&nbsp;&nbsp;&nbsp;&nbsp;编程工具: vc <BR>&nbsp;&nbsp;&nbsp;&nbsp;问题: 
+      我在试图做一个dll时，不用def文件不行吗？再一个EXPORTS下面的输出函数还用给它们分别给一个数吗？如： 
+      <BR>&nbsp;&nbsp;&nbsp;&nbsp;EXPORTS <BR>&nbsp;&nbsp;&nbsp;&nbsp; sungo @1 
+      <BR>&nbsp;&nbsp;&nbsp;&nbsp;水平: 刚入门</FONT> 
+      <P><FONT color=#660000 size=-1><IMG height=32 
+      src="问专家-做一个DLL时，不用def文件不行吗.files/a.gif" width=32><B>回答</B>: </FONT>
+      <P><FONT 
+      size=-1>&nbsp;&nbsp;&nbsp;&nbsp;在VC++中，如果生成DLL可以不使用.def文件。你只需要在VC++的函数定义前要加__declspec(dllexport)修饰就可以了。但是使用__declspec(dllexport)和使用.def文件是有区别的。如果你的DLL是提供给VC++用户使用的，你只需要把编译DLL时产生的.lib提供给用户，它可以很轻松地调用你的DLL。但是如果你的DLL是供VB、PB、Delphi用户使用的，那么会产生一个小麻烦。因为VC++对于__declspec(dllexport)声明的函数会进行名称转换，如下面的函数： 
+      <BR>&nbsp;&nbsp;&nbsp;&nbsp;__declspec(dllexport) int __stdcall IsWinNT() 
+      <BR>&nbsp;&nbsp;&nbsp;&nbsp;会转换为IsWinNT@0，这样你在VB中必须这样声明： 
+      <BR>&nbsp;&nbsp;&nbsp;&nbsp;Declare Function IsWinNT Lib "my.dll" Alias 
+      "IsWinNT@0" () As Long 
+      <BR>&nbsp;&nbsp;&nbsp;&nbsp;@的后面的数由于参数类型不同而可能不同。这显然不太方便。所以如果要想避免这种转换，就要使用.def文件方式。 
+      <BR>&nbsp;&nbsp;&nbsp;&nbsp;EXPORTS后面的数可以不给，系统会自动分配一个数。对于VB、PB、Delphi用户，通常使用按名称进行调用的方式，这个数关系不大，但是对于使用.lib链接的VC程序来说，不是按名称进行调用，而是按照这个数进行调用的，所以最好给出。</FONT> 
+
+      <P><FONT size=-1><I>此问题由<B>李海</B>回答。</I> <!-- QA End --></FONT>
+      <P>
+      <TABLE width="100%">
+        <TBODY>
+        <TR>
+          <TD bgColor=#00ffcc><FONT color=#0000ff>
+            <CENTER><FONT size=-1><B><I>如 果 您 认 为 本 站 点 对 您 有 帮 助， <BR>请 点 一 下 本 
+            页 上 方 的 广 告 。 谢 谢 。</I></B> 
+      </FONT></CENTER></FONT></TD></TR></TBODY></TABLE>
+      <FORM action=../cgi-bin/FeedBack.cgi method=post><FONT size=-1><INPUT 
+      name=recipient type=hidden value=askpro@china-askpro.com> </FONT>
+      <CENTER>
+      <TABLE border=1>
+        <TBODY>
+        <TR>
+          <TD align=right bgColor=#ccffcc><FONT size=-1>您的意见的类别</FONT></TD>
+          <TD><FONT size=-1><SELECT name=subject> <OPTION 
+              selected>更好的答案<OPTION>希望得到进一步解释<OPTION>我有有关代码可以提供给网友<OPTION>链接错误<OPTION>文字错误<OPTION>其他</OPTION></SELECT> 
+            </FONT></TD></TR>
+        <TR>
+          <TD align=right bgColor=#ccffcc><FONT size=-1>您的电子邮件</FONT></TD>
+          <TD><FONT size=-1><INPUT name=email> </FONT></TD></TR>
+        <TR>
+          <TD align=right bgColor=#ccffcc><FONT size=-1>您的名字</FONT></TD>
+          <TD><FONT size=-1><INPUT name=realname> </FONT></TD></TR>
+        <TR>
+          <TD align=right bgColor=#ccffcc><FONT 
+          size=-1>您的建议<BR>(请尽可能详细)</FONT></TD>
+          <TD><FONT size=-1><TEXTAREA name=建议 rows=8></TEXTAREA> </FONT></TD></TR>
+        <TR>
+          <TD align=middle><FONT size=-1><INPUT type=submit value=确定> 
+          </FONT></TD>
+          <TD align=middle><FONT size=-1><INPUT type=reset value=清除，重填> 
+          </FONT></TD></TR></TBODY></TABLE></CENTER><FONT size=-1><INPUT 
+      name=env_report type=hidden 
+      value=REMOTE_HOST,HTTP_USER_AGENT,HTTP_REFERER> <INPUT name=required 
+      type=hidden value=email,realname,建议> </FONT></FORM></TD></TR>
+  <TR>
+    <TD background=问专家-做一个DLL时，不用def文件不行吗.files/rline.gif vAlign=top 
+      width=135><TABLE width=135>
+        <TBODY>
+        <TR>
+          <TD bgColor=#99cccc vAlign=top width=129>
+            <P align=center><FONT color=#ff0000 size=-1><A 
+            href="http://askpro.yeah.net/"><IMG alt=问专家 border=0 height=33 
+            src="问专家-做一个DLL时，不用def文件不行吗.files/asklg88.gif" width=88></A></FONT> 
+            </P></TD></TR>
+        <TR>
+          <TD width=129><FONT color=#ff0000><FONT color=#ff0000 
+            size=-1></FONT><FONT size=-1><A 
+            href="http://www.china-askpro.com/index.html" 
+            target=_top>首页</A></FONT></FONT> </TD></TR>
+        <TR>
+          <TD bgColor=#99cccc vAlign=top width=129><FONT 
+            color=#ffffff><B>问与答</B></FONT></TD></TR>
+        <TR>
+          <TD vAlign=top width=129>
+            <P><FONT color=#ff0000><FONT size=-1><A 
+            href="http://www.china-askpro.com/require.shtml" 
+            target=_top>提问须知</A><BR></FONT><FONT color=#ff0000 
+            size=-1></FONT><FONT size=-1><A 
+            href="http://www.china-askpro.com/ask.shtml" 
+            target=_top>提出问题</A><BR></FONT><FONT color=#ff0000 
+            size=-1></FONT><FONT size=-1><A 
+            href="http://www.china-askpro.com/main.shtml" 
+            target=_top>浏览答案</A><BR></FONT><FONT color=#ff0000 
+            size=-1></FONT><FONT size=-1><A 
+            href="http://www.china-askpro.com/diff.shtml" 
+            target=_top>难题征解</A><BR></FONT><FONT color=#ff0000 
+            size=-1></FONT><FONT size=-1><A 
+            href="http://www.china-askpro.com/catalog.shtml" 
+            target=_top>分类介绍</A><BR></FONT><FONT color=#ff0000 
+            size=-1></FONT><FONT size=-1><A 
+            href="http://www.china-askpro.com/board.shtml">热门问题</A></FONT></FONT></P></TD></TR>
+        <TR>
+          <TD bgColor=#99cccc vAlign=top width=129><FONT 
+            color=#ffffff><B>本站服务</B></FONT></TD></TR>
+        <TR>
+          <TD vAlign=top width=129><FONT color=#ff0000><FONT color=#ff0000 
+            size=-1></FONT><FONT size=-1><A 
+            href="http://www.china-askpro.com/mail.shtml" 
+            target=_top>新闻邮件</A><BR></FONT><FONT color=#ff0000 
+            size=-1></FONT><FONT size=-1><A 
+            href="http://www.china-askpro.com/vote.shtml" 
+            target=_top>站点调查</A><BR></FONT><FONT color=#ff0000 
+            size=-1></FONT><FONT size=-1><A 
+            href="http://www.china-askpro.com/experts.shtml" 
+            target=_top>加盟专家组</A><BR></FONT><FONT color=#ff0000 
+            size=-1></FONT><FONT size=-1><A 
+            href="http://www.china-askpro.com/netstart.shtml" 
+            target=_top>编程站点精选</A><BR></FONT><FONT color=#ff0000 
+            size=-1></FONT><FONT size=-1><A 
+            href="http://www.china-askpro.com/books/" 
+            target=_top>网上图书</A><BR></FONT><FONT color=#ff0000 
+            size=-1></FONT><FONT size=-1><A 
+            href="http://www.china-askpro.com/lihai.shtml" 
+            target=_top>主持人</A></FONT></FONT> 
+            <P><FONT color=#ff0000><FONT color=#ff0000 size=-1></FONT><FONT 
+            size=-1><A href="http://zealsoft.yeah.net/" 
+            target=_top>热情软件屋</A></FONT></FONT></P>
+            <P>　</P></TD></TR></TBODY></TABLE><A 
+      href="http://www.dangdang.com/lianmeng/league/login/login.asp?userid=P-1020821" 
+      target=_blank><IMG height=60 
+      src="问专家-做一个DLL时，不用def文件不行吗.files/lianmeng2.gif" width=120></A><BR>
+      <SCRIPT>
+document.write("<img src=http://askpro.east.net.cn/cgi-bin/log.pl?url="+escape(document.URL)+" border=1 width=5 height=5 alt=Log>");
+</SCRIPT>
+    </TD></TR></TBODY></TABLE>
+<CENTER>
+<P>
+<HR>
+<B><A href="mailto:askpro@china-askpro.com"><FONT size=-1><IMG border=0 
+height=32 src="问专家-做一个DLL时，不用def文件不行吗.files/mail.gif" width=32></FONT></A><FONT 
+size=-1>如果您有任何建议和意见, 请给电子邮件至：<A 
+href="mailto:askpro@china-askpro.com">askpro@china-askpro.com</A>。 </FONT></B>
+<P></P></CENTER>
+<CENTER>
+<P><FONT size=-1><B><I>问专家<A 
+href="http://www.china-askpro.com/">http://www.china-askpro.com/</A><BR>版权所有 
+1997-2002 <A 
+href="http://zealsoft.yeah.net/">热情软件屋</A></I></B></FONT></P></CENTER><!-- BEGIN LINKEXCHANGE CODE -->
+<CENTER><IFRAME frameBorder=0 height=60 marginHeight=0 marginWidth=0 
+scrolling=no src="问专家-做一个DLL时，不用def文件不行吗.files/showiframe.htm" 
+width=468><a href="http://leader.linkexchange.com/X550821/clickle" target="_top"><img width=468 height=60 border=0 ismap alt="" src="http://leader.linkexchange.com/X550821/showle?"></a></IFRAME><BR><A 
+href="http://leader.linkexchange.com/X550821/clicklogo" target=_top><IMG alt="" 
+border=0 height=16 isMap src="问专家-做一个DLL时，不用def文件不行吗.files/lelogo.gif" 
+width=468></A><BR></CENTER><!-- END LINKEXCHANGE CODE -->
+<CENTER><FONT size=-1><A 
+href="http://ads49.hyperbanner.net/url.cfm/ID=9343&amp;Page=60&amp;Ver=28&amp;Pos=" 
+target=_top><IMG border=1 height=60 hspace=0 isMap 
+src="问专家-做一个DLL时，不用def文件不行吗.files/131333-11.gif" 
+width=468></A></FONT><BR></CENTER></BODY></HTML>

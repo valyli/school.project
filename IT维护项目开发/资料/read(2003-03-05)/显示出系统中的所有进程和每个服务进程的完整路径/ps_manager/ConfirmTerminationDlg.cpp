@@ -1,0 +1,84 @@
+/////////////////////////////////////////////////////////////////////////////
+//
+// File        : ConfirmTerminationDlg.cpp
+// Project     : TERMINATOR
+// Component   : Terminator
+//---------------------------------------------------------------------------
+// Description : 
+//
+/////////////////////////////////////////////////////////////////////////////
+//
+// SourceSafe Strings. Do not change.
+//---------------------------------------------------------------------------
+// $Author: Jeskes $
+// $Date: 20.04.98 9:58 $
+// $Revision: 1 $
+//
+/////////////////////////////////////////////////////////////////////////////
+
+#include "stdafx.h"
+#include "terminator.h"
+#include "ConfirmTerminationDlg.h"
+
+/////////////////////////////////////////////////////////////////////////////
+
+#ifdef _DEBUG
+#define new DEBUG_NEW
+#undef THIS_FILE
+static char THIS_FILE[] = __FILE__;
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+// CConfirmTerminationDlg
+/////////////////////////////////////////////////////////////////////////////
+
+BEGIN_MESSAGE_MAP(CConfirmTerminationDlg, CDialog)
+	//{{AFX_MSG_MAP(CConfirmTerminationDlg)
+	ON_BN_CLICKED(IDNO, OnNo)
+	ON_BN_CLICKED(IDYES, OnYes)
+
+	//}}AFX_MSG_MAP
+END_MESSAGE_MAP()
+
+/////////////////////////////////////////////////////////////////////////////
+// CConfirmTerminationDlg: construction
+/////////////////////////////////////////////////////////////////////////////
+
+CConfirmTerminationDlg::CConfirmTerminationDlg( CWnd* pParent ) :
+	CDialog( CConfirmTerminationDlg::IDD, pParent )
+{
+	//{{AFX_DATA_INIT(CConfirmTerminationDlg)
+	m_idProcess = 0;
+	m_sProcessPath = _T("");
+	//}}AFX_DATA_INIT
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+void CConfirmTerminationDlg::DoDataExchange(CDataExchange* pDX)
+{
+	CDialog::DoDataExchange(pDX);
+	//{{AFX_DATA_MAP(CConfirmTerminationDlg)
+	DDX_Text(pDX, IDC_PROCESS_ID, m_idProcess);
+	DDX_Text(pDX, IDC_PROCESS_PATH, m_sProcessPath);
+	//}}AFX_DATA_MAP
+}
+
+/////////////////////////////////////////////////////////////////////////////
+// CConfirmTerminationDlg message handlers
+/////////////////////////////////////////////////////////////////////////////
+
+void CConfirmTerminationDlg::OnNo() 
+{
+	EndDialog( IDNO );
+}
+
+/////////////////////////////////////////////////////////////////////////////
+
+void CConfirmTerminationDlg::OnYes() 
+{
+	EndDialog( IDYES );
+}
+
+/////////////////////////////////////////////////////////////////////////////
+

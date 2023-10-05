@@ -1,0 +1,601 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0065)http://www-900.ibm.com/developerWorks/cn/xml/x-binary/index.shtml -->
+<HTML><HEAD><TITLE>将二进制数据嵌入 XML 文档的三种方法</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<META content="developerWorks 中国网站" name=TITLE>
+<META content=papers_html name=dWCategory>
+<META content=xml name=zone><!-- xml-->
+<META 
+content="XML 用于数据互操作性的主要优点是其可扩展性及其能够以文本格式表示所有形式的数据的能力。甚至当处理二进制数据时，XML 也证明了它的价值。本文集中讨论了在XML中 表示二进制数据的三种方法。第一种方法以最适当的方式使用 XML 和 DTD 表示二进制文件或数据源。第二种方法使用一种简单格式，其中每个人都能定义自己的格式来表示二进制数据。在第三种方法中，所有二进制数据都包含在 XML 文件中。" 
+name=ABSTRACT>
+<META 
+content="XML 用于数据互操作性的主要优点是其可扩展性及其能够以文本格式表示所有形式的数据的能力。甚至当处理二进制数据时，XML 也证明了它的价值。本文集中讨论了在XML中 表示二进制数据的三种方法。第一种方法以最适当的方式使用 XML 和 DTD 表示二进制文件或数据源。第二种方法使用一种简单格式，其中每个人都能定义自己的格式来表示二进制数据。在第三种方法中，所有二进制数据都包含在 XML 文件中。" 
+name=DESCRIPTION>
+<META 
+content="XML, binary data, Gowri Shankar, developerWorks, DTD, GODOWN, AGENT, MIME, 二进制数据" 
+name=KEYWORDS>
+<META 
+content="xml tutorials, xml training, xml standards, xml code, xml resources, xml programming, open source standards, xml how to, xml 教程, xml 培训, xml 标准, xml 代码, xml 参考资料, xml 编程, 开放源码标准, xml 如何做" 
+name=KEYWORDS>
+<META content=/developerWorks/cn/cncontent.nsf/cn_dW_feedback name=OWNER>
+<META content="2001**** 初稿" name=LASTUPDATE>
+<META content=公开 name=SECURITY>
+<META content=text/xhtml name=FORMAT>
+<META content="Copyright (c) 2000 by IBM Corporation" name=COPYRIGHT>
+<META content=index,follow name=ROBOTS>
+<META content=cn name=IBM.Country>
+<META name=DOCUMENTCOUNTRYCODE value="us">
+<META name=DOCUMENTLANGUAGECODE value="en">
+<META http-equiv=PICS-Label 
+content='(PICS-1.1 "http://www.rsac.org/ratingsv01.html" l gen true comment "RSACi North America Server" by "webmaster@mail.software.ibm.com" for "http://www.ibm.com/software" on "1997.08.13T17:59-0800" r (n 0 s 0 v 0 l 0))'>
+<META http-equiv=Expires content=0>
+<SCRIPT language=JavaScript src="将二进制数据嵌入 XML 文档的三种方法.files/style.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT language=JavaScript src="将二进制数据嵌入 XML 文档的三种方法.files/spinbox.js" 
+type=text/javascript></SCRIPT>
+
+<SCRIPT language=JavaScript type=text/javascript>var forumURL = ""; </SCRIPT>
+
+<SCRIPT language=JavaScript src="将二进制数据嵌入 XML 文档的三种方法.files/forumwindow.js" 
+type=text/javascript></SCRIPT>
+
+<META content="MSHTML 6.00.2800.1141" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff leftMargin=2 topMargin=2 marginwidth="2" marginheight="2">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD class=tbgc width=160><A 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www.ibm.com/cn/&amp;origin=dwheader"><IMG 
+      height=47 alt=IBM src="将二进制数据嵌入 XML 文档的三种方法.files/ibm-logo.gif" width=160 
+      border=0></A></TD>
+    <TD class=tbg width=195><FONT color=#99ccff size=2><B>China</B></FONT><A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-binary/index.shtml#main"><IMG 
+      height=1 alt="Skip to main content" src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" 
+      width=195 border=0></A></TD>
+    <TD class=tbgc vAlign=top align=right width="100%">
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <FORM id=form1 name=form1 
+        action=http://210.82.67.149/cgi-bin/dWsearch.pl method=get>
+        <TBODY>
+        <TR>
+          <TD colSpan=6><IMG height=2 alt="" 
+            src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=390 border=0></TD></TR>
+        <TR vAlign=center>
+          <TD class=dwsearch><SELECT class=dwsearch name=selScope> <OPTION 
+              value=dW selected>dW 中国所有内容<OPTION 
+              value=dW>.................<OPTION value=dW>dW 中国技术专区:<OPTION 
+              value=comptZ>　组件技术<OPTION value=javaZ>　Java 技术<OPTION 
+              value=linuxZ>　Linux<OPTION 
+              value=xmlZ>　XML<OPTION>.................<OPTION value=dW>dW 
+              中国特别专题:<OPTION value=securityZ>　安全<OPTION 
+              value=unicodeZ>　Unicode<OPTION 
+              value=webarchZ>　网站架构<OPTION>.................<OPTION value=all>IBM 
+              全部内容</OPTION></SELECT></TD>
+          <TD><IMG height=1 alt="" src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" 
+            width=5 border=0></TD>
+          <TD><INPUT class=dwsearch maxLength=100 size=15 name=UserRestriction 
+            height="15"></TD>
+          <TD><IMG height=1 alt="" src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" 
+            width=5 border=0></TD>
+          <TD><INPUT type=image height=23 alt="Search button" width=64 
+            src="将二进制数据嵌入 XML 文档的三种方法.files/search.gif" value=Search border=0 
+            name=Search></TD>
+          <TD vAlign=top><IMG height=1 alt="" 
+            src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=30 border=0></TD></TR>
+        <TR vAlign=top>
+          <TD class=dwsmall colSpan=6><A style="COLOR: #ffffff" 
+            href="http://210.82.67.149/help.htm" target=_blank>搜索帮助</A><IMG 
+            height=1 alt="" src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=1 
+            border=0></TD></TR>
+        <TR>
+          <TD colSpan=6><IMG height=4 alt="" 
+            src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=390 
+        border=0></TD></TR></FORM></TBODY></TABLE></TD></TR><A id=main name=main>
+  <TR>
+    <TD class=hbg width=160 height=21>&nbsp;</TD>
+    <TD class=bbg vAlign=top colSpan=2 height=21>&nbsp;&nbsp;&nbsp; <A 
+      class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/&amp;origin=dwhead">IBM 
+      主页</A> <SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN> <A 
+      class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/products/index.shtml&amp;origin=dwhead">产品与服务</A> 
+      <SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN> <A class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/support/index.shtml&amp;origin=dwhead">支持与下载</A> 
+      <SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN> <A class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/account/index.shtml&amp;origin=dwhead">个性化服务</A></TD></TR></TBODY></TABLE><!-- Color Bar -->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR class=hil>
+    <TD width="100%" height=1><IMG height=1 alt="" 
+      src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=592></TD></TR>
+  <TR class=dwr1>
+    <TD width="100%" height=2><IMG height=2 alt="" 
+      src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=592></TD></TR>
+  <TR class=dwg3>
+    <TD width="100%" height=1><IMG height=1 alt="" 
+      src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=592></TD></TR>
+  <TR class=bbg>
+    <TD width="100%" height=1><IMG height=1 alt="" 
+      src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=592></TD></TR>
+  <TR class=hil>
+    <TD width="100%" height=1><IMG height=1 alt="" 
+      src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=592></TD></TR></TBODY></TABLE><!-- Breadcrumb Trail -->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR vAlign=top><!-- RIGHT GUTTER -->
+    <TD width=5><IMG height=1 alt="" src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" 
+      width=5 border=0></TD>
+    <TD width="100%">
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD width="100%"><IMG height=4 alt="" 
+            src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=2 border=0><BR><B><A 
+            href="http://www.ibm.com/">IBM</A> : <A 
+            href="http://www-900.ibm.com/developerWorks/cn/index.shtml">developerWorks 
+            中国网站</A> : <A 
+            href="http://www-900.ibm.com/developerWorks/cn/xml/index.shtml">XML 
+            &amp; Web services</A> : <A 
+            href="http://www-900.ibm.com/developerWorks/cn/cnpapers.nsf/xml-papers-bynewest?OpenView&amp;count=500">所有的文章 
+            </A></B></TD>
+          <TD align=right width=136><A 
+            href="http://www-900.ibm.com/developerWorks/cn/index.shtml"><IMG 
+            height=24 alt="developerWorks 中国网站" 
+            src="将二进制数据嵌入 XML 文档的三种方法.files/dwlogo-small.gif" width=136 
+            border=0></A></TD>
+          <TD width=5><IMG height=1 alt="" 
+            src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=5 
+        border=0></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!-- End Breadcrumb Trail -->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR vAlign=top>
+    <TD colSpan=5><IMG height=15 alt="" src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" 
+      width=5 border=0></TD></TR>
+  <TR vAlign=top><!-- Title-->
+    <TD width=2><IMG height=1 alt="" src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" 
+      width=2 border=0></TD>
+    <TD><!-- <span class="astitle">[Series title]:&nbsp;</span>--><SPAN 
+      class=atitle>将二进制数据嵌入 XML 文档的三种方法</SPAN></TD>
+    <TD width=8><IMG height=1 alt="" src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" 
+      width=8 border=0></TD>
+    <TD vAlign=bottom align=right width=180><NOBR><A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-binary/index_eng.shtml" 
+      target=_blank><B>英文原文</B></A></NOBR></TD>
+    <TD width=6><IMG height=1 alt="" src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" 
+      width=6 border=0></TD></TR><!-- Black line separator-->
+  <TR vAlign=top>
+    <TD bgColor=#000000 colSpan=5><IMG height=1 alt="" 
+      src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=100 border=0></TD></TR>
+  <TR vAlign=top>
+    <TD bgColor=#ffffff colSpan=5><IMG height=8 alt="" 
+      src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=100 
+border=0></TD></TR></TBODY></TABLE><!-- END HEADER AREA--><!-- START BODY AREA-->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR vAlign=top><!-- LEFT GUTTER-->
+    <TD width=5><IMG height=1 alt="" src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" 
+      width=5 border=0></TD><!-- START CENTER COLUMN-->
+    <TD width="100%"><!-- START STANDARD SIDEBAR AREA-->
+      <TABLE cellSpacing=0 cellPadding=0 width=168 align=right border=0>
+        <TBODY>
+        <TR><!-- Sidebar Gutter-->
+          <TD width=8><IMG height=21 alt="" 
+            src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=5></TD>
+          <TD width=160><!-- Start TOC-->
+            <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+              <TBODY>
+              <TR>
+                <TD width=160 bgColor=#000000 height=1><IMG height=1 alt="" 
+                  src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=160></TD></TR>
+              <TR>
+                <TD align=middle 
+                background="将二进制数据嵌入 XML 文档的三种方法.files/bg-gold.gif" 
+                  height=5><B>内容：</B></TD></TR>
+              <TR>
+                <TD width=160 bgColor=#666666 height=1><IMG height=1 alt="" 
+                  src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=160></TD></TR>
+              <TR>
+                <TD align=right>
+                  <TABLE cellSpacing=0 cellPadding=3 width="98%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-binary/index.shtml#IDAWB22">演示应用程序：GODOWN 
+                        和 AGENT</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-binary/index.shtml#IDAIC22">三种方法</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-binary/index.shtml#IDA4C22">二进制数据、实体和标记法</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-binary/index.shtml#IDAAE22">MIME 
+                        定义</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-binary/index.shtml#IDALF22">CDATA 
+                        节中的二进制数据</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-binary/index.shtml#IDAXG22">结束语</A></TD></TR><!--Standard links for every article -->
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-binary/index.shtml#resources">参考资料</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-binary/index.shtml#author1">关于作者</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-binary/index.shtml#rating">对本文的评价</A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!-- End TOC--><!-- Start Related Content Area-->
+            <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+              <TBODY>
+              <TR>
+                <TD width=160 bgColor=#000000 height=1><IMG height=1 alt="" 
+                  src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=160></TD></TR>
+              <TR>
+                <TD align=middle 
+                background="将二进制数据嵌入 XML 文档的三种方法.files/bg-gold.gif" 
+                  height=5><B>相关内容：</B></TD></TR>
+              <TR>
+                <TD width=160 bgColor=#666666 height=1><IMG height=1 alt="" 
+                  src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=160></TD></TR>
+              <TR>
+                <TD align=right>
+                  <TABLE cellSpacing=0 cellPadding=3 width="98%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/xml/x-dtdint/index.shtml">解码 
+                        XML 和 DTD</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-106.ibm.com/developerworks/xml/library/x-retail.html">Real-world 
+                        XML schema</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-106.ibm.com/developerworks/newsletter/&amp;origin=article">订阅 
+                        developerWorks 
+            时事通讯</A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!-- End TOC--><!-- Start Related Content Area-->
+            <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+              <TBODY>
+              <TR>
+                <TD width=160 bgColor=#000000 height=1><IMG height=1 alt="" 
+                  src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=160></TD></TR>
+              <TR>
+                <TD align=middle 
+                background="将二进制数据嵌入 XML 文档的三种方法.files/bg-gold.gif" 
+                  height=5><A class=nav 
+                  href="http://www-900.ibm.com/developerWorks/cn/xml/index.shtml"><B>在 
+                  Web 服务专区还有：</B></A></TD></TR>
+              <TR>
+                <TD width=160 bgColor=#666666 height=1><IMG height=1 alt="" 
+                  src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=160></TD></TR>
+              <TR>
+                <TD align=right>
+                  <TABLE cellSpacing=0 cellPadding=3 width="98%" border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/cnedu.nsf/xml-onlinecourse-bytitle?OpenView&amp;Count=500iew&amp;Count=500">教程</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/cntools.nsf/dw/xml-dtds-bysite?OpenDocument&amp;count=100">工具和产品</A></TD></TR>
+                    <TR>
+                      <TD><A 
+                        href="http://www-900.ibm.com/developerWorks/cn/cnpapers.nsf/xml-papers-bynewest?OpenView&amp;count=500">文章</A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!-- End Related dW Content Area-->
+            <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+              <TBODY>
+              <TR>
+                <TD width=150 bgColor=#000000 colSpan=2 height=2><IMG height=2 
+                  alt="" src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=160></TD></TR>
+              <TR>
+                <TD width=150 bgColor=#ffffff colSpan=2 height=2><IMG height=2 
+                  alt="" src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" 
+              width=160></TD></TR></TBODY></TABLE><!-- END STANDARD SIDEBAR AREA--></TD></TR></TBODY></TABLE><!-- START SUBTITLE AND CONTENT--><SPAN 
+      class=atitle2>将 XML 用于 B2B 应用程序之间的数据传输</SPAN>
+      <P><A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-binary/index.shtml#author1">Gowri 
+      Shankar</A>（<A 
+      href="mailto:vgowri@aquila.co.in">vgowri@aquila.co.in</A>）<BR>软件工程师，AQUILA 
+      Technologies Pvt.Ltd<BR>2002 年 2 月</P>
+      <BLOCKQUOTE>XML 用于数据互操作性的主要优点是其可扩展性及其能够以文本格式表示所有形式的数据的能力。甚至当处理二进制数据时，XML 
+        也证明了它的价值。本文集中讨论了在XML中表示二进制数据的三种方法。第一种方法以最适当的方式使用 XML 和 DTD 
+        表示二进制文件或数据源。第二种方法使用一种简单格式，其中每个人都能定义自己的格式来表示二进制数据。在第三种方法中，所有二进制数据都包含在 XML 
+        文件中。</BLOCKQUOTE>
+      <P>XML 已经改变了完全不同的应用程序 — 这些应用程序使用不同的技术、操作平台和位置 — 
+      之间交换、共享和传输数据的方式。对于所有这些数据的运动，为达到可伸缩性，必须记住的唯一一点是通过启用 HTTP 的标记来包装数据。通过 HTTP 
+      发送数据的最佳途径是使用 XML，有许多原因可以说明它比 HTML 好。</P>
+      <P>最初，HTML 被认为只能处理文本，但是现在它还普遍用于引用和标记非文本数据。所以 XML 步 HTML 后尘是十分自然的。因为 XML 
+      不必遵循特定的语法（象 HTML 那样）并且比 HTML 更具可扩展性，所以人们可以以他们想要标记各类数据的任意方式来使用它。尽管如此，HTTP 
+      通常仍作为传输层使用；因此 XML 在处理二进制数据时必定受到许多约束。当二进制数据是用户或客户机应用程序请求的全部信息的一部分时，XML 
+      只用于标记该二进制数据。而且，在 XML 中包含二进制数据的优点是便于在 HTTP 上传送数据。</P>
+      <P><A name=IDAWB22><SPAN class=atitle2>演示应用程序：GODOWN 和 
+      AGENT</SPAN></A><BR>在应用程序之间有时候会传输非文本数据。例如，设想有两个 B2B 应用程序：GODOWN 和 
+      AGENT。GODOWN 维护公共库中的所有存货；AGENT 是销售界面。当用户在 AGENT 上选中一个产品名时，就向 GODOWN 
+      提出有关该产品详细信息的请求。以下是操作技巧部分。例如，如果该产品是一块手表，那么应用程序可能显示诸如价格、制造商地址和手表图片等详细信息。如果该产品是一盒迈克杰克逊 
+      CD，那么详细信息可能包括用户可以播放的样品媒体文件。本文将关注于通过 XML 
+进行数据（二进制数据）定义和描述，以及如何访问这个二进制数据。</P>
+      <P>正如您会发现的那样，在开发时不能决定数据的本质，并且可能需要经 HTTP 传送该数据来提供通用访问。XML 
+      是描述和定义数据的一种非常便利的框架，所以我们使用它来定义库存中的产品 — 库存由 GODOWN 应用程序来维护。</P>
+      <P>让我们看一下这两个应用程序之间进行数据传输过程中的不同阶段。以下是一个数据请求进程的生命周期：</P>
+      <OL>
+        <LI>从 AGENT 向 GODOWN 发出带 ProductId 的 HTTP 请求。
+        <LI>GODOWN 获取标识并为所需的产品编制 XML 文档。
+        <LI>然后用 AGENT 应用程序理解的方式格式化这个 XML 文档，并以字节流的形式将它发送回 
+        AGENT。有两种方法可以完成这个操作：<BR>
+        <UL>
+          <LI>从 GODOWN 将 XML 文档传送到 AGENT，这样生成的文件格式为 
+          agentproduct1.xml（请参阅下面显示的代码）。
+          <LI>解密 XML 数据并将二进制数据编码为字符串格式，然后将之转储到 CDATA 节中并发送到 AGENT。这使 AGENT 
+          的作业稍微简单些。生成的文件格式将是 agentproduct2.xml（请参阅下面显示的代码）。</LI></UL>
+        <LI>AGENT 接收来自 GODOWN 的字节流并对其进行相应处理。</LI></OL>
+      <P><A name=IDAIC22><SPAN 
+      class=atitle2>三种方法</SPAN></A><BR>现在，我们需要将一个应用程序的二进制数据传送到另一个应用程序中。让我们看一下用 
+      XML 文件表示二进制数据或将二进制数据嵌入到 XML 文件中的三种方法，这里简要地列出了这三种方法，下面还有更详细信息：</P>
+      <UL>
+        <LI>第一种：通过外部实体和标记法的方式来表示二进制数据
+        <LI>第二种：使用 MIME 数据类型来表示二进制数据
+        <LI>第三种：将二进制数据嵌入 CDATA 节中</LI></UL>
+      <P>虽然这三种方法都可以用来表示二进制数据，但不是每种方法都可以适用于任意给定的情况中，而且一种方法未必能很好地替代另一种方法。换句话说，可以同时应用这些方法使之相互协作相互补充。为了详细阐述这一点，让我们考虑示例应用程序。如果您必须维护库中所有产品的详细信息，（以便能对任何产品的请求提供服务），那么最佳方法是使用方法 
+      1 以单一大型 XML 文件的形式来表示数据。甚至方法 2 
+      也适用于这一目的，但是在数据的可扩展性上有某些限制（实体重用等）。当必须传送数据时，如果数据大小相对比较小，那么我们应该应用方法 
+      3。另一种选择是首先高速缓存实体名称和 
+      systemid，然后将详细信息发送到另一个应用程序或方法来处理（下载／显示）数据。在确定哪种方法最适合给定的情况时，尽管没有指导原则或标准，您还是可以识别哪种方法最适合于您的情况。现在应该更详尽地查看这些方法了。</P>
+      <P>第一种方法 — 通过外部实体和标记法的方式来表示二进制数据 — 用来描述数据。正如我们已经看到的，在使用 Request 和 Response 
+      范例的数据访问中本质上有三个阶段。它们是：</P>
+      <UL>
+        <LI>描述数据并将之存储在一个公共区域以供访问。
+        <LI>将请求的数据提供给客户机（响应）。
+        <LI>在客户机应用程序中表示已提供的数据（经过一些修改／变换）。</LI></UL>
+      <P>这里，以<I>标记法</I>（称为<I>外部实体</I>）的形式描述二进制数据，通过使用 DTD 
+      来保持数据的持久性。我们应使用第一种方法来进行二进制数据的描述和存储。甚至第二种方法也适用于相同的目的 — 这两种方法的区别在于是否使用 DTD 
+      的应用程序。如果不能确定是否需要 DTD，那么有一个简化的和范围缩小的选项：当产生请求这样一个二进制数据时，可以通过使用 HTTP 
+      将它发送到客户机；然后，客户机应用程序完成一些转换并向用户表示。如果客户机是启用 HTTP 的，象一些浏览器，那么可以将这个 XML 数据转换为 
+      HTML 并显示。但是如果最终用户环境不启用 HTTP，那么我们必须分别下载所有引用的二进制数据源。在这样的情况中，我们必须使用方法 
+      3。当出现请求二进制数据时，读取二进制数据源并打包到 XML 文档中作为以 base64 
+      编码的字符。将之发送到客户机。这个阶段的缺点是数据传送需要更多等待时间，读取和编码需要更多处理时间。当客户机应用程序读取这个 XML 文件时，它对 
+      base64 字符进行解码，将二进制数据写入本地文件系统的一个文件中，并使用那个引用来向最终用户表示这一数据。方法 3 
+      非常适合于二进制数据源不是一张图片或能显示的东西的特定情况；它可以是一个数字签名或一个可执行文件。</P>
+      <P><A name=IDA4C22><SPAN 
+      class=atitle2>通过外部实体和标记法的方式来表示二进制数据</SPAN></A><BR>这是在 XML 
+      文档中表示二进制数据最好的方法。虽然许多人会争论 DTD 使它变得混乱，但是我仍将建议这是非常有效的方法，因为数据在 XML 文档中模块化，并且从 
+      DTD 中抽取二进制数据（源、文件名等）的详细信息。要以这种方法完成操作，您需要了解 XML 和 DTD。查看下面的样本 XML 和<A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-binary/listing2.html">清单 
+      2</A> 中的 DTD。</P><A name=code1><B>清单 1. 样本 XML 产品文件：product.xml</B></A> 
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+&lt;?xml version="1.0"?&gt;
+&lt;!DOCTYPE godown SYSTEM "product.dtd"&gt;
+&lt;godown&gt;
+&lt;product id="1"&gt;
+  &lt;name&gt;watch&lt;/name&gt;
+  &lt;category&gt;HMT Shakthi&lt;/category&gt;
+  &lt;description&gt;SG CS 07 A&lt;/description&gt;
+  &lt;price&gt;Rs.500&lt;/price&gt;
+  &lt;deliverytime&gt;2 days&lt;/deliverytime&gt;
+  &lt;display object="watch1"&gt;&lt;/display&gt;
+&lt;/product&gt;
+&lt;/godown&gt;
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>XML 文件应遵循 DTD 并且通常包含许多产品标记，每个标记包含一个产品和它的详细信息。当 AGENT 应用程序向 GODOWN 
+      应用程序发送一个或多个标识时，GODOWN 应用程序对 XML 
+      文件进行语法分析并获取与产品相关的所有详细信息，然后将它们发送回服务器。在向服务器发送详细信息前，它应按照 AGENT 要求的格式重新编制数据。<A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-binary/listing3.html">清单 
+      3</A> 中显示了一个这样的输出格式。转换成这个格式的 Java 程序是 agent1.java，在 binaryxml.zip（请参阅<A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-binary/index.shtml#resources">参考资料</A>）中提供了该程序。</P>
+      <P>这个格式不涉及处理二进制数据；它只描述和提供二进制数据。AGENT 应用程序通过使用 URL 能直接引用二进制数据，或者它能从 URL 
+      下载文件来保留本地副本。如果它必须在浏览器中显示信息，那么它能直接引用信息，因为它有链接。在这种方法中，我们获得格式良好的 XML。查看文件 
+      agent1.java（请参阅<A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-binary/index.shtml#resources">参考资料</A>）来了解它如何对 
+      XML 文件和 DTD 进行语法分析，以便搜集有关外部实体引用的信息。</P>
+      <P><A name=IDAAE22><SPAN class=atitle2>使用 MIME 
+      数据类型来表示二进制数据</SPAN></A><BR>这种方法使用 MIME 数据类型来描述二进制数据／数据源时有两种方法：</P>
+      <UL>
+        <LI>使用可扩展邮件传送协议（XMTP）或者类似的 MIME 编码服务器／应用程序
+        <LI>将不同的 MIME 类型映射成 XML 文件中的二进制数据类型</LI></UL>
+      <P>让我们看一下这两种方法的优缺点。</P>
+      <P>在第一种方法中 — 使用 XMTP，将软件的可使用性限制于启用 XMTP 的应用程序，或者在不使用启用 XMTP 的软件时，必须用另一个 
+      XML 解码器来打包这个层。这意味着我们还必须实现第二种方法，而且我们还要有可用于同一目的的一些 XMTP API — 
+      因此这没有使我们有更好的适应性。另外，我们所关注的是用 XML 而不是用 XMTP 来表示二进制数据，所以我们将集中讨论第二种方法 — 映射不同的 
+      MIME 类型及其资源。对 MIME 和 XMTP 更感兴趣的人，请参阅<A 
+      href="http://www-900.ibm.com/developerWorks/cn/xml/x-binary/index.shtml#resources">参考资料</A>，从 
+      openhealth.org 获得实现信息。</P>
+      <P><A name=IDARE22><SPAN class=atitle3>映射 MIME 
+      类型和二进制数据</SPAN></A><BR>当我们必须映射 MIME 类型和二进制数据时，我们又有两个选择。第一个是用 DTD 
+      中的二进制资源来系统地表示 MIME 类型。由于在本文的前面部分我们已经看到了类似表示，所以让我们来看一些不同的表示。DTD 
+      只用于定义文档格式，并且将在 XML 文件本身中定义 MIME 类型。虽然总可以使用 DTD 来验证，但是这种方法的最佳用途是减少对 DTD 
+      的依赖并使之成为自我描述的 XML 格式。由于它是自我描述的，所以它是可进化的方法。通过使用 XML 文件中的 MIME 类型，让我们来查看用于定义 
+      product.xml 的变体版本的方法。</P><A name=code1><B>清单 4. product.xml 版本 
+      2：product-mime.xml</B></A> 
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+&lt;?xml version="1.0"?&gt;
+&lt;godown&gt;
+   &lt;product id="1"&gt;
+       &lt;category&gt;HMT Shakthi&lt;/category&gt;
+       &lt;description&gt;SG CS 07 A&lt;/description&gt;
+       &lt;price&gt;Rs.500&lt;/price&gt;
+       &lt;deliverytime&gt;2 days&lt;/deliverytime&gt;
+       &lt;display type="picture" mime="image/jpeg"&gt;
+           &lt;file&gt;
+                sgcs07a3.jpg
+           &lt;/file&gt;
+       &lt;/display&gt;
+  &lt;/product&gt;
+&lt;/godown&gt;
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>除了显示标记不同外，这个 XML 文件遵循与原始 product.xml 文件相同的结构。它描述了二进制数据文件的元数据。所以，当 AGENT 
+      应用程序发送标识时，mimeagent.java（在 binaryxml.zip 中）对标识的 product-mime.xml 
+      进行语法分析并将输出的 XML 文件生成为 agentproduct2.xml（请参阅下面的代码）。agentproduct1.xml 和 
+      agentproduct2.xml 之间的唯一区别是后者在 CDATA 节中包含文件内容，而不是文件名称。我们正在将二进制内容嵌入 XML 
+      文件本身而不是在 XML 文件中描述它的来源。下面显示了 agentproduct2.xml 的一个样本格式。</P><A 
+      name=code1><B>清单 5. 输出格式 2：agentproduct2.xml</B></A> 
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" bgColor=#cccccc 
+        border=1><TBODY>
+        <TR>
+          <TD><PRE><CODE>
+&lt;?xml version="1.0"?&gt;
+&lt;selectedproducts&gt;
+   &lt;product id="1"&gt;
+       &lt;name&gt;watch&lt;/name&gt;
+       &lt;category&gt;HMT Shakthi&lt;/category&gt;
+       &lt;description&gt;SG CS 07 A&lt;/description&gt;
+       &lt;price&gt;Rs.500&lt;/price&gt;
+       &lt;deliverytime&gt;2 days&lt;/deliverytime&gt;
+       &lt;display type="picture" mime="image/jpeg" name="sgcs07a3.jpg"&gt;
+          &lt;![CDATA[
+               Binary data like..
+                  /9j/4AAQSkZJRgABAAEAyADIAAD//g
+               that are not parsed go here
+           ]]&gt;
+       &lt;/display&gt;
+   &lt;/product&gt;
+&lt;/selectedproducts&gt;
+</CODE></PRE></TD></TR></TBODY></TABLE>
+      <P>在用方法 1 和方法 2 解释 XML 数据的客户机应用程序之间有一个显著的区别。在方法 1 中，客户机应用程序只须转换可用的 XML 
+      数据并以 HTML 或一些其它格式显示。通过使用 XSL、CSS 等可以很好地实现。然而，在方法 2 中，客户机应用程序必须解释 CDATA 
+      节并将打包的二进制数据解码为原始格式，然后必须将它存储到本地文件系统中。存储在本地的二进制数据源用于进一步引用。表示之前需要一个处理阶段。使用这个方法之前必须注意这一点。</P>
+      <P>我们已经揭示了将二进制数据流发送回 AGENT 应用程序的第二个方法。第三种将使 AGENT 应用程序能够处理 XML 
+      数据并生成用户可以查看／访问的数据的目标版本。这就完成了我们 B2B 应用程序的第 3 阶段。</P>
+      <P><A name=IDALF22><SPAN class=atitle2>将二进制数据嵌入 CDATA 
+      节中</SPAN></A><BR>上面的方法用 XML 处理数据的表示，但是这种方法完全用 XML 来<I>包装</I>数据。它主要应用在当将数据以 
+      XML 格式发送回客户机应用程序时。当客户机接收到这种格式的数据时，或者如果客户机高速缓存这种格式的 XML 
+      数据／文件，客户机应用程序非常容易向用户提供 XML 数据。在最后一种方法中，我们看到输出的 XML 文件包含了 CDATA 
+      节来包装二进制数据。当客户机应用程序接收到这种数据时，它能以多种方法处理数据，例如：</P>
+      <UL>
+        <LI>将整个数据保存为一个文件。
+        <LI>将数据转换为 HTML、WML 等然后显示它。</LI></UL>
+      <P>让我们尝试将数据转换为 HTML 文件。这涉及两个阶段。 
+      第一阶段，我们必须将二进制数据保存到各自的文件中，然后创建一个带引用那些二进制文件的新 HTML 文件。如果二进制文件是一张图像，那么我们将在 
+      HTML 中使用 <CODE>img</CODE> 标记来引用二进制文件；否则，我们必须使用适当的标记，例如用于 shockwave 文件的 
+      <CODE>embed</CODE>。与此相关的信息存储到显示标记的 MIME 属性中。</P>
+      <P>将 XML 转换为 HTML 遵循将 XML 标记映射到 HTML 代码段这样一个简单映射。每个 XML 元素映射为某个产品（如手表或音乐 
+      CD）的 HTML 表中的一行。所以，每个产品在 XML 中都可以表示为一个有五六个元素的节点，而同一产品在 HTML 
+      中表示为一个含有四行的表。标记表示为头，内容还是表示为内容。</P>
+      <P>还有其它的 XML-到-HTML 的转换技术，象 CSS 或 XSL。在这个特殊实例中，我们正在处理 CDATA 
+      节，其中存储了二进制数据并且需要将该数据持久保存为客户机系统中的一个文件。最简单的选项是使用从 XML 到 HTML 
+      的简单的、定制映射，但是我鼓励那些感兴趣的人尝试基于 XSL 的转换。</P>
+      <P>您可以参考 binaryxml.zip 中的 HTML 文件，其中您将看到那个 HTML 
+      文件的图片。这只是几种可能的方法中的一种；它能被转换为 WML 或一些其它格式，这样客户机能访问尽可能多的变体版本的 XML 信息。</P>
+      <P><A name=figure1><B>图 1. 样本输出</B></A><BR><IMG height=277 
+      alt="输出 HTML 格式" src="将二进制数据嵌入 XML 文档的三种方法.files/samplehtml.jpg" 
+      width=600></P>
+      <P>我们已经完成了 B2B 应用程序中的第 4 阶段，在这一阶段中 AGENT 应用程序将 XML 转换为 HTML 
+      文件。本文研究了将二进制数据嵌入到 XML 中的三种方法并探究了将 XML 转换为其它方式的持久性数据的方法。</P>
+      <P><A name=IDAQG22><SPAN class=atitle3>执行样本程序</SPAN></A><BR>执行样本 Java 
+      程序以产生如上所示的各个输出。要使程序完美运行，我们需要在类路径（classpath）中放置 crimson.jar 和 soap.jar。在 
+      JAXP XML 包中有 crimson.jar。您可以从 Apache（请参阅参考资料）上下载 soap.jar。</P>
+      <P><A name=IDAXG22><SPAN 
+      class=atitle2>结束语</SPAN></A><BR>我希望您觉得本文值得一读。这只是我们将 XML 使用到 B2B 
+      应用程序之间的数据传输的许多方法中的一种；还有许多其它方法，例如 XML-RPC 和 
+      XML-EDI，它们可以替代这些方法。但是这是帮助您理解如何使二进制数据和 XML 一起协调工作的非常好的开端。</P>
+      <P><A name=resources><SPAN class=atitle2>参考资料</SPAN></A>
+      <UL>
+        <LI>下载包含文件 agent1.java 的 <A 
+        href="http://www-900.ibm.com/developerWorks/cn/xml/x-binary/binaryxml.zip">binaryxml.zip</A> 
+        文件。
+        <LI>从 Sun 的站点下载 <A href="http://java.sun.com/xml">JAXP</A>。
+        <LI>从 Apache 下载 <A 
+href="http://xml.apache.org/soap/index.html">SOAP</A>。
+        <LI>在 IBM developerWorks 上学习 <A 
+        href="http://www-900.ibm.com/developerWorks/cn/xml/x-dtdint/index.shtml">XML 
+        和 DTD</A>。
+        <LI>从 JavaWorld 上学习<A 
+        href="http://www.javaworld.com/javaworld/javatips/jw-javatip117.html?tip">二进制数据编码格式</A>。
+        <LI>查找关于 <A href="http://www.xml.com/pub/a/98/08/xmlqna2.html">Entity 
+        Declarations, Attributes and Expansion</A> 的详细信息。
+        <LI>可以在 <A href="http://www.openhealth.org/xmtp">openhealth.org</A> 上找到 
+        XMTP 引用实现。
+        <LI>尝试轻松交付动态电子商务应用程序的新的 <A 
+        href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=http://www-4.ibm.com/software/webservers/studio/preregister.html&amp;origin=x">IBM 
+        WebSphere Studio 开发环境</A>。</LI></UL>
+      <P></P>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD><A name=author1><SPAN class=atitle2>关于作者</SPAN><BR><IMG 
+            height=80 alt=作者 src="将二进制数据嵌入 XML 文档的三种方法.files/p-gshankar.jpg" 
+            width=64 align=left border=0>Gowri Shankar 是为 <A 
+            href="http://www.aquila-tech.com/">AQUILA Technologies</A> 
+            工作的软件工程师。他从事 XML 和 XML 应用程序方面的工作已有一年多了。可以通过 <A 
+            href="mailto:vgowri@aquila.co.in">vgowri@aquila.co.in</A> 与 Gowri 
+            联系。</A></TD></TR></TBODY></TABLE><BR clear=all><IMG height=5 alt="" 
+      src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=100 border=0> <!-- END PAPER BODY--><BR clear=all><IMG height=10 alt="" 
+      src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=100 border=0><BR><!-- REPEAT ICON LINKS AT BOTTOM OF PAGE-->
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD align=right width="100%"><A 
+            href="http://www-900.ibm.com/developerWorks/cn/xml/x-binary/index.shtml#top">到页首</A></TD>
+          <TD width=5><IMG height=1 alt="" 
+            src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=5 border=0></TD></TR>
+        <TR vAlign=top>
+          <TD bgColor=#000000 colSpan=2><IMG height=1 alt="" 
+            src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=100 border=0></TD></TR>
+        <TR vAlign=top>
+          <TD bgColor=#ffffff colSpan=2><IMG height=8 alt="" 
+            src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=100 
+        border=0></TD></TR></TBODY></TABLE><!-- RATE ARTICLE FORM--><!--   NOTES to local content team :::::::
+
+Please modify rate article form with Japanese coding-->
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR vAlign=top>
+          <TD>
+            <FORM 
+            action=/developerWorks/cn/cnratings.nsf/RateArticle?CreateDocument 
+            method=post><!-- paste title here--><INPUT type=hidden 
+            value="将二进制数据嵌入 XML 文档的三种方法" name=ArticleTitle> <!-- paste zone here--><INPUT type=hidden value=xml name=Zone> 
+            <INPUT type=hidden 
+            value=/developerWorks/cn/thankyou/feedback-xml.html 
+            name=RedirectURL> <A name=rating><B>您对这篇文章的看法如何？</B></A> 
+            <TABLE cellSpacing=0 cellPadding=0 width=600 border=0>
+              <TBODY>
+              <TR>
+                <TD colSpan=5><IMG height=8 alt="" 
+                  src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=100 
+              border=0></TD></TR>
+              <TR vAlign=top>
+                <TD width="16%"><INPUT type=radio value=5 
+name=Rating>真棒！(5)</TD>
+                <TD width="20%"><INPUT type=radio value=4 name=Rating>好文章 
+                (4)</TD>
+                <TD width="24%"><INPUT type=radio value=3 name=Rating>一般；尚可 
+                (3)</TD>
+                <TD width="22%"><INPUT type=radio value=2 name=Rating>需提高 
+                (2)</TD>
+                <TD width="18%"><INPUT type=radio value=1 name=Rating>太差！ 
+                (1)</TD></TR></TBODY></TABLE><BR><B>意见？</B><BR><TEXTAREA name=Comments rows=5 wrap=virtual cols=60></TEXTAREA><BR><BR><INPUT type=submit value=提交反馈意见></FORM></TD></TR>
+        <TR vAlign=top>
+          <TD bgColor=#ffffff><IMG height=8 alt="" 
+            src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" width=100 
+        border=0></TD></TR></TBODY></TABLE><!-- END CENTER COLUMN--></TD><!-- RIGHT GUTTER-->
+    <TD width=1><IMG height=1 alt="" src="将二进制数据嵌入 XML 文档的三种方法.files/c.gif" 
+      width=1 border=0></TD></TR></TBODY></TABLE><!-- END BODY AREA--><!--FOOTER --><!-- Do not changes this include-->
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD align=right>(c) Copyright IBM Corp. 2001, (c) Copyright IBM China 
+      2001, All Right Reserved</TD></TR>
+  <TR vAlign=top>
+    <TD class=bbg height=21>&nbsp;&nbsp;<A class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/ibm/index.shtml&amp;origin=dwhead">关于 
+      IBM</A><SPAN class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN><A 
+      class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/ibm/privacy/index.shtml&amp;origin=dwhead">隐私条约</A><SPAN 
+      class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN><A class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/ibm/legal/index.shtml&amp;origin=dwhead">法律条款</A><SPAN 
+      class=divider>&nbsp;&nbsp;|&nbsp;&nbsp;</SPAN><A class=mainlink 
+      href="http://www-900.ibm.com/developerWorks/cn/cgi-bin/click.cgi?url=www-900.ibm.com/cn/ibm/contact/index.shtml&amp;origin=dwhead">联系 
+      IBM</A></TD></TR></TBODY></TABLE>
+<SCRIPT language=JavaScript1.2 src="将二进制数据嵌入 XML 文档的三种方法.files/stats.js" 
+type=text/javascript></SCRIPT>
+<NOSCRIPT><IMG height=1 alt="" 
+src="D:\Documents and Settings\Administrator.HOMESRV\桌面\将二进制数据嵌入 XML 文档的三种方法.files\c(1).gif" 
+width=1 border=0></NOSCRIPT> </A></BODY></HTML>

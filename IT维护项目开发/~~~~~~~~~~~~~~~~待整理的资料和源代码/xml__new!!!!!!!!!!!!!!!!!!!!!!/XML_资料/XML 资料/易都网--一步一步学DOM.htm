@@ -1,0 +1,465 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0049)http://ecapital.myetang.com/xml/article/x9953.htm -->
+<HTML><HEAD><TITLE>易都网--一步一步学DOM</TITLE>
+<SCRIPT language=JavaScript src="易都网--一步一步学DOM.files/pop-up.js"></SCRIPT>
+
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<SCRIPT language=javascript>
+<!--
+function setBgColor(color){window.thetd.bgColor=color;}
+function setFontSize(size){window.thetd.style.fontSize=size;}
+function setFontColor(color){window.thetd.style.color=color;}
+//-->
+</SCRIPT>
+
+<STYLE type=text/css>H4 {
+	LINE-HEIGHT: 18pt; TEXT-ALIGN: center
+}
+H3 {
+	LINE-HEIGHT: 18pt; TEXT-ALIGN: center
+}
+P {
+	LINE-HEIGHT: 18pt
+}
+.f1 {
+	FONT-SIZE: 11pt; COLOR: #000000
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1126" name=GENERATOR></HEAD>
+<BODY bgColor=#ffffff>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD width="100%" height=18>
+      <P align=center>文字: <SELECT style="WIDTH: 65px; HEIGHT: 21px" 
+      onchange=setFontColor(this.value); size=1 name=selcolor> <OPTION 
+        style="BACKGROUND-COLOR: #ffffff" value=#FFFFFF></OPTION> <OPTION 
+        style="BACKGROUND-COLOR: #ffffcc" value=#FFFFCC></OPTION> <OPTION 
+        style="BACKGROUND-COLOR: #ffcccc" value=#FFCCCC></OPTION> <OPTION 
+        style="BACKGROUND-COLOR: #66ffff" value=#66FFFF></OPTION> <OPTION 
+        style="BACKGROUND-COLOR: #dfdfdf" value=#DFDFDF></OPTION> <OPTION 
+        style="BACKGROUND-COLOR: #000000" value=#000000 selected></OPTION> 
+        <OPTION style="BACKGROUND-COLOR: #3333cc" value=#3333CC></OPTION> 
+        <OPTION style="BACKGROUND-COLOR: #c4c4e1" value=#C4C4E1></OPTION> 
+        <OPTION style="BACKGROUND-COLOR: #339999" value=#339999></OPTION> 
+        <OPTION style="BACKGROUND-COLOR: #339900" value=#339900></OPTION> 
+        <OPTION style="BACKGROUND-COLOR: #993300" value=#993300></OPTION> 
+        <OPTION style="BACKGROUND-COLOR: #fcc66b" value=#FCC66B></OPTION></SELECT> 
+      &nbsp;背景: <SELECT style="WIDTH: 65px; HEIGHT: 21px" 
+      onchange=setBgColor(this.value); size=1 name=select> <OPTION 
+        style="BACKGROUND-COLOR: #ffffff" value=#FFFFFF selected></OPTION> 
+        <OPTION style="BACKGROUND-COLOR: #ffffcc" value=#FFFFCC></OPTION> 
+        <OPTION style="BACKGROUND-COLOR: #ffcccc" value=#FFCCCC></OPTION> 
+        <OPTION style="BACKGROUND-COLOR: #66ffff" value=#66FFFF></OPTION> 
+        <OPTION style="BACKGROUND-COLOR: #dfdfdf" value=#DFDFDF></OPTION> 
+        <OPTION style="BACKGROUND-COLOR: #000000" value=#000000></OPTION> 
+        <OPTION style="BACKGROUND-COLOR: #3333cc" value=#3333CC></OPTION> 
+        <OPTION style="BACKGROUND-COLOR: #c4c4e1" value=#C4C4E1></OPTION> 
+        <OPTION style="BACKGROUND-COLOR: #339999" value=#339999></OPTION> 
+        <OPTION style="BACKGROUND-COLOR: #339900" value=#339900></OPTION> 
+        <OPTION style="BACKGROUND-COLOR: #993300" value=#993300></OPTION> 
+        <OPTION style="BACKGROUND-COLOR: #fcc66b" value=#FCC66B></OPTION></SELECT> 
+      &nbsp;字号: <SELECT style="WIDTH: 65px; HEIGHT: 21px; fontsize: 12pt" 
+      onchange=setFontSize(this.value); size=1 name=selsize> <OPTION 
+        value=9pt>9pt</OPTION> <OPTION value=10pt selected>10pt</OPTION> <OPTION 
+        value=11pt>11pt</OPTION> <OPTION value=12pt>12pt</OPTION> <OPTION 
+        value=13pt>13pt</OPTION> <OPTION value=14pt>14pt</OPTION> <OPTION 
+        value=15pt>15pt</OPTION> <OPTION value=16pt>16pt</OPTION></SELECT> 
+  </P></TD></TR>
+  <TR>
+    <TD width="100%">
+      <TABLE cellSpacing=0 cellPadding=3 width="100%" bgColor=#eeeeee 
+        border=0><TBODY>
+        <TR>
+          <TD class=f1 id=thetd width="100%">
+            <P>&nbsp;</P>
+            <H3>一步一步学DOM</H3>
+            <P align=center>作者: 李超写作日期:2000-5-26 </P>
+            <P>　　DOM（Document Object 
+            Model）即文档对象模型，是HTML文档以及XML文档的应用程序接口。W3C提供了精确的、语言无关的DOM接口规范，可以用任何语言来实现DOM接口。作为W3C的规范，DOM提供了一种可以应用于不同环境和应用中的标准的程序接口。它定义了文档的逻辑结构，提供了对文档进行访问和操作的方法。利用DOM，程序开发人员可以动态的创建文档，遍历文档结构，添加、修改、删除文档内容，改变文档的显示方式等等。可以这样说，文档代表了文档中的数据，而DOM则代表了如何去管理这些数据。<BR>　　DOM实际上就是一种平台无关、语言无关的应用程序接口（API）。它用对象模型来描述文档的结构。例如，对于下面的一段XML代码：<BR>　　&lt;nitf&gt;<BR>　　 
+            &lt;head&gt; &lt;meta name="contributor" 
+            content="2,李超,03/23/00,13:25:19,0x923031" /&gt; &lt;/head&gt;<BR>　　 
+            &lt;body&gt;<BR>　　 &lt;body.head&gt;&lt;headline&gt;&lt;hl1&gt; 
+            &lt;mod Add="m2" &gt;中国四大骨干网将实现互联互通&lt;/mod&gt; 
+            &lt;/hl1&gt;&lt;/headline&gt;&lt;/body.head&gt;<BR>　　 
+            &lt;body.content&gt;&lt;p&gt; &lt;mod 
+            Add="m2"&gt;中国内地四大互联网骨干网，将於近期实现宽带互联互通。<BR>　　 
+            互联互通实现后，可以在现有条件下……<BR>　　 &lt;/mod&gt; <BR>　　 
+            &lt;/p&gt;&lt;/body.content &gt;<BR>　　 
+            &lt;/body&gt;<BR>　　&lt;/nitf&gt; 
+            <BR>　　用DOM对象来表示这段文档，具有图1所示的形式：<BR>　　<IMG height=387 
+            src="易都网--一步一步学DOM.files/x9953_01.gif" width=436> 
+            <BR>　　由图1可以看出，在DOM中，文档的逻辑结构类似一棵树。文档、文档中的根、元素、元素内容、属性、属性值等都是以对象模型的形式表示的。文档中的根实际上也是一个元素，之所以要把它单独列出来，是因为在XML文档中，所有其它元素都是根元素的后代元素，而且根元素是唯一的，具有其他元素所不具有的某些特征。<BR>　　上面给出的例子比较简单，事实上，DOM中还包含注释、处理指令、文档类型、实体、实体引用、名空间、事件、样式表等多种对象模型。<BR>　　文档对象模型利用对象来把文档模型化，这些模型不仅描述了文档的结构，还定义了模型中的对象的行为。换句话说，在上面给出的例子里，图中的节点不是数据结构，而是对象，对象中包含方法和属性。在DOM中，对象模型要实现：<BR>　　用来表示、操作文档的接口<BR>　　接口的行为和属性<BR>　　接口之间的关系以及互操作<BR>　　一个典型的DOM接口中的元素节点如图2所示：<BR>　　<IMG 
+            height=315 src="易都网--一步一步学DOM.files/x9953_02.gif" width=395> 
+            <BR>　　通过前面的示例，我们已经对DOM从总体框架上有了个简单的了解，在后续的章节中，我将通过微软的XMLDOM向大家详细地介绍关于DOM的一些知识，以及如何在程序中实际地去应用DOM。希望对想学习了解DOM的朋友能够有所帮助。<BR>======2<BR>　　如前所述，利用DOM，程序开发人员可以动态地创建文档，遍历文档结构，添加、修改、删除文档内容等等。在本节以及后续章节中，将通过微软的XML分析器msxml，对DOM接口的这些应用做一详细的介绍。<BR>　　另外，在DOM接口应用的介绍过程中，我们不可避免的要用到XML文档，在后续的例子中，我们将使用同一个XML文档实例books.xml，如下所示：<BR>　　&lt;?xml 
+            version="1.0" encoding="gb2312" ?&gt;<BR>　　 &lt;books&gt;<BR>　　 
+            &lt;book status="已售完"&gt;<BR>　　 
+            &lt;author&gt;破破&lt;/author&gt;<BR>　　 &lt;title&gt;XML入门&lt;/title 
+            &gt;<BR>　　 &lt;/book&gt;<BR>　　 &lt;book status="热卖中"&gt;<BR>　　 
+            &lt;author&gt;坏坏&lt;/author&gt;<BR>　　 
+            &lt;title&gt;XML提高&lt;/title&gt;<BR>　　 
+            &lt;/book&gt;<BR>　　&lt;/books&gt;<BR>　　说明：如果系统中安装了IE4或更高的版本，则系统本身已经有了msxml组件，如果没有安装IE的话，可以到中国XML论坛（www.xml.net.cn或者www1.xml.net.cn）的软件园地里去寻找msxml来单独安装。<BR>　　创建一个Document对象<BR>　　通过创建Document对象，应用程序或者脚本就得到了对XML文档进行操作的入口。下面给出了不同的语言创建Document对象的范例。<BR>　　JScript：<BR>　　 
+            var doc = new ActiveXObject("Microsoft.XMLDOM") <BR>　　VB 
+            Script：<BR>　　 Dim doc<BR>　　 Set doc = 
+            CreateObject("Microsoft.XMLDOM")<BR>　　VB：<BR>　　 Dim doc<BR>　　 Set 
+            doc = CreateObject("Microsoft.XMLDOM")<BR>　　或者<BR>　　 Dim doc As 
+            DOMDocument<BR>　　 Set doc = New 
+            DOMDocument<BR>　　说明：在VB的第二种实现方法中，要事先通过References引入msxml控件。<BR>　　VC：<BR>　　 
+            HRESULT hr = CoCreateInstance<BR>　　 (CLSID_DOMDocument,NULL, <BR>　　 
+            CLSCTX_INPROC_SERVER,<BR>　　 IID_IXMLDocument,<BR>　　 
+            (LPVOID*)&amp;m_pXMLDocument);<BR>　　 
+            <BR>　　为了描述简单起见，在后面的例子中将只采用VB作为范例书写语言。<BR>=======3<BR>　　加载XML文档<BR>　　Document对象创建之后，我们就得到了对文档进行操作的入口，那么，创建的这个文档对象是如何同实际的XML文档关联在一起的呢？这在DOM接口中并没有明确定义，因此，不同的XML分析器的实现方法也有所不同。在msxml中，有两种实现方式，一种是通过load方法直接加载XML文档，另一种是通过loadXML方法，加载XML文档片断。下面我们就看一看这两种方法的具体应用。<BR>　　首先，我们通过load方法来加载一个XML文档，如下所示：<BR>　　Dim 
+            myDocument <BR>　　Set myDocument = 
+            CreateObject("microsoft.xmldom")<BR>　　myDocument.async = False 
+            <BR>　　myDocument.load("books.xml") 
+            <BR>　　其中，CreateObject("microsoft.xmldom")用来创建分析器实例；async属性用来指明是否允许异步下载，当async的值为true时（这也是缺省值），load方法不等待XML文档下载完毕，就把控制返回给调用进程，在这种情况下，如果想获知文档的下载状态，可以通过readyState属性来实现。在上面的例子中，我们给async赋值为false，表明只有当文档下载完毕，控制才返回给调用进程。load("books.xml")方法告诉分析器加载名字为books.xml的XML文档。<BR>　　XML文档（books.xml）被加载后，就在内存中形成了一棵DOM树，如下图所示：<BR>　　<IMG 
+            height=276 src="易都网--一步一步学DOM.files/x9953_03.gif" width=502> 
+            <BR>　　另外，我们还可以通过loadXML方法来加载XML文档片断，如下所示：<BR>　　text = "&lt;book&gt;" 
+            <BR>　　text = text &amp; "&lt;author&gt;小喆喆&lt;/author&gt;" 
+            <BR>　　text = text &amp; "&lt;title&gt;XML应用&lt;/title&gt;" 
+            <BR>　　text = text &amp; "&lt;/book&gt;" <BR>　　Dim 
+            myDocument<BR>　　Set myDocument = 
+            CreateObject("microsoft.xmldom")<BR>　　myDocument.async = False 
+            <BR>　　myDocument.loadXML(text) 
+            <BR>　　注意：load方法加载的是一个完整的XML文档，loadXML方法加载的是字符串，这个字符串是符合XML语法的XML片断，当然，如果字符串的内容是一个完整的XML文档的全部内容也是可以的。====4<BR>===========4<BR>　　遍历XML文档<BR>　　现在，我们已经可以创建XML文档对象，并加载XML文档了。对于已经加载的文档，我们要从文档中获取所需要的内容，这就要求能够通过DOM树来访问树中的任何一个节点，也就是对DOM树的遍历。<BR>　　下面我们依旧以books.xml为例，通过几个实例来说明如何遍历DOM树中的节点。<BR>　　首先，我们要获取XML文档的根元素节点，用VB描述这个操作如下：<BR>　　Set 
+            root = myDocument.documentElement 
+            <BR>　　现在，我们已经得到了文档的根元素节点，对于其他元素，我们如何获得对它的访问呢？以文档中的第二个book元素为例，对该元素节点以及其子节点的访问可以通过下面的方式来实现。<BR>　　Set 
+            bookNode = root.childNodes.item(1)<BR>　　Set authorNode = 
+            bookNode.childNodes.item(0)<BR>　　Set textNode = 
+            authorNode.childNodes.item(0)<BR>　　Set theName = textNode.nodeValue 
+            <BR>　　上述访问语句执行后，theName的值是"坏坏"。<BR>　　在上面的代码中，root是文档的根元素节点books节点，bookNode和authorNode都是元素类型的节点，textNode是TEXT类型的节点，theName是一个字符串。<BR>　　childNodes是NodeList类型的属性，item是NodeList接口中Node类型的属性，通过item可以访问NodeList节点集合中的任意节点（这儿有一点需要注意，当我们要访问根元素节点books的第二个book子节点bookNode时，我们用的索引参数是"1"，这是因为item中的索引参数是从0开始的，如果我们要访问节点集合中的第一个节点，则应该用item(0)来表示）。<BR>　　在DOM规范中，要访问元素节点的文本内容，需要先得到元素节点的TEXT子节点，再通过TEXT节点的属性获取文本内容。微软在实现DOM接口时对DOM进行了部分扩展，可以通过元素类型节点的text属性直接获得元素中的文本内容。具体实用说明可以参考微软msdn中的帮助。<BR>　　上面的例子给出了如何访问DOM树中的元素节点，对于DOM树中的属性节点，访问方法略有不同，可以通过下面的语句来实现：<BR>　　Set 
+            bookNode = root.childNodes.item(1)<BR>　　Set attr = 
+            bookNode.attributes.getNamedItem("status")<BR>　　attrContent = 
+            attr.nodeValue 
+            <BR>　　上述访问语句执行后，attrContent的值是"热卖中"。<BR>　　在上面的代码中，attr是属性类型的节点，attributes是NamedNodeMap类型的属性，getNamedItem是NamedNodeMap接口中的方法。属性的内容可以通过属性节点的nodeValue来获得。<BR>======5<BR>　　目前，我们已经能够通过DOM获取XML文档中的信息了。如前所述，通过DOM还可以动态地更改XML文档中的内容。下面我们仍旧使用上面的books.xml文档，通过实例来说明如何更改XML文档的中的内容。<BR>　　添加元素<BR>　　假如我们希望在books.xml中，给第一个book元素增添一个字符串为"北京大学出版社"的publisher元素，实现这一添加元素操作的语句如下：<BR>　　Set 
+            node = root.childNodes.item(0)<BR>　　Set newNode = 
+            myDocument.createElement("publisher")<BR>　　Set rtnNode = 
+            node.insertBefore(newNode, node.lastChild)<BR>　　Set textNode = 
+            myDocument.createTextNode("北京大学出版社")<BR>　　node.childNodes.item(1). 
+            appendChild (textNode) <BR>　　用XML文档片断来表示添加操作之后的结果如下所示：<BR>　　&lt;book 
+            status="已售完"&gt;<BR>　　 &lt;author&gt;破破&lt;/author&gt;<BR>　　 
+            &lt;publisher&gt;北京大学出版社&lt;/publisher&gt;<BR>　　 
+            &lt;title&gt;XML入门&lt;/title 
+            &gt;<BR>　　&lt;/book&gt;<BR>　　删除元素<BR>　　现在，我们再把刚才添加的元素删除，可通过下面的代码实现这一目的：<BR>　　Set 
+            node = root.childNodes.Item(0)<BR>　　Set oldNode = 
+            node.removeChild(node.childNodes.Item(1)) 
+            <BR>　　其中，oldNode中存放的是已被删除的节点。在删除某个节点时，以该节点为根的子树将整个被删除。<BR>　　改变元素内容<BR>　　元素内容的改变包括元素名称、元素属性、元素所包含的文本内容等项目的改变。下面仅就元素所包含的文本内容的改变给出一个范例，其他内容的改变实现方法与此类似。<BR>　　假如想把"破破"所写的书的名字更改为"XML初学者指南"，通过下列语句就可以实现：<BR>　　Set 
+            node = root.childNodes.Item(0)<BR>　　Set titleNode = 
+            node.childNodes.Item(1)<BR>　　titleNode.childNodes.Item(0).nodeValue 
+            = " XML初学者指南" <BR>　　用XML文档片断来表示更改操作之后的结果如下所示：<BR>　　&lt;book 
+            status="已售完"&gt;<BR>　　 &lt;author&gt;破破&lt;/author&gt;<BR>　　 
+            &lt;title&gt;XML初学者指南&lt;/title 
+            &gt;<BR>　　&lt;/book&gt;<BR>　　至此，我们已经把对DOM树的常用操作做了简单的介绍。一般说来，支持DOM的XML分析器通常会对DOM做一些扩展，这些扩展不属于DOM规范中的标准，但却给DOM树的操作带来了方便，不同的分析器所做的扩展也不尽相同，可以通过查询相关技术支持资料或者帮助来获取更多的信息。<BR>　　在后面的章节中，我们将依照规范对几个主要的接口作一详细的介绍。做这样的介绍的目的，是想让大家对DOM规范本身有所了解，而不仅仅是依赖于某个特定的分析器。<BR>　　&lt;&lt;上一篇下一篇&gt;&gt; 
+            <BR>====6<BR>　　从这一节开始，我们将陆续介绍DOM规范中的几个主要接口。希望通过这样的介绍，能使大家对DOM规范本身有所了解。首先，我们来看一下Document接口。<BR>　　Document接口<BR>　　Document接口代表了整个XML文档，提供了对文档中的数据进行访问和操作的入口。<BR>　　由于元素、文本节点、注释、处理指令等都不能脱离文档的上下文关系而独立存在，所以在Document接口提供了创建其他节点对象的方法，通过该方法创建的节点对象都有一个ownerDocument属性，用来表明当前节点是由谁所创建的以及节点同Document之间的联系。<BR>　　在DOM树中，Document接口同其他接口之间的关系如下图所示：<BR>　　<IMG 
+            height=311 src="易都网--一步一步学DOM.files/x9953_04.gif" width=576> 
+            <BR>　　由上图可以看出，Document节点是DOM树中的根节点，也即对XML文档进行操作的入口节点。通过Docuemt节点，可以访问到文档中的其他节点，如处理指令、注释、文档类型以及XML文档的根元素节点等等。另外，从图中我们还可以看出，在一棵DOM树中，Document节点可以包含多个处理指令、多个注释作为其子节点，而文档类型节点和XML文档根元素节点都是唯一的。<BR>　　Document接口的IDL（Interface 
+            Definition Language接口定义语言）定义如下表所示：<BR>　　interface Document : Node 
+            {<BR>　　readonly attribute DocumentType doctype;<BR>　　readonly 
+            attribute DOMImplementation implementation; <BR>　　readonly attribute 
+            Element documentElement; <BR>　　Element createElement(in DOMString 
+            tagName) raises(DOMException);<BR>　　DocumentFragment 
+            createDocumentFragment(); <BR>　　Text createTextNode(in DOMString 
+            data); <BR>　　Comment createComment(in DOMString data); 
+            <BR>　　CDATASection createCDATASection(in DOMString data) 
+            raises(DOMException); <BR>　　ProcessingInstruction 
+            createProcessingInstruction(in DOMString target, in DOMString data) 
+            raises(DOMException); <BR>　　Attr createAttribute(in DOMString name) 
+            raises(DOMException); <BR>　　EntityReference createEntityReference(in 
+            DOMString name) raises(DOMException); <BR>　　NodeList 
+            getElementsByTagName(in DOMString tagname); <BR>　　// Introduced in 
+            DOM Level 2: <BR>　　Node importNode(in Node importedNode, in boolean 
+            deep)raises(DOMException); <BR>　　// Introduced in DOM Level 2: 
+            <BR>　　Element createElementNS(in DOMString namespaceURI, in 
+            DOMString qualifiedName) raises(DOMException); <BR>　　// Introduced 
+            in DOM Level 2: <BR>　　Attr createAttributeNS(in DOMString 
+            namespaceURI, in DOMString qualifiedName) raises(DOMException); 
+            <BR>　　// Introduced in DOM Level 2: <BR>　　NodeList 
+            getElementsByTagNameNS(in DOMString namespaceURI, in DOMString 
+            localName); <BR>　　// Introduced in DOM Level 2: <BR>　　Element 
+            getElementById(in DOMString elementId);<BR>　　};<BR>　　 
+            <BR>　　在下一节中，我们将对Document接口中的部分常用属性和方法做一简单介绍。<BR>====7<BR>　　Document接口中的常用属性和方法<BR>　　属性<BR>　　--------------------------------------------------------------------------------<BR>　　doctype 
+            ：DocumentType类型的只读属性<BR>　　记录文档的文档类型声明。对于HTML文档以及没有文档类型声明的XML文档（即没有DTD的XML文档），该值为NULL。在DOM 
+            Level 
+            2中这个属性是只读的，不允许被编辑，只提供信息。<BR>　　--------------------------------------------------------------------------------<BR>　　documentElement：Element类型的只读属性<BR>　　该属性为访问文档的根元素提供了一种简单的方法。文档的根元素在DOM树中对应的是Document对象的一个子节点，通过documentElement属性可以获得这个子节点。对于HTML文档，获得的就是标记名为"HTML"的元素。<BR>　　--------------------------------------------------------------------------------<BR>　　 
+            <BR>　　方法<BR>　　--------------------------------------------------------------------------------<BR>　　reateAttribute<BR>　　创建一个具有给定的名称的属性节点，然后可以利用setAttributeNode方法把该属性设置为某个元素的属性。<BR>　　参数<BR>　　DOMString 
+            name：属性的名字。<BR>　　返回值<BR>　　Attr类型的属性节点。该节点对象中的nodeName属性的值就是参数name传递过来的值，其它几个属性localName，prefix以及namespaceURI的值都是NULL。<BR>　　异常<BR>　　DOMException 
+            INVALID_CHARACTER_ERR：如果参数name中包含不合法字符，就会产生该异常。<BR>　　--------------------------------------------------------------------------------<BR>　　createCDATASection<BR>　　创建一个CDATASection节点，节点的值就是参数data中所传递的内容。<BR>　　参数<BR>　　DOMString 
+            data：CDATASection的内容。<BR>　　返回值<BR>　　CDATASection类型的节点。<BR>　　异常<BR>　　DOMException 
+            NOT_SUPPORTED_ERR：如果当前文档是一个HTML文档，就会产生该异常。<BR>　　--------------------------------------------------------------------------------<BR>　　createComment<BR>　　创建一个注释节点，节点的值就是参数data中所传递的内容。<BR>　　参数<BR>　　DOMString 
+            data：Comment节点的内容。<BR>　　返回值<BR>　　Comment类型的节点。<BR>　　无异常<BR>　　--------------------------------------------------------------------------------<BR>　　createElement<BR>　　创建一个指定类型的元素节点。<BR>　　参数<BR>　　DOMString 
+            tagName：要创建的元素的名字。对XML来说，这个名字是大小写敏感的。对HTML来说，这个名字是非大小写敏感的，在DOM实现过程中必须转化成大写。<BR>　　返回值<BR>　　Element类型的节点。该节点对象中的nodeName属性的值就是参数tagName传递过来的值，其它几个属性localName，prefix以及namespaceURI的值都是NULL。<BR>　　异常<BR>　　DOMException 
+            INVALID_CHARACTER_ERR：如果参数tagName中包含不合法字符，就会产生该异常。<BR>　　--------------------------------------------------------------------------------<BR>　　createEntityReference<BR>　　创建一个实体引用节点。如果被引用的实体是已知的，那么该实体应用节点跟相应的实体节点具有同样的子节点集。<BR>　　参数<BR>　　DOMString 
+            name：要创建的引用实体的名字。<BR>　　返回值<BR>　　EntityReference类型的节点。<BR>　　异常<BR>　　DOMException 
+            INVALID_CHARACTER_ERR：如果参数tagName中包含不合法字符，就会产生该异常。<BR>　　NOT_SUPPORTED_ERR：如果当前文档是一个HTML文档，就会产生该异常。<BR>　　--------------------------------------------------------------------------------<BR>　　createProcessingInstruction 
+            <BR>　　创建一个具有指定的名字和数据的处理指令节点。<BR>　　参数<BR>　　DOMString 
+            target：处理指令的目标部分。<BR>　　DOMString 
+            data：处理指令的数据部分。<BR>　　返回值<BR>　　ProcessingInstruction类型的节点。<BR>　　异常<BR>　　DOMException 
+            INVALID_CHARACTER_ERR：如果参数tagName中包含不合法字符，就会产生该异常。<BR>　　NOT_SUPPORTED_ERR：如果当前文档是一个HTML文档，就会产生该异常。<BR>　　--------------------------------------------------------------------------------<BR>　　createTextNode 
+            <BR>　　创建一个具有指定的字符串内容的文本节点。<BR>　　参数<BR>　　DOMString 
+            data：文本节点的内容。<BR>　　返回值<BR>　　Text类型的节点。<BR>　　无异常<BR>　　--------------------------------------------------------------------------------<BR>　　getElementById<BR>　　返回一个具有给定ID的元素节点。如果没有这样的元素存在，就返回NULL。对于有多个元素具有同一个ID的情况，DOM中没有给出应该如何处理。<BR>　　注意<BR>　　在DOM实现过程中，必须自己定义哪个属性是ID类型，除非你明确的定义了属性名字为"ID"的属性是ID类型的，否则，纵使属性名字为"ID"，这个属性也不是"ID"类型的。如果在DOM实现过程中，没有指明哪个属性是具有ID类型的属性，该方法就返回NULL。<BR>　　参数<BR>　　DOMString 
+            elementId：要匹配的元素的id值。<BR>　　返回值<BR>　　相匹配的元素节点。<BR>　　无异常<BR>　　--------------------------------------------------------------------------------<BR>　　getElementByTagName<BR>　　返回一个节点的集合（NodeList），该集合中所有的元素都具有参数中所给定的标记名，集合中的所有元素按照在DOM树中的前序排列进行排序。<BR>　　参数<BR>　　DOMString 
+            tagname：要匹配的元素的标记名。特殊标记"*"表示匹配所有标记。<BR>　　返回值<BR>　　相匹配的元素节点的集合。<BR>　　无异常<BR>　　--------------------------------------------------------------------------------<BR>　　&lt;&lt;上一篇下一篇&gt;&gt; 
+            <BR>=====8<BR>　　这一节主要是介绍一下DOM规范中的Node接口。<BR>　　Node接口<BR>　　Node接口在整个DOM规范中具有举足轻重的地位，DOM规范中有很大一部分接口是从Node接口继承过来的，例如，Element、Attr、CDATASection等接口，都是从Node继承过来的。<BR>　　在DOM树中，一个Node接口实例代表了树中的一个节点。DOM树中包含很多各种不同类型的节点，这些节点基本上都是从Node继承过来的。Node接口中定义了所有不同类型的节点中都具有的属性和方法。<BR>　　如前所述，DOM规范中定义了很多不同类型的节点。在这些节点类型定义中，采用不同的整数来代表不同的节点类型。为了保证日后能够很容易的对节点类型进行扩展，W3C保留了1-200之间的整数，作为不同的节点类型的定义。<BR>　　节点类型中的常量定义如表1所示：</P>
+            <P align=center>表1 节点类型中的常量定义 </P>
+            <TABLE width="76%" align=center border=1>
+              <TBODY>
+              <TR>
+                <TD width="44%" height=22>ATTRIBUTE_NODE</TD>
+                <TD width="56%" height=22>属性节点（Attr） </TD></TR>
+              <TR>
+                <TD width="44%">CDATA_SECTION_NODE</TD>
+                <TD width="56%">CDATA节点（CDATASection）</TD></TR>
+              <TR>
+                <TD width="44%">COMMENT_NODE</TD>
+                <TD width="56%">注释节点（Comment）</TD></TR>
+              <TR>
+                <TD width="44%">DOCUMENT_FRAGMENT_NODE</TD>
+                <TD width="56%">文档片断节点（DocumentFragment）</TD></TR>
+              <TR>
+                <TD width="44%">DOCUMENT_NODE</TD>
+                <TD width="56%">Document节点（Document）</TD></TR>
+              <TR>
+                <TD width="44%">DOCUMENT_TYPE_NODE</TD>
+                <TD width="56%">文档类型节点（DocumentType）</TD></TR>
+              <TR>
+                <TD width="44%">ELEMENT_NODE</TD>
+                <TD width="56%">元素节点（Element）</TD></TR>
+              <TR>
+                <TD width="44%">ENTITY_NODE</TD>
+                <TD width="56%">实体节点（Entity）</TD></TR>
+              <TR>
+                <TD width="44%">ENTITY_REFERENCE_NODE</TD>
+                <TD width="56%">实体引用节点（EntityReference）</TD></TR>
+              <TR>
+                <TD width="44%">NOTATION_NODE</TD>
+                <TD width="56%">Notation节点（Notation）</TD></TR>
+              <TR>
+                <TD width="44%">PROCESSING_INSTRUCTION_NODE</TD>
+                <TD width="56%">处理指令节点（ProcessingInstruction）</TD></TR>
+              <TR>
+                <TD width="44%">TEXT_NODE</TD>
+                <TD width="56%">Text节点（Text）</TD></TR></TBODY></TABLE>
+            <P>　　在不同的节点类型中，Node接口中的属性nodeName，nodeValue以及attributes具有不同的取值，具体定义如表2所示：</P>
+            <P align=center>表2 属性nodeName，nodeValue以及attributes的取值</P>
+            <TABLE borderColor=#808080 cellSpacing=1 width=502 align=center 
+            border=1>
+              <TBODY>
+              <TR>
+                <TD vAlign=center width="32%" bgColor=#c0c0c0>　</TD>
+                <TD vAlign=center width="19%" bgColor=#c0c0c0>
+                  <P align=justify><B><FONT size=3>nodeName</FONT></B> </P></TD>
+                <TD vAlign=center width="26%" bgColor=#c0c0c0>
+                  <P align=justify><B><FONT size=3>nodeValue</FONT></B> </P></TD>
+                <TD vAlign=center width="23%" bgColor=#c0c0c0>
+                  <P align=justify><B><FONT size=3>attributes</FONT></B> 
+              </P></TD></TR>
+              <TR>
+                <TD vAlign=top width="32%">
+                  <P align=justify><FONT size=3>Attr</FONT> </P></TD>
+                <TD vAlign=top width="19%">
+                  <P align=justify><FONT lang=ZH-CN face=宋体 size=3>属性名</FONT> 
+                  </P></TD>
+                <TD vAlign=top width="26%">
+                  <P align=justify><FONT lang=ZH-CN face=宋体 size=3>属性值</FONT> 
+                  </P></TD>
+                <TD vAlign=top width="23%">
+                  <P align=justify><FONT size=3>null</FONT> </P></TD></TR>
+              <TR>
+                <TD vAlign=top width="32%">
+                  <P align=justify><FONT size=3>CDATASection</FONT> </P></TD>
+                <TD vAlign=top width="19%">
+                  <P align=justify><FONT size=3>#cdata-section</FONT> </P></TD>
+                <TD vAlign=top width="26%">
+                  <P align=justify><FONT size=3>CDATA </FONT><FONT lang=ZH-CN 
+                  face=宋体 size=3>的内容</FONT> </P></TD>
+                <TD vAlign=top width="23%">
+                  <P align=justify><FONT size=3>null</FONT> </P></TD></TR>
+              <TR>
+                <TD vAlign=top width="32%">
+                  <P align=justify><FONT size=3>Comment</FONT> </P></TD>
+                <TD vAlign=top width="19%">
+                  <P align=justify><FONT size=3>#comment</FONT> </P></TD>
+                <TD vAlign=top width="26%">
+                  <P align=justify><FONT lang=ZH-CN face=宋体 
+                  size=3>注释的具体内容</FONT> </P></TD>
+                <TD vAlign=top width="23%">
+                  <P align=justify><FONT size=3>null</FONT> </P></TD></TR>
+              <TR>
+                <TD vAlign=top width="32%">
+                  <P align=justify><FONT size=3>Document</FONT> </P></TD>
+                <TD vAlign=top width="19%">
+                  <P align=justify><FONT size=3>#document</FONT> </P></TD>
+                <TD vAlign=top width="26%">
+                  <P align=justify><FONT size=3>null</FONT> </P></TD>
+                <TD vAlign=top width="23%">
+                  <P align=justify><FONT size=3>null</FONT> </P></TD></TR>
+              <TR>
+                <TD vAlign=top width="32%">
+                  <P align=justify><FONT size=3>DocumentFragment</FONT> </P></TD>
+                <TD vAlign=top width="19%">
+                  <P align=justify><FONT size=3>#document-fragment</FONT> 
+</P></TD>
+                <TD vAlign=top width="26%">
+                  <P align=justify><FONT size=3>null</FONT> </P></TD>
+                <TD vAlign=top width="23%">
+                  <P align=justify><FONT size=3>null</FONT> </P></TD></TR>
+              <TR>
+                <TD vAlign=top width="32%" height=21>
+                  <P align=justify><FONT size=3>DocumentType</FONT> </P></TD>
+                <TD vAlign=top width="19%" height=21>
+                  <P align=justify><FONT lang=ZH-CN face=宋体 size=3>文档类型名</FONT> 
+                  </P></TD>
+                <TD vAlign=top width="26%" height=21>
+                  <P align=justify><FONT size=3>null</FONT> </P></TD>
+                <TD vAlign=top width="23%" height=21>
+                  <P align=justify><FONT size=3>null</FONT> </P></TD></TR>
+              <TR>
+                <TD vAlign=top width="32%">
+                  <P align=justify><FONT size=3>Element</FONT> </P></TD>
+                <TD vAlign=top width="19%">
+                  <P align=justify><FONT lang=ZH-CN face=宋体 size=3>标记名</FONT> 
+                  </P></TD>
+                <TD vAlign=top width="26%">
+                  <P align=justify><FONT size=3>null</FONT> </P></TD>
+                <TD vAlign=top width="23%">
+                  <P align=justify><FONT size=3>NamedNodeMap</FONT><FONT 
+                  lang=ZH-CN face=宋体 size=3><BR>类型的值</FONT><FONT lang=ZH-CN 
+                  face=宋体> </FONT></P></TD></TR>
+              <TR>
+                <TD vAlign=top width="32%">
+                  <P align=justify><FONT size=3>Entity</FONT> </P></TD>
+                <TD vAlign=top width="19%">
+                  <P align=justify><FONT lang=ZH-CN face=宋体 size=3>实体名</FONT> 
+                  </P></TD>
+                <TD vAlign=top width="26%">
+                  <P align=justify><FONT size=3>null</FONT> </P></TD>
+                <TD vAlign=top width="23%">
+                  <P align=justify><FONT size=3>null</FONT> </P></TD></TR>
+              <TR>
+                <TD vAlign=top width="32%">
+                  <P align=justify><FONT size=3>EntityReference</FONT> </P></TD>
+                <TD vAlign=top width="19%">
+                  <P align=justify><FONT lang=ZH-CN face=宋体 size=3>实体引用名</FONT> 
+                  </P></TD>
+                <TD vAlign=top width="26%">
+                  <P align=justify><FONT size=3>null</FONT> </P></TD>
+                <TD vAlign=top width="23%">
+                  <P align=justify><FONT size=3>null</FONT> </P></TD></TR>
+              <TR>
+                <TD vAlign=top width="32%">
+                  <P align=justify><FONT size=3>Notation</FONT> </P></TD>
+                <TD vAlign=top width="19%">
+                  <P align=justify><FONT lang=ZH-CN face=宋体 size=3>指示名</FONT> 
+                  </P></TD>
+                <TD vAlign=top width="26%">
+                  <P align=justify><FONT size=3>null</FONT> </P></TD>
+                <TD vAlign=top width="23%">
+                  <P align=justify><FONT size=3>null</FONT> </P></TD></TR>
+              <TR>
+                <TD vAlign=top width="32%">
+                  <P align=justify><FONT size=3>ProcessingInstruction</FONT> 
+                </P></TD>
+                <TD vAlign=top width="19%">
+                  <P align=justify><FONT size=3>target</FONT><FONT lang=ZH-CN 
+                  face=宋体 size=3>名，即处理指令所用到的应用程序的标识名</FONT> </P></TD>
+                <TD vAlign=top width="26%">
+                  <P align=justify><FONT lang=ZH-CN face=宋体 size=3>除</FONT><FONT 
+                  size=3>target</FONT><FONT lang=ZH-CN face=宋体 
+                  size=3>名之外的所有内容</FONT> </P></TD>
+                <TD vAlign=top width="23%">
+                  <P align=justify><FONT size=3>null</FONT> </P></TD></TR>
+              <TR>
+                <TD vAlign=top width="32%">
+                  <P align=justify><FONT size=3>Text</FONT> </P></TD>
+                <TD vAlign=top width="19%">
+                  <P align=justify><FONT size=3>#text</FONT> </P></TD>
+                <TD vAlign=top width="26%">
+                  <P align=justify><FONT lang=ZH-CN face=宋体 
+                  size=3>文本节点的内容</FONT> </P></TD>
+                <TD vAlign=top width="23%">
+                  <P align=justify><FONT size=3>null</FONT> 
+            </P></TD></TR></TBODY></TABLE>
+            <P>　　Text #text 文本节点的内容null 
+            Node接口提供了访问DOM树中元素内容与信息的途径，并给出了对DOM树中的元素进行遍历的支持。<BR>　　Node接口的IDL定义如下所示：<BR>　　interface 
+            Node {<BR>　　// NodeType<BR>　　const unsigned short ELEMENT_NODE = 
+            1;<BR>　　const unsigned short ATTRIBUTE_NODE = 2;<BR>　　const unsigned 
+            short TEXT_NODE = 3;<BR>　　const unsigned short CDATA_SECTION_NODE = 
+            4;<BR>　　const unsigned short ENTITY_REFERENCE_NODE = 5;<BR>　　const 
+            unsigned short ENTITY_NODE = 6;<BR>　　const unsigned short 
+            PROCESSING_INSTRUCTION_NODE = 7;<BR>　　const unsigned short 
+            COMMENT_NODE = 8;<BR>　　const unsigned short DOCUMENT_NODE = 
+            9;<BR>　　const unsigned short DOCUMENT_TYPE_NODE = 10;<BR>　　const 
+            unsigned short DOCUMENT_FRAGMENT_NODE = 11;<BR>　　const unsigned 
+            short NOTATION_NODE = 12;<BR>　　readonly attribute DOMString 
+            nodeName;<BR>　　attribute DOMString nodeValue;<BR>　　// 
+            raises(DOMException) on setting<BR>　　// raises(DOMException) on 
+            retrieval<BR>　　readonly attribute unsigned short 
+            nodeType;<BR>　　readonly attribute Node parentNode;<BR>　　readonly 
+            attribute NodeList childNodes;<BR>　　readonly attribute Node 
+            firstChild;<BR>　　readonly attribute Node lastChild;<BR>　　readonly 
+            attribute Node previousSibling;<BR>　　readonly attribute Node 
+            nextSibling;<BR>　　readonly attribute NamedNodeMap 
+            attributes;<BR>　　// Modified in DOM Level 2:<BR>　　readonly attribute 
+            Document ownerDocument;<BR>　　Node insertBefore(in Node newChild, in 
+            Node refChild) raises(DOMException);<BR>　　Node replaceChild(in Node 
+            newChild, in Node oldChild) raises(DOMException);<BR>　　Node 
+            removeChild(in Node oldChild) raises(DOMException);<BR>　　Node 
+            appendChild(in Node newChild) raises(DOMException);<BR>　　boolean 
+            hasChildNodes();<BR>　　Node cloneNode(in boolean deep);<BR>　　// 
+            Introduced in DOM Level 2:<BR>　　void normalize();<BR>　　// Introduced 
+            in DOM Level 2:<BR>　　boolean supports(in DOMString feature, in 
+            DOMString version);<BR>　　// Introduced in DOM Level 2:<BR>　　readonly 
+            attribute DOMString namespaceURI;<BR>　　// Introduced in DOM Level 
+            2:<BR>　　attribute DOMString prefix;<BR>　　// raises(DOMException) on 
+            setting<BR>　　// Introduced in DOM Level 2:<BR>　　readonly attribute 
+            DOMString localName;<BR>　　} 
+            <BR>====9<BR>　　Node接口中的常用属性和方法<BR>　　属性<BR>　　--------------------------------------------------------------------------------<BR>　　attributes 
+            ：NamedNodeMap类型的只读属性<BR>　　如果当前节点是ELEMENT_NODE类型的节点，则NamedNodeMap中包含了当前元素的所有属性信息。如果当前节点的节点类型不是ELEMENT_NODE，则属性值为null。<BR>　　--------------------------------------------------------------------------------<BR>　　childNodes：NodeList类型的只读属性<BR>　　一个NodeList类型的实例中，包含了当前节点的所有子节点。如果当前节点没有子节点，NodeList中就不包含任何节点（但返回值并不是null，只是在NodeList的属性中指明不包含任何节点）。<BR>　　--------------------------------------------------------------------------------<BR>　　firstChild：Node类型的只读属性<BR>　　当前节点的第一个子节点，如果没有这样的节点，就返回null。<BR>　　--------------------------------------------------------------------------------<BR>　　lastChild：Node类型的只读属性<BR>　　当前节点的最后一个子节点，如果没有这样的节点，就返回null。<BR>　　--------------------------------------------------------------------------------<BR>　　nextSibling：Node类型的只读属性<BR>　　当前节点的直接后继节点，如果没有这样的节点，就返回null。<BR>　　--------------------------------------------------------------------------------<BR>　　nodeName：DOMString类型的只读属性<BR>　　当前节点的名字，对于不同的节点类型，有不同的取值，如上一节中表2所示。<BR>　　--------------------------------------------------------------------------------<BR>　　nodeType：unsigned 
+            short类型的只读属性<BR>　　当前节点的类型，取值如上一节中表1所示。<BR>　　--------------------------------------------------------------------------------<BR>　　nodeValue：DOMString类型的属性<BR>　　当前节点的值，对于不同的节点类型，该属性具有不同的取值，具体如上一节中表2所示。如果当前节点的nodeValue对应表2中的取值是null，那么，即使给nodeValue赋了一个值，该值也不起任何作用，是无意义的。<BR>　　赋值异常<BR>　　DOMException 
+            NO_MODIFICATION_ALLOWED_ERR：如果当前节点是只读节点，就会产生该异常。<BR>　　取值异常<BR>　　DOMException 
+            DOMSTRING_SIZE_ERR：如果返回值的字符个数比DOM实现时定义的DOMString变量的缓冲区大，就会产生该异常。<BR>　　--------------------------------------------------------------------------------<BR>　　parentNodes：Node类型的只读属性<BR>　　当前节点的父节点。一般说来，除了Attr，Document，Entity以及Notation节点之外，其它所有的节点都有父节点。当然，也有特殊情况，譬如当前节点是一个刚刚创建的节点，还没有被添加到DOM树中；或者当前节点是一个刚从DOM树中被删除（Remove）的节点。这种时候，该属性的值为null。<BR>　　--------------------------------------------------------------------------------<BR>　　previousSibling：Node类型的只读属性<BR>　　当前节点的直接前驱节点。如果没有这样的节点，就返回null。<BR>　　--------------------------------------------------------------------------------<BR>　　 
+            <BR>　　方法<BR>　　--------------------------------------------------------------------------------<BR>　　appendChild<BR>　　把参数中传递过来的newChild添加到当前节点的所有的子节点列表最后。如果在DOM树中已经存在newChild节点了，则先把已经存在的节点删除，然后再把newChild添加到DOM树中。<BR>　　参数<BR>　　Node 
+            newChild：要添加的节点。<BR>　　返回值<BR>　　添加的节点。<BR>　　异常<BR>　　DOMException 
+            HIERARCHY_REQUEST_ERR：如果当前节点中，不允许插入newChild节点类型的节点，或者要插入的节点是当前节点的祖先节点，就会产生该异常。<BR>　　WRONG_DOCUMENT_ERR：如果要添加的节点和当前节点不属于同一个文档，就会产生该异常。<BR>　　NO_MODIFICATION_ALLOWED_ERR：如果要添加的节点或者当前节点是只读的，就会产生该异常。<BR>　　--------------------------------------------------------------------------------<BR>　　cloneNode<BR>　　复制当前节点。复制产生的节点没有父节点（parentNode是null）。<BR>　　复制一个Element节点，包括复制该元素本身的所有的属性和属性值，以及由XML处理器生成的缺省的属性和属性值。但是，如果在调用cloneNode时没有指明这是一个深度复制的话，cloneNode方法并不复制元素中的文本内容，这是因为元素中的文本内容包含在元素节点的子节点--Text节点中。复制其它类型的节点都是简单的返回一个当前节点的拷贝。<BR>　　参数<BR>　　boolean 
+            deep：如果该值为真，就会递归的复制以当前节点为根的整个子树。如果该值为假，就只拷贝当前节点（如果当前节点是个Element节点，就还要拷贝当前节点的属性和属性值）。<BR>　　返回值<BR>　　复制的节点。<BR>　　无异常<BR>　　--------------------------------------------------------------------------------<BR>　　hasChildNodes<BR>　　判断当前节点是否有子节点。<BR>　　参数<BR>　　DOMString 
+            data：Comment节点的内容。<BR>　　返回值<BR>　　Comment类型的节点。<BR>　　无异常<BR>　　--------------------------------------------------------------------------------<BR>　　createElement<BR>　　创建一个指定类型的元素节点。<BR>　　无参数<BR>　　返回值<BR>　　boolean 
+            true 
+            如果当前节点包含有子节点，返回值为真，否则，返回值为假。<BR>　　无异常<BR>　　--------------------------------------------------------------------------------<BR>　　insertBefore<BR>　　把节点newChild插入到当前节点的子节点refChild之前。如果refChild为null，就把节点newChild插入到当前节点的所有子节点的列表之后。如果newChild是一个DocumentFragment的对象，那么newChild的所有的子节点将按照在newChild中的顺序，插入到refChild之前。如果DOM树中已经存在newChild节点了，则先删除已存在的节点，再插入newChild节点。<BR>　　参数<BR>　　Node 
+            newChild：要插入的节点。<BR>　　Node 
+            refChild：用来指明要把新添加的节点插入到哪个节点之前。<BR>　　返回值<BR>　　插入的节点。<BR>　　异常<BR>　　DOMException 
+            HIERARCHY_REQUEST_ERR：如果当前节点中，不允许插入newChild节点类型的节点，或者要插入的节点是当前节点的祖先节点，就会产生该异常。<BR>　　WRONG_DOCUMENT_ERR：如果要插入的节点和当前节点不属于同一个文档，就会产生该异常。<BR>　　NO_MODIFICATION_ALLOWED_ERR：如果要插入的节点或者当前节点是只读的，就会产生该异常。<BR>　　NOT_FOUND_ERR：如果节点refChild不是当前节点的子节点，就会产生该异常。<BR>　　--------------------------------------------------------------------------------<BR>　　removeChild<BR>　　从当前节点的子节点中删除oldChild节点，并返回oldChild节点。<BR>　　参数<BR>　　Node 
+            oldChild：要删除的节点。<BR>　　返回值<BR>　　被删除的节点。<BR>　　异常<BR>　　DOMException 
+            NO_MODIFICATION_ALLOWED_ERR：如果当前节点是只读的，就会产生该异常。<BR>　　NOT_FOUND_ERR：如果节点oldChild不是当前节点的子节点，就会产生该异常。<BR>　　--------------------------------------------------------------------------------<BR>　　replaceChild<BR>　　用newChild节点代替当前节点中的子节点oldChild，并返回oldChild节点。<BR>　　如果newChild节点是一个DocumentFragment对象，就会用以newChild为根的子树来代替oldChild节点。如果DOM树中已经存在newChild节点了，则先从DOM树中将newChild节点删除，再用newChild节点来代替oldChild节点。<BR>　　参数<BR>　　Node 
+            newChild：要插入到当前节点子节点列表中的节点。<BR>　　Node 
+            oldChild：将要被替代的节点。<BR>　　返回值<BR>　　被删除的节点。<BR>　　异常<BR>　　DOMException 
+            HIERARCHY_REQUEST_ERR：如果当前节点中，不允许插入newChild节点类型的节点，或者newChild节点是当前节点的祖先节点，就会产生该异常。<BR>　　WRONG_DOCUMENT_ERR：如果要newChild节点和当前节点不属于同一个文档，就会产生该异常。<BR>　　NO_MODIFICATION_ALLOWED_ERR：如果newChild节点或者当前节点是只读的，就会产生该异常。<BR>　　NOT_FOUND_ERR：如果节点oldChild不是当前节点的子节点，就会产生该异常。<BR>　　--------------------------------------------------------------------------------<BR>===========10<BR>　　这一节主要是介绍一下DOM规范中的NodeList接口。<BR>　　NodeList接口<BR>　　NodeList接口提供了对节点集合的抽象定义。NodeList用于表示有顺序关系的一组节点，比如某个节点的子节点序列；另外，它还出现在一些方法的返回值中，例如GetNodeByName方法的返回值就是一个NodeList类型的节点集。<BR>　　在DOM中，NodeList的对象是"live"的（不知道该怎么翻译这个live，类似于现场直播的含义），换句话说，对文档的改变，会直接反映到相关的NodeList对象中。例如，如果通过DOM获得一个NodeList对象，该对象中包含了某个Element节点的所有子节点的集合，那么，当再通过DOM对Element节点进行操作（添加、删除、改动节点中的子节点）时，这些改变将会自动地反映到NodeList对象中，而不需DOM应用程序再做其他额外的操作。<BR>　　NodeList中的每个item都可以通过一个索引来访问，该索引值从0开始。<BR>　　NodeList接口的IDL定义如下所示：<BR>　　interface 
+            NodeList { <BR>　　Node item(in unsigned long index);<BR>　　readonly 
+            attribute unsigned long length;<BR>　　} 
+            <BR>　　NodeList接口中的属性和方法简介<BR>　　属性<BR>　　--------------------------------------------------------------------------------<BR>　　length 
+            ：unsigned 
+            long类型的只读属性<BR>　　该节点集合中的节点个数。访问集合中的节点的合法的索引值为0到length-1之间的数（包括0和length-1）。<BR>　　--------------------------------------------------------------------------------<BR>　　方法<BR>　　--------------------------------------------------------------------------------<BR>　　item<BR>　　返回节点集合中的第index个节点。index的取值从0开始。如果index的值大于等于集合中的节点个数，就返回null。<BR>　　参数<BR>　　unsigned 
+            long 
+            index：要获取的节点在集合中的索引值（从0开始）。<BR>　　返回值<BR>　　节点集合中的第index个节点。如果index的值不在合法范围内，就返回null。<BR>　　无异常<BR>　　--------------------------------------------------------------------------------<BR>========11<BR>　　这一节主要是介绍一下DOM规范中的NamedNodeMap接口。<BR>　　NamedNodeMap接口<BR>　　实现了NamedNodeMap接口的对象中包含了可以通过名字来访问节点的集合。NamedNodeMap并不是从NodeList继承过来的，NamedNodeMap所包含的节点集中的节点是无序的。实现了NamedNodeMap接口对象中所包含的节点也可以通过索引来进行访问，但是，这只是提供了一种枚举NamedNodeMap中所包含节点的一个简单方法，并不表明在DOM规范中为NamedNodeMap中的节点规定一种排列顺序。<BR>　　NamedNodeMap表示的是一组节点和其唯一名字的对应关系，这个接口主要用在属性节点的表示上。<BR>　　在DOM中，NamedNodeMap对象也是"live"的，关于"live"的定义请参考在第八节NodeList接口中的说明。<BR>　　NamedNodeMap接口的IDL定义如下所示：<BR>　　interface 
+            NamedNodeMap { <BR>　　Node getNamedItem(in DOMString name); 
+            <BR>　　Node setNamedItem(in Node arg) raises(DOMException); 
+            <BR>　　Node removeNamedItem(in DOMString name) raises(DOMException); 
+            <BR>　　Node item(in unsigned long index); <BR>　　readonly attribute 
+            unsigned long length; <BR>　　// Introduced in DOM Level 2: <BR>　　Node 
+            getNamedItemNS(in DOMString namespaceURI, in DOMString localName); 
+            <BR>　　// Introduced in DOM Level 2: <BR>　　Node setNamedItemNS(in 
+            Node arg) raises(DOMException); <BR>　　// Introduced in DOM Level 2: 
+            <BR>　　Node removeNamedItemNS(in DOMString namespaceURI, in DOMString 
+            localName) raises(DOMException); <BR>　　}; 
+            <BR>　　NamedNodeMap接口中的属性和方法简介<BR>　　属性<BR>　　--------------------------------------------------------------------------------<BR>　　length 
+            ：unsigned 
+            long类型的只读属性<BR>　　该节点集合中的节点个数。访问集合中的节点的合法的索引值为0到length-1之间的数（包括0和length-1）。<BR>　　--------------------------------------------------------------------------------<BR>　　方法<BR>　　--------------------------------------------------------------------------------<BR>　　getNamedItem<BR>　　返回给定名称的节点。<BR>　　参数<BR>　　DOMString 
+            name：要获取的节点的节点名。<BR>　　返回值<BR>　　返回具有给定的节点名称的节点，如果在当前的节点集合中没有这样的节点，就返回null。<BR>　　无异常<BR>　　--------------------------------------------------------------------------------<BR>　　item<BR>　　返回节点集合中的第index个节点。index的取值从0开始。如果index的值大于等于集合中的节点个数，就返回null。<BR>　　参数<BR>　　unsigned 
+            long 
+            index：要获取的节点在集合中的索引值（从0开始）。<BR>　　返回值<BR>　　节点集合中的第index个节点。如果index的值不在合法范围内，就返回null。<BR>　　无异常<BR>　　--------------------------------------------------------------------------------<BR>　　removeNamedItem<BR>　　删除给定名称的节点。<BR>　　参数<BR>　　DOMString 
+            name：要删除的节点的节点名。<BR>　　返回值<BR>　　如果在当前节点集中存在给定名称的节点（即存在要删除的节点），就返回该节点。<BR>　　异常<BR>　　DOMException 
+            NO_MODIFICATION_ALLOWED_ERR：如果当前节点集是只读的，就会产生该异常。<BR>　　NOT_FOUND_ERR：如果当前节点集中不包含给定名称的节点，就会产生该异常。<BR>　　--------------------------------------------------------------------------------<BR>　　setNamedItem<BR>　　把给定节点名的节点添加到当前节点集中。如果在当前节点集中已经存在相同节点名的节点了，那么就用现在的节点替换掉已经存在的节点。<BR>　　由于节点的nodeName属性被用来确定应该把节点插入到当前节点集中的什么位置，对于那些就有相同节点名的节点（例如那些用特殊的字符串值来作为nodeNmae的值的节点），由于发生了冲突，则不能在当前节点集中正确的存储这些节点，为了解决这个问题，在DOM规范中，允许给节点定义别名。<BR>　　参数<BR>　　Node 
+            arg：要添加到当前节点集中的节点。该节点在此之后可以通过节点的nodeName属性而被访问。<BR>　　返回值<BR>　　如果在参数中传递过来的节点替换了当前节点集中已经存在的一个节点，则返回值为被替换的节点，否则，返回值为null。<BR>　　异常<BR>　　DOMException 
+            NO_MODIFICATION_ALLOWED_ERR：如果当前节点集是只读的，就会产生该异常。<BR>　　NOT_FOUND_ERR：如果当前节点集中不包含给定名称的节点，就会产生该异常。<BR>　　WRONG_DOCUMENT_ERR：如果要添加到当前节点集中的节点和当前节点集不属于同一个文档，就会产生该异常。<BR>　　INUSE_ATTRIBUTE_ERR：如果添加到当前节点集中的节点是一个属性节点（Attr节点），而且该属性节点是当前节点集中已经存在的某个元素的一个属性，就会产生该异常。<BR>　　--------------------------------------------------------------------------------<BR>　　至此，我们已经介绍了DOM规范中的Document、Node、NodeList以及NamedNodeMap四个接口。这四个接口是DOM规范中最主要的四个接口。通过这四个接口，已经可以完成对XML文档的绝大多数常用操作。如果读者想对DOM规范中的接口有更详细的了解，可参阅本网站标准集萃中同DOM相关的标准。<BR>　　&lt;&lt;上一篇下一篇&gt;&gt; 
+            <BR>========12<BR>　　小结<BR>　　关于DOM的介绍至此已全部结束。读者在掌握DOM的概念时，要牢记以下几个要点：<BR>　　DOM只是一个应用程序接口<BR>　　DOM分析器对XML文档分析的结果是内存中的一棵DOM树<BR>　　DOM接口提供了对XML文档的随机访问方式<BR>　　如果您有什么关于DOM的问题，欢迎来信跟我们探讨。<BR>　　（完） 
+            </P></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></BODY></HTML>

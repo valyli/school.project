@@ -1,0 +1,159 @@
+软件文库 {
+	
+}
+DIV {
+	COLOR: #000000; FONT-SIZE: 12px; LETTER-SPACING: 1pt; LINE-HEIGHT: 17px; TEXT-INDENT: 20pt
+}
+A:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.input {
+	BORDER-BOTTOM: #cccccc 1px solid; BORDER-LEFT: #666666 1px solid; BORDER-RIGHT: #cccccc 1px solid; BORDER-TOP: #666666 1px solid
+}
+A:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+TD {
+	COLOR: #6c6c6c; FONT-FAMILY: "宋体"; FONT-SIZE: 12px; LETTER-SPACING: 0.03em; LINE-HEIGHT: 130%
+}
+P {
+	COLOR: #000000; FONT-SIZE: 14px; LETTER-SPACING: 1px; LINE-HEIGHT: 22px; TEXT-INDENT: 20pt
+}
+A.white:link {
+	COLOR: #cc3300
+}
+A.white:visited {
+	COLOR: #cc3300
+}
+A.white:active {
+	COLOR: #003399; TEXT-DECORATION: none
+}
+A.white:hover {
+	COLOR: #003399; TEXT-DECORATION: none
+}
+A.14:link {
+	COLOR: #0944ca; FONT-SIZE: 14px; FONT-WEIGHT: bolder; TEXT-DECORATION: underline
+}
+A.14:visited {
+	COLOR: #0944ca; FONT-SIZE: 14px; FONT-WEIGHT: bolder; TEXT-DECORATION: underline
+}
+A.14:active {
+	COLOR: #ff0000
+}
+A.14:hover {
+	COLOR: #ff0000
+}
+.imageline {
+	BORDER-BOTTOM: #a8a8a8 1px solid; BORDER-LEFT: #a8a8a8 1px solid; BORDER-RIGHT: #a8a8a8 1px solid; BORDER-TOP: #a8a8a8 1px solid
+}
+.underline {
+	BORDER-BOTTOM: #d2d2d2 1px solid; BORDER-LEFT: #d2d2d2 0px solid; BORDER-RIGHT: #d2d2d2 0px solid; BORDER-TOP: #d2d2d2 0px solid
+}
+.underlineCopy {
+	BORDER-BOTTOM: #a8a8a8 1px solid; BORDER-LEFT: #a8a8a8 0px solid; BORDER-RIGHT: #a8a8a8 0px solid; BORDER-TOP: #a8a8a8 0px solid; CURSOR: hand; LETTER-SPACING: 3px
+}
+.underliness {
+	BORDER-BOTTOM: #a8a8a8 1px dotted; BORDER-LEFT: #a8a8a8 0px dotted; BORDER-RIGHT: #a8a8a8 0px dotted; BORDER-TOP: #a8a8a8 0px dotted
+}
+.a2 .a2Copy {
+	COLOR: #999999; LINE-HEIGHT: 18px
+}
+.leftline {
+	BORDER-BOTTOM: #aeaeae 0px solid; BORDER-LEFT: #aeaeae 1px solid; BORDER-RIGHT: #aeaeae 0px solid; BORDER-TOP: #aeaeae 0px solid
+}
+.rightline {
+	BORDER-BOTTOM: #d2d2d2 0px solid; BORDER-LEFT: #d2d2d2 0px solid; BORDER-RIGHT: #d2d2d2 1px solid; BORDER-TOP: #d2d2d2 0px solid
+}
+.rightlinered {
+	BORDER-BOTTOM: #fa93c1 0px solid; BORDER-LEFT: #fa93c1 0px solid; BORDER-RIGHT: #fa93c1 1px solid; BORDER-TOP: #fa93c1 0px solid
+}
+.table1 {
+	BACKGROUND-COLOR: #ffcc00
+}
+.table2 {
+	BACKGROUND-COLOR: #ffffff; BORDER-BOTTOM: #000000 0px solid; BORDER-LEFT: #000000 1px solid; BORDER-RIGHT: #000000 0px solid; BORDER-TOP: #000000 1px solid
+}
+.table3 {
+	BORDER-BOTTOM: #aeaeae 1px solid; BORDER-LEFT: #aeaeae 1px solid; BORDER-RIGHT: #aeaeae 1px solid; BORDER-TOP: #aeaeae 1px solid
+}
+.table4 {
+	BACKGROUND-COLOR: #ffffef; BORDER-BOTTOM: #dadada 1px solid; BORDER-LEFT: #dadada 1px solid; BORDER-RIGHT: #dadada 1px solid; BORDER-TOP: #dadada 1px solid
+}
+.table5 {
+	BACKGROUND-COLOR: #ffffff; BORDER-BOTTOM: #dadada 1px solid; BORDER-LEFT: #dadada 1px solid; BORDER-RIGHT: #dadada 1px solid; BORDER-TOP: #dadada 1px solid
+}
+.table5red {
+	BORDER-BOTTOM: #ff6803 0px solid; BORDER-LEFT: #ff6803 1px solid; BORDER-RIGHT: #ff6803 0px solid; BORDER-TOP: #ff6803 0px solid
+}
+.table6 {
+	BACKGROUND-COLOR: #ffffff; BORDER-BOTTOM: #000000 1px solid; BORDER-LEFT: #000000 1px solid; BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid
+}
+.a3 {
+	COLOR: #666666
+}
+.input1 {
+	BACKGROUND-COLOR: #efefef; BORDER-BOTTOM: #000000 1px solid; BORDER-LEFT: #000000 0px solid; BORDER-RIGHT: #000000 0px solid; BORDER-TOP: #000000 0px solid
+}
+.input2 {
+	BORDER-BOTTOM: #000000 1px solid; BORDER-LEFT: #000000 0px solid; BORDER-RIGHT: #000000 0px solid; BORDER-TOP: #000000 0px solid
+}
+文章 {
+	
+}
+.title1 {
+	COLOR: #ff6600; FONT-SIZE: 16px; FONT-WEIGHT: bolder
+}
+.title2 {
+	COLOR: #ff6600; FONT-SIZE: 15px; FONT-WEIGHT: bolder
+}
+.title3 {
+	COLOR: #ff6600; FONT-WEIGHT: bolder
+}
+共享 {
+	
+}
+.indexline {
+	COLOR: #ff9900
+}
+.bottomline {
+	COLOR: black
+}
+.bottombg {
+	BACKGROUND-COLOR: #ffcc00
+}
+.copyright {
+	FONT-FAMILY: tahoma; FONT-SIZE: 9px
+}
+A.a1:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.a1:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.a1:active {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+A.a1:hover {
+	COLOR: #ff0000; TEXT-DECORATION: underline
+}
+A.a2:link {
+	COLOR: black; TEXT-DECORATION: none
+}
+A.a2:visited {
+	COLOR: black; TEXT-DECORATION: none
+}
+A.a2:active {
+	COLOR: red; TEXT-DECORATION: none
+}
+A.a2:hover {
+	COLOR: red; TEXT-DECORATION: underline
+}
+BODY {
+	MARGIN: 0px
+}

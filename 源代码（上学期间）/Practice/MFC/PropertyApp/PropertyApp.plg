@@ -1,0 +1,63 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: PropertyApp - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/PropertyApp.res" /d "_DEBUG" /d "_AFXDLL" "E:\Code\PropertyApp\PropertyApp.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPA155.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/PropertyApp.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\Code\PropertyApp\MainFrm.cpp"
+"E:\Code\PropertyApp\PageA.cpp"
+"E:\Code\PropertyApp\PageB.cpp"
+"E:\Code\PropertyApp\PropertyApp.cpp"
+"E:\Code\PropertyApp\PropertyAppDoc.cpp"
+"E:\Code\PropertyApp\PropertyAppView.cpp"
+"E:\Code\PropertyApp\PropSheet.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPA155.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPA156.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/PropertyApp.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\Code\PropertyApp\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPA156.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPA157.TMP" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/PropertyApp.pdb" /debug /machine:I386 /out:"Debug/PropertyApp.exe" /pdbtype:sept 
+.\Debug\MainFrm.obj
+.\Debug\PageA.obj
+.\Debug\PageB.obj
+.\Debug\PropertyApp.obj
+.\Debug\PropertyAppDoc.obj
+.\Debug\PropertyAppView.obj
+.\Debug\PropSheet.obj
+.\Debug\StdAfx.obj
+.\Debug\PropertyApp.res
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPA157.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+MainFrm.cpp
+PageA.cpp
+PageB.cpp
+PropertyApp.cpp
+PropertyAppDoc.cpp
+PropertyAppView.cpp
+PropSheet.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+PropertyApp.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

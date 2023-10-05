@@ -1,0 +1,36 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: TestCycleTransferModule - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP60.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/TestCycleTransferModule.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\Documents and Settings\Administrator\桌面\！！！做到一半的\TestCycleTransferModule\TestCycleTransferModuleDlg.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP60.tmp" 
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP61.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/TestCycleTransferModule.pdb" /debug /machine:I386 /out:"Debug/TestCycleTransferModule.exe" /pdbtype:sept 
+".\Debug\ManageData.obj"
+".\Debug\StdAfx.obj"
+".\Debug\TestCycleTransferModule.obj"
+".\Debug\TestCycleTransferModuleDlg.obj"
+".\Debug\TestCycleTransferModule.res"
+]
+Creating command line "link.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP61.tmp"
+<h3>Output Window</h3>
+Compiling...
+TestCycleTransferModuleDlg.cpp
+Linking...
+
+
+
+<h3>Results</h3>
+TestCycleTransferModule.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

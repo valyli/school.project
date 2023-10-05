@@ -1,0 +1,63 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Persist - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/Persist.res" /d "_DEBUG" /d "_AFXDLL" "H:\工作中的书\kh\translate\Visual C++\program\ch23\Persist\Persist.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPA3B5.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/Persist.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"H:\工作中的书\kh\translate\Visual C++\program\ch23\Persist\blob.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch23\Persist\ChildFrm.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch23\Persist\MainFrm.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch23\Persist\Persist.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch23\Persist\PersistDoc.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch23\Persist\PersistView.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPA3B5.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPA3B6.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /FR"Debug/" /Fp"Debug/Persist.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"H:\工作中的书\kh\translate\Visual C++\program\ch23\Persist\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSPA3B6.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSPA3B7.TMP" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/Persist.pdb" /debug /machine:I386 /out:"Debug/Persist.exe" /pdbtype:sept 
+".\Debug\blob.obj"
+".\Debug\ChildFrm.obj"
+".\Debug\MainFrm.obj"
+".\Debug\Persist.obj"
+".\Debug\PersistDoc.obj"
+".\Debug\PersistView.obj"
+".\Debug\StdAfx.obj"
+".\Debug\Persist.res"
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSPA3B7.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+blob.cpp
+ChildFrm.cpp
+MainFrm.cpp
+Persist.cpp
+PersistDoc.cpp
+PersistView.cpp
+Generating Code...
+Linking...
+Creating command line "bscmake.exe /nologo /o"Debug/Persist.bsc"  ".\Debug\StdAfx.sbr" ".\Debug\blob.sbr" ".\Debug\ChildFrm.sbr" ".\Debug\MainFrm.sbr" ".\Debug\Persist.sbr" ".\Debug\PersistDoc.sbr" ".\Debug\PersistView.sbr""
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+Persist.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

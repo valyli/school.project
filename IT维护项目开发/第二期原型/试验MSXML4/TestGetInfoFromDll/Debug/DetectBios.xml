@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="gb2312"?>
+<OperationList>
+	<FunctionSection>
+		<OperationID>1</OperationID>
+		<InfomationElementTableID>2</InfomationElementTableID>
+		<InfomationElementID>1</InfomationElementID>
+		<OperationType>0</OperationType>
+		<ServiceFileName>DetectBios.dll</ServiceFileName>
+		<SupportSystemType>255</SupportSystemType>
+		<ModuleType>1</ModuleType>
+		<InterfaceFunction>DetectBIOSID_DetectHardwareModule</InterfaceFunction>
+		<ParameterType>5</ParameterType>
+		<IsStorageReturnValueInParameter>1</IsStorageReturnValueInParameter>
+		<ParameterValue></ParameterValue>
+	</FunctionSection>
+	<FunctionSection>
+		<OperationID>2</OperationID>
+		<InfomationElementTableID>2</InfomationElementTableID>
+		<InfomationElementID>2</InfomationElementID>
+		<OperationType>0</OperationType>
+		<ServiceFileName>DetectBios.dll</ServiceFileName>
+		<SupportSystemType>255</SupportSystemType>
+		<ModuleType>1</ModuleType>
+		<InterfaceFunction>DetectBIOSType_DetectHardwareModule</InterfaceFunction>
+		<ParameterType>5</ParameterType>
+		<IsStorageReturnValueInParameter>1</IsStorageReturnValueInParameter>
+		<ParameterValue></ParameterValue>
+	</FunctionSection>
+	<FunctionSection>
+		<OperationID>3</OperationID>
+		<InfomationElementTableID>2</InfomationElementTableID>
+		<InfomationElementID>3</InfomationElementID>
+		<OperationType>0</OperationType>
+		<ServiceFileName>DetectBios.dll</ServiceFileName>
+		<SupportSystemType>255</SupportSystemType>
+		<ModuleType>1</ModuleType>
+		<InterfaceFunction>DetectBIOSDate_DetectHardwareModule</InterfaceFunction>
+		<ParameterType>5</ParameterType>
+		<IsStorageReturnValueInParameter>1</IsStorageReturnValueInParameter>
+		<ParameterValue></ParameterValue>
+	</FunctionSection>
+</OperationList>

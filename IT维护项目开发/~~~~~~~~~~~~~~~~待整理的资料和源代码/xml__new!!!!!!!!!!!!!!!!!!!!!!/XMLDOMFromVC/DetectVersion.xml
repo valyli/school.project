@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<OperationList>
+	<OperationID>1</OperationID>
+	<InfomationElementTableID>1</InfomationElementTableID>
+	<InfomationElementID>1</InfomationElementID>
+	<OperationType>0</OperationType>
+	<ServiceFileName>DetectVersion.dll</ServiceFileName>
+	<SupportSystemType>0xff</SupportSystemType>
+	<ModuleType>1</ModuleType>
+	<InterfaceFunction>getversion</InterfaceFunction>
+	<ParameterType>7</ParameterType>
+	<IsStorageReturnValueInParameter>1</IsStorageReturnValueInParameter>
+	<ParameterValue></ParameterValue>
+</OperationList>

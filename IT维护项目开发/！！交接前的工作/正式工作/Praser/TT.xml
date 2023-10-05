@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="gb2312" standalone="no" ?><ModuleDeclare>
+	<Module FileName="Test.dll" Name="Only Test">
+		<ProviderID>1</ProviderID>
+		<InfoBaseID>1</InfoBaseID>
+		<InfoItemList>
+			<InfoItem AcitonID="2" FunctionName="SetToDisplay" ID="1.1">
+				<Parameter DataTypeID="1" ID="1"/>
+				<Parameter DataTypeID="1" ID="2"/>
+			</InfoItem>
+		</InfoItemList>
+	</Module>
+<product>Xerces-C</product><category idea="great">XML 中文Parsing Tools</category><developedBy>Apache Software Foundation</developedBy></ModuleDeclare>

@@ -1,0 +1,666 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0050)http://www.ccw.com.cn/htm/app/aprog/01_1_1_2_2.asp -->
+<HTML><HEAD><TITLE>计算机世界网-利用MSXML解析XML文本</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<STYLE>.a14 {
+	FONT-SIZE: 14px; TEXT-INDENT: 25px; LINE-HEIGHT: 20px
+}
+.f {
+	FONT-SIZE: 18px; COLOR: #0f3ccd
+}
+IMG {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px
+}
+TD {
+	FONT-SIZE: 12px; font-fammily: verdana,宋体
+}
+P {
+	FONT-SIZE: 12px; font-fammily: verdana,宋体
+}
+INPUT {
+	FONT-SIZE: 12px; font-fammily: verdana,宋体
+}
+A:link {
+	COLOR: black; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #80006f; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: black; TEXT-DECORATION: underline
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1126" name=GENERATOR></HEAD>
+<BODY leftMargin=0 topMargin=2>
+<CENTER>
+<TABLE cellSpacing=0 cellPadding=0 width=760 align=center>
+  <TBODY>
+  <TR>
+    <TD rowSpan=3><IMG src="计算机世界网-利用MSXML解析XML文本（下）.files/left_ccwlogo.gif" 
+      border=0></TD>
+    <TD colSpan=3><IMG hspace=5 src="计算机世界网-利用MSXML解析XML文本（下）.files/top.gif" 
+      useMap=#t border=0> </TD></TR>
+  <TR>
+    <TD><IMG hspace=5 src="计算机世界网-利用MSXML解析XML文本（下）.files/app.gif" vspace=5 
+      border=0></TD>
+    <TD align=left>
+      <TABLE height=60 width=118 bgColor=#c2c2c2>
+        <TBODY>
+        <TR>
+          <TD vAlign=center align=middle><A 
+            href="mailto:app@ccw.com.cn">我要投稿</A><BR><A 
+            href="mailto:app@ccw.com.cn">读编往来</A><BR><A 
+            href="javascript:AddBookMark('计算机世界网应用与方案首页')">加入收藏夹</A> 
+        <BR></TD></TR></TBODY></TABLE></TD>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD vAlign=bottom width=627 colSpan=3><IMG 
+      src="计算机世界网-利用MSXML解析XML文本（下）.files/top1.gif" useMap=#F border=0></TD></TR>
+  <TR>
+    <TD colSpan=4><IMG height=3 src="计算机世界网-利用MSXML解析XML文本（下）.files/line1.gif" 
+      width=758 vspace=2></TD></TR></TBODY></TABLE><MAP name=t><AREA shape=RECT 
+  coords=20,1,50,19 href="http://www.ccw.com.cn/"><AREA shape=RECT 
+  coords=76,1,155,19 href="http://www.ccw.com.cn/news1/"><AREA shape=RECT 
+  coords=182,1,260,19 href="http://www.ccw.com.cn/produ/"><AREA shape=RECT 
+  coords=286,1,366,19 href="http://www.ccw.com.cn/app/"><AREA shape=RECT 
+  coords=392,1,471,19 href="http://www.ccw.com.cn/net/"><AREA shape=RECT 
+  coords=497,1,575,19 href="http://www.ccw.com.cn/market/"><AREA shape=RECT 
+  coords=73,22,126,40 href="http://www.ccw.com.cn/work/"><AREA shape=RECT 
+  coords=156,22,216,40 href="http://www.ccw.com.cn/search/"><AREA shape=RECT 
+  coords=248,22,313,40 href="http://www.ccw.com.cn/game/"><AREA shape=RECT 
+  coords=348,22,428,40 href="http://www.ccw.com.cn/serv/"><AREA shape=RECT 
+  coords=463,22,532,40 href="http://www2.ccw.com.cn/"></MAP><MAP name=F><AREA 
+  shape=RECT coords=9,7,83,19 href="http://www.ccw.com.cn/app/forum/"><AREA 
+  shape=RECT coords=121,8,186,19 href="http://www.ccw.com.cn/app/china/"><AREA 
+  shape=RECT coords=225,5,281,20 href="http://www.ccw.com.cn/app/road/"><AREA 
+  shape=RECT coords=323,6,392,19 href="http://www.ccw.com.cn/app/service/"><AREA 
+  shape=RECT coords=433,9,495,17 href="http://www.ccw.com.cn/app/aprog/"><AREA 
+  shape=RECT coords=536,5,589,18 href="http://www.ccw.com.cn/app/salon/"></MAP>
+<TABLE width=680 align=center>
+  <TBODY>
+  <TR>
+    <TD align=middle><BR>
+      <H2><FONT color=#0f3ccd>利用MSXML解析XML文本</FONT></H2><BR><B>浙江大学人工智能研究所 
+      胡朝晖</B> <BR>
+      <HR width=660 color=#f46240 SIZE=1>
+    </TD></TR></TBODY></TABLE><BR>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14><B>解析XML</B> </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>为了说明如何在VC中使用XML DOM模型，这里我们介绍一个简单的Console 
+      Application实例程序。下面是主要的程序代码，用来在一个XML 文档中定位一个特殊的节点，并插入一个新的子节点。 
+</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>＃include &lt;atlbase.h&gt; </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>/＊下面的.h文件是在安装了最新的</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>XML Parser以后所包含的.h文件＊/</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>＃include “C:\Program Files\Microsoft</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>XML Parser SDK\inc\msxml2.h"</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>＃include &lt;iostream&gt;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>void main()</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>{</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>// 初始化COM接口</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>CoInitialize(NULL);</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>/＊在程序中，假定装载的XML文件名称为</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>xmldata.xml,缺省情况下它和可执行文件在同</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>一个目录中。该文件的内容如下： </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>&lt;?xml version="1.0"?&gt;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>&lt;xmldata&gt;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>&lt;xmlnode /&gt;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>&lt;xmltext&gt;Hello, World!&lt;/ 
+xmltext&gt;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>&lt;/xmldata&gt;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD 
+      class=a14>程序将寻找名为“xmlnode”的节点，插入一个新的名称为“xmlchildnode”的节点，然后它再去寻找一个名为“xmltext”的节点，然后提取包含在该节点中的文本并显示它，最后它把新的改变过的XML文档保存在名称为“updatexml.xml”的文档中。＊/</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>try {</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>// 通过智能指针创建一个解析器的实例</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>CComPtr&lt;IXMLDOMDocument&gt;spXMLDOM;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>HRESULT hr =spXMLDOM.CoCreateInstance</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>(－uuidof(DOMDocument));</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if ( FAILED(hr) ) throw “不能创建XML 
+Parser对象";</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if ( spXMLDOM.p == NULL ) throw </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>“不能创建XML Parser对象";</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>// 创建成功，开始装载XML文档</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>VARIANT_BOOL bSuccess = false;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>hr =spXMLDOM－&gt;load(CComVariant(</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>L“xmldata.xml"),＆bSuccess);</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if ( FAILED(hr) ) throw </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>“不能够在解析器中装载XML文档";</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if ( !bSuccess ) throw </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>“不能够在解析器中装载XML文档";</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>// 检查并搜索“xmldata/xmlnode"</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>CComBSTR bstrSS(L“xmldata/xmlnode");</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>CComPtr&lt;IXMLDOMNOde&gt;spXMLNode;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>/＊用接口IXMLDOMDocument的</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>selectSingleNode方法定位该节点。＊/</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>hr =spXMLDOM－&gt;selectSingleNode</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>(bstrSS,＆spXMLNode);</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if ( FAILED(hr) ) throw </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>“不能在XML节点中定位‘xmlnode’";</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if ( spXMLNode.p == NULL ) throw</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>“不能在XML节点中定位‘xmlnode' ";</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>/＊DOM对象“spXMLNode”</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>现在包含了XML节点&lt;xmlnode&gt;，</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>所以我们可以在它下面创建一个子节点。＊/</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>CComPtr &lt;IXMLDOMNode&gt; 
+spXMLChildNode;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>/＊用接口IXMLDOMDocument的方法create</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>Node方法创建一个新节点。＊/</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>hr = spXMLDOM－&gt;createNode(</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>CComVariant(NODE_ELEMENT),</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>CComBSTR(“xmlchildnode"),</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>NULL,＆spXMLChildNode);</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if ( FAILED(hr) ) throw “不能创建</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>‘xmlchildnode' 节点";</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if ( spXMLChildNode.p == NULL ) </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>throw “不能创建‘xmlchildnode' 节点";</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>//添加新节点到spXMLNode节点下</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>CComPtr &lt;IXMLDOMNode&gt; 
+spInsertedNode;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>hr =spXMLNode－&gt;appendChild</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>(spXMLChildNode,＆spInsertedNode);</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if ( FAILED(hr) ) throw </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>“不能创建‘xmlchildnode' 节点";</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if ( spInsertedNode.p == NULL ) throw </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>“不能移动‘xmlchildnode' 节点";</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>//设置新节点属性</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>CComQIPtr &lt;IXMLDOMElement&gt; 
+  spXMLChildElement;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>spXMLChildElement = spInsertedNode;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if ( spXMLChildElement.p == NULL )</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>throw “不能在XML元素接口中查询到</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>‘xmlchildnode' ";</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>hr =spXMLChildElement－&gt;setAttribute</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>(CComBSTR(L“xml"),CComVariant(L“fun"));</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if ( FAILED(hr) ) throw“不能插入新的属性"; </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>/＊下面的程序段用来寻找一个节点</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>并显示该节点的相关信息。＊/</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>// 查找“xmldata/xmltext"节点</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>// 释放先前的节点</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>spXMLNode = NULL; </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>bstrSS = L“xmldata/xmltext";</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>hr =spXMLDOM－&gt;selectSingleNode</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>(bstrSS,＆spXMLNode);</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if ( FAILED(hr) ) throw “不能定位</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>‘xmltext'节点";</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if ( spXMLNode.p == NULL ) throw</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>“不能定位‘xmltext'节点";</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>// 得到该节点包含的文本并显示它</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>CComVariant varValue(VT_EMPTY);</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>hr =spXMLNode－&gt;get_nodeTypedValue</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>(＆varValue);</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if ( FAILED(hr) ) throw 
+“不能提取‘xmltext'文本";</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if ( varValue.vt == VT_BSTR ) {</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>/＊显示结果。注意这里要把字符串</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>从形式BSTR转化为ANSI。＊/</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>USES_CONVERSION;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>LPTSTR lpstrMsg = W2T</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>(varValue.bstrVal);</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>std::cout&lt;&lt; lpstrMsg &lt;&lt; 
+std::endl;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>} // if</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>else {</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>// 如果出现错误</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>throw “不能提取‘xmltext'文本";</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>} // else</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>//将修改过的XML文档按指定的文档名保存</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>hr = spXMLDOM－&gt;save(CComVariant</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>(“updatedxml.xml"));</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>if ( FAILED(hr) ) throw </TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>“不能保存修改过的XML文档";</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>std::cout &lt;&lt; “处理完成..." &lt;&lt; std::endl &lt;&lt; 
+      std::endl;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>} // try</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>catch(char＊ lpstrErr) {</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>// 出现错误</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>std::cout &lt;&lt; lpstrErr &lt;&lt; std::endl &lt;&lt; 
+      std::endl;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>} // catch</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>catch(...) {</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>// 未知错误</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>std::cout &lt;&lt; “未知错误..." &lt;&lt; std::endl &lt;&lt; 
+      std::endl;</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>} // catch</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>// 结束对COM的使用</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>CoUninitialize();</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>}</TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD 
+      class=a14>因为XML文档有比HTML更加严格的语法要求，所以使用和编写一个XML解析器比编写一个HTML的解析器要容易。同时因为XML文档不仅标记文档的显示属性，更重要的是它标记了文档的结构和包含信息的特征，所以我们可以方便地通过XML解析器来获取特定节点的信息并加以显示或修改。</TD></TR></TBODY></TABLE><BR>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD align=right>（网页编辑：<A 
+  href="mailto:app@ccw.com.cn">徐向阳</A>）</TD></TR></TBODY></TABLE><BR>
+<CENTER>
+<P>共2页&nbsp;&nbsp;<A 
+href="http://www.ccw.com.cn/htm/app/aprog/01_1_1_2.asp">上一页</A> 
+</P></CENTER><BR>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD class=a14>相关文章</TD></TR>
+  <TR>
+    <TD>
+      <UL>
+        <LI><A 
+        href="http://www.ccw.com.cn/htm/app/aprog/001226_7.asp">在电子病历中应用XML</A> 
+        </LI></UL></TD></TR></TBODY></TABLE>
+<TABLE width=620 align=center>
+  <TBODY>
+  <TR>
+    <TD align=right>
+      <FORM id=form1 name=form1 onsubmit="JavaScript: return chkField(this)" 
+      action=/pub/subMail.asp method=post><INPUT type=hidden value=668 name=rec> 
+      您的姓名：<INPUT size=10 name=myName>&nbsp; 您朋友的E-mail：<INPUT size=10 
+      name=friendMail>&nbsp; <INPUT type=submit value=推荐给好友> </FORM></TD></TR>
+  <TR>
+    <TD align=right><B>[<A href="javascript:window.close()">关闭窗口</A>]</B> 
+  </TD></TR></TBODY></TABLE>
+<SCRIPT language=javascript>
+function chkField(fmObj)
+{if (!fmObj.friendMail.value){
+	alert("请输入您朋友的E-mail！");
+	fmObj.friendMail.focus();
+	return false;
+}
+	return true;
+}
+</SCRIPT>
+
+<TABLE width=680 align=center>
+  <TBODY>
+  <TR>
+    <TD>
+      <HR width=660 color=#f46240 SIZE=1>
+    </TD></TR></TBODY></TABLE><BR>
+<P align=center>Copyright(C) ccw.com.cn,All rights reserved</P>
+<P align=center><B>中国计算机世界出版服务公司版权所有</B></P></CENTER></BODY></HTML>

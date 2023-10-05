@@ -1,0 +1,41 @@
+1 CLS
+2 SCREEN 1
+3 X = 0: Y = 0: D = 2: Z = 2: M = 0: N = 0
+4 X = X + Z: Y = Y + D: M = M + 1
+  LOCATE 14, 16: PRINT ; TIME$
+  IF M = 10 THEN
+  M = 0
+  N = N + 1
+  END IF
+  IF X > 319 THEN Z = -Z
+  IF Y > 200 THEN D = -D
+  IF X < 0 THEN Z = -Z
+  IF Y < 0 THEN D = -D
+  CIRCLE (X, Y), 10, 1: PAINT (X, Y), 1
+  CIRCLE (X, Y), 8, 2: PAINT (X, Y), 2
+  CIRCLE (X, Y), 6, 0: PAINT (X, Y), 0
+  CIRCLE (X, Y), 4, 3: PAINT (X, Y), 3
+  FOR Q = 1 TO 35
+  K$ = INKEY$
+  IF K$ = CHR$(27) THEN END
+  NEXT Q
+  CLS
+5 GOTO 4
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

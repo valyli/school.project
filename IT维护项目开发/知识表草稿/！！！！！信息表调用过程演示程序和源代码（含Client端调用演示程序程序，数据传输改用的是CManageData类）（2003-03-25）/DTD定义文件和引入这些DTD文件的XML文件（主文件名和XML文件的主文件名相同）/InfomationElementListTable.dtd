@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!ELEMENT InfomationElementListTable (InfoServiceProviderId,NameBaseId,InfomationElementTableSection+)>
+<!ELEMENT InfoServiceProviderId (#PCDATA)>
+<!ELEMENT NameBaseId (#PCDATA)>
+<!ELEMENT InfomationElementTableSection (InfomationElementTableID,InfomationElementTableName_Chinese,InfomationElementTableName_English,Description,EqualInfomationElementTableID)>
+<!ELEMENT InfomationElementTableID (#PCDATA)>
+<!ELEMENT InfomationElementTableName_Chinese (#PCDATA)>
+<!ELEMENT InfomationElementTableName_English (#PCDATA)>
+<!ELEMENT Description (#PCDATA)>
+<!ELEMENT EqualInfomationElementTableID (#PCDATA)>

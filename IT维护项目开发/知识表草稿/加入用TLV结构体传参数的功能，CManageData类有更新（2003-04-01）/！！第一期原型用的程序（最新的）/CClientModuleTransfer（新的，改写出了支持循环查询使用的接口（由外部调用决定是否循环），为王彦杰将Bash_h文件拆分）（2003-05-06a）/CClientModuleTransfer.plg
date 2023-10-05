@@ -1,0 +1,29 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: CClientModuleTransfer - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPF.tmp" with contents
+[
+/nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/CClientModuleTransfer.pdb" /debug /machine:I386 /def:".\CClientModuleTransfer.def" /out:"Debug/CClientModuleTransfer.dll" /implib:"Debug/CClientModuleTransfer.lib" /pdbtype:sept 
+".\Debug\CClientModuleTransfer.obj"
+".\Debug\ManageData.obj"
+".\Debug\StdAfx.obj"
+".\Debug\TransferModule.obj"
+".\Debug\CClientModuleTransfer.res"
+]
+Creating command line "link.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPF.tmp"
+<h3>Output Window</h3>
+Linking...
+   Creating library Debug/CClientModuleTransfer.lib and object Debug/CClientModuleTransfer.exp
+
+
+
+<h3>Results</h3>
+CClientModuleTransfer.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

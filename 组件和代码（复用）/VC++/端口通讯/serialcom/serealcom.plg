@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: serealcom - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/serealcom.res" /d "_DEBUG" /d "_AFXDLL" "H:\Share\serialcom\serealcom.rc"" 
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP13C.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/serealcom.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"H:\Share\serialcom\Com232.cpp"
+"H:\Share\serialcom\ComDlg.cpp"
+"H:\Share\serialcom\serealcom.cpp"
+"H:\Share\serialcom\serealcomDlg.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP13C.tmp" 
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP13D.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/serealcom.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"H:\Share\serialcom\StdAfx.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP13D.tmp" 
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP13E.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/serealcom.pdb" /debug /machine:I386 /out:"Debug/serealcom.exe" /pdbtype:sept 
+.\Debug\Com232.obj
+.\Debug\ComDlg.obj
+.\Debug\serealcom.obj
+.\Debug\serealcomDlg.obj
+.\Debug\StdAfx.obj
+.\Debug\serealcom.res
+]
+Creating command line "link.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP13E.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+Com232.cpp
+ComDlg.cpp
+serealcom.cpp
+serealcomDlg.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+serealcom.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: SSplit - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/SSplit.res" /d "_DEBUG" /d "_AFXDLL" "H:\工作中的书\kh\translate\Visual C++\program\ch20\SSplit\SSplit.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP60D1.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/SSplit.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"H:\工作中的书\kh\translate\Visual C++\program\ch20\SSplit\ArtView.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch20\SSplit\MainFrm.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch20\SSplit\SSplit.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch20\SSplit\SSplitDoc.cpp"
+"H:\工作中的书\kh\translate\Visual C++\program\ch20\SSplit\SSplitView.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP60D1.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP60D2.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/SSplit.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"H:\工作中的书\kh\translate\Visual C++\program\ch20\SSplit\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP60D2.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP60D3.TMP" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/SSplit.pdb" /debug /machine:I386 /out:"Debug/SSplit.exe" /pdbtype:sept 
+".\Debug\ArtView.obj"
+".\Debug\MainFrm.obj"
+".\Debug\SSplit.obj"
+".\Debug\SSplitDoc.obj"
+".\Debug\SSplitView.obj"
+".\Debug\StdAfx.obj"
+".\Debug\SSplit.res"
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP60D3.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+ArtView.cpp
+MainFrm.cpp
+SSplit.cpp
+SSplitDoc.cpp
+SSplitView.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+SSplit.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

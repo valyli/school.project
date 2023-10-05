@@ -1,0 +1,456 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0065)http://tech.enet.com.cn/document/20010509/20010509110940011.shtml -->
+<HTML><HEAD><TITLE>欢迎访问eNet技术！</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=gb2312"><LINK 
+href="揭开MSXML4.0的面纱.files/tech.css" type=text/css rel=stylesheet>
+<META content="MSHTML 6.00.2800.1141" name=GENERATOR></HEAD>
+<BODY text=#000000 bgColor=#ffffff topMargin=1 marginheight="1"><!--头部：开始-->
+<TABLE cellSpacing=0 cellPadding=0 width=750 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD width=255><A href="http://tech.enet.com.cn/index.shtml"><IMG height=32 
+      alt=eNet技术与方案 src="揭开MSXML4.0的面纱.files/logo.gif" width=255 
+border=0></A></TD>
+    <TD width=495>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD height=18><A class=nav1 
+            href="http://home.enet.com.cn/index.shtml">eNet首页</A> | <A 
+            class=nav1 href="http://news.enet.com.cn/index.shtml">新闻中心</A> | <A 
+            class=nav1 href="http://hardware.enet.com.cn/index.shtml">硬件资讯</A> | 
+            <A class=nav1 href="http://cio.enet.com.cn/">CIO</A> | <A class=nav1 
+            href="http://tech.enet.com.cn/">技术与方案</A> | <A class=nav1 
+            href="http://download.enet.com.cn/index.shtml">下载</A> | <A 
+            class=nav1 href="http://school.enet.com.cn/index.shtml">软件学院</A> | 
+            <A class=nav1 href="http://games.enet.com.cn/">游戏</A> | <A 
+            class=nav1 href="http://club.enet.com.cn/">论坛</A></TD></TR>
+        <TR>
+          <TD height=18><A class=nav1 href="http://shop.enet.com.cn/"><FONT 
+            color=red>eNet商城</FONT></A> | <A class=nav1 
+            href="http://price.enet.com.cn/index.shtml">价格比较</A> | <A class=nav1 
+            href="http://eshop.enet.com.cn/shuma.shtml?categoryid=95"><FONT 
+            color=red>数码超市</FONT></A> | <A class=nav1 
+            href="http://diy.enet.com.cn/index.shtml">DIY</A> | <A class=nav1 
+            href="http://store.enet.com.cn/">IT经销商</A> | <A class=nav1 
+            href="http://pc.enet.com.cn/">PC导购</A> | <A class=nav1 
+            href="http://shop.enet.com.cn/new_browsecategory.jsp?categoryid=4&amp;corpid=">笔记本</A> 
+            | <A class=nav1 
+            href="http://tech.enet.com.cn/columns/server.shtml">服务器</A> | <A 
+            class=nav1 
+      href="http://mobile.enet.com.cn/">手机</A></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=750 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle height=100><IFRAME marginWidth=0 marginHeight=0 
+      src="揭开MSXML4.0的面纱.files/adjuggler.htm" frameBorder=0 noResize width=729 
+      scrolling=no 
+      height=90>
+<script language=JavaScript src=http://ad4.enet.com.cn/cgi-bin/adjuggler?Pool=etechtonglan&ajtype=jscript>
+</script>
+</IFRAME></TD></TR></TBODY></TABLE>
+<SCRIPT language=javascript>
+function toLower(){
+
+	var nowValue;
+
+	string1=document.eSearch.keyword.value;
+
+	string2=string1.toLowerCase();
+
+	document.eSearch.keyword.value=string2;
+
+	document.eSearch.submit();
+
+}
+</SCRIPT>
+
+<TABLE cellSpacing=0 cellPadding=0 width=750 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD colSpan=2><IMG height=7 src="揭开MSXML4.0的面纱.files/line_01.gif" 
+      width=750></TD></TR>
+  <TR bgColor=#7ba79a>
+    <TD align=middle colSpan=2>
+      <TABLE cellSpacing=0 cellPadding=0 width=730 border=0>
+        <TBODY>
+        <TR>
+          <TD><FONT color=#ffffff>技术应用：| <A class=a5 
+            href="http://tech.enet.com.cn/columns/technews_1.shtml">技术动态</A> | 
+            <A class=a5 href="http://tech.enet.com.cn/columns/server.shtml" 
+            target=_blank>服务器</A> | <A class=a5 
+            href="http://tech.enet.com.cn/columns/operationsystem_tech.shtml">操作系统</A> 
+            | <A class=a5 
+            href="http://tech.enet.com.cn/columns/database.shtml">数据库</A> | <A 
+            class=a5 
+            href="http://tech.enet.com.cn/columns/program.shtml">程序语言</A> | <A 
+            class=a5 
+            href="http://tech.enet.com.cn/columns/webdevelop.shtml">网站开发</A> | 
+            <A class=a5 
+            href="http://tech.enet.com.cn/columns/pagemaking.shtml">网页制作</A> | 
+            <A class=a5 
+            href="http://tech.enet.com.cn/columns/flashworld.shtml">Flash技术</A> 
+            | <A class=a5 href="http://www.eclub.com.cn/bbs.php?parent=114" 
+            target=_blank>技术论坛</A> <!-- |  <a href="/columns/wangfu.shtml" class="a5">王府培训</a>--></FONT></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD colSpan=2><IMG height=1 src="揭开MSXML4.0的面纱.files/c.gif" width=1></TD></TR>
+  <TR bgColor=#7ba79a>
+    <TD align=middle colSpan=2>
+      <TABLE cellSpacing=0 cellPadding=0 width=730 border=0>
+        <TBODY>
+        <TR>
+          <TD width=590><FONT color=#ffffff><A class=a5 
+            href="http://tech.enet.com.cn/solution/"><B>解决方案</B></A>：| <A 
+            class=a5 href="http://tech.enet.com.cn/column/ERP/ERP.xml">ERP</A> | 
+            <A class=a5 
+            href="http://tech.enet.com.cn/column/CRM/CRM.xml">CRM</A> | <A 
+            class=a5 
+            href="http://tech.enet.com.cn/column/dianx/dianx.xml?style=list1.xsl">电信</A> 
+            | <A class=a5 
+            href="http://tech.enet.com.cn/column/jrzq/jrzq.xml?style=list1.xsl">金融</A> 
+            | <A class=a5 
+            href="http://tech.enet.com.cn/column/zhengf/zhengf.xml?style=list1.xsl">政府</A> 
+            | <A class=a5 
+            href="http://tech.enet.com.cn/column/gssw/gssw.xml?style=list1.xsl">工商</A> 
+            | <A class=a5 
+            href="http://tech.enet.com.cn/column/baox/baox.xml?style=list1.xsl">保险</A> 
+            | <A class=a5 
+            href="http://tech.enet.com.cn/column/xwcb/xwcb.xml?style=list1.xsl">出版</A> 
+            | <A class=a5 
+            href="http://tech.enet.com.cn/column/whjy/whjy.xml?style=list1.xsl">文教</A> 
+            | 　　 <A class=a5 
+            href="http://tech.enet.com.cn/cooperate.shtml">欢迎赐稿</A> | <A 
+            class=a5 href="mailto:etechnic@enet.com.cn">反馈信箱</A> </FONT></TD>
+          <TD width=140>　 <FONT color=#ffffff><IMG height=21 
+            src="揭开MSXML4.0的面纱.files/line_02.gif" width=9 align=absMiddle><A 
+            class=a5 
+            href="http://tech.enet.com.cn/manufacturers.xml?manufacturer=%BB%DD%C6%D5">惠普</A> 
+            <IMG height=21 src="揭开MSXML4.0的面纱.files/line_02.gif" width=9 
+            align=absMiddle><A class=a5 
+            href="http://tech.enet.com.cn/manufacturers.xml?manufacturer=%BB%AA%CE%AA">华为</A> 
+            <IMG height=21 src="揭开MSXML4.0的面纱.files/line_02.gif" width=9 
+            align=absMiddle><A class=a5 
+            href="http://tech.enet.com.cn/manufacturers.xml?manufacturer=%D3%C3%D3%D1%C8%ED%BC%FE">用友</A> 
+            </FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!--头部：结束--><!--1rd--><!--导航和搜索-->
+<TABLE cellSpacing=0 cellPadding=0 width=750 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD width=560>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD height=20>当前位置： <A class=nav1 
+            href="http://home.enet.com.cn/index.shtml">eNet首页</A> &gt; <A 
+            href="http://tech.enet.com.cn/index.shtml">技术首页 </A>&gt; <A 
+            href="http://tech.enet.com.cn/columns/webdevelop.shtml">网站开发</A> 
+            &gt; <A href="http://tech.enet.com.cn/columns/xml_1.shtml">XML</A> 
+          </TD></TR>
+        <TR>
+          <TD bgColor=#000000><SPACER height="1" width="1" 
+        type="block"></TD></TR></TBODY></TABLE></TD>
+    <TD width=33><IMG height=42 src="揭开MSXML4.0的面纱.files/c01.gif" width=33></TD>
+    <TD width=150 bgColor=#7ba599>
+      <TABLE cellSpacing=0 cellPadding=0 width=150 border=0>
+        <FORM name=eSearch onsubmit=toLower(); 
+        action=http://search1.enet.com.cn/cgi-bin/esearch.cgi method=get>
+        <TBODY>
+        <TR>
+          <TD width=7><IMG height=28 src="揭开MSXML4.0的面纱.files/c03.gif" 
+          width=7></TD>
+          <TD width=136 bgColor=#ebebeb><INPUT size=10 name=keyword> <INPUT 
+            type=hidden value=gb2312 name=cp> <INPUT type=hidden value=off 
+            name=gb> <INPUT type=hidden value=9 name=site> <INPUT onclick=toLower() type=submit value=搜索> </TD>
+          <TD width=7><IMG height=28 src="揭开MSXML4.0的面纱.files/c04.gif" 
+          width=7></TD></TR></FORM></TBODY></TABLE>
+      <SCRIPT language=javascript>
+function toLower(){
+
+	var nowValue;
+
+	string1=document.eSearch.keyword.value;
+
+	string2=string1.toLowerCase();
+
+	document.eSearch.keyword.value=string2;
+
+	document.eSearch.submit();
+
+}
+</SCRIPT>
+    </TD>
+    <TD width=7><IMG height=42 src="揭开MSXML4.0的面纱.files/c02.gif" 
+  width=7></TD></TR></TBODY></TABLE><!--2rd-->
+<TABLE cellSpacing=0 cellPadding=0 width=750 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top width=560><!--标题-->
+      <TABLE cellSpacing=0 cellPadding=0 width=560 border=0>
+        <TBODY>
+        <TR>
+          <TD class=p24 align=middle colSpan=2 height=40><FONT 
+            color=#025bd1>揭开MSXML4.0的面纱</FONT></TD></TR>
+        <TR>
+          <TD align=middle colSpan=2 height=22>&nbsp;</TD></TR>
+        <TR>
+          <TD width=210>&nbsp;&nbsp;&nbsp;&nbsp;2001/05/09 11:09</TD>
+          <TD align=right width=350>作者：孙一中 　<A href="http://www.xml.org.cn/" 
+            target=_blank>中国XML联盟</A></TD></TR>
+        <TR>
+          <TD bgColor=#377061 colSpan=2 height=1><IMG height=1 
+            src="D:\Documents and Settings\Administrator.HOMESRV\桌面\揭开MSXML4.0的面纱.files\c(1).gif" 
+            width=1></TD></TR>
+        <TR>
+          <TD height=10>&nbsp;</TD></TR></TBODY></TABLE><!--正文-->
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD class=p14h>
+            <P><!--begin-->
+            <TABLE cellSpacing=0 cellPadding=5 align=right border=0>
+              <TBODY>
+              <TR>
+                <TD><IFRAME marginWidth=0 marginHeight=0 
+                  src="D:\Documents and Settings\Administrator.HOMESRV\桌面\揭开MSXML4.0的面纱.files\adjuggler(1).htm" 
+                  frameBorder=0 width=360 scrolling=no 
+              height=300></IFRAME></TD></TR></TBODY></TABLE><!--end--></P>
+            <P>
+            <P><A 
+            name=newinaprilre_topic4></A>和MSXML3.0不同之处还在于，MSXML4.0的应用模式称为并列模式(Side-by-Side 
+            Mode)。安装MSXML4.0时不必单独运行xminst.exe,而且安装后还可以提供对原来的低版本的支持，而不是替代原来的MSXML 
+            2.0, MSXML 2.6或者MSXML 3.0版本。</P>
+            <P></P>
+            <P></P>
+            <P></P>
+            <P>
+            <P>我们用下面的表格来说明MSXML 4.0中新增的特点：</P>
+            <P></P>
+            <P>
+            <TABLE class=dtTABLE cellSpacing=1 cellPadding=2 width="90%" 
+            align=center border=1>
+              <TBODY>
+              <TR vAlign=top>
+                <TH width="50%">特性</TH></TR>
+              <TR vAlign=top>
+                <TD width="50%"><B>XML Schema Definition (XSD) 的支持</B> 
+                  <P>支持W3C 2001年3月30日 XML 
+              Schema推荐建议，但还目前还不支持正则表达式和标识约束。</P></TD></TR>
+              <TR vAlign=top>
+                <TD width="50%">
+                  <P><B></B>&nbsp;</P>
+                  <P><B>在XSD中支持XPath语言的扩展函数</B></P>
+                  <P>MSXML4.0提供了一些XPath中提供的扩展函数，可以支持基于数据类型的节点计算。</P>
+                  <P>&nbsp;</P></TD></TR>
+              <TR vAlign=top>
+                <TD width="50%"><B>IMXNamespaceManager和 
+                  IMXNamespacePrefixes接口</B> 
+                  <P>这两个新接口提供了便捷的方式来管理名域、名域前缀和名域URI。</P></TD></TR>
+              <TR vAlign=top>
+                <TD width="50%">
+                  <P><B>SAX 到DOM的支持</B> </P>
+                  <P>通过SAX的 
+                  <B>IMXWriter接口，你能够将IMXWriter的output属性设置为DOMDocument对象，从而从SAX事件可以生成DOMDocument对象。</B> 
+                  </P></TD></TR>
+              <TR vAlign=top>
+                <TD width="50%"><B>DOM到SAX的支持</B> 
+                  <P>从DOMDocument触发SAX事件</P></TD></TR>
+              <TR vAlign=top>
+                <TD width="50%"><B>MXHTMLWriter</B> 
+                  <P><B>MXHTMLWriter类是对</B><B>IMXWriter接口的具体实现之一，可以从SAX应用中产生HTML输出。</B> 
+                  </P></TD></TR>
+              <TR vAlign=top>
+                <TD width="50%"><B>创建C++ SAX应用的Wizard</B> 
+                  <P>SAX Win32 
+                  AppWizard可以从Microsoft产品支持服务中下载。它实现了在C++中进行SAX应用的编程。</P></TD></TR>
+              <TR vAlign=top>
+                <TD width="50%"><B>增加了IServerXMLHTTPRequest样例</B> 
+                  <P>根据可户客户的要求，在<B>IServerXMLHTTPRequest</B>文档中添加了新的样李。 
+              </P></TD></TR>
+              <TR vAlign=top>
+                <TD width="50%"><B>增强了XSLT开发指南</B> 
+                  <P>新增添了一些新的主题</P></TD></TR>
+              <TR vAlign=top>
+                <TD width="50%"><B>新的GUIDs和PROGIDs</B> 
+                  <P>MSXML 4.0要安装三个DLL文件到你的系统目录：msxml4.dll, 
+                  msxml4a.dll和msxml4r.dll。不过头文件(msxml2.h)、 
+                  .lib文件msxml2.lib)和.idl文件(msxml2.idl.)的名称都没有变化。</P></TD></TR></TBODY></TABLE></P></TD></TR></TBODY></TABLE><!--翻页-->
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD align=right height=20><FONT color=#0102cc><A 
+            href="http://tech.enet.com.cn/document/20010509/2001050911094001.shtml">上一页</A>　 
+            【<A 
+        href="http://home.enet.com.cn/index.shtml">回eNet首页</A>】</FONT></TD></TR></TBODY></TABLE><!--feedback--><!--相关文章、评论-->
+      <TABLE cellSpacing=0 cellPadding=5 width=560 border=0>
+        <TBODY>
+        <TR>
+          <TD colSpan=2 height=5></TD></TR>
+        <TR>
+          <TD bgColor=#377061 colSpan=2><SPACER height="1" width="1" 
+            type="block"></TD></TR>
+        <TR>
+          <TD vAlign=top width=400><FONT class=b14 
+            color=#0102cc>【相关文章】</FONT><BR>
+            <TABLE>
+              <TBODY>
+              <TR vAlign=top>
+                <TD width="5%"><FONT class=p6 color=#ff7b1a>■</FONT></TD>
+                <TD width="95%"><A 
+                  href="http://tech.enet.com.cn/document/20010115/2001011517035201.shtml">XML轻松学习手册(一):XML快速入门</A></TD></TR>
+              <TR vAlign=top>
+                <TD width="5%"><FONT class=p6 color=#ff7b1a>■</FONT></TD>
+                <TD width="95%"><A 
+                  href="http://tech.enet.com.cn/document/20010117/2001011710051001.shtml">XML轻松学习手册(二):XML概念</A></TD></TR>
+              <TR vAlign=top>
+                <TD width="5%"><FONT class=p6 color=#ff7b1a>■</FONT></TD>
+                <TD width="95%"><A 
+                  href="http://tech.enet.com.cn/document/20010119/2001011910565601.shtml">XML轻松学习手册(三):XML的术语</A></TD></TR>
+              <TR vAlign=top>
+                <TD width="5%"><FONT class=p6 color=#ff7b1a>■</FONT></TD>
+                <TD width="95%"><A 
+                  href="http://tech.enet.com.cn/document/20010120/2001012009395301.shtml">XML轻松学习手册(四):XML语法</A></TD></TR>
+              <TR vAlign=top>
+                <TD width="5%"><FONT class=p6 color=#ff7b1a>■</FONT></TD>
+                <TD width="95%"><A 
+                  href="http://tech.enet.com.cn/document/20010122/2001012210174901.shtml">XML轻松学习手册(五):XML实例解析</A></TD></TR>
+              <TR vAlign=top>
+                <TD width="5%"><FONT class=p6 color=#ff7b1a>■</FONT></TD>
+                <TD width="95%"><A 
+                  href="http://tech.enet.com.cn/document/20010122/2001012213593401.shtml">XML轻松学习手册(六):XML相关资源</A></TD></TR>
+              <TR vAlign=top>
+                <TD width="5%"><FONT class=p6 color=#ff7b1a>■</FONT></TD>
+                <TD width="95%"><A 
+                  href="http://tech.enet.com.cn/document/20010222/2001022210314401.shtml">XML初学者必读</A></TD></TR>
+              <TR vAlign=top>
+                <TD width="5%"><FONT class=p6 color=#ff7b1a>■</FONT></TD>
+                <TD width="95%"><A 
+                  href="http://tech.enet.com.cn/document/20010316/2001031610141101.shtml">XSL简明教程</A></TD></TR>
+              <TR vAlign=top>
+                <TD width="5%"><FONT class=p6 color=#ff7b1a>■</FONT></TD>
+                <TD width="95%"><A 
+                  href="http://tech.enet.com.cn/document/20010323/2001032309431301.shtml">XSLT轻松入门第一章：XSLT概念</A></TD></TR></TBODY></TABLE></TD>
+          <TD vAlign=top width=160><FONT class=b14 color=#0102cc><A 
+            href="http://www.eclub.com.cn/bbs.php?parent=114">【发表评论】</A></FONT></TD></TR></TBODY></TABLE></TD>
+    <TD width=30>&nbsp;</TD>
+    <TD vAlign=top width=160 bgColor=#c3d6d2>
+      <TABLE cellSpacing=0 cellPadding=0 width=160 border=0>
+        <TBODY>
+        <TR>
+          <TD bgColor=white height=5></TD></TR>
+        <TR>
+          <TD height=5></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width=171 border=0>
+        <TBODY>
+        <TR>
+          <TD class=p14 align=middle background=揭开MSXML4.0的面纱.files/bg_01.gif 
+          height=24>精 彩 回 顾</TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=2 width=165 border=0>
+        <TBODY>
+        <TR>
+          <TD><IMG height=1 src="揭开MSXML4.0的面纱.files/c.gif" width=1></TD></TR>
+        <TR>
+          <TD align=middle width=10><IMG height=5 
+            src="揭开MSXML4.0的面纱.files/li1.gif" width=5></TD>
+          <TD width=155><A 
+            href="http://tech.enet.com.cn/document/20020424/2002042409263001.shtml">ASP.net随机数应用实例</A></TD></TR>
+        <TR>
+          <TD align=middle width=10><IMG height=5 
+            src="揭开MSXML4.0的面纱.files/li1.gif" width=5></TD>
+          <TD width=155><A 
+            href="http://tech.enet.com.cn/document/20020422/2002042209580201.shtml">Linux 
+            系统的优化和微调</A></TD></TR>
+        <TR>
+          <TD align=middle width=10><IMG height=5 
+            src="揭开MSXML4.0的面纱.files/li1.gif" width=5></TD>
+          <TD width=155><A 
+            href="http://tech.enet.com.cn/document/20020419/2002041909123401.shtml">体验Dreamweaver 
+            MX新特性</A></TD></TR>
+        <TR>
+          <TD align=middle width=10><IMG height=5 
+            src="揭开MSXML4.0的面纱.files/li1.gif" width=5></TD>
+          <TD width=155><A 
+            href="http://tech.enet.com.cn/document/20020417/2002041709420601.shtml">运用P2P技术在C#下实现聊天功能</A></TD></TR>
+        <TR>
+          <TD align=middle width=10><IMG height=5 
+            src="揭开MSXML4.0的面纱.files/li1.gif" width=5></TD>
+          <TD width=155><A 
+            href="http://tech.enet.com.cn/document/20020415/2002041511411601.shtml">网站项目模型及业务流程分析</A></TD></TR>
+        <TR>
+          <TD align=middle width=10><IMG height=5 
+            src="揭开MSXML4.0的面纱.files/li1.gif" width=5></TD>
+          <TD width=155><A 
+            href="http://tech.enet.com.cn/document/20020412/2002041215492601.shtml">运用C#制作屏幕捕捉程序</A></TD></TR>
+        <TR>
+          <TD align=middle width=10><IMG height=5 
+            src="揭开MSXML4.0的面纱.files/li1.gif" width=5></TD>
+          <TD width=155><A 
+            href="http://tech.enet.com.cn/document/20020410/2002041017064301.shtml">WinNT/2K 
+            Web站点安全解决方案</A></TD></TR>
+        <TR>
+          <TD align=middle width=10><IMG height=5 
+            src="揭开MSXML4.0的面纱.files/li1.gif" width=5></TD>
+          <TD width=155><A 
+            href="http://tech.enet.com.cn/document/20020408/2002040810390901.shtml">如何创建FlashMX组件</A></TD></TR>
+        <TR>
+          <TD align=middle width=10><IMG height=5 
+            src="揭开MSXML4.0的面纱.files/li1.gif" width=5></TD>
+          <TD width=155><A 
+            href="http://tech.enet.com.cn/document/20020404/2002040414133201.shtml">如何做好需求分析</A></TD></TR>
+        <TR>
+          <TD align=middle width=10><IMG height=5 
+            src="揭开MSXML4.0的面纱.files/li1.gif" width=5></TD>
+          <TD width=155><A 
+            href="http://tech.enet.com.cn/document/20020401/2002040115434701.shtml">浅析C#中的套接字编程 
+            </A></TD></TR>
+        <TR>
+          <TD align=middle width=10><IMG height=5 
+            src="揭开MSXML4.0的面纱.files/li1.gif" width=5></TD>
+          <TD width=155><A 
+            href="http://tech.enet.com.cn/document/20020329/2002032914271801.shtml">感悟VB-细水长流话API</A></TD></TR>
+        <TR>
+          <TD align=right colSpan=2><A class=a4 
+            href="http://tech.enet.com.cn/columns/oldhead_1.shtml">更多 
+            &gt;&gt;</A></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD align=middle><IFRAME marginWidth=0 marginHeight=0 
+            src="D:\Documents and Settings\Administrator.HOMESRV\桌面\揭开MSXML4.0的面纱.files\adjuggler(2).htm" 
+            frameBorder=0 noResize width=120 scrolling=no 
+            height=60>
+<script language=JavaScript src=http://ad4.enet.com.cn/cgi-bin/adjuggler?Pool=etechbutton&ajtype=jscript>
+</script>
+</IFRAME></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE><!--底部-->
+<TABLE cellSpacing=0 cellPadding=0 width=750 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD>&nbsp;</TD></TR>
+  <TR>
+    <TD bgColor=#c3d6d2><IMG height=3 src="揭开MSXML4.0的面纱.files/c.gif" 
+    width=1></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=450 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD height=8></TD></TR>
+  <TR align=middle>
+    <TD colSpan=2><A class=bottom 
+      href="http://home.enet.com.cn/guanyuenet.shtml">关于eNet</A> | <A 
+      class=bottom href="http://home.enet.com.cn/ad_price.shtml">联系广告</A> | <A 
+      class=bottom href="http://home.enet.com.cn/zhaopin_1.shtml">诚邀加盟</A> | <A 
+      class=bottom href="http://home.enet.com.cn/reg.shtml">用户注册</A> | <A 
+      class=bottom href="mailto:webmaster@enet.com.cn">用户反馈</A> | <A 
+      class=bottom href="http://home.enet.com.cn/link.shtml">友情链接</A> | <A 
+      class=bottom href="http://home.enet.com.cn/ad_issue.shtml">版权声明</A> 
+  </TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=450 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD height=8></TD></TR>
+  <TR>
+    <TD class=bottom align=middle width=410>Copyright &copy; 2002硅谷动力公司 
+      版权所有，未经许可不得转载。<BR>联系: <A class=bottom 
+      href="mailto:webmaster@enet.com.cn">webmaster@enet.com.cn</A> 电话: 
+      86-10-65245588 </TD>
+    <TD width=40><IMG src="揭开MSXML4.0的面纱.files/biaoshi1.gif" border=0></TD></TR>
+  <TR>
+    <TD align=middle><FONT 
+  color=#094295><U>京ICP证000044号</U></FONT></TD></TR></TBODY></TABLE></BODY></HTML>

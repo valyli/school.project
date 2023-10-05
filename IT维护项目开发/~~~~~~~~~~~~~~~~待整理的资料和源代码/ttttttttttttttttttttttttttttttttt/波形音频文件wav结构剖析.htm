@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0048)http://tzsvc.xiloo.com/doc/files/wavfilestru.htm -->
+<HTML><HEAD><TITLE>宗胜的编程乐园--文档 <http://tzsvc.xiloo.com></TITLE><!-- #BeginTemplate "/Templates/index3_table.dwt" --><!-- #BeginEditable "doctitle" --><!-- #EndEditable -->
+<META http-equiv=Content-Type content="text/html; charset=gb2312">
+<STYLE type=text/css>A {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+	TEXT-DECORATION: underline
+}
+</STYLE>
+
+<SCRIPT language=JAVASCRIPT>
+<!-- 
+var timerID = null;
+var timerRunning = false;
+function stopclock (){
+if(timerRunning)
+clearTimeout(timerID);
+timerRunning = false;
+}
+function showtime () {
+var now = new Date();
+var hours = now.getHours();
+var minutes = now.getMinutes();
+var seconds = now.getSeconds()
+var timeValue = "现在时间是: " + ((hours >12) ? hours -12 :hours)
+timeValue += ((minutes < 10) ? ":0" : ":") + minutes
+timeValue += ((seconds < 10) ? ":0" : ":") + seconds
+timeValue += (hours >= 12) ? " P.M." : " A.M."
+window.status = timeValue;
+timerID = setTimeout("showtime()",1000);
+timerRunning = true;
+}
+function startclock () {
+stopclock();
+showtime();
+}
+-->
+</SCRIPT>
+
+<SCRIPT language=JavaScript>
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+// -->
+</SCRIPT>
+
+<META content="MSHTML 5.50.4134.100" name=GENERATOR></HEAD>
+<BODY text=#000000 bgColor=#ffffff leftMargin=0 onload=startclock()>
+<TABLE cellSpacing=0 cellPadding=0 width=772 border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top align=left bgColor=#ffffff>
+      <TABLE height=8 cellSpacing=0 cellPadding=0 width=776 align=center 
+      border=0>
+        <TBODY>
+        <TR>
+          <TD width=311 bgColor=#ffffff height=11><FONT color=#ffffff>　
+            <SCRIPT language=JavaScript> <!---
+today=new Date();
+var hours = today.getHours();
+var minutes = today.getMinutes();
+var seconds = today.getSeconds();
+var timeValue = "<FONT COLOR=black>" + ((hours >12) ? hours -12 :hours); timeValue += ((minutes < 10) ? "<BLINK><FONT COLOR=black>:</FONT></BLINK>0" : "<BLINK><FONT COLOR=black>:</FONT></BLINK>") + minutes+"</FONT></FONT>";
+timeValue += (hours >= 12) ? "<FONT COLOR=blue><I><B>pm</B></I></FONT>" : "<FONT COLOR=blue><B><I>am</I></B></FONT>";
+function initArray(){
+this.length=initArray.arguments.length
+for(var i=0;i<this.length;i++)
+this[i+1]=initArray.arguments[i] }
+var d=new initArray("<font color=RED>星期日","<font color=black>星期一","<font color=black>星期二","<font color=black>星期三","<font color=black>星期四","<font color=black>星期五","<font color=GREEN>星期六"); document.write("<font color=black>",today.getYear(),"<font color=red>年","<font color=black>",today.getMonth()+1,"<font color=red>月","<font color=black>",today.getDate(),"<font color=red>日 </FONT>",d[today.getDay()+1]," ",timeValue); //--></SCRIPT>
+             <FONT color=#000000 size=2>登录</FONT></FONT></TD>
+          <TD vAlign=bottom align=right width=51 bgColor=#ffffff height=11><A 
+            href="http://tzsvc.xiloo.com/index.htm"><IMG height=17 
+            src="波形音频文件wav结构剖析.files/head.jpg" width=51 border=0></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/mywriting/mywriting.htm"><FONT 
+            color=#000000 size=2>作品</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 
+            height=11><FONT color=#000000 size=2><A 
+            href="http://tzsvc.xiloo.com/firststu/firststu.htm">新手</A></FONT></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/doc/doc.htm"><FONT color=#000000 
+            size=2>文章</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/skill/dll.htm"><FONT color=#000000 
+            size=2>技巧</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/book/vc.htm"><FONT color=#000000 
+            size=2>教程</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/code/code.htm"><FONT color=#000000 
+            size=2>源码</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/ks/ks.htm"><FONT color=#000000 
+            size=2>考试</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/job/job.htm"><FONT color=#000000 
+            size=2>求职</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/download/download.htm"><FONT 
+            color=#000000 size=2>下载</FONT></A></TD>
+          <TD vAlign=bottom align=middle width=36 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/virus/virus.htm"><FONT color=#000000 
+            size=2>病毒</FONT></A></TD>
+          <TD vAlign=bottom align=left width=56 bgColor=#e8ecf8 height=11><A 
+            href="http://tzsvc.xiloo.com/programmer/programmer.htm"><FONT 
+            color=#000000 size=2>人生</FONT></A></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD vAlign=top align=left bgColor=#0070b0></TD></TR>
+  <TR vAlign=bottom align=left>
+    <TD height=61>
+      <TABLE cellSpacing=0 cellPadding=0 width=761 align=center border=0>
+        <TBODY>
+        <TR>
+          <TD width=188 height=49><IMG height=67 
+            src="波形音频文件wav结构剖析.files/zititle.jpg" width=187></TD>
+          <TD width=452 height=49><A 
+            href="http://asiafriendfinder.com/go/f122344"><IMG height=67 src="" 
+            width=450 align=absBottom border=0></A></TD>
+          <TD width=121 height=49><FONT size=2><IFRAME border=0 
+            src="波形音频文件wav结构剖析.files/showlink.htm" frameBorder=0 width=120 
+            scrolling=no height=60></IFRAME></FONT></TD></TR></TBODY></TABLE></TD></TR>
+  <TR bgColor=#0070b0>
+    <TD><FONT color=#ffffff size=2><FONT size=2>　|<A target=_blank 
+      href="http://vcbbs888.xilubbs.com/"><FONT color=#ffffff 
+      size=2>编程论坛</FONT></A>|<A target=_blank 
+      href="http://www.sn163.net/cgi-bin/gb2000/gb.cgi?id=tangzs"><FONT 
+      color=#ffffff size=2>请您留言</FONT></A>|</FONT><A target=_blank 
+      href="mailto:tzs168@yahoo.com.cn"><FONT color=#ffffff 
+      size=2>联系我们</FONT></A>|</FONT></TD></TR>
+  <TR>
+    <TD vAlign=top align=left>
+      <TABLE cellSpacing=0 cellPadding=0 width=777 border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top align=middle width=165 bgColor=#e8ecf8 
+            height=104><IMG height=60 src="波形音频文件wav结构剖析.files/word.jpg" 
+            width=140><BR><BR><FONT size=2><A 
+            href="http://tzsvc.xiloo.com/other/new.htm">本站更新列表&gt;&gt;</A></FONT><BR><BR><FONT 
+            size=2><A 
+            href="http://tzsvc.xiloo.com/other/goodpage.htm">好站链接&gt;&gt;</A></FONT><BR></TD>
+          <TD vAlign=top align=left width=12 height=104><IMG height=15 
+            src="波形音频文件wav结构剖析.files/mid_conner.gif" width=10></TD>
+          <TD vAlign=top align=left width=600 height=104>
+            <TABLE cellSpacing=0 cellPadding=0 width=599 border=0>
+              <TBODY>
+              <TR>
+                <TD><FONT size=2>日期:2002/<!-- #BeginEditable "date" -->10/19<!-- #EndEditable -->　　　　　　　　　　　　　　　　　　　　　　　　文章出处:<!-- #BeginEditable "from" -->UnKnow<!-- #EndEditable --></FONT></TD></TR>
+              <TR>
+                <TD><FONT 
+                  size=2>标题:<!-- #BeginEditable "title" --><B>波形音频文件wav结构剖析</B><!-- #EndEditable --></FONT></TD></TR>
+              <TR>
+                <TD><!-- #BeginEditable "other" --><!-- #EndEditable --></TD></TR>
+              <TR>
+                <TD vAlign=top align=left><!-- #BeginEditable "data" --><FONT 
+                  size=2><BR>WAVE文件作为多媒体中使用的声波文件格式之一，它是以RIFF格式为标准的。RIFF是英文Resource 
+                  Interchange File 
+                  Format的缩写，每个WAVE文件的头四个字节便是“RIFF”。WAVE文件由文件头和数据体两大部分组成。其中文件头又分为RIFF／WAV文件标识段和声音数据格式说明段两部分。WAVE文件各部分内容及格式见附表。<BR>　　常见的声音文件主要有两种，分别对应于单声道（11.025KHz采样率、8Bit的采样值）和双声道（44.1KHz采样率、16Bit的采样值）。采样率是指：声音信号在“模→数”转换过程中单位时间内采样的次数。采样值是指每一次采样周期内声音模拟信号的积分值。<BR>　　对于单声道声音文件，采样数据为八位的短整数（short 
+                  int 
+                  00H-FFH）；而对于双声道立体声声音文件，每次采样数据为一个16位的整数（int），高八位和低八位分别代表左右两个声道。<BR>WAVE文件数据块包含以脉冲编码调制（PCM）格式表示的样本。WAVE文件是由样本组织而成的。在单声道WAVE文件中，声道0代表左声道，声道1代表右声道。在多声道WAVE文件中，样本是交替出现的。 
+                  </FONT>
+                  <P><FONT size=2>　　WAVE文件格式说明表　　</FONT></P>
+                  <P><FONT size=2>　 偏移地址 字节数 数据类型 内 容 <BR>　 <BR>文件头<BR>00H 4 
+                  char "RIFF"标志 <BR>04H 4 long int 文件长度 <BR>08H 4 char "WAVE"标志 
+                  <BR>0CH 4 char "fmt"标志 <BR>10H 4 　 过渡字节（不定） <BR>14H 2 int 
+                  格式类别（10H为PCM形式的声音数据) <BR>16H 2 int 通道数，单声道为1，双声道为2 <BR>18H 2 
+                  int 采样率（每秒样本数），表示每个通道的播放速度， <BR>1CH 4 long int 
+                  波形音频数据传送速率，其值为通道数×每秒数据位数×每样本的数据位数／8。播放软件利用此值可以估计缓冲区的大小。 
+                  <BR>20H 2 int 
+                  数据块的调整数（按字节算的），其值为通道数×每样本的数据位值／8。播放软件需要一次处理多个该值大小的字节数据，以便将其值用于缓冲区的调整。 
+                  <BR>22H 2 　 每样本的数据位数，表示每个声道中各个样本的数据位数。如果有多个声道，对每个声道而言，样本大小都一样。 
+                  <BR>24H 4 char 数据标记符＂data＂ <BR>28H 4 long int 语音数据的长度 
+                  </FONT></P>
+                  <P><FONT size=2>　　PCM数据的存放方式： </FONT></P>
+                  <P><FONT size=2>样本1 样本2 <BR>8位单声道 0声道 0声道 <BR>8位立体声 0声道（左） 
+                  1声道（右） 0声道（左） 1声道（右） <BR>16位单声道 0声道低字节 0声道高字节 0声道低字节 0声道高字节 
+                  <BR>16位立体声 0声道（左）低字节 0声道（左）高字节 1声道（右）低字节 1声道（右）高字节 </FONT></P>
+                  <P></P>
+                  <P><FONT 
+                  size=2><BR>　WAVE文件的每个样本值包含在一个整数i中，i的长度为容纳指定样本长度所需的最小字节数。首先存储低有效字节，表示样本幅度的位放在i的高有效位上，剩下的位置为0，这样8位和16位的PCM波形样本的数据格式如下所示。 
+                  　</FONT></P>
+                  <P><FONT size=2>样本大小 数据格式 最大值 最小值 <BR>8位PCM unsigned int 225 0 
+                  <BR>16位PCM int 32767 -32767 </FONT></P>
+                  <P><FONT size=2><BR></FONT></P><!-- #EndEditable --></TD></TR>
+              <TR>
+                <TD align=middle><FONT size=2>上一页 第0页 下一页</FONT></TD></TR>
+              <TR>
+                <TD align=middle><FONT size=2><INPUT onclick=history.go(-1) type=button value=后退 name=button> 
+<INPUT onclick=history.go(1) type=button value=前进 name=button2> 
+<INPUT onclick=window.close() type=button value=关闭 name=button3> 
+                  </FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width=764 align=center border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <HR SIZE=1>
+    </TD></TR>
+  <TR>
+    <TD align=middle><FONT size=2>Copyright(c)2002 
+      宗胜的编程乐园　http://tzsvc.xiloo.com <BR>文章版权归原作者所有，如仍有问题，请与我联系 </FONT></TD></TR>
+  <TR>
+    <TD>
+      <HR SIZE=1>
+    </TD></TR></TBODY></TABLE><!-- #EndTemplate --></BODY></HTML>

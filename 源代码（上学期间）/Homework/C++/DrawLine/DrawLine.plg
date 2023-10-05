@@ -1,0 +1,54 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: DrawLine - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x804 /fo"Debug/DrawLine.res" /d "_DEBUG" /d "_AFXDLL" "E:\Code\DrawLine\DrawLine.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP4346.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/DrawLine.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\Code\DrawLine\DrawLine.cpp"
+"E:\Code\DrawLine\DrawLineDoc.cpp"
+"E:\Code\DrawLine\DrawLineView.cpp"
+"E:\Code\DrawLine\MainFrm.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP4346.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP4347.TMP" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/DrawLine.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"E:\Code\DrawLine\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP4347.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP4348.TMP" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/DrawLine.pdb" /debug /machine:I386 /out:"Debug/DrawLine.exe" /pdbtype:sept 
+.\Debug\DrawLine.obj
+.\Debug\DrawLineDoc.obj
+.\Debug\DrawLineView.obj
+.\Debug\MainFrm.obj
+.\Debug\StdAfx.obj
+.\Debug\DrawLine.res
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP4348.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+DrawLine.cpp
+DrawLineDoc.cpp
+DrawLineView.cpp
+MainFrm.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+DrawLine.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

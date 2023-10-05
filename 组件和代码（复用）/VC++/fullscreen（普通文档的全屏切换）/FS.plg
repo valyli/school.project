@@ -1,0 +1,57 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: FS - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Debug/FS.res" /d "_DEBUG" /d "_AFXDLL" "D:\Documents and Settings\Administrator\桌面\fullscreen\VC\fullscreen\FS.rc"" 
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP10.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/FS.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\Documents and Settings\Administrator\桌面\fullscreen\VC\fullscreen\ChildFrm.cpp"
+"D:\Documents and Settings\Administrator\桌面\fullscreen\VC\fullscreen\FS.cpp"
+"D:\Documents and Settings\Administrator\桌面\fullscreen\VC\fullscreen\FSDoc.cpp"
+"D:\Documents and Settings\Administrator\桌面\fullscreen\VC\fullscreen\FSView.cpp"
+"D:\Documents and Settings\Administrator\桌面\fullscreen\VC\fullscreen\MainFrm.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP10.tmp" 
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP11.tmp" with contents
+[
+/nologo /MDd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_AFXDLL" /D "_MBCS" /Fp"Debug/FS.pch" /Yc"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"D:\Documents and Settings\Administrator\桌面\fullscreen\VC\fullscreen\StdAfx.cpp"
+]
+Creating command line "cl.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP11.tmp" 
+Creating temporary file "D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP12.tmp" with contents
+[
+/nologo /subsystem:windows /incremental:yes /pdb:"Debug/FS.pdb" /debug /machine:I386 /out:"Debug/FS.exe" /pdbtype:sept 
+".\Debug\ChildFrm.obj"
+".\Debug\FS.obj"
+".\Debug\FSDoc.obj"
+".\Debug\FSView.obj"
+".\Debug\MainFrm.obj"
+".\Debug\StdAfx.obj"
+".\Debug\FS.res"
+]
+Creating command line "link.exe @D:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSP12.tmp"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+ChildFrm.cpp
+FS.cpp
+FSDoc.cpp
+FSView.cpp
+MainFrm.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+FS.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
